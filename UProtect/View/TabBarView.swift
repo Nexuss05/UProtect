@@ -32,7 +32,7 @@ fileprivate struct TabsLayoutView: View {
             
             ForEach(Tab.allCases) { tab in
                 TabButton(tab: tab, selectedTab: $selectedTab, namespace: namespace)
-                    .frame(width: 65, height: 65, alignment: .center)
+//                    .frame(width: 65, height: 65, alignment: .center)
                 
                 Spacer(minLength: 0)
             }

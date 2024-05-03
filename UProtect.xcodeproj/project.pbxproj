@@ -128,7 +128,6 @@
 			);
 			mainGroup = C21DD8312BE4D471003EB614;
 			packageReferences = (
-				C21DD84D2BE4E351003EB614 /* XCRemoteSwiftPackageReference "TabBar" */,
 			);
 			productRefGroup = C21DD83B2BE4D471003EB614 /* Products */;
 			projectDirPath = "";
@@ -365,17 +364,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C21DD84D2BE4E351003EB614 /* XCRemoteSwiftPackageReference "TabBar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onl1ner/TabBar.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = C21DD8322BE4D471003EB614 /* Project object */;
 }
