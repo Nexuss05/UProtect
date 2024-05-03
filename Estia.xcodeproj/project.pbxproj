@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C21DD80A2BE4CE6D003EB614 /* HestiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD8092BE4CE6D003EB614 /* HestiaApp.swift */; };
-		C21DD80C2BE4CE6D003EB614 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD80B2BE4CE6D003EB614 /* ContentView.swift */; };
-		C21DD80E2BE4CE6E003EB614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21DD80D2BE4CE6E003EB614 /* Assets.xcassets */; };
-		C21DD8112BE4CE6E003EB614 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21DD8102BE4CE6E003EB614 /* Preview Assets.xcassets */; };
+		C21DD8242BE4D332003EB614 /* EstiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD8232BE4D332003EB614 /* EstiaApp.swift */; };
+		C21DD8262BE4D332003EB614 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD8252BE4D332003EB614 /* ContentView.swift */; };
+		C21DD8282BE4D333003EB614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21DD8272BE4D333003EB614 /* Assets.xcassets */; };
+		C21DD82B2BE4D333003EB614 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21DD82A2BE4D333003EB614 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C21DD8062BE4CE6D003EB614 /* Hestia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hestia.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C21DD8092BE4CE6D003EB614 /* HestiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HestiaApp.swift; sourceTree = "<group>"; };
-		C21DD80B2BE4CE6D003EB614 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C21DD80D2BE4CE6E003EB614 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C21DD8102BE4CE6E003EB614 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C21DD8202BE4D332003EB614 /* Estia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Estia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C21DD8232BE4D332003EB614 /* EstiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstiaApp.swift; sourceTree = "<group>"; };
+		C21DD8252BE4D332003EB614 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C21DD8272BE4D333003EB614 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C21DD82A2BE4D333003EB614 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C21DD8032BE4CE6D003EB614 /* Frameworks */ = {
+		C21DD81D2BE4D332003EB614 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,37 +32,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C21DD7FD2BE4CE6D003EB614 = {
+		C21DD8172BE4D332003EB614 = {
 			isa = PBXGroup;
 			children = (
-				C21DD8082BE4CE6D003EB614 /* Hestia */,
-				C21DD8072BE4CE6D003EB614 /* Products */,
+				C21DD8222BE4D332003EB614 /* Estia */,
+				C21DD8212BE4D332003EB614 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C21DD8072BE4CE6D003EB614 /* Products */ = {
+		C21DD8212BE4D332003EB614 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C21DD8062BE4CE6D003EB614 /* Hestia.app */,
+				C21DD8202BE4D332003EB614 /* Estia.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C21DD8082BE4CE6D003EB614 /* Hestia */ = {
+		C21DD8222BE4D332003EB614 /* Estia */ = {
 			isa = PBXGroup;
 			children = (
-				C21DD8092BE4CE6D003EB614 /* HestiaApp.swift */,
-				C21DD80B2BE4CE6D003EB614 /* ContentView.swift */,
-				C21DD80D2BE4CE6E003EB614 /* Assets.xcassets */,
-				C21DD80F2BE4CE6E003EB614 /* Preview Content */,
+				C21DD8232BE4D332003EB614 /* EstiaApp.swift */,
+				C21DD8252BE4D332003EB614 /* ContentView.swift */,
+				C21DD8272BE4D333003EB614 /* Assets.xcassets */,
+				C21DD8292BE4D333003EB614 /* Preview Content */,
 			);
-			path = Hestia;
+			path = Estia;
 			sourceTree = "<group>";
 		};
-		C21DD80F2BE4CE6E003EB614 /* Preview Content */ = {
+		C21DD8292BE4D333003EB614 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				C21DD8102BE4CE6E003EB614 /* Preview Assets.xcassets */,
+				C21DD82A2BE4D333003EB614 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -70,39 +70,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C21DD8052BE4CE6D003EB614 /* Hestia */ = {
+		C21DD81F2BE4D332003EB614 /* Estia */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C21DD8142BE4CE6E003EB614 /* Build configuration list for PBXNativeTarget "Hestia" */;
+			buildConfigurationList = C21DD82E2BE4D333003EB614 /* Build configuration list for PBXNativeTarget "Estia" */;
 			buildPhases = (
-				C21DD8022BE4CE6D003EB614 /* Sources */,
-				C21DD8032BE4CE6D003EB614 /* Frameworks */,
-				C21DD8042BE4CE6D003EB614 /* Resources */,
+				C21DD81C2BE4D332003EB614 /* Sources */,
+				C21DD81D2BE4D332003EB614 /* Frameworks */,
+				C21DD81E2BE4D332003EB614 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Hestia;
-			productName = Hestia;
-			productReference = C21DD8062BE4CE6D003EB614 /* Hestia.app */;
+			name = Estia;
+			productName = Estia;
+			productReference = C21DD8202BE4D332003EB614 /* Estia.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C21DD7FE2BE4CE6D003EB614 /* Project object */ = {
+		C21DD8182BE4D332003EB614 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					C21DD8052BE4CE6D003EB614 = {
+					C21DD81F2BE4D332003EB614 = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = C21DD8012BE4CE6D003EB614 /* Build configuration list for PBXProject "Hestia" */;
+			buildConfigurationList = C21DD81B2BE4D332003EB614 /* Build configuration list for PBXProject "Estia" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,42 +110,42 @@
 				en,
 				Base,
 			);
-			mainGroup = C21DD7FD2BE4CE6D003EB614;
-			productRefGroup = C21DD8072BE4CE6D003EB614 /* Products */;
+			mainGroup = C21DD8172BE4D332003EB614;
+			productRefGroup = C21DD8212BE4D332003EB614 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C21DD8052BE4CE6D003EB614 /* Hestia */,
+				C21DD81F2BE4D332003EB614 /* Estia */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C21DD8042BE4CE6D003EB614 /* Resources */ = {
+		C21DD81E2BE4D332003EB614 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C21DD8112BE4CE6E003EB614 /* Preview Assets.xcassets in Resources */,
-				C21DD80E2BE4CE6E003EB614 /* Assets.xcassets in Resources */,
+				C21DD82B2BE4D333003EB614 /* Preview Assets.xcassets in Resources */,
+				C21DD8282BE4D333003EB614 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C21DD8022BE4CE6D003EB614 /* Sources */ = {
+		C21DD81C2BE4D332003EB614 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C21DD80C2BE4CE6D003EB614 /* ContentView.swift in Sources */,
-				C21DD80A2BE4CE6D003EB614 /* HestiaApp.swift in Sources */,
+				C21DD8262BE4D332003EB614 /* ContentView.swift in Sources */,
+				C21DD8242BE4D332003EB614 /* EstiaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C21DD8122BE4CE6E003EB614 /* Debug */ = {
+		C21DD82C2BE4D333003EB614 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -208,7 +208,7 @@
 			};
 			name = Debug;
 		};
-		C21DD8132BE4CE6E003EB614 /* Release */ = {
+		C21DD82D2BE4D333003EB614 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -264,14 +264,14 @@
 			};
 			name = Release;
 		};
-		C21DD8152BE4CE6E003EB614 /* Debug */ = {
+		C21DD82F2BE4D333003EB614 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Hestia/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Estia/Preview Content\"";
 				DEVELOPMENT_TEAM = UU6556PJ33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -285,7 +285,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.Hestia";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.Estia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -293,14 +293,14 @@
 			};
 			name = Debug;
 		};
-		C21DD8162BE4CE6E003EB614 /* Release */ = {
+		C21DD8302BE4D333003EB614 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Hestia/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Estia/Preview Content\"";
 				DEVELOPMENT_TEAM = UU6556PJ33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -314,7 +314,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.Hestia";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.Estia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -325,25 +325,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C21DD8012BE4CE6D003EB614 /* Build configuration list for PBXProject "Hestia" */ = {
+		C21DD81B2BE4D332003EB614 /* Build configuration list for PBXProject "Estia" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C21DD8122BE4CE6E003EB614 /* Debug */,
-				C21DD8132BE4CE6E003EB614 /* Release */,
+				C21DD82C2BE4D333003EB614 /* Debug */,
+				C21DD82D2BE4D333003EB614 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C21DD8142BE4CE6E003EB614 /* Build configuration list for PBXNativeTarget "Hestia" */ = {
+		C21DD82E2BE4D333003EB614 /* Build configuration list for PBXNativeTarget "Estia" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C21DD8152BE4CE6E003EB614 /* Debug */,
-				C21DD8162BE4CE6E003EB614 /* Release */,
+				C21DD82F2BE4D333003EB614 /* Debug */,
+				C21DD8302BE4D333003EB614 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C21DD7FE2BE4CE6D003EB614 /* Project object */;
+	rootObject = C21DD8182BE4D332003EB614 /* Project object */;
 }
