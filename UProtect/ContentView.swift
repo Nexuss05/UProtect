@@ -13,6 +13,8 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
+                
+                    ContactPickerView()
             }
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -60,15 +62,15 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
     var title: String {
         switch self {
         case .course:
-            return "Home"
+            return "Course"
         case .map:
-            return "Games"
+            return "Map"
         case .danger:
-            return "Apps"
+            return "Danger"
         case .contact:
-            return "Movies"
+            return "Contact"
         case .settings:
-            return "Account"
+            return "Settings"
         }
     }
     

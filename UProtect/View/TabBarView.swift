@@ -12,7 +12,7 @@ struct TabBarView: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
+            RoundedRectangle(cornerRadius: 0, style: .continuous)
                 .fill(.white)
                 .shadow(color: .gray.opacity(0.4), radius: 20, x: 0, y: 20)
             
@@ -61,17 +61,23 @@ fileprivate struct TabsLayoutView: View {
                                     .stroke(lineWidth: 15)
                                     .foregroundColor(backgroundColor)
                             }
-                            .offset(y: -40)
+                            .offset(y: -30)
                             .matchedGeometryEffect(id: "Selected Tab", in: namespace)
                             .animation(.spring(), value: selectedTab)
                     }
-                    
-                    Image(systemName: tab.icon)
-                        .font(.system(size: 23, weight: .semibold, design: .rounded))
-                        .foregroundColor(isSelected ? .init(white: 0.9) : .gray)
-                        .scaleEffect(isSelected ? 1 : 0.8)
-                        .offset(y: isSelected ? -40 : 0)
-                        .animation(isSelected ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
+                    VStack{
+                        Image(systemName: tab.icon)
+                            .font(.system(size: 23, weight: .semibold, design: .rounded))
+                            .foregroundColor(isSelected ? .init(white: 0.9) : .gray)
+                            .scaleEffect(isSelected ? 1 : 0.8)
+                            .offset(y: isSelected ? -30 : 0)
+                        Text(tab.title)
+                            .font(.system(size: 10, weight: .semibold, design: .rounded))
+                            .foregroundColor(isSelected ? .init(white: 0.9) : .gray)
+                            .scaleEffect(isSelected ? 1 : 0.8)
+                            .offset(y: isSelected ? -30 : 0)
+                    }
+//                        .animation(isSelected ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
                 }
             }
             .buttonStyle(.plain)
