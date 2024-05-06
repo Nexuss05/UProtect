@@ -68,7 +68,7 @@ fileprivate struct TabsLayoutView: View {
                     VStack{
                         Image(systemName: tab.icon)
                             .font(.system(size: 23, weight: .semibold, design: .rounded))
-                            .foregroundColor(isSelected ? .init(white: 0.9) : .gray)
+                            .foregroundColor(isSelected ? .orange : .gray)
                             .scaleEffect(isSelected ? 1 : 0.8)
                             .offset(y: isSelected ? -30 : 0)
                         Text(tab.title)

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import ContactsUI
 
 class Vonage {
     private let apiKey: String
@@ -16,42 +18,53 @@ class Vonage {
         self.apiSecret = apiSecret
     }
     
-    func sendSMS(to phoneNumber: String, from sender: String, text message: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func sendSMS(to phoneNumbers: [String], from sender: String, text message: String, completion: @escaping (Result<Void, Error>) -> Void) {
         // Costruisci l'URL delle API di Vonage per l'invio SMS
         let url = URL(string: "https://rest.nexmo.com/sms/json")!
         
-        // Costruisci i parametri della richiesta
-        let parameters = [
-            "api_key": apiKey,
-            "api_secret": apiSecret,
-            "to": phoneNumber,
-            "from": sender,
-            "text": message
-        ]
-        
-        // Crea una richiesta HTTP POST con i parametri
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = parameters.percentEncoded()
-        
-        // Esegui la richiesta
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            // Controlla se c'è un errore
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
+        // Crea un array di richieste per ciascun numero di telefono
+        let requests = phoneNumbers.map { phoneNumber -> URLRequest in
+            // Costruisci i parametri della richiesta per questo numero di telefono
+            let parameters = [
+                "api_key": apiKey,
+                "api_secret": apiSecret,
+                "to": phoneNumber,
+                "from": sender,
+                "text": message
+            ]
             
-            // Controlla se la risposta è stata ricevuta con successo
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                completion(.failure(NSError(domain: "HTTPError", code: (response as? HTTPURLResponse)?.statusCode ?? -1, userInfo: nil)))
-                return
-            }
+            // Crea una richiesta HTTP POST con i parametri
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.httpBody = parameters.percentEncoded()
             
-            // La richiesta è stata completata con successo
-            completion(.success(()))
-        }.resume()
+            return request
+        }
+        
+        // Esegui tutte le richieste in parallelo
+        let dispatchGroup = DispatchGroup()
+        var errors: [Error] = []
+        for request in requests {
+            dispatchGroup.enter()
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                defer { dispatchGroup.leave() }
+                if let error = error {
+                    errors.append(error)
+                } else if let httpResponse = response as? HTTPURLResponse, !(200...299).contains(httpResponse.statusCode) {
+                    errors.append(NSError(domain: "HTTPError", code: httpResponse.statusCode, userInfo: nil))
+                }
+            }.resume()
+        }
+        
+        // Completamento quando tutte le richieste sono state completate
+        dispatchGroup.notify(queue: .main) {
+            if errors.isEmpty {
+                completion(.success(()))
+            } else {
+                completion(.failure(errors.first ?? NSError(domain: "UnknownError", code: -1, userInfo: nil)))
+            }
+        }
     }
 }
 
