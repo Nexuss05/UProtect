@@ -18,6 +18,8 @@ struct ContentView: View {
     @StateObject private var locationManager = LocationManager()
 //    let vonage = Vonage(apiKey: "f4289d8d", apiSecret: "ILY8j07sDYsS2ViF")
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -39,9 +41,13 @@ struct ContentView: View {
                     vonage.sendSMS(to: phoneNumbers, from: "UProtect", text: "SONO IN PERICOLO, PISCT SOTT") { result in
                         switch result {
                         case .success:
+                            self.showAlert = true
+                            self.alertMessage = "SMS inviato con successo!"
                             print("SMS inviato con successo")
                             // Puoi aggiungere qui un'azione in caso di successo
                         case .failure(let error):
+                            self.showAlert = true
+                            self.alertMessage = "Errore durante l'invio dell'SMS: \(error.localizedDescription)"
                             print("Errore durante l'invio dell'SMS: \(error)")
                             // Puoi gestire qui gli errori durante l'invio dell'SMS
                         }
@@ -59,6 +65,9 @@ struct ContentView: View {
                     .frame(width: geometry.size.width, height: 70)
                     .position(x: geometry.size.width / 2, y: geometry.size.height - 5)
             )
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Messaggio"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
     }
     func formatPhoneNumber(_ phoneNumber: String?) -> String {
