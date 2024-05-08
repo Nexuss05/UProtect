@@ -16,6 +16,9 @@
 		C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85A2BE51306003EB614 /* ContactListView.swift */; };
 		C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85D2BE51844003EB614 /* ContactModel.swift */; };
 		C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD12BEB7FE400733211 /* ContactView.swift */; };
+		C2893DD42BEB8AA700733211 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD32BEB8AA700733211 /* TimerView.swift */; };
+		C2893DD62BEB8B9600733211 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD52BEB8B9600733211 /* Counter.swift */; };
+		C2893DD92BEB8C1900733211 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD82BEB8C1900733211 /* RingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		C21DD85A2BE51306003EB614 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		C21DD85D2BE51844003EB614 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		C2893DD12BEB7FE400733211 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		C2893DD32BEB8AA700733211 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		C2893DD52BEB8B9600733211 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
+		C2893DD82BEB8C1900733211 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,7 @@
 		C21DD83C2BE4D471003EB614 /* UProtect */ = {
 			isa = PBXGroup;
 			children = (
+				C2893DD72BEB8C0B00733211 /* Components */,
 				C21DD85C2BE5183A003EB614 /* Model */,
 				C21DD8572BE4E9A4003EB614 /* View */,
 				C21DD83D2BE4D471003EB614 /* UProtectApp.swift */,
@@ -86,6 +93,7 @@
 				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
 				C21DD85A2BE51306003EB614 /* ContactListView.swift */,
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
+				C2893DD32BEB8AA700733211 /* TimerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -94,8 +102,17 @@
 			isa = PBXGroup;
 			children = (
 				C21DD85D2BE51844003EB614 /* ContactModel.swift */,
+				C2893DD52BEB8B9600733211 /* Counter.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C2893DD72BEB8C0B00733211 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C2893DD82BEB8C1900733211 /* RingView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,12 +189,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2893DD92BEB8C1900733211 /* RingView.swift in Sources */,
 				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
+				C2893DD62BEB8B9600733211 /* Counter.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
+				C2893DD42BEB8AA700733211 /* TimerView.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

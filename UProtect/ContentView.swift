@@ -34,7 +34,7 @@ struct ContentView: View {
                 case .map:
                     Text("Contenuto della mappa")
                 case .danger:
-                    Text("Contenuto per la gestione dei pericoli")
+                    CompleteTimer()
                 case .contact:
                     Text("Contenuto dei contatti")
                     ContactsView(selectedContacts: $selectedContacts, isShowingContactsPicker: $isShowingContactsPicker, showAlert: $showAlert, alertMessage: $alertMessage)
@@ -77,6 +77,13 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct CustomColor {
+    static let background = Color("Background")
+    static let customred = Color("CustomRed")
+    static let text = Color("Text")
+    static let brightred = Color("BrightRed")
+    static let backgroundhome = Color("BackgroundHome")
+}
 
 enum Tab: Int, Identifiable, CaseIterable, Comparable {
     static func < (lhs: Tab, rhs: Tab) -> Bool {
