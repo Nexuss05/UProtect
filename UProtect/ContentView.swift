@@ -8,15 +8,16 @@
 import SwiftUI
 import ContactsUI
 import CoreLocation
+import SwiftData
 
 let backgroundColor = Color.init(white: 0.92)
 
 struct ContentView: View {
     
-    @State private var selectedContacts: [CNContact] = []
+    @State private var selectedContacts: [SerializableContact] = UserDefaults.standard.fetchContacts(forKey: "selectedContacts") ?? []
     @State private var isShowingContactsPicker = false
     @StateObject private var locationManager = LocationManager()
-//    let vonage = Vonage(apiKey: "f4289d8d", apiSecret: "ILY8j07sDYsS2ViF")
+    //    let vonage = Vonage(apiKey: "f4289d8d", apiSecret: "ILY8j07sDYsS2ViF")
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var showAlert = false
     @State private var alertMessage = ""
@@ -28,16 +29,24 @@ struct ContentView: View {
                     self.isShowingContactsPicker.toggle()
                 }
                 
+                
                 ForEach(selectedContacts, id: \.self) { contact in
-                    if let phoneNumber = contact.phoneNumbers.first?.value.stringValue {
-                        Text("\(contact.givenName) \(contact.familyName):  \(phoneNumber)")
+                    HStack {
+                        Text("\(contact.givenName) \(contact.familyName):  \(contact.phoneNumber)")
+                        Spacer()
+                        Button(action: {
+                            removeContact(contact)
+                        }) {
+                            Image(systemName: "trash")
+                        }
                     }
                 }
-                Button("invia messaggi"){
+                
+                Button("Invia messaggi") {
                     guard !selectedContacts.isEmpty else {
                         return // Non fare nulla se non ci sono contatti selezionati
                     }
-                    let phoneNumbers = selectedContacts.compactMap { formatPhoneNumber($0.phoneNumbers.first?.value.stringValue) }
+                    let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
                     vonage.sendSMS(to: phoneNumbers, from: "UProtect", text: "SONO IN PERICOLO, PISCT SOTT") { result in
                         switch result {
                         case .success:
@@ -81,7 +90,17 @@ struct ContentView: View {
             return "\(prefix)\(phoneNumber)"
         }
     }
-    
+    func removeContact(_ contact: SerializableContact) {
+        if let index = selectedContacts.firstIndex(of: contact) {
+            selectedContacts.remove(at: index)
+            
+            // Remove contact from UserDefaults
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(selectedContacts) {
+                UserDefaults.standard.set(encoded, forKey: "selectedContacts")
+            }
+        }
+    }
     func getCountryPhonePrefix() -> String {
         guard let countryCode = Locale.current.regionCode else {
             return "" // Nessuna posizione disponibile, restituisci una stringa vuota
@@ -101,6 +120,21 @@ struct ContentView: View {
         }
     }
 }
+
+extension UserDefaults {
+    func fetchContacts(forKey key: String) -> [SerializableContact]? {
+        guard let data = UserDefaults.standard.data(forKey: key) else {
+            return nil
+        }
+        let decoder = JSONDecoder()
+        if let decoded = try? decoder.decode([SerializableContact].self, from: data) {
+            return decoded
+        } else {
+            return nil
+        }
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -185,3 +219,5 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
         }
     }
 }
+
+

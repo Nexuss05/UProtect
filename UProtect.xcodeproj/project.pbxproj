@@ -14,7 +14,7 @@
 		C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD84B2BE4DAC2003EB614 /* Vonage.swift */; };
 		C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD8582BE4E9AE003EB614 /* TabBarView.swift */; };
 		C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85A2BE51306003EB614 /* ContactListView.swift */; };
-		C21DD85E2BE51844003EB614 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85D2BE51844003EB614 /* ContactInfo.swift */; };
+		C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85D2BE51844003EB614 /* ContactModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 		C21DD84B2BE4DAC2003EB614 /* Vonage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vonage.swift; sourceTree = "<group>"; };
 		C21DD8582BE4E9AE003EB614 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C21DD85A2BE51306003EB614 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
-		C21DD85D2BE51844003EB614 /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
+		C21DD85D2BE51844003EB614 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 		C21DD83C2BE4D471003EB614 /* UProtect */ = {
 			isa = PBXGroup;
 			children = (
-				C21DD85C2BE5183A003EB614 /* Modal */,
+				C21DD85C2BE5183A003EB614 /* Model */,
 				C21DD8572BE4E9A4003EB614 /* View */,
 				C21DD83D2BE4D471003EB614 /* UProtectApp.swift */,
 				C21DD83F2BE4D471003EB614 /* ContentView.swift */,
@@ -87,12 +87,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C21DD85C2BE5183A003EB614 /* Modal */ = {
+		C21DD85C2BE5183A003EB614 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C21DD85D2BE51844003EB614 /* ContactInfo.swift */,
+				C21DD85D2BE51844003EB614 /* ContactModel.swift */,
 			);
-			path = Modal;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,7 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C21DD85E2BE51844003EB614 /* ContactInfo.swift in Sources */,
+				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
