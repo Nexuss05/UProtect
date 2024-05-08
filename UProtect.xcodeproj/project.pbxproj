@@ -15,6 +15,7 @@
 		C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD8582BE4E9AE003EB614 /* TabBarView.swift */; };
 		C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85A2BE51306003EB614 /* ContactListView.swift */; };
 		C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85D2BE51844003EB614 /* ContactModel.swift */; };
+		C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD12BEB7FE400733211 /* ContactView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		C21DD8582BE4E9AE003EB614 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C21DD85A2BE51306003EB614 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		C21DD85D2BE51844003EB614 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		C2893DD12BEB7FE400733211 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
 				C21DD85A2BE51306003EB614 /* ContactListView.swift */,
+				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
+				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 			);

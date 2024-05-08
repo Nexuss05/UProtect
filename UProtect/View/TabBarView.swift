@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct TabBarView: View {
+    @Binding var selectedTab: Tab
+    var namespace: Namespace.ID
     
     var body: some View {
         ZStack {
@@ -16,24 +18,22 @@ struct TabBarView: View {
                 .fill(.white)
                 .shadow(color: .gray.opacity(0.4), radius: 20, x: 0, y: 20)
             
-            TabsLayoutView()
+            TabsLayoutView(selectedTab: $selectedTab, namespace: namespace) // Passa il binding alla vista interna
         }
         .frame(height: 70, alignment: .center)
     }
 }
 
-fileprivate struct TabsLayoutView: View {
-    @State var selectedTab: Tab = .danger
-    @Namespace var namespace
+
+struct TabsLayoutView: View {
+    @Binding var selectedTab: Tab
+    var namespace: Namespace.ID
     
     var body: some View {
         HStack {
             Spacer(minLength: 0)
-            
             ForEach(Tab.allCases) { tab in
                 TabButton(tab: tab, selectedTab: $selectedTab, namespace: namespace)
-//                    .frame(width: 65, height: 65, alignment: .center)
-                
                 Spacer(minLength: 0)
             }
         }
@@ -77,7 +77,7 @@ fileprivate struct TabsLayoutView: View {
                             .scaleEffect(isSelected ? 1 : 0.8)
                             .offset(y: isSelected ? -30 : 0)
                     }
-//                        .animation(isSelected ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
+                    //                        .animation(isSelected ? .spring(response: 0.5, dampingFraction: 0.3, blendDuration: 1) : .spring(), value: selectedTab)
                 }
             }
             .buttonStyle(.plain)
@@ -92,7 +92,8 @@ fileprivate struct TabsLayoutView: View {
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView()
+        TabBarView(selectedTab: .constant(.danger), namespace: Namespace().wrappedValue)
             .padding(.horizontal)
     }
 }
+
