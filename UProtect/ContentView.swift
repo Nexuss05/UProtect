@@ -43,7 +43,7 @@ struct ContentView: View {
                             ContactsPicker(isPresented: self.$isShowingContactsPicker, selectedContacts: self.$selectedContacts)
                         }
                 case .settings:
-                    Text("Contenuto delle impostazioni")
+                    SettingsView()
                 }
                 
             }
@@ -78,11 +78,9 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct CustomColor {
-    static let background = Color("Background")
-    static let customred = Color("CustomRed")
-    static let text = Color("Text")
-    static let brightred = Color("BrightRed")
-    static let backgroundhome = Color("BackgroundHome")
+    static let orange = Color("Orange")
+    static let orangeBackground = Color("OBackground")
+    static let redBackground = Color("RBackground")
 }
 
 enum Tab: Int, Identifiable, CaseIterable, Comparable {
