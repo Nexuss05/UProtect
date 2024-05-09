@@ -73,10 +73,10 @@
 		C21DD83C2BE4D471003EB614 /* UProtect */ = {
 			isa = PBXGroup;
 			children = (
+				C21DD83D2BE4D471003EB614 /* UProtectApp.swift */,
 				C2893DD72BEB8C0B00733211 /* Components */,
 				C21DD85C2BE5183A003EB614 /* Model */,
 				C21DD8572BE4E9A4003EB614 /* View */,
-				C21DD83D2BE4D471003EB614 /* UProtectApp.swift */,
 				C21DD83F2BE4D471003EB614 /* ContentView.swift */,
 				C21DD84B2BE4DAC2003EB614 /* Vonage.swift */,
 				C21DD8412BE4D472003EB614 /* Assets.xcassets */,
@@ -344,7 +344,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = UU6556PJ33;
+				DEVELOPMENT_TEAM = 3X88455T75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -359,7 +359,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simone.sarnataro.UProtect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -380,7 +380,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3X88455T75;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -395,7 +395,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simone.sarnataro.UProtect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

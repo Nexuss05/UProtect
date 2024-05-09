@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftData
+
 @main
 struct UProtectApp: App {
     // Forzato la light mode nell'app
@@ -15,7 +17,7 @@ struct UProtectApp: App {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
-
+                .modelContainer(for: Counter.self)
         }
     }
 }
