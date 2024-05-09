@@ -45,20 +45,19 @@ struct ContentView: View {
                 case .settings:
                     SettingsView()
                 }
-                
             }
-            
-            .padding()
+//            .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color.white)
+            .ignoresSafeArea()
             .overlay(
                 TabBarView(selectedTab: $selectedTab, namespace: namespace)
                 //                    .frame(height: 70)
                 //                    .padding(.bottom, 10)
                 //                    .background(Color.white)
                 //                    .edgesIgnoringSafeArea(.bottom)
-                    .frame(width: geometry.size.width, height: 70)
-                    .position(x: geometry.size.width / 2, y: geometry.size.height - 5)
+//                    .frame(width: geometry.size.width, height: 70)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height)
                 
             )
             .alert(isPresented: $showAlert) {
