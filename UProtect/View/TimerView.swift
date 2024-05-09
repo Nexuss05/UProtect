@@ -5,11 +5,13 @@
 //  Created by Matteo Cotena on 08/05/24.
 //
 
+import Foundation
 
 import SwiftUI
 import UIKit
 import SwiftData
 import CoreLocation
+import UserNotifications
 
 struct CompleteTimer: View {
     @Environment(\.colorScheme) var colorScheme
@@ -75,6 +77,87 @@ struct CompleteTimer: View {
         }
     }
     
+    func sendPushNotification() {
+        let token = "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0"
+        let message = "Hai ricevuto una nuova notifica!"
+        let authenticationToken = "eyJhbGciOiJFUzI1NiIsImtpZCI6IkdRMzRYOTZBQ1oiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiIyNVYyNFBNNzY5IiwiaWF0IjoxNzE1MjY4NDMxfQ.SZAGy-2gjCwllMwvZgHal5f-h34igUoz1i72Tnl26Z6UPGyOKfZ402ZAQxmJSxKBcKgwYgo0geEoOW1WSJhbHg"
+
+
+        let content = """
+        {
+            "aps": {
+                "alert": {
+                    "title": "Strunz",
+                    "subtitle": "Rispunn",
+                    "body": "\(message)"
+                },
+                "sound": "default"
+            },
+            "topic": "com.alessiaprevidente.UProtect"
+        }
+
+        """
+
+        guard let data = content.data(using: .utf8) else {
+            print("Errore nella creazione dei dati del payload della notifica")
+            return
+        }
+        
+        let urlString = "https://api.development.push.apple.com/3/device/\(token)"
+        guard let url = URL(string: urlString) else {
+            print("URL non valido")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = data
+        
+        request.addValue("Bearer \(authenticationToken)", forHTTPHeaderField: "Authorization")
+        request.addValue("com.alessiaprevidente.UProtect", forHTTPHeaderField: "apns-topic")
+        request.addValue("alert", forHTTPHeaderField: "apns-push-type")
+        request.addValue("10", forHTTPHeaderField: "apns-priority")
+        request.addValue("0", forHTTPHeaderField: "apns-expiration")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        // Set body
+        request.httpBody = content.data(using: .utf8)
+
+        // Create URLSession
+        let session = URLSession(configuration: .default)
+        
+        print("Sending push notification...")
+        print("Request Headers:")
+        for (key, value) in request.allHTTPHeaderFields ?? [:] {
+            print("\(key): \(value)")
+        }
+        print("Request Body:")
+        if let body = request.httpBody {
+            print(String(data: body, encoding: .utf8) ?? "")
+        }
+    
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Errore nell'invio della notifica push:", error)
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Risposta dalla richiesta di invio della notifica push:", httpResponse.statusCode)
+                
+                if let responseData = data {
+                    print("Dati ricevuti:", String(data: responseData, encoding: .utf8) ?? "Nessun dato ricevuto")
+                } else {
+                    print("Nessun dato ricevuto")
+                }
+            }
+        }
+        
+        task.resume()
+    }
+
+
+
     func TapAnimation(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             withAnimation{
@@ -195,6 +278,10 @@ struct CompleteTimer: View {
                                 if !buttonLocked && !isActivated{
                                     buttonTapped = true
                                     TapAnimation()
+                                    print("Before calling sendPushNotification()")
+                                    sendPushNotification()
+                                    print("After calling sendPushNotification()")
+
                                     withAnimation{
                                         isActivated = true
                                         CircleAnimation()
