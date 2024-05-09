@@ -19,8 +19,10 @@ struct TabBarView: View {
                 .shadow(color: .gray.opacity(0.4), radius: 20, x: 0, y: 20)
             
             TabsLayoutView(selectedTab: $selectedTab, namespace: namespace) // Passa il binding alla vista interna
+            
+            .padding(.bottom, 10)
         }
-        .frame(height: 75, alignment: .center)
+        .frame(height: 80, alignment: .center)
     }
 }
 

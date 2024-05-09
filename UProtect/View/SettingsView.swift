@@ -37,6 +37,7 @@ struct SettingsView: View {
                     Section(header: Text("System")){
                         NavigationLink {
                             GoalView()
+                                .padding(.top, -50)
                         } label: {
                             Text("Change time")
                         }

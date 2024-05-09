@@ -48,7 +48,6 @@ struct GoalView: View {
             })
             
             GoalSelectorView(counter: $cont)
-            
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
                     .frame(width:350, height:60)
@@ -58,14 +57,16 @@ struct GoalView: View {
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
-            } .padding(.top, 200)
-                .onTapGesture {
-                    modelContext.insert(Counter(counter: cont))
-                    isShowingMain.toggle()
-                    dismiss()
-                }
-                .accessibilityElement(children: .combine)
-                .accessibilityAddTraits(.isButton)
+            }
+            .padding(.top, 150)
+            .padding(.bottom, 140)
+            .onTapGesture {
+                modelContext.insert(Counter(counter: cont))
+                isShowingMain.toggle()
+                dismiss()
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isButton)
         }
     }
 }

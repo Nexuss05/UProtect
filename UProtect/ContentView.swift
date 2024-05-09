@@ -31,22 +31,26 @@ struct ContentView: View {
                 switch selectedTab {
                 case .course:
                     Text("Contenuto del corso")
+                        .padding(.top, 100)
                 case .map:
                     Text("Contenuto della mappa")
+                        .padding(.top, 100)
                 case .danger:
                     CompleteTimer()
                 case .contact:
                     Text("Contenuto dei contatti")
-                    ContactsView(selectedContacts: $selectedContacts, isShowingContactsPicker: $isShowingContactsPicker, showAlert: $showAlert, alertMessage: $alertMessage)
+                        .padding(.top, 100)
                     
+                    ContactsView(selectedContacts: $selectedContacts, isShowingContactsPicker: $isShowingContactsPicker, showAlert: $showAlert, alertMessage: $alertMessage)
                         .sheet(isPresented: $isShowingContactsPicker) {
                             ContactsPicker(isPresented: self.$isShowingContactsPicker, selectedContacts: self.$selectedContacts)
                         }
+                    
                 case .settings:
                     SettingsView()
                 }
             }
-//            .padding()
+            //            .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color.white)
             .ignoresSafeArea()
@@ -56,8 +60,8 @@ struct ContentView: View {
                 //                    .padding(.bottom, 10)
                 //                    .background(Color.white)
                 //                    .edgesIgnoringSafeArea(.bottom)
-//                    .frame(width: geometry.size.width, height: 70)
-                    .position(x: geometry.size.width / 2, y: geometry.size.height)
+                //                    .frame(width: geometry.size.width, height: 70)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height - 6)
                 
             )
             .alert(isPresented: $showAlert) {
