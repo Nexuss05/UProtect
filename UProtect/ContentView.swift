@@ -33,8 +33,9 @@ struct ContentView: View {
                     Text("Contenuto del corso")
                         .padding(.top, 100)
                 case .map:
-                    Text("Contenuto della mappa")
-                        .padding(.top, 100)
+//                    Text("Contenuto della mappa")
+//                        .padding(.top, 100)
+                    LocationFinder()
                 case .danger:
                     CompleteTimer()
                 case .contact:
