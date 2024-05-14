@@ -21,6 +21,7 @@
 		C2893DD42BEB8AA700733211 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD32BEB8AA700733211 /* TimerView.swift */; };
 		C2893DD62BEB8B9600733211 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD52BEB8B9600733211 /* Counter.swift */; };
 		C2893DD92BEB8C1900733211 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD82BEB8C1900733211 /* RingView.swift */; };
+		C293A8992BF36C740008F1F8 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = C293A8982BF36C740008F1F8 /* SwiftJWT */; };
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C293A8992BF36C740008F1F8 /* SwiftJWT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +151,7 @@
 			);
 			name = UProtect;
 			packageProductDependencies = (
+				C293A8982BF36C740008F1F8 /* SwiftJWT */,
 			);
 			productName = UProtect;
 			productReference = C21DD83A2BE4D471003EB614 /* UProtect.app */;
@@ -179,6 +182,7 @@
 			);
 			mainGroup = C21DD8312BE4D471003EB614;
 			packageReferences = (
+				C293A8972BF36C740008F1F8 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 			);
 			productRefGroup = C21DD83B2BE4D471003EB614 /* Products */;
 			projectDirPath = "";
@@ -355,7 +359,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = 25V24PM769;
+				DEVELOPMENT_TEAM = UU6556PJ33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -370,7 +374,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alessiaprevidente.UProtect;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -392,7 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = 25V24PM769;
+				DEVELOPMENT_TEAM = UU6556PJ33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -407,7 +411,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alessiaprevidente.UProtect;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -442,6 +446,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C293A8972BF36C740008F1F8 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C293A8982BF36C740008F1F8 /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C293A8972BF36C740008F1F8 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C21DD8322BE4D471003EB614 /* Project object */;
 }

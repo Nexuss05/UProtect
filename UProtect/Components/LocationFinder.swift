@@ -91,11 +91,7 @@ struct LocationFinder: View {
             let distance2 = calculateDistance(lat1: coordinates.latitude, lon1: coordinates.longitude, lat2: location2.latitude, lon2: location2.longitude)
             return distance1 < distance2
         }
-//        print(allResults)
-            locations = allResults
-//        locations = allResults.filter { location in
-//            isLocationOpen(hours: nil, currentHour: 0) // Replace nil and 0 with actual values for current hour and opening hours
-//        }
+        locations = allResults
     }
     
     var body: some View {

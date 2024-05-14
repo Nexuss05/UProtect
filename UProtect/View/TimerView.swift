@@ -8,6 +8,7 @@
 import Foundation
 
 import SwiftUI
+import SwiftJWT
 import UIKit
 import SwiftData
 import CoreLocation
@@ -39,6 +40,8 @@ struct CompleteTimer: View {
     @State var count = 300
     @State var time = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var dismissTimer: Timer?
+    
+    @State private var tokenAPNS: String = "Generando token..."
     
     var formattedTime: String {
         if let lastCounter = counter.last {
@@ -80,7 +83,7 @@ struct CompleteTimer: View {
     func sendPushNotification() {
         let token = "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0"
         let message = "Hai ricevuto una nuova notifica!"
-        let authenticationToken = "eyJhbGciOiJFUzI1NiIsImtpZCI6IkdRMzRYOTZBQ1oiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiIyNVYyNFBNNzY5IiwiaWF0IjoxNzE1MjY4NDMxfQ.SZAGy-2gjCwllMwvZgHal5f-h34igUoz1i72Tnl26Z6UPGyOKfZ402ZAQxmJSxKBcKgwYgo0geEoOW1WSJhbHg"
+        let authenticationToken = tokenAPNS
 
 
         let content = """
@@ -398,8 +401,33 @@ struct CompleteTimer: View {
             }
         }
     }
+    
+    func generateJWT() {
+        let teamID = "25V24PM769"
+        let keyID = "ZX5LJY8598"
+        let privateKeyPath = Bundle.main.path(forResource: "AuthKey_ZX5LJY8598", ofType: "p8")!
+        
+        do {
+            let privateKey = try String(contentsOfFile: privateKeyPath, encoding: .utf8)
+            let header = Header(kid: keyID)
+            let claims = MyClaims(iss: teamID, iat: Date())
+            
+            var jwt = JWT(header: header, claims: claims)
+            let jwtSigner = JWTSigner.es256(privateKey: privateKey.data(using: .utf8)!)
+            
+            let signedJWT = try jwt.sign(using: jwtSigner)
+            tokenAPNS = signedJWT
+//            print(token)
+        } catch {
+            tokenAPNS = "Errore nella generazione del token: \(error.localizedDescription)"
+        }
+    }
 }
 
+struct MyClaims: Claims {
+    let iss: String
+    let iat: Date
+}
 
 #Preview {
     CompleteTimer()
