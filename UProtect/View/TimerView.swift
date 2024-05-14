@@ -373,6 +373,7 @@ struct CompleteTimer: View {
             selectionFeedbackGenerator.prepare()
             feedbackGenerator.prepare()
             SwapText()
+            generateJWT()
         })
         .onDisappear {
             feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
