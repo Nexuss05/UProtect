@@ -18,7 +18,7 @@ struct UProtectApp: App {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
-                .modelContainer(for: Counter.self)
+                .modelContainer(for: [Counter.self, Contacts.self])
         }
     }
 }
@@ -45,6 +45,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         print("Device Token: \(tokenString)")
+        UserDefaults.standard.set(tokenString, forKey: "fcmToken")
     }
     
     // Handle notification when the app is in the foreground

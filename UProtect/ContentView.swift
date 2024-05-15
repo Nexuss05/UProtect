@@ -30,8 +30,7 @@ struct ContentView: View {
             VStack {
                 switch selectedTab {
                 case .course:
-                    Text("Contenuto del corso")
-                        .padding(.top, 100)
+                    RegistrationView()
                 case .map:
 //                    Text("Contenuto della mappa")
 //                        .padding(.top, 100)

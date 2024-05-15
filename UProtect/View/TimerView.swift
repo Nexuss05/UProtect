@@ -6,13 +6,9 @@
 //
 
 import Foundation
-
 import SwiftUI
 import SwiftJWT
-import UIKit
 import SwiftData
-import CoreLocation
-import UserNotifications
 
 struct CompleteTimer: View {
     @Environment(\.colorScheme) var colorScheme
@@ -84,8 +80,8 @@ struct CompleteTimer: View {
         let token = "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0"
         let message = "Hai ricevuto una nuova notifica!"
         let authenticationToken = tokenAPNS
-
-
+        
+        
         let content = """
         {
             "aps": {
@@ -98,9 +94,9 @@ struct CompleteTimer: View {
             },
             "topic": "com.alessiaprevidente.UProtect"
         }
-
+        
         """
-
+        
         guard let data = content.data(using: .utf8) else {
             print("Errore nella creazione dei dati del payload della notifica")
             return
@@ -122,10 +118,10 @@ struct CompleteTimer: View {
         request.addValue("10", forHTTPHeaderField: "apns-priority")
         request.addValue("0", forHTTPHeaderField: "apns-expiration")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         // Set body
         request.httpBody = content.data(using: .utf8)
-
+        
         // Create URLSession
         let session = URLSession(configuration: .default)
         
@@ -138,7 +134,7 @@ struct CompleteTimer: View {
         if let body = request.httpBody {
             print(String(data: body, encoding: .utf8) ?? "")
         }
-    
+        
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Errore nell'invio della notifica push:", error)
@@ -158,9 +154,9 @@ struct CompleteTimer: View {
         
         task.resume()
     }
-
-
-
+    
+    
+    
     func TapAnimation(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             withAnimation{
@@ -276,40 +272,40 @@ struct CompleteTimer: View {
                             .opacity(showMark ? 1 : 0)
                             .opacity(withAnimation{buttonTapped ? 0.2 : 1})
                     }//fine bottone
-                        .onTapGesture {
-                            DispatchQueue.main.async {
-                                if !buttonLocked && !isActivated{
-                                    buttonTapped = true
-                                    TapAnimation()
-                                    print("Before calling sendPushNotification()")
-                                    sendPushNotification()
-                                    print("After calling sendPushNotification()")
-
-                                    withAnimation{
-                                        isActivated = true
-                                        CircleAnimation()
-                                        circleOpacity = true
-                                        showCancel = true
-                                        canCancel = true
-                                    }
-                                    feedbackGenerator.impactOccurred()
+                    .onTapGesture {
+                        DispatchQueue.main.async {
+                            if !buttonLocked && !isActivated{
+                                buttonTapped = true
+                                TapAnimation()
+                                print("Before calling sendPushNotification()")
+                                sendPushNotification()
+                                print("After calling sendPushNotification()")
+                                
+                                withAnimation{
+                                    isActivated = true
+                                    CircleAnimation()
+                                    circleOpacity = true
+                                    showCancel = true
+                                    canCancel = true
                                 }
+                                feedbackGenerator.impactOccurred()
                             }
-                        }//fine onTapGesture
-                        .onLongPressGesture {
-                            DispatchQueue.main.async {
-                                if !isActivated && !start {
-                                    withAnimation {
-                                        timerStart()
-                                        isActivated = true
-                                        isPressed = true
-                                        showMark = false
-                                        showCancel = true
-                                    }
-                                    selectionFeedbackGenerator.selectionChanged()
+                        }
+                    }//fine onTapGesture
+                    .onLongPressGesture {
+                        DispatchQueue.main.async {
+                            if !isActivated && !start {
+                                withAnimation {
+                                    timerStart()
+                                    isActivated = true
+                                    isPressed = true
+                                    showMark = false
+                                    showCancel = true
                                 }
+                                selectionFeedbackGenerator.selectionChanged()
                             }
-                        }//fine onLongPressGesture
+                        }
+                    }//fine onLongPressGesture
                 }//fine 1° Zstack
                 ZStack {
                     Rectangle()
@@ -374,6 +370,12 @@ struct CompleteTimer: View {
             feedbackGenerator.prepare()
             SwapText()
             generateJWT()
+            NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { _ in
+                handleAppForeground()
+            }
+            NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main) { _ in
+                handleAppBackground()
+            }
         })
         .onDisappear {
             feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
@@ -384,6 +386,7 @@ struct CompleteTimer: View {
                 if self.start {
                     if self.count > 0 {
                         self.count -= 1
+                        updateProgress()
                         print("\(self.count)")
                     } else {
                         print("ciao")
@@ -418,11 +421,45 @@ struct CompleteTimer: View {
             
             let signedJWT = try jwt.sign(using: jwtSigner)
             tokenAPNS = signedJWT
-//            print(token)
+            //            print(token)
         } catch {
             tokenAPNS = "Errore nella generazione del token: \(error.localizedDescription)"
         }
     }
+    
+    func handleAppForeground() {
+        if let backgroundTime = UserDefaults.standard.object(forKey: "backgroundTime") as? Date {
+            let currentTime = Date()
+            let elapsedTime = Int(currentTime.timeIntervalSince(backgroundTime))
+            self.count -= elapsedTime
+            if self.count <= 0 {
+                print("ciao")
+                start.toggle()
+                showAlert = true
+                dismissTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
+                    print("Popup alert ignored for 10 seconds")
+                    showAlert = false
+                    showMark = true
+                    CircleAnimation()
+                    circleOpacity = true
+                }
+            }
+            UserDefaults.standard.removeObject(forKey: "backgroundTime")
+        }
+    }
+    
+    func handleAppBackground() {
+        UserDefaults.standard.set(Date(), forKey: "backgroundTime")
+    }
+    
+    func updateProgress() {
+            if let lastCounter = counter.last {
+                self.to = CGFloat(self.count) / CGFloat(lastCounter.counter)
+            } else {
+                self.to = CGFloat(self.count) / 300
+            }
+        }
+    
 }
 
 struct MyClaims: Claims {
