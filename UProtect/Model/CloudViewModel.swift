@@ -7,6 +7,8 @@
 
 import Foundation
 import CloudKit
+import SwiftData
+import SwiftUI
 
 struct UserModel: Hashable{
     let name: String
@@ -22,14 +24,17 @@ class CloudViewModel: ObservableObject{
     @Published var cognome: String = ""
     @Published var numero: String = ""
     @Published var utente: [UserModel] = []
+    @Published var token: [String] = []
+    
+    @Environment(\.modelContext) var modelContext
     
     var fcmToken: String? {
         UserDefaults.standard.string(forKey: "fcmToken")
     }
     
-    //    init(){
-    //        fetchItems()
-    //    }
+    init(){
+        //        fetchItems()
+    }
     
     //    func sendNotification() {
     //        let content = UNMutableNotificationContent()
@@ -82,23 +87,25 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-    //    func fetchItems(){
-    //        let predicate = NSPredicate(value: true)
-    //        //let predicate = NSPredicate(format: "title = %@", argumentArray: ["Help"])
+    //    func fetchToken(number: String){
+    //        //let predicate = NSPredicate(value: true)
+    //        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
     //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
     //        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
     //        let queryOperation = CKQueryOperation(query: query)
     //        //queryOperation.resultsLimit = 2
     //
-    //        var returnedItems: [UserModel] = []
+    //        var returnedItems: [String] = []
     //
     //        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
     //            switch returnedResult{
     //            case .success(let record):
-    //                guard let nome = record["name"] as? String else {return}
-    //                guard let cognome = record["surname"] as? String else {return}
-    //                guard let numero = record["number"] as? String else {return}
-    //                returnedItems.append(UserModel(name: nome, surname: cognome, phoneNumber: numero, record: record))
+    //                //                    guard let nome = record["name"] as? String else {return}
+    //                //                    guard let cognome = record["surname"] as? String else {return}
+    //                //                    guard let numero = record["number"] as? String else {return}
+    //                guard let fcmToken = record["token"] as? String else {return}
+    //                returnedItems.append(fcmToken)
+    //                print(fcmToken)
     //            case .failure(let error):
     //                print("Error: \(error)")
     //            }
@@ -107,16 +114,116 @@ class CloudViewModel: ObservableObject{
     //        queryOperation.queryResultBlock = { [weak self] returnedResult in
     //            print("Returned ResultBlock: \(returnedResult)")
     //            DispatchQueue.main.async{
-    //                self?.utente = returnedItems
+    //                self?.token = returnedItems
     //            }
     //        }
     //
     //        addOperation(operation: queryOperation)
     //    }
     
-    //    func addOperation(operation: CKDatabaseOperation){
-    //        CKContainer.default().publicCloudDatabase.add(operation)
+    func fetchToken(number: String, completion: @escaping (String?) -> Void) {
+        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        var fcmToken: String?
+        //        var returnedItems: [String] = []
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult{
+            case .success(let record):
+                if let token = record["token"] as? String, !token.isEmpty {
+                    fcmToken = token
+                    print(token)
+                    //UserDefaults.standard.set(fcmToken, forKey: "token")
+                } else {
+                    print("Token not found")
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+        
+        //        queryOperation.recordMatchedBlock = { (_, returnedResult) in
+        //            switch returnedResult {
+        //            case .success(let record):
+        //                if let token = record["token"] as? String, !token.isEmpty {
+        //                    fcmToken = token
+        //                    print(token)
+        //                } else {
+        //                    print("Token not found")
+        //                }
+        //            case .failure(let error):
+        //                print("Error: \(error)")
+        //            }
+        //        }
+        
+        //        queryOperation.queryResultBlock = { [weak self] _ in
+        //            DispatchQueue.main.async {
+        //                completion(fcmToken)
+        //            }
+        //        }
+        //
+        //        addOperation(operation: queryOperation)
+        
+        queryOperation.queryResultBlock = { [weak self] returnedResult in
+            print("Returned ResultBlock: \(returnedResult)")
+            DispatchQueue.main.async{
+                //                    self?.token = returnedItems
+                completion(fcmToken)
+                //                    UserDefaults.standard.set(returnedItems, forKey: "tokens")
+            }
+        }
+        
+        addOperation(operation: queryOperation)
+    }
+    
+    
+    //    func fetchToken(number: String){
+    //        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
+    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+    //        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+    //        let queryOperation = CKQueryOperation(query: query)
+    //        queryOperation.resultsLimit = 1
+    //
+    //        var returnedItems: [String] = []
+    //
+    //        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+    //            switch returnedResult{
+    //            case .success(let record):
+    //                if let fcmToken = record["token"] as? String, !fcmToken.isEmpty {
+    //                    returnedItems.append(fcmToken)
+    //                    print(fcmToken)
+    //                    //UserDefaults.standard.set(fcmToken, forKey: "token")
+    //                } else {
+    //                    print("Token not found")
+    //                }
+    //            case .failure(let error):
+    //                print("Error: \(error)")
+    //            }
+    //        }
+    //
+    //        queryOperation.queryResultBlock = { [weak self] returnedResult in
+    //            print("Returned ResultBlock: \(returnedResult)")
+    //            DispatchQueue.main.async{
+    //                if !returnedItems.isEmpty {
+    //                    self?.token = returnedItems
+    ////                    UserDefaults.standard.set(returnedItems, forKey: "tokens")
+    //                } else {
+    //                    print("pollo")
+    //                }
+    //            }
+    //        }
+    //
+    //        addOperation(operation: queryOperation)
     //    }
+    
+    
+    func addOperation(operation: CKDatabaseOperation){
+        CKContainer.default().publicCloudDatabase.add(operation)
+    }
     
     //    func updateItem(utente: UserModel){
     //        let record = utente.record
@@ -136,73 +243,73 @@ class CloudViewModel: ObservableObject{
     //        }
     //    }
     
-//    func fetchUsers() {
-//        utenti.removeAll()
-//        let db = Firestore.firestore()
-//        let ref = db.collection("utenti")
-//        ref.getDocuments { snapshot, error in
-//            guard error == nil else {
-//                print(error!.localizedDescription)
-//                return
-//            }
-//            if let snapshot = snapshot {
-//                for document in snapshot.documents {
-//                    let data = document.data()
-//
-//                    let fcmToken = data["fcmToken"] as? String ?? ""
-//                    let name = data["name"] as? String ?? ""
-//                    let surname = data["surname"] as? String ?? ""
-//                    let phoneNumber = data["phoneNumber"] as? String ?? ""
-//
-//                    let user = User(name: name, surname: surname, phoneNumber: phoneNumber, fcmToken: fcmToken)
-//                    self.utenti.append(user)
-//                }
-//            }
-//        }
-//    }
-//
-//    func addUser(user: User, phoneNumber: String) {
-//        // Remove non-alphanumeric characters from the phone number
-//        let sanitizedPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.alphanumerics.inverted).joined()
-//
-//        let db = Firestore.firestore()
-//        let ref = db.collection("utenti").document(sanitizedPhoneNumber)
-//
-//        ref.setData([
-//            "name": user.name,
-//            "surname": user.surname,
-//            "phoneNumber": user.phoneNumber,
-//            "fcmToken": user.fcmToken,
-//        ]) { error in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-//    func searchUserByPhoneNumber(phoneNumber: String, completion: @escaping (String?) -> Void) {
-//        let sanitizedPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.alphanumerics.inverted).joined()
-//
-//        let db = Firestore.firestore()
-//        let ref = db.collection("utenti").document(sanitizedPhoneNumber)
-//
-//        ref.getDocument { document, error in
-//            guard error == nil else {
-//                print(error!.localizedDescription)
-//                completion(nil)
-//                return
-//            }
-//
-//            if let document = document, document.exists {
-//                let data = document.data()
-//                let fcmToken = data?["fcmToken"] as? String
-//                completion(fcmToken)
-//            } else {
-//                // Document not found
-//                completion(nil)
-//            }
-//        }
-//    }
-//
+    //    func fetchUsers() {
+    //        utenti.removeAll()
+    //        let db = Firestore.firestore()
+    //        let ref = db.collection("utenti")
+    //        ref.getDocuments { snapshot, error in
+    //            guard error == nil else {
+    //                print(error!.localizedDescription)
+    //                return
+    //            }
+    //            if let snapshot = snapshot {
+    //                for document in snapshot.documents {
+    //                    let data = document.data()
+    //
+    //                    let fcmToken = data["fcmToken"] as? String ?? ""
+    //                    let name = data["name"] as? String ?? ""
+    //                    let surname = data["surname"] as? String ?? ""
+    //                    let phoneNumber = data["phoneNumber"] as? String ?? ""
+    //
+    //                    let user = User(name: name, surname: surname, phoneNumber: phoneNumber, fcmToken: fcmToken)
+    //                    self.utenti.append(user)
+    //                }
+    //            }
+    //        }
+    //    }
+    //
+    //    func addUser(user: User, phoneNumber: String) {
+    //        // Remove non-alphanumeric characters from the phone number
+    //        let sanitizedPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.alphanumerics.inverted).joined()
+    //
+    //        let db = Firestore.firestore()
+    //        let ref = db.collection("utenti").document(sanitizedPhoneNumber)
+    //
+    //        ref.setData([
+    //            "name": user.name,
+    //            "surname": user.surname,
+    //            "phoneNumber": user.phoneNumber,
+    //            "fcmToken": user.fcmToken,
+    //        ]) { error in
+    //            if let error = error {
+    //                print(error.localizedDescription)
+    //            }
+    //        }
+    //    }
+    //    func searchUserByPhoneNumber(phoneNumber: String, completion: @escaping (String?) -> Void) {
+    //        let sanitizedPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.alphanumerics.inverted).joined()
+    //
+    //        let db = Firestore.firestore()
+    //        let ref = db.collection("utenti").document(sanitizedPhoneNumber)
+    //
+    //        ref.getDocument { document, error in
+    //            guard error == nil else {
+    //                print(error!.localizedDescription)
+    //                completion(nil)
+    //                return
+    //            }
+    //
+    //            if let document = document, document.exists {
+    //                let data = document.data()
+    //                let fcmToken = data?["fcmToken"] as? String
+    //                completion(fcmToken)
+    //            } else {
+    //                // Document not found
+    //                completion(nil)
+    //            }
+    //        }
+    //    }
+    //
     
     
 }

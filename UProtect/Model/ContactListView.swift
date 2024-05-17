@@ -15,6 +15,7 @@
 
 import SwiftUI
 import ContactsUI
+import SwiftData
 
 struct SerializableContact: Codable, Hashable {
     let givenName: String
@@ -54,21 +55,55 @@ struct ContactsPicker: UIViewControllerRepresentable {
 
 
 class Coordinator: NSObject, CNContactPickerDelegate {
+    
+    @StateObject private var vm = CloudViewModel()
+    @Environment(\.modelContext) var modelContext
+    
     let parent: ContactsPicker
     
     init(parent: ContactsPicker) {
         self.parent = parent
     }
     
+    var tokens: [String] = []
+    
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
         let serializableContacts = contacts.map { SerializableContact(contact: $0) }
         self.parent.selectedContacts.append(contentsOf: serializableContacts)
         self.parent.isPresented = false
         
-        // Save selected contacts to UserDefaults
+        print(serializableContacts)
+        
+        for contact in serializableContacts {
+            let phoneNumberWithoutSpaces = contact.phoneNumber.replacingOccurrences(of: " ", with: "")
+            print(phoneNumberWithoutSpaces)
+            
+            vm.fetchToken(number: phoneNumberWithoutSpaces) { token in
+                if let token = token {
+                    print("FCM Token: \(token)")
+                    self.tokens.append(token)
+                    UserDefaults.standard.set(self.tokens, forKey: "tokens")
+                    
+//                    if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+//                            print("Tokens salvati in UserDefaults:")
+//                            for token in savedTokens {
+//                                print(token)
+//                            }
+//                        } else {
+//                            print("Nessun token salvato in UserDefaults.")
+//                        }
+                    
+                } else {
+                    print("FCM Token non trovato")
+                }
+            }
+
+        }
+        
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(self.parent.selectedContacts) {
             UserDefaults.standard.set(encoded, forKey: "selectedContacts")
+
         }
     }
 }

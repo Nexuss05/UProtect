@@ -25,6 +25,7 @@
 		C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */; };
 		E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */; };
 		E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */; };
+		E0420F452BF5F77100F5B5D0 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F442BF5F77100F5B5D0 /* SwiftUIView.swift */; };
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
@@ -50,6 +51,7 @@
 		C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_ZX5LJY8598.p8; sourceTree = "<group>"; };
 		E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudViewModel.swift; sourceTree = "<group>"; };
+		E0420F442BF5F77100F5B5D0 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
 				E092099F2BEBE394005AD0FB /* TimerSettings.swift */,
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
+				E0420F442BF5F77100F5B5D0 /* SwiftUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				C2893DD92BEB8C1900733211 /* RingView.swift in Sources */,
 				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
+				E0420F452BF5F77100F5B5D0 /* SwiftUIView.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,

@@ -34,7 +34,8 @@ struct ContentView: View {
                 case .map:
 //                    Text("Contenuto della mappa")
 //                        .padding(.top, 100)
-                    LocationFinder()
+                    SwiftUIView()
+//                    LocationFinder()
                 case .danger:
                     CompleteTimer()
                 case .contact:

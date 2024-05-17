@@ -18,8 +18,8 @@ struct UProtectApp: App {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
-                .modelContainer(for: [Counter.self, Contacts.self])
-        }
+//            SwiftUIView()
+        }.modelContainer(for: [Counter.self, Contacts.self])
     }
 }
 
