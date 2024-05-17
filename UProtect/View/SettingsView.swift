@@ -100,6 +100,17 @@ struct SettingsView: View {
                 .navigationTitle("Settings")
                 .background(CustomColor.orangeBackground)
                 .scrollContentBackground(.hidden)
+                .onAppear{
+                    if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+                        print("Tokens salvati in UserDefaults:")
+                        for token in savedTokens {
+                            print(token)
+                        }
+                        //UserDefaults.standard.removeObject(forKey: "tokens")
+                    } else {
+                        print("Nessun token salvato in UserDefaults.")
+                    }
+                }
             }
         }
     }

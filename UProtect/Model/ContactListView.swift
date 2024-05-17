@@ -83,27 +83,27 @@ class Coordinator: NSObject, CNContactPickerDelegate {
                     print("FCM Token: \(token)")
                     self.tokens.append(token)
                     UserDefaults.standard.set(self.tokens, forKey: "tokens")
-                    
-//                    if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
-//                            print("Tokens salvati in UserDefaults:")
-//                            for token in savedTokens {
-//                                print(token)
-//                            }
-//                        } else {
-//                            print("Nessun token salvato in UserDefaults.")
-//                        }
+                    var existingTokens = UserDefaults.standard.stringArray(forKey: "tokens") ?? []
+                    if !existingTokens.contains(token) {
+                        self.tokens.append(token)
+                        existingTokens.append(token)
+                        UserDefaults.standard.set(existingTokens, forKey: "tokens")
+                        print("Token salvato in UserDefaults")
+                    } else {
+                        print("Token già presente in UserDefaults")
+                    }
                     
                 } else {
                     print("FCM Token non trovato")
                 }
             }
-
+            
         }
         
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(self.parent.selectedContacts) {
             UserDefaults.standard.set(encoded, forKey: "selectedContacts")
-
+            
         }
     }
 }
