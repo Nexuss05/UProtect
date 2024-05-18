@@ -5,11 +5,14 @@
 //  Created by Simone Sarnataro on 29/02/24.
 //
 
+import Foundation
 import SwiftUI
+import SwiftData
 
 struct SettingsView: View {
     @State private var circleColor: Color = UserDefaultsManager.loadCircleColor() ?? Color.red
     @State var url = URL(string: "https://www.iubenda.com/privacy-policy/49969320")
+    @Query var userData: [Contacts]
     
     var body: some View {
         NavigationStack{
@@ -24,6 +27,9 @@ struct SettingsView: View {
                                 Text("SS")
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
+//                                Text("SS")
+//                                    .fontWeight(.bold)
+//                                    .foregroundColor(.white)
                             }.accessibilityHidden(true)
                             VStack(alignment: .leading, spacing: -2.0){
                                 Text("Simone Sarnataro")
@@ -100,17 +106,6 @@ struct SettingsView: View {
                 .navigationTitle("Settings")
                 .background(CustomColor.orangeBackground)
                 .scrollContentBackground(.hidden)
-                .onAppear{
-                    if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
-                        print("Tokens salvati in UserDefaults:")
-                        for token in savedTokens {
-                            print(token)
-                        }
-                        //UserDefaults.standard.removeObject(forKey: "tokens")
-                    } else {
-                        print("Nessun token salvato in UserDefaults.")
-                    }
-                }
             }
         }
     }
@@ -119,8 +114,8 @@ struct SettingsView: View {
 struct UserDefaultsManager {
     static func loadCircleColor() -> Color? {
         if let savedColorData = UserDefaults.standard.data(forKey: "circleColor"),
-           let savedColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedColorData) as? Color {
-            return savedColor
+           let savedColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: savedColorData) {
+            return Color(savedColor)
         }
         return nil
     }

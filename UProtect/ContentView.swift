@@ -32,9 +32,8 @@ struct ContentView: View {
                 case .course:
                     RegistrationView()
                 case .map:
-//                    Text("Contenuto della mappa")
-//                        .padding(.top, 100)
-                    SwiftUIView()
+                    Text("Contenuto della mappa")
+                        .padding(.top, 100)
 //                    LocationFinder()
                 case .danger:
                     CompleteTimer()

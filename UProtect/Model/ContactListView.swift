@@ -15,7 +15,6 @@
 
 import SwiftUI
 import ContactsUI
-import SwiftData
 
 struct SerializableContact: Codable, Hashable {
     let givenName: String

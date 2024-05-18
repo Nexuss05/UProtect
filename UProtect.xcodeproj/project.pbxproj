@@ -25,7 +25,7 @@
 		C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */; };
 		E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */; };
 		E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */; };
-		E0420F452BF5F77100F5B5D0 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F442BF5F77100F5B5D0 /* SwiftUIView.swift */; };
+		E0456A472BF8F342002B514F /* otpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0456A462BF8F342002B514F /* otpView.swift */; };
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
@@ -51,7 +51,7 @@
 		C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_ZX5LJY8598.p8; sourceTree = "<group>"; };
 		E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudViewModel.swift; sourceTree = "<group>"; };
-		E0420F442BF5F77100F5B5D0 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		E0456A462BF8F342002B514F /* otpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpView.swift; sourceTree = "<group>"; };
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
@@ -113,13 +113,12 @@
 		C21DD8572BE4E9A4003EB614 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
-				C2893DD12BEB7FE400733211 /* ContactView.swift */,
+				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
+				E0456A462BF8F342002B514F /* otpView.swift */,
 				C2893DD32BEB8AA700733211 /* TimerView.swift */,
+				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
 				E092099F2BEBE394005AD0FB /* TimerSettings.swift */,
-				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
-				E0420F442BF5F77100F5B5D0 /* SwiftUIView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +141,7 @@
 				C2893DD82BEB8C1900733211 /* RingView.swift */,
 				E09209992BEBE2B0005AD0FB /* TimeCounter.swift */,
 				C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */,
+				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -225,11 +225,11 @@
 			files = (
 				C2893DD92BEB8C1900733211 /* RingView.swift in Sources */,
 				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
-				E0420F452BF5F77100F5B5D0 /* SwiftUIView.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
+				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
 				C233DAA02BEE1B72000072C4 /* Location.swift in Sources */,
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
