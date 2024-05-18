@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LocationFinder: View {
     @State private var locations: [Location] = []
-
+    
     let keywords = [
         "supermercato",
         "bar",
@@ -24,9 +24,9 @@ struct LocationFinder: View {
         "pizzeria",
         "ristorante"
     ]
-
+    
     let coordinates = (latitude: 40.836736, longitude: 14.305911)
-
+    
     func calculateDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double) -> Double {
         let R = 6371.0 // Raggio della Terra in km
         let dLat = (lat2 - lat1) * (Double.pi / 180.0)
@@ -44,7 +44,7 @@ struct LocationFinder: View {
     
     func getResults(keyword: String) async throws -> [Location] {
         let apiUrlString = "https://serpapi.com/search.json?engine=google_maps&q=\(keyword)&ll=@\(coordinates.latitude),\(coordinates.longitude),21z&type=search&api_key=32b82d807e4fce17525aa7875e6c7848ceb7a1bbe4525addae2816534ee09576"
-//        print(apiUrlString)
+        //        print(apiUrlString)
         guard let apiUrl = URL(string: apiUrlString) else {
             throw URLError(.badURL)
         }
@@ -52,7 +52,7 @@ struct LocationFinder: View {
         guard let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else {
             throw SerializationError.invalidJson
         }
-//        print(json)
+        //        print(json)
         if let localResults = json["local_results"] as? [[String: Any]] {
             return localResults.compactMap { result in
                 guard let title = result["title"] as? String,
@@ -61,11 +61,11 @@ struct LocationFinder: View {
                       let latitude = gps_coordinates["latitude"],
                       let longitude = gps_coordinates["longitude"],
                       let hours = result["hours"] as? String
-//                      let operating_hours = result["operating_hours"]
+                        //                      let operating_hours = result["operating_hours"]
                 else {
                     return nil
                 }
-//                print(title, " ", address, " ", operating_hours)
+                //                print(title, " ", address, " ", operating_hours)
                 return Location(title: title, address: address, latitude: latitude, longitude: longitude, hours: hours)
             }
         }
@@ -81,7 +81,7 @@ struct LocationFinder: View {
             do {
                 let results = try await getResults(keyword: keyword)
                 allResults.append(contentsOf: results)
-//                print(results)
+                //                print(results)
             } catch {
                 print("Error getting results for keyword \(keyword): \(error)")
             }

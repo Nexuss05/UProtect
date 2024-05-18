@@ -27,9 +27,9 @@ struct SettingsView: View {
                                 Text("SS")
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
-//                                Text("SS")
-//                                    .fontWeight(.bold)
-//                                    .foregroundColor(.white)
+                                //                                Text("SS")
+                                //                                    .fontWeight(.bold)
+                                //                                    .foregroundColor(.white)
                             }.accessibilityHidden(true)
                             VStack(alignment: .leading, spacing: -2.0){
                                 Text("Simone Sarnataro")

@@ -35,17 +35,17 @@ struct GoalSelectorView: View {
     }
     
     func startFastTimer(increase: Bool) {
-            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-                if increase {
-                    if counter != 590{
-                        counter += 10
-                    }
-                } else {
-                    if counter != 0{
-                        counter -= 10
-                    }
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            if increase {
+                if counter != 590{
+                    counter += 10
+                }
+            } else {
+                if counter != 0{
+                    counter -= 10
                 }
             }
+        }
     }
     
     func stopTimer() {
@@ -60,7 +60,7 @@ struct GoalSelectorView: View {
         let seconds = counter % 60
         return String(format: "%d:%02d", minutes, seconds)
     }
-
+    
     var body: some View {
         VStack{
             HStack{

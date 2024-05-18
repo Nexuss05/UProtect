@@ -12,8 +12,8 @@ import SwiftData
 
 struct CompleteTimer: View {
     @Environment(\.colorScheme) var colorScheme
-//    @State var feedbackGenerator = UIImpactFeedbackGenerator()
-//    @State var selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+    //    @State var feedbackGenerator = UIImpactFeedbackGenerator()
+    //    @State var selectionFeedbackGenerator = UISelectionFeedbackGenerator()
     
     @Query var counter: [Counter]
     
@@ -66,7 +66,7 @@ struct CompleteTimer: View {
                     canCancel = true
                     print("start")
                 } else {
-                    self.count = 300
+                    self.count = 10
                     self.start.toggle()
                     canCancel = true
                     print("start")
@@ -75,83 +75,105 @@ struct CompleteTimer: View {
         }
     }
     
-//    func sendPushNotification() {
-//        let token = "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0"
-//        let message = "Hai ricevuto una nuova notifica!"
-//        let authenticationToken = tokenAPNS
-//        
-//        let content = """
-//        {
-//            "aps": {
-//                "alert": {
-//                    "title": "Strunz",
-//                    "subtitle": "Rispunn",
-//                    "body": "\(message)"
-//                },
-//                "sound": "default"
-//            },
-//            "topic": "com.alessiaprevidente.UProtect"
-//        }
-//        
-//        """
-//        
-//        guard let data = content.data(using: .utf8) else {
-//            print("Errore nella creazione dei dati del payload della notifica")
-//            return
-//        }
-//        
-//        let urlString = "https://api.development.push.apple.com/3/device/\(token)"
-//        guard let url = URL(string: urlString) else {
-//            print("URL non valido")
-//            return
-//        }
-//        
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.httpBody = data
-//        
-//        request.addValue("Bearer \(authenticationToken)", forHTTPHeaderField: "Authorization")
-//        request.addValue("com.alessiaprevidente.UProtect", forHTTPHeaderField: "apns-topic")
-//        request.addValue("alert", forHTTPHeaderField: "apns-push-type")
-//        request.addValue("10", forHTTPHeaderField: "apns-priority")
-//        request.addValue("0", forHTTPHeaderField: "apns-expiration")
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        
-//        // Set body
-//        request.httpBody = content.data(using: .utf8)
-//        
-//        // Create URLSession
-//        let session = URLSession(configuration: .default)
-//        
-//        print("Sending push notification...")
-//        print("Request Headers:")
-//        for (key, value) in request.allHTTPHeaderFields ?? [:] {
-//            print("\(key): \(value)")
-//        }
-//        print("Request Body:")
-//        if let body = request.httpBody {
-//            print(String(data: body, encoding: .utf8) ?? "")
-//        }
-//        
-//        let task = session.dataTask(with: request) { data, response, error in
-//            if let error = error {
-//                print("Errore nell'invio della notifica push:", error)
-//                return
-//            }
-//            
-//            if let httpResponse = response as? HTTPURLResponse {
-//                print("Risposta dalla richiesta di invio della notifica push:", httpResponse.statusCode)
-//                
-//                if let responseData = data {
-//                    print("Dati ricevuti:", String(data: responseData, encoding: .utf8) ?? "Nessun dato ricevuto")
-//                } else {
-//                    print("Nessun dato ricevuto")
-//                }
-//            }
-//        }
-//        
-//        task.resume()
-//    }
+    func timerRestart() {
+        if let lastCounter = counter.last {
+            if self.count == 0 {
+                self.count = lastCounter.counter
+                withAnimation(.default){
+                    self.to = 0
+                }
+            }
+            self.start.toggle()
+            print("start")
+        } else {
+            if self.count == 0 {
+                self.count = 300
+                withAnimation(.default) {
+                    self.to = 0
+                }
+            }
+            self.start.toggle()
+            print("start")
+        }
+    }
+    
+    //    func sendPushNotification() {
+    //        let token = "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0"
+    //        let message = "Hai ricevuto una nuova notifica!"
+    //        let authenticationToken = tokenAPNS
+    //
+    //        let content = """
+    //        {
+    //            "aps": {
+    //                "alert": {
+    //                    "title": "Strunz",
+    //                    "subtitle": "Rispunn",
+    //                    "body": "\(message)"
+    //                },
+    //                "sound": "default"
+    //            },
+    //            "topic": "com.alessiaprevidente.UProtect"
+    //        }
+    //
+    //        """
+    //
+    //        guard let data = content.data(using: .utf8) else {
+    //            print("Errore nella creazione dei dati del payload della notifica")
+    //            return
+    //        }
+    //
+    //        let urlString = "https://api.development.push.apple.com/3/device/\(token)"
+    //        guard let url = URL(string: urlString) else {
+    //            print("URL non valido")
+    //            return
+    //        }
+    //
+    //        var request = URLRequest(url: url)
+    //        request.httpMethod = "POST"
+    //        request.httpBody = data
+    //
+    //        request.addValue("Bearer \(authenticationToken)", forHTTPHeaderField: "Authorization")
+    //        request.addValue("com.alessiaprevidente.UProtect", forHTTPHeaderField: "apns-topic")
+    //        request.addValue("alert", forHTTPHeaderField: "apns-push-type")
+    //        request.addValue("10", forHTTPHeaderField: "apns-priority")
+    //        request.addValue("0", forHTTPHeaderField: "apns-expiration")
+    //        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    //
+    //        // Set body
+    //        request.httpBody = content.data(using: .utf8)
+    //
+    //        // Create URLSession
+    //        let session = URLSession(configuration: .default)
+    //
+    //        print("Sending push notification...")
+    //        print("Request Headers:")
+    //        for (key, value) in request.allHTTPHeaderFields ?? [:] {
+    //            print("\(key): \(value)")
+    //        }
+    //        print("Request Body:")
+    //        if let body = request.httpBody {
+    //            print(String(data: body, encoding: .utf8) ?? "")
+    //        }
+    //
+    //        let task = session.dataTask(with: request) { data, response, error in
+    //            if let error = error {
+    //                print("Errore nell'invio della notifica push:", error)
+    //                return
+    //            }
+    //
+    //            if let httpResponse = response as? HTTPURLResponse {
+    //                print("Risposta dalla richiesta di invio della notifica push:", httpResponse.statusCode)
+    //
+    //                if let responseData = data {
+    //                    print("Dati ricevuti:", String(data: responseData, encoding: .utf8) ?? "Nessun dato ricevuto")
+    //                } else {
+    //                    print("Nessun dato ricevuto")
+    //                }
+    //            }
+    //        }
+    //
+    //        task.resume()
+    //    }
     
     
     func sendPushNotificationsForSavedTokens() {
@@ -166,7 +188,7 @@ struct CompleteTimer: View {
             print("Nessun token salvato in UserDefaults.")
         }
     }
-
+    
     func sendPushNotification(token: String) {
         let message = "Hai ricevuto una nuova notifica!"
         let authenticationToken = tokenAPNS
@@ -240,7 +262,7 @@ struct CompleteTimer: View {
         
         task.resume()
     }
-
+    
     
     
     
@@ -375,12 +397,12 @@ struct CompleteTimer: View {
                                     showCancel = true
                                     canCancel = true
                                 }
-//                                feedbackGenerator.impactOccurred()
+                                //                                feedbackGenerator.impactOccurred()
                             }
                         }
                     }//fine onTapGesture
                     .onLongPressGesture {
-    
+                        
                         DispatchQueue.main.async {
                             if !isActivated && !start {
                                 withAnimation {
@@ -390,7 +412,7 @@ struct CompleteTimer: View {
                                     showMark = false
                                     showCancel = true
                                 }
-//                                selectionFeedbackGenerator.selectionChanged()
+                                //                                selectionFeedbackGenerator.selectionChanged()
                             }
                         }
                     }//fine onLongPressGesture
@@ -414,7 +436,7 @@ struct CompleteTimer: View {
                     .opacity(showCancel ? 1 : 0)
                     .onTapGesture {
                         if isActivated && canCancel{
-//                            feedbackGenerator.impactOccurred()
+                            //                            feedbackGenerator.impactOccurred()
                             circleOpacity = false
                             isActivated = false
                             showCancel = false
@@ -454,8 +476,8 @@ struct CompleteTimer: View {
         }//fine 3° Zstack
         .ignoresSafeArea()
         .onAppear(perform: {
-//            selectionFeedbackGenerator.prepare()
-//            feedbackGenerator.prepare()
+            //            selectionFeedbackGenerator.prepare()
+            //            feedbackGenerator.prepare()
             SwapText()
             generateJWT()
             NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { _ in
@@ -466,8 +488,8 @@ struct CompleteTimer: View {
             }
         })
         .onDisappear {
-//            feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
-//            selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+            //            feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+            //            selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         }
         .onReceive(self.time) { _ in
             DispatchQueue.main.async {
@@ -486,11 +508,39 @@ struct CompleteTimer: View {
                             showMark = true
                             CircleAnimation()
                             circleOpacity = true
+                            sendPushNotificationsForSavedTokens()
                         }
                         
                     }
                 }
             }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Are you safe?"),
+                
+                primaryButton: .default(
+                    Text("Yes"),
+                    action: {
+                        withAnimation{
+                            dismissTimer?.invalidate()
+                            timerRestart()
+                            //                            feedbackGenerator.impactOccurred()
+                        }
+                    }
+                ),
+                secondaryButton: .default(
+                    Text("No, help me"),
+                    action: {
+                        sendPushNotificationsForSavedTokens()
+                        CircleAnimation()
+                        circleOpacity = true
+                        dismissTimer?.invalidate()
+                        //                        feedbackGenerator.impactOccurred()
+                        showMark = true
+                    }
+                )
+            )
         }
     }
     
@@ -541,13 +591,12 @@ struct CompleteTimer: View {
     }
     
     func updateProgress() {
-            if let lastCounter = counter.last {
-                self.to = CGFloat(self.count) / CGFloat(lastCounter.counter)
-            } else {
-                self.to = CGFloat(self.count) / 300
-            }
+        if let lastCounter = counter.last {
+            self.to = CGFloat(self.count) / CGFloat(lastCounter.counter)
+        } else {
+            self.to = CGFloat(self.count) / 300
         }
-    
+    }
 }
 
 struct MyClaims: Claims {
