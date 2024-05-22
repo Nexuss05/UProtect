@@ -17,6 +17,14 @@
 		C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85D2BE51844003EB614 /* ContactModel.swift */; };
 		C233DAA02BEE1B72000072C4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233DA9F2BEE1B72000072C4 /* Location.swift */; };
 		C233DAA22BEE1BB3000072C4 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */; };
+		C27795DA2BFCB5590034981F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795D92BFCB5590034981F /* WidgetKit.framework */; };
+		C27795DC2BFCB5590034981F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795DB2BFCB5590034981F /* SwiftUI.framework */; };
+		C27795DF2BFCB5590034981F /* UProtect_WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27795DE2BFCB5590034981F /* UProtect_WidgetBundle.swift */; };
+		C27795E12BFCB5590034981F /* UProtect_WidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27795E02BFCB5590034981F /* UProtect_WidgetLiveActivity.swift */; };
+		C27795E32BFCB5590034981F /* UProtect_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27795E22BFCB5590034981F /* UProtect_Widget.swift */; };
+		C27795E52BFCB5590034981F /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27795E42BFCB5590034981F /* AppIntent.swift */; };
+		C27795E72BFCB55A0034981F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27795E62BFCB55A0034981F /* Assets.xcassets */; };
+		C27795EB2BFCB55A0034981F /* UProtect-WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD12BEB7FE400733211 /* ContactView.swift */; };
 		C2893DD42BEB8AA700733211 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD32BEB8AA700733211 /* TimerView.swift */; };
 		C2893DD62BEB8B9600733211 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD52BEB8B9600733211 /* Counter.swift */; };
@@ -31,6 +39,30 @@
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C27795E92BFCB55A0034981F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C21DD8322BE4D471003EB614 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C27795D62BFCB5590034981F;
+			remoteInfo = "UProtect-WidgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C27795EF2BFCB55A0034981F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C27795EB2BFCB55A0034981F /* UProtect-WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		9995E0C62BECBD6C0001B309 /* UProtect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UProtect.entitlements; sourceTree = "<group>"; };
 		C21DD83A2BE4D471003EB614 /* UProtect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UProtect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +76,15 @@
 		C21DD85D2BE51844003EB614 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		C233DA9F2BEE1B72000072C4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
+		C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "UProtect-WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C27795D92BFCB5590034981F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		C27795DB2BFCB5590034981F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		C27795DE2BFCB5590034981F /* UProtect_WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect_WidgetBundle.swift; sourceTree = "<group>"; };
+		C27795E02BFCB5590034981F /* UProtect_WidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect_WidgetLiveActivity.swift; sourceTree = "<group>"; };
+		C27795E22BFCB5590034981F /* UProtect_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect_Widget.swift; sourceTree = "<group>"; };
+		C27795E42BFCB5590034981F /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		C27795E62BFCB55A0034981F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C27795E82BFCB55A0034981F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2893DD12BEB7FE400733211 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		C2893DD32BEB8AA700733211 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		C2893DD52BEB8B9600733211 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
@@ -66,6 +107,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C27795D42BFCB5590034981F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C27795DC2BFCB5590034981F /* SwiftUI.framework in Frameworks */,
+				C27795DA2BFCB5590034981F /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -73,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				C21DD83C2BE4D471003EB614 /* UProtect */,
+				C27795DD2BFCB5590034981F /* UProtect-Widget */,
+				C27795D82BFCB5590034981F /* Frameworks */,
 				C21DD83B2BE4D471003EB614 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				C21DD83A2BE4D471003EB614 /* UProtect.app */,
+				C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +188,28 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C27795D82BFCB5590034981F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C27795D92BFCB5590034981F /* WidgetKit.framework */,
+				C27795DB2BFCB5590034981F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C27795DD2BFCB5590034981F /* UProtect-Widget */ = {
+			isa = PBXGroup;
+			children = (
+				C27795DE2BFCB5590034981F /* UProtect_WidgetBundle.swift */,
+				C27795E02BFCB5590034981F /* UProtect_WidgetLiveActivity.swift */,
+				C27795E22BFCB5590034981F /* UProtect_Widget.swift */,
+				C27795E42BFCB5590034981F /* AppIntent.swift */,
+				C27795E62BFCB55A0034981F /* Assets.xcassets */,
+				C27795E82BFCB55A0034981F /* Info.plist */,
+			);
+			path = "UProtect-Widget";
+			sourceTree = "<group>";
+		};
 		C2893DD72BEB8C0B00733211 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,10 +231,12 @@
 				C21DD8362BE4D471003EB614 /* Sources */,
 				C21DD8372BE4D471003EB614 /* Frameworks */,
 				C21DD8382BE4D471003EB614 /* Resources */,
+				C27795EF2BFCB55A0034981F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C27795EA2BFCB55A0034981F /* PBXTargetDependency */,
 			);
 			name = UProtect;
 			packageProductDependencies = (
@@ -168,6 +245,23 @@
 			productName = UProtect;
 			productReference = C21DD83A2BE4D471003EB614 /* UProtect.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C27795D62BFCB5590034981F /* UProtect-WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C27795EC2BFCB55A0034981F /* Build configuration list for PBXNativeTarget "UProtect-WidgetExtension" */;
+			buildPhases = (
+				C27795D32BFCB5590034981F /* Sources */,
+				C27795D42BFCB5590034981F /* Frameworks */,
+				C27795D52BFCB5590034981F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UProtect-WidgetExtension";
+			productName = "UProtect-WidgetExtension";
+			productReference = C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -180,6 +274,9 @@
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					C21DD8392BE4D471003EB614 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					C27795D62BFCB5590034981F = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -201,6 +298,7 @@
 			projectRoot = "";
 			targets = (
 				C21DD8392BE4D471003EB614 /* UProtect */,
+				C27795D62BFCB5590034981F /* UProtect-WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -213,6 +311,14 @@
 				C21DD8452BE4D472003EB614 /* Preview Assets.xcassets in Resources */,
 				C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C27795D52BFCB5590034981F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C27795E72BFCB55A0034981F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +350,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C27795D32BFCB5590034981F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C27795E32BFCB5590034981F /* UProtect_Widget.swift in Sources */,
+				C27795E52BFCB5590034981F /* AppIntent.swift in Sources */,
+				C27795E12BFCB5590034981F /* UProtect_WidgetLiveActivity.swift in Sources */,
+				C27795DF2BFCB5590034981F /* UProtect_WidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C27795EA2BFCB55A0034981F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C27795D62BFCB5590034981F /* UProtect-WidgetExtension */;
+			targetProxy = C27795E92BFCB55A0034981F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C21DD8462BE4D472003EB614 /* Debug */ = {
@@ -369,6 +494,7 @@
 		C21DD8492BE4D472003EB614 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UProtect/UProtect.entitlements;
@@ -405,6 +531,7 @@
 		C21DD84A2BE4D472003EB614 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UProtect/UProtect.entitlements;
@@ -440,6 +567,61 @@
 			};
 			name = Release;
 		};
+		C27795ED2BFCB55A0034981F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V24PM769;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alessiaprevidente.UProtect.UProtect-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C27795EE2BFCB55A0034981F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V24PM769;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alessiaprevidente.UProtect.UProtect-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -457,6 +639,15 @@
 			buildConfigurations = (
 				C21DD8492BE4D472003EB614 /* Debug */,
 				C21DD84A2BE4D472003EB614 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C27795EC2BFCB55A0034981F /* Build configuration list for PBXNativeTarget "UProtect-WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27795ED2BFCB55A0034981F /* Debug */,
+				C27795EE2BFCB55A0034981F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
