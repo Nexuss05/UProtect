@@ -31,7 +31,7 @@ struct GoalView: View {
             .pickerStyle(SegmentedPickerStyle())
             .frame(width: 310)
             .padding(.vertical, 30)
-            .onChange(of: selectedMode, perform: { newMode in
+            .onChange(of: selectedMode) { newMode, _ in
                 switch newMode {
                 case 1:
                     cont = 180
@@ -45,7 +45,7 @@ struct GoalView: View {
                 default:
                     break
                 }
-            })
+            }
             
             GoalSelectorView(counter: $cont)
             ZStack {

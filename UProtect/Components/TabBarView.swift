@@ -20,7 +20,7 @@ struct TabBarView: View {
             
             TabsLayoutView(selectedTab: $selectedTab, namespace: namespace) // Passa il binding alla vista interna
             
-            .padding(.bottom, 10)
+                .padding(.bottom, 10)
         }
         .frame(height: 80, alignment: .center)
     }

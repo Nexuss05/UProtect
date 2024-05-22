@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct LogInView: View {
-    @State private var name: String = ""
-    @State private var surname: String = ""
-    @State private var phoneNumber: String = ""
-
     @State var isShowingRec: Bool = false
+    
+    @StateObject private var vm = CloudViewModel()
+    
     var body: some View {
         ZStack {
             
@@ -26,10 +25,9 @@ struct LogInView: View {
                 .padding()
                 .padding(.top)
                 
-                Spacer()
                 HStack {
                     Image(systemName: "mail")
-                    TextField("Email", text: $phoneNumber)
+                    TextField("Email", text: $vm.numero)
                 }
                 .padding()
                 .overlay(
@@ -47,8 +45,9 @@ struct LogInView: View {
                 }) {
                     Text("Already have an account?")
                 }
-                
-                Spacer()
+                Button(action: {vm.handleLogin(number: vm.numero)}, label: {
+                    Text("Button")
+                }).padding(.top, 30)
             }
             
         }.preferredColorScheme(.light)
@@ -60,7 +59,7 @@ struct LogInView: View {
 
 struct RegistrationView: View {
     @State var isShowingLogin: Bool = false
-
+    
     @StateObject private var vm = CloudViewModel()
     
     var body: some View {
@@ -80,25 +79,25 @@ struct RegistrationView: View {
                     TextField("Name", text: $vm.nome)
                         .accessibilityRemoveTraits(.isStaticText)
                 }
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(lineWidth: 2)
-                           
-                    )
-                    .padding()
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 2)
+                    
+                )
+                .padding()
                 HStack {
                     TextField("Surname", text: $vm.cognome)
                         .accessibilityRemoveTraits(.isStaticText)
                 }
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(lineWidth: 2)
-                           
-                        
-                    )
-                    .padding()
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 2)
+                    
+                    
+                )
+                .padding()
                 HStack {
                     Image(systemName: "phone")
                     TextField("Number", text: $vm.numero)
