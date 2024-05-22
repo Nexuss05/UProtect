@@ -14,15 +14,18 @@ struct UProtectApp: App {
     @AppStorage("theme") var theme: String = "light"
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @StateObject var timerManager = TimerManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(timerManager: timerManager)
                 .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
         }.modelContainer(for: [Counter.self, Contacts.self])
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Request permission for notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in

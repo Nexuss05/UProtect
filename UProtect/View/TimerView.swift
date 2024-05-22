@@ -599,10 +599,10 @@ struct CompleteTimer: View {
     }
 }
 
-struct MyClaims: Claims {
-    let iss: String
-    let iat: Date
-}
+//struct MyClaims: Claims {
+//    let iss: String
+//    let iat: Date
+//}
 
 #Preview {
     CompleteTimer()

@@ -38,12 +38,29 @@ class CloudViewModel: ObservableObject{
         }
     }
     
+    //    func addButtonPressed() {
+    //        getUserRecordID { userRecordID, error in
+    //            if let userRecordID = userRecordID {
+    //
+    //                self.addItem(name: self.nome, surname: self.cognome, number: self.numero, token: self.fcmToken ?? "",recipientID: userRecordID.recordName)
+    //            } else {
+    //                print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
+    //            }
+    //        }
+    //    }
+    
     func addButtonPressed() {
-        getUserRecordID { userRecordID, error in
-            if let userRecordID = userRecordID {
-                self.addItem(name: self.nome, surname: self.cognome, number: self.numero, token: self.fcmToken ?? "",recipientID: userRecordID.recordName)
+        fetchNumber(number: self.numero) { isNumberPresent in
+            if isNumberPresent {
+                print("Number is already present in the database.")
             } else {
-                print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
+                self.getUserRecordID { userRecordID, error in
+                    if let userRecordID = userRecordID {
+                        self.addItem(name: self.nome, surname: self.cognome, number: self.numero, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
+                    } else {
+                        print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
+                    }
+                }
             }
         }
     }
@@ -64,6 +81,73 @@ class CloudViewModel: ObservableObject{
             print("record: \(String(describing: returnedError))")
         }
     }
+    
+    func fetchNumber(number: String, completion: @escaping (Bool) -> Void) {
+        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        var isNumberPresent = false
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                if let token = record["token"] as? String, !token.isEmpty {
+                    isNumberPresent = true
+                    print("Token found: \(token)")
+                } else {
+                    print("Token not found")
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+        
+        queryOperation.queryResultBlock = { returnedResult in
+            print("Returned ResultBlock: \(returnedResult)")
+            DispatchQueue.main.async {
+                completion(isNumberPresent)
+            }
+        }
+        
+        addOperation(operation: queryOperation)
+    }
+    
+    func fetchToken2(number: String, completion: @escaping (String?) -> Void) {
+        let predicate = NSPredicate(format: "number = %@", number)
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        var fcmToken: String?
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                if let token = record["token"] as? String, !token.isEmpty {
+                    fcmToken = token
+                    print(token)
+                } else {
+                    print("Token not found")
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+        
+        queryOperation.queryResultBlock = { returnedResult in
+            print("Returned ResultBlock: \(returnedResult)")
+            DispatchQueue.main.async {
+                completion(fcmToken)
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.add(queryOperation)
+    }
+    
     
     //    func fetchToken(number: String){
     //        //let predicate = NSPredicate(value: true)
@@ -186,26 +270,78 @@ class CloudViewModel: ObservableObject{
         }
     }
     
+//    private func updateItem(number: String, token: String, recipientID: String) {
+//        let predicate = NSPredicate(format: "number == %@", number)
+//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+//        
+//        CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+//            if let error = error {
+//                print("Error querying records: \(error.localizedDescription)")
+//            } else if let records = records, !records.isEmpty {
+//                let recordToUpdate = records[0]
+//                recordToUpdate["token"] = token
+//                self.saveItem(record: recordToUpdate)
+//            } else {
+//                print("No record found with the provided number")
+//            }
+//        }
+//    }
+//    
     private func updateItem(number: String, token: String, recipientID: String) {
         let predicate = NSPredicate(format: "number == %@", number)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         
-        CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
-            if let error = error {
-                print("Error querying records: \(error.localizedDescription)")
-            } else if let records = records, !records.isEmpty {
-                let recordToUpdate = records[0]
-                recordToUpdate["token"] = token
-                self.saveItem(record: recordToUpdate)
+        CKContainer.default().accountStatus { accountStatus, error in
+            if accountStatus == .available {
+                CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+                    if let error = error {
+                        print("Error querying records: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    guard let records = records, !records.isEmpty else {
+                        print("No record found with the provided number")
+                        return
+                    }
+                    
+                    let recordToUpdate = records[0]
+                    recordToUpdate["token"] = token
+                    
+                    CKContainer.default().publicCloudDatabase.save(recordToUpdate) { (record, error) in
+                        if let error = error {
+                            print("Error saving record: \(error.localizedDescription)")
+                        } else {
+                            print("Record updated successfully")
+                        }
+                    }
+                }
             } else {
-                print("No record found with the provided number")
+                print("iCloud account not available: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
     }
-    
-    func updateItem(utente: UserModel){
-        let record = utente.record
-        record["title"] = "Fanculo"
-        saveItem(record: record)
+
+    func handleLogin(number: String) {
+        let currentToken = UserDefaults.standard.string(forKey: "fcmToken")
+        
+        fetchToken(number: number) { fetchedToken in
+            if let fetchedToken = fetchedToken {
+                if fetchedToken != currentToken {
+                    self.getUserRecordID { userRecordID, error in
+                        if let userRecordID = userRecordID {
+                            if let currentToken = currentToken {
+                                self.updateItem(number: number, token: currentToken, recipientID: userRecordID.recordName)
+                            }
+                        } else {
+                            print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
+                        }
+                    }
+                } else {
+                    print("Token already up-to-date")
+                }
+            } else {
+                print("No token found for the given number")
+            }
+        }
     }
 }

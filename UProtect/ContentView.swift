@@ -13,8 +13,6 @@ import SwiftData
 let backgroundColor = Color.init(white: 0.92)
 
 struct ContentView: View {
-    
-    
     @State private var selectedContacts: [SerializableContact] = UserDefaults.standard.fetchContacts(forKey: "selectedContacts") ?? []
     @State private var isShowingContactsPicker = false
     @StateObject private var locationManager = LocationManager()
@@ -24,6 +22,8 @@ struct ContentView: View {
     
     @State private var selectedTab: Tab = .danger
     @Namespace private var namespace
+    
+    @ObservedObject var timerManager: TimerManager
     
     var body: some View {
         GeometryReader { geometry in
@@ -36,7 +36,8 @@ struct ContentView: View {
                         .padding(.top, 100)
                     //                    LocationFinder()
                 case .danger:
-                    CompleteTimer()
+                    TimerView(timerManager: timerManager)
+                    //CompleteTimer()
                 case .contact:
                     Text("Contenuto dei contatti")
                         .padding(.top, 100)
@@ -72,16 +73,8 @@ struct ContentView: View {
     
 }
 
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
 struct CustomColor {
-    static let orange = Color("Orange")
+    static let orange = Color("CustomOrange")
     static let orangeBackground = Color("OBackground")
     static let redBackground = Color("RBackground")
 }
@@ -142,3 +135,9 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
 }
 
 
+struct ContentView_Previews3: PreviewProvider {
+    static var previews: some View {
+        let timerManager = TimerManager()
+        return ContentView(timerManager: timerManager)
+    }
+}
