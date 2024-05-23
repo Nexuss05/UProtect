@@ -32,7 +32,6 @@
 		C27795E72BFCB55A0034981F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27795E62BFCB55A0034981F /* Assets.xcassets */; };
 		C27795EB2BFCB55A0034981F /* UProtect-WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD12BEB7FE400733211 /* ContactView.swift */; };
-		C2893DD42BEB8AA700733211 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD32BEB8AA700733211 /* TimerView.swift */; };
 		C2893DD62BEB8B9600733211 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD52BEB8B9600733211 /* Counter.swift */; };
 		C2893DD92BEB8C1900733211 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD82BEB8C1900733211 /* RingView.swift */; };
 		C293A8992BF36C740008F1F8 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = C293A8982BF36C740008F1F8 /* SwiftJWT */; };
@@ -106,7 +105,6 @@
 		C27795E62BFCB55A0034981F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C27795E82BFCB55A0034981F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2893DD12BEB7FE400733211 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
-		C2893DD32BEB8AA700733211 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		C2893DD52BEB8B9600733211 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		C2893DD82BEB8C1900733211 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_ZX5LJY8598.p8; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
 				E0456A462BF8F342002B514F /* otpView.swift */,
 				E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */,
-				C2893DD32BEB8AA700733211 /* TimerView.swift */,
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
 				E092099F2BEBE394005AD0FB /* TimerSettings.swift */,
@@ -387,7 +384,6 @@
 				C233DAA22BEE1BB3000072C4 /* LocationFinder.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
-				C2893DD42BEB8AA700733211 /* TimerView.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
 				E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */,
