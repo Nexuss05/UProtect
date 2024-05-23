@@ -130,7 +130,7 @@ struct OtpFormFieldView: View {
     func verifyOTP() {
         let otp = pinOne + pinTwo + pinThree + pinFour + pinFive + pinSix
         guard let verificationID = verificationID else {
-            print("No verification ID found.")
+//            print("No verification ID found.")
             return
         }
         
@@ -141,10 +141,10 @@ struct OtpFormFieldView: View {
         
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
-                print("Error during OTP verification: \(error.localizedDescription)")
+//                print("Error during OTP verification: \(error.localizedDescription)")
                 return
             }
-            print("User signed in successfully.")
+//            print("User signed in successfully.")
             isVerified = true
         }
     }

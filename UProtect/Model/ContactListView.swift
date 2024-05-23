@@ -98,21 +98,21 @@ class Coordinator: NSObject, CNContactPickerDelegate {
         self.parent.selectedContacts.append(contentsOf: serializableContacts)
         self.parent.isPresented = false
         
-        print(serializableContacts)
+//        print(serializableContacts)
         
         for contact in serializableContacts {
             let phoneNumberWithoutSpaces = contact.phoneNumber.replacingOccurrences(of: " ", with: "")
-            print(phoneNumberWithoutSpaces)
+//            print(phoneNumberWithoutSpaces)
             
             var formattedPhoneNumber = phoneNumberWithoutSpaces
             if !phoneNumberWithoutSpaces.hasPrefix("+") {
                 formattedPhoneNumber = formatPhoneNumber(phoneNumberWithoutSpaces)
             }
-            print(formattedPhoneNumber)
+//            print(formattedPhoneNumber)
             
             vm.fetchToken(number: formattedPhoneNumber) { token in
                 if let token = token {
-                    print("FCM Token: \(token)")
+//                    print("FCM Token: \(token)")
                     self.tokens.append(token)
                     UserDefaults.standard.set(self.tokens, forKey: "tokens")
                     var existingTokens = UserDefaults.standard.stringArray(forKey: "tokens") ?? []
@@ -120,13 +120,13 @@ class Coordinator: NSObject, CNContactPickerDelegate {
                         self.tokens.append(token)
                         existingTokens.append(token)
                         UserDefaults.standard.set(existingTokens, forKey: "tokens")
-                        print("Token salvato in UserDefaults")
+//                        print("Token salvato in UserDefaults")
                     } else {
-                        print("Token già presente in UserDefaults")
+//                        print("Token già presente in UserDefaults")
                     }
                     
                 } else {
-                    print("FCM Token non trovato")
+//                    print("FCM Token non trovato")
                 }
             }
             

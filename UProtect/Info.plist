@@ -11,12 +11,12 @@
 			<string>com.alessiaprevidente.UProtect</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>app-1-637672640578-ios-e94a188c4f8b5f827edddb</string>
+				<string>UProtectURL</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string></string>
+			<string>UProtect</string>
 		</dict>
 	</array>
 	<key>UIBackgroundModes</key>

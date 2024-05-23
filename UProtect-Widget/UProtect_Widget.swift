@@ -5,98 +5,108 @@
 //  Created by Matteo Cotena on 21/05/24.
 //
 
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
-struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+struct CustomWidget: Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: "UProtect_Widget", provider: Provider()) { entry in
+            WidgetView()
+        }
+        .configurationDisplayName("UProtect Widget")
+        .description("Widget per attivare l'SOS")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
+}
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+struct Provider: TimelineProvider {
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date())
     }
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        return Timeline(entries: entries, policy: .atEnd)
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+        let entry = SimpleEntry(date: Date())
+        completion(entry)
+    }
+    
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
+        let entry = SimpleEntry(date: Date())
+        let timeline = Timeline(entries: [entry], policy: .atEnd)
+        completion(timeline)
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationAppIntent
 }
 
-
-struct UProtect_WidgetEntryView : View {
-    var entry: Provider.Entry
-
-    var body: some View {
-        VStack{
-            HStack {
-                Text("TAP")
-                    .foregroundStyle(.orange)
-                    .fontWeight(.bold)
-//                    .font(.title)
-//                    .offset(x: 0, y: -150)
-                Text("to SOS mode")
-//                    .font(.title2)
-                    .fontWeight(.bold)
-//                    .offset(x: 0, y: -150)
+extension View {
+    func widgetBackground(_ backgroundView: some View) -> some View {
+        if #available(iOSApplicationExtension 17.0, *) {
+            return containerBackground(for: .widget) {
+                backgroundView
             }
-            ZStack {
-                Circle()
-                    .foregroundColor(.white)
-                    .opacity(0.3)
-                    .frame(width: 220)
-                Circle()
-                    .foregroundColor(.white)
-                    .opacity(0.3)
-                    .frame(width: 220)
-                    .shadow(color: .gray, radius: 4)
-                Image(systemName: "exclamationmark.triangle.fill")
-                    .resizable()
-                    .frame(width: 55, height: 50)
-                    .foregroundColor(.orange)
-                    .opacity(1)
-                    .opacity(withAnimation{1})
-            }//fine bottone
+        } else {
+            return background(backgroundView)
         }
     }
 }
 
-struct UProtect_Widget: Widget {
-    let kind: String = "UProtect_Widget"
-
-    var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            UProtect_WidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
-        }
-    }
-}
-
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
+struct WidgetView: View {
+    @Environment(\.openURL) var openURL
+    @Environment(\.widgetFamily) var widgetFamily
     
+    var body: some View {
+        HStack {
+            if widgetFamily == .systemMedium || widgetFamily == .systemLarge {
+                
+                    ZStack{
+                        Circle()
+                            .foregroundColor(.white)
+                            .frame(width: 120)
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .resizable()
+                            .frame(width: 55, height: 50)
+                            .foregroundColor(.red)
+                            .opacity(1)
+                    }
+                .offset(CGSize(width: -10, height: 0))
+                VStack {
+                    Text("TAP")
+                        .foregroundStyle(.red)
+                        .fontWeight(.bold)
+                        .font(.title)
+                    Text("to receive help")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                }
+                .multilineTextAlignment(.center)
+            } else if widgetFamily == .systemSmall {
+                ZStack{
+                    Circle()
+                        .foregroundColor(.white)
+                        .frame(width: 120)
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .resizable()
+                        .frame(width: 55, height: 50)
+                        .foregroundColor(.orange)
+                        .opacity(1)
+                }
+            }
+        }
+        .widgetURL(URL(string: "widget://sos"))
+        //        .background(Color.red) // Modifica il colore di sfondo per il debug
+        .widgetBackground(Color.black)
+    }
 }
 
-#Preview(as: .systemSmall) {
-    UProtect_Widget()
-} timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
+// Aggiunta della struttura PreviewProvider per mostrare un'anteprima del widget
+struct UProtect_Widget_Previews: PreviewProvider {
+    static var previews: some View {
+        WidgetView()
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
+        WidgetView()
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
 }

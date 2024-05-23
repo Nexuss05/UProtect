@@ -80,17 +80,17 @@ class CloudViewModel: ObservableObject{
         if !self.numero.hasPrefix("+") {
             formattedPhoneNumber = formatPhoneNumber(self.numero)
         }
-        print(formattedPhoneNumber)
+//        print(formattedPhoneNumber)
         
         fetchNumber(number: formattedPhoneNumber) { isNumberPresent in
             if isNumberPresent {
-                print("Number is already present in the database.")
+//                print("Number is already present in the database.")
             } else {
                 self.getUserRecordID { userRecordID, error in
                     if let userRecordID = userRecordID {
                         self.addItem(name: self.nome, surname: self.cognome, number: formattedPhoneNumber, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
                     } else {
-                        print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
+//                        print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
                     }
                 }
             }
@@ -109,8 +109,8 @@ class CloudViewModel: ObservableObject{
     
     private func saveItem(record: CKRecord){
         CKContainer.default().publicCloudDatabase.save(record) { returnedRecord, returnedError in
-            print("record: \(String(describing: returnedRecord))")
-            print("record: \(String(describing: returnedError))")
+//            print("record: \(String(describing: returnedRecord))")
+//            print("record: \(String(describing: returnedError))")
         }
     }
     
@@ -122,23 +122,23 @@ class CloudViewModel: ObservableObject{
         queryOperation.resultsLimit = 1
         
         var isNumberPresent = false
-        
+        /*
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
                 if let token = record["token"] as? String, !token.isEmpty {
                     isNumberPresent = true
-                    print("Token found: \(token)")
+//                    print("Token found: \(token)")
                 } else {
-                    print("Token not found")
+//                    print("Token not found")
                 }
             case .failure(let error):
                 print("Error: \(error)")
             }
-        }
+        }*/
         
         queryOperation.queryResultBlock = { returnedResult in
-            print("Returned ResultBlock: \(returnedResult)")
+//            print("Returned ResultBlock: \(returnedResult)")
             DispatchQueue.main.async {
                 completion(isNumberPresent)
             }
@@ -155,23 +155,23 @@ class CloudViewModel: ObservableObject{
         queryOperation.resultsLimit = 1
         
         var fcmToken: String?
-        
+        /*
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
                 if let token = record["token"] as? String, !token.isEmpty {
                     fcmToken = token
-                    print(token)
+//                    print(token)
                 } else {
-                    print("Token not found")
+//                    print("Token not found")
                 }
             case .failure(let error):
                 print("Error: \(error)")
             }
-        }
+        }*/
         
         queryOperation.queryResultBlock = { returnedResult in
-            print("Returned ResultBlock: \(returnedResult)")
+//            print("Returned ResultBlock: \(returnedResult)")
             DispatchQueue.main.async {
                 completion(fcmToken)
             }
@@ -223,23 +223,23 @@ class CloudViewModel: ObservableObject{
         queryOperation.resultsLimit = 1
         
         var fcmToken: String?
-        
+        /*
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult{
             case .success(let record):
                 if let token = record["token"] as? String, !token.isEmpty {
                     fcmToken = token
-                    print(token)
+//                    print(token)
                 } else {
-                    print("Token not found")
+//                    print("Token not found")
                 }
             case .failure(let error):
                 print("Error: \(error)")
             }
-        }
+        }*/
         
         queryOperation.queryResultBlock = { returnedResult in
-            print("Returned ResultBlock: \(returnedResult)")
+//            print("Returned ResultBlock: \(returnedResult)")
             DispatchQueue.main.async{
                 completion(fcmToken)
             }
@@ -297,7 +297,7 @@ class CloudViewModel: ObservableObject{
             if let userRecordID = userRecordID {
                 self.updateItem(number: self.numero, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
             } else {
-                print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
+//                print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
     }
@@ -327,12 +327,12 @@ class CloudViewModel: ObservableObject{
             if accountStatus == .available {
                 CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
                     if let error = error {
-                        print("Error querying records: \(error.localizedDescription)")
+//                        print("Error querying records: \(error.localizedDescription)")
                         return
                     }
                     
                     guard let records = records, !records.isEmpty else {
-                        print("No record found with the provided number")
+//                        print("No record found with the provided number")
                         return
                     }
                     
@@ -341,14 +341,14 @@ class CloudViewModel: ObservableObject{
                     
                     CKContainer.default().publicCloudDatabase.save(recordToUpdate) { (record, error) in
                         if let error = error {
-                            print("Error saving record: \(error.localizedDescription)")
+//                            print("Error saving record: \(error.localizedDescription)")
                         } else {
-                            print("Record updated successfully")
+//                            print("Record updated successfully")
                         }
                     }
                 }
             } else {
-                print("iCloud account not available: \(error?.localizedDescription ?? "Unknown error")")
+//                print("iCloud account not available: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
     }
@@ -360,7 +360,7 @@ class CloudViewModel: ObservableObject{
         if number.hasPrefix("+") {
             formattedPhoneNumber = formatPhoneNumber(number)
         }
-        print(formattedPhoneNumber)
+//        print(formattedPhoneNumber)
         
         fetchToken(number: formattedPhoneNumber) { fetchedToken in
             if let fetchedToken = fetchedToken {
@@ -371,26 +371,26 @@ class CloudViewModel: ObservableObject{
                                 self.updateItem(number: formattedPhoneNumber, token: currentToken, recipientID: userRecordID.recordName)
                             }
                         } else {
-                            print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
+//                            print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
                         }
                     }
                 } else {
-                    print("Token already up-to-date")
+//                    print("Token already up-to-date")
                 }
             } else {
-                print("No token found for the given number")
+//                print("No token found for the given number")
             }
         }
         
-        print("Attempting to verify phone number: \(formattedPhoneNumber)")
+//        print("Attempting to verify phone number: \(formattedPhoneNumber)")
             
             let phoneAuthProvider = PhoneAuthProvider.provider()
             phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
-                if let error = error {
-                    print("Error during phone verification: \(error.localizedDescription)")
-                    return
-                }
-                print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
+//                if let error = error {
+//                    print("Error during phone verification: \(error.localizedDescription)")
+//                    return
+//                }
+//                print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
                 // Store the verificationID for later use (e.g., in UserDefaults or a property)
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 completion()

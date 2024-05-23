@@ -62,7 +62,7 @@ class TimerManager: ObservableObject {
             showAlert = true
             dismissTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
                 if !self.start{
-                    print("Popup alert ignored for 10 seconds")
+//                    print("Popup alert ignored for 10 seconds")
                     self.showAlert = false
                     self.showMark = true
                     self.CircleAnimation()
@@ -72,7 +72,7 @@ class TimerManager: ObservableObject {
             return
         }
         count -= 1
-        print("\(count)")
+//        print("\(count)")
     }
     
     var rotationAngle: Angle {
@@ -202,7 +202,7 @@ struct TimerView: View {
                 sendPushNotification(token: token)
             }
         } else {
-            print("Nessun token salvato in UserDefaults.")
+//            print("Nessun token salvato in UserDefaults.")
         }
     }
     
@@ -226,13 +226,13 @@ struct TimerView: View {
         """
         
         guard let data = content.data(using: .utf8) else {
-            print("Errore nella creazione dei dati del payload della notifica")
+//            print("Errore nella creazione dei dati del payload della notifica")
             return
         }
         
         let urlString = "https://api.development.push.apple.com/3/device/\(token)"
         guard let url = URL(string: urlString) else {
-            print("URL non valido")
+//            print("URL non valido")
             return
         }
         
@@ -250,29 +250,29 @@ struct TimerView: View {
         // Create URLSession
         let session = URLSession(configuration: .default)
         
-        print("Sending push notification for token: \(token)...")
-        print("Request Headers:")
+//        print("Sending push notification for token: \(token)...")
+//        print("Request Headers:")
         for (key, value) in request.allHTTPHeaderFields ?? [:] {
-            print("\(key): \(value)")
+//            print("\(key): \(value)")
         }
-        print("Request Body:")
+//        print("Request Body:")
         if let body = request.httpBody {
-            print(String(data: body, encoding: .utf8) ?? "")
+//            print(String(data: body, encoding: .utf8) ?? "")
         }
         
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
-                print("Errore nell'invio della notifica push per il token \(token):", error)
+//                print("Errore nell'invio della notifica push per il token \(token):", error)
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse {
-                print("Risposta dalla richiesta di invio della notifica push per il token \(token):", httpResponse.statusCode)
+//                print("Risposta dalla richiesta di invio della notifica push per il token \(token):", httpResponse.statusCode)
                 
                 if let responseData = data {
-                    print("Dati ricevuti:", String(data: responseData, encoding: .utf8) ?? "Nessun dato ricevuto")
+//                    print("Dati ricevuti:", String(data: responseData, encoding: .utf8) ?? "Nessun dato ricevuto")
                 } else {
-                    print("Nessun dato ricevuto")
+//                    print("Nessun dato ricevuto")
                 }
             }
         }
@@ -362,20 +362,70 @@ struct TimerView: View {
                     .opacity(withAnimation{
                         timerManager.start ? 1 : 0
                     })
-            }.onTapGesture {
+            }
+            .onOpenURL { url in
+                guard
+                    let scheme = url.scheme,
+                    let host = url.host else {
+                    // Invalid URL format
+                    return
+                }
+                
+                guard scheme == "widget" else {
+                    // The deep link is not trigger by widget
+                    return
+                }
+                
+                switch host {
+                case "sos":
+                    withAnimation{
+                        if !timerManager.isActivated && !buttonLocked{
+                            print("Bottone attivato")
+                            buttonTapped = true
+                            TapAnimation()
+    //                        print("Before calling sendPushNotification()")
+                            sendPushNotificationsForSavedTokens()
+    //                        print("After calling sendPushNotification()")
+                            withAnimation{
+                                timerManager.Activation()
+                                timerManager.CircleAnimation()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                timerManager.canCancel = true
+                            }
+                        } else {
+                            if timerManager.canCancel{
+                                timerManager.stopTimer()
+                                print("Bottone disattivato")
+                                timerManager.Activation()
+                                timerManager.showMark = true
+                                timerManager.canCancel = false
+                                buttonLocked = true
+                                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                    buttonLocked = false
+                                }
+                                
+                            }
+                        }
+                    }
+                default:
+                    break
+                }
+            }
+            .onTapGesture {
                 withAnimation{
                     if !timerManager.isActivated && !buttonLocked{
                         print("Bottone attivato")
                         buttonTapped = true
                         TapAnimation()
-                        print("Before calling sendPushNotification()")
+//                        print("Before calling sendPushNotification()")
                         sendPushNotificationsForSavedTokens()
-                        print("After calling sendPushNotification()")
+//                        print("After calling sendPushNotification()")
                         withAnimation{
                             timerManager.Activation()
                             timerManager.CircleAnimation()
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                        DispatchQueue.main.asyncAfter(deadline: .now()) {
                             timerManager.canCancel = true
                         }
                     } else {
@@ -386,7 +436,7 @@ struct TimerView: View {
                             timerManager.showMark = true
                             timerManager.canCancel = false
                             buttonLocked = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            DispatchQueue.main.asyncAfter(deadline: .now()) {
                                 buttonLocked = false
                             }
                             

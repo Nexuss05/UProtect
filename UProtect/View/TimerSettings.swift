@@ -35,13 +35,13 @@ struct GoalView: View {
                 switch newMode {
                 case 1:
                     cont = 180
-                    print("Lightly selected")
+//                    print("Lightly selected")
                 case 2:
                     cont = 300
-                    print("Moderately selected")
+//                    print("Moderately selected")
                 case 3:
                     cont = 540
-                    print("Highly selected")
+//                    print("Highly selected")
                 default:
                     break
                 }

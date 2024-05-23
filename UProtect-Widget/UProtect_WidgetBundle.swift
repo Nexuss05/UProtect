@@ -10,8 +10,9 @@ import SwiftUI
 
 @main
 struct UProtect_WidgetBundle: WidgetBundle {
+//    @WidgetBundleBuilder
     var body: some Widget {
-        UProtect_Widget()
-        UProtect_WidgetLiveActivity()
+        // Utilizza il widget personalizzato
+        CustomWidget()
     }
 }

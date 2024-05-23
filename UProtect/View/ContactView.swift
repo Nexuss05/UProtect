@@ -74,7 +74,7 @@ struct ContactsView: View {
     func removeContact(_ contact: SerializableContact) {
         if let index = selectedContacts.firstIndex(of: contact) {
             selectedContacts.remove(at: index)
-            print(index)
+//            print(index)
             // Remove contact from UserDefaults
             let encoder = JSONEncoder()
             if let encoded = try? encoder.encode(selectedContacts) {
@@ -83,7 +83,7 @@ struct ContactsView: View {
             //            UserDefaults.standard.removeObject(forKey: "token")
             if var tokens = UserDefaults.standard.array(forKey: "tokens") as? [String] {
                 if index < tokens.count {
-                    print(tokens)
+//                    print(tokens)
                     tokens.remove(at: index)
                     UserDefaults.standard.set(tokens, forKey: "tokens")
                 }
@@ -143,7 +143,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Failed to find user's location: \(error.localizedDescription)")
+//        print("Failed to find user's location: \(error.localizedDescription)")
     }
 }
 

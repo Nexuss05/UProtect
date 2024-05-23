@@ -26,9 +26,7 @@
 		C27795DA2BFCB5590034981F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795D92BFCB5590034981F /* WidgetKit.framework */; };
 		C27795DC2BFCB5590034981F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795DB2BFCB5590034981F /* SwiftUI.framework */; };
 		C27795DF2BFCB5590034981F /* UProtect_WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27795DE2BFCB5590034981F /* UProtect_WidgetBundle.swift */; };
-		C27795E12BFCB5590034981F /* UProtect_WidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27795E02BFCB5590034981F /* UProtect_WidgetLiveActivity.swift */; };
 		C27795E32BFCB5590034981F /* UProtect_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27795E22BFCB5590034981F /* UProtect_Widget.swift */; };
-		C27795E52BFCB5590034981F /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27795E42BFCB5590034981F /* AppIntent.swift */; };
 		C27795E72BFCB55A0034981F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27795E62BFCB55A0034981F /* Assets.xcassets */; };
 		C27795EB2BFCB55A0034981F /* UProtect-WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD12BEB7FE400733211 /* ContactView.swift */; };
@@ -95,13 +93,12 @@
 		C233DA9F2BEE1B72000072C4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		C25CE9C02BFF524D008CE99A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C25CE9C72BFFCC72008CE99A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "UProtect-WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27795D92BFCB5590034981F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		C27795DB2BFCB5590034981F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C27795DE2BFCB5590034981F /* UProtect_WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect_WidgetBundle.swift; sourceTree = "<group>"; };
-		C27795E02BFCB5590034981F /* UProtect_WidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect_WidgetLiveActivity.swift; sourceTree = "<group>"; };
 		C27795E22BFCB5590034981F /* UProtect_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect_Widget.swift; sourceTree = "<group>"; };
-		C27795E42BFCB5590034981F /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		C27795E62BFCB55A0034981F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C27795E82BFCB55A0034981F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2893DD12BEB7FE400733211 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
@@ -115,7 +112,6 @@
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
 		E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
-		E0D1D9CC2BFD196400506367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E0EAD06E2BFDFFDA006753F5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		E0EAD0742BFE5530006753F5 /* UProtect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,7 +164,7 @@
 		C21DD83C2BE4D471003EB614 /* UProtect */ = {
 			isa = PBXGroup;
 			children = (
-				E0D1D9CC2BFD196400506367 /* Info.plist */,
+				C25CE9C72BFFCC72008CE99A /* Info.plist */,
 				C25CE9C02BFF524D008CE99A /* GoogleService-Info.plist */,
 				C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */,
 				9995E0C62BECBD6C0001B309 /* UProtect.entitlements */,
@@ -232,9 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				C27795DE2BFCB5590034981F /* UProtect_WidgetBundle.swift */,
-				C27795E02BFCB5590034981F /* UProtect_WidgetLiveActivity.swift */,
 				C27795E22BFCB5590034981F /* UProtect_Widget.swift */,
-				C27795E42BFCB5590034981F /* AppIntent.swift */,
 				C27795E62BFCB55A0034981F /* Assets.xcassets */,
 				C27795E82BFCB55A0034981F /* Info.plist */,
 			);
@@ -396,8 +390,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C27795E32BFCB5590034981F /* UProtect_Widget.swift in Sources */,
-				C27795E52BFCB5590034981F /* AppIntent.swift in Sources */,
-				C27795E12BFCB5590034981F /* UProtect_WidgetLiveActivity.swift in Sources */,
 				C27795DF2BFCB5590034981F /* UProtect_WidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

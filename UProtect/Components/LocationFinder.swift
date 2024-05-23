@@ -83,7 +83,7 @@ struct LocationFinder: View {
                 allResults.append(contentsOf: results)
                 //                print(results)
             } catch {
-                print("Error getting results for keyword \(keyword): \(error)")
+//                print("Error getting results for keyword \(keyword): \(error)")
             }
         }
         allResults.sort { location1, location2 in
