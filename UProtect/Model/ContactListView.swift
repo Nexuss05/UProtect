@@ -56,6 +56,8 @@ struct ContactsPicker: UIViewControllerRepresentable {
 class Coordinator: NSObject, CNContactPickerDelegate {
     
     @StateObject private var vm = CloudViewModel()
+    @StateObject private var locationManager = LocationManager()
+    
     @Environment(\.modelContext) var modelContext
     
     let parent: ContactsPicker
@@ -65,6 +67,31 @@ class Coordinator: NSObject, CNContactPickerDelegate {
     }
     
     var tokens: [String] = []
+    
+    func getCountryPhonePrefix() -> String {
+        guard let countryCode = Locale.current.region?.identifier else {
+            return ""
+        }
+        switch countryCode {
+        case "IT":
+            return "+39"
+        case "US":
+            return "+1"
+        default:
+            return ""
+        }
+    }
+    
+    func formatPhoneNumber(_ phoneNumber: String?) -> String {
+        guard let phoneNumber = phoneNumber else { return "" }
+        let prefix = getCountryPhonePrefix()
+        
+        if phoneNumber.hasPrefix(prefix) {
+            return phoneNumber
+        } else {
+            return "\(prefix)\(phoneNumber)"
+        }
+    }
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contacts: [CNContact]) {
         let serializableContacts = contacts.map { SerializableContact(contact: $0) }
@@ -77,7 +104,13 @@ class Coordinator: NSObject, CNContactPickerDelegate {
             let phoneNumberWithoutSpaces = contact.phoneNumber.replacingOccurrences(of: " ", with: "")
             print(phoneNumberWithoutSpaces)
             
-            vm.fetchToken(number: phoneNumberWithoutSpaces) { token in
+            var formattedPhoneNumber = phoneNumberWithoutSpaces
+            if !phoneNumberWithoutSpaces.hasPrefix("+") {
+                formattedPhoneNumber = formatPhoneNumber(phoneNumberWithoutSpaces)
+            }
+            print(formattedPhoneNumber)
+            
+            vm.fetchToken(number: formattedPhoneNumber) { token in
                 if let token = token {
                     print("FCM Token: \(token)")
                     self.tokens.append(token)

@@ -9,6 +9,7 @@ import Foundation
 import CloudKit
 import SwiftData
 import SwiftUI
+import FirebaseAuth
 
 struct UserModel: Hashable{
     let name: String
@@ -38,6 +39,31 @@ class CloudViewModel: ObservableObject{
         }
     }
     
+    func getCountryPhonePrefix() -> String {
+        guard let countryCode = Locale.current.region?.identifier else {
+            return ""
+        }
+        switch countryCode {
+        case "IT":
+            return "+39"
+        case "US":
+            return "+1"
+        default:
+            return ""
+        }
+    }
+    
+    func formatPhoneNumber(_ phoneNumber: String?) -> String {
+        guard let phoneNumber = phoneNumber else { return "" }
+        let prefix = getCountryPhonePrefix()
+        
+        if phoneNumber.hasPrefix(prefix) {
+            return phoneNumber
+        } else {
+            return "\(prefix)\(phoneNumber)"
+        }
+    }
+    
     //    func addButtonPressed() {
     //        getUserRecordID { userRecordID, error in
     //            if let userRecordID = userRecordID {
@@ -50,13 +76,19 @@ class CloudViewModel: ObservableObject{
     //    }
     
     func addButtonPressed() {
-        fetchNumber(number: self.numero) { isNumberPresent in
+        var formattedPhoneNumber = self.numero
+        if !self.numero.hasPrefix("+") {
+            formattedPhoneNumber = formatPhoneNumber(self.numero)
+        }
+        print(formattedPhoneNumber)
+        
+        fetchNumber(number: formattedPhoneNumber) { isNumberPresent in
             if isNumberPresent {
                 print("Number is already present in the database.")
             } else {
                 self.getUserRecordID { userRecordID, error in
                     if let userRecordID = userRecordID {
-                        self.addItem(name: self.nome, surname: self.cognome, number: self.numero, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
+                        self.addItem(name: self.nome, surname: self.cognome, number: formattedPhoneNumber, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
                     } else {
                         print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
                     }
@@ -321,16 +353,22 @@ class CloudViewModel: ObservableObject{
         }
     }
 
-    func handleLogin(number: String) {
+    func handleLogin(number: String, completion: @escaping () -> Void) {
         let currentToken = UserDefaults.standard.string(forKey: "fcmToken")
         
-        fetchToken(number: number) { fetchedToken in
+        var formattedPhoneNumber = number
+        if number.hasPrefix("+") {
+            formattedPhoneNumber = formatPhoneNumber(number)
+        }
+        print(formattedPhoneNumber)
+        
+        fetchToken(number: formattedPhoneNumber) { fetchedToken in
             if let fetchedToken = fetchedToken {
                 if fetchedToken != currentToken {
                     self.getUserRecordID { userRecordID, error in
                         if let userRecordID = userRecordID {
                             if let currentToken = currentToken {
-                                self.updateItem(number: number, token: currentToken, recipientID: userRecordID.recordName)
+                                self.updateItem(number: formattedPhoneNumber, token: currentToken, recipientID: userRecordID.recordName)
                             }
                         } else {
                             print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
@@ -343,5 +381,22 @@ class CloudViewModel: ObservableObject{
                 print("No token found for the given number")
             }
         }
+        
+        print("Attempting to verify phone number: \(formattedPhoneNumber)")
+            
+            let phoneAuthProvider = PhoneAuthProvider.provider()
+            phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+                if let error = error {
+                    print("Error during phone verification: \(error.localizedDescription)")
+                    return
+                }
+                print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
+                // Store the verificationID for later use (e.g., in UserDefaults or a property)
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                completion()
+            }
+        
+        
+        
     }
 }

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct LogInView: View {
     @State var isShowingRec: Bool = false
+    @State var isShowingOtp: Bool = false
     
+    @ObservedObject var timerManager: TimerManager
     @StateObject private var vm = CloudViewModel()
     
     var body: some View {
@@ -45,21 +47,28 @@ struct LogInView: View {
                 }) {
                     Text("Already have an account?")
                 }
-                Button(action: {vm.handleLogin(number: vm.numero)}, label: {
+                Button{
+                    vm.handleLogin(number: vm.numero) {
+                        isShowingOtp = true
+                    }
+                }label:{
                     Text("Button")
-                }).padding(.top, 30)
+                }
             }
             
-        }.preferredColorScheme(.light)
-            .fullScreenCover(isPresented: $isShowingRec, content: {
-                RegistrationView()
-            })
+        }.fullScreenCover(isPresented: $isShowingRec, content: {
+            RegistrationView(timerManager: timerManager)
+        })
+        .fullScreenCover(isPresented: $isShowingOtp, content: {
+            OtpFormFieldView(timerManager: timerManager)
+        })
     }
 }
 
 struct RegistrationView: View {
     @State var isShowingLogin: Bool = false
     
+    @ObservedObject var timerManager: TimerManager
     @StateObject private var vm = CloudViewModel()
     
     var body: some View {
@@ -131,11 +140,18 @@ struct RegistrationView: View {
             
         }.preferredColorScheme(.light)
             .fullScreenCover(isPresented: $isShowingLogin, content: {
-                LogInView()
+                LogInView(timerManager: timerManager)
             })
     }
 }
 
-#Preview {
-    RegistrationView()
+//#Preview {
+//    RegistrationView()
+//}
+
+struct ContentView_Previews5: PreviewProvider {
+    static var previews: some View {
+        let timerManager = TimerManager()
+        return RegistrationView(timerManager: timerManager)
+    }
 }

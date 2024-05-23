@@ -43,6 +43,9 @@
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
 		E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */; };
+		E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD06E2BFDFFDA006753F5 /* Controller.swift */; };
+		E0EAD0732BFE0432006753F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0EAD0722BFE0432006753F5 /* GoogleService-Info.plist */; };
+		E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD0742BFE5530006753F5 /* UProtect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,16 @@
 				C27795EB2BFCB55A0034981F /* UProtect-WidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0EAD08B2BFF338A006753F5 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -104,6 +117,9 @@
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
 		E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		E0D1D9CC2BFD196400506367 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E0EAD06E2BFDFFDA006753F5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		E0EAD0722BFE0432006753F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E0EAD0742BFE5530006753F5 /* UProtect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,9 +171,11 @@
 			isa = PBXGroup;
 			children = (
 				E0D1D9CC2BFD196400506367 /* Info.plist */,
+				E0EAD0722BFE0432006753F5 /* GoogleService-Info.plist */,
 				C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */,
 				9995E0C62BECBD6C0001B309 /* UProtect.entitlements */,
 				C21DD83D2BE4D471003EB614 /* UProtectApp.swift */,
+				E0EAD0742BFE5530006753F5 /* UProtect.swift */,
 				C2893DD72BEB8C0B00733211 /* Components */,
 				C21DD85C2BE5183A003EB614 /* Model */,
 				C21DD8572BE4E9A4003EB614 /* View */,
@@ -199,6 +217,7 @@
 				C2893DD52BEB8B9600733211 /* Counter.swift */,
 				C233DA9F2BEE1B72000072C4 /* Location.swift */,
 				E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */,
+				E0EAD06E2BFDFFDA006753F5 /* Controller.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,6 +266,7 @@
 				C21DD8372BE4D471003EB614 /* Frameworks */,
 				C21DD8382BE4D471003EB614 /* Resources */,
 				C27795EF2BFCB55A0034981F /* Embed Foundation Extensions */,
+				E0EAD08B2BFF338A006753F5 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -330,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C21DD8452BE4D472003EB614 /* Preview Assets.xcassets in Resources */,
+				E0EAD0732BFE0432006753F5 /* GoogleService-Info.plist in Resources */,
 				C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
 			);
@@ -356,7 +377,9 @@
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
+				E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
+				E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
 				C233DAA02BEE1B72000072C4 /* Location.swift in Sources */,
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
