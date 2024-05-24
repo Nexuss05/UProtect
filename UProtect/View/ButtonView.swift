@@ -141,6 +141,7 @@ struct TimerView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var timerManager: TimerManager
+    @ObservedObject var audioRecorder: AudioRecorder
     @Query var counter: [Counter]
     
     @State var buttonLocked = false
@@ -415,6 +416,9 @@ struct TimerView: View {
             .onTapGesture {
                 withAnimation{
                     if !timerManager.isActivated && !buttonLocked{
+                        if !audioRecorder.recording{
+                            audioRecorder.startRecording()
+                        }
                         print("Bottone attivato")
                         buttonTapped = true
                         TapAnimation()
@@ -430,6 +434,9 @@ struct TimerView: View {
                         }
                     } else {
                         if timerManager.canCancel{
+                            if audioRecorder.recording{
+                                audioRecorder.stopRecording()
+                            }
                             timerManager.stopTimer()
                             print("Bottone disattivato")
                             timerManager.Activation()
@@ -446,6 +453,9 @@ struct TimerView: View {
             }
             .onLongPressGesture{
                 if !timerManager.isActivated && !timerManager.start{
+                    if !audioRecorder.recording{
+                        audioRecorder.startRecording()
+                    }
                     timerManager.isPressed = true
                     timerManager.startTimer()
                     withAnimation{
@@ -491,9 +501,9 @@ struct TimerView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ContentView_Previews67: PreviewProvider {
     static var previews: some View {
         let timerManager = TimerManager()
-        return TimerView(timerManager: timerManager)
+        return TimerView(timerManager: timerManager, audioRecorder: AudioRecorder())
     }
 }

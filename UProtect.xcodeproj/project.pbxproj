@@ -43,6 +43,10 @@
 		E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */; };
 		E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD06E2BFDFFDA006753F5 /* Controller.swift */; };
 		E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD0742BFE5530006753F5 /* UProtect.swift */; };
+		E0EAD0E12BFF5380006753F5 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD0E02BFF5380006753F5 /* RecordingView.swift */; };
+		E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD0E32BFF80A2006753F5 /* AudioRecorder.swift */; };
+		E0EAD0E62BFF823E006753F5 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD0E52BFF823E006753F5 /* AudioPlayer.swift */; };
+		E0EAD0E82BFF82B7006753F5 /* RecordingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD0E72BFF82B7006753F5 /* RecordingList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +118,10 @@
 		E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		E0EAD06E2BFDFFDA006753F5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		E0EAD0742BFE5530006753F5 /* UProtect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect.swift; sourceTree = "<group>"; };
+		E0EAD0E02BFF5380006753F5 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
+		E0EAD0E32BFF80A2006753F5 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		E0EAD0E52BFF823E006753F5 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		E0EAD0E72BFF82B7006753F5 /* RecordingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +206,7 @@
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
 				E092099F2BEBE394005AD0FB /* TimerSettings.swift */,
+				E0EAD0E22BFF804F006753F5 /* Recordings */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -244,6 +253,17 @@
 				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		E0EAD0E22BFF804F006753F5 /* Recordings */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAD0E02BFF5380006753F5 /* RecordingView.swift */,
+				E0EAD0E72BFF82B7006753F5 /* RecordingList.swift */,
+				E0EAD0E32BFF80A2006753F5 /* AudioRecorder.swift */,
+				E0EAD0E52BFF823E006753F5 /* AudioPlayer.swift */,
+			);
+			path = Recordings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +388,8 @@
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
+				E0EAD0E62BFF823E006753F5 /* AudioPlayer.swift in Sources */,
+				E0EAD0E82BFF82B7006753F5 /* RecordingList.swift in Sources */,
 				E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
 				E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */,
@@ -378,7 +400,9 @@
 				C233DAA22BEE1BB3000072C4 /* LocationFinder.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
+				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
+				E0EAD0E12BFF5380006753F5 /* RecordingView.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
 				E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */,
 				E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */,
@@ -540,6 +564,7 @@
 				INFOPLIST_FILE = UProtect/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger.\n";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to find out what's going on around you";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -579,6 +604,7 @@
 				INFOPLIST_FILE = UProtect/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger.\n";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to find out what's going on around you";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

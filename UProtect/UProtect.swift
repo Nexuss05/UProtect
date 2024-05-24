@@ -12,11 +12,12 @@ struct UProtect: View {
     @State var checkWelcomeScreen: Bool = false
     
     @ObservedObject var timerManager: TimerManager
+    @ObservedObject var audioRecorder: AudioRecorder
     
     var body: some View {
         VStack {
             if checkWelcomeScreen {
-                ContentView(timerManager: timerManager)
+                ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
             } else {
                 //
             }

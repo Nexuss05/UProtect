@@ -12,6 +12,7 @@ struct LogInView: View {
     @State var isShowingOtp: Bool = false
     
     @ObservedObject var timerManager: TimerManager
+    @ObservedObject var audioRecorder: AudioRecorder
     @StateObject private var vm = CloudViewModel()
     
     var body: some View {
@@ -57,10 +58,10 @@ struct LogInView: View {
             }
             
         }.fullScreenCover(isPresented: $isShowingRec, content: {
-            RegistrationView(timerManager: timerManager)
+            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder)
         })
         .fullScreenCover(isPresented: $isShowingOtp, content: {
-            OtpFormFieldView(timerManager: timerManager)
+            OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder)
         })
     }
 }
@@ -69,6 +70,7 @@ struct RegistrationView: View {
     @State var isShowingLogin: Bool = false
     
     @ObservedObject var timerManager: TimerManager
+    @ObservedObject var audioRecorder: AudioRecorder
     @StateObject private var vm = CloudViewModel()
     
     var body: some View {
@@ -140,7 +142,7 @@ struct RegistrationView: View {
             
         }.preferredColorScheme(.light)
             .fullScreenCover(isPresented: $isShowingLogin, content: {
-                LogInView(timerManager: timerManager)
+                LogInView(timerManager: timerManager, audioRecorder: audioRecorder)
             })
     }
 }
@@ -152,6 +154,6 @@ struct RegistrationView: View {
 struct ContentView_Previews5: PreviewProvider {
     static var previews: some View {
         let timerManager = TimerManager()
-        return RegistrationView(timerManager: timerManager)
+        return RegistrationView(timerManager: timerManager, audioRecorder: AudioRecorder())
     }
 }

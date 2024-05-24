@@ -13,6 +13,7 @@ struct SettingsView: View {
     @State private var circleColor: Color = UserDefaultsManager.loadCircleColor() ?? Color.red
     @State var url = URL(string: "https://www.iubenda.com/privacy-policy/49969320")
     @Query var userData: [Contacts]
+    @ObservedObject var audioRecorder: AudioRecorder
     
     var body: some View {
         NavigationStack{
@@ -79,7 +80,7 @@ struct SettingsView: View {
                     
                     Section(header: Text("Background Recordings")){
                         NavigationLink {
-                            
+                            RecordingView(audioRecorder: audioRecorder)
                         } label: {
                             Text("Recordings")
                         }
@@ -127,6 +128,8 @@ struct UserDefaultsManager {
     }
 }
 
-#Preview {
-    SettingsView()
+struct ContentView_Previews88: PreviewProvider {
+    static var previews: some View {
+        SettingsView(audioRecorder: AudioRecorder())
+    }
 }

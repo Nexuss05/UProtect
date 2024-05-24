@@ -24,19 +24,21 @@ struct ContentView: View {
     @Namespace private var namespace
     
     @ObservedObject var timerManager: TimerManager
+    @ObservedObject var audioRecorder: AudioRecorder
+    
     
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 switch selectedTab {
                 case .course:
-                    RegistrationView(timerManager: timerManager)
+                    RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder)
                 case .map:
                     Text("Contenuto della mappa")
                         .padding(.top, 100)
                     //                    LocationFinder()
                 case .danger:
-                    TimerView(timerManager: timerManager)
+                    TimerView(timerManager: timerManager, audioRecorder: audioRecorder)
                     //CompleteTimer()
                 case .contact:
                     Text("Contenuto dei contatti")
@@ -48,7 +50,7 @@ struct ContentView: View {
                         }
                     
                 case .settings:
-                    SettingsView()
+                    SettingsView(audioRecorder: audioRecorder)
                 }
             }
             //            .padding()
@@ -138,6 +140,6 @@ enum Tab: Int, Identifiable, CaseIterable, Comparable {
 struct ContentView_Previews3: PreviewProvider {
     static var previews: some View {
         let timerManager = TimerManager()
-        return ContentView(timerManager: timerManager)
+        return ContentView(timerManager: timerManager, audioRecorder: AudioRecorder())
     }
 }
