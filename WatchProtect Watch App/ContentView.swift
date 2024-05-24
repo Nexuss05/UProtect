@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HStack {
-            VStack{
+        VStack {
+            ZStack{
                 Circle()
                     .foregroundColor(.white)
                     .frame(width: 120)
@@ -20,7 +20,7 @@ struct ContentView: View {
                     .foregroundColor(.red)
                     .opacity(1)
             }
-            .offset(CGSize(width: -10, height: 0))
+//            .offset(CGSize(width: -10, height: 0))
             VStack {
                 Text("TAP")
                     .foregroundStyle(.red)
