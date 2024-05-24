@@ -17,6 +17,11 @@
 		C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85D2BE51844003EB614 /* ContactModel.swift */; };
 		C233DAA02BEE1B72000072C4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233DA9F2BEE1B72000072C4 /* Location.swift */; };
 		C233DAA22BEE1BB3000072C4 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */; };
+		C23F9A102C0098C2001FE56F /* WatchProtectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */; };
+		C23F9A122C0098C2001FE56F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23F9A112C0098C2001FE56F /* ContentView.swift */; };
+		C23F9A142C0098C3001FE56F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23F9A132C0098C3001FE56F /* Assets.xcassets */; };
+		C23F9A172C0098C3001FE56F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23F9A162C0098C3001FE56F /* Preview Assets.xcassets */; };
+		C23F9A1A2C0098C3001FE56F /* WatchProtect Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C25CE97C2BFDFC9D008CE99A /* FirebaseAnonymousAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE97B2BFDFC9D008CE99A /* FirebaseAnonymousAuthUI */; };
 		C25CE97E2BFDFC9D008CE99A /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE97D2BFDFC9D008CE99A /* FirebaseAuthUI */; };
 		C25CE9802BFDFC9D008CE99A /* FirebaseDatabaseUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE97F2BFDFC9D008CE99A /* FirebaseDatabaseUI */; };
@@ -50,6 +55,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C23F9A182C0098C3001FE56F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C21DD8322BE4D471003EB614 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C23F9A0C2C0098C2001FE56F;
+			remoteInfo = "WatchProtect Watch App";
+		};
 		C27795E92BFCB55A0034981F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C21DD8322BE4D471003EB614 /* Project object */;
@@ -77,6 +89,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
+				C23F9A1A2C0098C3001FE56F /* WatchProtect Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +109,11 @@
 		C21DD85D2BE51844003EB614 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		C233DA9F2BEE1B72000072C4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
+		C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchProtect Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProtectApp.swift; sourceTree = "<group>"; };
+		C23F9A112C0098C2001FE56F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C23F9A132C0098C3001FE56F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C23F9A162C0098C3001FE56F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C25CE9C02BFF524D008CE99A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C25CE9C72BFFCC72008CE99A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "UProtect-WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +156,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C23F9A0A2C0098C2001FE56F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C27795D42BFCB5590034981F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +180,7 @@
 			children = (
 				C21DD83C2BE4D471003EB614 /* UProtect */,
 				C27795DD2BFCB5590034981F /* UProtect-Widget */,
+				C23F9A0E2C0098C2001FE56F /* WatchProtect Watch App */,
 				C27795D82BFCB5590034981F /* Frameworks */,
 				C21DD83B2BE4D471003EB614 /* Products */,
 			);
@@ -165,6 +191,7 @@
 			children = (
 				C21DD83A2BE4D471003EB614 /* UProtect.app */,
 				C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */,
+				C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,6 +249,25 @@
 				E0EAD06E2BFDFFDA006753F5 /* Controller.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C23F9A0E2C0098C2001FE56F /* WatchProtect Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */,
+				C23F9A112C0098C2001FE56F /* ContentView.swift */,
+				C23F9A132C0098C3001FE56F /* Assets.xcassets */,
+				C23F9A152C0098C3001FE56F /* Preview Content */,
+			);
+			path = "WatchProtect Watch App";
+			sourceTree = "<group>";
+		};
+		C23F9A152C0098C3001FE56F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C23F9A162C0098C3001FE56F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		C27795D82BFCB5590034981F /* Frameworks */ = {
@@ -283,6 +329,7 @@
 			);
 			dependencies = (
 				C27795EA2BFCB55A0034981F /* PBXTargetDependency */,
+				C23F9A192C0098C3001FE56F /* PBXTargetDependency */,
 			);
 			name = UProtect;
 			packageProductDependencies = (
@@ -295,6 +342,23 @@
 			);
 			productName = UProtect;
 			productReference = C21DD83A2BE4D471003EB614 /* UProtect.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C23F9A0C2C0098C2001FE56F /* WatchProtect Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C23F9A1D2C0098C3001FE56F /* Build configuration list for PBXNativeTarget "WatchProtect Watch App" */;
+			buildPhases = (
+				C23F9A092C0098C2001FE56F /* Sources */,
+				C23F9A0A2C0098C2001FE56F /* Frameworks */,
+				C23F9A0B2C0098C2001FE56F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WatchProtect Watch App";
+			productName = "WatchProtect Watch App";
+			productReference = C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C27795D62BFCB5590034981F /* UProtect-WidgetExtension */ = {
@@ -327,6 +391,9 @@
 					C21DD8392BE4D471003EB614 = {
 						CreatedOnToolsVersion = 15.3;
 					};
+					C23F9A0C2C0098C2001FE56F = {
+						CreatedOnToolsVersion = 15.3;
+					};
 					C27795D62BFCB5590034981F = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -351,6 +418,7 @@
 			targets = (
 				C21DD8392BE4D471003EB614 /* UProtect */,
 				C27795D62BFCB5590034981F /* UProtect-WidgetExtension */,
+				C23F9A0C2C0098C2001FE56F /* WatchProtect Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -364,6 +432,15 @@
 				C25CE9C12BFF524D008CE99A /* GoogleService-Info.plist in Resources */,
 				C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C23F9A0B2C0098C2001FE56F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C23F9A172C0098C3001FE56F /* Preview Assets.xcassets in Resources */,
+				C23F9A142C0098C3001FE56F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +486,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C23F9A092C0098C2001FE56F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C23F9A122C0098C2001FE56F /* ContentView.swift in Sources */,
+				C23F9A102C0098C2001FE56F /* WatchProtectApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C27795D32BFCB5590034981F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -421,6 +507,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C23F9A192C0098C3001FE56F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C23F9A0C2C0098C2001FE56F /* WatchProtect Watch App */;
+			targetProxy = C23F9A182C0098C3001FE56F /* PBXContainerItemProxy */;
+		};
 		C27795EA2BFCB55A0034981F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C27795D62BFCB5590034981F /* UProtect-WidgetExtension */;
@@ -628,6 +719,67 @@
 			};
 			name = Release;
 		};
+		C23F9A1B2C0098C3001FE56F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchProtect Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 25V24PM769;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchProtect;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.alessiaprevidente.UProtect;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessiaprevidente.UProtect.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		C23F9A1C2C0098C3001FE56F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchProtect Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 25V24PM769;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchProtect;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.alessiaprevidente.UProtect;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alessiaprevidente.UProtect.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 		C27795ED2BFCB55A0034981F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -700,6 +852,15 @@
 			buildConfigurations = (
 				C21DD8492BE4D472003EB614 /* Debug */,
 				C21DD84A2BE4D472003EB614 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C23F9A1D2C0098C3001FE56F /* Build configuration list for PBXNativeTarget "WatchProtect Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C23F9A1B2C0098C3001FE56F /* Debug */,
+				C23F9A1C2C0098C3001FE56F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

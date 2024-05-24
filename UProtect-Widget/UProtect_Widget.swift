@@ -90,7 +90,7 @@ struct WidgetView: View {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .resizable()
                         .frame(width: 55, height: 50)
-                        .foregroundColor(.orange)
+                        .foregroundColor(.red)
                         .opacity(1)
                 }
             }

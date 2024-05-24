@@ -109,17 +109,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                     UIApplication.shared.registerForRemoteNotifications()
                 }
             } else {
-<<<<<<< Updated upstream
-                //                    print("Permission denied for remote notifications")
-=======
                 print("Permission denied for remote notifications")
->>>>>>> Stashed changes
             }
         }
     }
     
-<<<<<<< Updated upstream
-=======
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -132,6 +126,5 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
->>>>>>> Stashed changes
 }
 
