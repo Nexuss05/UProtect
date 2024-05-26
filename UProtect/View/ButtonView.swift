@@ -5,11 +5,10 @@
 //  Created by Simone Sarnataro on 21/05/24.
 //
 
-import Foundation
 import SwiftUI
 import SwiftJWT
 import SwiftData
-import Combine
+import UserNotifications
 
 struct MyClaims: Claims {
     let iss: String
@@ -36,7 +35,7 @@ class TimerManager: ObservableObject {
     private var timer: Timer?
     @State var dismissTimer: Timer?
     
-    @State var timeDelay = 0
+    @Published var leftTime: Date = Date()
     
     init() {
         updateCountFromLastCounter()
@@ -58,11 +57,12 @@ class TimerManager: ObservableObject {
     
     private func timerTick() {
         guard count > 0 else {
+            self.notify()
             stopTimer()
             showAlert = true
             dismissTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
                 if !self.start{
-//                    print("Popup alert ignored for 10 seconds")
+                    print("Popup alert ignored for 10 seconds")
                     self.showAlert = false
                     self.showMark = true
                     self.CircleAnimation()
@@ -72,7 +72,32 @@ class TimerManager: ObservableObject {
             return
         }
         count -= 1
-//        print("\(count)")
+        print("\(count)")
+    }
+    
+    func resetView() {
+        stopTimer()
+        showAlert = true
+        dismissTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
+            if !self.start {
+                print("Popup alert ignored for 10 seconds")
+                self.showAlert = false
+                self.showMark = true
+                self.CircleAnimation()
+                self.circleOpacity = true
+            }
+        }
+    }
+    
+    private func notify(){
+        let content = UNMutableNotificationContent()
+        content.title = "Timer"
+        content.subtitle = "Torna nell'app per disattivare lo stato dall'erta"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: "MSG", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     var rotationAngle: Angle {
@@ -191,7 +216,6 @@ struct TimerView: View {
             
             let signedJWT = try jwt.sign(using: jwtSigner)
             tokenAPNS = signedJWT
-            //            print(token)
         } catch {
             tokenAPNS = "Errore nella generazione del token: \(error.localizedDescription)"
         }
@@ -203,7 +227,7 @@ struct TimerView: View {
                 sendPushNotification(token: token)
             }
         } else {
-//            print("Nessun token salvato in UserDefaults.")
+            print("Nessun token salvato in UserDefaults.")
         }
     }
     
@@ -227,13 +251,13 @@ struct TimerView: View {
         """
         
         guard let data = content.data(using: .utf8) else {
-//            print("Errore nella creazione dei dati del payload della notifica")
+            print("Errore nella creazione dei dati del payload della notifica")
             return
         }
         
         let urlString = "https://api.development.push.apple.com/3/device/\(token)"
         guard let url = URL(string: urlString) else {
-//            print("URL non valido")
+            print("URL non valido")
             return
         }
         
@@ -248,32 +272,31 @@ struct TimerView: View {
         request.addValue("0", forHTTPHeaderField: "apns-expiration")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        // Create URLSession
         let session = URLSession(configuration: .default)
         
-//        print("Sending push notification for token: \(token)...")
-//        print("Request Headers:")
+        print("Sending push notification for token: \(token)...")
+        print("Request Headers:")
         for (key, value) in request.allHTTPHeaderFields ?? [:] {
-//            print("\(key): \(value)")
+            print("\(key): \(value)")
         }
-//        print("Request Body:")
+        print("Request Body:")
         if let body = request.httpBody {
-//            print(String(data: body, encoding: .utf8) ?? "")
+            print(String(data: body, encoding: .utf8) ?? "")
         }
         
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
-//                print("Errore nell'invio della notifica push per il token \(token):", error)
+                print("Errore nell'invio della notifica push per il token \(token):", error)
                 return
             }
             
             if let httpResponse = response as? HTTPURLResponse {
-//                print("Risposta dalla richiesta di invio della notifica push per il token \(token):", httpResponse.statusCode)
+                print("Risposta dalla richiesta di invio della notifica push per il token \(token):", httpResponse.statusCode)
                 
                 if let responseData = data {
-//                    print("Dati ricevuti:", String(data: responseData, encoding: .utf8) ?? "Nessun dato ricevuto")
+                    print("Dati ricevuti:", String(data: responseData, encoding: .utf8) ?? "Nessun dato ricevuto")
                 } else {
-//                    print("Nessun dato ricevuto")
+                    print("Nessun dato ricevuto")
                 }
             }
         }
@@ -353,7 +376,7 @@ struct TimerView: View {
                 Image(systemName: "exclamationmark.triangle.fill")
                     .resizable()
                     .frame(width: 75, height: 70)
-                    .foregroundColor(!timerManager.isActivated ? .orange : .red)
+                    .foregroundColor(!timerManager.isActivated ? CustomColor.orange : CustomColor.redBackground)
                     .opacity(timerManager.showMark ? 1 : 0)
                     .opacity(withAnimation{buttonTapped ? 0.2 : 1})
                 Text("\(timerManager.formattedTime)")
@@ -368,12 +391,10 @@ struct TimerView: View {
                 guard
                     let scheme = url.scheme,
                     let host = url.host else {
-                    // Invalid URL format
                     return
                 }
                 
                 guard scheme == "widget" else {
-                    // The deep link is not trigger by widget
                     return
                 }
                 
@@ -384,9 +405,9 @@ struct TimerView: View {
                             print("Bottone attivato")
                             buttonTapped = true
                             TapAnimation()
-    //                        print("Before calling sendPushNotification()")
+                            print("Before calling sendPushNotification()")
                             sendPushNotificationsForSavedTokens()
-    //                        print("After calling sendPushNotification()")
+                            print("After calling sendPushNotification()")
                             withAnimation{
                                 timerManager.Activation()
                                 timerManager.CircleAnimation()
@@ -422,9 +443,9 @@ struct TimerView: View {
                         print("Bottone attivato")
                         buttonTapped = true
                         TapAnimation()
-//                        print("Before calling sendPushNotification()")
+                        print("Before calling sendPushNotification()")
                         sendPushNotificationsForSavedTokens()
-//                        print("After calling sendPushNotification()")
+                        print("After calling sendPushNotification()")
                         withAnimation{
                             timerManager.Activation()
                             timerManager.CircleAnimation()
@@ -432,8 +453,12 @@ struct TimerView: View {
                         DispatchQueue.main.asyncAfter(deadline: .now()) {
                             timerManager.canCancel = true
                         }
+                        buttonLocked = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                            buttonLocked = false
+                        }
                     } else {
-                        if timerManager.canCancel{
+                        if timerManager.canCancel && !buttonLocked{
                             if audioRecorder.recording{
                                 audioRecorder.stopRecording()
                             }
@@ -442,10 +467,6 @@ struct TimerView: View {
                             timerManager.Activation()
                             timerManager.showMark = true
                             timerManager.canCancel = false
-                            buttonLocked = true
-                            DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                buttonLocked = false
-                            }
                             
                         }
                     }

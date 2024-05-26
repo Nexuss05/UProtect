@@ -15,14 +15,22 @@
 			</array>
 		</dict>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>UProtect</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>app-1-637672640578-ios-e94a188c4f8b5f827edddb</string>
+			</array>
 		</dict>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>audio</string>
 		<string>fetch</string>
 		<string>processing</string>
+		<string>remote-notification</string>
 	</array>
 </dict>
 </plist>

@@ -19,30 +19,31 @@ struct UProtectApp: App {
     @StateObject var timerManager = TimerManager()
     @StateObject var audioRecorder = AudioRecorder()
     
+    @Environment (\.scenePhase) var scene
     var body: some Scene {
         WindowGroup {
             ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
                 .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
-//                .onOpenURL { url in
-//                    guard
-//                        let scheme = url.scheme,
-//                        let host = url.host else {
-//                        // Invalid URL format
-//                        return
-//                    }
-//                    
-//                    guard scheme == "widget" else {
-//                        // The deep link is not trigger by widget
-//                        return
-//                    }
-//                    
-//                    switch host {
-//                    case "sos":
-//                        timerManager.Activation()
-//                    default:
-//                        break
-//                    }
-//                }
+            //                .onOpenURL { url in
+            //                    guard
+            //                        let scheme = url.scheme,
+            //                        let host = url.host else {
+            //                        // Invalid URL format
+            //                        return
+            //                    }
+            //
+            //                    guard scheme == "widget" else {
+            //                        // The deep link is not trigger by widget
+            //                        return
+            //                    }
+            //
+            //                    switch host {
+            //                    case "sos":
+            //                        timerManager.Activation()
+            //                    default:
+            //                        break
+            //                    }
+            //                }
         }.modelContainer(for: [Counter.self, Contacts.self])
     }
     
@@ -125,6 +126,5 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
+    
 }
-

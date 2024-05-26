@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct WatchProtect_Watch_AppApp: App {
+    
+    @StateObject var timerManager = TimerManager()
+    @StateObject var audioRecorder = AudioRecorder()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
         }
     }
 }
