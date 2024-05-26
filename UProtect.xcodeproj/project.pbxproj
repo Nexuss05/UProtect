@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		999499F92C03B7B50074604F /* Study.json in Resources */ = {isa = PBXBuildFile; fileRef = 999499F82C03B7B50074604F /* Study.json */; };
+		999499FB2C03B7D90074604F /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999499FA2C03B7D90074604F /* LottieView.swift */; };
 		99DC37EE2C03B5B700A2804E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 99DC37ED2C03B5B700A2804E /* Lottie */; };
+		99DC37F02C03B65200A2804E /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC37EF2C03B65200A2804E /* CoursesView.swift */; };
 		C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD83D2BE4D471003EB614 /* UProtectApp.swift */; };
 		C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD83F2BE4D471003EB614 /* ContentView.swift */; };
 		C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21DD8412BE4D472003EB614 /* Assets.xcassets */; };
@@ -103,7 +106,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		999499F82C03B7B50074604F /* Study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Study.json; sourceTree = "<group>"; };
+		999499FA2C03B7D90074604F /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		9995E0C62BECBD6C0001B309 /* UProtect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UProtect.entitlements; sourceTree = "<group>"; };
+		99DC37EF2C03B65200A2804E /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
 		C21DD83A2BE4D471003EB614 /* UProtect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UProtect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21DD83D2BE4D471003EB614 /* UProtectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtectApp.swift; sourceTree = "<group>"; };
 		C21DD83F2BE4D471003EB614 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -184,9 +190,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		999499F72C03B79C0074604F /* Lotties */ = {
+			isa = PBXGroup;
+			children = (
+				999499F82C03B7B50074604F /* Study.json */,
+			);
+			path = Lotties;
+			sourceTree = "<group>";
+		};
 		C21DD8312BE4D471003EB614 = {
 			isa = PBXGroup;
 			children = (
+				999499F72C03B79C0074604F /* Lotties */,
 				C21DD83C2BE4D471003EB614 /* UProtect */,
 				C27795DD2BFCB5590034981F /* UProtect-Widget */,
 				C23F9A0E2C0098C2001FE56F /* WatchProtect Watch App */,
@@ -236,7 +251,9 @@
 		C21DD8572BE4E9A4003EB614 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				999499FA2C03B7D90074604F /* LottieView.swift */,
 				E0B954212C00E21100EBCD81 /* Onboarding.swift */,
+				99DC37EF2C03B65200A2804E /* CoursesView.swift */,
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
 				E0456A462BF8F342002B514F /* otpView.swift */,
 				E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */,
@@ -446,6 +463,7 @@
 				C21DD8452BE4D472003EB614 /* Preview Assets.xcassets in Resources */,
 				C25CE9C12BFF524D008CE99A /* GoogleService-Info.plist in Resources */,
 				C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */,
+				999499F92C03B7B50074604F /* Study.json in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +504,7 @@
 				E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
 				E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */,
+				999499FB2C03B7D90074604F /* LottieView.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
 				C233DAA02BEE1B72000072C4 /* Location.swift in Sources */,
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
@@ -501,6 +520,7 @@
 				E0B954222C00E21100EBCD81 /* Onboarding.swift in Sources */,
 				E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */,
 				E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */,
+				99DC37F02C03B65200A2804E /* CoursesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

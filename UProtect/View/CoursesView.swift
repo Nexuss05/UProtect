@@ -1,3 +1,10 @@
+//
+//  CoursesView.swift
+//  UProtect
+//
+//  Created by Andrea Romano on 26/05/24.
+//
+
 import SwiftUI
 
 class Course: Identifiable, ObservableObject {
