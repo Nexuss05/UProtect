@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		99DC37EE2C03B5B700A2804E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 99DC37ED2C03B5B700A2804E /* Lottie */; };
+		99DC37E32C01EF5D00A2804E /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC37E22C01EF5D00A2804E /* CoursesView.swift */; };
+		99DC37E62C025C0900A2804E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 99DC37E52C025C0900A2804E /* Lottie */; };
+		99DC37E92C03AC8E00A2804E /* Study.json in Resources */ = {isa = PBXBuildFile; fileRef = 99DC37E82C03AC8E00A2804E /* Study.json */; };
+		99DC37EB2C03AD0900A2804E /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DC37EA2C03AD0900A2804E /* LottieView.swift */; };
 		C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD83D2BE4D471003EB614 /* UProtectApp.swift */; };
 		C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD83F2BE4D471003EB614 /* ContentView.swift */; };
 		C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21DD8412BE4D472003EB614 /* Assets.xcassets */; };
@@ -23,8 +26,11 @@
 		C23F9A142C0098C3001FE56F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23F9A132C0098C3001FE56F /* Assets.xcassets */; };
 		C23F9A172C0098C3001FE56F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23F9A162C0098C3001FE56F /* Preview Assets.xcassets */; };
 		C23F9A1A2C0098C3001FE56F /* WatchProtect Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C25CE97C2BFDFC9D008CE99A /* FirebaseAnonymousAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE97B2BFDFC9D008CE99A /* FirebaseAnonymousAuthUI */; };
 		C25CE97E2BFDFC9D008CE99A /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE97D2BFDFC9D008CE99A /* FirebaseAuthUI */; };
+		C25CE9802BFDFC9D008CE99A /* FirebaseDatabaseUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE97F2BFDFC9D008CE99A /* FirebaseDatabaseUI */; };
 		C25CE9822BFDFC9D008CE99A /* FirebasePhoneAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE9812BFDFC9D008CE99A /* FirebasePhoneAuthUI */; };
+		C25CE9842BFDFC9D008CE99A /* FirebaseStorageUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE9832BFDFC9D008CE99A /* FirebaseStorageUI */; };
 		C25CE9C12BFF524D008CE99A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25CE9C02BFF524D008CE99A /* GoogleService-Info.plist */; };
 		C27795DA2BFCB5590034981F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795D92BFCB5590034981F /* WidgetKit.framework */; };
 		C27795DC2BFCB5590034981F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795DB2BFCB5590034981F /* SwiftUI.framework */; };
@@ -43,14 +49,6 @@
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
-		E0B954222C00E21100EBCD81 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B954212C00E21100EBCD81 /* Onboarding.swift */; };
-		E0B954242C00E33F00EBCD81 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B954232C00E33F00EBCD81 /* PageControl.swift */; };
-		E0B954262C01EBB800EBCD81 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */; };
-		E0B954282C01EC9B00EBCD81 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = E0B954272C01EC9B00EBCD81 /* SwiftJWT */; };
-		E0B954292C01ED0000EBCD81 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD52BEB8B9600733211 /* Counter.swift */; };
-		E0B9542A2C01ED1700EBCD81 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD0E32BFF80A2006753F5 /* AudioRecorder.swift */; };
-		E0B9542B2C01ED2400EBCD81 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD82BEB8C1900733211 /* RingView.swift */; };
-		E0B9542C2C01EF5100EBCD81 /* AuthKey_ZX5LJY8598.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */; };
 		E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */; };
 		E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD06E2BFDFFDA006753F5 /* Controller.swift */; };
 		E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD0742BFE5530006753F5 /* UProtect.swift */; };
@@ -104,6 +102,9 @@
 
 /* Begin PBXFileReference section */
 		9995E0C62BECBD6C0001B309 /* UProtect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UProtect.entitlements; sourceTree = "<group>"; };
+		99DC37E22C01EF5D00A2804E /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
+		99DC37E82C03AC8E00A2804E /* Study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Study.json; sourceTree = "<group>"; };
+		99DC37EA2C03AD0900A2804E /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		C21DD83A2BE4D471003EB614 /* UProtect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UProtect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21DD83D2BE4D471003EB614 /* UProtectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtectApp.swift; sourceTree = "<group>"; };
 		C21DD83F2BE4D471003EB614 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -139,10 +140,6 @@
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
-		E0B954212C00E21100EBCD81 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		E0B954232C00E33F00EBCD81 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
-		E0B9542D2C01F55000EBCD81 /* WatchProtect-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchProtect-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
-		E0B9542E2C01F5B000EBCD81 /* WatchProtect Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchProtect Watch App.entitlements"; sourceTree = "<group>"; };
 		E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		E0EAD06E2BFDFFDA006753F5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		E0EAD0742BFE5530006753F5 /* UProtect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect.swift; sourceTree = "<group>"; };
@@ -158,9 +155,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C293A8992BF36C740008F1F8 /* SwiftJWT in Frameworks */,
+				99DC37E62C025C0900A2804E /* Lottie in Frameworks */,
 				C25CE97E2BFDFC9D008CE99A /* FirebaseAuthUI in Frameworks */,
 				C25CE9822BFDFC9D008CE99A /* FirebasePhoneAuthUI in Frameworks */,
-				99DC37EE2C03B5B700A2804E /* Lottie in Frameworks */,
+				C25CE9802BFDFC9D008CE99A /* FirebaseDatabaseUI in Frameworks */,
+				C25CE97C2BFDFC9D008CE99A /* FirebaseAnonymousAuthUI in Frameworks */,
+				C25CE9842BFDFC9D008CE99A /* FirebaseStorageUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +168,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0B954282C01EC9B00EBCD81 /* SwiftJWT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +183,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99DC37E72C025CC100A2804E /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				99DC37E82C03AC8E00A2804E /* Study.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		C21DD8312BE4D471003EB614 = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +215,7 @@
 		C21DD83C2BE4D471003EB614 /* UProtect */ = {
 			isa = PBXGroup;
 			children = (
+				99DC37E72C025CC100A2804E /* Lottie */,
 				C25CE9C72BFFCC72008CE99A /* Info.plist */,
 				C25CE9C02BFF524D008CE99A /* GoogleService-Info.plist */,
 				C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */,
@@ -236,8 +244,9 @@
 		C21DD8572BE4E9A4003EB614 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E0B954212C00E21100EBCD81 /* Onboarding.swift */,
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
+				99DC37EA2C03AD0900A2804E /* LottieView.swift */,
+				99DC37E22C01EF5D00A2804E /* CoursesView.swift */,
 				E0456A462BF8F342002B514F /* otpView.swift */,
 				E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */,
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
@@ -264,8 +273,6 @@
 		C23F9A0E2C0098C2001FE56F /* WatchProtect Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				E0B9542E2C01F5B000EBCD81 /* WatchProtect Watch App.entitlements */,
-				E0B9542D2C01F55000EBCD81 /* WatchProtect-Watch-App-Info.plist */,
 				C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */,
 				C23F9A112C0098C2001FE56F /* ContentView.swift */,
 				C23F9A132C0098C3001FE56F /* Assets.xcassets */,
@@ -309,7 +316,6 @@
 				E09209992BEBE2B0005AD0FB /* TimeCounter.swift */,
 				C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */,
 				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
-				E0B954232C00E33F00EBCD81 /* PageControl.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -347,9 +353,12 @@
 			name = UProtect;
 			packageProductDependencies = (
 				C293A8982BF36C740008F1F8 /* SwiftJWT */,
+				C25CE97B2BFDFC9D008CE99A /* FirebaseAnonymousAuthUI */,
 				C25CE97D2BFDFC9D008CE99A /* FirebaseAuthUI */,
+				C25CE97F2BFDFC9D008CE99A /* FirebaseDatabaseUI */,
 				C25CE9812BFDFC9D008CE99A /* FirebasePhoneAuthUI */,
-				99DC37ED2C03B5B700A2804E /* Lottie */,
+				C25CE9832BFDFC9D008CE99A /* FirebaseStorageUI */,
+				99DC37E52C025C0900A2804E /* Lottie */,
 			);
 			productName = UProtect;
 			productReference = C21DD83A2BE4D471003EB614 /* UProtect.app */;
@@ -368,9 +377,6 @@
 			dependencies = (
 			);
 			name = "WatchProtect Watch App";
-			packageProductDependencies = (
-				E0B954272C01EC9B00EBCD81 /* SwiftJWT */,
-			);
 			productName = "WatchProtect Watch App";
 			productReference = C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */;
 			productType = "com.apple.product-type.application";
@@ -425,7 +431,7 @@
 			packageReferences = (
 				C293A8972BF36C740008F1F8 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 				C25CE97A2BFDFC9D008CE99A /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
-				99DC37EC2C03B5B700A2804E /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				99DC37E42C025C0900A2804E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = C21DD83B2BE4D471003EB614 /* Products */;
 			projectDirPath = "";
@@ -446,6 +452,7 @@
 				C21DD8452BE4D472003EB614 /* Preview Assets.xcassets in Resources */,
 				C25CE9C12BFF524D008CE99A /* GoogleService-Info.plist in Resources */,
 				C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */,
+				99DC37E92C03AC8E00A2804E /* Study.json in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,7 +462,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C23F9A172C0098C3001FE56F /* Preview Assets.xcassets in Resources */,
-				E0B9542C2C01EF5100EBCD81 /* AuthKey_ZX5LJY8598.p8 in Resources */,
 				C23F9A142C0098C3001FE56F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,14 +497,14 @@
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
 				C2893DD62BEB8B9600733211 /* Counter.swift in Sources */,
 				C233DAA22BEE1BB3000072C4 /* LocationFinder.swift in Sources */,
-				E0B954242C00E33F00EBCD81 /* PageControl.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
 				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 				E0EAD0E12BFF5380006753F5 /* RecordingView.swift in Sources */,
+				99DC37EB2C03AD0900A2804E /* LottieView.swift in Sources */,
+				99DC37E32C01EF5D00A2804E /* CoursesView.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
-				E0B954222C00E21100EBCD81 /* Onboarding.swift in Sources */,
 				E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */,
 				E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */,
 			);
@@ -508,12 +514,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0B9542B2C01ED2400EBCD81 /* RingView.swift in Sources */,
-				E0B954292C01ED0000EBCD81 /* Counter.swift in Sources */,
 				C23F9A122C0098C2001FE56F /* ContentView.swift in Sources */,
 				C23F9A102C0098C2001FE56F /* WatchProtectApp.swift in Sources */,
-				E0B954262C01EBB800EBCD81 /* ButtonView.swift in Sources */,
-				E0B9542A2C01ED1700EBCD81 /* AudioRecorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,7 +685,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -724,7 +725,6 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -748,16 +748,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "WatchProtect Watch App/WatchProtect Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchProtect Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 25V24PM769;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchProtect;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to the microphone to record audio";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.alessiaprevidente.UProtect;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -781,7 +778,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "WatchProtect Watch App/WatchProtect Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -789,9 +785,7 @@
 				DEVELOPMENT_TEAM = 25V24PM769;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchProtect;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to the microphone to record audio";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.alessiaprevidente.UProtect;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -822,7 +816,6 @@
 				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -851,7 +844,6 @@
 				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -909,7 +901,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		99DC37EC2C03B5B700A2804E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		99DC37E42C025C0900A2804E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
@@ -936,27 +928,37 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		99DC37ED2C03B5B700A2804E /* Lottie */ = {
+		99DC37E52C025C0900A2804E /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 99DC37EC2C03B5B700A2804E /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 99DC37E42C025C0900A2804E /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		C25CE97B2BFDFC9D008CE99A /* FirebaseAnonymousAuthUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C25CE97A2BFDFC9D008CE99A /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseAnonymousAuthUI;
 		};
 		C25CE97D2BFDFC9D008CE99A /* FirebaseAuthUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C25CE97A2BFDFC9D008CE99A /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
 			productName = FirebaseAuthUI;
 		};
+		C25CE97F2BFDFC9D008CE99A /* FirebaseDatabaseUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C25CE97A2BFDFC9D008CE99A /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseDatabaseUI;
+		};
 		C25CE9812BFDFC9D008CE99A /* FirebasePhoneAuthUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C25CE97A2BFDFC9D008CE99A /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
 			productName = FirebasePhoneAuthUI;
 		};
-		C293A8982BF36C740008F1F8 /* SwiftJWT */ = {
+		C25CE9832BFDFC9D008CE99A /* FirebaseStorageUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C293A8972BF36C740008F1F8 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
-			productName = SwiftJWT;
+			package = C25CE97A2BFDFC9D008CE99A /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseStorageUI;
 		};
-		E0B954272C01EC9B00EBCD81 /* SwiftJWT */ = {
+		C293A8982BF36C740008F1F8 /* SwiftJWT */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C293A8972BF36C740008F1F8 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
 			productName = SwiftJWT;
