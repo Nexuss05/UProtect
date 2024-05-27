@@ -2,8 +2,8 @@ import SwiftUI
 
 struct GoalView: View {
     
-    @Environment(\.modelContext) var modelContext
-    @Environment(\.dismiss) var dismiss
+//    @Environment(\.modelContext) var modelContext
+//    @Environment(\.dismiss) var dismiss
     
     @State var num = 1
     @State var cont = 180
@@ -20,7 +20,7 @@ struct GoalView: View {
                 Text("Set a custom timer to notify your emergency contacts exactly after the amount of time that most fits your needs.")
                     .font(.headline)
                     .fontWeight(.regular)
-                    .frame(width: 330)
+                    .frame(width: 330, height: 90)
             }.multilineTextAlignment(.center)
             
             Picker(selection: $selectedMode, label: Text("Mode")) {
@@ -30,7 +30,8 @@ struct GoalView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .frame(width: 310)
-            .padding(.vertical, 30)
+            .padding(.top, 30)
+            .padding(.bottom, 80)
             .onChange(of: selectedMode) { newMode, _ in
                 switch newMode {
                 case 1:
@@ -58,12 +59,12 @@ struct GoalView: View {
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
             }
-            .padding(.top, 150)
-            .padding(.bottom, 140)
+            .padding(.top, 90)
+            .padding(.bottom, 50)
             .onTapGesture {
-                modelContext.insert(Counter(counter: cont))
-                isShowingMain.toggle()
-                dismiss()
+//                modelContext.insert(Counter(counter: cont))
+//                isShowingMain.toggle()
+//                dismiss()
             }
             .accessibilityElement(children: .combine)
             .accessibilityAddTraits(.isButton)

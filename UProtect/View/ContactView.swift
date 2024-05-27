@@ -19,51 +19,95 @@ struct ContactsView: View {
     @StateObject private var locationManager = LocationManager()
     
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
+    @State private var contactColors: [SerializableContact: Color] = [:]
+    
+    func generateInitial(givenName: String) -> String {
+        let givenInitial = givenName.first ?? Character("")
+        return "\(givenInitial)"
+    }
+    
+    func generateRandomColor() -> Color {
+        return Color(
+            red: Double.random(in: 0...1),
+            green: Double.random(in: 0...1),
+            blue: Double.random(in: 0...1)
+        )
+    }
+    
+    func assignColors() {
+        for contact in selectedContacts {
+            if contactColors[contact] == nil {
+                contactColors[contact] = generateRandomColor()
+            }
+        }
+    }
     
     var body: some View {
-        VStack {
-            Button("Seleziona contatti") {
-                self.isShowingContactsPicker.toggle()
-            }
-            
-            ForEach(selectedContacts, id: \.self) { contact in
-                HStack {
-                    Text("\(contact.givenName) \(contact.familyName):  \(contact.phoneNumber)")
-                    Spacer()
-                    Button(action: {
-                        removeContact(contact)
-                    }) {
-                        Image(systemName: "trash")
+        NavigationView{
+            VStack {
+                List{
+                    ForEach(selectedContacts, id: \.self) { contact in
+                        //                        Text("\(contact.givenName) \(contact.familyName):  \(contact.phoneNumber)")
+                        HStack(spacing: 25.0) {
+                            ZStack {
+                                Circle()
+                                    .fill(contactColors[contact] ?? .black)
+                                    .frame(width: 35, height: 35)
+                                Text("\(generateInitial(givenName: contact.givenName))")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                            }.accessibilityHidden(true)
+                            VStack(alignment: .leading, spacing: -2.0){
+                                Text("\(contact.givenName) \(contact.familyName)")
+                                    .fontWeight(.medium)
+                                Text("\(contact.phoneNumber)")
+                                    .font(.subheadline)
+                            }
+                        }
+                    }.onDelete(perform: deleteContact)
+                } .navigationTitle("Contacts")
+                    .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("Invia messaggi") {
+                                guard !selectedContacts.isEmpty else {
+                                    return // Non fare nulla se non ci sono contatti selezionati
+                                }
+                                let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
+                                vonage.sendSMS(to: phoneNumbers, from: "UProtect", text: "SONO IN PERICOLO, PISCT SOTT") { result in
+                                    switch result {
+                                    case .success:
+                                        self.showAlert = true
+                                        self.alertMessage = "SMS inviato con successo!"
+                                        print("SMS inviato con successo")
+                                        // Puoi aggiungere qui un'azione in caso di successo
+                                    case .failure(let error):
+                                        self.showAlert = true
+                                        self.alertMessage = "Errore durante l'invio dell'SMS: \(error.localizedDescription)"
+                                        print("Errore durante l'invio dell'SMS: \(error)")
+                                        // Puoi gestire qui gli errori durante l'invio dell'SMS
+                                    }
+                                }
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                self.isShowingContactsPicker.toggle()
+                            }) {
+                                Image(systemName: "plus")
+                                    .foregroundColor(CustomColor.orange)
+                            }
+                        }
                     }
-                }
             }
-            
-            Button("Invia messaggi") {
-                guard !selectedContacts.isEmpty else {
-                    return // Non fare nulla se non ci sono contatti selezionati
-                }
-                let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
-                vonage.sendSMS(to: phoneNumbers, from: "UProtect", text: "SONO IN PERICOLO, PISCT SOTT") { result in
-                    switch result {
-                    case .success:
-                        self.showAlert = true
-                        self.alertMessage = "SMS inviato con successo!"
-                        print("SMS inviato con successo")
-                        // Puoi aggiungere qui un'azione in caso di successo
-                    case .failure(let error):
-                        self.showAlert = true
-                        self.alertMessage = "Errore durante l'invio dell'SMS: \(error.localizedDescription)"
-                        print("Errore durante l'invio dell'SMS: \(error)")
-                        // Puoi gestire qui gli errori durante l'invio dell'SMS
-                    }
-                }
-            }
+        }.onAppear{
+            assignColors()
         }
     }
     func formatPhoneNumber(_ phoneNumber: String?) -> String {
         guard let phoneNumber = phoneNumber else { return "" }
         let prefix = getCountryPhonePrefix()
-        
+        assignColors()
         // Controllo se il numero di telefono inizia già con il prefisso
         if phoneNumber.hasPrefix(prefix) {
             return phoneNumber
@@ -71,10 +115,18 @@ struct ContactsView: View {
             return "\(prefix)\(phoneNumber)"
         }
     }
+    
+    func deleteContact(at offsets: IndexSet) {
+        for index in offsets {
+            removeContact(selectedContacts[index])
+        }
+    }
+    
+    
     func removeContact(_ contact: SerializableContact) {
         if let index = selectedContacts.firstIndex(of: contact) {
             selectedContacts.remove(at: index)
-//            print(index)
+            //            print(index)
             // Remove contact from UserDefaults
             let encoder = JSONEncoder()
             if let encoded = try? encoder.encode(selectedContacts) {
@@ -83,7 +135,7 @@ struct ContactsView: View {
             //            UserDefaults.standard.removeObject(forKey: "token")
             if var tokens = UserDefaults.standard.array(forKey: "tokens") as? [String] {
                 if index < tokens.count {
-//                    print(tokens)
+                    //                    print(tokens)
                     tokens.remove(at: index)
                     UserDefaults.standard.set(tokens, forKey: "tokens")
                 }
@@ -143,9 +195,39 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//        print("Failed to find user's location: \(error.localizedDescription)")
+        //        print("Failed to find user's location: \(error.localizedDescription)")
     }
 }
+
+
+struct ContactsView_Previews: PreviewProvider {
+    @State static var selectedContacts = [
+        SerializableContact(contact: {
+            let contact = CNMutableContact()
+            contact.givenName = "Mario"
+            contact.familyName = "Rossi"
+            contact.phoneNumbers = [CNLabeledValue(
+                label: CNLabelPhoneNumberMobile,
+                value: CNPhoneNumber(stringValue: "1234567890")
+            )]
+            return contact
+        }())
+    ]
+    @State static var isShowingContactsPicker = false
+    @State static var showAlert = false
+    @State static var alertMessage = ""
+    
+    static var previews: some View {
+        ContactsView(
+            selectedContacts: $selectedContacts,
+            isShowingContactsPicker: $isShowingContactsPicker,
+            showAlert: $showAlert,
+            alertMessage: $alertMessage
+        )
+    }
+}
+
+
 
 /*
  ESTERNO AL BODY

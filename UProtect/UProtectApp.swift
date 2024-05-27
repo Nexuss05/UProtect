@@ -22,6 +22,7 @@ struct UProtectApp: App {
     @Environment (\.scenePhase) var scene
     var body: some Scene {
         WindowGroup {
+//            UProtect(timerManager: timerManager, audioRecorder: timerManager)
             ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
                 .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
             //                .onOpenURL { url in

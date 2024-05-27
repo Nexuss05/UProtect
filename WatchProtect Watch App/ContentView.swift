@@ -186,9 +186,9 @@ struct ContentView: View {
         }.onTapGesture {
             withAnimation{
                 if !timerManager.isActivated && !buttonLocked{
-                    if !audioRecorder.recording{
-                        audioRecorder.startRecording()
-                    }
+//                    if !audioRecorder.recording{
+//                        audioRecorder.startRecording()
+//                    }
                     buttonPressed()
                     print("Bottone attivato")
                     buttonTapped = true
@@ -210,9 +210,9 @@ struct ContentView: View {
                     }
                 } else {
                     if timerManager.canCancel && !buttonLocked{
-                        if !audioRecorder.recording{
-                            audioRecorder.startRecording()
-                        }
+//                        if !audioRecorder.recording{
+//                            audioRecorder.startRecording()
+//                        }
                         timerManager.stopTimer()
                         print("Bottone disattivato")
                         timerManager.Activation()

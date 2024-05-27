@@ -27,6 +27,9 @@ class CloudViewModel: ObservableObject{
     @Published var utente: [UserModel] = []
     @Published var token: [String] = []
     
+    @Published var firstName: String = "Nome"
+    @Published var lastName: String = "Cognome"
+    
     @Environment(\.modelContext) var modelContext
     
     var fcmToken: String? {
@@ -171,7 +174,7 @@ class CloudViewModel: ObservableObject{
         }
         
         queryOperation.queryResultBlock = { returnedResult in
-//            print("Returned ResultBlock: \(returnedResult)")
+            //            print("Returned ResultBlock: \(returnedResult)")
             DispatchQueue.main.async {
                 completion(fcmToken)
             }
@@ -302,23 +305,23 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-//    private func updateItem(number: String, token: String, recipientID: String) {
-//        let predicate = NSPredicate(format: "number == %@", number)
-//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-//        
-//        CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
-//            if let error = error {
-//                print("Error querying records: \(error.localizedDescription)")
-//            } else if let records = records, !records.isEmpty {
-//                let recordToUpdate = records[0]
-//                recordToUpdate["token"] = token
-//                self.saveItem(record: recordToUpdate)
-//            } else {
-//                print("No record found with the provided number")
-//            }
-//        }
-//    }
-//    
+    //    private func updateItem(number: String, token: String, recipientID: String) {
+    //        let predicate = NSPredicate(format: "number == %@", number)
+    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+    //
+    //        CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
+    //            if let error = error {
+    //                print("Error querying records: \(error.localizedDescription)")
+    //            } else if let records = records, !records.isEmpty {
+    //                let recordToUpdate = records[0]
+    //                recordToUpdate["token"] = token
+    //                self.saveItem(record: recordToUpdate)
+    //            } else {
+    //                print("No record found with the provided number")
+    //            }
+    //        }
+    //    }
+    //
     private func updateItem(number: String, token: String, recipientID: String) {
         let predicate = NSPredicate(format: "number == %@", number)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
@@ -352,7 +355,7 @@ class CloudViewModel: ObservableObject{
             }
         }
     }
-
+    
     func handleLogin(number: String, completion: @escaping () -> Void) {
         let currentToken = UserDefaults.standard.string(forKey: "fcmToken")
         
@@ -383,19 +386,55 @@ class CloudViewModel: ObservableObject{
         }
         
         print("Attempting to verify phone number: \(formattedPhoneNumber)")
-            
-            let phoneAuthProvider = PhoneAuthProvider.provider()
-            phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
-                if let error = error {
-                    print("Error during phone verification: \(error.localizedDescription)")
-                    return
-                }
-                print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
-                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                completion()
+        
+        let phoneAuthProvider = PhoneAuthProvider.provider()
+        phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+            if let error = error {
+                print("Error during phone verification: \(error.localizedDescription)")
+                return
             }
-        
-        
-        
+            print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
+            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+            completion()
+        }
     }
+    
+    func fetchUserInfo(number: String, completion: @escaping (String?, String?, Error?) -> Void) {
+        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                if let firstName = record["name"] as? String, let lastName = record["surname"] as? String {
+                    DispatchQueue.main.async {
+                        completion(firstName, lastName, nil)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(nil, nil, NSError(domain: "fetchUserInfo", code: 404, userInfo: [NSLocalizedDescriptionKey: "Nome o cognome non trovati"]))
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    completion(nil, nil, error)
+                }
+            }
+        }
+        
+        queryOperation.queryResultBlock = { returnedResult in
+            if case .failure(let error) = returnedResult {
+                DispatchQueue.main.async {
+                    completion(nil, nil, error)
+                }
+            }
+        }
+        
+        addOperation(operation: queryOperation)
+    }
+
+    
 }

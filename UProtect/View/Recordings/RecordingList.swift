@@ -20,15 +20,23 @@ struct RecordingsList: View {
     }
     
     var body: some View {
-        VStack {
-            SearchBar(text: $searchText)
-            List {
-                ForEach(filteredRecordings, id: \.createdAt) { recording in
-                    RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder)
-                }
-                .onDelete(perform: delete)
+        NavigationView{
+            
+            ZStack {
+                Color.clear
+                VStack {
+                    SearchBar(text: $searchText)
+                    List {
+                        ForEach(filteredRecordings, id: \.createdAt) { recording in
+                            RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder)
+                        }
+                        .onDelete(perform: delete)
+                    }/*.navigationTitle("Recordings")*/
+                        .background(CustomColor.orangeBackground)
+                        .scrollContentBackground(.hidden)
+                }/*.navigationBarHidden(true)*/
             }
-        }
+        }.ignoresSafeArea()
     }
     
     func delete(at offsets: IndexSet) {
@@ -57,30 +65,6 @@ struct RecordingRow: View {
         }
         rootViewController.present(activityViewController, animated: true, completion: nil)
     }
-    
-    func saveToDevice() {
-        let task = URLSession.shared.downloadTask(with: audioURL) { localURL, _, error in
-            guard let localURL = localURL, error == nil else {
-                print("Errore durante il download dell'audio: \(error?.localizedDescription ?? "Errore sconosciuto")")
-                return
-            }
-            
-            do {
-                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .short, timeStyle: .short)
-                    .replacingOccurrences(of: "/", with: "-")
-                    .replacingOccurrences(of: ",", with: "")
-                    .replacingOccurrences(of: " ", with: "_at_")
-                let savedURL = documentsURL.appendingPathComponent("\(timestamp).m4a")
-                try FileManager.default.moveItem(at: localURL, to: savedURL)
-                print("Audio salvato in: \(savedURL)")
-            } catch {
-                print("Errore durante il salvataggio dell'audio: \(error)")
-            }
-        }
-        task.resume()
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
@@ -101,11 +85,6 @@ struct RecordingRow: View {
                         share()
                     }) {
                         Label("Share", systemImage: "square.and.arrow.up")
-                    }
-                    Button(action: {
-                        saveToDevice()
-                    }) {
-                        Label("Save", systemImage: "square.and.arrow.down")
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")

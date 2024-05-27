@@ -19,7 +19,7 @@ struct UProtect: View {
             if checkWelcomeScreen {
                 ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
             } else {
-                //
+                WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder)
             }
         }.onAppear {
             checkWelcomeScreen = isWelcomeScreenOver

@@ -14,6 +14,8 @@ struct SettingsView: View {
     @State var url = URL(string: "https://www.iubenda.com/privacy-policy/49969320")
     @Query var userData: [Contacts]
     @ObservedObject var audioRecorder: AudioRecorder
+    @StateObject private var vm = CloudViewModel()
+    let numero = UserDefaults.standard.string(forKey: "phoneNumber") ?? "non disponibile"
     
     var body: some View {
         NavigationStack{
@@ -25,22 +27,18 @@ struct SettingsView: View {
                                 Circle()
                                     .fill(circleColor)
                                     .frame(width: 35, height: 35)
-                                Text("SS")
+                                Text("\(vm.firstName.prefix(1))\(vm.lastName.prefix(1))")
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
-                                //                                Text("SS")
-                                //                                    .fontWeight(.bold)
-                                //                                    .foregroundColor(.white)
                             }.accessibilityHidden(true)
                             VStack(alignment: .leading, spacing: -2.0){
-                                Text("Simone Sarnataro")
+                                Text("\(vm.firstName) \(vm.lastName)")
                                     .fontWeight(.medium)
-                                Text("+39 3716703252")
+                                Text("\(numero)")
                                     .font(.subheadline)
                             }
                         }.accessibilityElement(children: .combine)
                     }
-                    
                     Section(header: Text("System")){
                         NavigationLink {
                             GoalView()
@@ -80,14 +78,22 @@ struct SettingsView: View {
                     
                     Section(header: Text("Background Recordings")){
                         NavigationLink {
-                            RecordingView(audioRecorder: audioRecorder)
+                            RecordingsList(audioRecorder: audioRecorder).ignoresSafeArea()
                         } label: {
                             Text("Recordings")
-                        }
+                        }.navigationViewStyle(StackNavigationViewStyle())
+                    }
+                    
+                    Section(header: Text("Titolo")) {
+                        Text("Onboarding")
+                            .foregroundColor(.primary)
+                        Text("Siri & Shortcuts")
+                            .foregroundColor(.primary)
+                        Text("Widgets")
+                            .foregroundColor(.primary)
                     }
                     
                     Section(header: Text("About")){
-                        
                         ShareLink(item: "https://testflight.apple.com/join/UjB0xSRP")
                             .foregroundColor(.primary)
                         HStack {
@@ -107,6 +113,17 @@ struct SettingsView: View {
                 .navigationTitle("Settings")
                 .background(CustomColor.orangeBackground)
                 .scrollContentBackground(.hidden)
+            }.onAppear {
+                vm.fetchUserInfo(number: numero) { fetchedFirstName, fetchedLastName, error in
+                    DispatchQueue.main.async {
+                        if let fetchedFirstName = fetchedFirstName, let fetchedLastName = fetchedLastName {
+                            self.vm.firstName = fetchedFirstName
+                            self.vm.lastName = fetchedLastName
+                        } else {
+                            print("Error fetching user info: \(error?.localizedDescription ?? "Unknown error")")
+                        }
+                    }
+                }
             }
         }
     }

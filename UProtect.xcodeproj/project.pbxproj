@@ -251,7 +251,6 @@
 		C21DD8572BE4E9A4003EB614 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				999499FA2C03B7D90074604F /* LottieView.swift */,
 				E0B954212C00E21100EBCD81 /* Onboarding.swift */,
 				99DC37EF2C03B65200A2804E /* CoursesView.swift */,
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
@@ -327,6 +326,7 @@
 				C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */,
 				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
 				E0B954232C00E33F00EBCD81 /* PageControl.swift */,
+				999499FA2C03B7D90074604F /* LottieView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";

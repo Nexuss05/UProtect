@@ -42,9 +42,6 @@ struct ContentView: View {
                     TimerView(timerManager: timerManager, audioRecorder: audioRecorder)
                     //CompleteTimer()
                 case .contact:
-                    Text("Contenuto dei contatti")
-                        .padding(.top, 100)
-                    
                     ContactsView(selectedContacts: $selectedContacts, isShowingContactsPicker: $isShowingContactsPicker, showAlert: $showAlert, alertMessage: $alertMessage)
                         .sheet(isPresented: $isShowingContactsPicker) {
                             ContactsPicker(isPresented: self.$isShowingContactsPicker, selectedContacts: self.$selectedContacts)

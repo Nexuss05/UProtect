@@ -115,7 +115,7 @@ struct GoalSelectorView: View {
                     .accessibilityHint("10 seconds more")
             }
         }
-        Text("TIMER TIME")
+        Text("MINUTES:SECONDS")
             .font(.title2)
             .fontWeight(.black)
     }

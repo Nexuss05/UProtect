@@ -32,101 +32,104 @@ struct OtpFormFieldView: View {
     @State var isVerified: Bool = false
     
     var body: some View {
-        VStack {
-            Text("Verify your number")
-                .font(.title2)
-                .fontWeight(.semibold)
-            Text("Enter 6 digit code we'll text you")
-                .font(.caption)
-                .fontWeight(.thin)
-                .padding(.top)
-            
-            HStack(spacing: 10) {
-                TextField("", text: $pinOne)
-                    .modifier(OtpModifier(pin: $pinOne))
-                    .onChange(of: pinOne) { newVal in
-                        if newVal.count == 1 {
-                            pinFocusState = .pinTwo
-                        }
-                    }
-                    .focused($pinFocusState, equals: .pinOne)
-                
-                TextField("", text: $pinTwo)
-                    .modifier(OtpModifier(pin: $pinTwo))
-                    .onChange(of: pinTwo) { newVal in
-                        if newVal.count == 1 {
-                            pinFocusState = .pinThree
-                        } else if newVal.count == 0 {
-                            pinFocusState = .pinOne
-                        }
-                    }
-                    .focused($pinFocusState, equals: .pinTwo)
-                
-                TextField("", text: $pinThree)
-                    .modifier(OtpModifier(pin: $pinThree))
-                    .onChange(of: pinThree) { newVal in
-                        if newVal.count == 1 {
-                            pinFocusState = .pinFour
-                        } else if newVal.count == 0 {
-                            pinFocusState = .pinTwo
-                        }
-                    }
-                    .focused($pinFocusState, equals: .pinThree)
-                
-                TextField("", text: $pinFour)
-                    .modifier(OtpModifier(pin: $pinFour))
-                    .onChange(of: pinFour) { newVal in
-                        if newVal.count == 1 {
-                            pinFocusState = .pinFive
-                        } else if newVal.count == 0 {
-                            pinFocusState = .pinThree
-                        }
-                    }
-                    .focused($pinFocusState, equals: .pinFour)
-                
-                TextField("", text: $pinFive)
-                    .modifier(OtpModifier(pin: $pinFive))
-                    .onChange(of: pinFive) { newVal in
-                        if newVal.count == 1 {
-                            pinFocusState = .pinSix
-                        } else if newVal.count == 0 {
-                            pinFocusState = .pinFour
-                        }
-                    }
-                    .focused($pinFocusState, equals: .pinFive)
-                
-                TextField("", text: $pinSix)
-                    .modifier(OtpModifier(pin: $pinSix))
-                    .onChange(of: pinSix) { newVal in
-                        if newVal.count == 0 {
-                            pinFocusState = .pinFive
-                        }
-                    }
-                    .focused($pinFocusState, equals: .pinSix)
-            }.padding(.bottom)
-            
-            Button(action: {
-                verifyOTP()
-                isWelcomeScreenOver = true
-            }, label: {
-                Spacer()
-                Text("Verify")
-                    .font(.system(.title3, design: .rounded))
+        ZStack {
+            CustomColor.orangeBackground
+            VStack {
+//                Text("Verify your number")
+//                    .font(.title2)
+//                    .fontWeight(.semibold)
+                Text("Enter 6 digit code we'll text you")
+                    .font(.caption)
                     .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                Spacer()
-            })
-            .padding(15)
-            .background(Color.blue)
-            .clipShape(Capsule())
-            .padding()
-        }
-        .onAppear {
-            verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
-        }
-        .fullScreenCover(isPresented: $isVerified, content: {
-            ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
+                    .padding(.top)
+                    .foregroundColor(CustomColor.orange)
+                
+                HStack(spacing: 10) {
+                    TextField("", text: $pinOne)
+                        .modifier(OtpModifier(pin: $pinOne))
+                        .onChange(of: pinOne) { newVal in
+                            if newVal.count == 1 {
+                                pinFocusState = .pinTwo
+                            }
+                        }
+                        .focused($pinFocusState, equals: .pinOne)
+                    
+                    TextField("", text: $pinTwo)
+                        .modifier(OtpModifier(pin: $pinTwo))
+                        .onChange(of: pinTwo) { newVal in
+                            if newVal.count == 1 {
+                                pinFocusState = .pinThree
+                            } else if newVal.count == 0 {
+                                pinFocusState = .pinOne
+                            }
+                        }
+                        .focused($pinFocusState, equals: .pinTwo)
+                    
+                    TextField("", text: $pinThree)
+                        .modifier(OtpModifier(pin: $pinThree))
+                        .onChange(of: pinThree) { newVal in
+                            if newVal.count == 1 {
+                                pinFocusState = .pinFour
+                            } else if newVal.count == 0 {
+                                pinFocusState = .pinTwo
+                            }
+                        }
+                        .focused($pinFocusState, equals: .pinThree)
+                    
+                    TextField("", text: $pinFour)
+                        .modifier(OtpModifier(pin: $pinFour))
+                        .onChange(of: pinFour) { newVal in
+                            if newVal.count == 1 {
+                                pinFocusState = .pinFive
+                            } else if newVal.count == 0 {
+                                pinFocusState = .pinThree
+                            }
+                        }
+                        .focused($pinFocusState, equals: .pinFour)
+                    
+                    TextField("", text: $pinFive)
+                        .modifier(OtpModifier(pin: $pinFive))
+                        .onChange(of: pinFive) { newVal in
+                            if newVal.count == 1 {
+                                pinFocusState = .pinSix
+                            } else if newVal.count == 0 {
+                                pinFocusState = .pinFour
+                            }
+                        }
+                        .focused($pinFocusState, equals: .pinFive)
+                    
+                    TextField("", text: $pinSix)
+                        .modifier(OtpModifier(pin: $pinSix))
+                        .onChange(of: pinSix) { newVal in
+                            if newVal.count == 0 {
+                                pinFocusState = .pinFive
+                            }
+                        }
+                        .focused($pinFocusState, equals: .pinSix)
+                }.padding(.bottom)
+                
+                Button{
+                    verifyOTP()
+                    isWelcomeScreenOver = true
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(CustomColor.orange)
+                            .frame(width: 100, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        Text("Verify")
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+                    }
+                }.padding(.top, 30)
+            }
+            .onAppear {
+                verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
+            }
+            .fullScreenCover(isPresented: $isVerified, content: {
+                ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
         })
+        }.ignoresSafeArea()
+            .preferredColorScheme(.light)
     }
     
     func verifyOTP() {
@@ -167,7 +170,7 @@ struct OtpModifier: ViewModifier {
             .keyboardType(.numberPad)
             .onReceive(pin.publisher.collect()) { _ in limitText(1) }
             .frame(width: 45, height: 45)
-            .background(Color.red.cornerRadius(5))
+            .background(CustomColor.orange.opacity(0.5).cornerRadius(5))
             .background(
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(Color("blueColor"), lineWidth: 2)

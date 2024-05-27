@@ -14,7 +14,7 @@ struct RecordingView: View {
     var body: some View {
         NavigationView {
             VStack {
-                RecordingsList(audioRecorder: audioRecorder)
+//                RecordingsList(audioRecorder: audioRecorder)
                 
 //                if audioRecorder.recording == false {
 //                    Button(action: {self.audioRecorder.startRecording()}) {
