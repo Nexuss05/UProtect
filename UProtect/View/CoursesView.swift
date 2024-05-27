@@ -62,6 +62,8 @@ struct CoursesView: View {
                         }
                         .buttonStyle(PlainButtonStyle()) // To remove the default button style
                     }
+                    Spacer()
+                    .frame(height: 85)
                 }
             }
             .background(Color(UIColor.systemGroupedBackground))
@@ -117,6 +119,7 @@ import SwiftUI
 
 struct CourseDetailView: View {
     @Binding var course: Course
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -129,6 +132,7 @@ struct CourseDetailView: View {
             
             Button(action: {
                 course.progress = 1.0
+                presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Complete")
                     .font(.title2)
