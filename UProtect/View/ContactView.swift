@@ -16,7 +16,7 @@ struct ContactsView: View {
     @Binding var isShowingContactsPicker: Bool
     @Binding var showAlert: Bool
     @Binding var alertMessage: String
-    @StateObject private var locationManager = LocationManager()
+    @Environment(LocationManager.self) var locationManager
     
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var contactColors: [SerializableContact: Color] = [:]
@@ -175,29 +175,29 @@ extension UserDefaults {
         }
     }
 }
-
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private var locationManager = CLLocationManager()
-    @Published var lastKnownLocation: CLLocation?
-    
-    override init() {
-        super.init()
-        locationManager.delegate = self
-    }
-    
-    func requestLocation() {
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        lastKnownLocation = locations.first
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        //        print("Failed to find user's location: \(error.localizedDescription)")
-    }
-}
+//
+//class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+//    private var locationManager = CLLocationManager()
+//    @Published var lastKnownLocation: CLLocation?
+//    
+//    override init() {
+//        super.init()
+//        locationManager.delegate = self
+//    }
+//    
+//    func requestLocation() {
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestLocation()
+//    }
+//    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        lastKnownLocation = locations.first
+//    }
+//    
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//        //        print("Failed to find user's location: \(error.localizedDescription)")
+//    }
+//}
 
 
 struct ContactsView_Previews: PreviewProvider {

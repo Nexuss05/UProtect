@@ -15,7 +15,7 @@ let backgroundColor = Color.init(white: 0.92)
 struct ContentView: View {
     @State private var selectedContacts: [SerializableContact] = UserDefaults.standard.fetchContacts(forKey: "selectedContacts") ?? []
     @State private var isShowingContactsPicker = false
-    @StateObject private var locationManager = LocationManager()
+    @Environment(LocationManager.self) var locationManager
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var showAlert = false
     @State private var alertMessage = ""
@@ -35,9 +35,14 @@ struct ContentView: View {
 //                    RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder)
                     CoursesView()
                 case .map:
-                    Text("Contenuto della mappa")
-                        .padding(.top, 100)
-                    //                    LocationFinder()
+                    if locationManager.isAuthorized{
+                        MapView(selectedPage: .constant(0))
+                    }
+                    else{
+                        Text("position denied")
+                        //TODO:
+                        // aggiungere la view con le indicazioni per cambiare le impostazioni
+                    }
                 case .danger:
                     TimerView(timerManager: timerManager, audioRecorder: audioRecorder)
                     //CompleteTimer()

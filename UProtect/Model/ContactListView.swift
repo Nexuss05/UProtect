@@ -56,7 +56,7 @@ struct ContactsPicker: UIViewControllerRepresentable {
 class Coordinator: NSObject, CNContactPickerDelegate {
     
     @StateObject private var vm = CloudViewModel()
-    @StateObject private var locationManager = LocationManager()
+    @Environment(LocationManager.self) var locationManager
     
     @Environment(\.modelContext) var modelContext
     

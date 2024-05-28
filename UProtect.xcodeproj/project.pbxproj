@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175A0A632C05BD4400101A32 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A622C05BD4400101A32 /* MapView.swift */; };
+		175A0A652C05BD7200101A32 /* FetchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A642C05BD7200101A32 /* FetchLocation.swift */; };
+		175A0A672C05BDB300101A32 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A662C05BDB300101A32 /* LocationManager.swift */; };
 		999499F92C03B7B50074604F /* Study.json in Resources */ = {isa = PBXBuildFile; fileRef = 999499F82C03B7B50074604F /* Study.json */; };
 		999499FB2C03B7D90074604F /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999499FA2C03B7D90074604F /* LottieView.swift */; };
 		99DC37EE2C03B5B700A2804E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 99DC37ED2C03B5B700A2804E /* Lottie */; };
@@ -20,7 +23,6 @@
 		C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85A2BE51306003EB614 /* ContactListView.swift */; };
 		C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85D2BE51844003EB614 /* ContactModel.swift */; };
 		C233DAA02BEE1B72000072C4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233DA9F2BEE1B72000072C4 /* Location.swift */; };
-		C233DAA22BEE1BB3000072C4 /* LocationFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */; };
 		C23F9A102C0098C2001FE56F /* WatchProtectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */; };
 		C23F9A122C0098C2001FE56F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23F9A112C0098C2001FE56F /* ContentView.swift */; };
 		C23F9A142C0098C3001FE56F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23F9A132C0098C3001FE56F /* Assets.xcassets */; };
@@ -106,6 +108,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		175A0A622C05BD4400101A32 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		175A0A642C05BD7200101A32 /* FetchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocation.swift; sourceTree = "<group>"; };
+		175A0A662C05BDB300101A32 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		999499F82C03B7B50074604F /* Study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Study.json; sourceTree = "<group>"; };
 		999499FA2C03B7D90074604F /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		9995E0C62BECBD6C0001B309 /* UProtect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UProtect.entitlements; sourceTree = "<group>"; };
@@ -120,7 +125,6 @@
 		C21DD85A2BE51306003EB614 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		C21DD85D2BE51844003EB614 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		C233DA9F2BEE1B72000072C4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFinder.swift; sourceTree = "<group>"; };
 		C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchProtect Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProtectApp.swift; sourceTree = "<group>"; };
 		C23F9A112C0098C2001FE56F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
 				E092099F2BEBE394005AD0FB /* TimerSettings.swift */,
+				175A0A622C05BD4400101A32 /* MapView.swift */,
+				175A0A642C05BD7200101A32 /* FetchLocation.swift */,
 				E0EAD0E22BFF804F006753F5 /* Recordings */,
 			);
 			path = View;
@@ -271,6 +277,7 @@
 				C21DD85D2BE51844003EB614 /* ContactModel.swift */,
 				C2893DD52BEB8B9600733211 /* Counter.swift */,
 				C233DA9F2BEE1B72000072C4 /* Location.swift */,
+				175A0A662C05BDB300101A32 /* LocationManager.swift */,
 				E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */,
 				E0EAD06E2BFDFFDA006753F5 /* Controller.swift */,
 			);
@@ -323,7 +330,6 @@
 			children = (
 				C2893DD82BEB8C1900733211 /* RingView.swift */,
 				E09209992BEBE2B0005AD0FB /* TimeCounter.swift */,
-				C233DAA12BEE1BB3000072C4 /* LocationFinder.swift */,
 				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
 				E0B954232C00E33F00EBCD81 /* PageControl.swift */,
 				999499FA2C03B7D90074604F /* LottieView.swift */,
@@ -500,16 +506,18 @@
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
 				E0EAD0E62BFF823E006753F5 /* AudioPlayer.swift in Sources */,
+				175A0A672C05BDB300101A32 /* LocationManager.swift in Sources */,
 				E0EAD0E82BFF82B7006753F5 /* RecordingList.swift in Sources */,
 				E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */,
+				175A0A652C05BD7200101A32 /* FetchLocation.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
 				E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */,
 				999499FB2C03B7D90074604F /* LottieView.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
 				C233DAA02BEE1B72000072C4 /* Location.swift in Sources */,
+				175A0A632C05BD4400101A32 /* MapView.swift in Sources */,
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
 				C2893DD62BEB8B9600733211 /* Counter.swift in Sources */,
-				C233DAA22BEE1BB3000072C4 /* LocationFinder.swift in Sources */,
 				E0B954242C00E33F00EBCD81 /* PageControl.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
@@ -697,6 +705,7 @@
 				INFOPLIST_FILE = UProtect/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger.\n";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to find the open places near you";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to find out what's going on around you";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -738,6 +747,7 @@
 				INFOPLIST_FILE = UProtect/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger.\n";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to find the open places near you";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need to find out what's going on around you";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

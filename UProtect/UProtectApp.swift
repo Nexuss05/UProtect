@@ -18,6 +18,7 @@ struct UProtectApp: App {
     
     @StateObject var timerManager = TimerManager()
     @StateObject var audioRecorder = AudioRecorder()
+    @State private var locationManager = LocationManager()
     
     @Environment (\.scenePhase) var scene
     var body: some Scene {
@@ -46,6 +47,7 @@ struct UProtectApp: App {
             //                    }
             //                }
         }.modelContainer(for: [Counter.self, Contacts.self])
+         .environment(locationManager)
     }
     
     //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
