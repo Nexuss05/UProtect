@@ -10,12 +10,7 @@
 		175A0A632C05BD4400101A32 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A622C05BD4400101A32 /* MapView.swift */; };
 		175A0A652C05BD7200101A32 /* FetchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A642C05BD7200101A32 /* FetchLocation.swift */; };
 		175A0A672C05BDB300101A32 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A662C05BDB300101A32 /* LocationManager.swift */; };
-		99525E3A2C05C47B009778B3 /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99525E392C05C47B009778B3 /* CoursesView.swift */; };
 		999499F92C03B7B50074604F /* Study.json in Resources */ = {isa = PBXBuildFile; fileRef = 999499F82C03B7B50074604F /* Study.json */; };
-		99A4525D2C05C582004700FE /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A4525C2C05C582004700FE /* LottieView.swift */; };
-		99A4525F2C05C588004700FE /* LottieView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A4525E2C05C588004700FE /* LottieView2.swift */; };
-		99A452612C05C58D004700FE /* LottieView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A452602C05C58D004700FE /* LottieView3.swift */; };
-		99A452632C05C592004700FE /* LottieView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A452622C05C592004700FE /* LottieView4.swift */; };
 		99A452652C05C5E8004700FE /* Animation - 1716803277345.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452642C05C5E8004700FE /* Animation - 1716803277345.json */; };
 		99A452672C05C5EE004700FE /* Animation - 1716803884547.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452662C05C5EE004700FE /* Animation - 1716803884547.json */; };
 		99A452692C05C5F4004700FE /* Animation - 1716804413916.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452682C05C5F4004700FE /* Animation - 1716804413916.json */; };
@@ -28,6 +23,11 @@
 		C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD8582BE4E9AE003EB614 /* TabBarView.swift */; };
 		C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85A2BE51306003EB614 /* ContactListView.swift */; };
 		C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85D2BE51844003EB614 /* ContactModel.swift */; };
+		C23050482C05C7070056BEAA /* LottieView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23050432C05C7070056BEAA /* LottieView2.swift */; };
+		C23050492C05C7070056BEAA /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23050442C05C7070056BEAA /* CoursesView.swift */; };
+		C230504A2C05C7070056BEAA /* LottieView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23050452C05C7070056BEAA /* LottieView3.swift */; };
+		C230504B2C05C7070056BEAA /* LottieView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23050462C05C7070056BEAA /* LottieView4.swift */; };
+		C230504C2C05C7070056BEAA /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23050472C05C7070056BEAA /* LottieView.swift */; };
 		C233DAA02BEE1B72000072C4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C233DA9F2BEE1B72000072C4 /* Location.swift */; };
 		C23F9A102C0098C2001FE56F /* WatchProtectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */; };
 		C23F9A122C0098C2001FE56F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23F9A112C0098C2001FE56F /* ContentView.swift */; };
@@ -117,13 +117,8 @@
 		175A0A622C05BD4400101A32 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		175A0A642C05BD7200101A32 /* FetchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocation.swift; sourceTree = "<group>"; };
 		175A0A662C05BDB300101A32 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		99525E392C05C47B009778B3 /* CoursesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoursesView.swift; path = "../../../../../../../../Desktop/UProtect copy/View/CoursesView.swift"; sourceTree = "<group>"; };
 		999499F82C03B7B50074604F /* Study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Study.json; sourceTree = "<group>"; };
 		9995E0C62BECBD6C0001B309 /* UProtect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UProtect.entitlements; sourceTree = "<group>"; };
-		99A4525C2C05C582004700FE /* LottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LottieView.swift; path = "../../../../../../../../Desktop/UProtect copy/View/LottieView.swift"; sourceTree = "<group>"; };
-		99A4525E2C05C588004700FE /* LottieView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LottieView2.swift; path = "../../../../../../../../Desktop/UProtect copy/View/LottieView2.swift"; sourceTree = "<group>"; };
-		99A452602C05C58D004700FE /* LottieView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LottieView3.swift; path = "../../../../../../../../Desktop/UProtect copy/View/LottieView3.swift"; sourceTree = "<group>"; };
-		99A452622C05C592004700FE /* LottieView4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LottieView4.swift; path = "../../../../../../../../Desktop/UProtect copy/View/LottieView4.swift"; sourceTree = "<group>"; };
 		99A452642C05C5E8004700FE /* Animation - 1716803277345.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716803277345.json"; sourceTree = "<group>"; };
 		99A452662C05C5EE004700FE /* Animation - 1716803884547.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716803884547.json"; sourceTree = "<group>"; };
 		99A452682C05C5F4004700FE /* Animation - 1716804413916.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716804413916.json"; sourceTree = "<group>"; };
@@ -136,6 +131,11 @@
 		C21DD8582BE4E9AE003EB614 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C21DD85A2BE51306003EB614 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		C21DD85D2BE51844003EB614 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		C23050432C05C7070056BEAA /* LottieView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView2.swift; sourceTree = "<group>"; };
+		C23050442C05C7070056BEAA /* CoursesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
+		C23050452C05C7070056BEAA /* LottieView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView3.swift; sourceTree = "<group>"; };
+		C23050462C05C7070056BEAA /* LottieView4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView4.swift; sourceTree = "<group>"; };
+		C23050472C05C7070056BEAA /* LottieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		C233DA9F2BEE1B72000072C4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchProtect Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProtectApp.swift; sourceTree = "<group>"; };
@@ -271,12 +271,12 @@
 			isa = PBXGroup;
 			children = (
 				E0B954212C00E21100EBCD81 /* Onboarding.swift */,
-				99525E392C05C47B009778B3 /* CoursesView.swift */,
-				99A4525C2C05C582004700FE /* LottieView.swift */,
-				99A4525E2C05C588004700FE /* LottieView2.swift */,
-				99A452602C05C58D004700FE /* LottieView3.swift */,
-				99A452622C05C592004700FE /* LottieView4.swift */,
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
+				C23050442C05C7070056BEAA /* CoursesView.swift */,
+				C23050472C05C7070056BEAA /* LottieView.swift */,
+				C23050432C05C7070056BEAA /* LottieView2.swift */,
+				C23050452C05C7070056BEAA /* LottieView3.swift */,
+				C23050462C05C7070056BEAA /* LottieView4.swift */,
 				E0456A462BF8F342002B514F /* otpView.swift */,
 				E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */,
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
@@ -522,34 +522,34 @@
 			files = (
 				C2893DD92BEB8C1900733211 /* RingView.swift in Sources */,
 				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
-				99A452632C05C592004700FE /* LottieView4.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
 				E0EAD0E62BFF823E006753F5 /* AudioPlayer.swift in Sources */,
-				99A452612C05C58D004700FE /* LottieView3.swift in Sources */,
 				175A0A672C05BDB300101A32 /* LocationManager.swift in Sources */,
 				E0EAD0E82BFF82B7006753F5 /* RecordingList.swift in Sources */,
 				E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */,
-				99A4525F2C05C588004700FE /* LottieView2.swift in Sources */,
 				175A0A652C05BD7200101A32 /* FetchLocation.swift in Sources */,
+				C23050492C05C7070056BEAA /* CoursesView.swift in Sources */,
+				C230504B2C05C7070056BEAA /* LottieView4.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
 				E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
 				C233DAA02BEE1B72000072C4 /* Location.swift in Sources */,
 				175A0A632C05BD4400101A32 /* MapView.swift in Sources */,
-				99A4525D2C05C582004700FE /* LottieView.swift in Sources */,
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
 				C2893DD62BEB8B9600733211 /* Counter.swift in Sources */,
+				C230504C2C05C7070056BEAA /* LottieView.swift in Sources */,
 				E0B954242C00E33F00EBCD81 /* PageControl.swift in Sources */,
-				99525E3A2C05C47B009778B3 /* CoursesView.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
 				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 				E0EAD0E12BFF5380006753F5 /* RecordingView.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
+				C230504A2C05C7070056BEAA /* LottieView3.swift in Sources */,
+				C23050482C05C7070056BEAA /* LottieView2.swift in Sources */,
 				E0B954222C00E21100EBCD81 /* Onboarding.swift in Sources */,
 				E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */,
 				E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */,
