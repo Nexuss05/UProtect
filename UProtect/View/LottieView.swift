@@ -22,18 +22,3 @@ struct LottieView: UIViewRepresentable {
     func updateUIView(_ uiView: Lottie.LottieAnimationView, context: Context) {
     }
 }
-
-struct LottieView2: UIViewRepresentable {
-    let loopmode: LottieLoopMode
-    
-    func makeUIView(context: Context) -> Lottie.LottieAnimationView {
-        
-        let animationView = LottieAnimationView(name: "Study")
-        animationView.play()
-        animationView.loopMode = loopmode
-        return animationView
-    }
-    
-    func updateUIView(_ uiView: Lottie.LottieAnimationView, context: Context) {
-    }
-}
