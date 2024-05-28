@@ -15,7 +15,9 @@ let backgroundColor = Color.init(white: 0.92)
 struct ContentView: View {
     @State private var selectedContacts: [SerializableContact] = UserDefaults.standard.fetchContacts(forKey: "selectedContacts") ?? []
     @State private var isShowingContactsPicker = false
-    @Environment(LocationManager.self) var locationManager
+//    @Environment(LocationManager.self) var locationManager
+    
+    @State var locationManager = LocationManager()
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var showAlert = false
     @State private var alertMessage = ""

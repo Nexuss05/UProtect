@@ -20,6 +20,7 @@ class TimerManager: ObservableObject {
     @Query var counter: [Counter]
     
     @Published var showAlert: Bool = false
+    @State var showingAlert = false
     @Published var isActivated: Bool = false
     @Published var isPressed = false
     @Published var showCircle = false
@@ -27,8 +28,9 @@ class TimerManager: ObservableObject {
     @Published var showMark: Bool = true
     @Published var canCancel: Bool = false
     
+    
     @Published var start = false
-    @Published var count = 300
+    @Published var count = 10
     @Published var to : CGFloat = 0
     @Published var time = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -127,7 +129,7 @@ class TimerManager: ObservableObject {
         if let lastCounter = counter.last {
             count = lastCounter.counter
         } else {
-            count = 300
+            count = 10
         }
     }
     
@@ -163,6 +165,9 @@ class TimerManager: ObservableObject {
 }
 
 struct TimerView: View {
+    
+    @State var showingAlert = false
+    @State var showAlert = false
     
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var timerManager: TimerManager
@@ -442,6 +447,7 @@ struct TimerView: View {
                         }
                         print("Bottone attivato")
                         buttonTapped = true
+                        showingAlert = true
                         TapAnimation()
                         print("Before calling sendPushNotification()")
                         sendPushNotificationsForSavedTokens()
@@ -461,6 +467,7 @@ struct TimerView: View {
                         if timerManager.canCancel && !buttonLocked{
                             if audioRecorder.recording{
                                 audioRecorder.stopRecording()
+                                showingAlert = false
                             }
                             timerManager.stopTimer()
                             print("Bottone disattivato")
@@ -473,6 +480,7 @@ struct TimerView: View {
                 }
             }
             .onLongPressGesture{
+                showingAlert = false
                 if !timerManager.isActivated && !timerManager.start{
                     if !audioRecorder.recording{
                         audioRecorder.startRecording()
@@ -489,12 +497,16 @@ struct TimerView: View {
                 }
                 
             }
-        }.ignoresSafeArea()
+        }
+        .ignoresSafeArea()
             .onAppear{
                 SwapText()
                 generateJWT()
             }
-            .alert(isPresented: $timerManager.showAlert) {
+            .alert("Notification sent!", isPresented: $showingAlert) {
+                Button("OK") { }
+            }
+            .alert(isPresented: $showAlert) {
                 Alert(
                     title: Text("Are you safe?"),
                     primaryButton: .default(
@@ -518,7 +530,6 @@ struct TimerView: View {
                     )
                 )
             }
-        
     }
 }
 

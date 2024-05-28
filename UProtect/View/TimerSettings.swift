@@ -2,8 +2,8 @@ import SwiftUI
 
 struct GoalView: View {
     
-//    @Environment(\.modelContext) var modelContext
-//    @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.dismiss) var dismiss
     
     @State var num = 1
     @State var cont = 180
@@ -62,8 +62,8 @@ struct GoalView: View {
             .padding(.top, 90)
             .padding(.bottom, 50)
             .onTapGesture {
-//                modelContext.insert(Counter(counter: cont))
-//                isShowingMain.toggle()
+                modelContext.insert(Counter(counter: cont))
+                isShowingMain.toggle()
 //                dismiss()
             }
             .accessibilityElement(children: .combine)
