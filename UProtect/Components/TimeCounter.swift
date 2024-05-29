@@ -19,7 +19,7 @@ struct GoalSelectorView: View {
                 if increase {
                     counter += 10
                 } else {
-                    if counter != 0{
+                    if counter != 90{
                         counter -= 10
                     }
                 }
@@ -41,7 +41,7 @@ struct GoalSelectorView: View {
                     counter += 10
                 }
             } else {
-                if counter != 0{
+                if counter != 90{
                     counter -= 10
                 }
             }
@@ -69,7 +69,7 @@ struct GoalSelectorView: View {
                     .foregroundColor(CustomColor.orange)
                     .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .onTapGesture {
-                        if counter != 0{
+                        if counter != 90{
                             self.counter -= 10
                         }
 //                        print(counter)

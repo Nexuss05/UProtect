@@ -6,12 +6,13 @@
 //
 
 import Foundation
-import SwiftUI
 import Combine
 import AVFoundation
 
 class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
+    @Published var playbackProgress: Double = 0.0
+    var timer: Timer?
     let objectWillChange = PassthroughSubject<AudioPlayer, Never>()
     
     var isPlaying = false {
@@ -36,6 +37,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
             audioPlayer.delegate = self
             audioPlayer.play()
             isPlaying = true
+            startTimer()
         } catch {
             print("Playback failed.")
         }
@@ -44,11 +46,31 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     func stopPlayback() {
         audioPlayer.stop()
         isPlaying = false
+        stopTimer()
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if flag {
             isPlaying = false
+            stopTimer()
+            playbackProgress = 0.0
         }
     }
+    
+    private func startTimer() {
+            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+                self.updateProgress()
+//                print(self.playbackProgress)
+            }
+        }
+        
+        private func stopTimer() {
+            timer?.invalidate()
+            timer = nil
+        }
+        
+        private func updateProgress() {
+            guard let player = audioPlayer else { return }
+            playbackProgress = player.currentTime / player.duration
+        }
 }

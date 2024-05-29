@@ -64,16 +64,17 @@ struct WidgetView: View {
                         Circle()
                             .foregroundColor(.white)
                             .frame(width: 120)
+//                            .shadow(color: .gray, radius: 6)
                         Image(systemName: "exclamationmark.triangle.fill")
                             .resizable()
                             .frame(width: 55, height: 50)
-                            .foregroundColor(.red)
+                            .foregroundColor(CustomColor.redBackground)
                             .opacity(1)
                     }
                 .offset(CGSize(width: -10, height: 0))
                 VStack {
                     Text("TAP")
-                        .foregroundStyle(.red)
+                        .foregroundStyle(CustomColor.redBackground)
                         .fontWeight(.bold)
                         .font(.title)
                     Text("to receive help")
@@ -87,18 +88,26 @@ struct WidgetView: View {
                     Circle()
                         .foregroundColor(.white)
                         .frame(width: 120)
+//                        .shadow(color: .gray, radius: 6)
                     Image(systemName: "exclamationmark.triangle.fill")
                         .resizable()
                         .frame(width: 55, height: 50)
-                        .foregroundColor(.red)
+                        .foregroundColor(CustomColor.redBackground)
                         .opacity(1)
                 }
             }
         }
         .widgetURL(URL(string: "widget://sos"))
         //        .background(Color.red) // Modifica il colore di sfondo per il debug
+//        .widgetBackground(CustomColor.orangeBackground)
         .widgetBackground(Color.black)
     }
+}
+
+struct CustomColor {
+    static let orange = Color("CustomOrange")
+    static let orangeBackground = Color("OBackground")
+    static let redBackground = Color("RBackground")
 }
 
 // Aggiunta della struttura PreviewProvider per mostrare un'anteprima del widget
@@ -110,3 +119,4 @@ struct UProtect_Widget_Previews: PreviewProvider {
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
+

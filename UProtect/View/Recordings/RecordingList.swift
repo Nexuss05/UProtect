@@ -21,10 +21,14 @@ struct RecordingsList: View {
     
     var body: some View {
         NavigationView{
-            
             ZStack {
                 Color.clear
-                VStack {
+                VStack(alignment: .leading) {
+                    Text("Recordings")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.leading)
+                        .padding(.bottom, -2.5)
                     SearchBar(text: $searchText)
                     List {
                         ForEach(filteredRecordings, id: \.createdAt) { recording in
@@ -32,9 +36,23 @@ struct RecordingsList: View {
                         }
                         .onDelete(perform: delete)
                     }/*.navigationTitle("Recordings")*/
-                        .background(CustomColor.orangeBackground)
-                        .scrollContentBackground(.hidden)
-                }/*.navigationBarHidden(true)*/
+                    .background(CustomColor.orangeBackground)
+                    .scrollContentBackground(.hidden)
+                    
+                    Button(action: {
+                        audioRecorder.deleteAllRecordings()
+                    }) {
+                        Text("Delete All")
+                            .foregroundColor(.red)
+                            .font(.headline)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                    }
+                    .padding()
+                }
+                .padding(.top, -40)/*.navigationBarHidden(true)*/
             }
         }.ignoresSafeArea()
     }
@@ -47,6 +65,7 @@ struct RecordingsList: View {
         audioRecorder.deleteRecording(urlsToDelete: urlsToDelete)
     }
 }
+
 
 struct RecordingRow: View {
     
@@ -74,11 +93,6 @@ struct RecordingRow: View {
                     Text("\(formattedDate(date: createdAt))")
                         .font(.subheadline)
                 }
-                .onTapGesture {
-                    if !isExpanded {
-                        self.isExpanded.toggle()
-                    }
-                }
                 Spacer()
                 Menu {
                     Button(action: {
@@ -91,15 +105,34 @@ struct RecordingRow: View {
                         .imageScale(.large)
                 }
             }
-            if isExpanded {
-                AudioPlayerView(audioURL: audioURL, audioPlayer: audioPlayer)
-                    .onDisappear {
-                        self.audioPlayer.stopPlayback()
+            HStack{
+                ZStack{
+                    Image(systemName: "play.circle")
+                        .imageScale(.large)
+                        .opacity(0)
+                    if audioPlayer.isPlaying == false {
+                        Button(action: {
+                            self.audioPlayer.startPlayback(audio: self.audioURL)
+                        }) {
+                            Image(systemName: "play.circle")
+                                .imageScale(.large)
+                        }
+                    } else {
+                        Button(action: {
+                            self.audioPlayer.stopPlayback()
+                        }) {
+                            Image(systemName: "stop.fill")
+                                .imageScale(.large)
+                        }
                     }
-            }
-        }
+                }
+                Bar(progress: audioPlayer.playbackProgress)
+                    .frame(height: 5)
+                
+            }.padding(.top)
+        }.frame(height: 100)
     }
-
+    
     func formattedDate(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy, HH:mm"
@@ -148,48 +181,48 @@ struct RecordingRow: View {
 //    }
 //}
 
-struct AudioPlayerView: View {
-    
-    var audioURL: URL
-    @ObservedObject var audioPlayer: AudioPlayer
-    
-    var body: some View {
-        VStack {
-            Text("Timeline Here")
-            HStack {
-                Button(action: {
-                    // Implement logic for rewinding
-                }) {
-                    Image(systemName: "backward.fill")
-                        .imageScale(.large)
-                }
-                Spacer()
-                if audioPlayer.isPlaying == false {
-                    Button(action: {
-                        self.audioPlayer.startPlayback(audio: self.audioURL)
-                    }) {
-                        Image(systemName: "play.circle")
-                            .imageScale(.large)
-                    }
-                } else {
-                    Button(action: {
-                        self.audioPlayer.stopPlayback()
-                    }) {
-                        Image(systemName: "stop.fill")
-                            .imageScale(.large)
-                    }
-                }
-                Spacer()
-                Button(action: {
-                    // Implement logic for fast forwarding
-                }) {
-                    Image(systemName: "forward.fill")
-                        .imageScale(.large)
-                }
-            }
-        }
-    }
-}
+//struct AudioPlayerView: View {
+//    
+//    var audioURL: URL
+//    @ObservedObject var audioPlayer: AudioPlayer
+//    
+//    var body: some View {
+//        VStack {
+//            Text("Timeline Here")
+//            HStack {
+//                Button(action: {
+//                    // Implement logic for rewinding
+//                }) {
+//                    Image(systemName: "backward.fill")
+//                        .imageScale(.large)
+//                }
+//                Spacer()
+//                if audioPlayer.isPlaying == false {
+//                    Button(action: {
+//                        self.audioPlayer.startPlayback(audio: self.audioURL)
+//                    }) {
+//                        Image(systemName: "play.circle")
+//                            .imageScale(.large)
+//                    }
+//                } else {
+//                    Button(action: {
+//                        self.audioPlayer.stopPlayback()
+//                    }) {
+//                        Image(systemName: "stop.fill")
+//                            .imageScale(.large)
+//                    }
+//                }
+//                Spacer()
+//                Button(action: {
+//                    // Implement logic for fast forwarding
+//                }) {
+//                    Image(systemName: "forward.fill")
+//                        .imageScale(.large)
+//                }
+//            }
+//        }
+//    }
+//}
 
 
 struct SearchBar: UIViewRepresentable {
@@ -221,6 +254,26 @@ struct SearchBar: UIViewRepresentable {
     
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
         uiView.text = text
+    }
+}
+
+struct Bar: View {
+    var progress: Double
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .opacity(0.3)
+                    .foregroundColor(.gray)
+                
+                Rectangle()
+                    .frame(width: min(CGFloat(self.progress) * geometry.size.width, geometry.size.width), height: geometry.size.height)
+                    .foregroundColor(CustomColor.orange)
+                    .animation(.linear, value: progress)
+            }.cornerRadius(45.0)
+        }
     }
 }
 

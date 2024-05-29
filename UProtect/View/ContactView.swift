@@ -129,10 +129,10 @@ struct ContactsView: View {
             if let encoded = try? encoder.encode(selectedContacts) {
                 UserDefaults.standard.set(encoded, forKey: "selectedContacts")
             }
-            //            UserDefaults.standard.removeObject(forKey: "token")
+                        UserDefaults.standard.removeObject(forKey: "token")
             if var tokens = UserDefaults.standard.array(forKey: "tokens") as? [String] {
                 if index < tokens.count {
-                    //                    print(tokens)
+                                        print(tokens)
                     tokens.remove(at: index)
                     UserDefaults.standard.set(tokens, forKey: "tokens")
                 }

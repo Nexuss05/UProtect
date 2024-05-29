@@ -63,7 +63,7 @@ struct ContentView: View {
     }
     
     func sendPushNotificationsForSavedTokens() {
-        if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+        if let savedTokens = UserDefaults.standard.stringArray(forKey: "receivedDataFromiPhone") {
             for token in savedTokens {
                 sendPushNotification(token: token)
             }
@@ -186,15 +186,15 @@ struct ContentView: View {
         }.onTapGesture {
             withAnimation{
                 if !timerManager.isActivated && !buttonLocked{
-//                    if !audioRecorder.recording{
-//                        audioRecorder.startRecording()
-//                    }
+                    //                    if !audioRecorder.recording{
+                    //                        audioRecorder.startRecording()
+                    //                    }
                     buttonPressed()
                     print("Bottone attivato")
                     buttonTapped = true
                     TapAnimation()
                     print("Before calling sendPushNotification()")
-//                    sendPushNotification(token: "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0")
+                    //                    sendPushNotification(token: "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0")
                     sendPushNotificationsForSavedTokens()
                     print("After calling sendPushNotification()")
                     withAnimation{
@@ -210,9 +210,9 @@ struct ContentView: View {
                     }
                 } else {
                     if timerManager.canCancel && !buttonLocked{
-//                        if !audioRecorder.recording{
-//                            audioRecorder.startRecording()
-//                        }
+                        //                        if !audioRecorder.recording{
+                        //                            audioRecorder.startRecording()
+                        //                        }
                         timerManager.stopTimer()
                         print("Bottone disattivato")
                         timerManager.Activation()

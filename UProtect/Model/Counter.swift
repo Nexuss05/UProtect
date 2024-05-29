@@ -8,7 +8,8 @@
 import Foundation
 import SwiftData
 
-@Model class Counter{
+@Model 
+final class Counter{
     var counter: Int = 180
     
     init(counter: Int) {
