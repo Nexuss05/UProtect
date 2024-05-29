@@ -460,7 +460,7 @@ struct TimerView: View {
                             timerManager.canCancel = true
                         }
                         buttonLocked = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                        DispatchQueue.main.asyncAfter(deadline: .now()) {
                             buttonLocked = false
                         }
                     } else {
@@ -490,7 +490,7 @@ struct TimerView: View {
                     withAnimation{
                         timerManager.showMark = false
                         timerManager.Activation()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                        DispatchQueue.main.asyncAfter(deadline: .now()) {
                             timerManager.canCancel = true
                         }
                     }

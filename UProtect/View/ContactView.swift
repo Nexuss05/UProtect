@@ -16,7 +16,8 @@ struct ContactsView: View {
     @Binding var isShowingContactsPicker: Bool
     @Binding var showAlert: Bool
     @Binding var alertMessage: String
-    @Environment(LocationManager.self) var locationManager
+//    @Environment(LocationManager.self) var locationManager
+    @State var locationManager = LocationManager()
     
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var contactColors: [SerializableContact: Color] = [:]
@@ -109,11 +110,7 @@ struct ContactsView: View {
         let prefix = getCountryPhonePrefix()
         assignColors()
         // Controllo se il numero di telefono inizia già con il prefisso
-        if phoneNumber.hasPrefix(prefix) {
-            return phoneNumber
-        } else {
-            return "\(prefix)\(phoneNumber)"
-        }
+        return phoneNumber.hasPrefix(prefix) ? phoneNumber : "\(prefix)\(phoneNumber)"
     }
     
     func deleteContact(at offsets: IndexSet) {
@@ -142,6 +139,7 @@ struct ContactsView: View {
             }
         }
     }
+    
     func getCountryPhonePrefix() -> String {
         guard let countryCode = Locale.current.regionCode else {
             return "" // Nessuna posizione disponibile, restituisci una stringa vuota
