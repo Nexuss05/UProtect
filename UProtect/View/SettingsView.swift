@@ -13,6 +13,7 @@ struct SettingsView: View {
     @State private var circleColor: Color = UserDefaultsManager.loadCircleColor() ?? Color.red
     @State var url = URL(string: "https://www.iubenda.com/privacy-policy/49969320")
     @Query var userData: [Contacts]
+    @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
     @StateObject private var vm = CloudViewModel()
     let numero = UserDefaults.standard.string(forKey: "phoneNumber") ?? "non disponibile"
@@ -41,7 +42,7 @@ struct SettingsView: View {
                     }
                     Section(header: Text("System")){
                         NavigationLink {
-                            GoalView()
+                            GoalView(timerManager: timerManager)
                                 .padding(.top, -50)
                         } label: {
                             Text("Change time")
@@ -113,17 +114,6 @@ struct SettingsView: View {
                 .navigationTitle("Settings")
                 .background(CustomColor.orangeBackground)
                 .scrollContentBackground(.hidden)
-            }.onAppear {
-                vm.fetchUserInfo(number: numero) { fetchedFirstName, fetchedLastName, error in
-                    DispatchQueue.main.async {
-                        if let fetchedFirstName = fetchedFirstName, let fetchedLastName = fetchedLastName {
-                            self.vm.firstName = fetchedFirstName
-                            self.vm.lastName = fetchedLastName
-                        } else {
-                            print("Error fetching user info: \(error?.localizedDescription ?? "Unknown error")")
-                        }
-                    }
-                }
             }
         }
     }
@@ -145,8 +135,8 @@ struct UserDefaultsManager {
     }
 }
 
-struct ContentView_Previews88: PreviewProvider {
-    static var previews: some View {
-        SettingsView(audioRecorder: AudioRecorder())
-    }
-}
+//struct ContentView_Previews88: PreviewProvider {
+//    static var previews: some View {
+//        SettingsView(audioRecorder: AudioRecorder())
+//    }
+//}

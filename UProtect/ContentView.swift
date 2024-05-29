@@ -24,7 +24,7 @@ struct ContentView: View {
     
     @State private var selectedTab = 2
     @Namespace private var namespace
-    
+    @StateObject private var vm = CloudViewModel()
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
     
@@ -70,7 +70,7 @@ struct ContentView: View {
                         }
                         .tag(3)
                     
-                    SettingsView(audioRecorder: audioRecorder)
+                    SettingsView(timerManager: timerManager, audioRecorder: audioRecorder)
                         .tabItem {
                             Label("Settings", systemImage: "gear")
                         }
@@ -95,6 +95,9 @@ struct ContentView: View {
             //            )
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Messaggio"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
+            .onAppear{
+                vm.fetchUserInfo()
             }
         }
     }

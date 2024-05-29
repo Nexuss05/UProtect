@@ -15,168 +15,23 @@ struct MyClaims: Claims {
     let iat: Date
 }
 
-class TimerManager: ObservableObject {
-    
-    @Query var counter: [Counter]
-    
-    @Published var showAlert: Bool = false
-    @State var showingAlert = false
-    @Published var isActivated: Bool = false
-    @Published var isPressed = false
-    @Published var showCircle = false
-    @Published var circleOpacity = false
-    @Published var showMark: Bool = true
-    @Published var canCancel: Bool = false
-    
-    
-    @Published var start = false
-    @Published var count = 10
-    @Published var to : CGFloat = 0
-    @Published var time = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
-    private var timer: Timer?
-    @State var dismissTimer: Timer?
-    
-    @Published var leftTime: Date = Date()
-    
-    init() {
-        updateCountFromLastCounter()
-    }
-    
-    func Activation() {
-        isActivated.toggle()
-    }
-    
-    func startTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
-            self.isPressed = false
-            self.start = true
-            self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-                self?.timerTick()
-            }
-        }
-    }
-    
-    private func timerTick() {
-        guard count > 0 else {
-            self.notify()
-            stopTimer()
-            showAlert = true
-            dismissTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
-                if !self.start{
-                    print("Popup alert ignored for 10 seconds")
-                    self.showAlert = false
-                    self.showMark = true
-                    self.CircleAnimation()
-                    self.circleOpacity = true
-                }
-            }
-            return
-        }
-        count -= 1
-        print("\(count)")
-    }
-    
-    func resetView() {
-        stopTimer()
-        showAlert = true
-        dismissTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
-            if !self.start {
-                print("Popup alert ignored for 10 seconds")
-                self.showAlert = false
-                self.showMark = true
-                self.CircleAnimation()
-                self.circleOpacity = true
-            }
-        }
-    }
-    
-    private func notify(){
-        let content = UNMutableNotificationContent()
-        content.title = "Timer"
-        content.subtitle = "Torna nell'app per disattivare lo stato dall'erta"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: "MSG", content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
-    
-    var rotationAngle: Angle {
-        let progress = 1 - to
-        return .degrees(Double(progress) * 360 - 90)
-    }
-    
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
-        start = false
-        updateCountFromLastCounter()
-    }
-    
-    func restartTimer() {
-        stopTimer()
-        startTimer()
-    }
-    
-    var formattedTime: String {
-        let minutes = count / 60
-        let seconds = count % 60
-        return String(format: "%d:%02d", minutes, seconds)
-    }
-    
-    private func updateCountFromLastCounter() {
-        if let lastCounter = counter.last {
-            count = lastCounter.counter
-        } else {
-            count = 10
-        }
-    }
-    
-    func updateProgress(){
-        if let lastCounter = counter.last {
-            self.to = CGFloat(self.count) / CGFloat(lastCounter.counter)
-        } else {
-            self.to = CGFloat(self.count) / 300
-        }
-    }
-    
-    func CircleAnimation() {
-        circleOpacity = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            withAnimation {
-                if self.isActivated{
-                    if self.isActivated{
-                        self.showCircle.toggle()
-                        self.CircleAnimation()
-                    }else{
-                        print("stop animazione cerchi")
-                        self.showCircle = false
-                        self.circleOpacity = false
-                    }
-                } else {
-                    print("stop animazione cerchi")
-                    self.showCircle = false
-                    self.circleOpacity = false
-                }
-            }
-        }
-    }
-}
-
 struct TimerView: View {
     
     @State var showingAlert = false
     @State var showAlert = false
     
+    
+//    @StateObject private var vm = CloudViewModel()
+//    @State var locationManager = LocationManager()
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
-    @Query var counter: [Counter]
     
     @State var buttonLocked = false
     @State var buttonTapped: Bool = false
     @State var textSwap = true
+    
+    @Query var counter: [Counter] = []
     
     @State private var tokenAPNS: String = "Generando token..."
     
@@ -225,6 +80,38 @@ struct TimerView: View {
             tokenAPNS = "Errore nella generazione del token: \(error.localizedDescription)"
         }
     }
+    
+//    func sendPosition() {
+//        guard let location = locationManager.userLocation?.coordinate else {
+//                print("Impossibile ottenere la posizione dell'utente.")
+//                return
+//            }
+//        vm.latitude = locationManager.userLocation?.coordinate.latitude ?? 0
+//        vm.longitude = locationManager.userLocation?.coordinate.longitude ?? 0
+//        if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+//            for token in savedTokens {
+//                vm.sendPosition(token: token, latitude: vm.latitude, longitude: vm.longitude)
+//            }
+//        } else {
+//            print("Nessun token salvato in UserDefaults.")
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+//            if timerManager.isActivated{
+//                self.sendPosition()
+//            } else {
+//                vm.latitude = 0
+//                vm.longitude = 0
+//                if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+//                    for token in savedTokens {
+//                        vm.sendPosition(token: token, latitude: vm.latitude, longitude: vm.longitude)
+//                    }
+//                } else {
+//                    print("Nessun token salvato in UserDefaults.")
+//                }
+//                print("end sending")
+//            }
+//        }
+//    }
     
     func sendPushNotificationsForSavedTokens() {
         if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
@@ -460,15 +347,16 @@ struct TimerView: View {
                             timerManager.canCancel = true
                         }
                         buttonLocked = true
-                        DispatchQueue.main.asyncAfter(deadline: .now()) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                             buttonLocked = false
                         }
+//                        sendPosition()
                     } else {
                         if timerManager.canCancel && !buttonLocked{
                             if audioRecorder.recording{
                                 audioRecorder.stopRecording()
-                                showingAlert = false
                             }
+                            showingAlert = false
                             timerManager.stopTimer()
                             print("Bottone disattivato")
                             timerManager.Activation()
@@ -480,7 +368,6 @@ struct TimerView: View {
                 }
             }
             .onLongPressGesture{
-                showingAlert = false
                 if !timerManager.isActivated && !timerManager.start{
                     if !audioRecorder.recording{
                         audioRecorder.startRecording()
@@ -490,23 +377,25 @@ struct TimerView: View {
                     withAnimation{
                         timerManager.showMark = false
                         timerManager.Activation()
-                        DispatchQueue.main.asyncAfter(deadline: .now()) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                             timerManager.canCancel = true
                         }
                     }
                 }
                 
             }
-        }
-        .ignoresSafeArea()
+        }.ignoresSafeArea()
             .onAppear{
                 SwapText()
                 generateJWT()
-            }
-            .alert("Notification sent!", isPresented: $showingAlert) {
-                Button("OK") { }
-            }
-            .alert(isPresented: $showAlert) {
+                if let lastCounter = counter.last {
+                    print("L'ultimo valore salvato è: \(lastCounter.counter)")
+                    timerManager.maxTime = lastCounter.counter
+                } else {
+                    print("Nessun valore salvato.")
+                }
+                timerManager.updateCountFromLastCounter()
+            }.alert(isPresented: $timerManager.showAlert) {
                 Alert(
                     title: Text("Are you safe?"),
                     primaryButton: .default(
@@ -529,7 +418,10 @@ struct TimerView: View {
                         }
                     )
                 )
+            }.alert("Notification sent!", isPresented: $showingAlert) {
+                Button("OK") { }
             }
+        
     }
 }
 

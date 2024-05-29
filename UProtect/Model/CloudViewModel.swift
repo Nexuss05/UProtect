@@ -16,6 +16,8 @@ struct UserModel: Hashable{
     let surname: String
     let phoneNumber: String
     let token: String
+    let latitude: Double
+    let longitude: Double
     let record: CKRecord
 }
 
@@ -24,12 +26,16 @@ class CloudViewModel: ObservableObject{
     @Published var nome: String = ""
     @Published var cognome: String = ""
     @Published var numero: String = ""
+    @Published var latitude: Double = 0
+    @Published var longitude: Double = 0
     @Published var utente: [UserModel] = []
     @Published var token: [String] = []
     
     @Published var firstName: String = "Nome"
     @Published var lastName: String = "Cognome"
-    
+    @Published var latitudine: Double = 0
+    @Published var longitudine: Double = 0
+
     @Environment(\.modelContext) var modelContext
     
     var fcmToken: String? {
@@ -107,6 +113,8 @@ class CloudViewModel: ObservableObject{
         newUser["number"] = number
         newUser["token"] = token
         newUser["recipient"] = recipientID
+        newUser["latitude"] = 0
+        newUser["longitude"] = 0
         saveItem(record: newUser)
     }
     
@@ -149,6 +157,72 @@ class CloudViewModel: ObservableObject{
         
         addOperation(operation: queryOperation)
     }
+    
+    func fetchUserPosition() {
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        var isNumberPresent = false
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                if let longitude = record["longitude"] as? Double{
+                    self.longitudine = longitude
+                    print("Longitude found: \(self.longitudine)")
+                } else {
+                    print("Token not found")
+                }
+                if let latitude = record["latitude"] as? Double{
+                    self.latitudine = latitude
+                    print("Latitude found: \(self.latitudine)")
+                } else {
+                    print("Token not found")
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+        addOperation(operation: queryOperation)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.fetchUserPosition()
+        }
+    }
+    
+    func fetchUserInfo() {
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                if let firstName = record["name"] as? String, let lastName = record["surname"] as? String {
+                    DispatchQueue.main.async {
+                        self.firstName = firstName
+                        self.lastName = lastName
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        print("Nome o cognome vutori")
+                    }
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    print("Nome o cognome non trovati")                }
+            }
+        }
+        addOperation(operation: queryOperation)
+    }
+    
+    
+    
     
     func fetchToken2(number: String, completion: @escaping (String?) -> Void) {
         let predicate = NSPredicate(format: "number = %@", number)
@@ -249,6 +323,37 @@ class CloudViewModel: ObservableObject{
         }
         addOperation(operation: queryOperation)
     }
+    
+    func sendPosition(token: String, latitude: Double, longitude: Double){
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [token])
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let database = CKContainer.default().publicCloudDatabase
+        
+        database.perform(query, inZoneWith: nil) { results, error in
+            if let error = error {
+                print("Error querying record: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let record = results?.first else {
+                print("No record found with the given token")
+                return
+            }
+            
+            record.setValue(latitude, forKey: "latitude")
+            record.setValue(longitude, forKey: "longitude")
+            
+            database.save(record) { savedRecord, saveError in
+                if let saveError = saveError {
+                    print("Error saving record: \(saveError.localizedDescription)")
+                    return
+                }
+                
+                print("Record updated successfully")
+            }
+        }
+    }
+    
     
     
     //    func fetchToken(number: String){
@@ -399,42 +504,40 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-    func fetchUserInfo(number: String, completion: @escaping (String?, String?, Error?) -> Void) {
-        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
-        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        let queryOperation = CKQueryOperation(query: query)
-        queryOperation.resultsLimit = 1
-        
-        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-            switch returnedResult {
-            case .success(let record):
-                if let firstName = record["name"] as? String, let lastName = record["surname"] as? String {
-                    DispatchQueue.main.async {
-                        completion(firstName, lastName, nil)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        completion(nil, nil, NSError(domain: "fetchUserInfo", code: 404, userInfo: [NSLocalizedDescriptionKey: "Nome o cognome non trovati"]))
-                    }
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    completion(nil, nil, error)
-                }
-            }
-        }
-        
-        queryOperation.queryResultBlock = { returnedResult in
-            if case .failure(let error) = returnedResult {
-                DispatchQueue.main.async {
-                    completion(nil, nil, error)
-                }
-            }
-        }
-        
-        addOperation(operation: queryOperation)
-    }
-
-    
+//    func fetchUserInfo(number: String, completion: @escaping (String?, String?, Error?) -> Void) {
+//        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
+//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+//        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+//        let queryOperation = CKQueryOperation(query: query)
+//        queryOperation.resultsLimit = 1
+//        
+//        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+//            switch returnedResult {
+//            case .success(let record):
+//                if let firstName = record["name"] as? String, let lastName = record["surname"] as? String {
+//                    DispatchQueue.main.async {
+//                        completion(firstName, lastName, nil)
+//                    }
+//                } else {
+//                    DispatchQueue.main.async {
+//                        completion(nil, nil, NSError(domain: "fetchUserInfo", code: 404, userInfo: [NSLocalizedDescriptionKey: "Nome o cognome non trovati"]))
+//                    }
+//                }
+//            case .failure(let error):
+//                DispatchQueue.main.async {
+//                    completion(nil, nil, error)
+//                }
+//            }
+//        }
+//        
+//        queryOperation.queryResultBlock = { returnedResult in
+//            if case .failure(let error) = returnedResult {
+//                DispatchQueue.main.async {
+//                    completion(nil, nil, error)
+//                }
+//            }
+//        }
+//        
+//        addOperation(operation: queryOperation)
+//    }
 }

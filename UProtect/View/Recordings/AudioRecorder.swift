@@ -25,7 +25,8 @@ class AudioRecorder: NSObject, ObservableObject {
     let objectWillChange = PassthroughSubject<AudioRecorder, Never>()
     
     var audioRecorder: AVAudioRecorder!
-    
+    var userLocation: String?
+    var locationManager = LocationManager()
     var recordings = [Recording]()
     
     var recording = false {
@@ -35,6 +36,12 @@ class AudioRecorder: NSObject, ObservableObject {
     }
     
     func startRecording() {
+        if let location = locationManager.userLocation {
+            locationManager.getAddressFromLocation(location: location)
+            print(locationManager.userAddress)
+            
+        }
+
         let recordingSession = AVAudioSession.sharedInstance()
         
         do {
@@ -44,8 +51,9 @@ class AudioRecorder: NSObject, ObservableObject {
             print("Failed to set up recording session")
         }
         
+        let timestamp = Date().toString(dateFormat: "yyyyMMdd_HHmmss")
         let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let audioFilename = documentPath.appendingPathComponent("\(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
+        let audioFilename = documentPath.appendingPathComponent("\(locationManager.userAddress ?? "Unknown Location")_\(timestamp)")
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -100,6 +108,22 @@ class AudioRecorder: NSObject, ObservableObject {
         
         fetchRecording()
     }
+    
+    func deleteAllRecordings() {
+            let fileManager = FileManager.default
+            let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let directoryContents = try? fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+            
+            directoryContents?.forEach { url in
+                do {
+                    try fileManager.removeItem(at: url)
+                } catch {
+                    print("Could not delete file: \(url)")
+                }
+            }
+            
+            fetchRecording()
+        }
     
     func getFileDate(for file: URL) -> Date {
         if let attributes = try? FileManager.default.attributesOfItem(atPath: file.path) as [FileAttributeKey: Any],

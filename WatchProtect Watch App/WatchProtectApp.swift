@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import WatchKit
+import WatchConnectivity
 
 @main
 struct WatchProtect_Watch_AppApp: App {

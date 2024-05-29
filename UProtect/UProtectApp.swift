@@ -17,14 +17,32 @@ struct UProtectApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject var timerManager = TimerManager()
+    @StateObject var watchConnector = WatchController()
     @StateObject var audioRecorder = AudioRecorder()
     @State private var locationManager = LocationManager()
     
     @Environment (\.scenePhase) var scene
+    
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Counter.self, Contacts.self
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+    
     var body: some Scene {
         WindowGroup {
 //            UProtect(timerManager: timerManager, audioRecorder: timerManager)
             ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
+                .onAppear{
+                    watchConnector.observeUserDefaults()
+                }
                 .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
             //                .onOpenURL { url in
             //                    guard
@@ -46,7 +64,7 @@ struct UProtectApp: App {
             //                        break
             //                    }
             //                }
-        }.modelContainer(for: [Counter.self, Contacts.self])
+        }.modelContainer(sharedModelContainer)
          .environment(locationManager)
     }
     

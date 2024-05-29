@@ -15,6 +15,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     var userLocation: CLLocation?
     var isAuthorized = false
     
+    var userAddress: String?
+    
     override init(){
         super.init()
         manager.delegate = self
@@ -56,4 +58,25 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
         print(error.localizedDescription)
     }
+    
+    func getAddressFromLocation(location: CLLocation) {
+            let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                if let error = error {
+                    print("Error getting address: \(error.localizedDescription)")
+                    self.userAddress = "Unknown address"
+                    return
+                }
+                if let placemarks = placemarks, let placemark = placemarks.first {
+                    self.userAddress = [
+                        placemark.name
+                    ].compactMap { $0 }.joined(separator: ", ")
+                }
+            }
+        }
+        
+        func currentLocationAddress() -> String {
+            return userAddress ?? "Address not available"
+        }
+    
 }

@@ -5,10 +5,12 @@ struct GoalView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     
-    @State var num = 1
-    @State var cont = 180
-    @State var selectedMode = 1
+//    @State var num = 1
+    @State var cont = 300
+    @State var selectedMode = 2
     @State var isShowingMain: Bool = false
+    
+    @ObservedObject var timerManager: TimerManager
     
     var body: some View {
         VStack {
@@ -32,17 +34,17 @@ struct GoalView: View {
             .frame(width: 310)
             .padding(.top, 30)
             .padding(.bottom, 80)
-            .onChange(of: selectedMode) { newMode, _ in
+            .onChange(of: selectedMode) { newMode in
                 switch newMode {
                 case 1:
                     cont = 180
-//                    print("Lightly selected")
+                    print("Lightly selected")
                 case 2:
                     cont = 300
-//                    print("Moderately selected")
+                    print("Moderately selected")
                 case 3:
                     cont = 540
-//                    print("Highly selected")
+                    print("Highly selected")
                 default:
                     break
                 }
@@ -53,7 +55,6 @@ struct GoalView: View {
                 RoundedRectangle(cornerRadius: 15)
                     .frame(width:350, height:60)
                     .foregroundColor(Color(CustomColor.orange))
-                    .accessibilityHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 Text("Set timer")
                     .font(.title2)
                     .fontWeight(.bold)
@@ -63,8 +64,9 @@ struct GoalView: View {
             .padding(.bottom, 50)
             .onTapGesture {
                 modelContext.insert(Counter(counter: cont))
+                timerManager.maxTime = cont
                 isShowingMain.toggle()
-//                dismiss()
+                dismiss()
             }
             .accessibilityElement(children: .combine)
             .accessibilityAddTraits(.isButton)
@@ -72,6 +74,6 @@ struct GoalView: View {
     }
 }
 
-#Preview {
-    GoalView()
-}
+//#Preview {
+//    GoalView()
+//}
