@@ -17,6 +17,10 @@ struct MyClaims: Claims {
 
 struct TimerView: View {
     
+    @State var showingAlert = false
+    @State var showAlert = false
+    
+    
 //    @StateObject private var vm = CloudViewModel()
 //    @State var locationManager = LocationManager()
     @Environment(\.colorScheme) var colorScheme
@@ -26,7 +30,6 @@ struct TimerView: View {
     @State var buttonLocked = false
     @State var buttonTapped: Bool = false
     @State var textSwap = true
-    @State var showAlert = false
     
     @Query var counter: [Counter] = []
     
@@ -331,6 +334,7 @@ struct TimerView: View {
                         }
                         print("Bottone attivato")
                         buttonTapped = true
+                        showingAlert = true
                         TapAnimation()
                         print("Before calling sendPushNotification()")
                         sendPushNotificationsForSavedTokens()
@@ -352,6 +356,7 @@ struct TimerView: View {
                             if audioRecorder.recording{
                                 audioRecorder.stopRecording()
                             }
+                            showingAlert = false
                             timerManager.stopTimer()
                             print("Bottone disattivato")
                             timerManager.Activation()
@@ -413,6 +418,8 @@ struct TimerView: View {
                         }
                     )
                 )
+            }.alert("Notification sent!", isPresented: $showingAlert) {
+                Button("OK") { }
             }
         
     }
