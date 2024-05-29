@@ -144,6 +144,7 @@ struct MapView: View {
     }
 }
 
+
 #Preview {
     MapView(selectedPage: .constant(0))
         .environment(LocationManager())

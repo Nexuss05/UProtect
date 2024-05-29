@@ -37,15 +37,10 @@ struct ContentView: View {
                             Label("Courses", systemImage: "books.vertical.fill")
                         }
                         .tag(0)
-                    
-                    //                    MapView(selectedPage: .constant(0))
-                    //                        .tabItem {
-                    //                            Label("Map", systemImage: "map.fill")
-                    //                        }
-                    //                        .tag(1)
                     if locationManager.isAuthorized{
                         Text("Mappa")
-//                        MapView(selectedPage: .constant(0))
+                        // la mappa è stata tolta perchè fa crashare la preview
+                        MapView(selectedPage: .constant(0))
                             .tabItem {
                                 Label("Map", systemImage: "map.fill")
                             }
@@ -113,9 +108,9 @@ struct CustomColor {
 
 
 
-struct ContentView_Previews3: PreviewProvider {
-    static var previews: some View {
-        let timerManager = TimerManager()
-        return ContentView(timerManager: timerManager, audioRecorder: AudioRecorder())
-    }
-}
+//struct ContentView_Previews3: PreviewProvider {
+//    static var previews: some View {
+//        let timerManager = TimerManager()
+//        return ContentView(timerManager: timerManager, audioRecorder: AudioRecorder())
+//    }
+//}
