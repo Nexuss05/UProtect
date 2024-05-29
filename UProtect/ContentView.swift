@@ -37,8 +37,9 @@ struct ContentView: View {
                             Label("Courses", systemImage: "books.vertical.fill")
                         }
                         .tag(0)
+                    
                     if locationManager.isAuthorized{
-                        Text("Mappa")
+//                        Text("Mappa")
                         // la mappa è stata tolta perchè fa crashare la preview
                         MapView(selectedPage: .constant(0))
                             .tabItem {
