@@ -92,42 +92,44 @@ struct ContactsView: View {
                         
                     }.onDelete(perform: deleteContact)
                     
-                } .navigationTitle("Contacts")
-                    .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button("Invia messaggi") {
-                                guard !selectedContacts.isEmpty else {
-                                    return // Non fare nulla se non ci sono contatti selezionati
-                                }
-                                let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
-                                vonage.sendSMS(to: phoneNumbers, from: "UProtect", text: "SONO IN PERICOLO, PISCT SOTT") { result in
-                                    switch result {
-                                    case .success:
-                                        self.showAlert = true
-                                        self.alertMessage = "SMS inviato con successo!"
-                                        print("SMS inviato con successo")
-                                        // Puoi aggiungere qui un'azione in caso di successo
-                                    case .failure(let error):
-                                        self.showAlert = true
-                                        self.alertMessage = "Errore durante l'invio dell'SMS: \(error.localizedDescription)"
-                                        print("Errore durante l'invio dell'SMS: \(error)")
-                                        // Puoi gestire qui gli errori durante l'invio dell'SMS
-                                    }
-                                }
+                }
+                .navigationTitle("Contacts")
+                .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Invia messaggi") {
+                            guard !selectedContacts.isEmpty else {
+                                return // Non fare nulla se non ci sono contatti selezionati
                             }
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                self.isShowingContactsPicker.toggle()
-                            }) {
-                                Image(systemName: "plus")
-                                    .foregroundColor(CustomColor.orange)
+                            let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
+                            vonage.sendSMS(to: phoneNumbers, from: "UProtect", text: "SONO IN PERICOLO, PISCT SOTT") { result in
+                                switch result {
+                                case .success:
+                                    self.showAlert = true
+                                    self.alertMessage = "SMS inviato con successo!"
+                                    print("SMS inviato con successo")
+                                    // Puoi aggiungere qui un'azione in caso di successo
+                                case .failure(let error):
+                                    self.showAlert = true
+                                    self.alertMessage = "Errore durante l'invio dell'SMS: \(error.localizedDescription)"
+                                    print("Errore durante l'invio dell'SMS: \(error)")
+                                    // Puoi gestire qui gli errori durante l'invio dell'SMS
+                                }
                             }
                         }
                     }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            self.isShowingContactsPicker.toggle()
+                        }) {
+                            Image(systemName: "plus")
+                                .foregroundColor(CustomColor.orange)
+                        }
+                    }
+                }
             }
         }.onAppear{
+            loadContactsFromUserDefaults()
             assignColors()
         }
     }
@@ -149,20 +151,29 @@ struct ContactsView: View {
     func removeContact(_ contact: SerializableContact) {
         if let index = selectedContacts.firstIndex(of: contact) {
             selectedContacts.remove(at: index)
-            //            print(index)
-            // Remove contact from UserDefaults
-            let encoder = JSONEncoder()
-            if let encoded = try? encoder.encode(selectedContacts) {
-                UserDefaults.standard.set(encoded, forKey: "selectedContacts")
-            }
+            saveContactsToUserDefaults()
             UserDefaults.standard.removeObject(forKey: "token")
             if var tokens = UserDefaults.standard.array(forKey: "tokens") as? [String] {
                 if index < tokens.count {
-                    print(tokens)
                     tokens.remove(at: index)
                     UserDefaults.standard.set(tokens, forKey: "tokens")
                 }
             }
+        }
+    }
+    
+    func saveContactsToUserDefaults() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(selectedContacts) {
+            UserDefaults.standard.set(encoded, forKey: "selectedContacts")
+        }
+    }
+    
+    func loadContactsFromUserDefaults() {
+        let decoder = JSONDecoder()
+        if let data = UserDefaults.standard.data(forKey: "selectedContacts"),
+           let decoded = try? decoder.decode([SerializableContact].self, from: data) {
+            selectedContacts = decoded
         }
     }
     

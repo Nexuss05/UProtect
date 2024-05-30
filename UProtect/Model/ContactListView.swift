@@ -81,6 +81,7 @@ struct ContactsPicker: View {
                         let serializableContact = SerializableContact(contact: contact)
                         if !selectedContacts.contains(serializableContact) {
                             selectedContacts.append(serializableContact)
+                            saveContactsToUserDefaults()
                         }
                     }) {
                         HStack{
@@ -136,7 +137,13 @@ struct ContactsPicker: View {
                 (contact.phoneNumbers.first?.value.stringValue ?? "").contains(searchText)
             }
         }
-        
+    }
+    
+    func saveContactsToUserDefaults() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(selectedContacts) {
+            UserDefaults.standard.set(encoded, forKey: "selectedContacts")
+        }
     }
 }
 
