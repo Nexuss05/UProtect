@@ -23,14 +23,14 @@ struct FetchLocation: View {
     let keywords = [
         "supermercato",
         "bar",
-        "farmacia",
+//        "farmacia",
         "polizia",
-        "carabinieri",
-        "ospedale",
-        "hotel",
-        "centro commerciale",
+//        "carabinieri",
+//        "ospedale",
+//        "hotel",
+//        "centro commerciale",
         "locale",
-        "pizzeria",
+//        "pizzeria",
         "ristorante"
     ]
     

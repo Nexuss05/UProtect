@@ -382,7 +382,6 @@ struct TimerView: View {
                         }
                     }
                 }
-                
             }
         }.ignoresSafeArea()
             .onAppear{
