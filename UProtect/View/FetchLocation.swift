@@ -63,7 +63,8 @@ struct FetchLocation: View {
     }
     
     func getResults(keyword: String) async throws -> [Location] {
-        let apiUrlString = "https://serpapi.com/search.json?engine=google_maps&q=\(keyword)&ll=@\(locationManager.userLocation?.coordinate.latitude ?? 40.836736),\(locationManager.userLocation?.coordinate.longitude ?? 14.305911),21z&type=search&api_key=32b82d807e4fce17525aa7875e6c7848ceb7a1bbe4525addae2816534ee09576"
+//        let apiUrlString = "https://serpapi.com/search.json?engine=google_maps&q=\(keyword)&ll=@\(locationManager.userLocation?.coordinate.latitude ?? 40.836736),\(locationManager.userLocation?.coordinate.longitude ?? 14.305911),21z&type=search&api_key=32b82d807e4fce17525aa7875e6c7848ceb7a1bbe4525addae2816534ee09576"
+        let apiUrlString = "https://serpapi.com/search.json?engine=google_maps&q=\(keyword)&ll=@\(locationManager.userLocation?.coordinate.latitude ?? 40.836736),\(locationManager.userLocation?.coordinate.longitude ?? 14.305911),21z&type=search&api_key=202681b35f11417ae530f232e0ce6a7c16a7abc30f4daecf1e94ed0dd761863d"
 //        print(apiUrlString)
         guard let apiUrl = URL(string: apiUrlString) else {
             throw URLError(.badURL)
