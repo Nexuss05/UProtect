@@ -7,10 +7,9 @@
 
 import Foundation
 import SwiftUI
-
 struct RingView: View {
     
-    @State var currentPercentage: Double = 0
+    @State private var currentPercentage: Double = 0
     
     var percentage: Double
     var backgroundColor: Color
@@ -33,20 +32,16 @@ struct RingView: View {
                 .shadow(radius: 2)
                 .drawingGroup()
                 .onAppear() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation(self.animation) {
-                            self.currentPercentage = self.percentage
-                        }
+                    withAnimation(self.animation.delay(0.1)) {
+                        self.currentPercentage = self.percentage
                     }
                 }
             RingTipShape(currentPercentage: currentPercentage, thickness: thickness)
                 .fill(currentPercentage > 1 ? endColor : .clear)
                 .rotationEffect(.init(degrees: -90))
                 .onAppear() {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation(self.animation) {
-                            self.currentPercentage = self.percentage
-                        }
+                    withAnimation(self.animation.delay(0.1)) {
+                        self.currentPercentage = self.percentage
                     }
                 }
         }
@@ -115,7 +110,6 @@ struct RingTipShape: Shape {
     
 }
 
-//RingBack
 struct RingBackgroundShape: Shape {
     
     var thickness: CGFloat
@@ -135,6 +129,7 @@ struct RingBackgroundShape: Shape {
     }
     
 }
+
 
 #Preview {
     RingView(percentage: 1.5, backgroundColor: .black, startColor: .red, endColor: .blue, thickness: 60)
