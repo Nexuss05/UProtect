@@ -24,10 +24,10 @@ class AuthViewController: UIViewController, FUIAuthDelegate {
   }
 
   func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-    if let error = error {
-//      print("Errore durante l'autenticazione: \(error.localizedDescription)")
-      return
-    }
+//    if let error = error {
+////      print("Errore durante l'autenticazione: \(error.localizedDescription)")
+//      return
+//    }
     // L'utente ha effettuato correttamente l'accesso
   }
 }

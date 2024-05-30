@@ -128,6 +128,7 @@ struct RecordingRow: View {
                 }
                 Bar(progress: audioPlayer.playbackProgress)
                     .frame(height: 5)
+                AudioPlayerView()
                 
             }.padding(.top)
         }.frame(height: 100)

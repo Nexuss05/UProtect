@@ -68,13 +68,13 @@ struct WidgetView: View {
                         Image(systemName: "exclamationmark.triangle.fill")
                             .resizable()
                             .frame(width: 55, height: 50)
-                            .foregroundColor(CustomColor.redBackground)
+                            .foregroundColor(CustomColor.orange)
                             .opacity(1)
                     }
                 .offset(CGSize(width: -10, height: 0))
                 VStack {
                     Text("TAP")
-                        .foregroundStyle(CustomColor.redBackground)
+                        .foregroundStyle(CustomColor.orange)
                         .fontWeight(.bold)
                         .font(.title)
                     Text("to receive help")
@@ -92,7 +92,7 @@ struct WidgetView: View {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .resizable()
                         .frame(width: 55, height: 50)
-                        .foregroundColor(CustomColor.redBackground)
+                        .foregroundColor(CustomColor.orange)
                         .opacity(1)
                 }
             }

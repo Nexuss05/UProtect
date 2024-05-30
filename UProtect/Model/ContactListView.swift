@@ -62,17 +62,15 @@ struct ContactsPicker: View {
     //        return Coordinator(parent: self)
     //    }
     
-    
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Search Contacts", text: $searchText, onEditingChanged: { _ in
-                    self.filterContacts()
-                }, onCommit: {
-                    self.filterContacts()
-                })
+                SearchBar(text: $searchText)
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .onChange(of: searchText) { newValue in
+                                        filterContacts()
+                                    }
                 
                 List(filteredContacts, id: \.identifier) { contact in
                     Button(action: {

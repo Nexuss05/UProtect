@@ -29,8 +29,21 @@ class WatchController: UIViewController, WCSessionDelegate, ObservableObject {
             session.delegate = self
             session.activate()
             observeUserDefaults()
+            let array = ["fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0", "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0", "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0"]
+            sendArrayToWatch(array: array)
         }
     }
+    
+    func sendArrayToWatch(array: [String]) {
+            if WCSession.default.isReachable {
+                do {
+                    try WCSession.default.updateApplicationContext(["data": array])
+                    print("Array inviato all'app per Apple Watch")
+                } catch {
+                    print("Errore nell'invio dell'array: \(error.localizedDescription)")
+                }
+            }
+        }
     
     func observeUserDefaults() {
         NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange(_:)), name: UserDefaults.didChangeNotification, object: nil)
@@ -40,13 +53,28 @@ class WatchController: UIViewController, WCSessionDelegate, ObservableObject {
         print("UserDefaults did change")
         if let tokens = UserDefaults.standard.stringArray(forKey: "tokens") {
             print("Tokens found in UserDefaults: \(tokens)")
-            sendTokensToWatch(tokens)
+            sendTokensToWatch3("fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0")
         } else {
             print("Tokens not found in UserDefaults")
         }
     }
 
     func sendTokensToWatch(_ tokens: [String]) {
+        print("Sending tokens to Watch: \(tokens)")
+        if let validSession = session, validSession.isReachable {
+            do {
+                let data = try NSKeyedArchiver.archivedData(withRootObject: tokens, requiringSecureCoding: true)
+                try validSession.updateApplicationContext(["tokens": data])
+                print("Tokens sent successfully to Watch")
+            } catch {
+                print("Failed to send tokens to Watch: \(error)")
+            }
+        } else {
+            print("Session not reachable")
+        }
+    }
+    
+    func sendTokensToWatch3(_ tokens: String) {
         print("Sending tokens to Watch: \(tokens)")
         if let validSession = session, validSession.isReachable {
             do {

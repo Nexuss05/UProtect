@@ -27,53 +27,113 @@ struct MapView: View {
         lineWidth: 5,
         lineCap: .round
     )
+    @StateObject private var vm = CloudViewModel()
+    @State var showUser: Bool = false
+    @State var latitudine: Double = 0
+    @State var longitudine: Double = 0
+    @State var nomeAmico: String = ""
+    @State var cognomeAmico: String = ""
     
     var body: some View {
-        Map(position: $cameraPosition, selection: $selectedTag){
-            UserAnnotation()
-            ForEach(Array(locations.prefix(10).enumerated()), id: \.element.id) { index, result in
-                Marker(result.name,
-                       systemImage: CustomAnnotation(type: result.type).image,
-                       coordinate: CLLocationCoordinate2D(latitude: result.latitude, longitude: result.longitude))
-                .tint(CustomAnnotation(type: result.type).color)
-                .tag(index)
-            }
-            if let route, routeDisplaying {
-                MapPolyline(route.polyline)
-                    .stroke(gradient, lineWidth: 10)
-            }
-        }
-        .mapStyle(.hybrid(elevation: .flat, pointsOfInterest: .excludingAll))
-        .onAppear() {
-            print("Locations on appear: \(locations)")
-        }
-        .task(id: selectedLocation) {
-            if selectedLocation != nil {
-                print("Selected location changed: \(String(describing: selectedLocation))")
-                routeDisplaying = false
-                showRoute = false
-                route = nil
-                await fetchRoute()
-            }
-        }
-        .onChange(of: showRoute) { newValue, oldValue in
-            print("Show route changed: \(newValue)")
-            if newValue {
-                withAnimation {
-                    routeDisplaying = true
-                    if let rect = route?.polyline.boundingMapRect {
-                        cameraPosition = .rect(rect)
-                    }
+        ZStack{
+            if showUser {
+                Map(){
+                    Marker(LocalizedStringKey("\(nomeAmico) \(cognomeAmico)"), coordinate: CLLocationCoordinate2D(latitude: latitudine, longitude: longitudine))
                 }
             } else {
-                routeDisplaying = false
+                Map(position: $cameraPosition, selection: $selectedTag){
+                    UserAnnotation()
+                    ForEach(Array(locations.prefix(10).enumerated()), id: \.element.id) { index, result in
+                        Marker(result.name,
+                               systemImage: CustomAnnotation(type: result.type).image,
+                               coordinate: CLLocationCoordinate2D(latitude: result.latitude, longitude: result.longitude))
+                        .tint(CustomAnnotation(type: result.type).color)
+                        .tag(index)
+                    }
+                    if let route, routeDisplaying {
+                        MapPolyline(route.polyline)
+                            .stroke(gradient, lineWidth: 10)
+                    }
+                }
+                .mapStyle(.hybrid(elevation: .flat, pointsOfInterest: .excludingAll))
+                .onAppear() {
+                    print("Locations on appear: \(locations)")
+                }
+                .task(id: selectedLocation) {
+                    if selectedLocation != nil {
+                        print("Selected location changed: \(String(describing: selectedLocation))")
+                        routeDisplaying = false
+                        showRoute = false
+                        route = nil
+                        await fetchRoute()
+                    }
+                }
+                .onChange(of: showRoute) { newValue, oldValue in
+                    print("Show route changed: \(newValue)")
+                    if newValue {
+                        withAnimation {
+                            routeDisplaying = true
+                            if let rect = route?.polyline.boundingMapRect {
+                                cameraPosition = .rect(rect)
+                            }
+                        }
+                    } else {
+                        routeDisplaying = false
+                    }
+                }.onReceive(vm.$latitudine){_ in
+                    if let lat = UserDefaults.standard.value(forKey: "latitudine") {
+                        latitudine = lat as! Double
+                        print("updated lat: \(latitudine)")
+                    } else {
+                        print("Nessun valore salvato per latitudine.")
+                    }
+                    if let lon = UserDefaults.standard.value(forKey: "longitudine") {
+                        longitudine = lon as! Double
+                        print("updated lon: \(longitudine)")
+                    } else {
+                        print("Nessun valore salvato per longitudine.")
+                    }
+                    if let na = UserDefaults.standard.string(forKey: "nomeAmico") {
+                        nomeAmico = na
+                    } else {
+                        print("Nessun valore salvato per nomeAmico.")
+                    }
+                    if let ca = UserDefaults.standard.string(forKey: "cognomeAmico") {
+                        cognomeAmico = ca
+                    } else {
+                        print("Nessun valore salvato per cognomeAmico.")
+                    }
+                }
+                .mapControls {
+                    MapUserLocationButton()
+                }
+                .safeAreaInset(edge: .bottom) {
+                    FetchLocation(locations: $locations, showRoute: $showRoute, selectedTag: $selectedTag, selectedLocation: $selectedLocation)
+                }
             }
-        }
-        .mapControls {
-            MapUserLocationButton()
-        }
-        .safeAreaInset(edge: .bottom) {
-            FetchLocation(locations: $locations, showRoute: $showRoute, selectedTag: $selectedTag, selectedLocation: $selectedLocation)
+            
+            if latitudine == 0 && longitudine == 0{
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10).frame(width: 45, height: 45)
+                        .foregroundStyle(.white)
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundColor(.gray)
+                }
+                .padding(.leading, 338)
+                .padding(.bottom, 550)
+            } else {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10).frame(width: 45, height: 45)
+                        .foregroundStyle(.red)
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .foregroundColor(.white)
+                }
+                .padding(.leading, 338)
+                .padding(.bottom, 550)
+                .onTapGesture {
+                    showUser.toggle()
+                }
+            }
         }
     }
     
@@ -143,7 +203,6 @@ struct MapView: View {
         travelTime = formatter.string(from: route.expectedTravelTime)
     }
 }
-
 
 #Preview {
     MapView(selectedPage: .constant(0))

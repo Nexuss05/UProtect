@@ -16,7 +16,9 @@ struct SettingsView: View {
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
     @StateObject private var vm = CloudViewModel()
-    let numero = UserDefaults.standard.string(forKey: "phoneNumber") ?? "non disponibile"
+    let numero = UserDefaults.standard.string(forKey: "userNumber") ?? "non disponibile"
+    let nome = UserDefaults.standard.string(forKey: "firstName") ?? "Name"
+    let cognome = UserDefaults.standard.string(forKey: "lastName") ?? "Surname"
     
     var body: some View {
         NavigationStack{
@@ -28,12 +30,12 @@ struct SettingsView: View {
                                 Circle()
                                     .fill(circleColor)
                                     .frame(width: 35, height: 35)
-                                Text("\(vm.firstName.prefix(1))\(vm.lastName.prefix(1))")
+                                Text("\(nome.prefix(1))\(cognome.prefix(1))")
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
                             }.accessibilityHidden(true)
                             VStack(alignment: .leading, spacing: -2.0){
-                                Text("\(vm.firstName) \(vm.lastName)")
+                                Text("\(nome) \(cognome)")
                                     .fontWeight(.medium)
                                 Text("\(numero)")
                                     .font(.subheadline)

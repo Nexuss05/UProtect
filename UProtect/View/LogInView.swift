@@ -25,13 +25,14 @@ struct LogInView: View {
                     .bold()
                 Rectangle()
                     .frame(width: 400, height: 300)
-                
+                    .opacity(0)
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(Color.white)
                     TextField("Phone number", text: $vm.numero)
                         .padding(.leading, 20)
                 }.frame(width: 325, height: 50, alignment: .center)
+                    .padding(.top, 60)
                 
                 Button{
                     withAnimation {
@@ -55,21 +56,22 @@ struct LogInView: View {
                             .fontWeight(.bold)
                             .foregroundColor(CustomColor.orange)
                     }
-                }.padding(.top, 30)
-                
-                
-                
+                }.padding(.top, 100)
                 
             }
-            
-        }.ignoresSafeArea()
+            Image("a0")
+                .resizable()
+                .frame(width: 350, height: 250)
+                .padding(.bottom, 200)
+        }
+        .ignoresSafeArea()
             .preferredColorScheme(.light)
             .fullScreenCover(isPresented: $isShowingRec, content: {
-            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder)
-        })
-        .fullScreenCover(isPresented: $isShowingOtp, content: {
-            OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder)
-        })
+                RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder)
+            })
+            .fullScreenCover(isPresented: $isShowingOtp, content: {
+                OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder)
+            })
     }
 }
 
@@ -90,6 +92,7 @@ struct RegistrationView: View {
                     .bold()
                 Rectangle()
                     .frame(width: 400, height: 300)
+                    .opacity(0)
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
@@ -135,7 +138,10 @@ struct RegistrationView: View {
                     }
                 }.padding(.top, 30)
             }
-            
+            Image("a1")
+                .resizable()
+                .frame(width: 400, height: 400)
+                .padding(.bottom, 275)
         }.preferredColorScheme(.light)
             .ignoresSafeArea()
             .fullScreenCover(isPresented: $isShowingLogin, content: {
@@ -143,10 +149,6 @@ struct RegistrationView: View {
             })
     }
 }
-
-//#Preview {
-//    RegistrationView()
-//}
 
 struct ContentView_Previews5: PreviewProvider {
     static var previews: some View {

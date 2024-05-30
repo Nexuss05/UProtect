@@ -51,10 +51,11 @@ struct WelcomeView: View {
                             }
                             .background(
                                 RoundedRectangle(cornerRadius: 15)
-                                    .foregroundColor(CustomColor.redBackground)
+                                    .foregroundColor(CustomColor.orange)
                                     .frame(width: 200, height: 60)
                             )
-                        }.padding(.top, 630)
+                        }
+                        .padding(.top, 550)
                     )
             }
             .ignoresSafeArea()
@@ -66,7 +67,7 @@ struct WelcomeView: View {
                 Spacer()
                 CustomPageControl(currentPage: $pageIndex, numberOfPages: 4)
                     .frame(width: UIScreen.main.bounds.width, height: 50)
-                    .padding(.bottom, 95)  // Adjust the padding as needed
+//                    .padding(.bottom, 95)
             }
         }
         .onAppear {
@@ -86,13 +87,11 @@ struct FirstPageView: View {
     
     var body: some View {
         ZStack {
-            Image("r1")
-                .resizable()
-                .ignoresSafeArea()
+            Image("o1")
             VStack {
                 ZStack{
                     Circle()
-                        .frame(width: 415)
+                        .frame(width: 415, height: 450)
                         .opacity(0)
                     Circle()
                         .foregroundColor(.white)
@@ -111,6 +110,7 @@ struct FirstPageView: View {
                         .frame(width: 75, height: 70)
                         .foregroundColor(CustomColor.redBackground)
                 }
+//                .padding(.bottom, 50)
                 VStack{
                     Text("SOS mode")
                         .font(.title)
@@ -124,7 +124,9 @@ struct FirstPageView: View {
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
                 }
-            }.padding(.bottom, 125)
+                Spacer()
+            }
+//            .padding(.bottom, 125)
         }
     }
 }
@@ -150,9 +152,8 @@ struct SecondPageView: View {
     
     var body: some View {
         ZStack {
-            Image("r2")
-                .resizable()
-                .ignoresSafeArea()
+            Image("o2")
+                .frame(width: .greatestFiniteMagnitude)
             VStack {
                 ZStack{
                     Circle()
@@ -169,7 +170,7 @@ struct SecondPageView: View {
                         .frame(width: 214.5, height: 214.5)
                         .rotationEffect(.degrees(0))
                     Circle()
-                        .frame(width: 415)
+                        .frame(width: 415, height: 450)
                         .opacity(0)
                     Circle()
                         .foregroundColor(.white)
@@ -193,7 +194,9 @@ struct SecondPageView: View {
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
                 }
-            }.padding(.bottom, 125)
+                Spacer()
+            }
+//            .padding(.bottom, 125)
         }.onReceive(self.time) { _ in
             DispatchQueue.main.async {
                 if self.count > 180 {
@@ -211,9 +214,7 @@ struct ThirdPageView: View {
     
     var body: some View {
         ZStack {
-            Image("r3")
-                .resizable()
-                .ignoresSafeArea()
+            Image("o3")
             VStack {
                 ZStack{
                     Circle()
@@ -232,7 +233,9 @@ struct ThirdPageView: View {
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
                 }
-            }.padding(.bottom, 125)
+                Spacer()
+            }
+//            .padding(.bottom, 125)
         }
     }
 }
@@ -241,9 +244,7 @@ struct FourthPageView: View {
     
     var body: some View {
         ZStack {
-            Image("r4")
-                .resizable()
-                .ignoresSafeArea()
+            Image("o4")
             VStack {
                 ZStack{
                     Circle()
@@ -262,7 +263,10 @@ struct FourthPageView: View {
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
                 }
-            }.padding(.bottom, 125)
+                Spacer()
+            }
+//            .padding(.bottom, 125)
+            Image("o4b")
         }
     }
 }

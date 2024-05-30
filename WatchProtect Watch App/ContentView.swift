@@ -15,6 +15,11 @@ struct CustomColor {
     static let redBackground = Color("RBackground")
 }
 
+struct MyClaims: Claims {
+    let iss: String
+    let iat: Date
+}
+
 struct ContentView: View {
     
     @Environment(\.colorScheme) var colorScheme

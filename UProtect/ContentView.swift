@@ -31,7 +31,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                TabView(selection: $selectedTab) { // Imposta TimerView come selezione iniziale
+                TabView(selection: $selectedTab) { 
                     CoursesView()
                         .tabItem {
                             Label("Courses", systemImage: "books.vertical.fill")
@@ -53,14 +53,11 @@ struct ContentView: View {
                         }
                         .tag(1)
                     }
-                    
                     TimerView(timerManager: timerManager, audioRecorder: audioRecorder)
                         .tabItem {
                             Label("Danger", systemImage: "exclamationmark.triangle.fill")
                         }
-                        .tag(2) // Questa vista è selezionata inizialmente
-                        .toolbarBackground(Color.white, for: .tabBar)
-                    
+                        .tag(2)
                     ContactsView(selectedContacts: $selectedContacts, isShowingContactsPicker: $isShowingContactsPicker, showAlert: $showAlert, alertMessage: $alertMessage)
                         .sheet(isPresented: $isShowingContactsPicker) {
                             ContactsPicker(isPresented: self.$isShowingContactsPicker, selectedContacts: self.$selectedContacts)
@@ -76,7 +73,7 @@ struct ContentView: View {
                         }
                         .tag(4)
                 }
-                .accentColor(.orange)
+                .accentColor(timerManager.isActivated ? CustomColor.redBackground : CustomColor.orange)
                 //                .background(Color.orange)
             }
             //            .padding()
@@ -110,7 +107,15 @@ struct CustomColor {
     static let redBackground = Color("RBackground")
 }
 
-
+extension UITabBar {
+    static func setCustomAppearance() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.white
+//        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+    }
+}
 
 //struct ContentView_Previews3: PreviewProvider {
 //    static var previews: some View {

@@ -21,8 +21,8 @@ struct TimerView: View {
     @State var showAlert = false
     
     
-//    @StateObject private var vm = CloudViewModel()
-//    @State var locationManager = LocationManager()
+    @StateObject private var vm = CloudViewModel()
+    @State var locationManager = LocationManager()
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
@@ -34,6 +34,9 @@ struct TimerView: View {
     @Query var counter: [Counter] = []
     
     @State private var tokenAPNS: String = "Generando token..."
+    let numero = UserDefaults.standard.string(forKey: "userNumber") ?? "non disponibile"
+    let nome = UserDefaults.standard.string(forKey: "firstName") ?? "Name"
+    let cognome = UserDefaults.standard.string(forKey: "lastName") ?? "Surname"
     
     func TapAnimation(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -81,37 +84,39 @@ struct TimerView: View {
         }
     }
     
-//    func sendPosition() {
-//        guard let location = locationManager.userLocation?.coordinate else {
-//                print("Impossibile ottenere la posizione dell'utente.")
-//                return
-//            }
-//        vm.latitude = locationManager.userLocation?.coordinate.latitude ?? 0
-//        vm.longitude = locationManager.userLocation?.coordinate.longitude ?? 0
-//        if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
-//            for token in savedTokens {
-//                vm.sendPosition(token: token, latitude: vm.latitude, longitude: vm.longitude)
-//            }
-//        } else {
-//            print("Nessun token salvato in UserDefaults.")
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-//            if timerManager.isActivated{
-//                self.sendPosition()
-//            } else {
-//                vm.latitude = 0
-//                vm.longitude = 0
-//                if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
-//                    for token in savedTokens {
-//                        vm.sendPosition(token: token, latitude: vm.latitude, longitude: vm.longitude)
-//                    }
-//                } else {
-//                    print("Nessun token salvato in UserDefaults.")
-//                }
-//                print("end sending")
-//            }
-//        }
-//    }
+    func sendPosition() {
+        guard let location = locationManager.userLocation?.coordinate else {
+                print("Impossibile ottenere la posizione dell'utente.")
+                return
+            }
+        vm.latitude = locationManager.userLocation?.coordinate.latitude ?? 0
+        vm.longitude = locationManager.userLocation?.coordinate.longitude ?? 0
+        print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
+        if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+            for token in savedTokens {
+                vm.sendPosition(token: token, latitude: vm.latitude, longitude: vm.longitude, nomeAmico: nome, cognomeAmico: cognome)
+            }
+        } else {
+            print("Nessun token salvato in UserDefaults.")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            if timerManager.isActivated{
+                self.sendPosition()
+            } else {
+                vm.latitude = 0
+                vm.longitude = 0
+                print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
+                if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+                    for token in savedTokens {
+                        vm.sendPosition(token: token, latitude: 0, longitude: 0, nomeAmico: "", cognomeAmico: "")
+                    }
+                } else {
+                    print("Nessun token salvato in UserDefaults.")
+                }
+                print("end sending")
+            }
+        }
+    }
     
     func sendPushNotificationsForSavedTokens() {
         if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
@@ -350,7 +355,7 @@ struct TimerView: View {
                         DispatchQueue.main.asyncAfter(deadline: .now()) {
                             buttonLocked = false
                         }
-//                        sendPosition()
+                        sendPosition()
                     } else {
                         if timerManager.canCancel && !buttonLocked{
                             if audioRecorder.recording{
@@ -394,6 +399,7 @@ struct TimerView: View {
                     print("Nessun valore salvato.")
                 }
                 timerManager.updateCountFromLastCounter()
+//                vm.fetchUserInfo()
             }.alert(isPresented: $timerManager.showAlert) {
                 Alert(
                     title: Text("Are you safe?"),

@@ -17,18 +17,23 @@ struct UProtectApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject var timerManager = TimerManager()
+    @StateObject var vm = CloudViewModel()
     @StateObject var watchConnector = WatchController()
     @StateObject var audioRecorder = AudioRecorder()
     @State private var locationManager = LocationManager()
     
     @Environment (\.scenePhase) var scene
     
+    init() {
+        UITabBar.setCustomAppearance()
+    }
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Counter.self, Contacts.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
@@ -38,10 +43,12 @@ struct UProtectApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            UProtect(timerManager: timerManager, audioRecorder: timerManager)
+            //            UProtect(timerManager: timerManager, audioRecorder: timerManager)
             ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
                 .onAppear{
                     watchConnector.observeUserDefaults()
+                    vm.fetchUserPosition()
+                    vm.fetchFriend()
                 }
                 .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
             //                .onOpenURL { url in
@@ -65,7 +72,7 @@ struct UProtectApp: App {
             //                    }
             //                }
         }.modelContainer(sharedModelContainer)
-         .environment(locationManager)
+            .environment(locationManager)
     }
     
     //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

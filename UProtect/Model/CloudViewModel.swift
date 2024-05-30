@@ -19,6 +19,8 @@ struct UserModel: Hashable{
     let latitude: Double
     let longitude: Double
     let record: CKRecord
+    let nomeAmico: String
+    let cognomeAmico: String
 }
 
 class CloudViewModel: ObservableObject{
@@ -33,8 +35,12 @@ class CloudViewModel: ObservableObject{
     
     @Published var firstName: String = "Nome"
     @Published var lastName: String = "Cognome"
+    @Published var number: String = "%"
+    
     @Published var latitudine: Double = 0
     @Published var longitudine: Double = 0
+    @Published var nomeAmico: String = "Nome"
+    @Published var cognomeAmico: String = "Cognome"
 
     @Environment(\.modelContext) var modelContext
     
@@ -115,6 +121,8 @@ class CloudViewModel: ObservableObject{
         newUser["recipient"] = recipientID
         newUser["latitude"] = 0
         newUser["longitude"] = 0
+        newUser["nomeAmico"] = ""
+        newUser["cognomeAmico"] = ""
         saveItem(record: newUser)
     }
     
@@ -165,22 +173,22 @@ class CloudViewModel: ObservableObject{
         let queryOperation = CKQueryOperation(query: query)
         queryOperation.resultsLimit = 1
         
-        var isNumberPresent = false
-        
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
                 if let longitude = record["longitude"] as? Double{
                     self.longitudine = longitude
                     print("Longitude found: \(self.longitudine)")
+                    UserDefaults.standard.set(self.longitudine, forKey: "longitudine")
                 } else {
-                    print("Token not found")
+                    print("Longitude not found")
                 }
                 if let latitude = record["latitude"] as? Double{
                     self.latitudine = latitude
                     print("Latitude found: \(self.latitudine)")
+                    UserDefaults.standard.set(self.latitudine, forKey: "latitudine")
                 } else {
-                    print("Token not found")
+                    print("Latitude not found")
                 }
             case .failure(let error):
                 print("Error: \(error)")
@@ -193,6 +201,69 @@ class CloudViewModel: ObservableObject{
         }
     }
     
+    func fetchFriend() {
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                if let nome = record["nomeAmico"] as? String{
+                    self.nomeAmico = nome
+                    print("nomeAmico found: \(self.nomeAmico)")
+                    UserDefaults.standard.set(self.nomeAmico, forKey: "nomeAmico")
+                } else {
+                    print("nomeAmico not found")
+                }
+                if let cognome = record["cognomeAmico"] as? String{
+                    self.cognomeAmico = cognome
+                    print("cognomeAmico found: \(self.cognomeAmico)")
+                    UserDefaults.standard.set(self.cognomeAmico, forKey: "cognomeAmico")
+                } else {
+                    print("cognomeAmico not found")
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+        addOperation(operation: queryOperation)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.fetchFriend()
+        }
+    }
+    
+//    func fetchUserInfo() {
+//        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
+//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+//        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+//        let queryOperation = CKQueryOperation(query: query)
+//        queryOperation.resultsLimit = 1
+//        
+//        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+//            switch returnedResult {
+//            case .success(let record):
+//                if let firstName = record["name"] as? String, let lastName = record["surname"] as? String {
+//                    DispatchQueue.main.async {
+//                        self.firstName = firstName
+//                        self.lastName = lastName
+//                    }
+//                } else {
+//                    DispatchQueue.main.async {
+//                        print("Nome o cognome vutori")
+//                    }
+//                }
+//            case .failure(let error):
+//                DispatchQueue.main.async {
+//                    print("Nome o cognome non trovati")                }
+//            }
+//        }
+//        addOperation(operation: queryOperation)
+//    }
+    
     func fetchUserInfo() {
         let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
@@ -203,24 +274,37 @@ class CloudViewModel: ObservableObject{
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
-                if let firstName = record["name"] as? String, let lastName = record["surname"] as? String {
-                    DispatchQueue.main.async {
-                        self.firstName = firstName
-                        self.lastName = lastName
-                    }
+                if let name = record["name"] as? String{
+                    self.firstName = name
+                    print("firstName found: \(self.firstName)")
+                    UserDefaults.standard.set(self.firstName, forKey: "firstName")
                 } else {
-                    DispatchQueue.main.async {
-                        print("Nome o cognome vutori")
-                    }
+                    print("firstName not found")
+                }
+                if let surname = record["surname"] as? String{
+                    self.lastName = surname
+                    print("lastName found: \(self.lastName)")
+                    UserDefaults.standard.set(self.lastName, forKey: "lastName")
+                } else {
+                    print("lastName not found")
+                }
+                if let number = record["number"] as? String{
+                    self.number = number
+                    print("number found: \(self.number)")
+                    UserDefaults.standard.set(self.number, forKey: "userNumber")
+                } else {
+                    print("number not found")
                 }
             case .failure(let error):
-                DispatchQueue.main.async {
-                    print("Nome o cognome non trovati")                }
+                print("Error: \(error)")
             }
         }
         addOperation(operation: queryOperation)
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+//            self.fetchUserInfo()
+//        }
     }
-    
     
     
     
@@ -324,7 +408,7 @@ class CloudViewModel: ObservableObject{
         addOperation(operation: queryOperation)
     }
     
-    func sendPosition(token: String, latitude: Double, longitude: Double){
+    func sendPosition(token: String, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String){
         let predicate = NSPredicate(format: "token = %@", argumentArray: [token])
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         let database = CKContainer.default().publicCloudDatabase
@@ -342,6 +426,8 @@ class CloudViewModel: ObservableObject{
             
             record.setValue(latitude, forKey: "latitude")
             record.setValue(longitude, forKey: "longitude")
+            record.setValue(nomeAmico, forKey: "nomeAmico")
+            record.setValue(cognomeAmico, forKey: "cognomeAmico")
             
             database.save(record) { savedRecord, saveError in
                 if let saveError = saveError {
