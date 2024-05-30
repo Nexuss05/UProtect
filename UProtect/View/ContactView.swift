@@ -16,7 +16,7 @@ struct ContactsView: View {
     @Binding var isShowingContactsPicker: Bool
     @Binding var showAlert: Bool
     @Binding var alertMessage: String
-//    @Environment(LocationManager.self) var locationManager
+    //    @Environment(LocationManager.self) var locationManager
     @State var locationManager = LocationManager()
     
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
@@ -43,6 +43,11 @@ struct ContactsView: View {
         }
     }
     
+    @StateObject private var vm = CloudViewModel()
+    //    @Environment(LocationManager.self) var locationManager
+    @Environment(\.modelContext) var modelContext
+    var tokens: [String] = []
+    
     var body: some View {
         NavigationView{
             VStack {
@@ -64,8 +69,29 @@ struct ContactsView: View {
                                 Text("\(contact.phoneNumber)")
                                     .font(.subheadline)
                             }
+                        }.onAppear{
+                            let phoneNumberWithoutSpaces = contact.phoneNumber.replacingOccurrences(of: " ", with: "")
+                            
+                            var formattedPhoneNumber = phoneNumberWithoutSpaces
+                            if !phoneNumberWithoutSpaces.hasPrefix("+") {
+                                formattedPhoneNumber = formatPhoneNumber(phoneNumberWithoutSpaces)
+                            }
+                            vm.fetchToken(number: formattedPhoneNumber) { token in
+                                if let token = token {
+                                    //                                    self.tokens.append(token)
+                                    UserDefaults.standard.set(self.tokens, forKey: "tokens")
+                                    var existingTokens = UserDefaults.standard.stringArray(forKey: "tokens") ?? []
+                                    if !existingTokens.contains(token) {
+                                        //                        self.tokens.append(token)
+                                        existingTokens.append(token)
+                                        UserDefaults.standard.set(existingTokens, forKey: "tokens")
+                                    }
+                                }
+                            }
                         }
+                        
                     }.onDelete(perform: deleteContact)
+                    
                 } .navigationTitle("Contacts")
                     .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
                     .toolbar {
@@ -129,10 +155,10 @@ struct ContactsView: View {
             if let encoded = try? encoder.encode(selectedContacts) {
                 UserDefaults.standard.set(encoded, forKey: "selectedContacts")
             }
-                        UserDefaults.standard.removeObject(forKey: "token")
+            UserDefaults.standard.removeObject(forKey: "token")
             if var tokens = UserDefaults.standard.array(forKey: "tokens") as? [String] {
                 if index < tokens.count {
-                                        print(tokens)
+                    print(tokens)
                     tokens.remove(at: index)
                     UserDefaults.standard.set(tokens, forKey: "tokens")
                 }
@@ -177,21 +203,21 @@ extension UserDefaults {
 //class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 //    private var locationManager = CLLocationManager()
 //    @Published var lastKnownLocation: CLLocation?
-//    
+//
 //    override init() {
 //        super.init()
 //        locationManager.delegate = self
 //    }
-//    
+//
 //    func requestLocation() {
 //        locationManager.requestWhenInUseAuthorization()
 //        locationManager.requestLocation()
 //    }
-//    
+//
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //        lastKnownLocation = locations.first
 //    }
-//    
+//
 //    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 //        //        print("Failed to find user's location: \(error.localizedDescription)")
 //    }

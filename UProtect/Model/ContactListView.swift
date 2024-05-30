@@ -140,7 +140,7 @@ struct ContactsPicker: View {
     }
 }
 
-
+//
 //class Coordinator: NSObject, CNContactPickerDelegate {
 //
 //    @StateObject private var vm = CloudViewModel()
