@@ -17,6 +17,7 @@ struct OtpFormFieldView: View {
     
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioPlayer: AudioPlayer
     
     @FocusState private var pinFocusState : FocusPin?
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
@@ -126,7 +127,7 @@ struct OtpFormFieldView: View {
                 verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
             }
             .fullScreenCover(isPresented: $isVerified, content: {
-                ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
+                ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
         })
         }.ignoresSafeArea()
             .preferredColorScheme(.light)
@@ -181,6 +182,6 @@ struct OtpModifier: ViewModifier {
 struct ContentView_Previews31: PreviewProvider {
     static var previews: some View {
         let timerManager = TimerManager()
-        return OtpFormFieldView(timerManager: timerManager, audioRecorder: AudioRecorder())
+        return OtpFormFieldView(timerManager: timerManager, audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
     }
 }

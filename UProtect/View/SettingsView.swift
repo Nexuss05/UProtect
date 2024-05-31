@@ -13,12 +13,18 @@ struct SettingsView: View {
     @State private var circleColor: Color = UserDefaultsManager.loadCircleColor() ?? Color.red
     @State var url = URL(string: "https://www.iubenda.com/privacy-policy/49969320")
     @Query var userData: [Contacts]
+    
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioPlayer: AudioPlayer
     @StateObject private var vm = CloudViewModel()
+    
     let numero = UserDefaults.standard.string(forKey: "userNumber") ?? "non disponibile"
     let nome = UserDefaults.standard.string(forKey: "firstName") ?? "Name"
     let cognome = UserDefaults.standard.string(forKey: "lastName") ?? "Surname"
+    
+    @State var showOnBoarding: Bool = false
+    @State var showWidget: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -81,15 +87,13 @@ struct SettingsView: View {
                     
                     Section(header: Text("Background Recordings")){
                         NavigationLink {
-                            RecordingsList(audioRecorder: audioRecorder).ignoresSafeArea()
+                            RecordingsList(audioRecorder: audioRecorder, audioPlayer: audioPlayer).ignoresSafeArea()
                         } label: {
                             Text("Recordings")
                         }.navigationViewStyle(StackNavigationViewStyle())
                     }
                     
                     Section(header: Text("Titolo")) {
-                        Text("Onboarding")
-                            .foregroundColor(.primary)
                         Text("Siri & Shortcuts")
                             .foregroundColor(.primary)
                         Text("Widgets")
@@ -97,6 +101,14 @@ struct SettingsView: View {
                     }
                     
                     Section(header: Text("About")){
+                        HStack{
+                            Text("Onboarding")
+                                .foregroundColor(.primary)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }.onTapGesture {
+                            showOnBoarding.toggle()
+                        }
                         ShareLink(item: "https://testflight.apple.com/join/UjB0xSRP")
                             .foregroundColor(.primary)
                         HStack {
@@ -116,6 +128,9 @@ struct SettingsView: View {
                 .navigationTitle("Settings")
                 .background(CustomColor.orangeBackground)
                 .scrollContentBackground(.hidden)
+                .sheet(isPresented: $showOnBoarding, content: {
+                    WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                })
             }
         }
     }

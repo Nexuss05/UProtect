@@ -20,6 +20,7 @@ struct UProtectApp: App {
     @StateObject var vm = CloudViewModel()
     @StateObject var watchConnector = WatchController()
     @StateObject var audioRecorder = AudioRecorder()
+    @StateObject var audioPlayer = AudioPlayer()
     @State private var locationManager = LocationManager()
     
     @Environment (\.scenePhase) var scene
@@ -43,8 +44,8 @@ struct UProtectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //            UProtect(timerManager: timerManager, audioRecorder: timerManager)
-            ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
+                UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+//            ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 .onAppear{
                     watchConnector.observeUserDefaults()
                     vm.fetchUserPosition()

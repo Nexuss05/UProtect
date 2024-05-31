@@ -34,6 +34,41 @@ struct MapView: View {
     @State var nomeAmico: String = ""
     @State var cognomeAmico: String = ""
     
+    func fanculo(){
+        DispatchQueue.main.async {
+            if let lat = UserDefaults.standard.value(forKey: "latitudine") as? Double {
+                latitudine = lat
+                print("Updated lat: \(latitudine)")
+            } else {
+                print("Nessun valore salvato per latitudine.")
+            }
+            if let lon = UserDefaults.standard.value(forKey: "longitudine") as? Double {
+                longitudine = lon
+                print("Updated lon: \(longitudine)")
+            } else {
+                print("Nessun valore salvato per longitudine.")
+            }
+            if let na = UserDefaults.standard.string(forKey: "nomeAmico") {
+                nomeAmico = na
+            } else {
+                print("Nessun valore salvato per nomeAmico.")
+            }
+            if let ca = UserDefaults.standard.string(forKey: "cognomeAmico") {
+                cognomeAmico = ca
+            } else {
+                print("Nessun valore salvato per cognomeAmico.")
+            }
+            
+            if latitudine == 0 && longitudine == 0 {
+                showUser = false
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                fanculo()
+            }
+        }
+    }
+    
     var body: some View {
         ZStack{
             if showUser {
@@ -80,29 +115,6 @@ struct MapView: View {
                     } else {
                         routeDisplaying = false
                     }
-                }.onReceive(vm.$latitudine){_ in
-                    if let lat = UserDefaults.standard.value(forKey: "latitudine") {
-                        latitudine = lat as! Double
-                        print("updated lat: \(latitudine)")
-                    } else {
-                        print("Nessun valore salvato per latitudine.")
-                    }
-                    if let lon = UserDefaults.standard.value(forKey: "longitudine") {
-                        longitudine = lon as! Double
-                        print("updated lon: \(longitudine)")
-                    } else {
-                        print("Nessun valore salvato per longitudine.")
-                    }
-                    if let na = UserDefaults.standard.string(forKey: "nomeAmico") {
-                        nomeAmico = na
-                    } else {
-                        print("Nessun valore salvato per nomeAmico.")
-                    }
-                    if let ca = UserDefaults.standard.string(forKey: "cognomeAmico") {
-                        cognomeAmico = ca
-                    } else {
-                        print("Nessun valore salvato per cognomeAmico.")
-                    }
                 }
                 .mapControls {
                     MapUserLocationButton()
@@ -134,6 +146,9 @@ struct MapView: View {
                     showUser.toggle()
                 }
             }
+        }
+        .onAppear{
+            fanculo()
         }
     }
     

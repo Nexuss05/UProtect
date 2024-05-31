@@ -23,7 +23,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     var receivedData: [String] = []
     override func awake(withContext context: Any?) {
             super.awake(withContext: context)
-            // Configura la sessione di WatchConnectivity
             if WCSession.isSupported() {
                 let session = WCSession.default
                 session.delegate = self
@@ -31,24 +30,18 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }
         }
 
-        // Ricevi l'array di stringhe dall'app principale
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         if let array = applicationContext["data"] as? [String] {
-            // Memorizza l'array ricevuto
             receivedData = array
             print("Array ricevuto: \(receivedData)")
             UserDefaults.standard.set(receivedData, forKey: "receivedDataFromiPhone")
-            // Salvataggio nell'archiviazione dati locale
             saveDataLocally()
         }
     }
 
-    // Salvataggio nell'archiviazione dati locale (file di appartenenza)
     func saveDataLocally() {
-        // Ottieni il percorso del file all'interno della directory Documenti dell'applicazione
         if let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let fileURL = directoryURL.appendingPathComponent("receivedData.txt")
-            // Salva l'array come file di testo
             do {
                 let data = try NSKeyedArchiver.archivedData(withRootObject: receivedData, requiringSecureCoding: true)
                 try data.write(to: fileURL)

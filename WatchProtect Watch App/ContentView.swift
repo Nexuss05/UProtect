@@ -24,7 +24,7 @@ struct ContentView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var timerManager: TimerManager
-    @ObservedObject var audioRecorder: AudioRecorder
+//    @ObservedObject var audioRecorder: AudioRecorder
     
     @State var buttonTapped: Bool = false
     @State var buttonLocked: Bool = false
@@ -118,7 +118,6 @@ struct ContentView: View {
         request.addValue("0", forHTTPHeaderField: "apns-expiration")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        // Create URLSession
         let session = URLSession(configuration: .default)
         
         print("Sending push notification for token: \(token)...")

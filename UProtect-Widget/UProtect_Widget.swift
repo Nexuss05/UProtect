@@ -15,7 +15,7 @@ struct CustomWidget: Widget {
         }
         .configurationDisplayName("UProtect Widget")
         .description("Widget per attivare l'SOS")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular])
     }
 }
 
@@ -95,6 +95,16 @@ struct WidgetView: View {
                         .foregroundColor(CustomColor.orange)
                         .opacity(1)
                 }
+            } else if widgetFamily == .accessoryCircular {
+                ZStack{
+                    Circle()
+                        .stroke(Color.white, lineWidth: 5)
+                        .frame(width: 120)
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .resizable()
+                        .frame(width: 30, height: 28)
+                        .foregroundColor(.white)
+                }
             }
         }
         .widgetURL(URL(string: "widget://sos"))
@@ -117,6 +127,8 @@ struct UProtect_Widget_Previews: PreviewProvider {
             .previewContext(WidgetPreviewContext(family: .systemMedium))
         WidgetView()
             .previewContext(WidgetPreviewContext(family: .systemSmall))
+        WidgetView()
+            .previewContext(WidgetPreviewContext(family: .accessoryCircular))
     }
 }
 

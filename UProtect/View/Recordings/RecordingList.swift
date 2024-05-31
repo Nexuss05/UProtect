@@ -9,13 +9,23 @@ import SwiftUI
 struct RecordingsList: View {
     
     @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioPlayer = AudioPlayer()
     @State private var searchText = ""
+    
+//    var filteredRecordings: [Recording] {
+//        if searchText.isEmpty {
+//            return audioRecorder.recordings
+//        } else {
+//            return audioRecorder.recordings.filter { $0.fileURL.lastPathComponent.contains(searchText) }
+//        }
+//    }
     
     var filteredRecordings: [Recording] {
         if searchText.isEmpty {
-            return audioRecorder.recordings
+            return audioRecorder.recordings.sorted(by: { $0.createdAt > $1.createdAt })
         } else {
             return audioRecorder.recordings.filter { $0.fileURL.lastPathComponent.contains(searchText) }
+                                           .sorted(by: { $0.createdAt > $1.createdAt })
         }
     }
     
@@ -32,7 +42,7 @@ struct RecordingsList: View {
                     SearchBar(text: $searchText)
                     List {
                         ForEach(filteredRecordings, id: \.createdAt) { recording in
-                            RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder)
+                            RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                         }
                         .onDelete(perform: delete)
                     }/*.navigationTitle("Recordings")*/
@@ -55,6 +65,9 @@ struct RecordingsList: View {
                 .padding(.top, -40)/*.navigationBarHidden(true)*/
             }
         }.ignoresSafeArea()
+            .onAppear {
+                        audioRecorder.audioPlayer = audioPlayer
+                    }
     }
     
     func delete(at offsets: IndexSet) {
@@ -73,8 +86,7 @@ struct RecordingRow: View {
     var createdAt: Date
     var audioRecorder: AudioRecorder
     
-    @ObservedObject var audioPlayer = AudioPlayer()
-    @State private var isExpanded = false
+    @ObservedObject var audioPlayer: AudioPlayer
     
     func share() {
         let activityViewController = UIActivityViewController(activityItems: [audioURL], applicationActivities: nil)
@@ -128,7 +140,6 @@ struct RecordingRow: View {
                 }
                 Bar(progress: audioPlayer.playbackProgress)
                     .frame(height: 5)
-                AudioPlayerView()
                 
             }.padding(.top)
         }.frame(height: 100)
@@ -140,91 +151,6 @@ struct RecordingRow: View {
         return formatter.string(from: date)
     }
 }
-
-//struct RecordingRow: View {
-//
-//    var audioURL: URL
-//    var createdAt: Date
-//
-//    @ObservedObject var audioPlayer = AudioPlayer()
-//
-//    var body: some View {
-//        HStack {
-//            VStack(alignment: .leading) {
-//                Text("\(audioURL.lastPathComponent)")
-//                    .font(.headline)
-//                Text("\(formattedDate(date: createdAt))")
-//                    .font(.subheadline)
-//            }
-//            Spacer()
-//            if audioPlayer.isPlaying == false {
-//                Button(action: {
-//                    self.audioPlayer.startPlayback(audio: self.audioURL)
-//                }) {
-//                    Image(systemName: "play.circle")
-//                        .imageScale(.large)
-//                }
-//            } else {
-//                Button(action: {
-//                    self.audioPlayer.stopPlayback()
-//                }) {
-//                    Image(systemName: "stop.fill")
-//                        .imageScale(.large)
-//                }
-//            }
-//        }
-//    }
-//
-//    func formattedDate(date: Date) -> String {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd/MM/yyyy, HH:mm"
-//        return formatter.string(from: date)
-//    }
-//}
-
-//struct AudioPlayerView: View {
-//    
-//    var audioURL: URL
-//    @ObservedObject var audioPlayer: AudioPlayer
-//    
-//    var body: some View {
-//        VStack {
-//            Text("Timeline Here")
-//            HStack {
-//                Button(action: {
-//                    // Implement logic for rewinding
-//                }) {
-//                    Image(systemName: "backward.fill")
-//                        .imageScale(.large)
-//                }
-//                Spacer()
-//                if audioPlayer.isPlaying == false {
-//                    Button(action: {
-//                        self.audioPlayer.startPlayback(audio: self.audioURL)
-//                    }) {
-//                        Image(systemName: "play.circle")
-//                            .imageScale(.large)
-//                    }
-//                } else {
-//                    Button(action: {
-//                        self.audioPlayer.stopPlayback()
-//                    }) {
-//                        Image(systemName: "stop.fill")
-//                            .imageScale(.large)
-//                    }
-//                }
-//                Spacer()
-//                Button(action: {
-//                    // Implement logic for fast forwarding
-//                }) {
-//                    Image(systemName: "forward.fill")
-//                        .imageScale(.large)
-//                }
-//            }
-//        }
-//    }
-//}
-
 
 struct SearchBar: UIViewRepresentable {
     
@@ -280,6 +206,6 @@ struct Bar: View {
 
 struct RecordingsList_Previews: PreviewProvider {
     static var previews: some View {
-        RecordingsList(audioRecorder: AudioRecorder())
+        RecordingsList(audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
     }
 }

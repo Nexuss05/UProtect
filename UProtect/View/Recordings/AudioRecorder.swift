@@ -17,6 +17,8 @@ struct Recording {
 
 class AudioRecorder: NSObject, ObservableObject {
     
+    var audioPlayer: AudioPlayer?
+    
     override init() {
         super.init()
         fetchRecording()
@@ -41,7 +43,7 @@ class AudioRecorder: NSObject, ObservableObject {
             print(locationManager.userAddress)
             
         }
-
+        
         let recordingSession = AVAudioSession.sharedInstance()
         
         do {
@@ -65,7 +67,7 @@ class AudioRecorder: NSObject, ObservableObject {
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.record()
-
+            
             recording = true
         } catch {
             print("Could not start recording")
@@ -96,11 +98,14 @@ class AudioRecorder: NSObject, ObservableObject {
     }
     
     func deleteRecording(urlsToDelete: [URL]) {
-            
+        
         for url in urlsToDelete {
             print(url)
+            if audioPlayer?.audioPlayer?.url == url && audioPlayer?.isPlaying == true {
+                audioPlayer?.stopPlayback()
+            }
             do {
-               try FileManager.default.removeItem(at: url)
+                try FileManager.default.removeItem(at: url)
             } catch {
                 print("File could not be deleted!")
             }
@@ -110,24 +115,23 @@ class AudioRecorder: NSObject, ObservableObject {
     }
     
     func deleteAllRecordings() {
-            let fileManager = FileManager.default
-            let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let directoryContents = try? fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
-            
-            directoryContents?.forEach { url in
-                do {
-                    try fileManager.removeItem(at: url)
-                } catch {
-                    print("Could not delete file: \(url)")
-                }
+        let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let directoryContents = try? fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+        
+        directoryContents?.forEach { url in
+            do {
+                try fileManager.removeItem(at: url)
+            } catch {
+                print("Could not delete file: \(url)")
             }
-            
-            fetchRecording()
         }
+        fetchRecording()
+    }
     
     func getFileDate(for file: URL) -> Date {
         if let attributes = try? FileManager.default.attributesOfItem(atPath: file.path) as [FileAttributeKey: Any],
-            let creationDate = attributes[FileAttributeKey.creationDate] as? Date {
+           let creationDate = attributes[FileAttributeKey.creationDate] as? Date {
             return creationDate
         } else {
             return Date()
@@ -143,5 +147,5 @@ extension Date
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
-
+    
 }

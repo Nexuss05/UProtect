@@ -13,7 +13,10 @@ struct LogInView: View {
     
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioPlayer: AudioPlayer
     @StateObject private var vm = CloudViewModel()
+    
+    @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     
     var body: some View {
         ZStack {
@@ -44,8 +47,9 @@ struct LogInView: View {
                 }
                 Button{
                     vm.handleLogin(number: vm.numero) {
-                        isShowingOtp = true
+                        isWelcomeScreenOver = true
                         UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
+                        isShowingOtp = true
                     }
                 } label: {
                     ZStack {
@@ -57,6 +61,7 @@ struct LogInView: View {
                             .foregroundColor(CustomColor.orange)
                     }
                 }.padding(.top, 100)
+                    .disabled(vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
                 
             }
             Image("a0")
@@ -65,22 +70,26 @@ struct LogInView: View {
                 .padding(.bottom, 200)
         }
         .ignoresSafeArea()
-            .preferredColorScheme(.light)
-            .fullScreenCover(isPresented: $isShowingRec, content: {
-                RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder)
-            })
-            .fullScreenCover(isPresented: $isShowingOtp, content: {
-                OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder)
-            })
+        .preferredColorScheme(.light)
+        .fullScreenCover(isPresented: $isShowingRec, content: {
+            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+        })
+        .fullScreenCover(isPresented: $isShowingOtp, content: {
+            OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+        })
     }
 }
 
 struct RegistrationView: View {
     @State var isShowingLogin: Bool = false
+    @State var isShowingOtp: Bool = false
     
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioPlayer: AudioPlayer
     @StateObject private var vm = CloudViewModel()
+    
+    @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     
     var body: some View {
         ZStack {
@@ -126,7 +135,9 @@ struct RegistrationView: View {
                 
                 Button{
                     vm.addButtonPressed()
+                    isWelcomeScreenOver = true
                     UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
+                    isShowingOtp = true
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -137,6 +148,7 @@ struct RegistrationView: View {
                             .foregroundColor(CustomColor.orange)
                     }
                 }.padding(.top, 30)
+                    .disabled(vm.nome.trimmingCharacters(in: .whitespaces).isEmpty || vm.cognome.trimmingCharacters(in: .whitespaces).isEmpty||vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
             }
             Image("a1")
                 .resizable()
@@ -145,7 +157,10 @@ struct RegistrationView: View {
         }.preferredColorScheme(.light)
             .ignoresSafeArea()
             .fullScreenCover(isPresented: $isShowingLogin, content: {
-                LogInView(timerManager: timerManager, audioRecorder: audioRecorder)
+                LogInView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+            })
+            .fullScreenCover(isPresented: $isShowingOtp, content: {
+                OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
             })
     }
 }
@@ -153,6 +168,6 @@ struct RegistrationView: View {
 struct ContentView_Previews5: PreviewProvider {
     static var previews: some View {
         let timerManager = TimerManager()
-        return RegistrationView(timerManager: timerManager, audioRecorder: AudioRecorder())
+        return RegistrationView(timerManager: timerManager, audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
     }
 }

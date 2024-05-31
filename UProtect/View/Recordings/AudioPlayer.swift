@@ -58,19 +58,20 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     }
     
     private func startTimer() {
-            timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-                self.updateProgress()
-//                print(self.playbackProgress)
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.updateProgress()
             }
         }
-        
-        private func stopTimer() {
-            timer?.invalidate()
-            timer = nil
-        }
-        
-        private func updateProgress() {
-            guard let player = audioPlayer else { return }
-            playbackProgress = player.currentTime / player.duration
-        }
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    private func updateProgress() {
+        guard let player = audioPlayer else { return }
+        playbackProgress = player.currentTime / player.duration
+    }
 }

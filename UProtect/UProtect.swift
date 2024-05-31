@@ -13,13 +13,14 @@ struct UProtect: View {
     
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioPlayer: AudioPlayer
     
     var body: some View {
         VStack {
             if checkWelcomeScreen {
-                ContentView(timerManager: timerManager, audioRecorder: audioRecorder)
+                ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
             } else {
-                WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder)
+                WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
             }
         }.onAppear {
             checkWelcomeScreen = isWelcomeScreenOver

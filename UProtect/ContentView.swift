@@ -27,6 +27,7 @@ struct ContentView: View {
     @StateObject private var vm = CloudViewModel()
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioPlayer: AudioPlayer
     
     var body: some View {
         GeometryReader { geometry in
@@ -47,7 +48,7 @@ struct ContentView: View {
                             }
                             .tag(1)
                     }else{
-                        Text("position denied")
+                        NoLocationView()
                             .tabItem {
                             Label("Map", systemImage: "map.fill")
                         }
@@ -67,7 +68,7 @@ struct ContentView: View {
                         }
                         .tag(3)
                     
-                    SettingsView(timerManager: timerManager, audioRecorder: audioRecorder)
+                    SettingsView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                         .tabItem {
                             Label("Settings", systemImage: "gear")
                         }

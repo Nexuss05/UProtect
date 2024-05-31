@@ -21,6 +21,10 @@ struct WelcomeView: View {
     @StateObject var viewModel = AnimationViewModel()
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
+    @ObservedObject var audioPlayer: AudioPlayer
+    
+    @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
+    @State var checkWelcomeScreen: Bool = false
     
     @State var showLogin = false
     @State private var pageIndex = 0
@@ -41,19 +45,21 @@ struct WelcomeView: View {
                     .tag(3)
                     .overlay(
                         ZStack {
-                            Button(action: {
-                                showLogin = true
-                            }) {
-                                Text("Get started")
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
+                            if !checkWelcomeScreen{
+                                Button(action: {
+                                    showLogin = true
+                                }) {
+                                    Text("Get started")
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                }
+                                .background(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .foregroundColor(CustomColor.orange)
+                                        .frame(width: 200, height: 60)
+                                )
                             }
-                            .background(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .foregroundColor(CustomColor.orange)
-                                    .frame(width: 200, height: 60)
-                            )
                         }
                         .padding(.top, 550)
                     )
@@ -74,9 +80,10 @@ struct WelcomeView: View {
             let dotAppearance = UIPageControl.appearance()
             dotAppearance.currentPageIndicatorTintColor = .red
             dotAppearance.pageIndicatorTintColor = .gray
+            checkWelcomeScreen = isWelcomeScreenOver
         }
         .fullScreenCover(isPresented: $showLogin, content: {
-            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder)
+            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
         })
     }
 }
@@ -273,6 +280,6 @@ struct FourthPageView: View {
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView(timerManager: TimerManager(), audioRecorder: AudioRecorder())
+        WelcomeView(timerManager: TimerManager(), audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
     }
 }
