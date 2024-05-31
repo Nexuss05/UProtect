@@ -61,6 +61,7 @@ struct ContactsPicker: View {
     //    func makeCoordinator() -> Coordinator {
     //        return Coordinator(parent: self)
     //    }
+    @State private var showAlert = false
     
     var body: some View {
         NavigationView {
@@ -74,16 +75,21 @@ struct ContactsPicker: View {
                 
                 List(filteredContacts, id: \.identifier) { contact in
                     Button(action: {
-                        let currentSelection = contactSelectionState[contact] ?? false
-                        contactSelectionState[contact] = !currentSelection
-                        let serializableContact = SerializableContact(contact: contact)
-                        if !selectedContacts.contains(serializableContact) {
-                            selectedContacts.append(serializableContact)
-                            saveContactsToUserDefaults()
+                        if selectedContacts.count < 2 {
+                            let currentSelection = contactSelectionState[contact] ?? false
+                            contactSelectionState[contact] = !currentSelection
+                            let serializableContact = SerializableContact(contact: contact)
+                            if !selectedContacts.contains(serializableContact) {
+                                selectedContacts.append(serializableContact)
+                                saveContactsToUserDefaults()
+                            }
+                        } else {
+                            // Mostra un avviso o disabilita l'azione
+                            // Potresti voler passare una variabile di stato per mostrare un avviso
+                            // o disabilitare l'azione qui
                         }
                     }) {
-                        HStack{
-                            
+                        HStack {
                             Circle()
                                 .fill(contactSelectionState[contact] ?? false ? Color.blue : Color.gray)
                                 .frame(width: 20, height: 20)
@@ -95,7 +101,6 @@ struct ContactsPicker: View {
                                         .foregroundColor(.gray)
                                 }
                             }
-                            
                         }
                     }
                 }
@@ -106,6 +111,13 @@ struct ContactsPicker: View {
             })
             .onAppear {
                 self.fetchContacts()
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Limite Raggiunto"),
+                    message: Text("Puoi selezionare solo fino a 2 contatti."),
+                    dismissButton: .default(Text("OK"))
+                )
             }
         }
     }

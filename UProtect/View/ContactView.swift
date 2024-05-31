@@ -122,7 +122,12 @@ struct ContactsView: View {
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
-                                self.isShowingContactsPicker.toggle()
+                                if self.selectedContacts.count < 2 {
+                                    self.isShowingContactsPicker.toggle()
+                                } else {
+                                    self.showAlert = true
+                                    self.alertMessage = "Puoi selezionare solo fino a 2 contatti."
+                                }
                             }) {
                                 Image(systemName: "plus")
                                     .foregroundColor(timerManager.isActivated ? CustomColor.redBackground : CustomColor.orange)
