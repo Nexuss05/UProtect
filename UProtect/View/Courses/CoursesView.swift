@@ -41,7 +41,8 @@ struct CoursesView: View {
         Course(title: "Course 01", subtitle: "Self defence", progress: 0/30.0),
         Course(title: "Course 02", subtitle: "Walking alone", progress: 0/30.0),
         Course(title: "Course 03", subtitle: "In the disco", progress: 0/30.0),
-        Course(title: "Course 04", subtitle: "While travelling", progress: 0/30.0)
+        Course(title: "Course 04", subtitle: "While travelling", progress: 0/30.0),
+        Course(title: "Course 05", subtitle: "Prova", progress: 0/30.0)
     ]
     
     var body: some View {
@@ -155,7 +156,10 @@ struct CourseDetailView: View {
                 }
                 else if course.title == "Course 03" {
                     Course03()
-                } else {
+                } else if course.title == "Course 05" {
+                    Corso1()
+                        .background(.white)
+                }else {
                     Course04()
                 }
             }

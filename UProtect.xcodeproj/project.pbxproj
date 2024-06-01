@@ -52,6 +52,7 @@
 		E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */; };
 		E0456A472BF8F342002B514F /* otpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0456A462BF8F342002B514F /* otpView.swift */; };
 		E06A200B2C0A3541005D4D67 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A200A2C0A3541005D4D67 /* AppIntent.swift */; };
+		E06A202B2C0B7980005D4D67 /* Corso1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A202A2C0B7980005D4D67 /* Corso1.swift */; };
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
@@ -174,6 +175,7 @@
 		E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudViewModel.swift; sourceTree = "<group>"; };
 		E0456A462BF8F342002B514F /* otpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpView.swift; sourceTree = "<group>"; };
 		E06A200A2C0A3541005D4D67 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		E06A202A2C0B7980005D4D67 /* Corso1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corso1.swift; sourceTree = "<group>"; };
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
@@ -292,7 +294,7 @@
 				E0B954212C00E21100EBCD81 /* Onboarding.swift */,
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
 				E0456A462BF8F342002B514F /* otpView.swift */,
-				C23050442C05C7070056BEAA /* CoursesView.swift */,
+				E06A20292C0B78F1005D4D67 /* Courses */,
 				E0F1A6B72C08D29A00B0D16A /* LottieViews */,
 				E04060202C09C47D0018252D /* NoLocationView.swift */,
 				175A0A622C05BD4400101A32 /* MapView.swift */,
@@ -381,6 +383,15 @@
 				E06A200A2C0A3541005D4D67 /* AppIntent.swift */,
 			);
 			path = Shortcuts;
+			sourceTree = "<group>";
+		};
+		E06A20292C0B78F1005D4D67 /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				C23050442C05C7070056BEAA /* CoursesView.swift */,
+				E06A202A2C0B7980005D4D67 /* Corso1.swift */,
+			);
+			path = Courses;
 			sourceTree = "<group>";
 		};
 		E0EAD0E22BFF804F006753F5 /* Recordings */ = {
@@ -574,6 +585,7 @@
 				C23050492C05C7070056BEAA /* CoursesView.swift in Sources */,
 				C230504B2C05C7070056BEAA /* LottieView4.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
+				E06A202B2C0B7980005D4D67 /* Corso1.swift in Sources */,
 				E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
 				C233DAA02BEE1B72000072C4 /* Location.swift in Sources */,
