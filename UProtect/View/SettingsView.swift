@@ -83,6 +83,17 @@ struct SettingsView: View {
                                     .foregroundStyle(CustomColor.orange)
                             }
                         }
+                        Button(action: {
+                            //bho
+                        }) {
+                            HStack {
+                                Text("Overcome Do Not Disturb")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Image(systemName: "arrow.up.forward")
+                                    .foregroundStyle(CustomColor.orange)
+                            }
+                        }
                     }
                     
                     Section(header: Text("Background Recordings")){

@@ -46,10 +46,14 @@ struct LogInView: View {
                         .foregroundColor(Color.white)
                 }
                 Button{
-                    vm.handleLogin(number: vm.numero) {
-                        isWelcomeScreenOver = true
-                        UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
-                        isShowingOtp = true
+                    vm.handleLogin(number: vm.numero) { success in
+                        if success{
+                            isWelcomeScreenOver = true
+                            UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
+                            isShowingOtp = true
+                        } else {
+                            print("coglione")
+                        }
                     }
                 } label: {
                     ZStack {
@@ -134,10 +138,12 @@ struct RegistrationView: View {
                 }
                 
                 Button{
-                    vm.addButtonPressed()
-                    isWelcomeScreenOver = true
-                    UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
-                    isShowingOtp = true
+                    vm.handleRegistration(number: vm.numero) {
+                        vm.addButtonPressed()
+                        UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
+                        isShowingOtp = true
+                    }
+                    
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)

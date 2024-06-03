@@ -18,6 +18,7 @@ struct OtpFormFieldView: View {
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
     @ObservedObject var audioPlayer: AudioPlayer
+    @StateObject private var vm = CloudViewModel()
     
     @FocusState private var pinFocusState : FocusPin?
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
@@ -31,6 +32,7 @@ struct OtpFormFieldView: View {
     
     @State var verificationID: String?
     @State var isVerified: Bool = false
+    @State var showAlert: Bool = false
     
     var body: some View {
         ZStack {
@@ -109,6 +111,16 @@ struct OtpFormFieldView: View {
                         .focused($pinFocusState, equals: .pinSix)
                 }.padding(.bottom)
                 
+                
+                Button{
+                    vm.handleRegistration(number: vm.numero) {
+                        showAlert.toggle()
+                    }
+                } label: {
+                    ZStack {
+                        Text("Send again")
+                    }
+                }
                 Button{
                     verifyOTP()
                     isWelcomeScreenOver = true
@@ -129,6 +141,9 @@ struct OtpFormFieldView: View {
             .fullScreenCover(isPresented: $isVerified, content: {
                 ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
         })
+            .alert("OTP sent!", isPresented: $showAlert) {
+                Button("OK") { }
+            }
         }.ignoresSafeArea()
             .preferredColorScheme(.light)
     }

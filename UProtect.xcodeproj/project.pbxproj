@@ -51,7 +51,6 @@
 		E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */; };
 		E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */; };
 		E0456A472BF8F342002B514F /* otpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0456A462BF8F342002B514F /* otpView.swift */; };
-		E06A200B2C0A3541005D4D67 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A200A2C0A3541005D4D67 /* AppIntent.swift */; };
 		E06A202B2C0B7980005D4D67 /* Corso1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A202A2C0B7980005D4D67 /* Corso1.swift */; };
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
@@ -174,7 +173,6 @@
 		E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudViewModel.swift; sourceTree = "<group>"; };
 		E0456A462BF8F342002B514F /* otpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpView.swift; sourceTree = "<group>"; };
-		E06A200A2C0A3541005D4D67 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		E06A202A2C0B7980005D4D67 /* Corso1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corso1.swift; sourceTree = "<group>"; };
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -240,7 +238,6 @@
 		C21DD8312BE4D471003EB614 = {
 			isa = PBXGroup;
 			children = (
-				E06A20072C0A338C005D4D67 /* Shortcuts */,
 				999499F72C03B79C0074604F /* Lotties */,
 				C21DD83C2BE4D471003EB614 /* UProtect */,
 				C27795DD2BFCB5590034981F /* UProtect-Widget */,
@@ -375,14 +372,6 @@
 				E0B954232C00E33F00EBCD81 /* PageControl.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		E06A20072C0A338C005D4D67 /* Shortcuts */ = {
-			isa = PBXGroup;
-			children = (
-				E06A200A2C0A3541005D4D67 /* AppIntent.swift */,
-			);
-			path = Shortcuts;
 			sourceTree = "<group>";
 		};
 		E06A20292C0B78F1005D4D67 /* Courses */ = {
@@ -600,7 +589,6 @@
 				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
-				E06A200B2C0A3541005D4D67 /* AppIntent.swift in Sources */,
 				C230504A2C05C7070056BEAA /* LottieView3.swift in Sources */,
 				C23050482C05C7070056BEAA /* LottieView2.swift in Sources */,
 				E0B954222C00E21100EBCD81 /* Onboarding.swift in Sources */,

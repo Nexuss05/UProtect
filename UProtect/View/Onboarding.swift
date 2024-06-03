@@ -61,7 +61,7 @@ struct WelcomeView: View {
                                 )
                             }
                         }
-                        .padding(.top, 550)
+                            .padding(.top, 550)
                     )
             }
             .ignoresSafeArea()
@@ -73,7 +73,7 @@ struct WelcomeView: View {
                 Spacer()
                 CustomPageControl(currentPage: $pageIndex, numberOfPages: 4)
                     .frame(width: UIScreen.main.bounds.width, height: 50)
-//                    .padding(.bottom, 95)
+                //                    .padding(.bottom, 95)
             }
         }
         .onAppear {
@@ -94,7 +94,7 @@ struct FirstPageView: View {
     
     var body: some View {
         ZStack {
-            Image("o1")
+            Image("w1")
             VStack {
                 ZStack{
                     Circle()
@@ -116,24 +116,22 @@ struct FirstPageView: View {
                         .resizable()
                         .frame(width: 75, height: 70)
                         .foregroundColor(CustomColor.redBackground)
-                }
-//                .padding(.bottom, 50)
-                VStack{
-                    Text("SOS mode")
-                        .font(.title)
-                        .bold()
-                        .frame(width: 340)
-                        .padding(.top, 25)
-                    
-                    Text("Favorite tunes follow, anytime, anywhere.\nWorry-free offline playback for your journey.")
-                        .fontWeight(.light)
-                        .frame(width: 340)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical)
-                }
+                }.scaleEffect(CGSize(width: 0.9, height: 0.9))
                 Spacer()
             }
-//            .padding(.bottom, 125)
+            VStack{
+                Text("SOS mode")
+                    .font(.title)
+                    .bold()
+                    .frame(width: 340)
+                    .padding(.top, 25)
+                
+                Text("Favorite tunes follow, anytime, anywhere.\nWorry-free offline playback for your journey.")
+                    .fontWeight(.light)
+                    .frame(width: 340)
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical)
+            }.padding(.top, 50)
         }
     }
 }
@@ -159,8 +157,7 @@ struct SecondPageView: View {
     
     var body: some View {
         ZStack {
-            Image("o2")
-                .frame(width: .greatestFiniteMagnitude)
+            Image("w2")
             VStack {
                 ZStack{
                     Circle()
@@ -187,23 +184,23 @@ struct SecondPageView: View {
                         .foregroundStyle(.black)
                         .font(.system(size: 65))
                         .fontWeight(.bold)
-                }
-                VStack{
-                    Text("Supervision mode")
-                        .font(.title)
-                        .bold()
-                        .frame(width: 340)
-                        .padding(.top, 25)
-                    
-                    Text("Pristine sound quality for absolute\nclarity in audio playback.")
-                        .fontWeight(.light)
-                        .frame(width: 340)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical)
-                }
+                }.scaleEffect(CGSize(width: 0.9, height: 0.9))
                 Spacer()
             }
-//            .padding(.bottom, 125)
+            
+            VStack(alignment: .center){
+                Text("Supervision mode")
+                    .font(.title)
+                    .bold()
+                    .frame(width: 340)
+                    .padding(.top, 25)
+                
+                Text("Pristine sound quality for absolute\nclarity in audio playback.")
+                    .fontWeight(.light)
+                    .frame(width: 340)
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical)
+            }.padding(.top, 50)
         }.onReceive(self.time) { _ in
             DispatchQueue.main.async {
                 if self.count > 180 {
@@ -221,28 +218,19 @@ struct ThirdPageView: View {
     
     var body: some View {
         ZStack {
-            Image("o3")
+            Image("w3")
             VStack {
-                ZStack{
-                    Circle()
-                        .frame(width: 415)
-                        .opacity(0)
-                }
-                VStack{
-                    Text("Map")
-                        .font(.title)
-                        .bold()
-                        .frame(width: 340)
-                        .padding(.top, 25)
-                    Text("Curated weekly playlists tailored to\nyour music listening history.")
-                        .fontWeight(.light)
-                        .frame(width: 340)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical)
-                }
-                Spacer()
-            }
-//            .padding(.bottom, 125)
+                Text("Map")
+                    .font(.title)
+                    .bold()
+                    .frame(width: 340)
+                    .padding(.top, 25)
+                Text("Curated weekly playlists tailored to\nyour music listening history.")
+                    .fontWeight(.light)
+                    .frame(width: 340)
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical)
+            }.padding(.top, 50)
         }
     }
 }
@@ -251,13 +239,7 @@ struct FourthPageView: View {
     
     var body: some View {
         ZStack {
-            Image("o4")
-            VStack {
-                ZStack{
-                    Circle()
-                        .frame(width: 415)
-                        .opacity(0)
-                }
+            Image("w4")
                 VStack{
                     Text("Courses")
                         .font(.title)
@@ -269,10 +251,7 @@ struct FourthPageView: View {
                         .frame(width: 340)
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
-                }
-                Spacer()
-            }
-//            .padding(.bottom, 125)
+                }.padding(.top, 50)
             Image("o4b")
         }
     }
