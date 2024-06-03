@@ -2,6 +2,7 @@ import SwiftUI
 
 class AnimationViewModel: ObservableObject {
     @Published var showCircle: Bool = false
+    @Published var isTimerRunning = true
     
     init() {
         startAnimation()
@@ -35,7 +36,7 @@ struct WelcomeView: View {
                 FirstPageView(viewModel: viewModel)
                     .tag(0)
                 
-                SecondPageView()
+                SecondPageView(vm: viewModel)
                     .tag(1)
                 
                 ThirdPageView()
@@ -48,6 +49,7 @@ struct WelcomeView: View {
                             if !checkWelcomeScreen{
                                 Button(action: {
                                     showLogin = true
+                                    viewModel.isTimerRunning = false
                                 }) {
                                     Text("Get started")
                                         .font(.title2)
@@ -126,18 +128,19 @@ struct FirstPageView: View {
                     .frame(width: 340)
                     .padding(.top, 25)
                 
-                Text("Favorite tunes follow, anytime, anywhere.\nWorry-free offline playback for your journey.")
+                Text("If you feel in danger after clicking the button, it is possible to notify your emergency contacts by including their phone numbers to seek assistance. If your contacts have installed the application, they will receive a push notification along with your shared location. Otherwise, they will receive an SMS. Until the button is activated, your background will be recorded.")
                     .fontWeight(.light)
                     .frame(width: 340)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 50)
+            }.padding(.top, 175)
         }
     }
 }
 
 struct SecondPageView: View {
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var vm: AnimationViewModel
     
     @State var to : CGFloat = 0
     @State var count = 300
@@ -195,17 +198,21 @@ struct SecondPageView: View {
                     .frame(width: 340)
                     .padding(.top, 25)
                 
-                Text("Pristine sound quality for absolute\nclarity in audio playback.")
+                Text("If you are feeling unsafe and don't want to notify your contact immediately, simply hold the button to activate the timer. You have the option to modify the timer in the settings to your liking. \nIf you don't dismiss the alert when the time runs out, a notification will be sent.")
                     .fontWeight(.light)
                     .frame(width: 340)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 50)
+            }.padding(.top, 125)
         }.onReceive(self.time) { _ in
             DispatchQueue.main.async {
-                if self.count > 180 {
-                    self.count -= 1
-                    print("\(self.count)")
+                if self.vm.isTimerRunning {
+                    if self.count > 180 {
+                        self.count -= 1
+                        print("\(self.count)")
+                    } else {
+                        self.count = 300
+                    }
                 } else {
                     self.count = 300
                 }
@@ -252,7 +259,6 @@ struct FourthPageView: View {
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
                 }.padding(.top, 50)
-            Image("o4b")
         }
     }
 }

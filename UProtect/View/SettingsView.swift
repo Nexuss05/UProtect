@@ -129,7 +129,7 @@ struct SettingsView: View {
                             Image(systemName: "arrow.up.forward")
                                 .foregroundStyle(CustomColor.orange)
                         }.onTapGesture {
-                            if let url = URL(string: "https://www.iubenda.com/privacy-policy/49969320") {
+                            if let url = URL(string: "https://www.iubenda.com/privacy-policy/60037945") {
                                 UIApplication.shared.open(url)
                             }
                         }

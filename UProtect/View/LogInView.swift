@@ -10,6 +10,7 @@ import SwiftUI
 struct LogInView: View {
     @State var isShowingRec: Bool = false
     @State var isShowingOtp: Bool = false
+    @State var showAlert: Bool = false
     
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
@@ -46,9 +47,9 @@ struct LogInView: View {
                         .foregroundColor(Color.white)
                 }
                 Button{
-                    vm.handleLogin(number: vm.numero) { success in
+                    UserDefaults.standard.set(true, forKey: "registration")
+                    vm.handleRegistration(number: vm.numero) { success in
                         if success{
-                            isWelcomeScreenOver = true
                             UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
                             isShowingOtp = true
                         } else {
@@ -81,12 +82,18 @@ struct LogInView: View {
         .fullScreenCover(isPresented: $isShowingOtp, content: {
             OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
         })
+        .alert("You don't have an account!", isPresented: $showAlert) {
+            Button("SignIn"){
+                isShowingRec.toggle()
+            }
+        }
     }
 }
 
 struct RegistrationView: View {
     @State var isShowingLogin: Bool = false
     @State var isShowingOtp: Bool = false
+    @State var showAlert: Bool = false
     
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
@@ -142,10 +149,16 @@ struct RegistrationView: View {
                 }
                 
                 Button{
-                    vm.handleRegistration(number: vm.numero) {
-                        vm.addButtonPressed()
-                        UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
-                        isShowingOtp = true
+                    UserDefaults.standard.set(vm.nome, forKey: "nomeUtente")
+                    UserDefaults.standard.set(vm.cognome, forKey: "cognomeUtente")
+                    UserDefaults.standard.set(vm.numero, forKey: "numeroUtente")
+                    UserDefaults.standard.set(true, forKey: "registration")
+                    vm.handleRegistration(number: vm.numero) { success in
+                        if success{
+                            isShowingOtp = true
+                        } else {
+                            showAlert.toggle()
+                        }
                     }
                     
                 } label: {
@@ -168,6 +181,11 @@ struct RegistrationView: View {
             .fullScreenCover(isPresented: $isShowingOtp, content: {
                 OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
             })
+            .alert("You already have an account!", isPresented: $showAlert) {
+                Button("LogIn"){
+                    isShowingLogin.toggle()
+                }
+            }
     }
 }
 

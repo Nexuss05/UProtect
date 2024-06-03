@@ -24,6 +24,8 @@ struct OtpFormFieldView: View {
     @State var verificationID: String?
     @State var isVerified: Bool = false
     @State var showAlert: Bool = false
+    
+    @State var pollo: Bool = false
 
     var body: some View {
         ZStack {
@@ -46,7 +48,7 @@ struct OtpFormFieldView: View {
                 .padding(.bottom)
 
                 Button {
-                    vm.handleRegistration(number: vm.numero) {
+                    vm.handleRegistration(number: vm.numero) {_ in 
                         showAlert.toggle()
                     }
                 } label: {
@@ -54,8 +56,24 @@ struct OtpFormFieldView: View {
                 }
 
                 Button {
-                    verifyOTP()
-                    isWelcomeScreenOver = true
+                    verifyOTP { success in
+                        if success {
+                            if pollo {
+                                    vm.addButtonPressed()
+                            } else {
+                                vm.handleLogin(number: vm.numero) { success in
+                                    if success {
+                                        
+                                    } else {
+                                        print("coglione")
+                                    }
+                                }
+                            }
+                            isWelcomeScreenOver = true
+                        } else {
+                            print("OTP verification failed.")
+                        }
+                    }
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -67,7 +85,6 @@ struct OtpFormFieldView: View {
                     }
                 }
                 .padding(.top, 30)
-                .disabled(!isVerified)
             }
             .onAppear {
                 verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
@@ -81,6 +98,10 @@ struct OtpFormFieldView: View {
         }
         .ignoresSafeArea()
         .preferredColorScheme(.light)
+        .onAppear{
+            pollo = UserDefaults.standard.bool(forKey: "registration")
+            print(pollo)
+        }
     }
 
     private func otpTextField(text: Binding<String>, focus: FocusPin, nextFocus: FocusPin? = nil, previousFocus: FocusPin? = nil) -> some View {
@@ -114,10 +135,39 @@ struct OtpFormFieldView: View {
         }
     }
 
-    func verifyOTP() {
+//    func verifyOTP() {
+//        let otp = pinOne + pinTwo + pinThree + pinFour + pinFive + pinSix
+//        guard let verificationID = verificationID else {
+//            print("No verification ID found.")
+//            return
+//        }
+//
+//        let credential = PhoneAuthProvider.provider().credential(
+//            withVerificationID: verificationID,
+//            verificationCode: otp
+//        )
+//
+//        Auth.auth().signIn(with: credential) { authResult, error in
+//            if let error = error {
+//                print("Error during OTP verification: \(error.localizedDescription)")
+//                return
+//            }
+//            print("User signed in successfully.")
+//            isVerified = true
+//        }
+//    }
+    
+    func verifyOTP(completion: @escaping (Bool) -> Void) {
+        print("uno: \(pinOne)")
+        print("due: \(pinTwo)")
+        print("uno: \(pinThree)")
+        print("uno: \(pinFour)")
+        print("uno: \(pinFive)")
+        print("uno: \(pinSix)")
         let otp = pinOne + pinTwo + pinThree + pinFour + pinFive + pinSix
         guard let verificationID = verificationID else {
             print("No verification ID found.")
+            completion(false)
             return
         }
 
@@ -129,12 +179,15 @@ struct OtpFormFieldView: View {
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
                 print("Error during OTP verification: \(error.localizedDescription)")
+                completion(false)
                 return
             }
             print("User signed in successfully.")
             isVerified = true
+            completion(true)
         }
     }
+
 }
 
 struct OtpModifier: ViewModifier {

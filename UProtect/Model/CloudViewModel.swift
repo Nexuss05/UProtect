@@ -42,6 +42,8 @@ class CloudViewModel: ObservableObject{
     @Published var nomeAmico: String = "Nome"
     @Published var cognomeAmico: String = "Cognome"
     
+    @Published var registration: Bool = false
+    
     @Environment(\.modelContext) var modelContext
     
     var fcmToken: String? {
@@ -90,10 +92,35 @@ class CloudViewModel: ObservableObject{
     //        }
     //    }
     
+//    func addButtonPressed() {
+//        var formattedPhoneNumber = self.numero
+//        if !self.numero.hasPrefix("+") {
+//            formattedPhoneNumber = formatPhoneNumber(self.numero)
+//        }
+//        print(formattedPhoneNumber)
+//        
+//        fetchNumber(number: formattedPhoneNumber) { isNumberPresent in
+//            if isNumberPresent {
+//                print("Number is already present in the database.")
+//            } else {
+//                self.getUserRecordID { userRecordID, error in
+//                    if let userRecordID = userRecordID {
+//                        self.addItem(name: self.nome, surname: self.cognome, number: formattedPhoneNumber, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
+//                    } else {
+//                        print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
     func addButtonPressed() {
-        var formattedPhoneNumber = self.numero
-        if !self.numero.hasPrefix("+") {
-            formattedPhoneNumber = formatPhoneNumber(self.numero)
+        let numero = UserDefaults.standard.string(forKey: "numeroUtente")!
+        let nome = UserDefaults.standard.string(forKey: "nomeUtente")!
+        let cognome = UserDefaults.standard.string(forKey: "cognomeUtente")!
+        var formattedPhoneNumber = numero
+        if !numero.hasPrefix("+") {
+            formattedPhoneNumber = formatPhoneNumber(numero)
         }
         print(formattedPhoneNumber)
         
@@ -103,7 +130,7 @@ class CloudViewModel: ObservableObject{
             } else {
                 self.getUserRecordID { userRecordID, error in
                     if let userRecordID = userRecordID {
-                        self.addItem(name: self.nome, surname: self.cognome, number: formattedPhoneNumber, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
+                        self.addItem(name: nome, surname: cognome, number: formattedPhoneNumber, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
                     } else {
                         print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
                     }
@@ -570,10 +597,11 @@ class CloudViewModel: ObservableObject{
     
     func handleLogin(number: String, completion: @escaping (Bool) -> Void) {
         let currentToken = UserDefaults.standard.string(forKey: "fcmToken")
-        
-        var formattedPhoneNumber = number
-        if !number.hasPrefix("+") {
-            formattedPhoneNumber = formatPhoneNumber(number)
+        let numero = UserDefaults.standard.string(forKey: "mobilePhone")!
+
+        var formattedPhoneNumber = numero
+        if !numero.hasPrefix("+") {
+            formattedPhoneNumber = formatPhoneNumber(numero)
         }
         print(formattedPhoneNumber)
         
@@ -619,12 +647,21 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-    func handleRegistration(number: String, completion: @escaping () -> Void) {
+    func handleRegistration(number: String, completion: @escaping (Bool) -> Void) {
         var formattedPhoneNumber = number
         if !number.hasPrefix("+") {
             formattedPhoneNumber = formatPhoneNumber(number)
         }
         print(formattedPhoneNumber)
+        
+        searchNumber(number: formattedPhoneNumber) { found in
+            guard found else {
+                print("Numero non trovato nel database")
+                completion(false)
+                return
+            }
+        }
+            
         print("Attempting to verify phone number: \(formattedPhoneNumber)")
         
         let phoneAuthProvider = PhoneAuthProvider.provider()
@@ -635,7 +672,7 @@ class CloudViewModel: ObservableObject{
             }
             print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-            completion()
+            completion(true)
         }
     }
     

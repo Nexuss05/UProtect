@@ -52,6 +52,10 @@
 		E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */; };
 		E0456A472BF8F342002B514F /* otpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0456A462BF8F342002B514F /* otpView.swift */; };
 		E06A202B2C0B7980005D4D67 /* Corso1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A202A2C0B7980005D4D67 /* Corso1.swift */; };
+		E06A20572C0E0E8C005D4D67 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A20562C0E0E8C005D4D67 /* Vuota.swift */; };
+		E06A20592C0E0F3A005D4D67 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A20582C0E0F3A005D4D67 /* Vuota.swift */; };
+		E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */; };
+		E06A205D2C0E3015005D4D67 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E06A205C2C0E3015005D4D67 /* InfoPlist.xcstrings */; };
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
@@ -174,6 +178,10 @@
 		E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudViewModel.swift; sourceTree = "<group>"; };
 		E0456A462BF8F342002B514F /* otpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpView.swift; sourceTree = "<group>"; };
 		E06A202A2C0B7980005D4D67 /* Corso1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corso1.swift; sourceTree = "<group>"; };
+		E06A20562C0E0E8C005D4D67 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vuota.swift; sourceTree = "<group>"; };
+		E06A20582C0E0F3A005D4D67 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vuota.swift; sourceTree = "<group>"; };
+		E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E06A205C2C0E3015005D4D67 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
@@ -260,7 +268,9 @@
 		C21DD83C2BE4D471003EB614 /* UProtect */ = {
 			isa = PBXGroup;
 			children = (
+				E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */,
 				C25CE9C72BFFCC72008CE99A /* Info.plist */,
+				E06A205C2C0E3015005D4D67 /* InfoPlist.xcstrings */,
 				C25CE9C02BFF524D008CE99A /* GoogleService-Info.plist */,
 				C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */,
 				9995E0C62BECBD6C0001B309 /* UProtect.entitlements */,
@@ -288,6 +298,7 @@
 		C21DD8572BE4E9A4003EB614 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E0EAD0E22BFF804F006753F5 /* Recordings */,
 				E0B954212C00E21100EBCD81 /* Onboarding.swift */,
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
 				E0456A462BF8F342002B514F /* otpView.swift */,
@@ -299,7 +310,6 @@
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
 				E092099F2BEBE394005AD0FB /* TimerSettings.swift */,
-				E0EAD0E22BFF804F006753F5 /* Recordings */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,6 +337,7 @@
 				E0B9542E2C01F5B000EBCD81 /* WatchProtect Watch App.entitlements */,
 				E0B9542D2C01F55000EBCD81 /* WatchProtect-Watch-App-Info.plist */,
 				C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */,
+				E06A20582C0E0F3A005D4D67 /* Vuota.swift */,
 				C23F9A112C0098C2001FE56F /* ContentView.swift */,
 				E0F1A6B42C07B6B300B0D16A /* IOSController.swift */,
 				C23F9A132C0098C3001FE56F /* Assets.xcassets */,
@@ -386,6 +397,7 @@
 		E0EAD0E22BFF804F006753F5 /* Recordings */ = {
 			isa = PBXGroup;
 			children = (
+				E06A20562C0E0E8C005D4D67 /* Vuota.swift */,
 				E0EAD0E72BFF82B7006753F5 /* RecordingList.swift */,
 				E0EAD0E32BFF80A2006753F5 /* AudioRecorder.swift */,
 				E0EAD0E52BFF823E006753F5 /* AudioPlayer.swift */,
@@ -500,6 +512,7 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = C21DD8312BE4D471003EB614;
 			packageReferences = (
@@ -529,8 +542,10 @@
 				C25CE9C12BFF524D008CE99A /* GoogleService-Info.plist in Resources */,
 				C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */,
 				999499F92C03B7B50074604F /* Study.json in Resources */,
+				E06A205D2C0E3015005D4D67 /* InfoPlist.xcstrings in Resources */,
 				99A452692C05C5F4004700FE /* Animation - 1716804413916.json in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
+				E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +578,7 @@
 				C2893DD92BEB8C1900733211 /* RingView.swift in Sources */,
 				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
+				E06A20572C0E0E8C005D4D67 /* Vuota.swift in Sources */,
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
@@ -607,6 +623,7 @@
 				E0F1A6802C079BF000B0D16A /* ContentView.swift in Sources */,
 				C23F9A102C0098C2001FE56F /* WatchProtectApp.swift in Sources */,
 				E0F1A6B52C07B6B300B0D16A /* IOSController.swift in Sources */,
+				E06A20592C0E0F3A005D4D67 /* Vuota.swift in Sources */,
 				E0F1A67D2C079A9600B0D16A /* TimerManager.swift in Sources */,
 				E0F1A6B62C07C3CB00B0D16A /* LocationManager.swift in Sources */,
 			);

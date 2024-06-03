@@ -377,6 +377,7 @@ struct TimerView: View {
                     if !audioRecorder.recording{
                         audioRecorder.startRecording()
                     }
+                    sendPosition()
                     timerManager.isPressed = true
                     timerManager.startTimer()
                     withAnimation{

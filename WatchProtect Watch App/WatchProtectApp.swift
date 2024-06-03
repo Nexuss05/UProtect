@@ -17,7 +17,8 @@ struct WatchProtect_Watch_AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(timerManager: timerManager)
+            Vuota()
+//            ContentView(timerManager: timerManager)
         }
     }
 }
