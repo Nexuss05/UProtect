@@ -98,6 +98,10 @@ struct RegistrationView: View {
     var body: some View {
         ZStack {
             CustomColor.orange
+            Image("a1")
+                .resizable()
+                .frame(width: 400, height: 400)
+                .padding(.bottom, 275)
             VStack {
                 Text("Create an Account!")
                     .foregroundColor(Color.white)
@@ -156,10 +160,6 @@ struct RegistrationView: View {
                 }.padding(.top, 30)
                     .disabled(vm.nome.trimmingCharacters(in: .whitespaces).isEmpty || vm.cognome.trimmingCharacters(in: .whitespaces).isEmpty||vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
             }
-            Image("a1")
-                .resizable()
-                .frame(width: 400, height: 400)
-                .padding(.bottom, 275)
         }.preferredColorScheme(.light)
             .ignoresSafeArea()
             .fullScreenCover(isPresented: $isShowingLogin, content: {

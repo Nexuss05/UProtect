@@ -25,25 +25,29 @@ struct Corso1: View {
     }
     
     var body: some View {
-        VStack(spacing: 50) {
-            LevelBar(progress: completionPercentage(activeButtons))
-                .frame(height: 10)
-                .padding(.horizontal)
-            ForEach(0..<5) { index in
-                if index < activeButtons.count {
-                    if activeButtons[index] {
-                        NavigationLink(destination: DetailView(activeButtons: $activeButtons, currentIndex: index, activeButtonsData: $activeButtonsData, detailData: detailData[index])) {
-                            LevelButtonView(isActive: activeButtons[index])
-                                .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
+//        NavigationView {
+        ZStack {
+            Color.white
+            VStack(spacing: 50) {
+                    LevelBar(progress: completionPercentage(activeButtons))
+                        .frame(height: 10)
+                        .padding(.horizontal)
+                    ForEach(0..<5) { index in
+                        if index < activeButtons.count {
+                            if activeButtons[index] {
+                                NavigationLink(destination: DetailView(activeButtons: $activeButtons, currentIndex: index, activeButtonsData: $activeButtonsData, detailData: detailData[index])) {
+                                    LevelButtonView(isActive: activeButtons[index])
+                                        .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
+                                }
+                            } else {
+                                LevelButtonView(isActive: activeButtons[index])
+                                    .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
+                            }
                         }
-                    } else {
-                        LevelButtonView(isActive: activeButtons[index])
-                            .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
                     }
-                }
             }
-        }
-        
+        }.ignoresSafeArea()
+//        }
     }
     
     private func saveActiveButtons() {

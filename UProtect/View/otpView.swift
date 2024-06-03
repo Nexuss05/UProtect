@@ -1,171 +1,137 @@
-////
-////  otpView.swift
-////  UProtect
-////
-////  Created by Simone Sarnataro on 18/05/24.
-////
-//
-
 import SwiftUI
 import FirebaseAuth
 
+enum FocusPin {
+    case pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix
+}
+
 struct OtpFormFieldView: View {
-    
-    enum FocusPin {
-        case pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix
-    }
-    
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
     @ObservedObject var audioPlayer: AudioPlayer
     @StateObject private var vm = CloudViewModel()
-    
-    @FocusState private var pinFocusState : FocusPin?
+
+    @FocusState private var pinFocusState: FocusPin?
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
-    
+
     @State var pinOne: String = ""
     @State var pinTwo: String = ""
     @State var pinThree: String = ""
     @State var pinFour: String = ""
     @State var pinFive: String = ""
     @State var pinSix: String = ""
-    
+
     @State var verificationID: String?
     @State var isVerified: Bool = false
     @State var showAlert: Bool = false
-    
+
     var body: some View {
         ZStack {
             CustomColor.orangeBackground
             VStack {
-//                Text("Verify your number")
-//                    .font(.title2)
-//                    .fontWeight(.semibold)
                 Text("Enter 6 digit code we'll text you")
                     .font(.caption)
                     .fontWeight(.semibold)
                     .padding(.top)
                     .foregroundColor(CustomColor.orange)
-                
+
                 HStack(spacing: 10) {
-                    TextField("", text: $pinOne)
-                        .modifier(OtpModifier(pin: $pinOne))
-                        .onChange(of: pinOne) { newVal in
-                            if newVal.count == 1 {
-                                pinFocusState = .pinTwo
-                            }
-                        }
-                        .focused($pinFocusState, equals: .pinOne)
-                    
-                    TextField("", text: $pinTwo)
-                        .modifier(OtpModifier(pin: $pinTwo))
-                        .onChange(of: pinTwo) { newVal in
-                            if newVal.count == 1 {
-                                pinFocusState = .pinThree
-                            } else if newVal.count == 0 {
-                                pinFocusState = .pinOne
-                            }
-                        }
-                        .focused($pinFocusState, equals: .pinTwo)
-                    
-                    TextField("", text: $pinThree)
-                        .modifier(OtpModifier(pin: $pinThree))
-                        .onChange(of: pinThree) { newVal in
-                            if newVal.count == 1 {
-                                pinFocusState = .pinFour
-                            } else if newVal.count == 0 {
-                                pinFocusState = .pinTwo
-                            }
-                        }
-                        .focused($pinFocusState, equals: .pinThree)
-                    
-                    TextField("", text: $pinFour)
-                        .modifier(OtpModifier(pin: $pinFour))
-                        .onChange(of: pinFour) { newVal in
-                            if newVal.count == 1 {
-                                pinFocusState = .pinFive
-                            } else if newVal.count == 0 {
-                                pinFocusState = .pinThree
-                            }
-                        }
-                        .focused($pinFocusState, equals: .pinFour)
-                    
-                    TextField("", text: $pinFive)
-                        .modifier(OtpModifier(pin: $pinFive))
-                        .onChange(of: pinFive) { newVal in
-                            if newVal.count == 1 {
-                                pinFocusState = .pinSix
-                            } else if newVal.count == 0 {
-                                pinFocusState = .pinFour
-                            }
-                        }
-                        .focused($pinFocusState, equals: .pinFive)
-                    
-                    TextField("", text: $pinSix)
-                        .modifier(OtpModifier(pin: $pinSix))
-                        .onChange(of: pinSix) { newVal in
-                            if newVal.count == 0 {
-                                pinFocusState = .pinFive
-                            }
-                        }
-                        .focused($pinFocusState, equals: .pinSix)
-                }.padding(.bottom)
-                
-                
-                Button{
+                    otpTextField(text: $pinOne, focus: .pinOne, nextFocus: .pinTwo)
+                    otpTextField(text: $pinTwo, focus: .pinTwo, nextFocus: .pinThree, previousFocus: .pinOne)
+                    otpTextField(text: $pinThree, focus: .pinThree, nextFocus: .pinFour, previousFocus: .pinTwo)
+                    otpTextField(text: $pinFour, focus: .pinFour, nextFocus: .pinFive, previousFocus: .pinThree)
+                    otpTextField(text: $pinFive, focus: .pinFive, nextFocus: .pinSix, previousFocus: .pinFour)
+                    otpTextField(text: $pinSix, focus: .pinSix, previousFocus: .pinFive)
+                }
+                .padding(.bottom)
+
+                Button {
                     vm.handleRegistration(number: vm.numero) {
                         showAlert.toggle()
                     }
                 } label: {
-                    ZStack {
-                        Text("Send again")
-                    }
+                    Text("Send again")
                 }
-                Button{
+
+                Button {
                     verifyOTP()
                     isWelcomeScreenOver = true
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(CustomColor.orange)
-                            .frame(width: 100, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .frame(width: 100, height: 50)
                         Text("Verify")
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
                     }
-                }.padding(.top, 30)
+                }
+                .padding(.top, 30)
+                .disabled(!isVerified)
             }
             .onAppear {
                 verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
             }
-            .fullScreenCover(isPresented: $isVerified, content: {
+            .fullScreenCover(isPresented: $isVerified) {
                 ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-        })
+            }
             .alert("OTP sent!", isPresented: $showAlert) {
                 Button("OK") { }
             }
-        }.ignoresSafeArea()
-            .preferredColorScheme(.light)
+        }
+        .ignoresSafeArea()
+        .preferredColorScheme(.light)
     }
-    
+
+    private func otpTextField(text: Binding<String>, focus: FocusPin, nextFocus: FocusPin? = nil, previousFocus: FocusPin? = nil) -> some View {
+        TextField("", text: text)
+            .modifier(OtpModifier(pin: text))
+            .onChange(of: text.wrappedValue) { newValue in
+                if newValue.count == 6 {
+                    distributeCode(newValue)
+                } else if newValue.count == 1 {
+                    if let nextFocus = nextFocus {
+                        pinFocusState = nextFocus
+                    }
+                } else if newValue.count == 0 {
+                    if let previousFocus = previousFocus {
+                        pinFocusState = previousFocus
+                    }
+                }
+            }
+            .focused($pinFocusState, equals: focus)
+    }
+
+    private func distributeCode(_ code: String) {
+        if code.count == 6 {
+            pinOne = String(code[code.index(code.startIndex, offsetBy: 0)])
+            pinTwo = String(code[code.index(code.startIndex, offsetBy: 1)])
+            pinThree = String(code[code.index(code.startIndex, offsetBy: 2)])
+            pinFour = String(code[code.index(code.startIndex, offsetBy: 3)])
+            pinFive = String(code[code.index(code.startIndex, offsetBy: 4)])
+            pinSix = String(code[code.index(code.startIndex, offsetBy: 5)])
+            pinFocusState = .pinSix
+        }
+    }
+
     func verifyOTP() {
         let otp = pinOne + pinTwo + pinThree + pinFour + pinFive + pinSix
         guard let verificationID = verificationID else {
-//            print("No verification ID found.")
+            print("No verification ID found.")
             return
         }
-        
+
         let credential = PhoneAuthProvider.provider().credential(
             withVerificationID: verificationID,
             verificationCode: otp
         )
-        
+
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
-//                print("Error during OTP verification: \(error.localizedDescription)")
+                print("Error during OTP verification: \(error.localizedDescription)")
                 return
             }
-//            print("User signed in successfully.")
+            print("User signed in successfully.")
             isVerified = true
         }
     }
@@ -173,13 +139,13 @@ struct OtpFormFieldView: View {
 
 struct OtpModifier: ViewModifier {
     @Binding var pin: String
-    
+
     func limitText(_ upper: Int) {
         if pin.count > upper {
             pin = String(pin.prefix(upper))
         }
     }
-    
+
     func body(content: Content) -> some View {
         content
             .multilineTextAlignment(.center)

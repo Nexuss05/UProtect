@@ -158,7 +158,7 @@ struct CourseDetailView: View {
                     Course03()
                 } else if course.title == "Course 05" {
                     Corso1()
-                        .background(.white)
+                        .ignoresSafeArea()
                 }else {
                     Course04()
                 }
