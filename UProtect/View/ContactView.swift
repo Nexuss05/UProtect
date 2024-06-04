@@ -25,6 +25,7 @@ struct ContactsView: View {
     
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var contactColors: [SerializableContact: Color] = [:]
+    @ObservedObject var timeManager = TimeManager.shared
     
     func generateInitial(givenName: String) -> String {
         let givenInitial = givenName.first ?? Character("")
@@ -90,6 +91,7 @@ struct ContactsView: View {
                                         }
                                     }
                                 }
+                                timeManager.syncTokens()
                             }
                             
                         }.onDelete(perform: deleteContact)

@@ -1,50 +1,37 @@
 //
-//  ButtonView.swift
+//  Newbutton.swift
 //  UProtect
 //
-//  Created by Simone Sarnataro on 21/05/24.
+//  Created by Simone Sarnataro on 04/06/24.
 //
 
 import SwiftUI
 import SwiftJWT
 import SwiftData
-import UserNotifications
 
-struct MyClaims: Claims {
-    let iss: String
-    let iat: Date
-}
-
-struct TimerView: View {
+struct Newbutton: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var sharedTimeManager = TimeManager.shared
+    @ObservedObject var timerManager: TimerManager
+    @ObservedObject var audioRecorder: AudioRecorder
+    @StateObject private var vm = CloudViewModel()
+    @State var locationManager = LocationManager()
     
     @State var showingAlert = false
     @State var showAlert2 = false
     @State var showAlert = false
     
-    
-    @StateObject private var vm = CloudViewModel()
-    @State var locationManager = LocationManager()
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var timerManager: TimerManager
-    @ObservedObject var audioRecorder: AudioRecorder
-    
-    @State var buttonLocked = false
     @State var buttonTapped: Bool = false
-    @State var textSwap = true
-    
-    @Query var counter: [Counter] = []
+    @State var buttonLocked: Bool = false
     
     @State private var tokenAPNS: String = "Generando token..."
     let nome = UserDefaults.standard.string(forKey: "firstName") ?? "Name"
     let cognome = UserDefaults.standard.string(forKey: "lastName") ?? "Surname"
     
-    func TapAnimation(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            withAnimation{
-                self.buttonTapped = false
-            }
-        }
-    }
+    @State var textSwap = true
+    
+    @Query var counter: [Counter] = []
     
     func SwapText(){
         if textSwap{
@@ -60,6 +47,14 @@ struct TimerView: View {
                     textSwap.toggle()
                     SwapText()
                 }
+            }
+        }
+    }
+    
+    func TapAnimation(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            withAnimation{
+                self.buttonTapped = false
             }
         }
     }
@@ -84,42 +79,8 @@ struct TimerView: View {
         }
     }
     
-    func sendPosition() {
-        guard let location = locationManager.userLocation?.coordinate else {
-                print("Impossibile ottenere la posizione dell'utente.")
-                return
-            }
-        vm.latitude = locationManager.userLocation?.coordinate.latitude ?? 0
-        vm.longitude = locationManager.userLocation?.coordinate.longitude ?? 0
-        print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
-        if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
-            for token in savedTokens {
-                vm.sendPosition(token: token, latitude: vm.latitude, longitude: vm.longitude, nomeAmico: nome, cognomeAmico: cognome)
-            }
-        } else {
-            print("Nessun token salvato in UserDefaults.")
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            if timerManager.isActivated{
-                self.sendPosition()
-            } else {
-                vm.latitude = 0
-                vm.longitude = 0
-                print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
-                if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
-                    for token in savedTokens {
-                        vm.sendPosition(token: token, latitude: 0, longitude: 0, nomeAmico: "", cognomeAmico: "")
-                    }
-                } else {
-                    print("Nessun token salvato in UserDefaults.")
-                }
-                print("end sending")
-            }
-        }
-    }
-    
     func sendPushNotificationsForSavedTokens() {
-        if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+        if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokensOnWatch") {
             for token in savedTokens {
                 sendPushNotification(token: token)
             }
@@ -201,36 +162,76 @@ struct TimerView: View {
         task.resume()
     }
     
+    func sendPosition() {
+        guard let location = locationManager.userLocation?.coordinate else {
+                print("Impossibile ottenere la posizione dell'utente.")
+                return
+            }
+        vm.latitude = locationManager.userLocation?.coordinate.latitude ?? 0
+        vm.longitude = locationManager.userLocation?.coordinate.longitude ?? 0
+        print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
+        if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+            for token in savedTokens {
+                vm.sendPosition(token: token, latitude: vm.latitude, longitude: vm.longitude, nomeAmico: nome, cognomeAmico: cognome)
+            }
+        } else {
+            print("Nessun token salvato in UserDefaults.")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            if sharedTimeManager.isActivated{
+                self.sendPosition()
+            } else {
+                vm.latitude = 0
+                vm.longitude = 0
+                print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
+                if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
+                    for token in savedTokens {
+                        vm.sendPosition(token: token, latitude: 0, longitude: 0, nomeAmico: "", cognomeAmico: "")
+                    }
+                } else {
+                    print("Nessun token salvato in UserDefaults.")
+                }
+                print("end sending")
+            }
+        }
+    }
+    
     var body: some View {
         ZStack {
-            if !timerManager.isActivated{
-                CustomColor.orangeBackground
-                if textSwap{
-                    HStack {
-                        Text("TAP")
-                            .foregroundStyle(CustomColor.orange)
-                            .fontWeight(.bold)
-                            .font(.title)
-                            .offset(x: 0, y: -150)
-                        Text("to SOS mode")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .offset(x: 0, y: -150)
+            if !sharedTimeManager.isActivated {
+                if !timerManager.isActivated{
+                    CustomColor.orangeBackground
+                    if textSwap{
+                        HStack {
+                            Text("TAP")
+                                .foregroundStyle(CustomColor.orange)
+                                .fontWeight(.bold)
+                                .font(.title)
+                                .offset(x: 0, y: -150)
+                            Text("to SOS mode")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .offset(x: 0, y: -150)
+                        }
+                    }else {
+                        HStack{
+                            Text(LocalizedStringKey("HOLD"))
+                                .foregroundStyle(CustomColor.orange)
+                                .fontWeight(.bold)
+                                .font(.title)
+                                .offset(x: 0, y: -150)
+                            Text(LocalizedStringKey("to Supervision mode"))
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .offset(x: 0, y: -150)
+                        }
                     }
-                }else {
-                    HStack{
-                        Text(LocalizedStringKey("HOLD"))
-                            .foregroundStyle(CustomColor.orange)
-                            .fontWeight(.bold)
-                            .font(.title)
-                            .offset(x: 0, y: -150)
-                        Text(LocalizedStringKey("to Supervision mode"))
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .offset(x: 0, y: -150)
+                } else {
+                    withAnimation {
+                        Color(CustomColor.redBackground)
                     }
                 }
-            }else{
+            } else {
                 withAnimation {
                     Color(CustomColor.redBackground)
                 }
@@ -249,16 +250,17 @@ struct TimerView: View {
                 .onReceive(self.timerManager.time) { _ in
                     timerManager.updateProgress()
                 }
-            ZStack {
+            
+            ZStack{
                 Circle()
                     .foregroundColor(.white)
-                    .opacity(timerManager.circleOpacity ? 0.3 : 0)
-                    .frame(width: timerManager.showCircle ? 270 : 170)
+                    .opacity(sharedTimeManager.circleOpacity ? 0.3 : 0)
+                    .frame(width: sharedTimeManager.showCircle ? 270 : 170)
                 Circle()
                     .foregroundColor(.white)
-                    .opacity(timerManager.circleOpacity ? 0.3 : 0)
-                    .frame(width: timerManager.showCircle ? 220: 170)
-                if !timerManager.isActivated {
+                    .opacity(sharedTimeManager.circleOpacity ? 0.3 : 0)
+                    .frame(width: sharedTimeManager.showCircle ? 220: 170)
+                if !sharedTimeManager.isActivated{
                     Circle()
                         .foregroundColor(.white)
                         .frame(width: 170, height: 170)
@@ -272,8 +274,8 @@ struct TimerView: View {
                 Image(systemName: "exclamationmark.triangle.fill")
                     .resizable()
                     .frame(width: 70, height: 65)
-                    .foregroundColor(!timerManager.isActivated ? CustomColor.orange : CustomColor.redBackground)
-                    .opacity(timerManager.showMark ? 1 : 0)
+                    .foregroundColor(!sharedTimeManager.isActivated ? CustomColor.orange : CustomColor.redBackground)
+                    .opacity(sharedTimeManager.showMark ? 1 : 0)
                     .opacity(withAnimation{buttonTapped ? 0.2 : 1})
                 Text("\(timerManager.formattedTime)")
                     .foregroundStyle(.black)
@@ -289,11 +291,9 @@ struct TimerView: View {
                     let host = url.host else {
                     return
                 }
-                
                 guard scheme == "widget" else {
                     return
                 }
-                
                 switch host {
                 case "sos":
                     withAnimation{
@@ -331,41 +331,44 @@ struct TimerView: View {
                 }
             }
             .onTapGesture {
-                withAnimation{
-                    if !timerManager.isActivated && !buttonLocked && !timerManager.start{
-                        if !audioRecorder.recording{
-                            audioRecorder.startRecording()
-                        }
-                        print("Bottone attivato")
-                        buttonTapped = true
-                        showingAlert = true
-                        TapAnimation()
-                        print("Before calling sendPushNotification()")
-                        sendPushNotificationsForSavedTokens()
-                        print("After calling sendPushNotification()")
-                        withAnimation{
-                            timerManager.Activation()
-                            timerManager.CircleAnimation()
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now()) {
-                            timerManager.canCancel = true
-                        }
-                        buttonLocked = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            buttonLocked = false
-                        }
-                        sendPosition()
-                    } else {
-                        if timerManager.canCancel && !buttonLocked{
-                            if timerManager.start{
-                                showAlert2.toggle()
-                            } else {
-                                if audioRecorder.recording{
-                                    audioRecorder.stopRecording()
-                                }
-                                showingAlert = false
-                                print("Bottone disattivato")
-                                timerManager.Activation()
+                if !sharedTimeManager.isActivated && !buttonLocked{
+                    if !audioRecorder.recording{
+                        audioRecorder.startRecording()
+                    }
+                    print("Bottone attivato")
+                    buttonTapped = true
+                    showingAlert = true
+                    TapAnimation()
+                    print("Before calling sendPushNotification()")
+                    sendPushNotificationsForSavedTokens()
+                    print("After calling sendPushNotification()")
+                    withAnimation{
+                        sharedTimeManager.Activation()
+                        sharedTimeManager.syncActivation()
+                        sharedTimeManager.CircleAnimation()
+                        sharedTimeManager.syncCircleAnimation()
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                        timerManager.canCancel = true
+                    }
+                    buttonLocked = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        buttonLocked = false
+                    }
+                    sendPosition()
+                } else {
+                    if !buttonLocked{
+                        if timerManager.start{
+                            showAlert2.toggle()
+                        } else {
+                            if audioRecorder.recording{
+                                audioRecorder.stopRecording()
+                            }
+                            showingAlert = false
+                            print("Bottone disattivato")
+                            withAnimation{
+                                sharedTimeManager.Activation()
+                                sharedTimeManager.syncActivation()
                             }
                         }
                     }
@@ -384,7 +387,7 @@ struct TimerView: View {
                         buttonLocked = false
                     }
                     withAnimation{
-                        timerManager.showMark = false
+                        sharedTimeManager.showMark = false
                         timerManager.Activation()
                         DispatchQueue.main.asyncAfter(deadline: .now()) {
                             timerManager.canCancel = true
@@ -393,19 +396,18 @@ struct TimerView: View {
                 }
             }
         }.ignoresSafeArea()
-            .onAppear{
-                SwapText()
+            .onAppear {
+                sharedTimeManager.setupWCSession()
                 generateJWT()
+                SwapText()
                 if let lastCounter = counter.last {
                     print("L'ultimo valore salvato è: \(lastCounter.counter)")
                     timerManager.maxTime = lastCounter.counter
                 } else {
                     print("Nessun valore salvato.")
                 }
-                timerManager.updateProgress()
-                timerManager.updateCountFromLastCounter()
-//                vm.fetchUserInfo()
-            }.alert(isPresented: $timerManager.showAlert) {
+            }
+            .alert(isPresented: $timerManager.showAlert) {
                 Alert(
                     title: Text("Are you safe?"),
                     primaryButton: .default(
@@ -421,10 +423,14 @@ struct TimerView: View {
                         Text("No, help me"),
                         action: {
                             sendPushNotificationsForSavedTokens()
-                            timerManager.CircleAnimation()
-                            timerManager.circleOpacity = true
+                            withAnimation{
+                                sharedTimeManager.Activation()
+                                sharedTimeManager.syncActivation()
+                                sharedTimeManager.CircleAnimation()
+                                sharedTimeManager.syncCircleAnimation()
+                            }
                             timerManager.dismissTimer?.invalidate()
-                            timerManager.showMark = true
+                            sharedTimeManager.showMark = true
                         }
                     )
                 )
@@ -432,10 +438,13 @@ struct TimerView: View {
                 Button("OK") { }
             }
             .alert("Vuoi disattivare il timer?", isPresented: $showAlert2) {
-                Button("YES", role: .destructive) { 
+                Button("YES", role: .destructive) {
                     timerManager.stopTimer()
-                    timerManager.Activation()
-                    timerManager.showMark = true
+                    withAnimation{
+                        sharedTimeManager.Activation()
+                        sharedTimeManager.syncActivation()
+                    }
+                    sharedTimeManager.showMark = true
                     timerManager.canCancel = false
                     if audioRecorder.recording{
                         audioRecorder.stopRecording()
@@ -444,13 +453,13 @@ struct TimerView: View {
                 }
                 Button("NO", role: .cancel) { }
             }
-        
     }
 }
 
-struct ContentView_Previews67: PreviewProvider {
+struct ContentView_Previews637: PreviewProvider {
     static var previews: some View {
         let timerManager = TimerManager()
-        return TimerView(timerManager: timerManager, audioRecorder: AudioRecorder())
+        return Newbutton(timerManager: timerManager, audioRecorder: AudioRecorder())
     }
 }
+

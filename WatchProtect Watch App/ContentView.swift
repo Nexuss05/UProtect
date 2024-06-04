@@ -23,21 +23,11 @@ struct MyClaims: Claims {
 struct ContentView: View {
     
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var timerManager: TimerManager
-//    @ObservedObject var audioRecorder: AudioRecorder
-    
+    @ObservedObject var timerManager = TimeManager.shared
+
     @State var buttonTapped: Bool = false
     @State var buttonLocked: Bool = false
     @State var tokenAPNS: String = "Generando token..."
-    
-    func buttonPressed() {
-        if WCSession.default.isReachable {
-            let message = ["action": "startAnimation"]
-            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
-                print("Error sending message: \(error.localizedDescription)")
-            })
-        }
-    }
     
     func TapAnimation(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -68,7 +58,7 @@ struct ContentView: View {
     }
     
     func sendPushNotificationsForSavedTokens() {
-        if let savedTokens = UserDefaults.standard.stringArray(forKey: "receivedDataFromiPhone") {
+        if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokensOnWatch") {
             for token in savedTokens {
                 sendPushNotification(token: token)
             }
@@ -151,84 +141,72 @@ struct ContentView: View {
     }
     
     var body: some View {
-        ZStack{
-            if !timerManager.isActivated{
+        ZStack {
+            if timerManager.isActivated{
+                CustomColor.redBackground
+            } else {
                 CustomColor.orangeBackground
-            }else{
-                withAnimation {
-                    Color(CustomColor.redBackground)
+            }
+            ZStack{
+                Circle()
+                    .foregroundColor(.white)
+                    .opacity(timerManager.circleOpacity ? 0.3 : 0)
+                    .frame(width: timerManager.showCircle ? 160 : 120)
+                Circle()
+                    .foregroundColor(.white)
+                    .opacity(timerManager.circleOpacity ? 0.3 : 0)
+                    .frame(width: timerManager.showCircle ? 140: 120)
+                
+                if !timerManager.isActivated {
+                    Circle()
+                        .foregroundColor(.white)
+                        .frame(width: 120, height: 120)
+                        .shadow(color: .gray, radius: 2, x: 0, y: 5)
+                        .opacity(withAnimation{buttonTapped ? 0.2 : 1})
+                }else{
+                    Circle()
+                        .foregroundColor(.white)
+                        .frame(width: 120, height: 120)
+                        .opacity(withAnimation{buttonTapped ? 0.2 : 1})
                 }
-            }
-            Circle()
-                .foregroundColor(.white)
-                .opacity(timerManager.circleOpacity ? 0.3 : 0)
-                .frame(width: timerManager.showCircle ? 160 : 120)
-            Circle()
-                .foregroundColor(.white)
-                .opacity(timerManager.circleOpacity ? 0.3 : 0)
-                .frame(width: timerManager.showCircle ? 140: 120)
-            
-            if !timerManager.isActivated {
-                Circle()
-                    .foregroundColor(.white)
-                    .frame(width: 120, height: 120)
-                    .shadow(radius: 7)
-                    .shadow(color: colorScheme == .dark ? .white : .gray, radius: colorScheme == .dark ? 6 : 4)
-                    .opacity(withAnimation{buttonTapped ? 0.2 : 1})
-            }else{
-                Circle()
-                    .foregroundColor(.white)
-                    .frame(width: 120, height: 120)
-                    .shadow(radius: 7)
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(!timerManager.isActivated ? CustomColor.orange : CustomColor.redBackground)
                     .opacity(withAnimation{buttonTapped ? 0.2 : 1})
             }
-            Image(systemName: "exclamationmark.triangle.fill")
-                .resizable()
-                .frame(width: 50, height: 50)
-                .foregroundColor(!timerManager.isActivated ? CustomColor.orange : CustomColor.redBackground)
-                .opacity(withAnimation{buttonTapped ? 0.2 : 1})
-        }.onTapGesture {
-            withAnimation{
-                if !timerManager.isActivated && !buttonLocked{
-                    //                    if !audioRecorder.recording{
-                    //                        audioRecorder.startRecording()
-                    //                    }
-                    buttonPressed()
-                    print("Bottone attivato")
-                    buttonTapped = true
-                    TapAnimation()
-                    print("Before calling sendPushNotification()")
-                    //                    sendPushNotification(token: "fab87345bb174db9ad28cac9cc77c5c087d193e9a690553d7e812c37689ccbf0")
-                    sendPushNotificationsForSavedTokens()
-                    print("After calling sendPushNotification()")
+        .padding()
+        }.ignoresSafeArea()
+        .onTapGesture {
+            if !timerManager.isActivated && !buttonLocked{
+                print("Bottone attivato")
+                buttonTapped = true
+                TapAnimation()
+                print("Before calling sendPushNotification()")
+                sendPushNotificationsForSavedTokens()
+                print("After calling sendPushNotification()")
+                withAnimation{
+                    timerManager.Activation()
+                    timerManager.syncActivation()
+                    timerManager.CircleAnimation()
+                    timerManager.syncCircleAnimation()
+                }
+                buttonLocked = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    buttonLocked = false
+                }
+            } else {
+                if !buttonLocked{
                     withAnimation{
                         timerManager.Activation()
-                        timerManager.CircleAnimation()
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now()) {
-                        timerManager.canCancel = true
-                    }
-                    buttonLocked = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                        buttonLocked = false
-                    }
-                } else {
-                    if timerManager.canCancel && !buttonLocked{
-                        //                        if !audioRecorder.recording{
-                        //                            audioRecorder.startRecording()
-                        //                        }
-                        timerManager.stopTimer()
-                        print("Bottone disattivato")
-                        timerManager.Activation()
-                        timerManager.showMark = true
-                        timerManager.canCancel = false
+                        timerManager.syncActivation()
                     }
                 }
             }
         }
-        .onAppear{
+        .onAppear {
+            timerManager.setupWCSession()
             generateJWT()
         }
-        .ignoresSafeArea()
     }
 }

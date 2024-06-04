@@ -49,6 +49,12 @@
 		C293A8992BF36C740008F1F8 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = C293A8982BF36C740008F1F8 /* SwiftJWT */; };
 		C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */; };
 		E00FF2CC2C0F11E800309765 /* PremiumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2CB2C0F11E800309765 /* PremiumPopUp.swift */; };
+		E00FF2DE2C0F90EA00309765 /* TimerManagerIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2DD2C0F90EA00309765 /* TimerManagerIOS.swift */; };
+		E00FF2E22C0F911900309765 /* TimerManagerWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2E02C0F911900309765 /* TimerManagerWatch.swift */; };
+		E00FF2EB2C0F98AA00309765 /* SharedTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2EA2C0F98AA00309765 /* SharedTimerManager.swift */; };
+		E00FF2EC2C0F999200309765 /* SharedTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2EA2C0F98AA00309765 /* SharedTimerManager.swift */; };
+		E00FF2F12C0F9E8400309765 /* Newbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2F02C0F9E8400309765 /* Newbutton.swift */; };
+		E00FF2F32C0FD3F500309765 /* Corso2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2F22C0FD3F500309765 /* Corso2.swift */; };
 		E04060212C09C47D0018252D /* NoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04060202C09C47D0018252D /* NoLocationView.swift */; };
 		E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */; };
 		E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */; };
@@ -76,8 +82,6 @@
 		E0F1A67C2C079A7200B0D16A /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F1A67B2C079A7200B0D16A /* TimerManager.swift */; };
 		E0F1A67D2C079A9600B0D16A /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F1A67B2C079A7200B0D16A /* TimerManager.swift */; };
 		E0F1A6802C079BF000B0D16A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23F9A112C0098C2001FE56F /* ContentView.swift */; };
-		E0F1A6822C07A9EA00B0D16A /* WatchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F1A6812C07A9EA00B0D16A /* WatchController.swift */; };
-		E0F1A6B52C07B6B300B0D16A /* IOSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F1A6B42C07B6B300B0D16A /* IOSController.swift */; };
 		E0F1A6B62C07C3CB00B0D16A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A662C05BDB300101A32 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +181,11 @@
 		C2893DD82BEB8C1900733211 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_ZX5LJY8598.p8; sourceTree = "<group>"; };
 		E00FF2CB2C0F11E800309765 /* PremiumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPopUp.swift; sourceTree = "<group>"; };
+		E00FF2DD2C0F90EA00309765 /* TimerManagerIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerIOS.swift; sourceTree = "<group>"; };
+		E00FF2E02C0F911900309765 /* TimerManagerWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerWatch.swift; sourceTree = "<group>"; };
+		E00FF2EA2C0F98AA00309765 /* SharedTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTimerManager.swift; sourceTree = "<group>"; };
+		E00FF2F02C0F9E8400309765 /* Newbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newbutton.swift; sourceTree = "<group>"; };
+		E00FF2F22C0FD3F500309765 /* Corso2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corso2.swift; sourceTree = "<group>"; };
 		E04060202C09C47D0018252D /* NoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLocationView.swift; sourceTree = "<group>"; };
 		E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudViewModel.swift; sourceTree = "<group>"; };
@@ -200,8 +209,6 @@
 		E0EAD0E52BFF823E006753F5 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		E0EAD0E72BFF82B7006753F5 /* RecordingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingList.swift; sourceTree = "<group>"; };
 		E0F1A67B2C079A7200B0D16A /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
-		E0F1A6812C07A9EA00B0D16A /* WatchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchController.swift; sourceTree = "<group>"; };
-		E0F1A6B42C07B6B300B0D16A /* IOSController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +257,7 @@
 		C21DD8312BE4D471003EB614 = {
 			isa = PBXGroup;
 			children = (
+				E00FF2CE2C0F8D3B00309765 /* Shared */,
 				999499F72C03B79C0074604F /* Lotties */,
 				C21DD83C2BE4D471003EB614 /* UProtect */,
 				C27795DD2BFCB5590034981F /* UProtect-Widget */,
@@ -311,6 +319,7 @@
 				E04060202C09C47D0018252D /* NoLocationView.swift */,
 				175A0A622C05BD4400101A32 /* MapView.swift */,
 				1763CF2B2C0EEEC200A465C4 /* DirectionView.swift */,
+				E00FF2F02C0F9E8400309765 /* Newbutton.swift */,
 				E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */,
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
@@ -331,7 +340,6 @@
 				E0EAD06E2BFDFFDA006753F5 /* Controller.swift */,
 				175A0A642C05BD7200101A32 /* FetchLocation.swift */,
 				E0F1A67B2C079A7200B0D16A /* TimerManager.swift */,
-				E0F1A6812C07A9EA00B0D16A /* WatchController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,7 +352,6 @@
 				C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */,
 				E06A20582C0E0F3A005D4D67 /* Vuota.swift */,
 				C23F9A112C0098C2001FE56F /* ContentView.swift */,
-				E0F1A6B42C07B6B300B0D16A /* IOSController.swift */,
 				C23F9A132C0098C3001FE56F /* Assets.xcassets */,
 				C23F9A152C0098C3001FE56F /* Preview Content */,
 			);
@@ -391,11 +398,22 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E00FF2CE2C0F8D3B00309765 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E00FF2EA2C0F98AA00309765 /* SharedTimerManager.swift */,
+				E00FF2E02C0F911900309765 /* TimerManagerWatch.swift */,
+				E00FF2DD2C0F90EA00309765 /* TimerManagerIOS.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		E06A20292C0B78F1005D4D67 /* Courses */ = {
 			isa = PBXGroup;
 			children = (
 				C23050442C05C7070056BEAA /* CoursesView.swift */,
 				E06A202A2C0B7980005D4D67 /* Corso1.swift */,
+				E00FF2F22C0FD3F500309765 /* Corso2.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -583,11 +601,13 @@
 				E04060212C09C47D0018252D /* NoLocationView.swift in Sources */,
 				C2893DD92BEB8C1900733211 /* RingView.swift in Sources */,
 				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
+				E00FF2DE2C0F90EA00309765 /* TimerManagerIOS.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				E06A20572C0E0E8C005D4D67 /* Vuota.swift in Sources */,
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
+				E00FF2F32C0FD3F500309765 /* Corso2.swift in Sources */,
 				E0EAD0E62BFF823E006753F5 /* AudioPlayer.swift in Sources */,
 				175A0A672C05BDB300101A32 /* LocationManager.swift in Sources */,
 				E0EAD0E82BFF82B7006753F5 /* RecordingList.swift in Sources */,
@@ -598,10 +618,10 @@
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
 				E06A202B2C0B7980005D4D67 /* Corso1.swift in Sources */,
 				E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */,
+				E00FF2F12C0F9E8400309765 /* Newbutton.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
 				C233DAA02BEE1B72000072C4 /* Location.swift in Sources */,
 				175A0A632C05BD4400101A32 /* MapView.swift in Sources */,
-				E0F1A6822C07A9EA00B0D16A /* WatchController.swift in Sources */,
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
 				C2893DD62BEB8B9600733211 /* Counter.swift in Sources */,
 				1763CF2C2C0EEEC200A465C4 /* DirectionView.swift in Sources */,
@@ -610,6 +630,7 @@
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
 				E00FF2CC2C0F11E800309765 /* PremiumPopUp.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
+				E00FF2EC2C0F999200309765 /* SharedTimerManager.swift in Sources */,
 				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
@@ -626,14 +647,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00FF2E22C0F911900309765 /* TimerManagerWatch.swift in Sources */,
 				E0B9542B2C01ED2400EBCD81 /* RingView.swift in Sources */,
 				E0B954292C01ED0000EBCD81 /* Counter.swift in Sources */,
 				E0F1A6802C079BF000B0D16A /* ContentView.swift in Sources */,
 				C23F9A102C0098C2001FE56F /* WatchProtectApp.swift in Sources */,
-				E0F1A6B52C07B6B300B0D16A /* IOSController.swift in Sources */,
 				E06A20592C0E0F3A005D4D67 /* Vuota.swift in Sources */,
 				E0F1A67D2C079A9600B0D16A /* TimerManager.swift in Sources */,
 				E0F1A6B62C07C3CB00B0D16A /* LocationManager.swift in Sources */,
+				E00FF2EB2C0F98AA00309765 /* SharedTimerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

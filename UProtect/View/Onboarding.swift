@@ -203,7 +203,7 @@ struct SecondPageView: View {
                     .frame(width: 340)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 125)
+            }.padding(.top, 130)
         }.onReceive(self.time) { _ in
             DispatchQueue.main.async {
                 if self.vm.isTimerRunning {
@@ -232,12 +232,12 @@ struct ThirdPageView: View {
                     .bold()
                     .frame(width: 340)
                     .padding(.top, 25)
-                Text("Curated weekly playlists tailored to\nyour music listening history.")
+                Text("Thanks to the map you can easily have a look at shops and store open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself.")
                     .fontWeight(.light)
                     .frame(width: 340)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 50)
+            }.padding(.top, 85)
         }
     }
 }
@@ -253,12 +253,12 @@ struct FourthPageView: View {
                         .bold()
                         .frame(width: 340)
                         .padding(.top, 25)
-                    Text("Curated weekly playlists tailored to\nyour music listening history.")
+                    Text("This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them.")
                         .fontWeight(.light)
                         .frame(width: 340)
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
-                }.padding(.top, 50)
+                }.padding(.top, 62)
         }
     }
 }

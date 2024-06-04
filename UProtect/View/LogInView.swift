@@ -43,17 +43,16 @@ struct LogInView: View {
                         isShowingRec = true
                     }
                 } label: {
-                    Text("Registrati coglione")
+                    Text("SignIn")
                         .foregroundColor(Color.white)
                 }
                 Button{
-                    UserDefaults.standard.set(true, forKey: "registration")
                     vm.handleFirstLogin(number: vm.numero) { success in
                         if success{
                             UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
                             isShowingOtp = true
                         } else {
-                            print("coglione")
+                            print("Errore nel login")
                         }
                     }
                 } label: {

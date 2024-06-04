@@ -11,11 +11,11 @@ struct Corso1: View {
     @State private var activeButtons: [Bool] = [true, false, false, false, false]
     
     let detailData = [
-        DetailData(text: "strunz"),
-        DetailData(text: "nella prossima c'è un segreto"),
-        DetailData(text: "scherzetto"),
-        DetailData(text: "nella prossima davvero c'è"),
-        DetailData(text: "𓂺")
+        DetailData(text: "1"),
+        DetailData(text: "2"),
+        DetailData(text: "3"),
+        DetailData(text: "4"),
+        DetailData(text: "5")
     ]
     
     init() {
@@ -64,21 +64,21 @@ struct Corso1: View {
 }
 
 struct LevelButtonView: View {
-    @State private var tapped: Bool = false
+//    @State private var tapped: Bool = false
     var isActive: Bool
     
-    func tapAnimation() {
-        tapped.toggle()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            withAnimation {
-                self.tapped = false
-            }
-        }
-    }
+//    func tapAnimation() {
+//        tapped.toggle()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//            withAnimation {
+//                self.tapped = false
+//            }
+//        }
+//    }
     
     var body: some View {
         if isActive {
-            if !tapped {
+//            if !tapped {
                 ZStack {
                     Ellipse()
                         .frame(width: 60, height: 50)
@@ -87,15 +87,16 @@ struct LevelButtonView: View {
                     Ellipse()
                         .frame(width: 60, height: 50)
                         .foregroundStyle(CustomColor.orangeBackground)
-                }.onTapGesture {
-                    tapAnimation()
                 }
-            } else {
-                Ellipse()
-                    .frame(width: 60, height: 50)
-                    .padding(.top, 10)
-                    .foregroundStyle(CustomColor.orangeBackground)
-            }
+//                .onTapGesture {
+//                    tapAnimation()
+//                }
+//            } else {
+//                Ellipse()
+//                    .frame(width: 60, height: 50)
+//                    .padding(.top, 10)
+//                    .foregroundStyle(CustomColor.orangeBackground)
+//            }
         } else {
             ZStack {
                 Ellipse()

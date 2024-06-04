@@ -63,11 +63,13 @@ struct GoalView: View {
             .padding(.top, 90)
             .padding(.bottom, 50)
             .onTapGesture {
-                modelContext.insert(Counter(counter: cont))
-                timerManager.maxTime = cont
-                isShowingMain.toggle()
-                dismiss()
-                timerManager.updateCountFromLastCounter()
+                if !timerManager.start{
+                    modelContext.insert(Counter(counter: cont))
+                    timerManager.maxTime = cont
+                    isShowingMain.toggle()
+                    dismiss()
+                    timerManager.updateCountFromLastCounter()
+                }
             }
             .accessibilityElement(children: .combine)
             .accessibilityAddTraits(.isButton)

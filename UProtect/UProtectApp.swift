@@ -12,13 +12,11 @@ import FirebaseAuth
 
 @main
 struct UProtectApp: App {
-    // Forzato la light mode nell'app
     @AppStorage("theme") var theme: String = "light"
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject var timerManager = TimerManager()
     @StateObject var vm = CloudViewModel()
-    //    @StateObject var watchConnector = WatchController()
     @StateObject var audioRecorder = AudioRecorder()
     @StateObject var audioPlayer = AudioPlayer()
     @State private var locationManager = LocationManager()
@@ -27,6 +25,7 @@ struct UProtectApp: App {
     
     init() {
         UITabBar.setCustomAppearance()
+        TimeManager.shared.setupWCSession()
     }
     
     var sharedModelContainer: ModelContainer = {
@@ -45,14 +44,14 @@ struct UProtectApp: App {
     var body: some Scene {
         WindowGroup {
 //            UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-                        ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+              ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+//            Newbutton(timerManager: timerManager, audioRecorder: audioRecorder)
+//            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 .onAppear{
-                    //                    watchConnector.observeUserDefaults()
                     vm.fetchUserPosition()
                     vm.fetchFriend()
-                    timerManager.updateCountFromLastCounter()
                 }
-//                .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
+                .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
             //                .onOpenURL { url in
             //                    guard
             //                        let scheme = url.scheme,

@@ -65,7 +65,7 @@ struct OtpFormFieldView: View {
                                     if success {
                                         
                                     } else {
-                                        print("coglione")
+                                        print("Errore nel login (otp)")
                                     }
                                 }
                             }
@@ -208,7 +208,6 @@ struct OtpModifier: ViewModifier {
             .background(CustomColor.orange.opacity(0.5).cornerRadius(5))
             .background(
                 RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color("blueColor"), lineWidth: 2)
             )
     }
 }
