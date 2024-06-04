@@ -25,6 +25,7 @@ struct SettingsView: View {
     
     @State var showOnBoarding: Bool = false
     @State var showWidget: Bool = false
+    @State var showAlert: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -48,70 +49,69 @@ struct SettingsView: View {
                             }
                         }.accessibilityElement(children: .combine)
                     }
-                    Section(header: Text("System")){
+                    Section(header: Text("FEATURES")){
                         NavigationLink {
                             GoalView(timerManager: timerManager)
                                 .padding(.top, -50)
                         } label: {
                             Text("Change time")
                         }
-                        
-                        Button(action: {
-                            if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
-                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                            }
-                        }) {
-                            HStack {
-                                Text("Notification")
-                                    .foregroundColor(.primary)
-                                Spacer()
-                                Image(systemName: "arrow.up.forward")
-                                    .foregroundStyle(CustomColor.orange)
-                            }
-                        }
-                        
-                        Button(action: {
-                            if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
-                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                            }
-                        }) {
-                            HStack {
-                                Text("Change Language")
-                                    .foregroundColor(.primary)
-                                Spacer()
-                                Image(systemName: "arrow.up.forward")
-                                    .foregroundStyle(CustomColor.orange)
-                            }
-                        }
-                        Button(action: {
-                            //bho
-                        }) {
-                            HStack {
-                                Text("Overcome Do Not Disturb")
-                                    .foregroundColor(.primary)
-                                Spacer()
-                                Image(systemName: "arrow.up.forward")
-                                    .foregroundStyle(CustomColor.orange)
-                            }
-                        }
-                    }
-                    
-                    Section(header: Text("Background Recordings")){
                         NavigationLink {
                             RecordingsList(audioRecorder: audioRecorder, audioPlayer: audioPlayer).ignoresSafeArea()
                         } label: {
                             Text("Recordings")
                         }.navigationViewStyle(StackNavigationViewStyle())
+                        
+//                        Button(action: {
+//                            if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+//                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//                            }
+//                        }) {
+//                            HStack {
+//                                Text("Change Language")
+//                                    .foregroundColor(.primary)
+//                                Spacer()
+//                                Image(systemName: "arrow.up.forward")
+//                                    .foregroundStyle(CustomColor.orange)
+//                            }
+//                        }
+//                        Button(action: {
+//                            //bho
+//                        }) {
+//                            HStack {
+//                                Text("Overcome Do Not Disturb")
+//                                    .foregroundColor(.primary)
+//                                Spacer()
+//                                Image(systemName: "arrow.up.forward")
+//                                    .foregroundStyle(CustomColor.orange)
+//                            }
+//                        }
                     }
                     
-                    Section(header: Text("Titolo")) {
-                        Text("Siri & Shortcuts")
-                            .foregroundColor(.primary)
-                        Text("Widgets")
-                            .foregroundColor(.primary)
+                    Section(header: Text("SETTINGS")){
+                        Button(action: {
+                            if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
+                        }) {
+                            HStack {
+                                Text("App preferences")
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Image(systemName: "arrow.up.forward")
+                                    .foregroundStyle(CustomColor.orange)
+                            }
+                        }
                     }
                     
-                    Section(header: Text("About")){
+//                    Section(header: Text("ABOUT")) {
+//                        Text("Siri & Shortcuts")
+//                            .foregroundColor(.primary)
+//                        Text("Widgets")
+//                            .foregroundColor(.primary)
+//                    }
+                    
+                    Section(header: Text("ABOUT")){
                         HStack{
                             Text("Onboarding")
                                 .foregroundColor(.primary)
@@ -120,8 +120,6 @@ struct SettingsView: View {
                         }.onTapGesture {
                             showOnBoarding.toggle()
                         }
-                        ShareLink(item: "https://testflight.apple.com/join/UjB0xSRP")
-                            .foregroundColor(.primary)
                         HStack {
                             Link("Privacy Policy", destination: url!)
                                 .foregroundColor(.primary)
@@ -133,7 +131,18 @@ struct SettingsView: View {
                                 UIApplication.shared.open(url)
                             }
                         }
+                        ShareLink(item: "https://testflight.apple.com/join/UjB0xSRP")
+                            .foregroundColor(.primary)
                         
+                    }
+                    
+                    Section{
+                        Button{
+                            showAlert.toggle()
+                        } label: {
+                            Text("Delete Account")
+                                .foregroundStyle(CustomColor.redBackground)
+                        }
                     }
                 }
                 .navigationTitle("Settings")
@@ -141,7 +150,11 @@ struct SettingsView: View {
                 .scrollContentBackground(.hidden)
                 .sheet(isPresented: $showOnBoarding, content: {
                     WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-                })
+                }).alert("Are you sure?", isPresented: $showAlert) {
+                    Button("YES", role: .destructive) { }
+                    Button("NO", role: .cancel) { }
+                }
+                
             }
         }
     }

@@ -99,26 +99,26 @@ struct ContactsView: View {
                     .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
-                            Button("Invia messaggi") {
-                                guard !selectedContacts.isEmpty else {
-                                    return // Non fare nulla se non ci sono contatti selezionati
-                                }
-                                let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
-                                vonage.sendSMS(to: phoneNumbers, from: "UProtect", text: "SONO IN PERICOLO, PISCT SOTT") { result in
-                                    switch result {
-                                    case .success:
-                                        self.showAlert = true
-                                        self.alertMessage = "SMS inviato con successo!"
-                                        print("SMS inviato con successo")
-                                        // Puoi aggiungere qui un'azione in caso di successo
-                                    case .failure(let error):
-                                        self.showAlert = true
-                                        self.alertMessage = "Errore durante l'invio dell'SMS: \(error.localizedDescription)"
-                                        print("Errore durante l'invio dell'SMS: \(error)")
-                                        // Puoi gestire qui gli errori durante l'invio dell'SMS
-                                    }
-                                }
-                            }
+//                            Button("Invia messaggi") {
+//                                guard !selectedContacts.isEmpty else {
+//                                    return // Non fare nulla se non ci sono contatti selezionati
+//                                }
+//                                let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
+//                                vonage.sendSMS(to: phoneNumbers, from: "UProtect", text: "SONO IN PERICOLO, PISCT SOTT") { result in
+//                                    switch result {
+//                                    case .success:
+//                                        self.showAlert = true
+//                                        self.alertMessage = "SMS inviato con successo!"
+//                                        print("SMS inviato con successo")
+//                                        // Puoi aggiungere qui un'azione in caso di successo
+//                                    case .failure(let error):
+//                                        self.showAlert = true
+//                                        self.alertMessage = "Errore durante l'invio dell'SMS: \(error.localizedDescription)"
+//                                        print("Errore durante l'invio dell'SMS: \(error)")
+//                                        // Puoi gestire qui gli errori durante l'invio dell'SMS
+//                                    }
+//                                }
+//                            }
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
@@ -135,6 +135,11 @@ struct ContactsView: View {
                         }
                     }
                 }
+                VStack {
+                    Spacer()
+                    PremiumPopUp().padding(.bottom, 50)
+                }
+                
             }
         }.onAppear{
             loadContactsFromUserDefaults()

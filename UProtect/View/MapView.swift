@@ -131,10 +131,12 @@ struct MapView: View {
                 .safeAreaInset(edge: .bottom) {
                     if !showRoute {
                         FetchLocation(locations: $locations, showRoute: $showRoute, selectedTag: $selectedTag, selectedLocation: $selectedLocation)
+                            .transition(AnyTransition.opacity.animation(.easeIn(duration:0.5)))
                     }
                     else {
                         DirectionView(showDirections: $showDirections, route: $route, selectedLocation: $selectedLocation, travelTime: $travelTime, showRoute: $showRoute)
-                            .transition(AnyTransition.opacity.animation(.easeIn(duration:1.0)))
+                            .transition(AnyTransition.opacity.animation(.easeIn(duration:0.5)))
+                            .padding(.bottom, 60.58)
                     }
                 }
             }

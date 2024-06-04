@@ -57,7 +57,7 @@ struct ContentView: View {
                     }
                     TimerView(timerManager: timerManager, audioRecorder: audioRecorder)
                         .tabItem {
-                            Label("Danger", systemImage: "exclamationmark.triangle.fill")
+                            Label("Status", systemImage: "exclamationmark.triangle.fill")
                         }
                         .tag(2)
                     ContactsView(selectedContacts: $selectedContacts, isShowingContactsPicker: $isShowingContactsPicker, showAlert: $showAlert, alertMessage: $alertMessage)

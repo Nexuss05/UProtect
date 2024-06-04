@@ -461,10 +461,16 @@
     "🛤️ _Plan Your Route_: Before leaving, choose well-lit streets with lots of people and open stores. Share your travel plan with someone you trust." : {
 
     },
+    "1 year" : {
+
+    },
     "1. Perceiving Elements:" : {
 
     },
     "1. Recognize Patterns" : {
+
+    },
+    "1.99€" : {
 
     },
     "2. Attributing Meaning:" : {
@@ -485,7 +491,7 @@
     "10 seconds more" : {
 
     },
-    "About" : {
+    "ABOUT" : {
 
     },
     "Additional Safety Tips" : {
@@ -500,7 +506,13 @@
     "Already have an account?" : {
 
     },
+    "App preferences" : {
+
+    },
     "Are you safe?" : {
+
+    },
+    "Are you sure?" : {
 
     },
     "Assess your environment for safety:" : {
@@ -512,13 +524,11 @@
     "Attributing Meaning to Perceived Elements" : {
 
     },
-    "Background Recordings" : {
-
-    },
     "Black" : {
 
     },
     "Change Language" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -601,6 +611,7 @@
 
     },
     "Danger" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -609,6 +620,9 @@
           }
         }
       }
+    },
+    "Delete Account" : {
+
     },
     "Delete All" : {
       "localizations" : {
@@ -658,6 +672,9 @@
     "Essential Safety Tips" : {
 
     },
+    "FEATURES" : {
+
+    },
     "For any suspicious activity, **report it** to your local emergency number." : {
 
     },
@@ -679,6 +696,9 @@
           }
         }
       }
+    },
+    "GO" : {
+
     },
     "Helping Someone Who Drank Too Much" : {
 
@@ -729,9 +749,6 @@
 
     },
     "In emergencies, people rely on their **lowest level** of training. Training helps develop quick, effective solutions focusing on speed and efficiency rather than perfection. For example, in an active shooter scenario, instructing students to run to the nearest exit may not be perfect but is likely to save more lives." : {
-
-    },
-    "Invia messaggi" : {
 
     },
     "Jeff Cooper's Color Code categorizes different levels of awareness:" : {
@@ -819,6 +836,12 @@
         }
       }
     },
+    "Need more contacts?" : {
+
+    },
+    "NO" : {
+
+    },
     "No, help me" : {
       "localizations" : {
         "it" : {
@@ -833,6 +856,7 @@
 
     },
     "Notification" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -851,6 +875,9 @@
           }
         }
       }
+    },
+    "of premium" : {
+
     },
     "OK" : {
       "localizations" : {
@@ -891,9 +918,6 @@
           }
         }
       }
-    },
-    "Overcome Do Not Disturb" : {
-
     },
     "🅿️ _Park in Well-Lit Areas_: Avoid dark parking spots, which provide cover for predators. Always park in well-lit, busy areas." : {
 
@@ -984,7 +1008,7 @@
         }
       }
     },
-    "Send again" : {
+    "Send new code" : {
 
     },
     "Set a custom timer to notify your emergency contacts exactly after the amount of time that most fits your needs." : {
@@ -1020,6 +1044,9 @@
         }
       }
     },
+    "SETTINGS" : {
+
+    },
     "Share" : {
       "localizations" : {
         "it" : {
@@ -1047,6 +1074,7 @@
 
     },
     "Siri & Shortcuts" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1068,6 +1096,9 @@
           }
         }
       }
+    },
+    "Status" : {
+
     },
     "Steps of Situational Awareness" : {
 
@@ -1099,6 +1130,7 @@
 
     },
     "System" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1124,7 +1156,11 @@
     "The Reality of Walking Alone" : {
 
     },
+    "Time" : {
+
+    },
     "Titolo" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1209,6 +1245,7 @@
       }
     },
     "Widgets" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1237,6 +1274,9 @@
           }
         }
       }
+    },
+    "YES" : {
+
     },
     "You already have an account!" : {
 

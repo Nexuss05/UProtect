@@ -52,7 +52,7 @@ struct OtpFormFieldView: View {
                         showAlert.toggle()
                     }
                 } label: {
-                    Text("Send again")
+                    Text("Send new code")
                 }
 
                 Button {
