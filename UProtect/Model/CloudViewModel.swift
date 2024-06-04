@@ -292,7 +292,7 @@ class CloudViewModel: ObservableObject{
     //    }
     
     func fetchUserInfo() {
-        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let queryOperation = CKQueryOperation(query: query)
@@ -647,7 +647,7 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-    func handleRegistration(number: String, completion: @escaping (Bool) -> Void) {
+    func handleFirstLogin(number: String, completion: @escaping (Bool) -> Void) {
         var formattedPhoneNumber = number
         if !number.hasPrefix("+") {
             formattedPhoneNumber = formatPhoneNumber(number)
@@ -657,6 +657,35 @@ class CloudViewModel: ObservableObject{
         searchNumber(number: formattedPhoneNumber) { found in
             guard found else {
                 print("Numero non trovato nel database")
+                completion(false)
+                return
+            }
+        }
+            
+        print("Attempting to verify phone number: \(formattedPhoneNumber)")
+        
+        let phoneAuthProvider = PhoneAuthProvider.provider()
+        phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+            if let error = error {
+                print("Error during phone verification: \(error.localizedDescription)")
+                return
+            }
+            print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
+            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+            completion(true)
+        }
+    }
+    
+    func handleRegistration(number: String, completion: @escaping (Bool) -> Void) {
+        var formattedPhoneNumber = number
+        if !number.hasPrefix("+") {
+            formattedPhoneNumber = formatPhoneNumber(number)
+        }
+        print(formattedPhoneNumber)
+        
+        searchNumber(number: formattedPhoneNumber) { found in
+            if found {
+                print("Numero già presente nel database")
                 completion(false)
                 return
             }

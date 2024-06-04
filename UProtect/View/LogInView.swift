@@ -48,7 +48,7 @@ struct LogInView: View {
                 }
                 Button{
                     UserDefaults.standard.set(true, forKey: "registration")
-                    vm.handleRegistration(number: vm.numero) { success in
+                    vm.handleFirstLogin(number: vm.numero) { success in
                         if success{
                             UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
                             isShowingOtp = true
