@@ -10,6 +10,7 @@
 		175A0A632C05BD4400101A32 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A622C05BD4400101A32 /* MapView.swift */; };
 		175A0A652C05BD7200101A32 /* FetchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A642C05BD7200101A32 /* FetchLocation.swift */; };
 		175A0A672C05BDB300101A32 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A662C05BDB300101A32 /* LocationManager.swift */; };
+		1763CF2C2C0EEEC200A465C4 /* DirectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763CF2B2C0EEEC200A465C4 /* DirectionView.swift */; };
 		999499F92C03B7B50074604F /* Study.json in Resources */ = {isa = PBXBuildFile; fileRef = 999499F82C03B7B50074604F /* Study.json */; };
 		99A452652C05C5E8004700FE /* Animation - 1716803277345.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452642C05C5E8004700FE /* Animation - 1716803277345.json */; };
 		99A452672C05C5EE004700FE /* Animation - 1716803884547.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452662C05C5EE004700FE /* Animation - 1716803884547.json */; };
@@ -135,6 +136,7 @@
 		175A0A622C05BD4400101A32 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		175A0A642C05BD7200101A32 /* FetchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocation.swift; sourceTree = "<group>"; };
 		175A0A662C05BDB300101A32 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		1763CF2B2C0EEEC200A465C4 /* DirectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionView.swift; sourceTree = "<group>"; };
 		999499F82C03B7B50074604F /* Study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Study.json; sourceTree = "<group>"; };
 		9995E0C62BECBD6C0001B309 /* UProtect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UProtect.entitlements; sourceTree = "<group>"; };
 		99A452642C05C5E8004700FE /* Animation - 1716803277345.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716803277345.json"; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				E0F1A6B72C08D29A00B0D16A /* LottieViews */,
 				E04060202C09C47D0018252D /* NoLocationView.swift */,
 				175A0A622C05BD4400101A32 /* MapView.swift */,
+				1763CF2B2C0EEEC200A465C4 /* DirectionView.swift */,
 				E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */,
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
@@ -598,6 +601,7 @@
 				E0F1A6822C07A9EA00B0D16A /* WatchController.swift in Sources */,
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
 				C2893DD62BEB8B9600733211 /* Counter.swift in Sources */,
+				1763CF2C2C0EEEC200A465C4 /* DirectionView.swift in Sources */,
 				C230504C2C05C7070056BEAA /* LottieView.swift in Sources */,
 				E0B954242C00E33F00EBCD81 /* PageControl.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,

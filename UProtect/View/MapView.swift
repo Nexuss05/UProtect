@@ -13,6 +13,7 @@ struct MapView: View {
     @State var locations: [Location] = []
     @State var selectedTag: Int? = 0
     @Binding var selectedPage: Int
+    @State var showDirections = false
     @State var showRoute = false
     @State var selectedLocation: Location?
     @State var routeDisplaying = false
@@ -78,7 +79,7 @@ struct MapView: View {
             } else {
                 Map(position: $cameraPosition, selection: $selectedTag){
                     UserAnnotation()
-                    ForEach(Array(locations.prefix(10).enumerated()), id: \.element.id) { index, result in
+                    ForEach(Array(locations.prefix(5).enumerated()), id: \.element.id) { index, result in
                         Marker(result.name,
                                systemImage: CustomAnnotation(type: result.type).image,
                                coordinate: CLLocationCoordinate2D(latitude: result.latitude, longitude: result.longitude))
@@ -103,9 +104,9 @@ struct MapView: View {
                         await fetchRoute()
                     }
                 }
-                .onChange(of: showRoute) { newValue, oldValue in
-                    print("Show route changed: \(newValue)")
-                    if newValue {
+                .onChange(of: showRoute) {
+                    print("Show route changed: \(showRoute)")
+                    if showRoute{
                         withAnimation {
                             routeDisplaying = true
                             if let rect = route?.polyline.boundingMapRect {
@@ -116,11 +117,25 @@ struct MapView: View {
                         routeDisplaying = false
                     }
                 }
+                .onChange(of: selectedTag) {
+                    showRoute = false 
+                    let locationRegion =
+                    MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locations[selectedTag ?? 0].latitude, longitude: locations[selectedTag ?? 0].longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                    withAnimation {
+                        cameraPosition = .region(locationRegion)
+                    }
+                }
                 .mapControls {
                     MapUserLocationButton()
                 }
                 .safeAreaInset(edge: .bottom) {
-                    FetchLocation(locations: $locations, showRoute: $showRoute, selectedTag: $selectedTag, selectedLocation: $selectedLocation)
+                    if !showRoute {
+                        FetchLocation(locations: $locations, showRoute: $showRoute, selectedTag: $selectedTag, selectedLocation: $selectedLocation)
+                    }
+                    else {
+                        DirectionView(showDirections: $showDirections, route: $route, selectedLocation: $selectedLocation, travelTime: $travelTime, showRoute: $showRoute)
+                            .transition(AnyTransition.opacity.animation(.easeIn(duration:1.0)))
+                    }
                 }
             }
             

@@ -124,7 +124,7 @@ struct FetchLocation: View {
     
     var body: some View {
         TabView(selection: $selectedPage){
-            ForEach(locations.prefix(10).indices, id: \.self) { index in
+            ForEach(locations.prefix(5).indices, id: \.self) { index in
                 let result = locations[index]
                 ZStack{
                     Rectangle()
