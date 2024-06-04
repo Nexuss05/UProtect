@@ -50,8 +50,9 @@ struct UProtectApp: App {
                     //                    watchConnector.observeUserDefaults()
                     vm.fetchUserPosition()
                     vm.fetchFriend()
+                    timerManager.updateCountFromLastCounter()
                 }
-                .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
+//                .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
             //                .onOpenURL { url in
             //                    guard
             //                        let scheme = url.scheme,

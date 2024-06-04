@@ -18,6 +18,7 @@ struct MyClaims: Claims {
 struct TimerView: View {
     
     @State var showingAlert = false
+    @State var showAlert2 = false
     @State var showAlert = false
     
     
@@ -262,7 +263,8 @@ struct TimerView: View {
                     Circle()
                         .foregroundColor(.white)
                         .frame(width: 170, height: 170)
-                        .shadow(color: colorScheme == .dark ? .white : .gray, radius: colorScheme == .dark ? 6 : 4)
+                        .shadow(color: colorScheme == .dark ? .white : .gray, radius: colorScheme == .dark ? 4 : 2, x: 0, y: 5)
+//                        .shadow(color: colorScheme == .dark ? .white : .gray, radius: colorScheme == .dark ? 6 : 4)
                 }else{
                     Circle()
                         .foregroundColor(.white)
@@ -272,7 +274,7 @@ struct TimerView: View {
                 }
                 Image(systemName: "exclamationmark.triangle.fill")
                     .resizable()
-                    .frame(width: 75, height: 70)
+                    .frame(width: 70, height: 65)
                     .foregroundColor(!timerManager.isActivated ? CustomColor.orange : CustomColor.redBackground)
                     .opacity(timerManager.showMark ? 1 : 0)
                     .opacity(withAnimation{buttonTapped ? 0.2 : 1})
@@ -333,7 +335,7 @@ struct TimerView: View {
             }
             .onTapGesture {
                 withAnimation{
-                    if !timerManager.isActivated && !buttonLocked{
+                    if !timerManager.isActivated && !buttonLocked && !timerManager.start{
                         if !audioRecorder.recording{
                             audioRecorder.startRecording()
                         }
@@ -352,34 +354,42 @@ struct TimerView: View {
                             timerManager.canCancel = true
                         }
                         buttonLocked = true
-                        DispatchQueue.main.asyncAfter(deadline: .now()) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             buttonLocked = false
                         }
                         sendPosition()
                     } else {
                         if timerManager.canCancel && !buttonLocked{
-                            if audioRecorder.recording{
-                                audioRecorder.stopRecording()
+                            if timerManager.start{
+                                showAlert2.toggle()
+                            } else {
+                                if audioRecorder.recording{
+                                    audioRecorder.stopRecording()
+                                }
+                                showingAlert = false
+    //                            timerManager.stopTimer()
+                                print("Bottone disattivato")
+                                timerManager.Activation()
+//                                timerManager.showMark = true
+//                                timerManager.canCancel = false
                             }
-                            showingAlert = false
-                            timerManager.stopTimer()
-                            print("Bottone disattivato")
-                            timerManager.Activation()
-                            timerManager.showMark = true
-                            timerManager.canCancel = false
                             
                         }
                     }
                 }
             }
             .onLongPressGesture{
-                if !timerManager.isActivated && !timerManager.start{
+                if !timerManager.isActivated && !timerManager.start && !buttonLocked{
                     if !audioRecorder.recording{
                         audioRecorder.startRecording()
                     }
                     sendPosition()
                     timerManager.isPressed = true
                     timerManager.startTimer()
+                    buttonLocked = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        buttonLocked = false
+                    }
                     withAnimation{
                         timerManager.showMark = false
                         timerManager.Activation()
@@ -399,7 +409,7 @@ struct TimerView: View {
                 } else {
                     print("Nessun valore salvato.")
                 }
-                timerManager.updateCountFromLastCounter()
+//                timerManager.updateCountFromLastCounter()
 //                vm.fetchUserInfo()
             }.alert(isPresented: $timerManager.showAlert) {
                 Alert(
@@ -426,6 +436,19 @@ struct TimerView: View {
                 )
             }.alert("Notification sent!", isPresented: $showingAlert) {
                 Button("OK") { }
+            }
+            .alert("Vuoi disattivare il timer?", isPresented: $showAlert2) {
+                Button("YES", role: .destructive) { 
+                    timerManager.stopTimer()
+                    timerManager.Activation()
+                    timerManager.showMark = true
+                    timerManager.canCancel = false
+                    if audioRecorder.recording{
+                        audioRecorder.stopRecording()
+                    }
+                    print("timer disattivato")
+                }
+                Button("NO", role: .cancel) { }
             }
         
     }

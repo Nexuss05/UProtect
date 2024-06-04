@@ -67,7 +67,6 @@ class AudioRecorder: NSObject, ObservableObject {
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.record()
-            
             recording = true
         } catch {
             print("Could not start recording")
@@ -77,8 +76,8 @@ class AudioRecorder: NSObject, ObservableObject {
     func stopRecording() {
         audioRecorder.stop()
         recording = false
-        
         fetchRecording()
+        print("Stop recording")
     }
     
     func fetchRecording() {

@@ -119,9 +119,9 @@ extension UITabBar {
     }
 }
 
-//struct ContentView_Previews3: PreviewProvider {
-//    static var previews: some View {
-//        let timerManager = TimerManager()
-//        return ContentView(timerManager: timerManager, audioRecorder: AudioRecorder())
-//    }
-//}
+struct ContentView_Previews3: PreviewProvider {
+    static var previews: some View {
+        let timerManager = TimerManager()
+        return ContentView(timerManager: timerManager, audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
+    }
+}

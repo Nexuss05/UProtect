@@ -144,7 +144,7 @@ struct MapView: View {
             if latitudine == 0 && longitudine == 0{
                 ZStack {
                     RoundedRectangle(cornerRadius: 10).frame(width: 45, height: 45)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(CustomColor.orangeBackground)
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(.gray)
                 }

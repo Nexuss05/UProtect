@@ -67,6 +67,7 @@ struct GoalView: View {
                 timerManager.maxTime = cont
                 isShowingMain.toggle()
                 dismiss()
+                timerManager.updateCountFromLastCounter()
             }
             .accessibilityElement(children: .combine)
             .accessibilityAddTraits(.isButton)
