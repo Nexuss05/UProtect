@@ -205,7 +205,7 @@ struct OtpModifier: ViewModifier {
             .keyboardType(.numberPad)
             .onReceive(pin.publisher.collect()) { _ in limitText(1) }
             .frame(width: 45, height: 45)
-            .background(CustomColor.orange.opacity(0.5).cornerRadius(5))
+            .background(CustomColor.orange.cornerRadius(5))
             .background(
                 RoundedRectangle(cornerRadius: 5)
             )

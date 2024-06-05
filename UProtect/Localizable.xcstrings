@@ -641,6 +641,9 @@
         }
       }
     },
+    "Do you want to deactivate the timer?" : {
+
+    },
     "Do’s:" : {
 
     },
@@ -767,6 +770,9 @@
     "Limite Raggiunto" : {
 
     },
+    "Log Out" : {
+
+    },
     "LogIn" : {
       "localizations" : {
         "it" : {
@@ -839,6 +845,9 @@
     "NO" : {
 
     },
+    "No contacts selected!" : {
+
+    },
     "No, help me" : {
       "localizations" : {
         "it" : {
@@ -874,6 +883,9 @@
       }
     },
     "of premium" : {
+
+    },
+    "Ok" : {
 
     },
     "OK" : {
@@ -1190,6 +1202,9 @@
         }
       }
     },
+    "Try again later" : {
+
+    },
     "Understanding Alcohol Poisoning: alcohol is a **toxic** substance, and excessive consumption can lead to **severe** health issues, including alcohol poisoning. This occurs when someone drinks a large amount of alcohol in a short period, leading to high blood alcohol concentration. Symptoms include slowed brain function, stomach irritation, dehydration, and more." : {
 
     },
@@ -1205,9 +1220,6 @@
           }
         }
       }
-    },
-    "Vuoi disattivare il timer?" : {
-
     },
     "Walking alone can be risky, depending on factors like location, gender, and time of day. Here are some general tips to help keep you safe in any situation." : {
 

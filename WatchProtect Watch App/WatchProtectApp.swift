@@ -11,7 +11,7 @@ import WatchConnectivity
 
 @main
 struct WatchProtect_Watch_AppApp: App {
-    @StateObject var timerManager = TimerManager()
+//    @StateObject var timerManager = TimerManager()
 //    @StateObject var audioRecorder = AudioRecorder()
     
     init() {

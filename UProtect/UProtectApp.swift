@@ -44,9 +44,9 @@ struct UProtectApp: App {
     var body: some Scene {
         WindowGroup {
 //            UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-              ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+//              ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
 //            Newbutton(timerManager: timerManager, audioRecorder: audioRecorder)
-//            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 .onAppear{
                     vm.fetchUserPosition()
                     vm.fetchFriend()

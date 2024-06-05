@@ -13,7 +13,15 @@ extension TimeManager: WCSessionDelegate {
             let session = WCSession.default
             session.delegate = self
             session.activate()
+            syncTokensPeriodically()
         }
+    }
+    
+    func syncTokensPeriodically() {
+        let syncTimer = Timer.scheduledTimer(withTimeInterval: 300, repeats: true) { _ in
+            self.syncTokens()
+        }
+        RunLoop.main.add(syncTimer, forMode: .common)
     }
     
     func syncTokens() {

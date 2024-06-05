@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LogInView: View {
+    @State private var keyboardHeight: CGFloat = 0
+    
     @State var isShowingRec: Bool = false
     @State var isShowingOtp: Bool = false
     @State var showAlert: Bool = false
@@ -20,76 +22,94 @@ struct LogInView: View {
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     
     var body: some View {
-        ZStack {
+        ZStack{
             CustomColor.orange
-            VStack {
-                Text("Welcome back!")
-                    .foregroundColor(Color.white)
-                    .font(.largeTitle)
-                    .bold()
-                Rectangle()
-                    .frame(width: 400, height: 300)
-                    .opacity(0)
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
+                .ignoresSafeArea()
+            ZStack {
+                CustomColor.orange
+                    .ignoresSafeArea()
+                VStack {
+                    Text("Welcome back!")
                         .foregroundColor(Color.white)
-                    TextField("Phone number", text: $vm.numero)
-                        .padding(.leading, 20)
-                }.frame(width: 325, height: 50, alignment: .center)
-                    .padding(.top, 60)
-                
-                Button{
-                    withAnimation {
-                        isShowingRec = true
-                    }
-                } label: {
-                    Text("SignIn")
-                        .foregroundColor(Color.white)
-                }
-                Button{
-                    vm.handleFirstLogin(number: vm.numero) { success in
-                        if success{
-                            UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
-                            isShowingOtp = true
-                        } else {
-                            print("Errore nel login")
-                        }
-                    }
-                } label: {
+                        .font(.largeTitle)
+                        .bold()
+                    Rectangle()
+                        .frame(width: 400, height: 300)
+                        .opacity(0)
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(Color.white)
-                            .frame(width: 100, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        Text("LogIn")
-                            .fontWeight(.bold)
-                            .foregroundColor(CustomColor.orange)
+                        TextField("Phone number", text: $vm.numero).keyboardType(.numberPad)
+                            .padding(.leading, 20)
+                    }.frame(width: 325, height: 50, alignment: .center)
+                        .padding(.top, 60)
+                    
+                    Button{
+                        withAnimation {
+                            isShowingRec = true
+                        }
+                    } label: {
+                        Text("SignIn")
+                            .foregroundColor(Color.white)
                     }
-                }.padding(.top, 100)
-                    .disabled(vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
-                
-            }
-            Image("a0")
-                .resizable()
-                .frame(width: 350, height: 250)
-                .padding(.bottom, 200)
-        }
-        .ignoresSafeArea()
-        .preferredColorScheme(.light)
-        .fullScreenCover(isPresented: $isShowingRec, content: {
-            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-        })
-        .fullScreenCover(isPresented: $isShowingOtp, content: {
-            OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-        })
-        .alert("You don't have an account!", isPresented: $showAlert) {
-            Button("SignIn"){
-                isShowingRec.toggle()
-            }
+                    Button{
+                        vm.handleFirstLogin(number: vm.numero) { success in
+                            if success{
+                                UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
+                                isShowingOtp = true
+                            } else {
+                                print("Errore nel login")
+                            }
+                        }
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(Color.white)
+                                .frame(width: 100, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            Text("LogIn")
+                                .fontWeight(.bold)
+                                .foregroundColor(CustomColor.orange)
+                        }
+                    }.padding(.top, 100)
+                        .disabled(vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
+                    
+                }
+                Image("a0")
+                    .resizable()
+                    .frame(width: 350, height: 250)
+                    .padding(.bottom, 200)
+            }.padding(.bottom, keyboardHeight)
+                .ignoresSafeArea()
+                .preferredColorScheme(.light)
+                .fullScreenCover(isPresented: $isShowingRec, content: {
+                    RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                })
+                .fullScreenCover(isPresented: $isShowingOtp, content: {
+                    OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                })
+                .alert("You don't have an account!", isPresented: $showAlert) {
+                    Button("SignIn"){
+                        isShowingRec.toggle()
+                    }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
+                    if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                        keyboardHeight = keyboardFrame.height
+                    }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    keyboardHeight = 0
+                }
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
         }
     }
 }
 
 struct RegistrationView: View {
+    @State private var keyboardHeight: CGFloat = 0
+    
     @State var isShowingLogin: Bool = false
     @State var isShowingOtp: Bool = false
     @State var showAlert: Bool = false
@@ -102,89 +122,106 @@ struct RegistrationView: View {
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     
     var body: some View {
-        ZStack {
+        ZStack{
             CustomColor.orange
-            Image("a1")
-                .resizable()
-                .frame(width: 400, height: 400)
-                .padding(.bottom, 275)
-            VStack {
-                Text("Create an Account!")
-                    .foregroundColor(Color.white)
-                    .font(.largeTitle)
-                    .bold()
-                Rectangle()
-                    .frame(width: 400, height: 300)
-                    .opacity(0)
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
+                .ignoresSafeArea()
+            ZStack {
+                CustomColor.orange
+                    .ignoresSafeArea()
+                Image("a1")
+                    .resizable()
+                    .frame(width: 400, height: 400)
+                    .padding(.bottom, 275)
+                VStack {
+                    Text("Create an Account!")
                         .foregroundColor(Color.white)
-                    TextField("Name", text: $vm.nome)
-                        .padding(.leading, 20)
-                }.frame(width: 325, height: 50, alignment: .center)
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color.white)
-                    TextField("Surname", text: $vm.cognome)
-                        .padding(.leading, 20)
-                }.frame(width: 325, height: 50, alignment: .center)
-                    .padding(.vertical)
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color.white)
-                    TextField("Phone number", text: $vm.numero)
-                        .padding(.leading, 20)
-                }.frame(width: 325, height: 50, alignment: .center)
-                
-                Button{
-                    withAnimation {
-                        isShowingLogin = true
-                    }
-                } label: {
-                    Text("Already have an account?")
-                        .foregroundColor(Color.white)
-                }
-                
-                Button{
-                    UserDefaults.standard.set(vm.nome, forKey: "nomeUtente")
-                    UserDefaults.standard.set(vm.cognome, forKey: "cognomeUtente")
-                    UserDefaults.standard.set(vm.numero, forKey: "numeroUtente")
-                    UserDefaults.standard.set(true, forKey: "registration")
-                    vm.handleRegistration(number: vm.numero) { success in
-                        if success{
-                            isShowingOtp = true
-                        } else {
-                            showAlert.toggle()
-                        }
-                    }
+                        .font(.largeTitle)
+                        .bold()
+                    Rectangle()
+                        .frame(width: 400, height: 300)
+                        .opacity(0)
                     
-                } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(Color.white)
-                            .frame(width: 100, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                        Text("Sign In")
-                            .fontWeight(.bold)
-                            .foregroundColor(CustomColor.orange)
+                        TextField("Name", text: $vm.nome)
+                            .padding(.leading, 20)
+                    }.frame(width: 325, height: 50, alignment: .center)
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color.white)
+                        TextField("Surname", text: $vm.cognome)
+                            .padding(.leading, 20)
+                    }.frame(width: 325, height: 50, alignment: .center)
+                        .padding(.vertical)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color.white)
+                        TextField("Phone number", text: $vm.numero).keyboardType(.numberPad)
+                            .padding(.leading, 20)
+                    }.frame(width: 325, height: 50, alignment: .center)
+                    
+                    Button{
+                        withAnimation {
+                            isShowingLogin = true
+                        }
+                    } label: {
+                        Text("Already have an account?")
+                            .foregroundColor(Color.white)
                     }
-                }.padding(.top, 30)
-                    .disabled(vm.nome.trimmingCharacters(in: .whitespaces).isEmpty || vm.cognome.trimmingCharacters(in: .whitespaces).isEmpty||vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
-            }
-        }.preferredColorScheme(.light)
-            .ignoresSafeArea()
-            .fullScreenCover(isPresented: $isShowingLogin, content: {
-                LogInView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-            })
-            .fullScreenCover(isPresented: $isShowingOtp, content: {
-                OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-            })
-            .alert("You already have an account!", isPresented: $showAlert) {
-                Button("LogIn"){
-                    isShowingLogin.toggle()
+                    
+                    Button{
+                        UserDefaults.standard.set(vm.nome, forKey: "nomeUtente")
+                        UserDefaults.standard.set(vm.cognome, forKey: "cognomeUtente")
+                        UserDefaults.standard.set(vm.numero, forKey: "numeroUtente")
+                        UserDefaults.standard.set(true, forKey: "registration")
+                        vm.handleRegistration(number: vm.numero) { success in
+                            if success{
+                                isShowingOtp = true
+                            } else {
+                                showAlert.toggle()
+                            }
+                        }
+                        
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(Color.white)
+                                .frame(width: 100, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            Text("Sign In")
+                                .fontWeight(.bold)
+                                .foregroundColor(CustomColor.orange)
+                        }
+                    }.padding(.top, 30)
+                        .disabled(vm.nome.trimmingCharacters(in: .whitespaces).isEmpty || vm.cognome.trimmingCharacters(in: .whitespaces).isEmpty||vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
-            }
+            }.padding(.bottom, keyboardHeight)
+            //        .preferredColorScheme(.light)
+                .ignoresSafeArea()
+                .fullScreenCover(isPresented: $isShowingLogin, content: {
+                    LogInView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                })
+                .fullScreenCover(isPresented: $isShowingOtp, content: {
+                    OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                })
+                .alert("You already have an account!", isPresented: $showAlert) {
+                    Button("LogIn"){
+                        isShowingLogin.toggle()
+                    }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
+                    if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                        keyboardHeight = keyboardFrame.height
+                    }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    keyboardHeight = 0
+                }
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
+        }
     }
 }
 

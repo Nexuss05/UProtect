@@ -26,6 +26,9 @@ struct SettingsView: View {
     @State var showOnBoarding: Bool = false
     @State var showWidget: Bool = false
     @State var showAlert: Bool = false
+    @State var showAlert2: Bool = false
+    @State var showAlert3: Bool = false
+    @State var showReg: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -62,30 +65,30 @@ struct SettingsView: View {
                             Text("Recordings")
                         }.navigationViewStyle(StackNavigationViewStyle())
                         
-//                        Button(action: {
-//                            if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
-//                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//                            }
-//                        }) {
-//                            HStack {
-//                                Text("Change Language")
-//                                    .foregroundColor(.primary)
-//                                Spacer()
-//                                Image(systemName: "arrow.up.forward")
-//                                    .foregroundStyle(CustomColor.orange)
-//                            }
-//                        }
-//                        Button(action: {
-//                            //bho
-//                        }) {
-//                            HStack {
-//                                Text("Overcome Do Not Disturb")
-//                                    .foregroundColor(.primary)
-//                                Spacer()
-//                                Image(systemName: "arrow.up.forward")
-//                                    .foregroundStyle(CustomColor.orange)
-//                            }
-//                        }
+                        //                        Button(action: {
+                        //                            if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                        //                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        //                            }
+                        //                        }) {
+                        //                            HStack {
+                        //                                Text("Change Language")
+                        //                                    .foregroundColor(.primary)
+                        //                                Spacer()
+                        //                                Image(systemName: "arrow.up.forward")
+                        //                                    .foregroundStyle(CustomColor.orange)
+                        //                            }
+                        //                        }
+                        //                        Button(action: {
+                        //                            //bho
+                        //                        }) {
+                        //                            HStack {
+                        //                                Text("Overcome Do Not Disturb")
+                        //                                    .foregroundColor(.primary)
+                        //                                Spacer()
+                        //                                Image(systemName: "arrow.up.forward")
+                        //                                    .foregroundStyle(CustomColor.orange)
+                        //                            }
+                        //                        }
                     }
                     
                     Section(header: Text("SETTINGS")){
@@ -104,12 +107,12 @@ struct SettingsView: View {
                         }
                     }
                     
-//                    Section(header: Text("ABOUT")) {
-//                        Text("Siri & Shortcuts")
-//                            .foregroundColor(.primary)
-//                        Text("Widgets")
-//                            .foregroundColor(.primary)
-//                    }
+                    //                    Section(header: Text("ABOUT")) {
+                    //                        Text("Siri & Shortcuts")
+                    //                            .foregroundColor(.primary)
+                    //                        Text("Widgets")
+                    //                            .foregroundColor(.primary)
+                    //                    }
                     
                     Section(header: Text("ABOUT")){
                         HStack{
@@ -143,18 +146,54 @@ struct SettingsView: View {
                             Text("Delete Account")
                                 .foregroundStyle(CustomColor.redBackground)
                         }
+                        Button{
+                            showAlert3.toggle()
+                        } label: {
+                            Text("Log Out")
+                                .foregroundStyle(CustomColor.redBackground)
+                        }
                     }
                 }
                 .navigationTitle("Settings")
                 .background(CustomColor.orangeBackground)
                 .scrollContentBackground(.hidden)
+                .fullScreenCover(isPresented: $showReg, content: {
+                    RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                })
                 .sheet(isPresented: $showOnBoarding, content: {
                     WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                        .alert("Try again later", isPresented: $showAlert2) {
+                            Button("Ok") { }
+                        }
                 }).alert("Are you sure?", isPresented: $showAlert) {
-                    Button("YES", role: .destructive) { }
+                    Button("YES", role: .destructive) {
+                        vm.deleteUser { success in
+                            if success{
+                                print("torna alla registrazione")
+                                showReg.toggle()
+                            } else {
+                                showAlert2.toggle()
+                            }
+                        }
+                    }
                     Button("NO", role: .cancel) { }
                 }
-                
+                .alert("Are you sure?", isPresented: $showAlert3) {
+                    Button("YES", role: .destructive) {
+                        let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
+                        if let bundleIdentifier = Bundle.main.bundleIdentifier {
+                            UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
+                        }
+                        if let token = fcmToken {
+                            UserDefaults.standard.set(token, forKey: "fcmToken")
+                        }
+                        showReg.toggle()
+                    }
+                    Button("NO", role: .cancel) { }
+                }
+                .onAppear{
+                    vm.fetchUserInfo()
+                }
             }
         }
     }

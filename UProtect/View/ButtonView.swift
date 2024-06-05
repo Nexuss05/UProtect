@@ -18,6 +18,7 @@ struct MyClaims: Claims {
 struct TimerView: View {
     
     @State var showingAlert = false
+    @State var showAlert3 = false
     @State var showAlert2 = false
     @State var showAlert = false
     
@@ -48,15 +49,15 @@ struct TimerView: View {
     
     func SwapText(){
         if textSwap{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                withAnimation(.smooth(duration: 1)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                withAnimation(.smooth(duration: 0.75)) {
                     textSwap.toggle()
                     SwapText()
                 }
             }
         }else{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                withAnimation(.easeInOut(duration: 1)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                withAnimation(.easeInOut(duration: 0.75)) {
                     textSwap.toggle()
                     SwapText()
                 }
@@ -331,44 +332,49 @@ struct TimerView: View {
                 }
             }
             .onTapGesture {
-                withAnimation{
-                    if !timerManager.isActivated && !buttonLocked && !timerManager.start{
-                        if !audioRecorder.recording{
-                            audioRecorder.startRecording()
-                        }
-                        print("Bottone attivato")
-                        buttonTapped = true
-                        showingAlert = true
-                        TapAnimation()
-                        print("Before calling sendPushNotification()")
-                        sendPushNotificationsForSavedTokens()
-                        print("After calling sendPushNotification()")
-                        withAnimation{
-                            timerManager.Activation()
-                            timerManager.CircleAnimation()
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now()) {
-                            timerManager.canCancel = true
-                        }
-                        buttonLocked = true
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            buttonLocked = false
-                        }
-                        sendPosition()
-                    } else {
-                        if timerManager.canCancel && !buttonLocked{
-                            if timerManager.start{
-                                showAlert2.toggle()
-                            } else {
-                                if audioRecorder.recording{
-                                    audioRecorder.stopRecording()
-                                }
-                                showingAlert = false
-                                print("Bottone disattivato")
+                if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens"){
+                    withAnimation{
+                        if !timerManager.isActivated && !buttonLocked && !timerManager.start{
+                            if !audioRecorder.recording{
+                                audioRecorder.startRecording()
+                            }
+                            print("Bottone attivato")
+                            buttonTapped = true
+                            showingAlert = true
+                            TapAnimation()
+                            print("Before calling sendPushNotification()")
+                            sendPushNotificationsForSavedTokens()
+                            print("After calling sendPushNotification()")
+                            withAnimation{
                                 timerManager.Activation()
+                                timerManager.CircleAnimation()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                timerManager.canCancel = true
+                            }
+                            buttonLocked = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                buttonLocked = false
+                            }
+                            sendPosition()
+                        } else {
+                            if timerManager.canCancel && !buttonLocked{
+                                if timerManager.start{
+                                    showAlert2.toggle()
+                                } else {
+                                    if audioRecorder.recording{
+                                        audioRecorder.stopRecording()
+                                    }
+                                    showingAlert = false
+                                    print("Bottone disattivato")
+                                    timerManager.Activation()
+                                }
                             }
                         }
                     }
+                } else {
+                    print("no tokens saved in userdefaults")
+                    showAlert3.toggle()
                 }
             }
             .onLongPressGesture{
@@ -429,6 +435,9 @@ struct TimerView: View {
                     )
                 )
             }.alert("Notification sent!", isPresented: $showingAlert) {
+                Button("OK") { }
+            }
+            .alert("No contacts selected!", isPresented: $showAlert3) {
                 Button("OK") { }
             }
             .alert("Do you want to deactivate the timer?", isPresented: $showAlert2) {

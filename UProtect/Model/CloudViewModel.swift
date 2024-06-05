@@ -707,6 +707,48 @@ class CloudViewModel: ObservableObject{
         }
     }
     
+    func deleteUser(completion: @escaping (Bool) -> Void){
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
+            let query = CKQuery(recordType: "Utenti", predicate: predicate)
+            let queryOperation = CKQueryOperation(query: query)
+            queryOperation.resultsLimit = 1
+            
+            queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+                switch returnedResult {
+                case .success(let record):
+                    let recordID = record.recordID
+                    let deleteOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
+                    deleteOperation.modifyRecordsResultBlock = { result in
+                        switch result {
+                        case .success:
+                            print("Record successfully deleted")
+                            completion(true)
+                        case .failure(let error):
+                            print("Error deleting record: \(error)")
+                            completion(false)
+                        }
+                    }
+                    CKContainer.default().publicCloudDatabase.add(deleteOperation)
+                    
+                case .failure(let error):
+                    print("Error: \(error)")
+                    completion(false)
+                }
+            }
+            
+            queryOperation.queryResultBlock = { result in
+                switch result {
+                case .success:
+                    print("Query completed")
+                case .failure(let error):
+                    print("Error completing query: \(error)")
+                    completion(false)
+                }
+            }
+            addOperation(operation: queryOperation)
+//        CKContainer.default().publicCloudDatabase.add(queryOperation)
+    }
+    
     //    func fetchUserInfo(number: String, completion: @escaping (String?, String?, Error?) -> Void) {
     //        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
     //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
