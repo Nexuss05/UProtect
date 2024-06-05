@@ -122,6 +122,7 @@ struct TimerView: View {
     func sendPushNotificationsForSavedTokens() {
         if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
             for token in savedTokens {
+                print("funzione token: \(token)")
                 sendPushNotification(token: token)
             }
         } else {
@@ -130,15 +131,18 @@ struct TimerView: View {
     }
     
     func sendPushNotification(token: String) {
-        let message = "Hai ricevuto una nuova notifica!"
+        let name = UserDefaults.standard.string(forKey: "firstName")
+        let surname = UserDefaults.standard.string(forKey: "lastName")
+//        let message = "Hai ricevuto una nuova notifica!"
+        let message = ""
         let authenticationToken = tokenAPNS
         
         let content = """
         {
             "aps": {
                 "alert": {
-                    "title": "Strunz",
-                    "subtitle": "Rispunn",
+                    "title": "\(String(describing: name)) \(String(describing: surname)) is in danger",
+                    "subtitle": "Open the app to check on them",
                     "body": "\(message)"
                 },
                 "sound": "default"
@@ -332,10 +336,10 @@ struct TimerView: View {
                 }
             }
             .onTapGesture {
-                if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens"){
-                    withAnimation{
-                        if !timerManager.isActivated && !buttonLocked && !timerManager.start{
-                            if !audioRecorder.recording{
+                if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens"), !savedTokens.isEmpty {
+                    withAnimation {
+                        if !timerManager.isActivated && !buttonLocked && !timerManager.start {
+                            if !audioRecorder.recording {
                                 audioRecorder.startRecording()
                             }
                             print("Bottone attivato")
@@ -345,7 +349,7 @@ struct TimerView: View {
                             print("Before calling sendPushNotification()")
                             sendPushNotificationsForSavedTokens()
                             print("After calling sendPushNotification()")
-                            withAnimation{
+                            withAnimation {
                                 timerManager.Activation()
                                 timerManager.CircleAnimation()
                             }
@@ -358,11 +362,11 @@ struct TimerView: View {
                             }
                             sendPosition()
                         } else {
-                            if timerManager.canCancel && !buttonLocked{
-                                if timerManager.start{
+                            if timerManager.canCancel && !buttonLocked {
+                                if timerManager.start {
                                     showAlert2.toggle()
                                 } else {
-                                    if audioRecorder.recording{
+                                    if audioRecorder.recording {
                                         audioRecorder.stopRecording()
                                     }
                                     showingAlert = false
@@ -373,7 +377,7 @@ struct TimerView: View {
                         }
                     }
                 } else {
-                    print("no tokens saved in userdefaults")
+                    print("No tokens saved in UserDefaults")
                     showAlert3.toggle()
                 }
             }

@@ -68,20 +68,23 @@ struct ContentView: View {
     }
     
     func sendPushNotification(token: String) {
-        let message = "Hai ricevuto una nuova notifica!"
+        let name = UserDefaults.standard.string(forKey: "nameOnWatch")
+        let surname = UserDefaults.standard.string(forKey: "surnameOnWatch")
+//        let message = "Hai ricevuto una nuova notifica!"
+        let message = ""
         let authenticationToken = tokenAPNS
         
         let content = """
         {
             "aps": {
                 "alert": {
-                    "title": "Strunz",
-                    "subtitle": "Rispunn",
+                    "title": "\(String(describing: name)) \(String(describing: surname)) is in danger",
+                    "subtitle": "Open the app to check on them",
                     "body": "\(message)"
                 },
                 "sound": "default"
             },
-            "topic": "com.alessiaprevidente.UProtect"
+            "topic": "com.matteo-cotena.UProtect"
         }
         
         """

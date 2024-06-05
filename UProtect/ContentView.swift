@@ -97,6 +97,7 @@ struct ContentView: View {
             }
             .onAppear{
                 vm.fetchUserInfo()
+                TimeManager.shared.syncTokens()
             }
         }
     }

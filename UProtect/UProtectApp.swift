@@ -26,6 +26,9 @@ struct UProtectApp: App {
     init() {
         UITabBar.setCustomAppearance()
         TimeManager.shared.setupWCSession()
+        TimeManager.shared.syncTokens()
+        TimeManager.shared.syncName()
+        TimeManager.shared.syncSurname()
     }
     
     var sharedModelContainer: ModelContainer = {
@@ -44,9 +47,9 @@ struct UProtectApp: App {
     var body: some Scene {
         WindowGroup {
 //            UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-//              ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+              ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
 //            Newbutton(timerManager: timerManager, audioRecorder: audioRecorder)
-            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+//            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 .onAppear{
                     vm.fetchUserPosition()
                     vm.fetchFriend()
