@@ -83,7 +83,7 @@ class TimerManager: ObservableObject {
     private func notify(){
         let content = UNMutableNotificationContent()
         content.title = "Timer"
-        content.subtitle = "Torna nell'app per disattivare lo stato dall'erta"
+        content.subtitle = "Torna nell'app per disattivare lo stato d'allerta"
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: "MSG", content: content, trigger: trigger)
