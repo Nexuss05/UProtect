@@ -431,6 +431,7 @@ struct TimerView: View {
             }.alert("Notification sent!", isPresented: $showingAlert) {
                 Button("OK") { }
             }
+            .alert("Do you want to deactivate the timer?", isPresented: $showAlert2) {
                 Button("YES", role: .destructive) {
                     timerManager.stopTimer()
                     timerManager.Activation()
