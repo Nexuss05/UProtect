@@ -34,6 +34,8 @@
 		C23F9A142C0098C3001FE56F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23F9A132C0098C3001FE56F /* Assets.xcassets */; };
 		C23F9A172C0098C3001FE56F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23F9A162C0098C3001FE56F /* Preview Assets.xcassets */; };
 		C23F9A1A2C0098C3001FE56F /* WatchProtect Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C249A9DB2C10DF0C004293B7 /* Animation - 1717609436208.json in Resources */ = {isa = PBXBuildFile; fileRef = C249A9DA2C10DF0B004293B7 /* Animation - 1717609436208.json */; };
+		C249A9DD2C10DF35004293B7 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249A9DC2C10DF35004293B7 /* Loading.swift */; };
 		C25CE97E2BFDFC9D008CE99A /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE97D2BFDFC9D008CE99A /* FirebaseAuthUI */; };
 		C25CE9822BFDFC9D008CE99A /* FirebasePhoneAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE9812BFDFC9D008CE99A /* FirebasePhoneAuthUI */; };
 		C27795DA2BFCB5590034981F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795D92BFCB5590034981F /* WidgetKit.framework */; };
@@ -164,6 +166,8 @@
 		C23F9A112C0098C2001FE56F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C23F9A132C0098C3001FE56F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C23F9A162C0098C3001FE56F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C249A9DA2C10DF0B004293B7 /* Animation - 1717609436208.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1717609436208.json"; sourceTree = "<group>"; };
+		C249A9DC2C10DF35004293B7 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		C25CE9C72BFFCC72008CE99A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "UProtect-WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27795D92BFCB5590034981F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -243,6 +247,7 @@
 		999499F72C03B79C0074604F /* Lotties */ = {
 			isa = PBXGroup;
 			children = (
+				C249A9DA2C10DF0B004293B7 /* Animation - 1717609436208.json */,
 				99A452682C05C5F4004700FE /* Animation - 1716804413916.json */,
 				99A452662C05C5EE004700FE /* Animation - 1716803884547.json */,
 				99A452642C05C5E8004700FE /* Animation - 1716803277345.json */,
@@ -310,6 +315,7 @@
 				E0EAD0E22BFF804F006753F5 /* Recordings */,
 				E0B954212C00E21100EBCD81 /* Onboarding.swift */,
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
+				C249A9DC2C10DF35004293B7 /* Loading.swift */,
 				E0456A462BF8F342002B514F /* otpView.swift */,
 				E06A20292C0B78F1005D4D67 /* Courses */,
 				E0F1A6B72C08D29A00B0D16A /* LottieViews */,
@@ -563,6 +569,7 @@
 				999499F92C03B7B50074604F /* Study.json in Resources */,
 				E06A205D2C0E3015005D4D67 /* InfoPlist.xcstrings in Resources */,
 				C2E4035D2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */,
+				C249A9DB2C10DF0C004293B7 /* Animation - 1717609436208.json in Resources */,
 				99A452692C05C5F4004700FE /* Animation - 1716804413916.json in Resources */,
 				C2E4035A2C0FD16D00F5B4F7 /* GoogleService-Info.plist in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
@@ -601,6 +608,7 @@
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				E06A20572C0E0E8C005D4D67 /* Vuota.swift in Sources */,
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
+				C249A9DD2C10DF35004293B7 /* Loading.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
 				E0EAD0E62BFF823E006753F5 /* AudioPlayer.swift in Sources */,

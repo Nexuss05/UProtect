@@ -14,6 +14,8 @@ struct LogInView: View {
     @State var isShowingOtp: Bool = false
     @State var showAlert: Bool = false
     
+    @State private var isLoading = false
+    
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
     @ObservedObject var audioPlayer: AudioPlayer
@@ -49,11 +51,14 @@ struct LogInView: View {
                             isShowingRec = true
                         }
                     } label: {
-                        Text("SignIn")
+                        Text("Sign In")
                             .foregroundColor(Color.white)
+                            .padding(.top, 10)
                     }
                     Button{
+                        isLoading = true
                         vm.handleFirstLogin(number: vm.numero) { success in
+                            isLoading = false
                             if success{
                                 UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
                                 isShowingOtp = true
@@ -66,7 +71,7 @@ struct LogInView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundColor(Color.white)
                                 .frame(width: 100, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            Text("LogIn")
+                            Text("Log In")
                                 .fontWeight(.bold)
                                 .foregroundColor(CustomColor.orange)
                         }
@@ -104,7 +109,15 @@ struct LogInView: View {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
         }
-    }
+        .disabled(isLoading)
+        .overlay {
+            if isLoading {
+                // Visualizza la pagina di caricamento
+                Loading(loopmode: .loop)
+                    .scaleEffect(0.60)
+                    .background(Color.black.opacity(0.3))
+            }
+        }    }
 }
 
 struct RegistrationView: View {
@@ -119,7 +132,19 @@ struct RegistrationView: View {
     @ObservedObject var audioPlayer: AudioPlayer
     @StateObject private var vm = CloudViewModel()
     
+    @State private var isLoading = false
+    
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
+    
+    
+    // Focus state per i TextField
+    @FocusState private var focusedField: Field?
+    
+    enum Field {
+        case nome
+        case cognome
+        case numero
+    }
     
     var body: some View {
         ZStack{
@@ -146,6 +171,10 @@ struct RegistrationView: View {
                             .foregroundColor(Color.white)
                         TextField("Name", text: $vm.nome)
                             .padding(.leading, 20)
+                            .focused($focusedField, equals: .nome)
+                            .onSubmit {
+                                focusedField = .cognome
+                            }
                     }.frame(width: 325, height: 50, alignment: .center)
                     
                     ZStack {
@@ -153,13 +182,22 @@ struct RegistrationView: View {
                             .foregroundColor(Color.white)
                         TextField("Surname", text: $vm.cognome)
                             .padding(.leading, 20)
+                            .focused($focusedField, equals: .cognome)
+                            .onSubmit {
+                                focusedField = .numero
+                            }
                     }.frame(width: 325, height: 50, alignment: .center)
                         .padding(.vertical)
+                    
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(Color.white)
                         TextField("Phone number", text: $vm.numero).keyboardType(.numberPad)
                             .padding(.leading, 20)
+                            .focused($focusedField, equals: .numero)
+//                            .onSubmit {
+//                                // Puoi aggiungere un'azione da eseguire quando l'utente preme Invio nel campo numero di telefono
+//                            }
                     }.frame(width: 325, height: 50, alignment: .center)
                     
                     Button{
@@ -169,14 +207,17 @@ struct RegistrationView: View {
                     } label: {
                         Text("Already have an account?")
                             .foregroundColor(Color.white)
+                            .padding(.top, 10)
                     }
                     
                     Button{
+                        isLoading = true
                         UserDefaults.standard.set(vm.nome, forKey: "nomeUtente")
                         UserDefaults.standard.set(vm.cognome, forKey: "cognomeUtente")
                         UserDefaults.standard.set(vm.numero, forKey: "numeroUtente")
                         UserDefaults.standard.set(true, forKey: "registration")
                         vm.handleRegistration(number: vm.numero) { success in
+                            isLoading = false
                             if success{
                                 isShowingOtp = true
                             } else {
@@ -221,6 +262,15 @@ struct RegistrationView: View {
                 .onTapGesture {
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
+        }
+        .disabled(isLoading)
+        .overlay {
+            if isLoading {
+                // Visualizza la pagina di caricamento
+                Loading(loopmode: .loop)
+                    .scaleEffect(0.60)
+                    .background(Color.black.opacity(0.3))
+            }
         }
     }
 }
