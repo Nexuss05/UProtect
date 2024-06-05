@@ -31,7 +31,7 @@ We wanted to cover places and situations that are most incline to develop in str
 or even "How to increase your situational awareness"
 
 ## SPONSOR
-We are happy to announce that our current app is made possible by supporting a portion of the APIs nicely provided to us by [SerpApi](https://serpapi.com).![SerpApi Logo](https://github.com/Nexuss05/UProtect/assets/120189548/211d61f0-139d-4e72-a92c-401330aef7e5)
+We are happy to announce that our current app is made possible by supporting a portion of the APIs nicely provided to us by [SerpApi](https://serpapi.com).[![SerpApi Logo](https://github.com/Nexuss05/UProtect/assets/120189548/211d61f0-139d-4e72-a92c-401330aef7e5)](https://serpapi.com)
 
 Without their contribution, we would not be able to fully test and refine one of the core feture of our application, allowing us to deliver to our users the best experience possible.
 
