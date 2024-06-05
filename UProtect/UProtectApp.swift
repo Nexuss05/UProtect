@@ -159,7 +159,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 }
 
 //class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-//    
+//
 //    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 //        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
 //            if granted {
@@ -173,34 +173,34 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 ////        FirebaseApp.configure()
 //        return true
 //    }
-//    
+//
 //    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
 //        print("Failed to register for remote notifications: \(error.localizedDescription)")
 //    }
-//    
+//
 //    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 //        let tokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
 //        print("Device Token: \(tokenString)")
 //        UserDefaults.standard.set(tokenString, forKey: "fcmToken")
 //    }
-//    
+//
 //    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
 //        // Inoltra le notifiche remote a FIRAuth
 //        Auth.auth().canHandleNotification(userInfo)
 //    }
-//    
+//
 //    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 //        if Auth.auth().canHandleNotification(userInfo) {
 //            completionHandler(.noData)
 //            return
 //        }
 //    }
-//    
+//
 //    // Handle notification when the app is in the foreground
 //    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 //        completionHandler([.banner, .sound, .badge])
 //    }
-//    
+//
 //    func registerForRemoteNotifications() {
 //        // Request permission for remote notifications
 //        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
@@ -213,13 +213,13 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 //            }
 //        }
 //    }
-//    
+//
 //    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
 //        // Called when a new scene session is being created.
 //        // Use this method to select a configuration to create the new scene with.
 //        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
 //    }
-//    
+//
 //    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
 //        // Called when the user discards a scene session.
 //        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.

@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.alessiaprevidente.UProtect</string>
+	<string>com.matteo-cotena.UProtect</string>
 	<key>PROJECT_ID</key>
 	<string>hestia-6f635</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:637672640578:ios:e94a188c4f8b5f827edddb</string>
+	<string>1:637672640578:ios:f17f0e5ba50bbf207edddb</string>
 </dict>
 </plist>

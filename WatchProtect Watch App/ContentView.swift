@@ -38,9 +38,9 @@ struct ContentView: View {
     }
     
     func generateJWT() {
-        let teamID = "25V24PM769"
-        let keyID = "ZX5LJY8598"
-        let privateKeyPath = Bundle.main.path(forResource: "AuthKey_ZX5LJY8598", ofType: "p8")!
+        let teamID = "UU6556PJ33"
+        let keyID = "7U2ZFPX98A"
+        let privateKeyPath = Bundle.main.path(forResource: "AuthKey_7U2ZFPX98A", ofType: "p8")!
         
         do {
             let privateKey = try String(contentsOfFile: privateKeyPath, encoding: .utf8)
@@ -102,7 +102,7 @@ struct ContentView: View {
         request.httpBody = data
         
         request.addValue("Bearer \(authenticationToken)", forHTTPHeaderField: "Authorization")
-        request.addValue("com.alessiaprevidente.UProtect", forHTTPHeaderField: "apns-topic")
+        request.addValue("com.matteo-cotena.UProtect", forHTTPHeaderField: "apns-topic")
         request.addValue("alert", forHTTPHeaderField: "apns-push-type")
         request.addValue("10", forHTTPHeaderField: "apns-priority")
         request.addValue("0", forHTTPHeaderField: "apns-expiration")

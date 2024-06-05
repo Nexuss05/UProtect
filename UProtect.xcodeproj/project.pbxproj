@@ -36,7 +36,6 @@
 		C23F9A1A2C0098C3001FE56F /* WatchProtect Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C25CE97E2BFDFC9D008CE99A /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE97D2BFDFC9D008CE99A /* FirebaseAuthUI */; };
 		C25CE9822BFDFC9D008CE99A /* FirebasePhoneAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE9812BFDFC9D008CE99A /* FirebasePhoneAuthUI */; };
-		C25CE9C12BFF524D008CE99A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C25CE9C02BFF524D008CE99A /* GoogleService-Info.plist */; };
 		C27795DA2BFCB5590034981F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795D92BFCB5590034981F /* WidgetKit.framework */; };
 		C27795DC2BFCB5590034981F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795DB2BFCB5590034981F /* SwiftUI.framework */; };
 		C27795DF2BFCB5590034981F /* UProtect_WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27795DE2BFCB5590034981F /* UProtect_WidgetBundle.swift */; };
@@ -47,14 +46,16 @@
 		C2893DD62BEB8B9600733211 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD52BEB8B9600733211 /* Counter.swift */; };
 		C2893DD92BEB8C1900733211 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD82BEB8C1900733211 /* RingView.swift */; };
 		C293A8992BF36C740008F1F8 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = C293A8982BF36C740008F1F8 /* SwiftJWT */; };
-		C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */; };
-		E00FF2CC2C0F11E800309765 /* PremiumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2CB2C0F11E800309765 /* PremiumPopUp.swift */; };
-		E00FF2DE2C0F90EA00309765 /* TimerManagerIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2DD2C0F90EA00309765 /* TimerManagerIOS.swift */; };
-		E00FF2E22C0F911900309765 /* TimerManagerWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2E02C0F911900309765 /* TimerManagerWatch.swift */; };
-		E00FF2EB2C0F98AA00309765 /* SharedTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2EA2C0F98AA00309765 /* SharedTimerManager.swift */; };
-		E00FF2EC2C0F999200309765 /* SharedTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2EA2C0F98AA00309765 /* SharedTimerManager.swift */; };
-		E00FF2F12C0F9E8400309765 /* Newbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2F02C0F9E8400309765 /* Newbutton.swift */; };
-		E00FF2F32C0FD3F500309765 /* Corso2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2F22C0FD3F500309765 /* Corso2.swift */; };
+		C2E4035A2C0FD16D00F5B4F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2E403592C0FD16D00F5B4F7 /* GoogleService-Info.plist */; };
+		C2E4035D2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2E4035C2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 */; };
+		C2E4035E2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2E4035C2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 */; };
+		C2E403632C10433900F5B4F7 /* SharedTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4035F2C10433900F5B4F7 /* SharedTimerManager.swift */; };
+		C2E403642C10433900F5B4F7 /* SharedTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4035F2C10433900F5B4F7 /* SharedTimerManager.swift */; };
+		C2E4036A2C1043E500F5B4F7 /* PremiumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E403692C1043E500F5B4F7 /* PremiumPopUp.swift */; };
+		C2E4036B2C10441400F5B4F7 /* TimerManagerWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E403612C10433900F5B4F7 /* TimerManagerWatch.swift */; };
+		C2E4036C2C10441800F5B4F7 /* TimerManagerIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E403602C10433900F5B4F7 /* TimerManagerIOS.swift */; };
+		C2E4036E2C1045D500F5B4F7 /* Corso2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4036D2C1045D500F5B4F7 /* Corso2.swift */; };
+		C2E403702C10469500F5B4F7 /* Newbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4036F2C10469400F5B4F7 /* Newbutton.swift */; };
 		E04060212C09C47D0018252D /* NoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04060202C09C47D0018252D /* NoLocationView.swift */; };
 		E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */; };
 		E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */; };
@@ -72,7 +73,6 @@
 		E0B954282C01EC9B00EBCD81 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = E0B954272C01EC9B00EBCD81 /* SwiftJWT */; };
 		E0B954292C01ED0000EBCD81 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD52BEB8B9600733211 /* Counter.swift */; };
 		E0B9542B2C01ED2400EBCD81 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD82BEB8C1900733211 /* RingView.swift */; };
-		E0B9542C2C01EF5100EBCD81 /* AuthKey_ZX5LJY8598.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */; };
 		E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */; };
 		E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD06E2BFDFFDA006753F5 /* Controller.swift */; };
 		E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAD0742BFE5530006753F5 /* UProtect.swift */; };
@@ -143,10 +143,10 @@
 		175A0A662C05BDB300101A32 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		1763CF2B2C0EEEC200A465C4 /* DirectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionView.swift; sourceTree = "<group>"; };
 		999499F82C03B7B50074604F /* Study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Study.json; sourceTree = "<group>"; };
-		9995E0C62BECBD6C0001B309 /* UProtect.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UProtect.entitlements; sourceTree = "<group>"; };
 		99A452642C05C5E8004700FE /* Animation - 1716803277345.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716803277345.json"; sourceTree = "<group>"; };
 		99A452662C05C5EE004700FE /* Animation - 1716803884547.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716803884547.json"; sourceTree = "<group>"; };
 		99A452682C05C5F4004700FE /* Animation - 1716804413916.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716804413916.json"; sourceTree = "<group>"; };
+		C20EBDC72C0F14A9002EA465 /* UProtect.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = UProtect.entitlements; sourceTree = "<group>"; };
 		C21DD83A2BE4D471003EB614 /* UProtect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UProtect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21DD83D2BE4D471003EB614 /* UProtectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtectApp.swift; sourceTree = "<group>"; };
 		C21DD83F2BE4D471003EB614 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -167,7 +167,6 @@
 		C23F9A112C0098C2001FE56F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C23F9A132C0098C3001FE56F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C23F9A162C0098C3001FE56F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C25CE9C02BFF524D008CE99A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C25CE9C72BFFCC72008CE99A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "UProtect-WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27795D92BFCB5590034981F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -179,13 +178,14 @@
 		C2893DD12BEB7FE400733211 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		C2893DD52BEB8B9600733211 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		C2893DD82BEB8C1900733211 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
-		C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_ZX5LJY8598.p8; sourceTree = "<group>"; };
-		E00FF2CB2C0F11E800309765 /* PremiumPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPopUp.swift; sourceTree = "<group>"; };
-		E00FF2DD2C0F90EA00309765 /* TimerManagerIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerIOS.swift; sourceTree = "<group>"; };
-		E00FF2E02C0F911900309765 /* TimerManagerWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManagerWatch.swift; sourceTree = "<group>"; };
-		E00FF2EA2C0F98AA00309765 /* SharedTimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTimerManager.swift; sourceTree = "<group>"; };
-		E00FF2F02C0F9E8400309765 /* Newbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newbutton.swift; sourceTree = "<group>"; };
-		E00FF2F22C0FD3F500309765 /* Corso2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corso2.swift; sourceTree = "<group>"; };
+		C2E403592C0FD16D00F5B4F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C2E4035C2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_7U2ZFPX98A.p8; sourceTree = "<group>"; };
+		C2E4035F2C10433900F5B4F7 /* SharedTimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTimerManager.swift; sourceTree = "<group>"; };
+		C2E403602C10433900F5B4F7 /* TimerManagerIOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManagerIOS.swift; sourceTree = "<group>"; };
+		C2E403612C10433900F5B4F7 /* TimerManagerWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManagerWatch.swift; sourceTree = "<group>"; };
+		C2E403692C1043E500F5B4F7 /* PremiumPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumPopUp.swift; sourceTree = "<group>"; };
+		C2E4036D2C1045D500F5B4F7 /* Corso2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corso2.swift; sourceTree = "<group>"; };
+		C2E4036F2C10469400F5B4F7 /* Newbutton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Newbutton.swift; sourceTree = "<group>"; };
 		E04060202C09C47D0018252D /* NoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLocationView.swift; sourceTree = "<group>"; };
 		E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudViewModel.swift; sourceTree = "<group>"; };
@@ -201,7 +201,6 @@
 		E0B954212C00E21100EBCD81 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		E0B954232C00E33F00EBCD81 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		E0B9542D2C01F55000EBCD81 /* WatchProtect-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchProtect-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
-		E0B9542E2C01F5B000EBCD81 /* WatchProtect Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchProtect Watch App.entitlements"; sourceTree = "<group>"; };
 		E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		E0EAD06E2BFDFFDA006753F5 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		E0EAD0742BFE5530006753F5 /* UProtect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtect.swift; sourceTree = "<group>"; };
@@ -257,7 +256,7 @@
 		C21DD8312BE4D471003EB614 = {
 			isa = PBXGroup;
 			children = (
-				E00FF2CE2C0F8D3B00309765 /* Shared */,
+				C2E403622C10433900F5B4F7 /* Shared */,
 				999499F72C03B79C0074604F /* Lotties */,
 				C21DD83C2BE4D471003EB614 /* UProtect */,
 				C27795DD2BFCB5590034981F /* UProtect-Widget */,
@@ -283,9 +282,9 @@
 				E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */,
 				C25CE9C72BFFCC72008CE99A /* Info.plist */,
 				E06A205C2C0E3015005D4D67 /* InfoPlist.xcstrings */,
-				C25CE9C02BFF524D008CE99A /* GoogleService-Info.plist */,
-				C2FF21E42BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 */,
-				9995E0C62BECBD6C0001B309 /* UProtect.entitlements */,
+				C2E403592C0FD16D00F5B4F7 /* GoogleService-Info.plist */,
+				C2E4035C2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 */,
+				C20EBDC72C0F14A9002EA465 /* UProtect.entitlements */,
 				C21DD83D2BE4D471003EB614 /* UProtectApp.swift */,
 				E0EAD0742BFE5530006753F5 /* UProtect.swift */,
 				C2893DD72BEB8C0B00733211 /* Components */,
@@ -319,7 +318,7 @@
 				E04060202C09C47D0018252D /* NoLocationView.swift */,
 				175A0A622C05BD4400101A32 /* MapView.swift */,
 				1763CF2B2C0EEEC200A465C4 /* DirectionView.swift */,
-				E00FF2F02C0F9E8400309765 /* Newbutton.swift */,
+				C2E4036F2C10469400F5B4F7 /* Newbutton.swift */,
 				E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */,
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
@@ -347,7 +346,6 @@
 		C23F9A0E2C0098C2001FE56F /* WatchProtect Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				E0B9542E2C01F5B000EBCD81 /* WatchProtect Watch App.entitlements */,
 				E0B9542D2C01F55000EBCD81 /* WatchProtect-Watch-App-Info.plist */,
 				C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */,
 				E06A20582C0E0F3A005D4D67 /* Vuota.swift */,
@@ -393,17 +391,17 @@
 				E09209992BEBE2B0005AD0FB /* TimeCounter.swift */,
 				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
 				E0B954232C00E33F00EBCD81 /* PageControl.swift */,
-				E00FF2CB2C0F11E800309765 /* PremiumPopUp.swift */,
+				C2E403692C1043E500F5B4F7 /* PremiumPopUp.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		E00FF2CE2C0F8D3B00309765 /* Shared */ = {
+		C2E403622C10433900F5B4F7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E00FF2EA2C0F98AA00309765 /* SharedTimerManager.swift */,
-				E00FF2E02C0F911900309765 /* TimerManagerWatch.swift */,
-				E00FF2DD2C0F90EA00309765 /* TimerManagerIOS.swift */,
+				C2E4035F2C10433900F5B4F7 /* SharedTimerManager.swift */,
+				C2E403602C10433900F5B4F7 /* TimerManagerIOS.swift */,
+				C2E403612C10433900F5B4F7 /* TimerManagerWatch.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -413,7 +411,7 @@
 			children = (
 				C23050442C05C7070056BEAA /* CoursesView.swift */,
 				E06A202A2C0B7980005D4D67 /* Corso1.swift */,
-				E00FF2F22C0FD3F500309765 /* Corso2.swift */,
+				C2E4036D2C1045D500F5B4F7 /* Corso2.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -563,11 +561,11 @@
 				99A452672C05C5EE004700FE /* Animation - 1716803884547.json in Resources */,
 				C21DD8452BE4D472003EB614 /* Preview Assets.xcassets in Resources */,
 				99A452652C05C5E8004700FE /* Animation - 1716803277345.json in Resources */,
-				C25CE9C12BFF524D008CE99A /* GoogleService-Info.plist in Resources */,
-				C2FF21E52BF6129F00B6CB82 /* AuthKey_ZX5LJY8598.p8 in Resources */,
 				999499F92C03B7B50074604F /* Study.json in Resources */,
 				E06A205D2C0E3015005D4D67 /* InfoPlist.xcstrings in Resources */,
+				C2E4035D2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */,
 				99A452692C05C5F4004700FE /* Animation - 1716804413916.json in Resources */,
+				C2E4035A2C0FD16D00F5B4F7 /* GoogleService-Info.plist in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
 				E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */,
 			);
@@ -577,8 +575,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2E4035E2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */,
 				C23F9A172C0098C3001FE56F /* Preview Assets.xcassets in Resources */,
-				E0B9542C2C01EF5100EBCD81 /* AuthKey_ZX5LJY8598.p8 in Resources */,
 				C23F9A142C0098C3001FE56F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,24 +599,24 @@
 				E04060212C09C47D0018252D /* NoLocationView.swift in Sources */,
 				C2893DD92BEB8C1900733211 /* RingView.swift in Sources */,
 				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
-				E00FF2DE2C0F90EA00309765 /* TimerManagerIOS.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				E06A20572C0E0E8C005D4D67 /* Vuota.swift in Sources */,
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
-				E00FF2F32C0FD3F500309765 /* Corso2.swift in Sources */,
 				E0EAD0E62BFF823E006753F5 /* AudioPlayer.swift in Sources */,
 				175A0A672C05BDB300101A32 /* LocationManager.swift in Sources */,
+				C2E4036A2C1043E500F5B4F7 /* PremiumPopUp.swift in Sources */,
 				E0EAD0E82BFF82B7006753F5 /* RecordingList.swift in Sources */,
 				E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */,
+				C2E403632C10433900F5B4F7 /* SharedTimerManager.swift in Sources */,
 				175A0A652C05BD7200101A32 /* FetchLocation.swift in Sources */,
 				C23050492C05C7070056BEAA /* CoursesView.swift in Sources */,
 				C230504B2C05C7070056BEAA /* LottieView4.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
+				C2E4036C2C10441800F5B4F7 /* TimerManagerIOS.swift in Sources */,
 				E06A202B2C0B7980005D4D67 /* Corso1.swift in Sources */,
 				E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */,
-				E00FF2F12C0F9E8400309765 /* Newbutton.swift in Sources */,
 				C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */,
 				C233DAA02BEE1B72000072C4 /* Location.swift in Sources */,
 				175A0A632C05BD4400101A32 /* MapView.swift in Sources */,
@@ -627,14 +625,14 @@
 				1763CF2C2C0EEEC200A465C4 /* DirectionView.swift in Sources */,
 				C230504C2C05C7070056BEAA /* LottieView.swift in Sources */,
 				E0B954242C00E33F00EBCD81 /* PageControl.swift in Sources */,
+				C2E4036E2C1045D500F5B4F7 /* Corso2.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
-				E00FF2CC2C0F11E800309765 /* PremiumPopUp.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
-				E00FF2EC2C0F999200309765 /* SharedTimerManager.swift in Sources */,
 				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
 				C230504A2C05C7070056BEAA /* LottieView3.swift in Sources */,
+				C2E403702C10469500F5B4F7 /* Newbutton.swift in Sources */,
 				C23050482C05C7070056BEAA /* LottieView2.swift in Sources */,
 				E0B954222C00E21100EBCD81 /* Onboarding.swift in Sources */,
 				E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */,
@@ -647,15 +645,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E00FF2E22C0F911900309765 /* TimerManagerWatch.swift in Sources */,
 				E0B9542B2C01ED2400EBCD81 /* RingView.swift in Sources */,
 				E0B954292C01ED0000EBCD81 /* Counter.swift in Sources */,
 				E0F1A6802C079BF000B0D16A /* ContentView.swift in Sources */,
+				C2E403642C10433900F5B4F7 /* SharedTimerManager.swift in Sources */,
 				C23F9A102C0098C2001FE56F /* WatchProtectApp.swift in Sources */,
 				E06A20592C0E0F3A005D4D67 /* Vuota.swift in Sources */,
 				E0F1A67D2C079A9600B0D16A /* TimerManager.swift in Sources */,
+				C2E4036B2C10441400F5B4F7 /* TimerManagerWatch.swift in Sources */,
 				E0F1A6B62C07C3CB00B0D16A /* LocationManager.swift in Sources */,
-				E00FF2EB2C0F98AA00309765 /* SharedTimerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,7 +811,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = 25V24PM769;
+				DEVELOPMENT_TEAM = UU6556PJ33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UProtect/Info.plist;
@@ -832,7 +830,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alessiaprevidente.UProtect;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -855,7 +853,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = 25V24PM769;
+				DEVELOPMENT_TEAM = UU6556PJ33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UProtect/Info.plist;
@@ -874,7 +872,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alessiaprevidente.UProtect;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -897,20 +895,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchProtect Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 25V24PM769;
+				DEVELOPMENT_TEAM = UU6556PJ33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchProtect;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to the microphone to record audio";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.alessiaprevidente.UProtect;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.matteo-cotena.UProtect";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alessiaprevidente.UProtect.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -932,20 +930,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchProtect Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 25V24PM769;
+				DEVELOPMENT_TEAM = UU6556PJ33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = WatchProtect;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to the microphone to record audio";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.alessiaprevidente.UProtect;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.matteo-cotena.UProtect";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.alessiaprevidente.UProtect.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -963,7 +961,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 25V24PM769;
+				DEVELOPMENT_TEAM = UU6556PJ33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
@@ -976,7 +974,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alessiaprevidente.UProtect.UProtect-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect.UProtect-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -993,7 +991,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 25V24PM769;
+				DEVELOPMENT_TEAM = UU6556PJ33;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
@@ -1006,7 +1004,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alessiaprevidente.UProtect.UProtect-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect.UProtect-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

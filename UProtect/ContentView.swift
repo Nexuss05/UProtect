@@ -32,7 +32,7 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                TabView(selection: $selectedTab) { 
+                TabView(selection: $selectedTab) {
 //                    CoursesView()
                     Vuota()
                         .tabItem {

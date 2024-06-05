@@ -8,7 +8,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.alessiaprevidente.UProtect</string>
+			<string>com.matteo-cotena.UProtect</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>UProtectURL</string>
@@ -21,7 +21,7 @@
 			<string>UProtect</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>app-1-637672640578-ios-e94a188c4f8b5f827edddb</string>
+				<string>app-1-637672640578-ios-f17f0e5ba50bbf207edddb</string>
 			</array>
 		</dict>
 	</array>

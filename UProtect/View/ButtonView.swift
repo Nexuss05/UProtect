@@ -65,9 +65,9 @@ struct TimerView: View {
     }
     
     func generateJWT() {
-        let teamID = "25V24PM769"
-        let keyID = "ZX5LJY8598"
-        let privateKeyPath = Bundle.main.path(forResource: "AuthKey_ZX5LJY8598", ofType: "p8")!
+        let teamID = "UU6556PJ33"
+        let keyID = "7U2ZFPX98A"
+        let privateKeyPath = Bundle.main.path(forResource: "AuthKey_7U2ZFPX98A", ofType: "p8")!
         
         do {
             let privateKey = try String(contentsOfFile: privateKeyPath, encoding: .utf8)
@@ -142,7 +142,7 @@ struct TimerView: View {
                 },
                 "sound": "default"
             },
-            "topic": "com.alessiaprevidente.UProtect"
+            "topic": "com.matteo-cotena.UProtect"
         }
         
         """
@@ -163,7 +163,7 @@ struct TimerView: View {
         request.httpBody = data
         
         request.addValue("Bearer \(authenticationToken)", forHTTPHeaderField: "Authorization")
-        request.addValue("com.alessiaprevidente.UProtect", forHTTPHeaderField: "apns-topic")
+        request.addValue("com.matteo-cotena.UProtect", forHTTPHeaderField: "apns-topic")
         request.addValue("alert", forHTTPHeaderField: "apns-push-type")
         request.addValue("10", forHTTPHeaderField: "apns-priority")
         request.addValue("0", forHTTPHeaderField: "apns-expiration")
@@ -432,7 +432,7 @@ struct TimerView: View {
                 Button("OK") { }
             }
             .alert("Vuoi disattivare il timer?", isPresented: $showAlert2) {
-                Button("YES", role: .destructive) { 
+                Button("YES", role: .destructive) {
                     timerManager.stopTimer()
                     timerManager.Activation()
                     timerManager.showMark = true

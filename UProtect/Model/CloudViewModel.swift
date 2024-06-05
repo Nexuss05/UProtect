@@ -582,6 +582,7 @@ class CloudViewModel: ObservableObject{
         
         publicDatabase.perform(query, inZoneWith: nil) { results, error in
             if let error = error {
+                print(error)
                 print("Errore durante l'esecuzione della query: \(error.localizedDescription)")
                 completion(false)
                 return
@@ -696,6 +697,7 @@ class CloudViewModel: ObservableObject{
         let phoneAuthProvider = PhoneAuthProvider.provider()
         phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
             if let error = error {
+                print (error)
                 print("Error during phone verification: \(error.localizedDescription)")
                 return
             }

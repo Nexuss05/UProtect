@@ -118,7 +118,7 @@ struct MapView: View {
                     }
                 }
                 .onChange(of: selectedTag) {
-                    showRoute = false 
+                    showRoute = false
                     let locationRegion =
                     MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locations[selectedTag ?? 0].latitude, longitude: locations[selectedTag ?? 0].longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                     withAnimation {

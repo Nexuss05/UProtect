@@ -48,7 +48,7 @@ struct OtpFormFieldView: View {
                 .padding(.bottom)
 
                 Button {
-                    vm.handleRegistration(number: vm.numero) {_ in 
+                    vm.handleRegistration(number: vm.numero) {_ in
                         showAlert.toggle()
                     }
                 } label: {
