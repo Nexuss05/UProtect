@@ -465,7 +465,14 @@
 
     },
     "1 year" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 anno"
+          }
+        }
+      }
     },
     "1. Perceiving Elements:" : {
 
@@ -474,7 +481,14 @@
 
     },
     "1.99€" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1.99€"
+          }
+        }
+      }
     },
     "2. Attributing Meaning:" : {
 
@@ -489,13 +503,34 @@
 
     },
     "10 seconds less" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 secondi in meno"
+          }
+        }
+      }
     },
     "10 seconds more" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 secondi in più"
+          }
+        }
+      }
     },
     "ABOUT" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ABOUT"
+          }
+        }
+      }
     },
     "Additional Safety Tips" : {
 
@@ -507,16 +542,44 @@
 
     },
     "Already have an account?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai già un account?"
+          }
+        }
+      }
     },
     "App preferences" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preferenze in App"
+          }
+        }
+      }
     },
     "Are you safe?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sei al sicuro?"
+          }
+        }
+      }
     },
     "Are you sure?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sei sicuro?"
+          }
+        }
+      }
     },
     "Assess your environment for safety:" : {
 
@@ -528,7 +591,14 @@
 
     },
     "Black" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nero"
+          }
+        }
+      }
     },
     "Change Language" : {
       "extractionState" : "stale",
@@ -565,7 +635,14 @@
       }
     },
     "Completato" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completato"
+          }
+        }
+      }
     },
     "Contact" : {
       "localizations" : {
@@ -623,7 +700,14 @@
       }
     },
     "Delete Account" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimuovi Account"
+          }
+        }
+      }
     },
     "Delete All" : {
       "localizations" : {
@@ -646,7 +730,14 @@
       }
     },
     "Do you want to deactivate the timer?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuoi disattivare il timer?"
+          }
+        }
+      }
     },
     "Do’s:" : {
 
@@ -671,13 +762,27 @@
 
     },
     "Enter Verification Code" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inserisci Codice di Verifica"
+          }
+        }
+      }
     },
     "Essential Safety Tips" : {
 
     },
     "FEATURES" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FUNZIONALITÀ"
+          }
+        }
+      }
     },
     "For any suspicious activity, **report it** to your local emergency number." : {
 
@@ -702,7 +807,14 @@
       }
     },
     "GO" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VAI"
+          }
+        }
+      }
     },
     "Helping Someone Who Drank Too Much" : {
 
@@ -744,10 +856,24 @@
 
     },
     "If you are feeling unsafe and don't want to notify your contact immediately, simply hold the button to activate the timer. You have the option to modify the timer in the settings to your liking. \nIf you don't dismiss the alert when the time runs out, a notification will be sent." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se non ti senti al sicuro e non vuoi notificare immediatamente i tuoi contatti, tieni premuto il bottone per attivare il Cronografotemporizzatore. È possibile modificare il timer nelle impostazioni secondo le tue preferenze. Se non rimuovi l'alert allo scadere del tempo, la notifica verrà inviata."
+          }
+        }
+      }
     },
     "If you feel in danger after clicking the button, it is possible to notify your emergency contacts by including their phone numbers to seek assistance. If your contacts have installed the application, they will receive a push notification along with your shared location. Otherwise, they will receive an SMS. Until the button is activated, your background will be recorded." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ti senti pericolo, è sufficiente cliccare il bottone per notificare i contatti di emergenza una volta aggiunti i loro numeri per cercare aiuto. Se i tuoi contatti non hanno scaricato l'applicazione , riceveranno una notifica con la tua posizione live. Altrimenti riceveranno un SMS. Finché il bottone è attivo, il tuo ambiente circostante verrà registrato."
+          }
+        }
+      }
     },
     "Importance of Training" : {
 
@@ -772,13 +898,34 @@
       }
     },
     "Limite Raggiunto" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite Raggiunto"
+          }
+        }
+      }
     },
     "Log In" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log In"
+          }
+        }
+      }
     },
     "Log Out" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log Out"
+          }
+        }
+      }
     },
     "LogIn" : {
       "localizations" : {
@@ -801,10 +948,24 @@
       }
     },
     "Messaggio" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Messaggio"
+          }
+        }
+      }
     },
     "Minus" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meno"
+          }
+        }
+      }
     },
     "MINUTES:SECONDS" : {
       "localizations" : {
@@ -847,13 +1008,34 @@
       }
     },
     "Need more contacts?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai bisogni di più contatti?"
+          }
+        }
+      }
     },
     "NO" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NO"
+          }
+        }
+      }
     },
     "No contacts selected!" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun contatto selezionato"
+          }
+        }
+      }
     },
     "No, help me" : {
       "localizations" : {
@@ -890,10 +1072,24 @@
       }
     },
     "of premium" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "a premium"
+          }
+        }
+      }
     },
     "Ok" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
     },
     "OK" : {
       "localizations" : {
@@ -949,7 +1145,14 @@
       }
     },
     "Plus" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Più"
+          }
+        }
+      }
     },
     "Practical Implementation Strategies" : {
 
@@ -977,7 +1180,14 @@
 
     },
     "Puoi selezionare solo fino a 2 contatti." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi selezionare solo fino a 2 contatti."
+          }
+        }
+      }
     },
     "Recognize that these elements, like smoke or running people, indicate potential danger. Understand their significance." : {
 
@@ -1022,10 +1232,24 @@
       }
     },
     "Send new code" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invia Nuovo Codice"
+          }
+        }
+      }
     },
     "Set a custom timer to notify your emergency contacts exactly after the amount of time that most fits your needs." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta un timer personalizzato per notificare i tuoi contatti d'emergenza esattamente dopo la quantità di tempo che più si addice ai tuoi bisogno"
+          }
+        }
+      }
     },
     "Set timer" : {
       "localizations" : {
@@ -1058,7 +1282,14 @@
       }
     },
     "SETTINGS" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IMPOSTAZIONI"
+          }
+        }
+      }
     },
     "Share" : {
       "localizations" : {
@@ -1081,7 +1312,14 @@
       }
     },
     "SignIn" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SignIn"
+          }
+        }
+      }
     },
     "Signs and Symptoms of Alcohol Poisoning:" : {
 
@@ -1111,7 +1349,14 @@
       }
     },
     "Status" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        }
+      }
     },
     "Steps of Situational Awareness" : {
 
@@ -1164,7 +1409,14 @@
       }
     },
     "Thanks to the map you can easily have a look at shops and store open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grazie alla mappa potrai controllare tutti i luoghi aperti vicino a te. In caso avessi bisogno di un luogo dove andare o cercare riparo, puoi chiamare direttamente il locale o vedere il percorso da seguire direttamente sulla mappa."
+          }
+        }
+      }
     },
     "The final step involves processing all the information gathered and predicting future events:" : {
 
@@ -1173,10 +1425,24 @@
 
     },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa sezione offre gli strumenti necessari per acquisire conoscenza, consigli e suggerimenti su come mitigare le situazioni di pericolo o capire come gestirle al meglio."
+          }
+        }
+      }
     },
     "Time" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo"
+          }
+        }
+      }
     },
     "Titolo" : {
       "extractionState" : "stale",
@@ -1210,7 +1476,14 @@
       }
     },
     "Try again later" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riprova più tardi"
+          }
+        }
+      }
     },
     "Understanding Alcohol Poisoning: alcohol is a **toxic** substance, and excessive consumption can lead to **severe** health issues, including alcohol poisoning. This occurs when someone drinks a large amount of alcohol in a short period, leading to high blood alcohol concentration. Symptoms include slowed brain function, stomach irritation, dehydration, and more." : {
 
@@ -1298,13 +1571,34 @@
       }
     },
     "YES" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SI"
+          }
+        }
+      }
     },
     "You already have an account!" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un account associato a questo numero è già esistente!"
+          }
+        }
+      }
     },
     "You don't have an account!" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non esiste un account associato a questo numero!"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
