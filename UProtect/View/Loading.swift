@@ -28,7 +28,7 @@ struct OtpAni: UIViewRepresentable {
     
     func makeUIView(context: Context) -> Lottie.LottieAnimationView {
         
-        let animationView = LottieAnimationView(name: "otp")
+        let animationView = LottieAnimationView(name: "Animation - 1717670163836")
         animationView.play()
         animationView.loopMode = loopmode
         return animationView
@@ -41,7 +41,7 @@ struct OtpAni: UIViewRepresentable {
 struct Loading_View: View {
     var body: some View {
         ZStack{
-            Loading(loopmode: .loop)
+            OtpAni(loopmode: .playOnce)
                 .scaleEffect(0.40)
                 .background(Color.black.opacity(0.3))
         }

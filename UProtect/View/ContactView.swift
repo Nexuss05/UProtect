@@ -119,7 +119,7 @@ struct ContactsView: View {
                         }.onDelete(perform: deleteContact)
                         
                     }
-                    .navigationTitle("Contacts")
+                    //                    .navigationTitle("Contacts")
                     .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -144,6 +144,10 @@ struct ContactsView: View {
                             //                                }
                             //                            }
                         }
+                        ToolbarItem(placement: .navigationBarLeading){
+                                Text("**Contacts**")
+                                    .font(.title2)
+                        }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
                                 if self.selectedContacts.count < 2 {
@@ -156,6 +160,7 @@ struct ContactsView: View {
                                 Image(systemName: "plus")
                                     .foregroundColor(timerManager.isActivated ? CustomColor.redBackground : CustomColor.orange)
                             }
+                            
                         }
                     }
                 }
@@ -222,24 +227,24 @@ struct ContactsView: View {
         }
     }
     
-//    func getCountryPhonePrefix() -> String {
-//        guard let countryCode = Locale.current.regionCode else {
-//            return "" // Nessuna posizione disponibile, restituisci una stringa vuota
-//        }
-//        
-//        // Implementa la logica per ottenere il prefisso telefonico del paese
-//        // Ad esempio, puoi usare una mappa o un elenco di prefissi telefonici per paese
-//        // In questo esempio, restituiamo un prefisso fittizio basato sul codice ISO del paese
-//        switch countryCode {
-//        case "IT":
-//            return "+39" // Italia
-//        case "US":
-//            return "+1" // Stati Uniti
-//            // Aggiungi altri casi per altri paesi se necessario
-//        default:
-//            return "" // Nessun prefisso trovato per il paese
-//        }
-//    }
+    //    func getCountryPhonePrefix() -> String {
+    //        guard let countryCode = Locale.current.regionCode else {
+    //            return "" // Nessuna posizione disponibile, restituisci una stringa vuota
+    //        }
+    //
+    //        // Implementa la logica per ottenere il prefisso telefonico del paese
+    //        // Ad esempio, puoi usare una mappa o un elenco di prefissi telefonici per paese
+    //        // In questo esempio, restituiamo un prefisso fittizio basato sul codice ISO del paese
+    //        switch countryCode {
+    //        case "IT":
+    //            return "+39" // Italia
+    //        case "US":
+    //            return "+1" // Stati Uniti
+    //            // Aggiungi altri casi per altri paesi se necessario
+    //        default:
+    //            return "" // Nessun prefisso trovato per il paese
+    //        }
+    //    }
     
     func getCountryPhonePrefix() -> String {
         guard let countryCode = Locale.current.regionCode else {
@@ -284,7 +289,7 @@ struct ContactsView: View {
         
         return countryPhonePrefixes[countryCode] ?? ""
     }
-
+    
     
 }
 

@@ -337,6 +337,9 @@
     "**10. Emergency Help**: If symptoms are severe, call the local emergency number for assistance." : {
 
     },
+    "**Contacts**" : {
+
+    },
     "**Identifying Safe Routes**: Choose routes that avoid isolated or poorly lit areas, busy roads without sidewalks, and other hazards." : {
 
     },
@@ -575,6 +578,7 @@
       }
     },
     "Contacts" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -666,7 +670,7 @@
     "Enjoying a Safe Night Out:" : {
 
     },
-    "Enter 6 digit code we'll text you" : {
+    "Enter Verification Code" : {
 
     },
     "Essential Safety Tips" : {
