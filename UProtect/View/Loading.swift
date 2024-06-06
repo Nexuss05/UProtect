@@ -23,12 +23,26 @@ struct Loading: UIViewRepresentable {
     }
 }
 
+struct OtpAni: UIViewRepresentable {
+    let loopmode: LottieLoopMode
+    
+    func makeUIView(context: Context) -> Lottie.LottieAnimationView {
+        
+        let animationView = LottieAnimationView(name: "otp")
+        animationView.play()
+        animationView.loopMode = loopmode
+        return animationView
+    }
+    
+    func updateUIView(_ uiView: Lottie.LottieAnimationView, context: Context) {
+    }
+}
 
 struct Loading_View: View {
     var body: some View {
         ZStack{
             Loading(loopmode: .loop)
-                .scaleEffect(0.60)
+                .scaleEffect(0.40)
                 .background(Color.black.opacity(0.3))
         }
     }

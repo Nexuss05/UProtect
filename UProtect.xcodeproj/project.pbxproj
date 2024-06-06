@@ -36,6 +36,7 @@
 		C23F9A1A2C0098C3001FE56F /* WatchProtect Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = C23F9A0D2C0098C2001FE56F /* WatchProtect Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C249A9DB2C10DF0C004293B7 /* Animation - 1717609436208.json in Resources */ = {isa = PBXBuildFile; fileRef = C249A9DA2C10DF0B004293B7 /* Animation - 1717609436208.json */; };
 		C249A9DD2C10DF35004293B7 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249A9DC2C10DF35004293B7 /* Loading.swift */; };
+		C249A9E12C11A70C004293B7 /* otp.json in Resources */ = {isa = PBXBuildFile; fileRef = C249A9E02C11A70C004293B7 /* otp.json */; };
 		C25CE97E2BFDFC9D008CE99A /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE97D2BFDFC9D008CE99A /* FirebaseAuthUI */; };
 		C25CE9822BFDFC9D008CE99A /* FirebasePhoneAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = C25CE9812BFDFC9D008CE99A /* FirebasePhoneAuthUI */; };
 		C27795DA2BFCB5590034981F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C27795D92BFCB5590034981F /* WidgetKit.framework */; };
@@ -168,6 +169,7 @@
 		C23F9A162C0098C3001FE56F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C249A9DA2C10DF0B004293B7 /* Animation - 1717609436208.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1717609436208.json"; sourceTree = "<group>"; };
 		C249A9DC2C10DF35004293B7 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		C249A9E02C11A70C004293B7 /* otp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = otp.json; sourceTree = "<group>"; };
 		C25CE9C72BFFCC72008CE99A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C27795D72BFCB5590034981F /* UProtect-WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "UProtect-WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27795D92BFCB5590034981F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -252,6 +254,7 @@
 				99A452662C05C5EE004700FE /* Animation - 1716803884547.json */,
 				99A452642C05C5E8004700FE /* Animation - 1716803277345.json */,
 				999499F82C03B7B50074604F /* Study.json */,
+				C249A9E02C11A70C004293B7 /* otp.json */,
 			);
 			path = Lotties;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				C2E4035A2C0FD16D00F5B4F7 /* GoogleService-Info.plist in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
 				E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */,
+				C249A9E12C11A70C004293B7 /* otp.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

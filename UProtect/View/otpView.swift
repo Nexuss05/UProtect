@@ -30,6 +30,9 @@ struct OtpFormFieldView: View {
     var body: some View {
         ZStack {
             CustomColor.orangeBackground
+            OtpAni(loopmode: .loop)
+                .scaleEffect(0.30)
+                .padding(.bottom, 550)
             VStack {
                 Text("Enter 6 digit code we'll text you")
                     .font(.caption)
