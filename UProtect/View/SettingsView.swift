@@ -185,13 +185,14 @@ struct SettingsView: View {
                                 isWelcomeScreenOver = false
                                 showReg.toggle()
                             } else {
+                                print("pollo")
                                 showAlert2.toggle()
                             }
                         }
                     }
                     Button("NO", role: .cancel) { }
                 }
-                .alert("Are you sure?", isPresented: $showAlert3) {
+                .alert("Are you sure?", isPresented: $showAlert) {
                     Button("YES", role: .destructive) {
                         let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
                         if let bundleIdentifier = Bundle.main.bundleIdentifier {

@@ -119,7 +119,7 @@ struct ContactsView: View {
                         }.onDelete(perform: deleteContact)
                         
                     }
-                    //                    .navigationTitle("Contacts")
+                                        .navigationTitle("Contacts")
                     .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -144,10 +144,10 @@ struct ContactsView: View {
                             //                                }
                             //                            }
                         }
-                        ToolbarItem(placement: .navigationBarLeading){
-                                Text("**Contacts**")
-                                    .font(.title2)
-                        }
+//                        ToolbarItem(placement: .navigationBarLeading){
+//                                Text("**Contacts**")
+//                                    .font(.title2)
+//                        }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
                                 if self.selectedContacts.count < 2 {

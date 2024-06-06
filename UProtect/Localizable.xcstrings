@@ -337,9 +337,6 @@
     "**10. Emergency Help**: If symptoms are severe, call the local emergency number for assistance." : {
 
     },
-    "**Contacts**" : {
-
-    },
     "**Identifying Safe Routes**: Choose routes that avoid isolated or poorly lit areas, busy roads without sidewalks, and other hazards." : {
 
     },
@@ -628,7 +625,6 @@
 
     },
     "Coming soon" : {
-      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -659,7 +655,6 @@
       }
     },
     "Contacts" : {
-      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -823,9 +818,6 @@
           }
         }
       }
-    },
-    "Hello, World!" : {
-
     },
     "Helping Someone Who Drank Too Much" : {
 
