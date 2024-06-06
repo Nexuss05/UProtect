@@ -10,6 +10,7 @@ import SwiftUI
 import SwiftData
 
 struct SettingsView: View {
+    @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     @State private var circleColor: Color = UserDefaultsManager.loadCircleColor() ?? Color.red
     @State var url = URL(string: "https://www.iubenda.com/privacy-policy/49969320")
     @Query var userData: [Contacts]
@@ -115,13 +116,18 @@ struct SettingsView: View {
                     //                    }
                     
                     Section(header: Text("ABOUT")){
-                        HStack{
+//                        HStack{
+//                            Text("Onboarding")
+//                                .foregroundColor(.primary)
+//                            Spacer()
+//                            Image(systemName: "chevron.right")
+//                        }.onTapGesture {
+//                            showOnBoarding.toggle()
+//                        }
+                        NavigationLink {
+                            OnBoarding2(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer).ignoresSafeArea()
+                        } label: {
                             Text("Onboarding")
-                                .foregroundColor(.primary)
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                        }.onTapGesture {
-                            showOnBoarding.toggle()
                         }
                         HStack {
                             Link("Privacy Policy", destination: url!)
@@ -169,7 +175,14 @@ struct SettingsView: View {
                     Button("YES", role: .destructive) {
                         vm.deleteUser { success in
                             if success{
-                                print("torna alla registrazione")
+                                let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
+                                if let bundleIdentifier = Bundle.main.bundleIdentifier {
+                                    UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
+                                }
+                                if let token = fcmToken {
+                                    UserDefaults.standard.set(token, forKey: "fcmToken")
+                                }
+                                isWelcomeScreenOver = false
                                 showReg.toggle()
                             } else {
                                 showAlert2.toggle()
@@ -187,6 +200,7 @@ struct SettingsView: View {
                         if let token = fcmToken {
                             UserDefaults.standard.set(token, forKey: "fcmToken")
                         }
+                        isWelcomeScreenOver = false
                         showReg.toggle()
                     }
                     Button("NO", role: .cancel) { }

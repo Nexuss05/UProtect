@@ -49,18 +49,18 @@ struct RecordingsList: View {
                     .background(CustomColor.orangeBackground)
                     .scrollContentBackground(.hidden)
                     
-                    Button(action: {
-                        audioRecorder.deleteAllRecordings()
-                    }) {
-                        Text("Delete All")
-                            .foregroundColor(.red)
-                            .font(.headline)
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .shadow(radius: 10)
-                    }
-                    .padding()
+//                    Button(action: {
+//                        audioRecorder.deleteAllRecordings()
+//                    }) {
+//                        Text("Delete All")
+//                            .foregroundColor(.red)
+//                            .font(.headline)
+//                            .padding()
+//                            .background(Color.white)
+//                            .cornerRadius(10)
+//                            .shadow(radius: 10)
+//                    }
+//                    .padding()
                 }
                 .padding(.top, -40)/*.navigationBarHidden(true)*/
             }

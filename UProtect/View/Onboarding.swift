@@ -96,7 +96,7 @@ struct FirstPageView: View {
     
     var body: some View {
         ZStack {
-            Image("w1")
+            Image("E1")
             VStack {
                 ZStack{
                     Circle()
@@ -119,7 +119,8 @@ struct FirstPageView: View {
                         .frame(width: 75, height: 70)
                         .foregroundColor(CustomColor.redBackground)
                 }.scaleEffect(CGSize(width: 0.9, height: 0.9))
-                Spacer()
+//                Spacer()
+                    .padding(.bottom, 350)
             }
             VStack{
                 Text("SOS mode")
@@ -133,7 +134,7 @@ struct FirstPageView: View {
                     .frame(width: 340)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 175)
+            }.padding(.top, 300)
         }
     }
 }
@@ -160,7 +161,7 @@ struct SecondPageView: View {
     
     var body: some View {
         ZStack {
-            Image("w2")
+            Image("E4")
             VStack {
                 ZStack{
                     Circle()
@@ -188,7 +189,8 @@ struct SecondPageView: View {
                         .font(.system(size: 65))
                         .fontWeight(.bold)
                 }.scaleEffect(CGSize(width: 0.9, height: 0.9))
-                Spacer()
+//                Spacer()
+                    .padding(.bottom, 350)
             }
             
             VStack(alignment: .center){
@@ -203,7 +205,7 @@ struct SecondPageView: View {
                     .frame(width: 340)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 130)
+            }.padding(.top, 255)
         }.onReceive(self.time) { _ in
             DispatchQueue.main.async {
                 if self.vm.isTimerRunning {
@@ -225,7 +227,7 @@ struct ThirdPageView: View {
     
     var body: some View {
         ZStack {
-            Image("w3")
+            Image("E2")
             VStack {
                 Text("Map")
                     .font(.title)
@@ -237,7 +239,7 @@ struct ThirdPageView: View {
                     .frame(width: 340)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 85)
+            }.padding(.top, 210)
         }
     }
 }
@@ -246,7 +248,7 @@ struct FourthPageView: View {
     
     var body: some View {
         ZStack {
-            Image("w4")
+            Image("E5")
                 VStack{
                     Text("Courses")
                         .font(.title)
@@ -258,7 +260,7 @@ struct FourthPageView: View {
                         .frame(width: 340)
                         .multilineTextAlignment(.center)
                         .padding(.vertical)
-                }.padding(.top, 62)
+                }.padding(.top, 190)
         }
     }
 }

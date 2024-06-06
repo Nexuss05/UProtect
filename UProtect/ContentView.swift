@@ -108,6 +108,7 @@ struct CustomColor {
     static let orange = Color("CustomOrange")
     static let orangeBackground = Color("OBackground")
     static let redBackground = Color("RBackground")
+    static let mapButton = Color("MapButton")
 }
 
 extension UITabBar {

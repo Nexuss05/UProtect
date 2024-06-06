@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+//import FirebaseCore
 
 struct LogInView: View {
     @State private var keyboardHeight: CGFloat = 0
@@ -92,7 +93,7 @@ struct LogInView: View {
                 .fullScreenCover(isPresented: $isShowingOtp, content: {
                     OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 })
-                .alert("You don't have an account!", isPresented: $showAlert) {
+                .alert("There is no account associated with this number", isPresented: $showAlert) {
                     Button("SignIn"){
                         isShowingRec.toggle()
                     }
@@ -240,13 +241,16 @@ struct RegistrationView: View {
             }.padding(.bottom, keyboardHeight)
             //        .preferredColorScheme(.light)
                 .ignoresSafeArea()
+//                .onAppear{
+//                    FirebaseApp.configure()
+//                }
                 .fullScreenCover(isPresented: $isShowingLogin, content: {
                     LogInView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 })
                 .fullScreenCover(isPresented: $isShowingOtp, content: {
                     OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 })
-                .alert("You already have an account!", isPresented: $showAlert) {
+                .alert("The account associated with this number already exists", isPresented: $showAlert) {
                     Button("LogIn"){
                         isShowingLogin.toggle()
                     }

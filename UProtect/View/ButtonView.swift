@@ -382,24 +382,29 @@ struct TimerView: View {
                 }
             }
             .onLongPressGesture{
-                if !timerManager.isActivated && !timerManager.start && !buttonLocked{
-                    if !audioRecorder.recording{
-                        audioRecorder.startRecording()
-                    }
-                    sendPosition()
-                    timerManager.isPressed = true
-                    timerManager.startTimer()
-                    buttonLocked = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        buttonLocked = false
-                    }
-                    withAnimation{
-                        timerManager.showMark = false
-                        timerManager.Activation()
-                        DispatchQueue.main.asyncAfter(deadline: .now()) {
-                            timerManager.canCancel = true
+                if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens"), !savedTokens.isEmpty {
+                    if !timerManager.isActivated && !timerManager.start && !buttonLocked{
+                        if !audioRecorder.recording{
+                            audioRecorder.startRecording()
+                        }
+                        sendPosition()
+                        timerManager.isPressed = true
+                        timerManager.startTimer()
+                        buttonLocked = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            buttonLocked = false
+                        }
+                        withAnimation{
+                            timerManager.showMark = false
+                            timerManager.Activation()
+                            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                timerManager.canCancel = true
+                            }
                         }
                     }
+                } else {
+                    print("No tokens saved in UserDefaults")
+                    showAlert3.toggle()
                 }
             }
         }.ignoresSafeArea()
@@ -441,7 +446,7 @@ struct TimerView: View {
             }.alert("Notification sent!", isPresented: $showingAlert) {
                 Button("OK") { }
             }
-            .alert("No contacts selected!", isPresented: $showAlert3) {
+            .alert("Notification not sent!", isPresented: $showAlert3) {
                 Button("OK") { }
             }
             .alert("Do you want to deactivate the timer?", isPresented: $showAlert2) {

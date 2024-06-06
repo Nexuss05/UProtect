@@ -480,6 +480,9 @@
     "1. Recognize Patterns" : {
 
     },
+    "1. Tap the button below and\n2. Go to Location\n3. Change the settings to \"While Using the App\"" : {
+
+    },
     "1.99€" : {
       "localizations" : {
         "it" : {
@@ -625,6 +628,7 @@
 
     },
     "Coming soon" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -710,6 +714,7 @@
       }
     },
     "Delete All" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -754,6 +759,9 @@
           }
         }
       }
+    },
+    "Enable Location" : {
+
     },
     "Enhancing Perception" : {
 
@@ -815,6 +823,9 @@
           }
         }
       }
+    },
+    "Hello, World!" : {
+
     },
     "Helping Someone Who Drank Too Much" : {
 
@@ -898,6 +909,7 @@
       }
     },
     "Limite Raggiunto" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -906,6 +918,9 @@
           }
         }
       }
+    },
+    "Location Services" : {
+
     },
     "Log In" : {
       "localizations" : {
@@ -1028,6 +1043,7 @@
       }
     },
     "No contacts selected!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1060,6 +1076,9 @@
           }
         }
       }
+    },
+    "Notification not sent!" : {
+
     },
     "Notification sent!" : {
       "localizations" : {
@@ -1180,6 +1199,7 @@
 
     },
     "Puoi selezionare solo fino a 2 contatti." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1418,10 +1438,16 @@
         }
       }
     },
+    "The account associated with this number already exists" : {
+
+    },
     "The final step involves processing all the information gathered and predicting future events:" : {
 
     },
     "The Reality of Walking Alone" : {
+
+    },
+    "There is no account associated with this number" : {
 
     },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them." : {
@@ -1581,6 +1607,7 @@
       }
     },
     "You already have an account!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1590,7 +1617,11 @@
         }
       }
     },
+    "You can select no more then 2 contacts" : {
+
+    },
     "You don't have an account!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1599,6 +1630,9 @@
           }
         }
       }
+    },
+    "You've reached the limit" : {
+
     }
   },
   "version" : "1.0"

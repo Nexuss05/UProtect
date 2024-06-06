@@ -58,14 +58,14 @@
 		C2E4036B2C10441400F5B4F7 /* TimerManagerWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E403612C10433900F5B4F7 /* TimerManagerWatch.swift */; };
 		C2E4036C2C10441800F5B4F7 /* TimerManagerIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E403602C10433900F5B4F7 /* TimerManagerIOS.swift */; };
 		C2E4036E2C1045D500F5B4F7 /* Corso2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4036D2C1045D500F5B4F7 /* Corso2.swift */; };
-		C2E403702C10469500F5B4F7 /* Newbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4036F2C10469400F5B4F7 /* Newbutton.swift */; };
 		E00FF2F52C10B49B00309765 /* NewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2F42C10B49B00309765 /* NewButton.swift */; };
+		E0293D2D2C11DF0800EB6485 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0293D2C2C11DF0800EB6485 /* Vuota.swift */; };
+		E0293D2F2C11DF5700EB6485 /* OnBoarding2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0293D2E2C11DF5700EB6485 /* OnBoarding2.swift */; };
 		E04060212C09C47D0018252D /* NoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04060202C09C47D0018252D /* NoLocationView.swift */; };
 		E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */; };
 		E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */; };
 		E0456A472BF8F342002B514F /* otpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0456A462BF8F342002B514F /* otpView.swift */; };
 		E06A202B2C0B7980005D4D67 /* Corso1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A202A2C0B7980005D4D67 /* Corso1.swift */; };
-		E06A20572C0E0E8C005D4D67 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A20562C0E0E8C005D4D67 /* Vuota.swift */; };
 		E06A20592C0E0F3A005D4D67 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A20582C0E0F3A005D4D67 /* Vuota.swift */; };
 		E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */; };
 		E06A205D2C0E3015005D4D67 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E06A205C2C0E3015005D4D67 /* InfoPlist.xcstrings */; };
@@ -188,14 +188,14 @@
 		C2E403612C10433900F5B4F7 /* TimerManagerWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManagerWatch.swift; sourceTree = "<group>"; };
 		C2E403692C1043E500F5B4F7 /* PremiumPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumPopUp.swift; sourceTree = "<group>"; };
 		C2E4036D2C1045D500F5B4F7 /* Corso2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corso2.swift; sourceTree = "<group>"; };
-		C2E4036F2C10469400F5B4F7 /* Newbutton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Newbutton.swift; sourceTree = "<group>"; };
 		E00FF2F42C10B49B00309765 /* NewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewButton.swift; sourceTree = "<group>"; };
+		E0293D2C2C11DF0800EB6485 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Vuota.swift; path = ../Vuota.swift; sourceTree = "<group>"; };
+		E0293D2E2C11DF5700EB6485 /* OnBoarding2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoarding2.swift; sourceTree = "<group>"; };
 		E04060202C09C47D0018252D /* NoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLocationView.swift; sourceTree = "<group>"; };
 		E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudViewModel.swift; sourceTree = "<group>"; };
 		E0456A462BF8F342002B514F /* otpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otpView.swift; sourceTree = "<group>"; };
 		E06A202A2C0B7980005D4D67 /* Corso1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corso1.swift; sourceTree = "<group>"; };
-		E06A20562C0E0E8C005D4D67 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vuota.swift; sourceTree = "<group>"; };
 		E06A20582C0E0F3A005D4D67 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vuota.swift; sourceTree = "<group>"; };
 		E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E06A205C2C0E3015005D4D67 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
@@ -317,6 +317,7 @@
 			children = (
 				E0EAD0E22BFF804F006753F5 /* Recordings */,
 				E0B954212C00E21100EBCD81 /* Onboarding.swift */,
+				E0293D2E2C11DF5700EB6485 /* OnBoarding2.swift */,
 				E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */,
 				C249A9DC2C10DF35004293B7 /* Loading.swift */,
 				E0456A462BF8F342002B514F /* otpView.swift */,
@@ -325,7 +326,6 @@
 				E04060202C09C47D0018252D /* NoLocationView.swift */,
 				175A0A622C05BD4400101A32 /* MapView.swift */,
 				1763CF2B2C0EEEC200A465C4 /* DirectionView.swift */,
-				C2E4036F2C10469400F5B4F7 /* Newbutton.swift */,
 				E0D1D9CA2BFCBFE200506367 /* ButtonView.swift */,
 				C2893DD12BEB7FE400733211 /* ContactView.swift */,
 				E092099B2BEBE312005AD0FB /* SettingsView.swift */,
@@ -417,6 +417,7 @@
 		E06A20292C0B78F1005D4D67 /* Courses */ = {
 			isa = PBXGroup;
 			children = (
+				E0293D2C2C11DF0800EB6485 /* Vuota.swift */,
 				C23050442C05C7070056BEAA /* CoursesView.swift */,
 				E06A202A2C0B7980005D4D67 /* Corso1.swift */,
 				C2E4036D2C1045D500F5B4F7 /* Corso2.swift */,
@@ -427,7 +428,6 @@
 		E0EAD0E22BFF804F006753F5 /* Recordings */ = {
 			isa = PBXGroup;
 			children = (
-				E06A20562C0E0E8C005D4D67 /* Vuota.swift */,
 				E0EAD0E72BFF82B7006753F5 /* RecordingList.swift */,
 				E0EAD0E32BFF80A2006753F5 /* AudioRecorder.swift */,
 				E0EAD0E52BFF823E006753F5 /* AudioPlayer.swift */,
@@ -610,7 +610,6 @@
 				C2893DD92BEB8C1900733211 /* RingView.swift in Sources */,
 				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
-				E06A20572C0E0E8C005D4D67 /* Vuota.swift in Sources */,
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
 				C249A9DD2C10DF35004293B7 /* Loading.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
@@ -636,14 +635,15 @@
 				1763CF2C2C0EEEC200A465C4 /* DirectionView.swift in Sources */,
 				C230504C2C05C7070056BEAA /* LottieView.swift in Sources */,
 				E0B954242C00E33F00EBCD81 /* PageControl.swift in Sources */,
+				E0293D2F2C11DF5700EB6485 /* OnBoarding2.swift in Sources */,
 				C2E4036E2C1045D500F5B4F7 /* Corso2.swift in Sources */,
 				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
+				E0293D2D2C11DF0800EB6485 /* Vuota.swift in Sources */,
 				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
 				C230504A2C05C7070056BEAA /* LottieView3.swift in Sources */,
-				C2E403702C10469500F5B4F7 /* Newbutton.swift in Sources */,
 				C23050482C05C7070056BEAA /* LottieView2.swift in Sources */,
 				E0B954222C00E21100EBCD81 /* Onboarding.swift in Sources */,
 				E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */,

@@ -114,8 +114,8 @@ struct ContactsPicker: View {
             }
             .alert(isPresented: $showAlert) {
                 Alert(
-                    title: Text("Limite Raggiunto"),
-                    message: Text("Puoi selezionare solo fino a 2 contatti."),
+                    title: Text("You've reached the limit"),
+                    message: Text("You can select no more then 2 contacts"),
                     dismissButton: .default(Text("OK"))
                 )
             }

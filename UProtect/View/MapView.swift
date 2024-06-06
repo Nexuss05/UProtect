@@ -143,21 +143,21 @@ struct MapView: View {
             
             if latitudine == 0 && longitudine == 0{
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10).frame(width: 45, height: 45)
-                        .foregroundStyle(CustomColor.orangeBackground)
+                    RoundedRectangle(cornerRadius: 10).frame(width: 44, height: 45)
+                        .foregroundStyle(CustomColor.mapButton)
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(.gray)
                 }
-                .padding(.leading, 338)
+                .padding(.leading, 336.5)
                 .padding(.bottom, 550)
             } else {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10).frame(width: 45, height: 45)
-                        .foregroundStyle(.red)
+                    RoundedRectangle(cornerRadius: 10).frame(width: 44, height: 45)
+                        .foregroundStyle(CustomColor.redBackground)
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(.white)
                 }
-                .padding(.leading, 338)
+                .padding(.leading, 336.5)
                 .padding(.bottom, 550)
                 .onTapGesture {
                     showUser.toggle()
