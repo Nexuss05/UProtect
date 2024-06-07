@@ -28,11 +28,11 @@ struct Course301: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("❗️ _Set a Limit_: Decide on a drinking limit beforehand.")
-                    Text("🍝 _Eat a Meal_: Eating before drinking slows alcohol absorption.")
-                    Text("🥤 _Alternate Drinks_: Drink water or soft drinks between alcoholic beverages.")
-                    Text("💡 _Have a Plan_: Plan your way home, keep your phone charged, or bring a power bank.")
-                    Text("👥 _Stick with Friends_: Stay with friends to reduce the risk of incidents and injuries.")
+                    SafetyTipView2(icon: "❗️", title: "Set a Limit", description: "Decide on a drinking limit beforehand.")
+                                        SafetyTipView2(icon: "🍝", title: "Eat a Meal", description: "Eating before drinking slows alcohol absorption.")
+                                        SafetyTipView2(icon: "🥤", title: "Alternate Drinks", description: "Drink water or soft drinks between alcoholic beverages.")
+                                        SafetyTipView2(icon: "💡", title: "Have a Plan", description: "Plan your way home, keep your phone charged, or bring a power bank.")
+                                        SafetyTipView2(icon: "👥", title: "Stick with Friends", description: "Stay with friends to reduce the risk of incidents and injuries.")
                 }
                 .padding()
             }
@@ -80,11 +80,11 @@ struct Course302: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("🤝 _Never Leave Them Alone_: Do not leave the person to sleep it off.")
-                    Text("❌☕️ _Avoid Coffee_: Alcohol dehydrates the body, and coffee can exacerbate this.")
-                    Text("❌🤮 _Do Not Induce Vomiting_: This can cause choking.")
-                    Text("❌🚿 _No Cold Showers_: Moving someone with alcohol poisoning can cause injury, and a cold shower can lower their body temperature further.")
-                    Text("❌🍷 _No More Alcohol_: Do not let them drink more alcohol.").padding(.bottom)
+                    SafetyTipView2(icon: "🤝", title: "Never Leave Them Alone", description: "Do not leave the person to sleep it off.")
+                    SafetyTipView2(icon: "❌☕️", title: "Avoid Coffee", description: "Alcohol dehydrates the body, and coffee can exacerbate this.")
+                    SafetyTipView2(icon: "❌🤮", title: "Do Not Induce Vomiting", description: "This can cause choking.")
+                   SafetyTipView2(icon: "❌🚿", title: "No Cold Showers", description: "Moving someone with alcohol poisoning can cause injury, and a cold shower can lower their body temperature further.")
+                SafetyTipView2(icon: "❌🍷", title: "No More Alcohol", description: "Do not let them drink more alcohol.")
                     Text("_**Emergency Help**_: Always call your local emergency number if you suspect someone has alcohol poisoning.")
                 }
                 .padding()
@@ -184,8 +184,8 @@ struct Course304: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("😃 _Enjoy Yourself_: Embrace the music, dancing, and social aspects.")
-                    Text("✅ _Prioritize Safety_: Trust your instincts, avoid conflicts, and have a safe and reliable way to get home.")
+                    SafetyTipView2(icon: "😃", title: "Enjoy Yourself", description: "Embrace the music, dancing, and social aspects.")
+                    SafetyTipView2(icon: "✅", title: "Prioritize Safety", description: "Trust your instincts, avoid conflicts, and have a safe and reliable way to get home.")
                 }
                 
                 Text("Enjoying a Safe Night Out:")
@@ -211,23 +211,25 @@ struct Course304: View {
 }
 
 struct SafetyTipView2: View {
-    var title: String
-    var description: String
+    let icon: String
+    let title: String
+    let description: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text(title)
-                .font(.headline)
-                .foregroundColor(.primary)
-            
-            Text(description)
-                .foregroundColor(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+        HStack(alignment: .top) {
+            Text(icon)
+                .font(.title)
+            VStack(alignment: .leading) {
+                Text(title)
+                    .font(.headline)
+                Text(description)
+                    .font(.body)
+            }
         }
+        .padding(.vertical, 5)
     }
 }
 
-import SwiftUI
 
 struct Course305: View {
     @State private var selectedAnswer1: Int? = nil

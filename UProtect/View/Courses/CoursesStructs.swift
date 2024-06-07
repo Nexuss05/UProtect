@@ -22,9 +22,9 @@ struct Course101: View {
                     .foregroundColor(.primary)
                 
                 Section(header: Text("Steps of Situational Awareness").font(.title3).fontWeight(.bold).foregroundColor(CustomColor.redBackground)) {
-                    SituationalAwarenessStepView(title: "Perceiving Elements", description: "Notice sounds, smells, and visual cues in your environment. For example, at a train station, you might hear a loud bang, smell smoke, and see people fleeing.")
-                    SituationalAwarenessStepView(title: "Attributing Meaning", description: "Recognize that these elements, like smoke or running people, indicate potential danger. Understand their significance.")
-                    SituationalAwarenessStepView(title: "Predicting Outcomes", description: "Foresee possible threats and determine the best course of action, such as joining the crowd to escape danger.")
+                    SafetyTipView4(icon: "👀", title: "Perceiving Elements", description: "Notice sounds, smells, and visual cues in your environment. For example, at a train station, you might hear a loud bang, smell smoke, and see people fleeing.")
+                        SafetyTipView4(icon: "🔍", title: "Attributing Meaning", description: "Recognize that these elements, like smoke or running people, indicate potential danger. Understand their significance.")
+                        SafetyTipView4(icon: "🔮", title: "Predicting Outcomes", description: "Foresee possible threats and determine the best course of action, such as joining the crowd to escape danger.")
                 }
             }
             .padding()
@@ -46,9 +46,9 @@ struct Course102: View {
                     .foregroundColor(.primary)
                 
                 Section(header: Text("Enhancing Perception").font(.subheadline).fontWeight(.bold)) {
-                    SituationalAwarenessPracticeView(title: "🩺 Regular Checkups", description: "Keep your senses sharp with regular medical checkups to ensure your vision, hearing, touch, smell, and taste are functioning well.")
-                    SituationalAwarenessPracticeView(title: "🍏 Healthy Lifestyle", description: "Maintain a healthy diet and avoid activities that strain your body, like smoking.")
-                    SituationalAwarenessPracticeView(title: "🌍 Engage with Surroundings", description: "Stay present and actively engage with your environment. Read distant signs, listen to nearby conversations, and be aware of subtle scents and sounds around you.")
+                    SafetyTipView4(icon: "🩺", title: "Regular Checkups", description: "Keep your senses sharp with regular medical checkups to ensure your vision, hearing, touch, smell, and taste are functioning well.")
+                    SafetyTipView4(icon: "🍏", title: "Healthy Lifestyle", description: "Maintain a healthy diet and avoid activities that strain your body, like smoking.")
+                    SafetyTipView4(icon: "🌍", title: "Engage with Surroundings", description: "Stay present and actively engage with your environment. Read distant signs, listen to nearby conversations, and be aware of subtle scents and sounds around you.")
                 }
                 
                 Section(header: Text("Attributing Meaning to Perceived Elements").font(.subheadline).fontWeight(.bold)) {
@@ -82,20 +82,11 @@ struct Course103: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("😌 Appear Confident:")
-                    Text("Walk with your head high, maintain good posture, and appear purposeful. Predators often target those who seem timid or lost.")
-                    
-                    Text("💇🏻‍♀️ Mind Your Hair:")
-                    Text("Avoid hairstyles that can be easily grabbed, like ponytails. Wearing a cap can prevent such grabs.")
-                    
-                    Text("🧪 Avoid Intoxication Alone:")
-                    Text("If intoxicated, ensure a friend accompanies you home. Intoxicated individuals are more vulnerable targets.")
-                    
-                    Text("🅿️ Park in Well-Lit Areas:")
-                    Text("Avoid dark parking spots, which provide cover for predators. Always park in well-lit, busy areas.")
-                    
-                    Text("‼️ Stay Aware of Your Surroundings:")
-                    Text("Avoid talking on the phone or wearing earphones when walking alone. These distractions can reduce your awareness.")
+                    SafetyTipView4(icon: "😌", title: "Appear Confident", description: "Walk with your head high, maintain good posture, and appear purposeful. Predators often target those who seem timid or lost.")
+                    SafetyTipView4(icon: "💇🏻‍♀️", title: "Mind Your Hair", description: "Avoid hairstyles that can be easily grabbed, like ponytails. Wearing a cap can prevent such grabs.")
+                    SafetyTipView4(icon: "🧪", title: "Avoid Intoxication Alone", description: "If intoxicated, ensure a friend accompanies you home. Intoxicated individuals are more vulnerable targets.")
+                    SafetyTipView4(icon: "🅿️", title: "Park in Well-Lit Areas", description: "Avoid dark parking spots, which provide cover for predators. Always park in well-lit, busy areas.")
+                    SafetyTipView4(icon: "‼️", title: "Stay Aware of Your Surroundings", description: "Avoid talking on the phone or wearing earphones when walking alone. These distractions can reduce your awareness.")
                 }
                 
                 Text("Importance of Training")
@@ -121,11 +112,11 @@ struct Course104: View {
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Jeff Cooper's Color Code categorizes different levels of awareness:")
-                    Text("⚪️ White") + Text(": Relaxed and unaware; suitable for safe environments.")
-                    Text("🟡 Yellow") + Text(": Relaxed but alert; the goal for most situations.")
-                    Text("🟠 Orange") + Text(": Focused on potential danger; mentally taxing and not sustainable long-term.")
-                    Text("🔴 Red") + Text(": Action mode; dealing with an immediate threat.")
-                    Text("⚫️ Black") + Text(": Panic mode; breakdown of physical and mental abilities.")
+                        SafetyTipView4(icon: "⚪️", title: "White:", description: "Relaxed and unaware; suitable for safe environments.")
+                        SafetyTipView4(icon: "🟡", title: "Yellow:", description: "Relaxed but alert; the goal for most situations.")
+                        SafetyTipView4(icon: "🟠", title: "Orange:", description: "Focused on potential danger; mentally taxing and not sustainable long-term.")
+                        SafetyTipView4(icon: "🔴", title: "Red:", description: "Action mode; dealing with an immediate threat.")
+                        SafetyTipView4(icon: "⚫️", title: "Black:", description: "Panic mode; breakdown of physical and mental abilities.")
                 }
                 
                 Text("Practical Implementation Strategies")
@@ -155,37 +146,57 @@ struct Course104: View {
     }
 }
 
-struct SituationalAwarenessStepView: View {
-    var title: String
-    var description: String
+// SafetyTipView4 with Emoji Icon
+struct SafetyTipView4: View {
+    let icon: String
+    let title: String
+    let description: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text(title)
-                .font(.headline)
-                .foregroundColor(.primary)
-            
-            Text(description)
-                .foregroundColor(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+        HStack(alignment: .top) {
+            Text(icon)
+                .font(.title)
+            VStack(alignment: .leading) {
+                Text(title)
+                    .font(.headline)
+                Text(description)
+                    .font(.body)
+            }
         }
+        .padding(.vertical, 5)
     }
 }
 
-struct SituationalAwarenessPracticeView: View {
-    var title: String
-    var description: String
+// SituationalAwarenessStepView with Emoji Icon
+struct SituationalAwarenessStepView: View {
+    let title: String
+    let description: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text(title)
+            Text("🔍 \(title)")
                 .font(.headline)
-                .foregroundColor(.primary)
-            
             Text(description)
-                .foregroundColor(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+                .font(.body)
         }
+        .padding(.vertical, 5)
+    }
+}
+
+// SituationalAwarenessPracticeView with Emoji Icon
+struct SituationalAwarenessPracticeView: View {
+    let icon: String
+    let title: String
+    let description: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text("\(icon) \(title)")
+                .font(.headline)
+            Text(description)
+                .font(.body)
+        }
+        .padding(.vertical, 5)
     }
 }
 
