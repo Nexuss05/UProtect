@@ -13,7 +13,7 @@ struct Lotties: UIViewRepresentable {
     
     func makeUIView(context: Context) -> Lottie.LottieAnimationView {
         
-        let animationView = LottieAnimationView(name: "Animation - 1716803277345")
+        let animationView = LottieAnimationView(name: "Animation - 1717796337306")
         animationView.play()
         animationView.loopMode = loopmode
         return animationView

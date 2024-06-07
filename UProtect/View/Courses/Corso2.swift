@@ -1,54 +1,55 @@
-//
-//  Corso2.swift
-//  UProtect
-//
-//  Created by Simone Sarnataro on 05/06/24.
-//
-
 import SwiftUI
 
 struct Corso2: View {
+    @Binding var course: Course
     @AppStorage("ButtonsLevel2") private var activeButtonsData: Data = Data()
-    @State private var activeButtons: [Bool] = [true, false, false, false, false]
+    @State private var activeButtons: [Bool] = [true, false, false, false, false, false]
+    @State private var isDetailViewPresented: Bool = false
+    @State private var currentDetailIndex: Int = 0
     
     let detailData = [
-        DetailData(text: "6"),
-        DetailData(text: "7"),
-        DetailData(text: "8"),
-        DetailData(text: "9"),
-        DetailData(text: "10")
+        DetailData(view: AnyView(Course201())),
+        DetailData(view: AnyView(Course202())),
+        DetailData(view: AnyView(Course203())),
+        DetailData(view: AnyView(Course204())),
+        DetailData(view: AnyView(Course205()))
     ]
     
-    init() {
+    init(course: Binding<Course>) {
+        _course = course
         if let decoded = try? JSONDecoder().decode([Bool].self, from: activeButtonsData), !decoded.isEmpty {
             _activeButtons = State(initialValue: decoded)
         }
     }
     
     var body: some View {
-//        NavigationView {
         ZStack {
-            Color.white
             VStack(spacing: 50) {
-                    LevelBar(progress: completionPercentage(activeButtons))
-                        .frame(height: 10)
-                        .padding(.horizontal)
-                    ForEach(0..<5) { index in
-                        if index < activeButtons.count {
-                            if activeButtons[index] {
-                                NavigationLink(destination: DetailView(activeButtons: $activeButtons, currentIndex: index, activeButtonsData: $activeButtonsData, detailData: detailData[index])) {
-                                    LevelButtonView(isActive: activeButtons[index])
-                                        .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
-                                }
-                            } else {
+                LevelBar(progress: completionPercentage(activeButtons))
+                    .frame(height: 10)
+                    .padding(.horizontal)
+                ForEach(0..<5) { index in
+                    if index < activeButtons.count {
+                        if activeButtons[index] {
+                            Button(action: {
+                                currentDetailIndex = index
+                                isDetailViewPresented = true
+                            }) {
                                 LevelButtonView(isActive: activeButtons[index])
                                     .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
                             }
+                        } else {
+                            LevelButtonView(isActive: activeButtons[index])
+                                .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
                         }
                     }
+                }
             }
-        }.ignoresSafeArea()
-//        }
+            .padding(.top, 20)
+        }
+        .fullScreenCover(isPresented: $isDetailViewPresented) {
+            DetailView(activeButtons: $activeButtons, currentIndex: currentDetailIndex, activeButtonsData: $activeButtonsData, detailData: detailData[currentDetailIndex])
+        }
     }
     
     private func saveActiveButtons() {
@@ -64,6 +65,111 @@ struct Corso2: View {
     }
 }
 
-#Preview {
-    Corso2()
+struct LevelButtonView2: View {
+    var isActive: Bool
+    
+    var body: some View {
+        if isActive {
+            ZStack {
+                Ellipse()
+                    .frame(width: 60, height: 50)
+                    .foregroundStyle(CustomColor.orange)
+                    .padding(.top, 10)
+                Ellipse()
+                    .frame(width: 60, height: 50)
+                    .foregroundStyle(Color.white)
+            }
+        } else {
+            ZStack {
+                Ellipse()
+                    .frame(width: 60, height: 50)
+                    .foregroundStyle(.black)
+                    .padding(.top, 10)
+                Ellipse()
+                    .frame(width: 60, height: 50)
+                    .foregroundStyle(.gray)
+            }
+        }
+    }
+}
+
+struct DetailView2: View {
+    @Binding var activeButtons: [Bool]
+    var currentIndex: Int
+    @Binding var activeButtonsData: Data
+    var detailData: DetailData
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+            VStack {
+                HStack {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                                .foregroundStyle(CustomColor.orange)
+                            Text("Back")
+                                .foregroundStyle(CustomColor.orange)
+                                .padding(.trailing, 5)
+                        }
+                    }
+                    .padding()
+                    Spacer()
+                }.padding(.top, 50)
+                ScrollView {
+                    VStack {
+                        detailData.view
+                        Button(action: {
+                            if currentIndex + 1 < activeButtons.count {
+                                activeButtons[currentIndex + 1] = true
+                                saveActiveButtons()
+                            }
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("Completato")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                                .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                                .padding(.vertical, 30)
+                                .padding(.horizontal)
+                        }
+                    }
+                }
+            }
+            .ignoresSafeArea()
+        }
+    
+    private func saveActiveButtons() {
+        if let encoded = try? JSONEncoder().encode(activeButtons) {
+            activeButtonsData = encoded
+        }
+    }
+}
+
+struct DetailData2 {
+    var view: AnyView
+}
+
+struct LevelBar2: View {
+    var progress: Double
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .opacity(0.3)
+                    .foregroundColor(Color.gray)
+                
+                Rectangle()
+                    .frame(width: min(CGFloat(progress) * geometry.size.width, geometry.size.width), height: geometry.size.height)
+                    .foregroundColor(CustomColor.orange)
+            }
+        }
+    }
 }

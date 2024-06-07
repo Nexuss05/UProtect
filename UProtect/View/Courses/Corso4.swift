@@ -1,18 +1,25 @@
+//
+//  Corso4.swift
+//  UProtect
+//
+//  Created by Andrea Romano on 07/06/24.
+//
+
 import SwiftUI
 
-struct Corso1: View {
+struct Corso4: View {
     @Binding var course: Course
-    @AppStorage("ButtonsLevel1") private var activeButtonsData: Data = Data()
+    @AppStorage("ButtonsLevel4") private var activeButtonsData: Data = Data()
     @State private var activeButtons: [Bool] = [true, false, false, false, false, false]
     @State private var isDetailViewPresented: Bool = false
     @State private var currentDetailIndex: Int = 0
     
     let detailData = [
-        DetailData(view: AnyView(Course101())),
-        DetailData(view: AnyView(Course102())),
-        DetailData(view: AnyView(Course103())),
-        DetailData(view: AnyView(Course104())),
-        DetailData(view: AnyView(Course105()))
+        DetailData(view: AnyView(Course401())),
+        DetailData(view: AnyView(Course402())),
+        DetailData(view: AnyView(Course403())),
+        DetailData(view: AnyView(Course404())),
+        DetailData(view: AnyView(Course405()))
     ]
     
     init(course: Binding<Course>) {
@@ -65,7 +72,7 @@ struct Corso1: View {
     }
 }
 
-struct LevelButtonView: View {
+struct LevelButtonView4: View {
     var isActive: Bool
     
     var body: some View {
@@ -93,7 +100,7 @@ struct LevelButtonView: View {
     }
 }
 
-struct DetailView: View {
+struct DetailView4: View {
     @Binding var activeButtons: [Bool]
     var currentIndex: Int
     @Binding var activeButtonsData: Data
@@ -101,48 +108,48 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
-            HStack {
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    HStack {
-                        Image(systemName: "chevron.left")
-                            .foregroundStyle(CustomColor.orange)
-                        Text("Back")
-                            .foregroundStyle(CustomColor.orange)
-                            .padding(.trailing, 5)
-                    }
-                }
-                .padding()
-                Spacer()
-            }.padding(.top, 50)
-            ScrollView {
-                VStack {
-                    detailData.view
+            VStack {
+                HStack {
                     Button(action: {
-                        if currentIndex + 1 < activeButtons.count {
-                            activeButtons[currentIndex + 1] = true
-                            saveActiveButtons()
-                        }
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        Text("Completato")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                            .shadow(color: .gray, radius: 5, x: 0, y: 2)
-                            .padding(.vertical, 30)
-                            .padding(.horizontal)
+                        HStack {
+                            Image(systemName: "chevron.left")
+                                .foregroundStyle(CustomColor.orange)
+                            Text("Back")
+                                .foregroundStyle(CustomColor.orange)
+                                .padding(.trailing, 5)
+                        }
+                    }
+                    .padding()
+                    Spacer()
+                }.padding(.top, 50)
+                ScrollView {
+                    VStack {
+                        detailData.view
+                        Button(action: {
+                            if currentIndex + 1 < activeButtons.count {
+                                activeButtons[currentIndex + 1] = true
+                                saveActiveButtons()
+                            }
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("Completato")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                                .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                                .padding(.vertical, 30)
+                                .padding(.horizontal)
+                        }
                     }
                 }
             }
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
-    }
     
     private func saveActiveButtons() {
         if let encoded = try? JSONEncoder().encode(activeButtons) {
@@ -151,11 +158,11 @@ struct DetailView: View {
     }
 }
 
-struct DetailData {
+struct DetailData4 {
     var view: AnyView
 }
 
-struct LevelBar: View {
+struct LevelBar4: View {
     var progress: Double
     
     var body: some View {
@@ -173,3 +180,4 @@ struct LevelBar: View {
         }
     }
 }
+
