@@ -13,6 +13,7 @@ struct SettingsView: View {
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     @State private var circleColor: Color = UserDefaultsManager.loadCircleColor() ?? Color.red
     @State var url = URL(string: "https://www.iubenda.com/privacy-policy/49969320")
+    @State var url2 = URL(string: "")
     @Query var userData: [Contacts]
     
     @ObservedObject var timerManager: TimerManager
@@ -31,6 +32,9 @@ struct SettingsView: View {
     @State var showAlert3: Bool = false
     @State var showReg: Bool = false
     
+    @State var touchCount = 0
+    @State var showEE = false
+    
     var body: some View {
         NavigationStack{
             VStack{
@@ -45,6 +49,9 @@ struct SettingsView: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
                             }.accessibilityHidden(true)
+                            .onTapGesture(count: 5) {
+                                Activated()
+                            }
                             VStack(alignment: .leading, spacing: -2.0){
                                 Text("\(nome) \(cognome)")
                                     .fontWeight(.medium)
@@ -65,31 +72,6 @@ struct SettingsView: View {
                         } label: {
                             Text("Recordings")
                         }.navigationViewStyle(StackNavigationViewStyle())
-                        
-                        //                        Button(action: {
-                        //                            if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
-                        //                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                        //                            }
-                        //                        }) {
-                        //                            HStack {
-                        //                                Text("Change Language")
-                        //                                    .foregroundColor(.primary)
-                        //                                Spacer()
-                        //                                Image(systemName: "arrow.up.forward")
-                        //                                    .foregroundStyle(CustomColor.orange)
-                        //                            }
-                        //                        }
-                        //                        Button(action: {
-                        //                            //bho
-                        //                        }) {
-                        //                            HStack {
-                        //                                Text("Overcome Do Not Disturb")
-                        //                                    .foregroundColor(.primary)
-                        //                                Spacer()
-                        //                                Image(systemName: "arrow.up.forward")
-                        //                                    .foregroundStyle(CustomColor.orange)
-                        //                            }
-                        //                        }
                     }
                     
                     Section(header: Text("SETTINGS")){
@@ -108,27 +90,23 @@ struct SettingsView: View {
                         }
                     }
                     
-                    //                    Section(header: Text("ABOUT")) {
-                    //                        Text("Siri & Shortcuts")
-                    //                            .foregroundColor(.primary)
-                    //                        Text("Widgets")
-                    //                            .foregroundColor(.primary)
-                    //                    }
-                    
                     Section(header: Text("ABOUT")){
-//                        HStack{
-//                            Text("Onboarding")
-//                                .foregroundColor(.primary)
-//                            Spacer()
-//                            Image(systemName: "chevron.right")
-//                        }.onTapGesture {
-//                            showOnBoarding.toggle()
-//                        }
                         NavigationLink {
                             OnBoarding2(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer).ignoresSafeArea()
                         } label: {
                             Text("Onboarding")
                         }
+//                        HStack {
+//                            Link("Get Help", destination: url2!)
+//                                .foregroundColor(.primary)
+//                            Spacer()
+//                            Image(systemName: "arrow.up.forward")
+//                                .foregroundStyle(CustomColor.orange)
+//                        }.onTapGesture {
+//                            if let url = URL(string: "") {
+//                                UIApplication.shared.open(url)
+//                            }
+//                        }
                         HStack {
                             Link("Privacy Policy", destination: url!)
                                 .foregroundColor(.primary)
@@ -142,7 +120,6 @@ struct SettingsView: View {
                         }
                         ShareLink(item: "https://testflight.apple.com/join/UjB0xSRP")
                             .foregroundColor(.primary)
-                        
                     }
                     
                     Section{
@@ -159,41 +136,33 @@ struct SettingsView: View {
                                 .foregroundStyle(CustomColor.redBackground)
                         }
                     }
+                    
+                    Section{
+                        if showEE{
+                            VStack(alignment: .leading){
+                                Text("- Made by HestiaDevs")
+                                    .font(.caption)
+                                Text("Your support helps keep our community safe! 🌟")
+                                    .foregroundColor(.gray)
+                                    .font(.caption2)
+                            }
+                        }
+                    }.listRowBackground(Color.clear)
                 }
                 .navigationTitle("Settings")
                 .background(CustomColor.orangeBackground)
                 .scrollContentBackground(.hidden)
-                .fullScreenCover(isPresented: $showReg, content: {
-                    RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-                })
-                .sheet(isPresented: $showOnBoarding, content: {
-                    WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-                        .alert("Try again later", isPresented: $showAlert2) {
-                            Button("Ok") { }
-                        }
-                }).alert("Are you sure?", isPresented: $showAlert) {
-                    Button("YES", role: .destructive) {
-                        vm.deleteUser { success in
-                            if success{
-                                let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
-                                if let bundleIdentifier = Bundle.main.bundleIdentifier {
-                                    UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
-                                }
-                                if let token = fcmToken {
-                                    UserDefaults.standard.set(token, forKey: "fcmToken")
-                                }
-                                isWelcomeScreenOver = false
-                                showReg.toggle()
-                            } else {
-                                print("pollo")
-                                showAlert2.toggle()
-                            }
-                        }
-                    }
-                    Button("NO", role: .cancel) { }
-                }
-                .alert("Are you sure?", isPresented: $showAlert3) {
-                    Button("YES", role: .destructive) {
+            }
+        }.fullScreenCover(isPresented: $showReg, content: {
+            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+        })
+        .sheet(isPresented: $showOnBoarding, content: {
+            WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+        })
+        .alert("Are you sure?", isPresented: $showAlert) {
+            Button("YES", role: .destructive) {
+                vm.deleteUser { success in
+                    if success{
                         let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
                         if let bundleIdentifier = Bundle.main.bundleIdentifier {
                             UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
@@ -203,13 +172,43 @@ struct SettingsView: View {
                         }
                         isWelcomeScreenOver = false
                         showReg.toggle()
+                    } else {
+                        print("pollo")
+                        showAlert2.toggle()
                     }
-                    Button("NO", role: .cancel) { }
-                }
-                .onAppear{
-                    vm.fetchUserInfo()
                 }
             }
+            Button("NO", role: .cancel) { }
+        }
+        .alert("Try again later", isPresented: $showAlert2) {
+            Button("Ok") { }
+        }
+        .alert("Are you sure?", isPresented: $showAlert3) {
+            Button("YES", role: .destructive) {
+                let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
+                if let bundleIdentifier = Bundle.main.bundleIdentifier {
+                    UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
+                }
+                if let token = fcmToken {
+                    UserDefaults.standard.set(token, forKey: "fcmToken")
+                }
+                isWelcomeScreenOver = false
+                showReg.toggle()
+            }
+            Button("NO", role: .cancel) { }
+        }
+        .onAppear{
+            vm.fetchUserInfo()
+        }
+    }
+    
+    func Activated() {
+        touchCount += 1
+        if touchCount >= 5 {
+            withAnimation {
+                showEE.toggle()
+            }
+            touchCount = 0
         }
     }
 }

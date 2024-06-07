@@ -5,7 +5,6 @@ struct GoalView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
     
-//    @State var num = 1
     @State var cont = 300
     @State var selectedMode = 2
     @State var isShowingMain: Bool = false

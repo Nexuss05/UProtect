@@ -17,7 +17,7 @@ struct NoLocationView: View {
                 Text("Location Services")
                     .font(.title)
                     .fontWeight(.bold)
-                Text("1. Tap the button below and\n2. Go to Location\n3. Change the settings to \"While Using the App\"")
+                Text("1. Tap the button below\n2. Go to Location\n3. Change the settings to \"While Using the App\"")
                     .frame(width: 300)
                     .padding(.top)
                     .padding(.bottom, 30)

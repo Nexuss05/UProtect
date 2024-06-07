@@ -72,7 +72,6 @@ struct GoalSelectorView: View {
                         if counter != 90{
                             self.counter -= 10
                         }
-//                        print(counter)
                     }
                     .onLongPressGesture(minimumDuration: 5, pressing: { isPressing in
                         if isPressing {
@@ -99,7 +98,6 @@ struct GoalSelectorView: View {
                     .onTapGesture {
                         if counter != 590{
                             self.counter += 10
-//                            print(counter)
                         }
                     }
                     .onLongPressGesture(minimumDuration: 5, pressing: { isPressing in

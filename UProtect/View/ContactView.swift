@@ -164,11 +164,10 @@ struct ContactsView: View {
                         }
                     }
                 }
-                VStack {
-                    Spacer()
-                    PremiumPopUp().padding(.bottom, 50)
-                }
-                
+//                VStack {
+//                    Spacer()
+//                    PremiumPopUp().padding(.bottom, 50)
+//                }
             }
         }.onAppear{
             loadContactsFromUserDefaults()
@@ -248,7 +247,7 @@ struct ContactsView: View {
     
     func getCountryPhonePrefix() -> String {
         guard let countryCode = Locale.current.regionCode else {
-            return "" // No location available, return an empty string
+            return ""
         }
         
         let countryPhonePrefixes: [String: String] = [

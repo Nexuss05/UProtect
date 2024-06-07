@@ -21,7 +21,6 @@
 		C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21DD8412BE4D472003EB614 /* Assets.xcassets */; };
 		C21DD8452BE4D472003EB614 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21DD8442BE4D472003EB614 /* Preview Assets.xcassets */; };
 		C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD84B2BE4DAC2003EB614 /* Vonage.swift */; };
-		C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD8582BE4E9AE003EB614 /* TabBarView.swift */; };
 		C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85A2BE51306003EB614 /* ContactListView.swift */; };
 		C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD85D2BE51844003EB614 /* ContactModel.swift */; };
 		C23050482C05C7070056BEAA /* LottieView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23050432C05C7070056BEAA /* LottieView2.swift */; };
@@ -58,7 +57,6 @@
 		C2E4036B2C10441400F5B4F7 /* TimerManagerWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E403612C10433900F5B4F7 /* TimerManagerWatch.swift */; };
 		C2E4036C2C10441800F5B4F7 /* TimerManagerIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E403602C10433900F5B4F7 /* TimerManagerIOS.swift */; };
 		C2E4036E2C1045D500F5B4F7 /* Corso2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4036D2C1045D500F5B4F7 /* Corso2.swift */; };
-		E00FF2F52C10B49B00309765 /* NewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00FF2F42C10B49B00309765 /* NewButton.swift */; };
 		E0293D2D2C11DF0800EB6485 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0293D2C2C11DF0800EB6485 /* Vuota.swift */; };
 		E0293D2F2C11DF5700EB6485 /* OnBoarding2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0293D2E2C11DF5700EB6485 /* OnBoarding2.swift */; };
 		E04060212C09C47D0018252D /* NoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04060202C09C47D0018252D /* NoLocationView.swift */; };
@@ -154,7 +152,6 @@
 		C21DD8412BE4D472003EB614 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C21DD8442BE4D472003EB614 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C21DD84B2BE4DAC2003EB614 /* Vonage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vonage.swift; sourceTree = "<group>"; };
-		C21DD8582BE4E9AE003EB614 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C21DD85A2BE51306003EB614 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		C21DD85D2BE51844003EB614 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		C23050432C05C7070056BEAA /* LottieView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LottieView2.swift; sourceTree = "<group>"; };
@@ -189,7 +186,6 @@
 		C2E403612C10433900F5B4F7 /* TimerManagerWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManagerWatch.swift; sourceTree = "<group>"; };
 		C2E403692C1043E500F5B4F7 /* PremiumPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumPopUp.swift; sourceTree = "<group>"; };
 		C2E4036D2C1045D500F5B4F7 /* Corso2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corso2.swift; sourceTree = "<group>"; };
-		E00FF2F42C10B49B00309765 /* NewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewButton.swift; sourceTree = "<group>"; };
 		E0293D2C2C11DF0800EB6485 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Vuota.swift; path = ../Vuota.swift; sourceTree = "<group>"; };
 		E0293D2E2C11DF5700EB6485 /* OnBoarding2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoarding2.swift; sourceTree = "<group>"; };
 		E04060202C09C47D0018252D /* NoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLocationView.swift; sourceTree = "<group>"; };
@@ -360,7 +356,6 @@
 				C23F9A0F2C0098C2001FE56F /* WatchProtectApp.swift */,
 				E06A20582C0E0F3A005D4D67 /* Vuota.swift */,
 				C23F9A112C0098C2001FE56F /* ContentView.swift */,
-				E00FF2F42C10B49B00309765 /* NewButton.swift */,
 				C23F9A132C0098C3001FE56F /* Assets.xcassets */,
 				C23F9A152C0098C3001FE56F /* Preview Content */,
 			);
@@ -400,7 +395,6 @@
 			children = (
 				C2893DD82BEB8C1900733211 /* RingView.swift */,
 				E09209992BEBE2B0005AD0FB /* TimeCounter.swift */,
-				C21DD8582BE4E9AE003EB614 /* TabBarView.swift */,
 				E0B954232C00E33F00EBCD81 /* PageControl.swift */,
 				C2E403692C1043E500F5B4F7 /* PremiumPopUp.swift */,
 			);
@@ -525,7 +519,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					C21DD8392BE4D471003EB614 = {
 						CreatedOnToolsVersion = 15.3;
@@ -641,7 +635,6 @@
 				E0B954242C00E33F00EBCD81 /* PageControl.swift in Sources */,
 				E0293D2F2C11DF5700EB6485 /* OnBoarding2.swift in Sources */,
 				C2E4036E2C1045D500F5B4F7 /* Corso2.swift in Sources */,
-				C21DD8592BE4E9AE003EB614 /* TabBarView.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
 				E0293D2D2C11DF0800EB6485 /* Vuota.swift in Sources */,
 				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
@@ -660,7 +653,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E00FF2F52C10B49B00309765 /* NewButton.swift in Sources */,
 				E0F1A6802C079BF000B0D16A /* ContentView.swift in Sources */,
 				C2E403642C10433900F5B4F7 /* SharedTimerManager.swift in Sources */,
 				C23F9A102C0098C2001FE56F /* WatchProtectApp.swift in Sources */,
@@ -699,6 +691,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -762,6 +755,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -827,6 +821,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UProtect/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger.\n";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to find the open places near you";
@@ -869,6 +864,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UProtect/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger.\n";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to find the open places near you";
@@ -911,7 +907,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = WatchProtect;
+				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to the microphone to record audio";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.matteo-cotena.UProtect";
@@ -946,7 +942,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = WatchProtect;
+				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to the microphone to record audio";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.matteo-cotena.UProtect";

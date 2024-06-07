@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import FirebaseCore
+import FirebaseCore
 
 struct LogInView: View {
     @State private var keyboardHeight: CGFloat = 0
@@ -56,6 +56,7 @@ struct LogInView: View {
                             .foregroundColor(Color.white)
                             .padding(.top, 10)
                     }
+                    
                     Button{
                         isLoading = true
                         vm.handleFirstLogin(number: vm.numero) { success in
@@ -78,7 +79,6 @@ struct LogInView: View {
                         }
                     }.padding(.top, 100)
                         .disabled(vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
-                    
                 }
                 Image("a0")
                     .resizable()
@@ -113,12 +113,12 @@ struct LogInView: View {
         .disabled(isLoading)
         .overlay {
             if isLoading {
-                // Visualizza la pagina di caricamento
                 Loading(loopmode: .loop)
                     .scaleEffect(0.60)
                     .background(Color.black.opacity(0.3))
             }
-        }    }
+        }
+    }
 }
 
 struct RegistrationView: View {
@@ -137,8 +137,6 @@ struct RegistrationView: View {
     
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     
-    
-    // Focus state per i TextField
     @FocusState private var focusedField: Field?
     
     enum Field {
@@ -196,9 +194,6 @@ struct RegistrationView: View {
                         TextField("Phone number", text: $vm.numero).keyboardType(.numberPad)
                             .padding(.leading, 20)
                             .focused($focusedField, equals: .numero)
-//                            .onSubmit {
-//                                // Puoi aggiungere un'azione da eseguire quando l'utente preme Invio nel campo numero di telefono
-//                            }
                     }.frame(width: 325, height: 50, alignment: .center)
                     
                     Button{
@@ -239,11 +234,10 @@ struct RegistrationView: View {
                         .disabled(vm.nome.trimmingCharacters(in: .whitespaces).isEmpty || vm.cognome.trimmingCharacters(in: .whitespaces).isEmpty||vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
             }.padding(.bottom, keyboardHeight)
-            //        .preferredColorScheme(.light)
                 .ignoresSafeArea()
-//                .onAppear{
-//                    FirebaseApp.configure()
-//                }
+                .onAppear{
+                    FirebaseApp.configure()
+                }
                 .fullScreenCover(isPresented: $isShowingLogin, content: {
                     LogInView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 })
@@ -270,7 +264,6 @@ struct RegistrationView: View {
         .disabled(isLoading)
         .overlay {
             if isLoading {
-                // Visualizza la pagina di caricamento
                 Loading(loopmode: .loop)
                     .scaleEffect(0.60)
                     .background(Color.black.opacity(0.3))

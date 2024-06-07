@@ -18,16 +18,16 @@ class TimeManager: NSObject, ObservableObject {
     @Published var circleOpacity = false
     @Published var showMark: Bool = true
     @Published var canCancel: Bool = false
-
+    
     @Published var start = false
     @Published var count = 300
     @Published var maxTime = 300
     @Published var to: CGFloat = 0
     @Published var time = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+    
     private var timer: Timer?
     @State var dismissTimer: Timer?
-
+    
     @Published var leftTime: Date = Date()
     static let shared = TimeManager()
     

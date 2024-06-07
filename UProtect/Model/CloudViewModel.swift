@@ -56,23 +56,9 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-//    func getCountryPhonePrefix() -> String {
-//        guard let countryCode = Locale.current.region?.identifier else {
-//            return ""
-//        }
-//        switch countryCode {
-//        case "IT":
-//            return "+39"
-//        case "US":
-//            return "+1"
-//        default:
-//            return ""
-//        }
-//    }
-    
     func getCountryPhonePrefix() -> String {
         guard let countryCode = Locale.current.regionCode else {
-            return "" // No location available, return an empty string
+            return ""
         }
         
         let countryPhonePrefixes: [String: String] = [
@@ -124,39 +110,6 @@ class CloudViewModel: ObservableObject{
             return "\(prefix)\(phoneNumber)"
         }
     }
-    
-    //    func addButtonPressed() {
-    //        getUserRecordID { userRecordID, error in
-    //            if let userRecordID = userRecordID {
-    //
-    //                self.addItem(name: self.nome, surname: self.cognome, number: self.numero, token: self.fcmToken ?? "",recipientID: userRecordID.recordName)
-    //            } else {
-    //                print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
-    //            }
-    //        }
-    //    }
-    
-//    func addButtonPressed() {
-//        var formattedPhoneNumber = self.numero
-//        if !self.numero.hasPrefix("+") {
-//            formattedPhoneNumber = formatPhoneNumber(self.numero)
-//        }
-//        print(formattedPhoneNumber)
-//        
-//        fetchNumber(number: formattedPhoneNumber) { isNumberPresent in
-//            if isNumberPresent {
-//                print("Number is already present in the database.")
-//            } else {
-//                self.getUserRecordID { userRecordID, error in
-//                    if let userRecordID = userRecordID {
-//                        self.addItem(name: self.nome, surname: self.cognome, number: formattedPhoneNumber, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
-//                    } else {
-//                        print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
-//                    }
-//                }
-//            }
-//        }
-//    }
     
     func addButtonPressed() {
         let numero = UserDefaults.standard.string(forKey: "numeroUtente")!
@@ -233,12 +186,11 @@ class CloudViewModel: ObservableObject{
                 completion(isNumberPresent)
             }
         }
-        
         addOperation(operation: queryOperation)
     }
     
     func fetchUserPosition() {
-        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let queryOperation = CKQueryOperation(query: query)
@@ -273,7 +225,7 @@ class CloudViewModel: ObservableObject{
     }
     
     func fetchFriend() {
-        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let queryOperation = CKQueryOperation(query: query)
@@ -306,34 +258,6 @@ class CloudViewModel: ObservableObject{
             self.fetchFriend()
         }
     }
-    
-    //    func fetchUserInfo() {
-    //        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
-    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-    //        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-    //        let queryOperation = CKQueryOperation(query: query)
-    //        queryOperation.resultsLimit = 1
-    //
-    //        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-    //            switch returnedResult {
-    //            case .success(let record):
-    //                if let firstName = record["name"] as? String, let lastName = record["surname"] as? String {
-    //                    DispatchQueue.main.async {
-    //                        self.firstName = firstName
-    //                        self.lastName = lastName
-    //                    }
-    //                } else {
-    //                    DispatchQueue.main.async {
-    //                        print("Nome o cognome vutori")
-    //                    }
-    //                }
-    //            case .failure(let error):
-    //                DispatchQueue.main.async {
-    //                    print("Nome o cognome non trovati")                }
-    //            }
-    //        }
-    //        addOperation(operation: queryOperation)
-    //    }
     
     func fetchUserInfo() {
         let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
@@ -371,80 +295,42 @@ class CloudViewModel: ObservableObject{
             }
         }
         addOperation(operation: queryOperation)
-        
         //        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
         //            self.fetchUserInfo()
         //        }
     }
     
-    
-    
-    func fetchToken2(number: String, completion: @escaping (String?) -> Void) {
-        let predicate = NSPredicate(format: "number = %@", number)
-        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        let queryOperation = CKQueryOperation(query: query)
-        queryOperation.resultsLimit = 1
-        
-        var fcmToken: String?
-        
-        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-            switch returnedResult {
-            case .success(let record):
-                if let token = record["token"] as? String, !token.isEmpty {
-                    fcmToken = token
-                    print(token)
-                } else {
-                    print("Token not found")
-                }
-            case .failure(let error):
-                print("Error: \(error)")
-            }
-        }
-        
-        queryOperation.queryResultBlock = { returnedResult in
-            //            print("Returned ResultBlock: \(returnedResult)")
-            DispatchQueue.main.async {
-                completion(fcmToken)
-            }
-        }
-        
-        CKContainer.default().publicCloudDatabase.add(queryOperation)
-    }
-    
-    
-    //    func fetchToken(number: String){
-    //        //let predicate = NSPredicate(value: true)
-    //        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
+    //    func fetchToken2(number: String, completion: @escaping (String?) -> Void) {
+    //        let predicate = NSPredicate(format: "number = %@", number)
     //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
     //        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
     //        let queryOperation = CKQueryOperation(query: query)
-    //        //queryOperation.resultsLimit = 2
+    //        queryOperation.resultsLimit = 1
     //
-    //        var returnedItems: [String] = []
+    //        var fcmToken: String?
     //
     //        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-    //            switch returnedResult{
+    //            switch returnedResult {
     //            case .success(let record):
-    //                //                    guard let nome = record["name"] as? String else {return}
-    //                //                    guard let cognome = record["surname"] as? String else {return}
-    //                //                    guard let numero = record["number"] as? String else {return}
-    //                guard let fcmToken = record["token"] as? String else {return}
-    //                returnedItems.append(fcmToken)
-    //                print(fcmToken)
+    //                if let token = record["token"] as? String, !token.isEmpty {
+    //                    fcmToken = token
+    //                    print(token)
+    //                } else {
+    //                    print("Token not found")
+    //                }
     //            case .failure(let error):
     //                print("Error: \(error)")
     //            }
     //        }
     //
-    //        queryOperation.queryResultBlock = { [weak self] returnedResult in
-    //            print("Returned ResultBlock: \(returnedResult)")
-    //            DispatchQueue.main.async{
-    //                self?.token = returnedItems
+    //        queryOperation.queryResultBlock = { returnedResult in
+    //            //            print("Returned ResultBlock: \(returnedResult)")
+    //            DispatchQueue.main.async {
+    //                completion(fcmToken)
     //            }
     //        }
     //
-    //        addOperation(operation: queryOperation)
+    //        CKContainer.default().publicCloudDatabase.add(queryOperation)
     //    }
     
     func fetchToken(number: String, completion: @escaping (String?) -> Void) {
@@ -511,79 +397,10 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-    
-    
-    //    func fetchToken(number: String){
-    //        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
-    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-    //        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-    //        let queryOperation = CKQueryOperation(query: query)
-    //        queryOperation.resultsLimit = 1
-    //
-    //        var returnedItems: [String] = []
-    //
-    //        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-    //            switch returnedResult{
-    //            case .success(let record):
-    //                if let fcmToken = record["token"] as? String, !fcmToken.isEmpty {
-    //                    returnedItems.append(fcmToken)
-    //                    print(fcmToken)
-    //                    //UserDefaults.standard.set(fcmToken, forKey: "token")
-    //                } else {
-    //                    print("Token not found")
-    //                }
-    //            case .failure(let error):
-    //                print("Error: \(error)")
-    //            }
-    //        }
-    //
-    //        queryOperation.queryResultBlock = { [weak self] returnedResult in
-    //            print("Returned ResultBlock: \(returnedResult)")
-    //            DispatchQueue.main.async{
-    //                if !returnedItems.isEmpty {
-    //                    self?.token = returnedItems
-    ////                    UserDefaults.standard.set(returnedItems, forKey: "tokens")
-    //                } else {
-    //                    print("pollo")
-    //                }
-    //            }
-    //        }
-    //
-    //        addOperation(operation: queryOperation)
-    //    }
-    
-    
     func addOperation(operation: CKDatabaseOperation){
         CKContainer.default().publicCloudDatabase.add(operation)
     }
     
-    func updateButtonPressed() {
-        getUserRecordID { userRecordID, error in
-            if let userRecordID = userRecordID {
-                self.updateItem(number: self.numero, token: self.fcmToken ?? "", recipientID: userRecordID.recordName)
-            } else {
-                print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
-            }
-        }
-    }
-    
-    //    private func updateItem(number: String, token: String, recipientID: String) {
-    //        let predicate = NSPredicate(format: "number == %@", number)
-    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-    //
-    //        CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { records, error in
-    //            if let error = error {
-    //                print("Error querying records: \(error.localizedDescription)")
-    //            } else if let records = records, !records.isEmpty {
-    //                let recordToUpdate = records[0]
-    //                recordToUpdate["token"] = token
-    //                self.saveItem(record: recordToUpdate)
-    //            } else {
-    //                print("No record found with the provided number")
-    //            }
-    //        }
-    //    }
-    //
     private func updateItem(number: String, token: String, recipientID: String) {
         let predicate = NSPredicate(format: "number == %@", number)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
@@ -643,7 +460,7 @@ class CloudViewModel: ObservableObject{
     func handleLogin(number: String, completion: @escaping (Bool) -> Void) {
         let currentToken = UserDefaults.standard.string(forKey: "fcmToken")
         let numero = UserDefaults.standard.string(forKey: "mobilePhone")!
-
+        
         var formattedPhoneNumber = numero
         if !numero.hasPrefix("+") {
             formattedPhoneNumber = formatPhoneNumber(numero)
@@ -706,7 +523,7 @@ class CloudViewModel: ObservableObject{
                 return
             }
         }
-            
+        
         print("Attempting to verify phone number: \(formattedPhoneNumber)")
         
         let phoneAuthProvider = PhoneAuthProvider.provider()
@@ -735,7 +552,7 @@ class CloudViewModel: ObservableObject{
                 return
             }
         }
-            
+        
         print("Attempting to verify phone number: \(formattedPhoneNumber)")
         
         let phoneAuthProvider = PhoneAuthProvider.provider()
@@ -753,80 +570,42 @@ class CloudViewModel: ObservableObject{
     
     func deleteUser(completion: @escaping (Bool) -> Void){
         let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
-            let query = CKQuery(recordType: "Utenti", predicate: predicate)
-            let queryOperation = CKQueryOperation(query: query)
-            queryOperation.resultsLimit = 1
-            
-            queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-                switch returnedResult {
-                case .success(let record):
-                    let recordID = record.recordID
-                    let deleteOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
-                    deleteOperation.modifyRecordsResultBlock = { result in
-                        switch result {
-                        case .success:
-                            print("Record successfully deleted")
-                            completion(true)
-                        case .failure(let error):
-                            print("Error deleting record: \(error)")
-                            completion(false)
-                        }
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                let recordID = record.recordID
+                let deleteOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
+                deleteOperation.modifyRecordsResultBlock = { result in
+                    switch result {
+                    case .success:
+                        print("Record successfully deleted")
+                        completion(true)
+                    case .failure(let error):
+                        print("Error deleting record: \(error)")
+                        completion(false)
                     }
-                    CKContainer.default().publicCloudDatabase.add(deleteOperation)
-                    
-                case .failure(let error):
-                    print("Error: \(error)")
-                    completion(false)
                 }
+                CKContainer.default().publicCloudDatabase.add(deleteOperation)
+                
+            case .failure(let error):
+                print("Error: \(error)")
+                completion(false)
             }
-            
-            queryOperation.queryResultBlock = { result in
-                switch result {
-                case .success:
-                    print("Query completed")
-                case .failure(let error):
-                    print("Error completing query: \(error)")
-                    completion(false)
-                }
+        }
+        
+        queryOperation.queryResultBlock = { result in
+            switch result {
+            case .success:
+                print("Query completed")
+            case .failure(let error):
+                print("Error completing query: \(error)")
+                completion(false)
             }
-            addOperation(operation: queryOperation)
-//        CKContainer.default().publicCloudDatabase.add(queryOperation)
+        }
+        addOperation(operation: queryOperation)
     }
-    
-    //    func fetchUserInfo(number: String, completion: @escaping (String?, String?, Error?) -> Void) {
-    //        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
-    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-    //        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-    //        let queryOperation = CKQueryOperation(query: query)
-    //        queryOperation.resultsLimit = 1
-    //
-    //        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-    //            switch returnedResult {
-    //            case .success(let record):
-    //                if let firstName = record["name"] as? String, let lastName = record["surname"] as? String {
-    //                    DispatchQueue.main.async {
-    //                        completion(firstName, lastName, nil)
-    //                    }
-    //                } else {
-    //                    DispatchQueue.main.async {
-    //                        completion(nil, nil, NSError(domain: "fetchUserInfo", code: 404, userInfo: [NSLocalizedDescriptionKey: "Nome o cognome non trovati"]))
-    //                    }
-    //                }
-    //            case .failure(let error):
-    //                DispatchQueue.main.async {
-    //                    completion(nil, nil, error)
-    //                }
-    //            }
-    //        }
-    //
-    //        queryOperation.queryResultBlock = { returnedResult in
-    //            if case .failure(let error) = returnedResult {
-    //                DispatchQueue.main.async {
-    //                    completion(nil, nil, error)
-    //                }
-    //            }
-    //        }
-    //
-    //        addOperation(operation: queryOperation)
-    //    }
 }

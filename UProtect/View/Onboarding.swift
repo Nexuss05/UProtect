@@ -62,8 +62,7 @@ struct WelcomeView: View {
                                         .frame(width: 200, height: 60)
                                 )
                             }
-                        }
-                            .padding(.top, 550)
+                        }.padding(.top, 550)
                     )
             }
             .ignoresSafeArea()
@@ -119,7 +118,7 @@ struct FirstPageView: View {
                         .frame(width: 75, height: 70)
                         .foregroundColor(CustomColor.redBackground)
                 }.scaleEffect(CGSize(width: 0.9, height: 0.9))
-//                Spacer()
+                //                Spacer()
                     .padding(.bottom, 350)
             }
             VStack{
@@ -189,7 +188,7 @@ struct SecondPageView: View {
                         .font(.system(size: 65))
                         .fontWeight(.bold)
                 }.scaleEffect(CGSize(width: 0.9, height: 0.9))
-//                Spacer()
+                //                Spacer()
                     .padding(.bottom, 350)
             }
             
@@ -249,18 +248,18 @@ struct FourthPageView: View {
     var body: some View {
         ZStack {
             Image("E5")
-                VStack{
-                    Text("Courses")
-                        .font(.title)
-                        .bold()
-                        .frame(width: 340)
-                        .padding(.top, 25)
-                    Text("This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them.")
-                        .fontWeight(.light)
-                        .frame(width: 340)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical)
-                }.padding(.top, 190)
+            VStack{
+                Text("Courses")
+                    .font(.title)
+                    .bold()
+                    .frame(width: 340)
+                    .padding(.top, 25)
+                Text("This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them.")
+                    .fontWeight(.light)
+                    .frame(width: 340)
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical)
+            }.padding(.top, 190)
         }
     }
 }

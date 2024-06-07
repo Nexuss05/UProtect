@@ -12,20 +12,11 @@ struct RecordingsList: View {
     @ObservedObject var audioPlayer = AudioPlayer()
     @State private var searchText = ""
     
-//    var filteredRecordings: [Recording] {
-//        if searchText.isEmpty {
-//            return audioRecorder.recordings
-//        } else {
-//            return audioRecorder.recordings.filter { $0.fileURL.lastPathComponent.contains(searchText) }
-//        }
-//    }
-    
     var filteredRecordings: [Recording] {
         if searchText.isEmpty {
             return audioRecorder.recordings.sorted(by: { $0.createdAt > $1.createdAt })
         } else {
-            return audioRecorder.recordings.filter { $0.fileURL.lastPathComponent.contains(searchText) }
-                                           .sorted(by: { $0.createdAt > $1.createdAt })
+            return audioRecorder.recordings.filter { $0.fileURL.lastPathComponent.contains(searchText) }.sorted(by: { $0.createdAt > $1.createdAt })
         }
     }
     
@@ -45,29 +36,27 @@ struct RecordingsList: View {
                             RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                         }
                         .onDelete(perform: delete)
-                    }/*.navigationTitle("Recordings")*/
-                    .background(CustomColor.orangeBackground)
-                    .scrollContentBackground(.hidden)
+                    }.background(CustomColor.orangeBackground)
+                        .scrollContentBackground(.hidden)
                     
-//                    Button(action: {
-//                        audioRecorder.deleteAllRecordings()
-//                    }) {
-//                        Text("Delete All")
-//                            .foregroundColor(.red)
-//                            .font(.headline)
-//                            .padding()
-//                            .background(Color.white)
-//                            .cornerRadius(10)
-//                            .shadow(radius: 10)
-//                    }
-//                    .padding()
-                }
-                .padding(.top, -40)/*.navigationBarHidden(true)*/
+                    //                    Button(action: {
+                    //                        audioRecorder.deleteAllRecordings()
+                    //                    }) {
+                    //                        Text("Delete All")
+                    //                            .foregroundColor(.red)
+                    //                            .font(.headline)
+                    //                            .padding()
+                    //                            .background(Color.white)
+                    //                            .cornerRadius(10)
+                    //                            .shadow(radius: 10)
+                    //                    }
+                    //                    .padding()
+                }.padding(.top, -40)/*.navigationBarHidden(true)*/
             }
         }.ignoresSafeArea()
             .onAppear {
-                        audioRecorder.audioPlayer = audioPlayer
-                    }
+                audioRecorder.audioPlayer = audioPlayer
+            }
     }
     
     func delete(at offsets: IndexSet) {

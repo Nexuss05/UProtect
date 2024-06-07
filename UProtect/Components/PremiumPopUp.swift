@@ -24,10 +24,9 @@ struct PremiumPopUp: View {
                 }
                 
                 Button{
-                    print("stocazzo acquistato")
-                    TimeManager.shared.syncTokens()
-                    TimeManager.shared.syncName()
-                    TimeManager.shared.syncSurname()
+                    //                    TimeManager.shared.syncTokens()
+                    //                    TimeManager.shared.syncName()
+                    //                    TimeManager.shared.syncSurname()
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)

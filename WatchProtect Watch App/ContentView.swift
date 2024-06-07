@@ -24,7 +24,7 @@ struct ContentView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var timerManager = TimeManager.shared
-
+    
     @State var buttonTapped: Bool = false
     @State var buttonLocked: Bool = false
     @State var tokenAPNS: String = "Generando token..."
@@ -70,7 +70,7 @@ struct ContentView: View {
     func sendPushNotification(token: String) {
         let name = UserDefaults.standard.string(forKey: "nameOnWatch")
         let surname = UserDefaults.standard.string(forKey: "surnameOnWatch")
-//        let message = "Hai ricevuto una nuova notifica!"
+        //        let message = "Hai ricevuto una nuova notifica!"
         let message = ""
         let authenticationToken = tokenAPNS
         
@@ -178,38 +178,38 @@ struct ContentView: View {
                     .foregroundColor(!timerManager.isActivated ? CustomColor.orange : CustomColor.redBackground)
                     .opacity(withAnimation{buttonTapped ? 0.2 : 1})
             }
-        .padding()
+            .padding()
         }.ignoresSafeArea()
-        .onTapGesture {
-            if !timerManager.isActivated && !buttonLocked{
-                print("Bottone attivato")
-                buttonTapped = true
-                TapAnimation()
-                print("Before calling sendPushNotification()")
-                sendPushNotificationsForSavedTokens()
-                print("After calling sendPushNotification()")
-                withAnimation{
-                    timerManager.Activation()
-                    timerManager.syncActivation()
-                    timerManager.CircleAnimation()
-                    timerManager.syncCircleAnimation()
-                }
-                buttonLocked = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    buttonLocked = false
-                }
-            } else {
-                if !buttonLocked{
+            .onTapGesture {
+                if !timerManager.isActivated && !buttonLocked{
+                    print("Bottone attivato")
+                    buttonTapped = true
+                    TapAnimation()
+                    print("Before calling sendPushNotification()")
+                    sendPushNotificationsForSavedTokens()
+                    print("After calling sendPushNotification()")
                     withAnimation{
                         timerManager.Activation()
                         timerManager.syncActivation()
+                        timerManager.CircleAnimation()
+                        timerManager.syncCircleAnimation()
+                    }
+                    buttonLocked = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        buttonLocked = false
+                    }
+                } else {
+                    if !buttonLocked{
+                        withAnimation{
+                            timerManager.Activation()
+                            timerManager.syncActivation()
+                        }
                     }
                 }
             }
-        }
-        .onAppear {
-            timerManager.setupWCSession()
-            generateJWT()
-        }
+            .onAppear {
+                timerManager.setupWCSession()
+                generateJWT()
+            }
     }
 }

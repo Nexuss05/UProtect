@@ -29,7 +29,7 @@ class TimerManager: ObservableObject {
     @Published var leftTime: Date = Date()
     
     init() {
-//        updateCountFromLastCounter()
+        //        updateCountFromLastCounter()
     }
     
     func Activation() {
@@ -66,24 +66,10 @@ class TimerManager: ObservableObject {
         print("\(count)")
     }
     
-    func resetView() {
-        stopTimer()
-        showAlert = true
-        dismissTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
-            if !self.start {
-                print("Popup alert ignored for 10 seconds")
-                self.showAlert = false
-                self.showMark = true
-                self.CircleAnimation()
-                self.circleOpacity = true
-            }
-        }
-    }
-    
     private func notify(){
         let content = UNMutableNotificationContent()
         content.title = "Timer"
-        content.subtitle = "Torna nell'app per disattivare lo stato d'allerta"
+        content.subtitle = "Go back to the app to turn off the Supervision mode"
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: "MSG", content: content, trigger: trigger)
@@ -127,7 +113,7 @@ class TimerManager: ObservableObject {
         print("progess updated")
     }
     
-
+    
     func CircleAnimation() {
         circleOpacity = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

@@ -87,9 +87,9 @@ struct TimerView: View {
     
     func sendPosition() {
         guard let location = locationManager.userLocation?.coordinate else {
-                print("Impossibile ottenere la posizione dell'utente.")
-                return
-            }
+            print("Impossibile ottenere la posizione dell'utente.")
+            return
+        }
         vm.latitude = locationManager.userLocation?.coordinate.latitude ?? 0
         vm.longitude = locationManager.userLocation?.coordinate.longitude ?? 0
         print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
@@ -133,7 +133,7 @@ struct TimerView: View {
     func sendPushNotification(token: String) {
         let name = UserDefaults.standard.string(forKey: "firstName")
         let surname = UserDefaults.standard.string(forKey: "lastName")
-//        let message = "Hai ricevuto una nuova notifica!"
+        //        let message = "Hai ricevuto una nuova notifica!"
         let message = ""
         let authenticationToken = tokenAPNS
         
@@ -419,7 +419,7 @@ struct TimerView: View {
                 }
                 timerManager.updateProgress()
                 timerManager.updateCountFromLastCounter()
-//                vm.fetchUserInfo()
+                //                vm.fetchUserInfo()
             }.alert(isPresented: $timerManager.showAlert) {
                 Alert(
                     title: Text("Are you safe?"),

@@ -11,8 +11,6 @@ import WatchConnectivity
 
 @main
 struct WatchProtect_Watch_AppApp: App {
-//    @StateObject var timerManager = TimerManager()
-//    @StateObject var audioRecorder = AudioRecorder()
     
     init() {
             TimeManager.shared.setupWCSession()
@@ -20,10 +18,8 @@ struct WatchProtect_Watch_AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            NewView()
-//            TimerWatchView()
-//            Vuota()
             ContentView()
         }
     }
+    
 }
