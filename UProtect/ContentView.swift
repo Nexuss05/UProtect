@@ -33,8 +33,8 @@ struct ContentView: View {
         GeometryReader { geometry in
             VStack {
                 TabView(selection: $selectedTab) {
-//                    CoursesView()
-                    Vuota()
+                    CoursesView()
+//                    Vuota()
                         .tabItem {
                             Label("Courses", systemImage: "books.vertical.fill")
                         }
