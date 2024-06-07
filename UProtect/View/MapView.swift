@@ -88,10 +88,11 @@ struct MapView: View {
                     }
                     if let route, routeDisplaying {
                         MapPolyline(route.polyline)
-                            .stroke(gradient, lineWidth: 10)
+                            .stroke(CustomColor.orange, lineWidth: 10)
                     }
                 }
-                .mapStyle(.hybrid(elevation: .flat, pointsOfInterest: .excludingAll))
+//                .mapStyle(.hybrid(elevation: .flat, pointsOfInterest: .excludingAll))
+                .mapStyle(.standard)
                 .onAppear() {
                     print("Locations on appear: \(locations)")
                 }

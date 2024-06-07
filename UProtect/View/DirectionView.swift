@@ -22,35 +22,35 @@ struct DirectionView: View {
                 .foregroundStyle(.white)
             //            if !showDirections{
             VStack {
-                HStack(spacing: 10.0){
-                    Text(selectedLocation?.name ?? "")
-                        .font(.title3)
-                        .foregroundStyle(.black)
-                        .bold()
-                    Circle()
-                        .frame(width: 4, height: 4)
-                        .foregroundColor(.black)
-                    Text(firstPartOfAddress(address: selectedLocation?.address ?? ""))
-                        .font(.title3)
-                        .foregroundStyle(.black)
-                    
+                HStack{
+                    VStack(alignment: .leading){
+                        Text(selectedLocation?.name ?? "").lineLimit(1)
+                            .font(.title3)
+                            .foregroundStyle(.black)
+                            .bold()
+                        Text(firstPartOfAddress(address: selectedLocation?.address ?? "")).lineLimit(1)
+                            .font(.title3)
+                            .foregroundStyle(.black)
+                        
+                    }.padding(.leading, 10)
+                    Spacer()
                     Button(action: {
                         showRoute.toggle()
                     }) {
                         Image(systemName: "xmark")
-                    }
-                }
-                .padding(.horizontal, 25)
+                    }.padding(.trailing, 10)
+                }.frame(width: 350)
+                    .padding(.top, 15)
                 HStack(spacing: 50.0){
                     if let route {
-                        VStack{
+                        VStack(alignment: .leading){
                             Text("Distance")
                                 .foregroundStyle(.black)
                             Text("\(distanceformatter(meters: route.distance))")
                                 .foregroundStyle(.black)
                                 .bold()
                         }
-                        VStack{
+                        VStack(alignment: .leading){
                             Text("Time")
                                 .foregroundStyle(.black)
                             Text("\(travelTime ?? "0 min")")
@@ -81,12 +81,12 @@ struct DirectionView: View {
                                         }
                                     }
                                 }
-                            }
+                            }.presentationDetents([.fraction(0.4), .medium])
                         }
                         .listStyle(.plain)
                     }
-                }
-                .padding(.bottom, 40)
+                }.frame(width: 350)
+                .padding(.bottom, 20)
                 //            }
                 //            else{
                 //                HStack(spacing: 30){
@@ -100,7 +100,7 @@ struct DirectionView: View {
                 //                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 //                        .foregroundStyle(.black)
                 //                }.transition(AnyTransition.opacity.animation(.easeInOut(duration:1.0)))
-            }
+            }.frame(width: 350)
         }
     }
     func CustomSymbol(direction: String) -> String {

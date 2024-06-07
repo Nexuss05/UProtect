@@ -28,9 +28,9 @@ struct OtpAni: UIViewRepresentable {
     
     func makeUIView(context: Context) -> Lottie.LottieAnimationView {
         
-        let animationView = LottieAnimationView(name: "Animation - 1717670163836")
+        let animationView = LottieAnimationView(name: "Animation - 1717744147505")
         animationView.play()
-        animationView.loopMode = loopmode
+        animationView.loopMode = .loop
         return animationView
     }
     

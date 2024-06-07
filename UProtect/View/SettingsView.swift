@@ -192,7 +192,7 @@ struct SettingsView: View {
                     }
                     Button("NO", role: .cancel) { }
                 }
-                .alert("Are you sure?", isPresented: $showAlert) {
+                .alert("Are you sure?", isPresented: $showAlert3) {
                     Button("YES", role: .destructive) {
                         let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
                         if let bundleIdentifier = Bundle.main.bundleIdentifier {

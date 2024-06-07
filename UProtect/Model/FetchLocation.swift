@@ -141,19 +141,19 @@ struct FetchLocation: View {
                             }
                         VStack(alignment: .leading, spacing: 10.0){
                             VStack(alignment: .leading, spacing: 2.0){
-                                Text(result.name)
+                                Text(result.name).lineLimit(1)
                                     .font((result.name.count > 21 ? .title3 : .title2))
                                     .bold()
                                     .foregroundStyle(.black)
                                 HStack{
-                                    Text(result.type)
+                                    Text(result.type).lineLimit(1)
                                         .font(.footnote)
                                         .fontWeight(.medium)
                                         .foregroundStyle(.gray)
                                     Circle()
                                         .frame(width: 4, height: 4)
                                         .foregroundColor(.gray)
-                                    Text(result.address)
+                                    Text(firstPartOfAddress(address: result.address)).lineLimit(1)
                                         .bold()
                                         .font(.footnote)
                                         .foregroundStyle(.gray)
@@ -205,7 +205,7 @@ struct FetchLocation: View {
                                     Text("Hours")
                                         .font(.footnote)
                                         .foregroundStyle(.gray)
-                                    Text(result.hours)
+                                    Text(secondPartOfHours(hours: result.hours))
                                         .font(.footnote)
                                         .fontWeight(.heavy)
                                         .foregroundStyle(.green)
@@ -222,7 +222,7 @@ struct FetchLocation: View {
         .indexViewStyle(.page(backgroundDisplayMode: .always))
         .frame(height:270)
         .onChange(of: selectedTag){ oldValue, newValue in
-            selectedPage = selectedTag!
+            selectedPage = selectedTag ?? 0
         }
         .onChange(of: selectedPage) { oldValue, newValue in
             selectedTag = selectedPage
@@ -238,4 +238,20 @@ struct FetchLocation: View {
             lookAroundScene = try? await request.scene
         }
     }
+    
+    func firstPartOfAddress(address: String) -> String {
+            let components = address.split(separator: ",")
+            if let firstComponent = components.first {
+                return String(firstComponent)
+            } else {
+                return address
+            }
+        }
+    
+    func secondPartOfHours(hours: String) -> String {
+        let pollo = hours.split(separator: " ⋅ ")
+        print(pollo)
+        return String(pollo[1])
+    }
+    
 }

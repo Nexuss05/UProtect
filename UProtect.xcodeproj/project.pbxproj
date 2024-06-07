@@ -69,6 +69,7 @@
 		E06A20592C0E0F3A005D4D67 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A20582C0E0F3A005D4D67 /* Vuota.swift */; };
 		E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */; };
 		E06A205D2C0E3015005D4D67 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E06A205C2C0E3015005D4D67 /* InfoPlist.xcstrings */; };
+		E06C1E2B2C12E9C40077CE4C /* Animation - 1717744147505.json in Resources */ = {isa = PBXBuildFile; fileRef = E06C1E2A2C12E9C40077CE4C /* Animation - 1717744147505.json */; };
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
@@ -199,6 +200,7 @@
 		E06A20582C0E0F3A005D4D67 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vuota.swift; sourceTree = "<group>"; };
 		E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E06A205C2C0E3015005D4D67 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		E06C1E2A2C12E9C40077CE4C /* Animation - 1717744147505.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1717744147505.json"; sourceTree = "<group>"; };
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		999499F72C03B79C0074604F /* Lotties */ = {
 			isa = PBXGroup;
 			children = (
+				E06C1E2A2C12E9C40077CE4C /* Animation - 1717744147505.json */,
 				C249A9DA2C10DF0B004293B7 /* Animation - 1717609436208.json */,
 				99A452682C05C5F4004700FE /* Animation - 1716804413916.json */,
 				99A452662C05C5EE004700FE /* Animation - 1716803884547.json */,
@@ -573,6 +576,7 @@
 				C240B3452C11C8AB00ED0E16 /* Animation - 1717670163836.json in Resources */,
 				E06A205D2C0E3015005D4D67 /* InfoPlist.xcstrings in Resources */,
 				C2E4035D2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */,
+				E06C1E2B2C12E9C40077CE4C /* Animation - 1717744147505.json in Resources */,
 				C249A9DB2C10DF0C004293B7 /* Animation - 1717609436208.json in Resources */,
 				99A452692C05C5F4004700FE /* Animation - 1716804413916.json in Resources */,
 				C2E4035A2C0FD16D00F5B4F7 /* GoogleService-Info.plist in Resources */,
