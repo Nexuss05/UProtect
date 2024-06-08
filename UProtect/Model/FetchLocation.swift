@@ -23,13 +23,13 @@ struct FetchLocation: View {
     let keywords = [
         "supermercato",
         "bar",
-//        "farmacia",
+        "farmacia",
         "polizia",
 //        "carabinieri",
 //        "ospedale",
 //        "hotel",
 //        "centro commerciale",
-        "locale",
+//        "locale",
 //        "pizzeria",
         "ristorante"
     ]
@@ -146,7 +146,7 @@ struct FetchLocation: View {
                                     .bold()
                                     .foregroundStyle(.black)
                                 HStack{
-                                    Text(result.type).lineLimit(1)
+                                    Text(NSLocalizedString(result.type, comment: "")).lineLimit(1)
                                         .font(.footnote)
                                         .fontWeight(.medium)
                                         .foregroundStyle(.gray)
