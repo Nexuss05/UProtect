@@ -34,7 +34,6 @@ struct OtpFormFieldView: View {
                 .ignoresSafeArea()
             
             ZStack {
-                //                CustomColor.orangeBackground
                 OtpAni(loopmode: .playOnce)
                     .scaleEffect(0.45)
                     .padding(.bottom, 550)
@@ -68,8 +67,10 @@ struct OtpFormFieldView: View {
                         verifyOTP { success in
                             if success {
                                 if pollo {
+                                    print("registrazione")
                                     vm.addButtonPressed()
                                 } else {
+                                    print("login")
                                     vm.handleLogin(number: vm.numero) { success in
                                         if success {
                                         } else {

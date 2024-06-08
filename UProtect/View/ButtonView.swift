@@ -134,8 +134,8 @@ struct TimerView: View {
     }
     
     func sendPushNotification(token: String) {
-        let name = UserDefaults.standard.string(forKey: "firstName")
-        let surname = UserDefaults.standard.string(forKey: "lastName")
+        let name = UserDefaults.standard.string(forKey: "firstName") ?? "Unknown"
+        let surname = UserDefaults.standard.string(forKey: "lastName") ?? "Unknown"
         //        let message = "Hai ricevuto una nuova notifica!"
         let message = ""
         let authenticationToken = tokenAPNS
@@ -216,14 +216,14 @@ struct TimerView: View {
         return phoneNumber.hasPrefix(prefix) ? phoneNumber : "\(prefix)\(phoneNumber)"
     }
     
-    func sendMessage(){
-        let name = UserDefaults.standard.string(forKey: "firstName")
-        let surname = UserDefaults.standard.string(forKey: "lastName")
+    func sendMessage() {
+        let name = UserDefaults.standard.string(forKey: "firstName") ?? "Unknown"
+        let surname = UserDefaults.standard.string(forKey: "lastName") ?? "Unknown"
         guard !selectedContacts.isEmpty else {
             return
         }
         let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
-        vonage.sendSMS(to: phoneNumbers, from: "Hestia", text: "\(String(describing: name)) \(String(describing: surname)) is in danger") { result in
+        vonage.sendSMS(to: phoneNumbers, from: "Hestia", text: "\(name) \(surname) is in danger") { result in
             switch result {
             case .success:
                 self.showAlert = true
@@ -387,9 +387,6 @@ struct TimerView: View {
                             print("Before calling sendPushNotification()")
                             sendPushNotificationsForSavedTokens()
                             print("After calling sendPushNotification()")
-                            print("Before calling sendPushNotification()")
-                            sendMessage()
-                            print("After calling sendPushNotification()")
                             withAnimation {
                                 timerManager.Activation()
                                 timerManager.CircleAnimation()
@@ -401,6 +398,7 @@ struct TimerView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 buttonLocked = false
                             }
+                            sendMessage()
                             sendPosition()
                         } else {
                             if timerManager.canCancel && !buttonLocked {
@@ -447,7 +445,7 @@ struct TimerView: View {
                 } else {
                     print("No tokens saved in UserDefaults")
                     showAlert3.toggle()
-                    sendMessage()
+//                    sendMessage()
                 }
             }
         }.ignoresSafeArea()

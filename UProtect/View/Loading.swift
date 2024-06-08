@@ -13,7 +13,7 @@ struct Loading: UIViewRepresentable {
     
     func makeUIView(context: Context) -> Lottie.LottieAnimationView {
         
-        let animationView = LottieAnimationView(name: "Animation - 1717609436208")
+        let animationView = LottieAnimationView(name: "Animation - 1717744147505")
         animationView.play()
         animationView.loopMode = loopmode
         return animationView
@@ -28,7 +28,7 @@ struct OtpAni: UIViewRepresentable {
     
     func makeUIView(context: Context) -> Lottie.LottieAnimationView {
         
-        let animationView = LottieAnimationView(name: "Animation - 1717744147505")
+        let animationView = LottieAnimationView(name: "Animation - 1717670163836")
         animationView.play()
         animationView.loopMode = .loop
         return animationView

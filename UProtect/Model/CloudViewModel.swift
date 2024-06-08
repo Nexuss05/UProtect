@@ -467,60 +467,23 @@ class CloudViewModel: ObservableObject{
         }
         print(formattedPhoneNumber)
         
-        searchNumber(number: formattedPhoneNumber) { found in
-            guard found else {
-                print("Numero non trovato nel database")
-                completion(false)
-                return
-            }
-            
-            self.fetchToken(number: formattedPhoneNumber) { fetchedToken in
-                if let fetchedToken = fetchedToken {
-                    if fetchedToken != currentToken {
-                        self.getUserRecordID { userRecordID, error in
-                            if let userRecordID = userRecordID {
-                                if let currentToken = currentToken {
-                                    self.updateItem(number: formattedPhoneNumber, token: currentToken, recipientID: userRecordID.recordName)
-                                }
-                            } else {
-                                print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
+        self.fetchToken(number: formattedPhoneNumber) { fetchedToken in
+            if let fetchedToken = fetchedToken {
+                if fetchedToken != currentToken {
+                    self.getUserRecordID { userRecordID, error in
+                        if let userRecordID = userRecordID {
+                            if let currentToken = currentToken {
+                                self.updateItem(number: formattedPhoneNumber, token: currentToken, recipientID: userRecordID.recordName)
                             }
+                        } else {
+                            print("Failed to get user record ID: \(error?.localizedDescription ?? "Unknown error")")
                         }
-                    } else {
-                        print("Token already up-to-date")
                     }
                 } else {
-                    print("No token found for the given number")
+                    print("Token already up-to-date")
                 }
-            }
-            
-            print("Attempting to verify phone number: \(formattedPhoneNumber)")
-            
-            let phoneAuthProvider = PhoneAuthProvider.provider()
-            phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
-                if let error = error {
-                    print("Error during phone verification: \(error.localizedDescription)")
-                    return
-                }
-                print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
-                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                completion(true)
-            }
-        }
-    }
-    
-    func handleFirstLogin(number: String, completion: @escaping (Bool) -> Void) {
-        var formattedPhoneNumber = number
-        if !number.hasPrefix("+") {
-            formattedPhoneNumber = formatPhoneNumber(number)
-        }
-        print(formattedPhoneNumber)
-        
-        searchNumber(number: formattedPhoneNumber) { found in
-            guard found else {
-                print("Numero non trovato nel database")
-                completion(false)
-                return
+            } else {
+                print("No token found for the given number")
             }
         }
         
@@ -535,6 +498,35 @@ class CloudViewModel: ObservableObject{
             print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
             completion(true)
+        }
+    }
+    
+    func handleFirstLogin(number: String, completion: @escaping (Bool) -> Void) {
+        var formattedPhoneNumber = number
+        if !number.hasPrefix("+") {
+            formattedPhoneNumber = formatPhoneNumber(number)
+        }
+        print(formattedPhoneNumber)
+        
+        searchNumber(number: formattedPhoneNumber) { found in
+            if found{
+                print("Attempting to verify phone number: \(formattedPhoneNumber)")
+                
+                let phoneAuthProvider = PhoneAuthProvider.provider()
+                phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+                    if let error = error {
+                        print("Error during phone verification: \(error.localizedDescription)")
+                        completion(false)
+                        return
+                    }
+                    print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
+                    UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                    completion(true)
+                }
+            } else {
+                completion(false)
+                return
+            }
         }
     }
     
@@ -551,20 +543,22 @@ class CloudViewModel: ObservableObject{
                 completion(false)
                 return
             }
-        }
-        
-        print("Attempting to verify phone number: \(formattedPhoneNumber)")
-        
-        let phoneAuthProvider = PhoneAuthProvider.provider()
-        phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
-            if let error = error {
-                print (error)
-                print("Error during phone verification: \(error.localizedDescription)")
-                return
+            
+            print("Attempting to verify phone number: \(formattedPhoneNumber)")
+            
+            let phoneAuthProvider = PhoneAuthProvider.provider()
+            phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+                if let error = error {
+                    print (error)
+                    print("Error during phone verification: \(error.localizedDescription)")
+                    completion(false)
+                    return
+                }
+                print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                completion(true)
             }
-            print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
-            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-            completion(true)
+            
         }
     }
     
@@ -642,7 +636,7 @@ class CloudViewModel: ObservableObject{
         }
         CKContainer.default().publicCloudDatabase.add(queryOperation)
     }
-
+    
     func delete(record: CKRecord.ID, completion: @escaping (Bool) -> Void) {
         CKContainer.default().publicCloudDatabase.delete(withRecordID: record) { recordID, err in
             if let err = err {
@@ -659,6 +653,6 @@ class CloudViewModel: ObservableObject{
             completion(true)
         }
     }
-
+    
     
 }

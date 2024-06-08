@@ -34,14 +34,14 @@ struct ContentView: View {
             VStack {
                 TabView(selection: $selectedTab) {
                     CoursesView()
-//                    Vuota()
+                    //                    Vuota()
                         .tabItem {
                             Label("Courses", systemImage: "books.vertical.fill")
                         }
                         .tag(0)
                     
                     if locationManager.isAuthorized{
-//                        Text("Mappa")
+                        //                        Text("Mappa")
                         // la mappa è stata tolta perchè fa crashare la preview
                         MapView(selectedPage: .constant(0))
                             .tabItem {
@@ -51,9 +51,9 @@ struct ContentView: View {
                     }else{
                         NoLocationView()
                             .tabItem {
-                            Label("Map", systemImage: "map.fill")
-                        }
-                        .tag(1)
+                                Label("Map", systemImage: "map.fill")
+                            }
+                            .tag(1)
                     }
                     TimerView(timerManager: timerManager, audioRecorder: audioRecorder, selectedContacts: self.$selectedContacts)
                         .tabItem {
@@ -96,7 +96,11 @@ struct ContentView: View {
                 Alert(title: Text("Messaggio"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
             .onAppear{
-                vm.fetchUserInfo()
+                for i in 0..<3 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        vm.fetchUserInfo()
+                    }
+                }
                 TimeManager.shared.syncTokens()
             }
         }
@@ -116,7 +120,7 @@ extension UITabBar {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.white
-//        UITabBar.appearance().standardAppearance = appearance
+        //        UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
 }
