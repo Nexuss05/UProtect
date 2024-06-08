@@ -11,6 +11,7 @@ struct RecordingsList: View {
     @ObservedObject var audioRecorder: AudioRecorder
     @ObservedObject var audioPlayer = AudioPlayer()
     @State private var searchText = ""
+    let deletionTimeInterval: TimeInterval = 10080 * 60 // 1 minute
     
     var filteredRecordings: [Recording] {
         if searchText.isEmpty {
@@ -21,7 +22,7 @@ struct RecordingsList: View {
     }
     
     var body: some View {
-        NavigationView{
+        NavigationView {
             ZStack {
                 Color.clear
                 VStack(alignment: .leading) {
@@ -36,27 +37,17 @@ struct RecordingsList: View {
                             RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                         }
                         .onDelete(perform: delete)
-                    }.background(CustomColor.orangeBackground)
-                        .scrollContentBackground(.hidden)
-                    
-                    //                    Button(action: {
-                    //                        audioRecorder.deleteAllRecordings()
-                    //                    }) {
-                    //                        Text("Delete All")
-                    //                            .foregroundColor(.red)
-                    //                            .font(.headline)
-                    //                            .padding()
-                    //                            .background(Color.white)
-                    //                            .cornerRadius(10)
-                    //                            .shadow(radius: 10)
-                    //                    }
-                    //                    .padding()
-                }.padding(.top, -40)/*.navigationBarHidden(true)*/
+                    }
+                    .background(CustomColor.orangeBackground)
+                    .scrollContentBackground(.hidden)
+                }
+                .padding(.top, -40)
             }
-        }.ignoresSafeArea()
-            .onAppear {
-                audioRecorder.audioPlayer = audioPlayer
-            }
+        }
+        .ignoresSafeArea()
+        .onAppear {
+            audioRecorder.audioPlayer = audioPlayer
+        }
     }
     
     func delete(at offsets: IndexSet) {
@@ -67,7 +58,6 @@ struct RecordingsList: View {
         audioRecorder.deleteRecording(urlsToDelete: urlsToDelete)
     }
 }
-
 
 struct RecordingRow: View {
     
@@ -85,6 +75,7 @@ struct RecordingRow: View {
         }
         rootViewController.present(activityViewController, animated: true, completion: nil)
     }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
@@ -106,7 +97,7 @@ struct RecordingRow: View {
                         .imageScale(.large)
                 }
             }
-            HStack{
+            HStack {
                 ZStack{
                     Image(systemName: "play.circle")
                         .imageScale(.large)
@@ -130,14 +121,31 @@ struct RecordingRow: View {
                 Bar(progress: audioPlayer.playbackProgress)
                     .frame(height: 5)
                 
-            }.padding(.top)
-        }.frame(height: 100)
+            }
+            .padding(.top)
+        }
+        .frame(height: 100)
+        .onAppear {
+            // Start a timer to check if a minute has passed since the recording was created
+            startDeletionTimer()
+        }
     }
     
     func formattedDate(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy, HH:mm"
         return formatter.string(from: date)
+    }
+    
+    func startDeletionTimer() {
+        // Start a timer to check if a minute has passed since the recording was created
+        _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            if Date().timeIntervalSince(createdAt) >= 10080 * 60 {
+                // Delete the recording
+                self.audioRecorder.deleteRecording(urlsToDelete: [self.audioURL])
+                timer.invalidate() // Stop the timer after deleting the recording
+            }
+        }
     }
 }
 
@@ -188,7 +196,8 @@ struct Bar: View {
                     .frame(width: min(CGFloat(self.progress) * geometry.size.width, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(CustomColor.orange)
                     .animation(.linear, value: progress)
-            }.cornerRadius(45.0)
+            }
+            .cornerRadius(45.0)
         }
     }
 }

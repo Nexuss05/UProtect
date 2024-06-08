@@ -30,7 +30,16 @@ struct UProtectApp: App {
         TimeManager.shared.syncTokens()
         TimeManager.shared.syncName()
         TimeManager.shared.syncSurname()
+        deleteOldRecordings()
     }
+    
+    private func deleteOldRecordings() {
+            let now = Date()
+            let oneWeekAgo = now.addingTimeInterval(-10080 * 60) // 1 week ago
+            let recordingsToDelete = audioRecorder.recordings.filter { $0.createdAt < oneWeekAgo }
+            let urlsToDelete = recordingsToDelete.map { $0.fileURL }
+            audioRecorder.deleteRecording(urlsToDelete: urlsToDelete)
+        }
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -79,6 +88,11 @@ struct UProtectApp: App {
             //                }
         }.modelContainer(sharedModelContainer)
             .environment(locationManager)
+            .onChange(of: scene) { newScenePhase in
+                        if newScenePhase == .active {
+                            deleteOldRecordings()
+                        }
+                    }
     }
     
     //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
