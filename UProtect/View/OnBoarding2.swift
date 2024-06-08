@@ -34,6 +34,15 @@ struct OnBoarding2: View {
                 
                 FourthPageView()
                     .tag(3)
+                    .overlay{
+                        ZStack(alignment: .center){
+                            Text("- Made by Eleonora Iannelli, Andrea Romano, Alessia Previdente, Yuri Mario Gianoli, Simone Sarnataro, Matteo Cotena")
+                                .font(.caption2)
+                                .foregroundStyle(.gray)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 300)
+                        }.padding(.top, 550)
+                    }
             }
             .ignoresSafeArea()
             .animation(.easeInOut, value: pageIndex)
