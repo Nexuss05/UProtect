@@ -8,25 +8,74 @@
 
     },
     "  ❌🏃‍♀️ Never play or run into the street." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "  ❌🏃‍♀️ Mai giocare o correre in mezzo alla strada."
+          }
+        }
+      }
     },
     "  ❌👨 Never accept rides or gifts from strangers." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "  ❌👨 Mai accettare un passaggio o un regalo da uno sconosciuto."
+          }
+        }
+      }
     },
     "  👀 Always look both ways before crossing the street." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "  👀 Guardare da entrambe le direzioni quando si attraversa la strada."
+          }
+        }
+      }
     },
     "  🚶‍♀️ Walk on sidewalks or, if unavailable, facing traffic on the road's edge." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "  🚶‍♀️ Cammina sul marciapiede o, nel caso non fosse possibile, camminare sul bordo della strada rivolto verso il traffico."
+          }
+        }
+      }
     },
     "  🚸 Use pedestrian crossings and obey traffic signals." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "  🚸  Usa le strisce pedonali e obbedisci ai segnali stradali."
+          }
+        }
+      }
     },
     "_**Emergency Help**_: Always call your local emergency number if you suspect someone has alcohol poisoning." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "_**Chiamata di Emergenza**_: Chiamare sempre il numero di emergenza locale se si sospetta che qualcuno abbia un'intossicazione da alcol."
+          }
+        }
+      }
     },
     "- _Behavioral Patterns_: Conversely, a young man with a face mask in a desolate area might raise alarms. Use context and other clues to predict potential threats accurately." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-_Pattern Comportamentali_: D'altro canto, un giovane ragazzo con una maschera in una zona desolata, potrebbe destare sospetti. Analizza il contesto e altri indizi per prevedere con precisione le potenziali minacce. "
+          }
+        }
+      }
     },
     "- _Change Pace and Direction_: Alter your walking pattern. Speed up, slow down, or take several turns to see if the follower mirrors your movements." : {
 
@@ -86,22 +135,57 @@
 
     },
     "- Anxiety" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Ansia"
+          }
+        }
+      }
     },
     "- Avoid isolated areas, especially at night." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Evita aree deserte, specialmente durante le ore notturne."
+          }
+        }
+      }
     },
     "- Avoid stopping in secluded areas." : {
 
     },
     "- Blue-tinged skin" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Pelle blu "
+          }
+        }
+      }
     },
     "- Confusion" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Confusione"
+          }
+        }
+      }
     },
     "- Conscious but unresponsive" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Cosciente "
+          }
+        }
+      }
     },
     "- Dizziness" : {
 
@@ -113,13 +197,34 @@
 
     },
     "- If another car is following you, do not drive home. Go to a police station or a well-lit, busy area." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Se un'altra macchina ti sta seguendo, non tornare a casa. Vai ad una stazione di polizia o in una zona ben illuminata e trafficata."
+          }
+        }
+      }
     },
     "- If you feel unsafe, get off at a busy stop and wait for the next bus or train." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Se non ti senti al sicuro, scendi ad una fermata affollata e aspetta per il prossimo bus o treno."
+          }
+        }
+      }
     },
     "- Keep your phone easily accessible." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Mantieni il telefono accessibile"
+          }
+        }
+      }
     },
     "- Loss of coordination" : {
 
@@ -134,13 +239,34 @@
 
     },
     "- Nausea" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Nausea"
+          }
+        }
+      }
     },
     "- Panic" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Panico"
+          }
+        }
+      }
     },
     "- Paranoia" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Paranoia"
+          }
+        }
+      }
     },
     "- Passing out or unconsciousness" : {
 
@@ -149,13 +275,27 @@
 
     },
     "- Slow or irregular breathing" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Respirazione lenta e irregolare"
+          }
+        }
+      }
     },
     "- Slurred speech" : {
 
     },
     "- Vomiting" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Vomito"
+          }
+        }
+      }
     },
     "- Walk confidently and at a steady pace." : {
 
@@ -478,7 +618,14 @@
 
     },
     "1. Tap the button below and\n2. Go to Location\n3. Change the settings to \"While Using the App\"" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Clicca il Bottone in basso\n2. Vai in Posizione\n3. Cambia il permesso in \"Mentre utilizzo l'app\""
+          }
+        }
+      }
     },
     "1.99€" : {
       "localizations" : {
@@ -533,10 +680,24 @@
       }
     },
     "Additional Safety Tips" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ulteriori Consigli di sicurezza"
+          }
+        }
+      }
     },
     "Additional Tips for Different Scenarios" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ulteriori Consigli per scenari differenti"
+          }
+        }
+      }
     },
     "After perceiving elements, the next step is understanding their meaning by asking key questions:" : {
 
@@ -740,10 +901,24 @@
       }
     },
     "Do’s:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosa fare:"
+          }
+        }
+      }
     },
     "Don’ts:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosa non fare:"
+          }
+        }
+      }
     },
     "Done" : {
       "localizations" : {
@@ -756,13 +931,27 @@
       }
     },
     "Enable Location" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abilita Posizione"
+          }
+        }
+      }
     },
     "Enhancing Perception" : {
 
     },
     "Enjoying a Safe Night Out:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Godersi una uscita notturna sicura:"
+          }
+        }
+      }
     },
     "Enter Verification Code" : {
       "localizations" : {
@@ -775,7 +964,14 @@
       }
     },
     "Essential Safety Tips" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consigli di sicurezza essenziali"
+          }
+        }
+      }
     },
     "FEATURES" : {
       "localizations" : {
@@ -788,16 +984,37 @@
       }
     },
     "For any suspicious activity, **report it** to your local emergency number." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per qualsiasi attività sospetta, **segnalala** al tuo numero di emergenza locale "
+          }
+        }
+      }
     },
     "Foresee possible threats and determine the best course of action, such as joining the crowd to escape danger." : {
 
     },
     "General Advice:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consigli generali:"
+          }
+        }
+      }
     },
     "General Safety" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza generale"
+          }
+        }
+      }
     },
     "Get started" : {
       "localizations" : {
@@ -820,10 +1037,24 @@
       }
     },
     "Helping Someone Who Drank Too Much" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aiutare Qualcuno Che Ha Bevuto Troppo"
+          }
+        }
+      }
     },
     "Helping Someone Who Is Too High from Weed" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aiutare Qualcuno che ha fumato troppa marijuana"
+          }
+        }
+      }
     },
     "Highly" : {
       "localizations" : {
@@ -856,7 +1087,14 @@
       }
     },
     "How to Tell If You Are Being Followed" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Come Capire Se Ti Seguono"
+          }
+        }
+      }
     },
     "If you are feeling unsafe and don't want to notify your contact immediately, simply hold the button to activate the timer. You have the option to modify the timer in the settings to your liking. \nIf you don't dismiss the alert when the time runs out, a notification will be sent." : {
       "localizations" : {
@@ -912,7 +1150,14 @@
       }
     },
     "Location Services" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servizi di Localizzazione"
+          }
+        }
+      }
     },
     "Log In" : {
       "localizations" : {
@@ -1070,7 +1315,14 @@
       }
     },
     "Notification not sent!" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifica non inviata!"
+          }
+        }
+      }
     },
     "Notification sent!" : {
       "localizations" : {
@@ -1374,7 +1626,14 @@
 
     },
     "Steps to Help Someone:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Step per aiutare qualcuno:"
+          }
+        }
+      }
     },
     "Supervision mode" : {
       "localizations" : {
@@ -1431,7 +1690,14 @@
       }
     },
     "The account associated with this number already exists" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un account associato a questo numero è già esistente"
+          }
+        }
+      }
     },
     "The final step involves processing all the information gathered and predicting future events:" : {
 
@@ -1440,7 +1706,14 @@
 
     },
     "There is no account associated with this number" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessun account associato a questo numero è stato trovato"
+          }
+        }
+      }
     },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them." : {
       "localizations" : {
@@ -1523,7 +1796,14 @@
 
     },
     "Walking to School Alone Tips:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggerimenti sul Andare a Scuola da Soli:"
+          }
+        }
+      }
     },
     "Welcome back!" : {
       "localizations" : {
@@ -1539,10 +1819,24 @@
 
     },
     "What Not to Do:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosa non fare:"
+          }
+        }
+      }
     },
     "What to Do If You Suspect You’re Being Followed" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosa Fare Se Sospetti Di Essere Seguita"
+          }
+        }
+      }
     },
     "While humans naturally possess situational awareness due to innate survival instincts, it can be enhanced through vigilance, continuous practice, and improving cognitive abilities." : {
 
@@ -1610,7 +1904,14 @@
       }
     },
     "You can select no more then 2 contacts" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "È possibile selezionare solo due contatti"
+          }
+        }
+      }
     },
     "You don't have an account!" : {
       "extractionState" : "stale",
@@ -1624,7 +1925,14 @@
       }
     },
     "You've reached the limit" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai raggiunto il limite consentito"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
