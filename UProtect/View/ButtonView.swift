@@ -39,6 +39,9 @@ struct TimerView: View {
     let nome = UserDefaults.standard.string(forKey: "firstName") ?? "Name"
     let cognome = UserDefaults.standard.string(forKey: "lastName") ?? "Surname"
     
+    @Binding var selectedContacts: [SerializableContact]
+    let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
+    
     func TapAnimation(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             withAnimation{
@@ -145,6 +148,7 @@ struct TimerView: View {
                     "subtitle": "Open the app to check on them",
                     "body": "\(message)"
                 },
+        "badge": 1,
                 "sound": "default"
             },
             "topic": "com.matteo-cotena.UProtect"
@@ -206,6 +210,30 @@ struct TimerView: View {
         task.resume()
     }
     
+    func formatPhoneNumber(_ phoneNumber: String?) -> String {
+        guard let phoneNumber = phoneNumber else { return "" }
+        let prefix = vm.getCountryPhonePrefix()
+        return phoneNumber.hasPrefix(prefix) ? phoneNumber : "\(prefix)\(phoneNumber)"
+    }
+    
+    func sendMessage(){
+        let name = UserDefaults.standard.string(forKey: "firstName")
+        let surname = UserDefaults.standard.string(forKey: "lastName")
+        guard !selectedContacts.isEmpty else {
+            return
+        }
+        let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
+        vonage.sendSMS(to: phoneNumbers, from: "Hestia", text: "\(String(describing: name)) \(String(describing: surname)) is in danger") { result in
+            switch result {
+            case .success:
+                self.showAlert = true
+                print("SMS inviato con successo")
+            case .failure(let error):
+                print("Errore durante l'invio dell'SMS: \(error)")
+            }
+        }
+    }
+    
     var body: some View {
         ZStack {
             if !timerManager.isActivated{
@@ -222,7 +250,17 @@ struct TimerView: View {
                             .fontWeight(.bold)
                             .offset(x: 0, y: -150)
                     }
-                }else {
+                } else if Locale.current.language.languageCode?.identifier == "it" {
+                    VStack(alignment: .center){
+                        Text(LocalizedStringKey("TIENI PREMUTO"))
+                            .foregroundStyle(CustomColor.orange)
+                            .fontWeight(.bold)
+                            .font(.title)
+                        Text(LocalizedStringKey("per la Supervision mode"))
+                            .font(.title2)
+                            .fontWeight(.bold)
+                    }.offset(x: 0, y: -165)
+                } else {
                     HStack{
                         Text(LocalizedStringKey("HOLD"))
                             .foregroundStyle(CustomColor.orange)
@@ -349,6 +387,9 @@ struct TimerView: View {
                             print("Before calling sendPushNotification()")
                             sendPushNotificationsForSavedTokens()
                             print("After calling sendPushNotification()")
+                            print("Before calling sendPushNotification()")
+                            sendMessage()
+                            print("After calling sendPushNotification()")
                             withAnimation {
                                 timerManager.Activation()
                                 timerManager.CircleAnimation()
@@ -379,6 +420,7 @@ struct TimerView: View {
                 } else {
                     print("No tokens saved in UserDefaults")
                     showAlert3.toggle()
+                    sendMessage()
                 }
             }
             .onLongPressGesture{
@@ -405,6 +447,7 @@ struct TimerView: View {
                 } else {
                     print("No tokens saved in UserDefaults")
                     showAlert3.toggle()
+                    sendMessage()
                 }
             }
         }.ignoresSafeArea()
@@ -419,7 +462,6 @@ struct TimerView: View {
                 }
                 timerManager.updateProgress()
                 timerManager.updateCountFromLastCounter()
-                //                vm.fetchUserInfo()
             }.alert(isPresented: $timerManager.showAlert) {
                 Alert(
                     title: Text("Are you safe?"),
@@ -466,9 +508,9 @@ struct TimerView: View {
     }
 }
 
-struct ContentView_Previews67: PreviewProvider {
-    static var previews: some View {
-        let timerManager = TimerManager()
-        return TimerView(timerManager: timerManager, audioRecorder: AudioRecorder())
-    }
-}
+//struct ContentView_Previews67: PreviewProvider {
+//    static var previews: some View {
+//        let timerManager = TimerManager()
+//        return TimerView(timerManager: timerManager, audioRecorder: AudioRecorder())
+//    }
+//}

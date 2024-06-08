@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseCore
 
 struct LogInView: View {
     @State private var keyboardHeight: CGFloat = 0
@@ -235,9 +234,6 @@ struct RegistrationView: View {
                 }
             }.padding(.bottom, keyboardHeight)
                 .ignoresSafeArea()
-                .onAppear{
-                    FirebaseApp.configure()
-                }
                 .fullScreenCover(isPresented: $isShowingLogin, content: {
                     LogInView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 })

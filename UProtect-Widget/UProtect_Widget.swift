@@ -60,27 +60,27 @@ struct WidgetView: View {
         HStack {
             if widgetFamily == .systemMedium || widgetFamily == .systemLarge {
                 
-                    ZStack{
-                        Circle()
-                            .foregroundColor(.white)
-                            .frame(width: 120)
-//                            .shadow(color: .gray, radius: 6)
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .resizable()
-                            .frame(width: 55, height: 50)
-                            .foregroundColor(CustomColor.orange)
-                            .opacity(1)
-                    }
+                ZStack{
+                    Circle()
+                        .foregroundColor(.white)
+                        .frame(width: 120)
+                        .shadow(color: .gray, radius: 2, x: 0, y: 5)
+                    //                            .shadow(color: .gray, radius: 6)
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .resizable()
+                        .frame(width: 55, height: 50)
+                        .foregroundColor(CustomColor.orange)
+                        .opacity(1)
+                }
                 .offset(CGSize(width: -10, height: 0))
                 VStack {
                     Text("TAP")
                         .foregroundStyle(CustomColor.orange)
                         .fontWeight(.bold)
                         .font(.title)
-                    Text("to receive help")
+                    Text("to send an alert")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(.white)
                 }
                 .multilineTextAlignment(.center)
             } else if widgetFamily == .systemSmall {
@@ -88,7 +88,8 @@ struct WidgetView: View {
                     Circle()
                         .foregroundColor(.white)
                         .frame(width: 120)
-//                        .shadow(color: .gray, radius: 6)
+                        .shadow(color: .gray, radius: 2, x: 0, y: 5)
+                    //                        .shadow(color: .gray, radius: 6)
                     Image(systemName: "exclamationmark.triangle.fill")
                         .resizable()
                         .frame(width: 55, height: 50)
@@ -103,14 +104,13 @@ struct WidgetView: View {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .resizable()
                         .frame(width: 30, height: 28)
-                        .foregroundColor(.white)
                 }
             }
         }
         .widgetURL(URL(string: "widget://sos"))
         //        .background(Color.red) // Modifica il colore di sfondo per il debug
-//        .widgetBackground(CustomColor.orangeBackground)
-        .widgetBackground(Color.black)
+                .widgetBackground(CustomColor.orangeBackground)
+//        .widgetBackground(Color.black)
     }
 }
 

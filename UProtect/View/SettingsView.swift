@@ -12,8 +12,8 @@ import SwiftData
 struct SettingsView: View {
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     @State private var circleColor: Color = UserDefaultsManager.loadCircleColor() ?? Color.red
-    @State var url = URL(string: "https://www.iubenda.com/privacy-policy/49969320")
-    @State var url2 = URL(string: "")
+    @State var url = URL(string: "https://www.iubenda.com/privacy-policy/60037945")
+    @State var url2 = URL(string: "https://discord.gg/sMGDwdBp")
     @Query var userData: [Contacts]
     
     @ObservedObject var timerManager: TimerManager
@@ -35,6 +35,38 @@ struct SettingsView: View {
     @State var touchCount = 0
     @State var showEE = false
     
+    func logout() {
+        let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
+        if let bundleIdentifier = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
+        }
+        if let token = fcmToken {
+            UserDefaults.standard.set(token, forKey: "fcmToken")
+        }
+        isWelcomeScreenOver = false
+        showReg.toggle()
+    }
+    
+    func deleteAccount() {
+        vm.deleteAccount { success in
+            if success {
+                print("Account deleted successfully.")
+                let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
+                if let bundleIdentifier = Bundle.main.bundleIdentifier {
+                    UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
+                }
+                if let token = fcmToken {
+                    UserDefaults.standard.set(token, forKey: "fcmToken")
+                }
+                isWelcomeScreenOver = false
+                showReg.toggle()
+            } else {
+                print("Error deleting account.")
+                showAlert2.toggle()
+            }
+        }
+    }
+    
     var body: some View {
         NavigationStack{
             VStack{
@@ -49,9 +81,9 @@ struct SettingsView: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
                             }.accessibilityHidden(true)
-                            .onTapGesture(count: 5) {
-                                Activated()
-                            }
+                                .onTapGesture(count: 5) {
+                                    Activated()
+                                }
                             VStack(alignment: .leading, spacing: -2.0){
                                 Text("\(nome) \(cognome)")
                                     .fontWeight(.medium)
@@ -65,12 +97,18 @@ struct SettingsView: View {
                             GoalView(timerManager: timerManager)
                                 .padding(.top, -50)
                         } label: {
-                            Text("Change time")
+                            HStack{
+                                Image(systemName: "timer")
+                                Text("Change timer duration")
+                            }
                         }
                         NavigationLink {
                             RecordingsList(audioRecorder: audioRecorder, audioPlayer: audioPlayer).ignoresSafeArea()
                         } label: {
-                            Text("Recordings")
+                            HStack{
+                                Image(systemName: "mic.fill")
+                                Text("Recordings")
+                            }
                         }.navigationViewStyle(StackNavigationViewStyle())
                     }
                     
@@ -81,6 +119,8 @@ struct SettingsView: View {
                             }
                         }) {
                             HStack {
+                                Image(systemName: "gear")
+                                    .foregroundColor(.primary)
                                 Text("App preferences")
                                     .foregroundColor(.primary)
                                 Spacer()
@@ -94,20 +134,27 @@ struct SettingsView: View {
                         NavigationLink {
                             OnBoarding2(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer).ignoresSafeArea()
                         } label: {
-                            Text("Onboarding")
+                            HStack{
+                                Image(systemName: "info.circle")
+                                Text("Onboarding")
+                            }
                         }
-//                        HStack {
-//                            Link("Get Help", destination: url2!)
-//                                .foregroundColor(.primary)
-//                            Spacer()
-//                            Image(systemName: "arrow.up.forward")
-//                                .foregroundStyle(CustomColor.orange)
-//                        }.onTapGesture {
-//                            if let url = URL(string: "") {
-//                                UIApplication.shared.open(url)
-//                            }
-//                        }
                         HStack {
+                            Image(systemName: "lifepreserver")
+                                .foregroundColor(.primary)
+                            Link("Get Help", destination: url2!)
+                                .foregroundColor(.primary)
+                            Spacer()
+                            Image(systemName: "arrow.up.forward")
+                                .foregroundStyle(CustomColor.orange)
+                        }.onTapGesture {
+                            if let url = URL(string: "https://discord.gg/sMGDwdBp") {
+                                UIApplication.shared.open(url)
+                            }
+                        }
+                        HStack {
+                            Image(systemName: "doc.text")
+                                .foregroundColor(.primary)
                             Link("Privacy Policy", destination: url!)
                                 .foregroundColor(.primary)
                             Spacer()
@@ -118,8 +165,12 @@ struct SettingsView: View {
                                 UIApplication.shared.open(url)
                             }
                         }
-                        ShareLink(item: "https://testflight.apple.com/join/UjB0xSRP")
-                            .foregroundColor(.primary)
+                        ShareLink(item: URL(string: "https://testflight.apple.com/join/UjB0xSRP")!, label: {
+                            HStack{
+                                Image(systemName: "square.and.arrow.up")
+                                Text("Share")
+                            }.foregroundColor(.primary)
+                        })
                     }
                     
                     Section{
@@ -161,39 +212,16 @@ struct SettingsView: View {
         })
         .alert("Are you sure?", isPresented: $showAlert) {
             Button("YES", role: .destructive) {
-                vm.deleteUser { success in
-                    if success{
-                        let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
-                        if let bundleIdentifier = Bundle.main.bundleIdentifier {
-                            UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
-                        }
-                        if let token = fcmToken {
-                            UserDefaults.standard.set(token, forKey: "fcmToken")
-                        }
-                        isWelcomeScreenOver = false
-                        showReg.toggle()
-                    } else {
-                        print("pollo")
-                        showAlert2.toggle()
-                    }
-                }
+                deleteAccount()
             }
             Button("NO", role: .cancel) { }
         }
-        .alert("Try again later", isPresented: $showAlert2) {
+        .alert("Error: try again later", isPresented: $showAlert2) {
             Button("Ok") { }
         }
         .alert("Are you sure?", isPresented: $showAlert3) {
             Button("YES", role: .destructive) {
-                let fcmToken = UserDefaults.standard.string(forKey: "fcmToken")
-                if let bundleIdentifier = Bundle.main.bundleIdentifier {
-                    UserDefaults.standard.removePersistentDomain(forName: bundleIdentifier)
-                }
-                if let token = fcmToken {
-                    UserDefaults.standard.set(token, forKey: "fcmToken")
-                }
-                isWelcomeScreenOver = false
-                showReg.toggle()
+                logout()
             }
             Button("NO", role: .cancel) { }
         }

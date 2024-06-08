@@ -24,21 +24,24 @@ struct DirectionView: View {
             VStack {
                 HStack{
                     VStack(alignment: .leading){
-                        Text(selectedLocation?.name ?? "").lineLimit(1)
-                            .font(.title3)
-                            .foregroundStyle(.black)
-                            .bold()
+                        HStack{
+                            Text(selectedLocation?.name ?? "").lineLimit(1)
+                                .font(.title3)
+                                .foregroundStyle(.black)
+                                .bold()
+                            Spacer()
+                            Button(action: {
+                                showRoute.toggle()
+                            }) {
+                                Image(systemName: "xmark")
+                                    .foregroundStyle(CustomColor.orange)
+                            }
+                        }
                         Text(firstPartOfAddress(address: selectedLocation?.address ?? "")).lineLimit(1)
                             .font(.title3)
-                            .foregroundStyle(.black)
+                            .foregroundStyle(.gray)
                         
-                    }.padding(.leading, 10)
-                    Spacer()
-                    Button(action: {
-                        showRoute.toggle()
-                    }) {
-                        Image(systemName: "xmark")
-                    }.padding(.trailing, 10)
+                    }.padding(.horizontal, 23.5)
                 }.frame(width: 350)
                     .padding(.top, 15)
                 HStack(spacing: 50.0){

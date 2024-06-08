@@ -92,7 +92,7 @@ struct MapView: View {
                     }
                 }
 //                .mapStyle(.hybrid(elevation: .flat, pointsOfInterest: .excludingAll))
-                .mapStyle(.standard)
+                .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
                 .onAppear() {
                     print("Locations on appear: \(locations)")
                 }

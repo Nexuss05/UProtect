@@ -585,6 +585,7 @@
       }
     },
     "Change time" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -593,6 +594,9 @@
           }
         }
       }
+    },
+    "Change timer duration" : {
+
     },
     "Clubbing Safety Tips" : {
 
@@ -608,6 +612,7 @@
       }
     },
     "Completato" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -616,6 +621,9 @@
           }
         }
       }
+    },
+    "Completed" : {
+
     },
     "Contact" : {
       "localizations" : {
@@ -775,6 +783,9 @@
         }
       }
     },
+    "Error: try again later" : {
+
+    },
     "Essential Safety Tips" : {
       "localizations" : {
         "it" : {
@@ -825,6 +836,9 @@
           }
         }
       }
+    },
+    "Get Help" : {
+
     },
     "Get started" : {
       "localizations" : {
@@ -1229,6 +1243,9 @@
           }
         }
       }
+    },
+    "per la Supervision mode" : {
+
     },
     "Pharmacy" : {
       "extractionState" : "manual",
@@ -1637,6 +1654,9 @@
         }
       }
     },
+    "TIENI PREMUTO" : {
+
+    },
     "Time" : {
       "localizations" : {
         "it" : {
@@ -1679,6 +1699,7 @@
       }
     },
     "Try again later" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {

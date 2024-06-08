@@ -127,12 +127,12 @@ struct DetailView: View {
                         }
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        Text("Completato")
+                        Text("Completed")
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(Color.blue)
+                            .background(CustomColor.orange)
                             .cornerRadius(10)
                             .shadow(color: .gray, radius: 5, x: 0, y: 2)
                             .padding(.vertical, 30)

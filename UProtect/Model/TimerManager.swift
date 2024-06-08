@@ -110,7 +110,7 @@ class TimerManager: ObservableObject {
     
     func updateProgress(){
         self.to = CGFloat(self.count) / CGFloat(maxTime)
-        print("progess updated")
+//        print("progess updated")
     }
     
     

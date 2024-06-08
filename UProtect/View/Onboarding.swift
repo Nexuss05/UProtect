@@ -210,7 +210,7 @@ struct SecondPageView: View {
                 if self.vm.isTimerRunning {
                     if self.count > 180 {
                         self.count -= 1
-                        print("\(self.count)")
+//                        print("\(self.count)")
                     } else {
                         self.count = 300
                     }
@@ -246,26 +246,57 @@ struct ThirdPageView: View {
 struct FourthPageView: View {
     
     var body: some View {
-        ZStack {
-            Image("E5")
-            VStack{
-                Text("Courses")
-                    .font(.title)
-                    .bold()
-                    .frame(width: 340)
-                    .padding(.top, 25)
-                Text("This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them.")
-                    .fontWeight(.light)
-                    .frame(width: 340)
-                    .multilineTextAlignment(.center)
-                    .padding(.vertical)
-            }.padding(.top, 190)
+        if Locale.current.language.languageCode?.identifier == "en" {
+            ZStack {
+                Image("E5")
+                VStack{
+                    Text("Courses")
+                        .font(.title)
+                        .bold()
+                        .frame(width: 340)
+                        .padding(.top, 25)
+                    Text("This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them.")
+                        .fontWeight(.light)
+                        .frame(width: 340)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical)
+                }.padding(.top, 190)
+            }
+        } else if Locale.current.language.languageCode?.identifier == "it" {
+            ZStack {
+                Image("E5")
+                VStack{
+                    Text("Courses")
+                        .font(.title)
+                        .bold()
+                        .frame(width: 340)
+                        .padding(.top, 25)
+                    Text("This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them.")
+                        .fontWeight(.light)
+                        .frame(width: 340)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical)
+                }.padding(.top, 190)
+            }
         }
     }
 }
 
+//struct WelcomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WelcomeView(timerManager: TimerManager(), audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
+//    }
+//}
+
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView(timerManager: TimerManager(), audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
+        Group {
+            WelcomeView(timerManager: TimerManager(), audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
+                .environment(\.locale, .init(identifier: "en"))
+
+            WelcomeView(timerManager: TimerManager(), audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
+                .environment(\.locale, .init(identifier: "it"))
+        }
     }
 }
+

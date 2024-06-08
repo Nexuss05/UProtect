@@ -608,4 +608,57 @@ class CloudViewModel: ObservableObject{
         }
         addOperation(operation: queryOperation)
     }
+    
+    func deleteAccount(completion: @escaping (Bool) -> Void) {
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        var fetchedRecordID: CKRecord.ID?
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                fetchedRecordID = record.recordID
+                print("Record found with ID: \(record.recordID)")
+            case .failure(let error):
+                print("Error during recordMatchedBlock: \(error.localizedDescription)")
+                completion(false)
+            }
+        }
+        
+        queryOperation.queryResultBlock = { returnedResult in
+            print("Query operation completed with result: \(returnedResult)")
+            DispatchQueue.main.async {
+                if let recordID = fetchedRecordID {
+                    print("Deleting record with ID: \(recordID)")
+                    self.delete(record: recordID, completion: completion)
+                } else {
+                    print("No record found with the provided token.")
+                    completion(false)
+                }
+            }
+        }
+        CKContainer.default().publicCloudDatabase.add(queryOperation)
+    }
+
+    func delete(record: CKRecord.ID, completion: @escaping (Bool) -> Void) {
+        CKContainer.default().publicCloudDatabase.delete(withRecordID: record) { recordID, err in
+            if let err = err {
+                print("Error during delete operation: \(err.localizedDescription)")
+                completion(false)
+                return
+            }
+            guard let recordID = recordID else {
+                print("No RecordID returned after delete operation.")
+                completion(false)
+                return
+            }
+            print("Record successfully deleted with ID: \(recordID)")
+            completion(true)
+        }
+    }
+
+    
 }

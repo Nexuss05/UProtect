@@ -135,7 +135,6 @@ struct FetchLocation: View {
                         LookAroundPreview(initialScene: lookAroundScene)
                             .frame(width: 90, height: 130)
                             .cornerRadius(15)
-                            .padding(.leading, 10)
                             .onAppear(){
                                 getLookAroundScene(lat: result.latitude, long: result.longitude)
                             }
@@ -213,6 +212,7 @@ struct FetchLocation: View {
                             }
                         }
                     }
+                    .frame(width:335, height: 150)
                     .padding(.vertical, 25)
                 }.tag(index)
                     .padding(.all, 35)

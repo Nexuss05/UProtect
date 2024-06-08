@@ -34,12 +34,12 @@ struct UProtectApp: App {
     }
     
     private func deleteOldRecordings() {
-            let now = Date()
-            let oneWeekAgo = now.addingTimeInterval(-10080 * 60) // 1 week ago
-            let recordingsToDelete = audioRecorder.recordings.filter { $0.createdAt < oneWeekAgo }
-            let urlsToDelete = recordingsToDelete.map { $0.fileURL }
-            audioRecorder.deleteRecording(urlsToDelete: urlsToDelete)
-        }
+        let now = Date()
+        let oneWeekAgo = now.addingTimeInterval(-10080 * 60) // 1 week ago
+        let recordingsToDelete = audioRecorder.recordings.filter { $0.createdAt < oneWeekAgo }
+        let urlsToDelete = recordingsToDelete.map { $0.fileURL }
+        audioRecorder.deleteRecording(urlsToDelete: urlsToDelete)
+    }
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -56,11 +56,11 @@ struct UProtectApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-            ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-//            Newbutton(timerManager: timerManager, audioRecorder: audioRecorder)
-//            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-//            WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                        UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+//            ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+            //            Newbutton(timerManager: timerManager, audioRecorder: audioRecorder)
+            //            RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+            //            WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 .onAppear{
                     vm.fetchUserPosition()
                     vm.fetchFriend()
@@ -89,10 +89,10 @@ struct UProtectApp: App {
         }.modelContainer(sharedModelContainer)
             .environment(locationManager)
             .onChange(of: scene) { newScenePhase in
-                        if newScenePhase == .active {
-                            deleteOldRecordings()
-                        }
-                    }
+                if newScenePhase == .active {
+                    deleteOldRecordings()
+                }
+            }
     }
     
     //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
