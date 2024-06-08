@@ -119,8 +119,8 @@ struct CourseRow: View {
                         .frame(width: 160, height: 120)
 //                    Lotties(loopmode: .loop)
 //                        .frame(width: 50, height: 50)
-//                        .scaleEffect(0.20)
-//                        .padding(.trailing, 30)
+                        .scaleEffect(0.98)
+                        .padding(.trailing, -10)
 //                        .padding(.bottom, 7)
                 } else {
                     Image("Children")

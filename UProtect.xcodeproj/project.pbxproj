@@ -11,6 +11,9 @@
 		175A0A652C05BD7200101A32 /* FetchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A642C05BD7200101A32 /* FetchLocation.swift */; };
 		175A0A672C05BDB300101A32 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175A0A662C05BDB300101A32 /* LocationManager.swift */; };
 		1763CF2C2C0EEEC200A465C4 /* DirectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763CF2B2C0EEEC200A465C4 /* DirectionView.swift */; };
+		997DA7F62C14B2AB0048ABB9 /* AuthKey_MD5P379685.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 997DA7F52C14B2AB0048ABB9 /* AuthKey_MD5P379685.p8 */; };
+		997DA7F72C14B2C20048ABB9 /* AuthKey_MD5P379685.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 997DA7F52C14B2AB0048ABB9 /* AuthKey_MD5P379685.p8 */; };
+		997DA7F92C14B3220048ABB9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 997DA7F82C14B3220048ABB9 /* GoogleService-Info.plist */; };
 		999499F92C03B7B50074604F /* Study.json in Resources */ = {isa = PBXBuildFile; fileRef = 999499F82C03B7B50074604F /* Study.json */; };
 		99A452652C05C5E8004700FE /* Animation - 1716803277345.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452642C05C5E8004700FE /* Animation - 1716803277345.json */; };
 		99A452672C05C5EE004700FE /* Animation - 1716803884547.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452662C05C5EE004700FE /* Animation - 1716803884547.json */; };
@@ -56,9 +59,6 @@
 		C2893DD62BEB8B9600733211 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD52BEB8B9600733211 /* Counter.swift */; };
 		C2893DD92BEB8C1900733211 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2893DD82BEB8C1900733211 /* RingView.swift */; };
 		C293A8992BF36C740008F1F8 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = C293A8982BF36C740008F1F8 /* SwiftJWT */; };
-		C2E4035A2C0FD16D00F5B4F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2E403592C0FD16D00F5B4F7 /* GoogleService-Info.plist */; };
-		C2E4035D2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2E4035C2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 */; };
-		C2E4035E2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */ = {isa = PBXBuildFile; fileRef = C2E4035C2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 */; };
 		C2E403632C10433900F5B4F7 /* SharedTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4035F2C10433900F5B4F7 /* SharedTimerManager.swift */; };
 		C2E403642C10433900F5B4F7 /* SharedTimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4035F2C10433900F5B4F7 /* SharedTimerManager.swift */; };
 		C2E4036A2C1043E500F5B4F7 /* PremiumPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E403692C1043E500F5B4F7 /* PremiumPopUp.swift */; };
@@ -149,6 +149,8 @@
 		175A0A642C05BD7200101A32 /* FetchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLocation.swift; sourceTree = "<group>"; };
 		175A0A662C05BDB300101A32 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		1763CF2B2C0EEEC200A465C4 /* DirectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionView.swift; sourceTree = "<group>"; };
+		997DA7F52C14B2AB0048ABB9 /* AuthKey_MD5P379685.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_MD5P379685.p8; sourceTree = "<group>"; };
+		997DA7F82C14B3220048ABB9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		999499F82C03B7B50074604F /* Study.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Study.json; sourceTree = "<group>"; };
 		99A452642C05C5E8004700FE /* Animation - 1716803277345.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716803277345.json"; sourceTree = "<group>"; };
 		99A452662C05C5EE004700FE /* Animation - 1716803884547.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716803884547.json"; sourceTree = "<group>"; };
@@ -195,8 +197,6 @@
 		C2893DD12BEB7FE400733211 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		C2893DD52BEB8B9600733211 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		C2893DD82BEB8C1900733211 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
-		C2E403592C0FD16D00F5B4F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		C2E4035C2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_7U2ZFPX98A.p8; sourceTree = "<group>"; };
 		C2E4035F2C10433900F5B4F7 /* SharedTimerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedTimerManager.swift; sourceTree = "<group>"; };
 		C2E403602C10433900F5B4F7 /* TimerManagerIOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManagerIOS.swift; sourceTree = "<group>"; };
 		C2E403612C10433900F5B4F7 /* TimerManagerWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerManagerWatch.swift; sourceTree = "<group>"; };
@@ -305,8 +305,8 @@
 				E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */,
 				C25CE9C72BFFCC72008CE99A /* Info.plist */,
 				E06A205C2C0E3015005D4D67 /* InfoPlist.xcstrings */,
-				C2E403592C0FD16D00F5B4F7 /* GoogleService-Info.plist */,
-				C2E4035C2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 */,
+				997DA7F52C14B2AB0048ABB9 /* AuthKey_MD5P379685.p8 */,
+				997DA7F82C14B3220048ABB9 /* GoogleService-Info.plist */,
 				C20EBDC72C0F14A9002EA465 /* UProtect.entitlements */,
 				C21DD83D2BE4D471003EB614 /* UProtectApp.swift */,
 				E0EAD0742BFE5530006753F5 /* UProtect.swift */,
@@ -594,13 +594,13 @@
 				999499F92C03B7B50074604F /* Study.json in Resources */,
 				C240B3452C11C8AB00ED0E16 /* Animation - 1717670163836.json in Resources */,
 				E06A205D2C0E3015005D4D67 /* InfoPlist.xcstrings in Resources */,
-				C2E4035D2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */,
 				E06C1E2B2C12E9C40077CE4C /* Animation - 1717744147505.json in Resources */,
 				C249A9DB2C10DF0C004293B7 /* Animation - 1717609436208.json in Resources */,
+				997DA7F92C14B3220048ABB9 /* GoogleService-Info.plist in Resources */,
 				99A452692C05C5F4004700FE /* Animation - 1716804413916.json in Resources */,
-				C2E4035A2C0FD16D00F5B4F7 /* GoogleService-Info.plist in Resources */,
 				99B555752C13BF410096F0B4 /* Animation - 1717796337306.json in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
+				997DA7F72C14B2C20048ABB9 /* AuthKey_MD5P379685.p8 in Resources */,
 				E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,8 +609,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2E4035E2C0FD4F200F5B4F7 /* AuthKey_7U2ZFPX98A.p8 in Resources */,
 				C23F9A172C0098C3001FE56F /* Preview Assets.xcassets in Resources */,
+				997DA7F62C14B2AB0048ABB9 /* AuthKey_MD5P379685.p8 in Resources */,
 				C23F9A142C0098C3001FE56F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -847,9 +847,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UProtect/UProtect.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = UU6556PJ33;
+				DEVELOPMENT_TEAM = 7G2UC637L6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UProtect/Info.plist;
@@ -869,7 +869,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrearomano.Hestia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -890,9 +890,9 @@
 				CODE_SIGN_ENTITLEMENTS = UProtect/UProtect.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = UU6556PJ33;
+				DEVELOPMENT_TEAM = 7G2UC637L6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UProtect/Info.plist;
@@ -912,7 +912,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrearomano.Hestia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -935,20 +935,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchProtect Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UU6556PJ33;
+				DEVELOPMENT_TEAM = 7G2UC637L6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to the microphone to record audio";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.matteo-cotena.UProtect";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.andrearomano.Hestia;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrearomano.Hestia.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -970,20 +970,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchProtect Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UU6556PJ33;
+				DEVELOPMENT_TEAM = 7G2UC637L6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to the microphone to record audio";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.matteo-cotena.UProtect";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.andrearomano.Hestia;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andrearomano.Hestia.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1001,7 +1001,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UU6556PJ33;
+				DEVELOPMENT_TEAM = 7G2UC637L6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
@@ -1014,7 +1014,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect.UProtect-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.andrearomano.Hestia.Hestia-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1031,7 +1031,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UU6556PJ33;
+				DEVELOPMENT_TEAM = 7G2UC637L6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
@@ -1044,7 +1044,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.matteo-cotena.UProtect.UProtect-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.andrearomano.Hestia.Hestia-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

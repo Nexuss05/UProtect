@@ -38,9 +38,9 @@ struct ContentView: View {
     }
     
     func generateJWT() {
-        let teamID = "UU6556PJ33"
-        let keyID = "7U2ZFPX98A"
-        let privateKeyPath = Bundle.main.path(forResource: "AuthKey_7U2ZFPX98A", ofType: "p8")!
+        let teamID = "7G2UC637L6"
+        let keyID = "MD5P379685"
+        let privateKeyPath = Bundle.main.path(forResource: "AuthKey_MD5P379685", ofType: "p8")!
         
         do {
             let privateKey = try String(contentsOfFile: privateKeyPath, encoding: .utf8)
