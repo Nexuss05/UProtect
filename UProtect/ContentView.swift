@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  UProtect
-//
-//  Created by Matteo Cotena on 03/05/24.
-//
-
 import SwiftUI
 import ContactsUI
 import CoreLocation
@@ -15,8 +8,6 @@ let backgroundColor = Color.init(white: 0.92)
 struct ContentView: View {
     @State private var selectedContacts: [SerializableContact] = UserDefaults.standard.fetchContacts(forKey: "selectedContacts") ?? []
     @State private var isShowingContactsPicker = false
-    //    @Environment(LocationManager.self) var locationManager
-    
     @State var locationManager = LocationManager()
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var showAlert = false
@@ -30,25 +21,24 @@ struct ContentView: View {
     @ObservedObject var audioPlayer: AudioPlayer
     
     var body: some View {
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+        
         GeometryReader { geometry in
             VStack {
                 TabView(selection: $selectedTab) {
                     CoursesView()
-                    //                    Vuota()
                         .tabItem {
                             Label("Courses", systemImage: "books.vertical.fill")
                         }
                         .tag(0)
                     
-                    if locationManager.isAuthorized{
-                        //                        Text("Mappa")
-                        // la mappa è stata tolta perchè fa crashare la preview
+                    if locationManager.isAuthorized {
                         MapView(selectedPage: .constant(0))
                             .tabItem {
                                 Label("Map", systemImage: "map.fill")
                             }
                             .tag(1)
-                    }else{
+                    } else {
                         NoLocationView()
                             .tabItem {
                                 Label("Map", systemImage: "map.fill")
@@ -76,27 +66,18 @@ struct ContentView: View {
                         .tag(4)
                 }
                 .accentColor(timerManager.isActivated ? CustomColor.redBackground : CustomColor.orange)
-                //                .background(Color.orange)
+                .onChange(of: selectedTab) { _ in
+                    feedbackGenerator.impactOccurred()
+                }
             }
-            //            .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(Color.white)
             .ignoresSafeArea()
-            //            .overlay(
-            //                TabBarView(selectedTab: $selectedTab, namespace: namespace)
-            //                    .frame(height: 70)
-            //                    .padding(.bottom, 10)
-            //                    .background(Color.white)
-            //                    .edgesIgnoringSafeArea(.bottom)
-            //                    .frame(width: geometry.size.width, height: 70)
-            //                    .position(x: geometry.size.width / 2, y: geometry.size.height - 6)
-            
-            //            )
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Messaggio"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
-            .onAppear{
-                for i in 0..<3 {
+            .onAppear {
+                for _ in 0..<3 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         vm.fetchUserInfo()
                     }
@@ -105,7 +86,6 @@ struct ContentView: View {
             }
         }
     }
-    
 }
 
 struct CustomColor {
@@ -120,7 +100,6 @@ extension UITabBar {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.white
-        //        UITabBar.appearance().standardAppearance = appearance
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
 }

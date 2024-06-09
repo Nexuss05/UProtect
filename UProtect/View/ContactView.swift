@@ -23,6 +23,7 @@ struct ContactsView: View {
     @Binding var alertMessage: String
     @State var locationManager = LocationManager()
     
+    
     @State var tokens: [String] = []
     
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
