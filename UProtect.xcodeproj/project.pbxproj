@@ -851,9 +851,9 @@
 				INFOPLIST_FILE = UProtect/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger.\n";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to find the open places near you";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "When users activate the button, their background will be recorded to have a legal proof of what happened around them. The recordings will be deleted after 1 week, but users can save them before they get removed. ";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Hestia requires access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger. We do not store your contacts on the server.\n";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Hestia requires your location in order to find the places that are open in your sorroundings.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "When you activate the button, your background will be recorded to know what happened around you. The recordings will be deleted after one week, but you can save them before they get removed. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -894,9 +894,9 @@
 				INFOPLIST_FILE = UProtect/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_NSContactsUsageDescription = "We need access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger.\n";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location in order to find the open places near you";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "When users activate the button, their background will be recorded to have a legal proof of what happened around them. The recordings will be deleted after 1 week, but users can save them before they get removed. ";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Hestia requires access to your contacts to allow you to add them as emergency contacts and send notifications when you are in danger. We do not store your contacts on the server.\n";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Hestia requires your location in order to find the places that are open in your sorroundings.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "When you activate the button, your background will be recorded to know what happened around you. The recordings will be deleted after one week, but you can save them before they get removed. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
