@@ -34,6 +34,14 @@ extension TimeManager: WCSessionDelegate {
         }
     }
     
+    private func mergeAndSaveTokens(newTokens: [String]) {
+        var allTokens = UserDefaults.standard.stringArray(forKey: "tokensOnWatch") ?? []
+        allTokens.append(contentsOf: newTokens)
+        let uniqueTokens = Array(Set(allTokens)).sorted { allTokens.firstIndex(of: $0)! < allTokens.firstIndex(of: $1)! }
+        UserDefaults.standard.set(uniqueTokens, forKey: "tokensOnWatch")
+        print("Saved tokens on watch: \(uniqueTokens)")
+    }
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if let error = error {
             print("WCSession activation failed: \(error.localizedDescription)")
@@ -56,12 +64,16 @@ extension TimeManager: WCSessionDelegate {
                     self.CircleAnimation()
                 }
             case "tokens":
+                //                if let tokens = message["tokens"] as? [String] {
+                //                    print("Received tokens: \(tokens)")
+                //                    UserDefaults.standard.set(tokens, forKey: "tokensOnWatch")
+                //                    if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokensOnWatch") {
+                //                        print("Saved tokens on watch: \(savedTokens)")
+                //                    }
+                //                }
                 if let tokens = message["tokens"] as? [String] {
                     print("Received tokens: \(tokens)")
-                    UserDefaults.standard.set(tokens, forKey: "tokensOnWatch")
-                    if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokensOnWatch") {
-                        print("Saved tokens on watch: \(savedTokens)")
-                    }
+                    mergeAndSaveTokens(newTokens: tokens)
                 }
             case "firstName":
                 if let firstName = message["firstName"] as? String {
