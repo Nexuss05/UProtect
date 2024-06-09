@@ -55,7 +55,7 @@ struct ContentView: View {
                             ContactsPicker(isPresented: self.$isShowingContactsPicker, selectedContacts: self.$selectedContacts)
                         }
                         .tabItem {
-                            Label("Contact", systemImage: "person.circle.fill")
+                            Label("Contacts", systemImage: "person.circle.fill")
                         }
                         .tag(3)
                     
