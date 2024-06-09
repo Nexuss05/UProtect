@@ -12,7 +12,7 @@ import SwiftData
 struct SettingsView: View {
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     @State private var circleColor: Color = UserDefaultsManager.loadCircleColor() ?? Color.red
-    @State var url = URL(string: "https://www.privacypolicies.com/live/4c846556-d8b0-47d0-bb4b-8fbfd2eec9d9")
+    @State var url = URL(string: "https://www.iubenda.com/privacy-policy/60037945")
     @State var url2 = URL(string: "https://discord.gg/sMGDwdBp")
     @Query var userData: [Contacts]
     
@@ -161,7 +161,7 @@ struct SettingsView: View {
                             Image(systemName: "arrow.up.forward")
                                 .foregroundStyle(CustomColor.orange)
                         }.onTapGesture {
-                            if let url = URL(string: "https://www.privacypolicies.com/live/4c846556-d8b0-47d0-bb4b-8fbfd2eec9d9") {
+                            if let url = URL(string: "https://www.iubenda.com/privacy-policy/60037945") {
                                 UIApplication.shared.open(url)
                             }
                         }

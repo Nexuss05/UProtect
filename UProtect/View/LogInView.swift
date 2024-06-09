@@ -136,7 +136,7 @@ struct RegistrationView: View {
     @State private var isLoading = false
     
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
-    @State var url = URL(string: "https://www.privacypolicies.com/live/4c846556-d8b0-47d0-bb4b-8fbfd2eec9d9")
+    @State var url = URL(string: "https://www.iubenda.com/privacy-policy/60037945")
     
     @FocusState private var focusedField: Field?
     
