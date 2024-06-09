@@ -269,7 +269,7 @@ struct RegistrationView: View {
                     OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 })
                 .alert("The account associated with this number already exists", isPresented: $showAlert) {
-                    Button("LogIn"){
+                    Button("Log In"){
                         isShowingLogin.toggle()
                     }
                 }
