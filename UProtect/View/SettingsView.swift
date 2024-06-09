@@ -165,12 +165,12 @@ struct SettingsView: View {
                                 UIApplication.shared.open(url)
                             }
                         }
-                        ShareLink(item: URL(string: "")!, label: {
-                            HStack{
-                                Image(systemName: "square.and.arrow.up")
-                                Text("Share")
-                            }.foregroundColor(.primary)
-                        })
+//                        ShareLink(item: URL(string: "")!, label: {
+//                            HStack{
+//                                Image(systemName: "square.and.arrow.up")
+//                                Text("Share")
+//                            }.foregroundColor(.primary)
+//                        })
                     }
                     
                     Section{

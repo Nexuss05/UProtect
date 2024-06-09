@@ -151,7 +151,7 @@ struct TimerView: View {
         "badge": 1,
                 "sound": "default"
             },
-            "topic": "com.matteo-cotena.UProtect"
+            "topic": "com.andrearomano.Hestia"
         }
         
         """
@@ -172,7 +172,7 @@ struct TimerView: View {
         request.httpBody = data
         
         request.addValue("Bearer \(authenticationToken)", forHTTPHeaderField: "Authorization")
-        request.addValue("com.matteo-cotena.UProtect", forHTTPHeaderField: "apns-topic")
+        request.addValue("com.andrearomano.Hestia", forHTTPHeaderField: "apns-topic")
         request.addValue("alert", forHTTPHeaderField: "apns-push-type")
         request.addValue("10", forHTTPHeaderField: "apns-priority")
         request.addValue("0", forHTTPHeaderField: "apns-expiration")

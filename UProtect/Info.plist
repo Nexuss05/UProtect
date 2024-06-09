@@ -8,7 +8,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.matteo-cotena.UProtect</string>
+			<string>com.andrearomano.Hestia</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>UProtectURL</string>
