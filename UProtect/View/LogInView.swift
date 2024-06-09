@@ -126,6 +126,7 @@ struct RegistrationView: View {
     @State var isShowingLogin: Bool = false
     @State var isShowingOtp: Bool = false
     @State var showAlert: Bool = false
+    @State var accettato: Bool = false
     
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
@@ -135,6 +136,7 @@ struct RegistrationView: View {
     @State private var isLoading = false
     
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
+    @State var url = URL(string: "https://www.privacypolicies.com/live/4c846556-d8b0-47d0-bb4b-8fbfd2eec9d9")
     
     @FocusState private var focusedField: Field?
     
@@ -153,57 +155,83 @@ struct RegistrationView: View {
                     .ignoresSafeArea()
                 Image("a1")
                     .resizable()
-                    .frame(width: 400, height: 400)
-                    .padding(.bottom, 275)
+                    .frame(width: 325, height: 325)
+                    .padding(.bottom, 350)
+                
+                HStack {
+                    if !accettato{
+                        Image(systemName: "square")
+                            .foregroundStyle(.white)
+                            .onTapGesture {
+                                accettato.toggle()
+                            }
+                    } else {
+                        Image(systemName: "checkmark.square")
+                            .foregroundStyle(.white)
+                            .onTapGesture {
+                                accettato.toggle()
+                            }
+                    }
+                    HStack(spacing: 5) {
+                        Text("I agree to the")
+                            .foregroundStyle(.white)
+                        Link("privacy policy", destination: url!)
+                            .foregroundColor(.blue)
+                    }
+                }.padding(.top, 500)
+                
                 VStack {
                     Text("Create an Account!")
                         .foregroundColor(Color.white)
                         .font(.largeTitle)
                         .bold()
                     Rectangle()
-                        .frame(width: 400, height: 300)
+                        .frame(width: 400, height: 250)
                         .opacity(0)
                     
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(Color.white)
-                        TextField("Name", text: $vm.nome)
-                            .padding(.leading, 20)
-                            .focused($focusedField, equals: .nome)
-                            .onSubmit {
-                                focusedField = .cognome
+                    VStack{
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(Color.white)
+                            TextField("Name", text: $vm.nome)
+                                .padding(.leading, 20)
+                                .focused($focusedField, equals: .nome)
+                                .onSubmit {
+                                    focusedField = .cognome
+                                }
+                        }.frame(width: 325, height: 50, alignment: .center)
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(Color.white)
+                            TextField("Surname", text: $vm.cognome)
+                                .padding(.leading, 20)
+                                .focused($focusedField, equals: .cognome)
+                                .onSubmit {
+                                    focusedField = .numero
+                                }
+                        }.frame(width: 325, height: 50, alignment: .center)
+                            .padding(.vertical)
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundColor(Color.white)
+                            TextField("Phone number", text: $vm.numero).keyboardType(.numberPad)
+                                .padding(.leading, 20)
+                                .focused($focusedField, equals: .numero)
+                        }.frame(width: 325, height: 50, alignment: .center)
+                        
+                        Button{
+                            withAnimation {
+                                isShowingLogin = true
                             }
-                    }.frame(width: 325, height: 50, alignment: .center)
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(Color.white)
-                        TextField("Surname", text: $vm.cognome)
-                            .padding(.leading, 20)
-                            .focused($focusedField, equals: .cognome)
-                            .onSubmit {
-                                focusedField = .numero
-                            }
-                    }.frame(width: 325, height: 50, alignment: .center)
-                        .padding(.vertical)
-                    
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(Color.white)
-                        TextField("Phone number", text: $vm.numero).keyboardType(.numberPad)
-                            .padding(.leading, 20)
-                            .focused($focusedField, equals: .numero)
-                    }.frame(width: 325, height: 50, alignment: .center)
-                    
-                    Button{
-                        withAnimation {
-                            isShowingLogin = true
+                        } label: {
+                            Text("Already have an account?")
+                                .foregroundColor(Color.white)
+                                .padding(.top, 10)
                         }
-                    } label: {
-                        Text("Already have an account?")
-                            .foregroundColor(Color.white)
-                            .padding(.top, 10)
-                    }
+                    }.padding(.bottom, 50)
+                    
                     
                     Button{
                         isLoading = true
@@ -230,7 +258,7 @@ struct RegistrationView: View {
                                 .foregroundColor(CustomColor.orange)
                         }
                     }.padding(.top, 30)
-                        .disabled(vm.nome.trimmingCharacters(in: .whitespaces).isEmpty || vm.cognome.trimmingCharacters(in: .whitespaces).isEmpty||vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
+                        .disabled(vm.nome.trimmingCharacters(in: .whitespaces).isEmpty || vm.cognome.trimmingCharacters(in: .whitespaces).isEmpty||vm.numero.trimmingCharacters(in: .whitespaces).isEmpty||accettato == false)
                 }
             }.padding(.bottom, keyboardHeight)
                 .ignoresSafeArea()

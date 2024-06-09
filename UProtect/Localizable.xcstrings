@@ -945,6 +945,9 @@
         }
       }
     },
+    "I agree to the" : {
+
+    },
     "If you are feeling unsafe and don't want to notify your contact immediately, simply hold the button to activate the timer. You have the option to modify the timer in the settings to your liking. \nIf you don't dismiss the alert when the time runs out, a notification will be sent." : {
       "localizations" : {
         "it" : {
@@ -1291,6 +1294,9 @@
 
     },
     "Preventive Measures" : {
+
+    },
+    "privacy policy" : {
 
     },
     "Privacy Policy" : {
