@@ -193,7 +193,7 @@ struct SettingsView: View {
                             VStack(alignment: .leading){
                                 Text("- Made by HestiaDevs")
                                     .font(.caption)
-                                Text("Your support helps keep our community safe! 🌟")
+                                Text("Your support helps to keep our community safe! 🌟")
                                     .foregroundColor(.gray)
                                     .font(.caption2)
                             }

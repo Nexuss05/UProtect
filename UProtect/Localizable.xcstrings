@@ -70,7 +70,14 @@
       }
     },
     "_For any suspicious activity, **report it** to your local emergency number._" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "_Per qualsiasi attività sospetta, **segnalala** al tuo numero di emergenza locale._"
+          }
+        }
+      }
     },
     "- _Behavioral Patterns_: Conversely, a young man with a face mask in a desolate area might raise alarms. Use context and other clues to predict potential threats accurately." : {
       "extractionState" : "stale",
@@ -84,22 +91,64 @@
       }
     },
     "- **How**: How did this person arrive here? How are they behaving?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- **Come**: Come è arrivata qui questa persona? Come si comporta?"
+          }
+        }
+      }
     },
     "- **What**: What are they doing? What actions are they taking? What are they wearing?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- **Cosa**: Cosa stan facendo? Quali azioni sta intraprendendo? Cosa indossa?"
+          }
+        }
+      }
     },
     "- **When**: What is the time of day? Is it a busy weekday morning, or a quiet Saturday night?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- **Quando**: Che ore sono? È una mattina frenetica nei giorni feriali o un tranquillo sabato sera?"
+          }
+        }
+      }
     },
     "- **Where**: Where are you? What usually happens in this place?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- **Dove**: Dove sei? Cosa succede di solito in questo posto?"
+          }
+        }
+      }
     },
     "- **Who**: Who is the person? Is their body language open or nervous? Who are they with?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- **Chi**: Chi è la persona? Il suo linguaggio del corpo è aperto o nervoso? Con chi sta?"
+          }
+        }
+      }
     },
     "- **Why**: Why is the person acting this way? Why are they here at this time?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- **Perché**: Perché la persona si comporta in questo modo? Perché è qui in questo periodo?"
+          }
+        }
+      }
     },
     "- Anxiety" : {
       "localizations" : {
@@ -123,7 +172,14 @@
       }
     },
     "- Behavioral Patterns: Conversely, a young man with a face mask in a desolate area might raise alarms. Use context and other clues to predict potential threats accurately." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Modelli comportamentali: al contrario, un giovane con una maschera in una zona desolata potrebbe sollevare l'allarme. Usa il contesto e altri indizi per prevedere con precisione le potenziali minacce."
+          }
+        }
+      }
     },
     "- Blue-tinged skin" : {
       "localizations" : {
@@ -156,19 +212,54 @@
       }
     },
     "- Context Matters: Consider the entire context. For instance, a pregnant woman holding a pocket knife late at night may be protecting herself, not posing a threat." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Il Contesto Conta: considera l'intero contesto. Ad esempio, una donna incinta che tiene un coltellino da tasca a tarda notte potrebbe proteggersi, non rappresentare una minaccia."
+          }
+        }
+      }
     },
     "- Dizziness" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Vertigini"
+          }
+        }
+      }
     },
     "- Establish normal patterns of behavior in your environment to detect anomalies." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Stabilisci normali modelli di comportamento nel tuo ambiente per rilevare le anomalie."
+          }
+        }
+      }
     },
     "- Excessive perspiration" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Eccessiva traspirazione"
+          }
+        }
+      }
     },
     "- Home: Identify safe rooms and escape paths." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Casa: Identifica stanze sicure e vie di fuga."
+          }
+        }
+      }
     },
     "- If another car is following you, do not drive home. Go to a police station or a well-lit, busy area." : {
       "extractionState" : "stale",
@@ -198,7 +289,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- Mantieni il telefono accessibile"
+            "value" : "- Mantieni il telefono accessibile."
           }
         }
       }
@@ -214,13 +305,34 @@
       }
     },
     "- Made by Eleonora Iannelli, Andrea Romano, Alessia Previdente, Yuri Mario Gianoli, Simone Sarnataro, Matteo Cotena" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Creato by Eleonora Iannelli, Andrea Romano, Alessia Previdente, Yuri Mario Gianoli, Simone Sarnataro, Matteo Cotena"
+          }
+        }
+      }
     },
     "- Made by HestiaDevs" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Creato da HestiaDevs"
+          }
+        }
+      }
     },
     "- Modify interaction rules to improve situational awareness, observing attire, carried objects, and making eye contact." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Modifica le regole di interazione per migliorare la consapevolezza situazionale, osservando l'abbigliamento, trasportando oggetti e stabilendo un contatto visivo."
+          }
+        }
+      }
     },
     "- Nausea" : {
       "localizations" : {
@@ -253,7 +365,14 @@
       }
     },
     "- Passing out or unconsciousness" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Svenimento o incoscienza"
+          }
+        }
+      }
     },
     "- Slow or irregular breathing" : {
       "localizations" : {
@@ -266,7 +385,14 @@
       }
     },
     "- Slurred speech" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Discorso confuso"
+          }
+        }
+      }
     },
     "- Vomiting" : {
       "localizations" : {
@@ -279,106 +405,344 @@
       }
     },
     "- Work: Locate exits, understand the layout, and identify objects that can provide cover." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Lavoro: individua le uscite, comprendi il layout e identifica gli oggetti che possono fornire copertura."
+          }
+        }
+      }
     },
     "**1. Avoid Overdrinking**: Know your alcohol limits to prevent risks." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**1. Evita di bere troppo**: Conosci i tuoi limiti di alcol per prevenire i rischi."
+          }
+        }
+      }
     },
     "**1. Keep Them Awake and Sitting Up**: Try to keep the person awake and seated." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**1. Tienili svegli e seduti**: Cerca di mantenere la persona sveglia e seduta."
+          }
+        }
+      }
     },
     "**1. Plan Ahead**: Research the club’s dress code, policies, and cover charges. Arrive early to avoid long lines." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**1. Pianifica in anticipo**: Ricerca il codice di abbigliamento, le politiche e le spese di copertura del club. Arriva presto per evitare lunghe code."
+          }
+        }
+      }
     },
     "**1. Stay Calm**: Most symptoms will pass within minutes to hours." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**1. Rimani calmo**: La maggior parte dei sintomi passerà in pochi minuti o ore."
+          }
+        }
+      }
     },
     "**1. Stay in Groups**: Being in a group reduces the likelihood of being targeted." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**1. Rimani in gruppo**: Essere in un gruppo riduce la probabilità di essere preso di mira."
+          }
+        }
+      }
     },
     "**2. Arrange Transportation**: Get a ride from a trusted person or book a taxi." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**2. Organizza il trasporto**: Prendi un passaggio da una persona di fiducia o prenota un taxi."
+          }
+        }
+      }
     },
     "**2. Don’t Go Alone**: Always club with friends." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**2. Non andare da solo**: Divertiti sempre con gli amici."
+          }
+        }
+      }
     },
     "**2. Dress Comfortably**: Wear stylish yet comfortable clothes and suitable shoes for dancing." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**2. Vestiti comodamente**: Indossa abiti eleganti ma comodi e scarpe adatte per ballare."
+          }
+        }
+      }
     },
     "**2. Give Them Water**: If they can drink, provide water to keep them hydrated." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**2. Dai loro dell'acqua**: Se possono bere, dagli dell'acqua per mantenerli idratati."
+          }
+        }
+      }
     },
     "**2. Hydrate**: Offer water or juice, avoiding caffeinated or alcoholic beverages." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**2. Idratati**: Offri acqua o succo, evitando bevande con caffeina o alcoliche."
+          }
+        }
+      }
     },
     "**3. Book Licensed Taxis**: Use only licensed mini-cabs or black cabs." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**3. Prenota un taxi con licenza**: Usa solo mini-taxi con licenza o taxi neri."
+          }
+        }
+      }
     },
     "**3. Bring Essentials**: Carry your ID, some cash, and your phone. A small bag or clutch is ideal." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**3. Porta l'essenziale**: Porta con te il tuo documento d'identità, un po' di contanti e il tuo telefono. Una piccola borsa o pochette è l'ideale."
+          }
+        }
+      }
     },
     "**3. Guard Your Belongings**: Keep an eye on your items and avoid bringing unnecessary valuables." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**3. Custodisci i tuoi oggetti**: Tieni d'occhio i tuoi oggetti ed evita di portare oggetti di valore non necessari."
+          }
+        }
+      }
     },
     "**3. Know Your Limits**: Be aware of personal limits to prevent future overconsumption." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**3. Conosci i tuoi limiti**: Sii consapevole dei limiti personali per prevenire il consumo eccessivo futuro."
+          }
+        }
+      }
     },
     "**3. Recovery Position**: If they pass out, lay them on their side in the recovery position and check their breathing." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**3. Posizione di recupero**: Se svengono, stendili su un fianco in posizione di recupero e controlla la loro respirazione."
+          }
+        }
+      }
     },
     "**4. Black Pepper**: Chewing or smelling black pepper can help reduce anxiety, though this is anecdotal." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**4. Pepe nero**: Masticare o annusare il pepe nero può aiutare a ridurre l'ansia, anche se questo è aneddotico."
+          }
+        }
+      }
     },
     "**4. Drink Responsibly**: Keep an eye on your drink and avoid accepting vapes from strangers." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**4. Bevi responsabilmente**: Tieni d'occhio la tua bevanda ed evita di accettare vapes da estranei."
+          }
+        }
+      }
     },
     "**4. Keep Them Warm**: Ensure they stay warm." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**4. Tienili al caldo**: Assicurati che rimangano al caldo."
+          }
+        }
+      }
     },
     "**4. Stay Hydrated**: Alternate between alcoholic drinks and water." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**4. Rimani idratato**: Alterna le bevande alcoliche e l'acqua."
+          }
+        }
+      }
     },
     "**4. Watch Your Drinks**: Never leave drinks unattended." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**4. Attenzione alle tue bevande**: Non lasciare mai le bevande incustodite."
+          }
+        }
+      }
     },
     "**5. Calm Environment**: Find a quiet space for the person to rest and take deep breaths." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**5. Ambiente calmo**: Trova uno spazio tranquillo per la persona per riposare e fare un respiro profondo."
+          }
+        }
+      }
     },
     "**5. Monitor Symptoms**: Stay with them and monitor their condition." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**5. Monitora i sintomi**: Resta con loro e monitora le loro condizioni."
+          }
+        }
+      }
     },
     "**5. Stay in Well-Lit Areas**: Choose well-lit, populated routes when walking home." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**5. Soggiorna in aree ben illuminate**: Scegli percorsi ben illuminati e popolati quando torni a casa a piedi."
+          }
+        }
+      }
     },
     "**5. Stick with Friends**: Use a buddy system to stay safe and support each other." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**5. Resta con gli amici**: Usa un sistema di amici per stare al sicuro e sostenervi a vicenda."
+          }
+        }
+      }
     },
     "**6. Conceal Valuables**: Keep valuables hidden to avoid attracting thieves." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**6. Nascondi oggetti di valore**: Tieni nascosti gli oggetti di valore per evitare di attirare i ladri."
+          }
+        }
+      }
     },
     "**6. Go for a Walk**: Fresh air and a change of scenery can help, but stay close to known surroundings." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**6. Vai a fare una passeggiata**: L'aria fresca e un cambio di scenario possono aiutare, ma stai vicino a un ambiente conosciuto."
+          }
+        }
+      }
     },
     "**7. Avoid Conflicts**: Stay away from fights or arguments, and seek help from bouncers or the police if needed." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**7. Evita i conflitti**: Stai lontano da litigi o discussioni e cerca l'aiuto dei buttafuori o della polizia, se necessario."
+          }
+        }
+      }
     },
     "**7. Shower or Bath**: A warm shower or bath can help relax the body and mind." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**7. Doccia o bagno**: Una doccia o un bagno caldo può aiutare a rilassare il corpo e la mente."
+          }
+        }
+      }
     },
     "**8. Distract with Activities**: Engage in relaxing activities like watching a cartoon, listening to music, playing a video game, or talking with a friend." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**8. Distraiti con varie attività**: impegnati in attività rilassanti come guardare un cartone animato, ascoltare musica, giocare a un videogioco o parlare con un amico."
+          }
+        }
+      }
     },
     "**9. Edibles**: Effects from edibles last longer. Stay calm, hydrated, and distracted." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**9. Commestibili**: gli effetti dei commestibili durano più a lungo. Rimani calmo, idratato e distratto."
+          }
+        }
+      }
     },
     "**10. Emergency Help**: If symptoms are severe, call the local emergency number for assistance." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**10. Aiuto di emergenza**: Se i sintomi sono gravi, chiamare il numero di emergenza locale per assistenza."
+          }
+        }
+      }
     },
     "**Road Safety Rules**: Teach children road safety basics, such as:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Regole sulla sicurezza stradale**: Insegna ai bambini le basi della sicurezza stradale, come ad esempio:"
+          }
+        }
+      }
     },
     "**Stranger Danger**: Educate your child on how to handle situations with strangers:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Pericolo estraneo**: Educa tuo figlio su come gestire le situazioni con gli estranei:"
+          }
+        }
+      }
     },
     "%@" : {
 
@@ -407,10 +771,24 @@
       }
     },
     "1. Recognize Patterns" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Riconosci gli schemi"
+          }
+        }
+      }
     },
     "1. Tap the button below\n2. Go to Location\n3. Change the settings to \"While Using the App\"" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Clicca il Bottone in basso\n2. Vai in Posizione\n3. Cambia il permesso in \"Mentre utilizzo l'app\""
+          }
+        }
+      }
     },
     "1. Tap the button below and\n2. Go to Location\n3. Change the settings to \"While Using the App\"" : {
       "extractionState" : "stale",
@@ -434,10 +812,24 @@
       }
     },
     "2. Environmental Analysis" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Analisi ambientale"
+          }
+        }
+      }
     },
     "3. Understand Atmospherics" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Comprendere l'atmosfera"
+          }
+        }
+      }
     },
     "10 seconds less" : {
       "localizations" : {
@@ -464,7 +856,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ABOUT"
+            "value" : "HESTIA"
           }
         }
       }
@@ -480,7 +872,14 @@
       }
     },
     "Additional Safety Tips for Different Scenarios" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ulteriori Consigli per scenari differenti"
+          }
+        }
+      }
     },
     "Additional Tips for Different Scenarios" : {
       "extractionState" : "stale",
@@ -494,7 +893,14 @@
       }
     },
     "After perceiving elements, the next step is understanding their meaning by asking key questions:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dopo aver percepito gli elementi, il passo successivo è capire il loro significato ponendo domande chiave:"
+          }
+        }
+      }
     },
     "Already have an account?" : {
       "localizations" : {
@@ -537,16 +943,44 @@
       }
     },
     "Assess your environment for safety:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valuta il tuo ambiente per la sicurezza:"
+          }
+        }
+      }
     },
     "At-Home Safety Rules" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole di sicurezza a casa"
+          }
+        }
+      }
     },
     "Attributing Meaning to Perceived Elements" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attribuzione di un significato agli elementi percepiti"
+          }
+        }
+      }
     },
     "Back" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indietro"
+          }
+        }
+      }
     },
     "Bar " : {
       "extractionState" : "manual",
@@ -599,10 +1033,24 @@
       }
     },
     "Change timer duration" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia durata timer"
+          }
+        }
+      }
     },
     "Clubbing Safety Tips" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consigli per la sicurezza nei club"
+          }
+        }
+      }
     },
     "Coming soon" : {
       "localizations" : {
@@ -626,9 +1074,17 @@
       }
     },
     "Completed" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completato"
+          }
+        }
+      }
     },
     "Contact" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -649,7 +1105,14 @@
       }
     },
     "Cooper’s Color Code for Awareness Levels" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teoria dei colori di Cooper per i livelli di consapevolezza"
+          }
+        }
+      }
     },
     "Courses" : {
       "localizations" : {
@@ -764,7 +1227,14 @@
       }
     },
     "Enhancing Perception" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Migliorare la percezione"
+          }
+        }
+      }
     },
     "Enjoying a Safe Night Out:" : {
       "localizations" : {
@@ -787,7 +1257,14 @@
       }
     },
     "Error: try again later" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore: riprova più tardi"
+          }
+        }
+      }
     },
     "Essential Safety Tips" : {
       "localizations" : {
@@ -841,7 +1318,14 @@
       }
     },
     "Get Help" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottieni Aiuto"
+          }
+        }
+      }
     },
     "Get started" : {
       "localizations" : {
@@ -946,7 +1430,14 @@
       }
     },
     "I agree to the" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accetto"
+          }
+        }
+      }
     },
     "If you are feeling unsafe and don't want to notify your contact immediately, simply hold the button to activate the timer. You have the option to modify the timer in the settings to your liking. \nIf you don't dismiss the alert when the time runs out, a notification will be sent." : {
       "localizations" : {
@@ -969,19 +1460,54 @@
       }
     },
     "Importance of Training" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importanza dell'Allenamento"
+          }
+        }
+      }
     },
     "In a Vehicle:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In un Veicolo:"
+          }
+        }
+      }
     },
     "In emergencies, people rely on their lowest level of training. Training helps develop quick, effective solutions focusing on speed and efficiency rather than perfection. For example, in an active shooter scenario, instructing students to run to the nearest exit may not be perfect but is likely to save more lives." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nelle emergenze, le persone si affidano al loro livello di allenamento più basso. Esso aiuta a sviluppare soluzioni rapide ed efficaci che si concentrano sulla velocità e l'efficienza piuttosto che sulla perfezione. Ad esempio, in uno scenario di sparatutto, istruire gli studenti a correre verso l'uscita più vicina potrebbe non essere perfetto, ma è probabile che salvi più vite."
+          }
+        }
+      }
     },
     "Jeff Cooper's Color Code categorizes different levels of awareness:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La teoria dei colori di Jeff Cooper classifica diversi livelli di consapevolezza:"
+          }
+        }
+      }
     },
     "Legal Age to Walk Alone: the **recommended** age for children to walk alone varies by country and region, **generally** around 10 years old. **Check local laws** and regulations for specific guidelines." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Età legale per camminare da soli: l'età **consigliata** per i bambini per camminare da soli varia in base al paese e alla regione, **generalmente** è intorno ai 10 anni. **Controlla le leggi locali** e le normative per linee guida specifiche."
+          }
+        }
+      }
     },
     "Lightly" : {
       "localizations" : {
@@ -1218,7 +1744,14 @@
       }
     },
     "On Foot:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Piedi:"
+          }
+        }
+      }
     },
     "Onboarding" : {
       "localizations" : {
@@ -1252,7 +1785,14 @@
       }
     },
     "per la Supervision mode" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per la Supervision mode"
+          }
+        }
+      }
     },
     "Pharmacy" : {
       "extractionState" : "manual",
@@ -1286,19 +1826,54 @@
       }
     },
     "Practical Implementation Strategies" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strategie pratiche di implementazione"
+          }
+        }
+      }
     },
     "Practicing and Developing Situational Awareness" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Praticare e Sviluppare la Consapevolezza Situazionale"
+          }
+        }
+      }
     },
     "Prevention Tips:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggerimenti per la Prevenzione:"
+          }
+        }
+      }
     },
     "Preventive Measures" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misure Preventive"
+          }
+        }
+      }
     },
     "privacy policy" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "l'informativa sulla privacy"
+          }
+        }
+      }
     },
     "Privacy Policy" : {
       "localizations" : {
@@ -1311,7 +1886,14 @@
       }
     },
     "Projecting Future Outcomes" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pianificando Risultati Futuri"
+          }
+        }
+      }
     },
     "Puoi selezionare solo fino a 2 contatti." : {
       "extractionState" : "stale",
@@ -1325,43 +1907,134 @@
       }
     },
     "Question 1: What is the correct order of the steps of situational awareness?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 1: Qual è l'ordine corretto delle fasi della consapevolezza situazionale?"
+          }
+        }
+      }
     },
     "Question 1: What is the recommended age for children to walk alone to school?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 1: Qual è l'età raccomandata per i bambini per andare a scuola da soli?"
+          }
+        }
+      }
     },
     "Question 1: What should you do before leaving for a walk alone?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 1: Cosa dovresti fare prima di andare a fare una passeggiata da solo?"
+          }
+        }
+      }
     },
     "Question 1: What should you do to help someone who drank too much?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 1: Cosa dovresti fare per aiutare qualcuno che ha bevuto troppo?"
+          }
+        }
+      }
     },
     "Question 2: How can you tell if you're being followed?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 2: Come puoi sapere se ti stanno seguendo?"
+          }
+        }
+      }
     },
     "Question 2: What are the signs and symptoms of alcohol poisoning?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 2: Quali sono i segni e i sintomi dell'avvelenamento da alcol?"
+          }
+        }
+      }
     },
     "Question 2: What should children do if they encounter strangers while walking alone?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 2: Cosa dovrebbero fare i bambini se incontrano estranei mentre camminano da soli?"
+          }
+        }
+      }
     },
     "Question 2: Which level of Cooper’s Color Code indicates being relaxed but alert?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 2: Quale livello della teoria dei colori di Cooper indica l'essere rilassato ma vigile?"
+          }
+        }
+      }
     },
     "Question 3: What is an important safety rule for children when using the internet?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 3: Qual è un'importante regola di sicurezza per i bambini quando usano Internet?"
+          }
+        }
+      }
     },
     "Question 3: What should you do if you suspect you're being followed?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 3: Cosa dovresti fare se sospetti di essere seguito?"
+          }
+        }
+      }
     },
     "Question 3: What should you do to enhance your situational awareness perception?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 3: Cosa dovresti fare per migliorare la tua percezione della consapevolezza situazionale?"
+          }
+        }
+      }
     },
     "Question 3: What steps should you take to help someone who is too high from weed?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domanda 3: Quali passi dovresti fare per aiutare qualcuno che ha fumato troppa marijuana?"
+          }
+        }
+      }
     },
     "Read the collective mood of the environment; a relaxed crowd versus an anxious or volatile one can indicate potential danger." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprendi il mood dell'ambiente; una folla rilassata rispetto ad una ansiosa o instabile può indicare un potenziale pericolo."
+          }
+        }
+      }
     },
     "Recordings" : {
       "localizations" : {
@@ -1396,26 +2069,61 @@
       }
     },
     "Road Safety Rules" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole di Sicurezza Stradale"
+          }
+        }
+      }
     },
     "Safety and Security Quiz" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz sulla Sicurezza"
+          }
+        }
+      }
     },
     "Safety Rules About Strangers" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regole di Sicurezza sugli Estranei"
+          }
+        }
+      }
     },
     "Safety Tips Quiz" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz sui Consigli sulla Sicurezza"
+          }
+        }
+      }
     },
     "Security for Children Walking Alone to School" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza per i Bambini che Camminano da Soli a Scuola"
+          }
+        }
+      }
     },
     "Select Contacts" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleziona contatti"
+            "value" : "Seleziona Contatti"
           }
         }
       }
@@ -1511,7 +2219,14 @@
       }
     },
     "Signs and Symptoms of Alcohol Poisoning:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segni e sintomi di avvelenamento da alcol:"
+          }
+        }
+      }
     },
     "Siri & Shortcuts" : {
       "extractionState" : "stale",
@@ -1525,10 +2240,24 @@
       }
     },
     "Situational awareness involves perceiving your environment, understanding its significance, and predicting future events. It's crucial for navigating daily dangers and is heavily relied upon in various fields such as law enforcement, emergency response, military operations, aviation, nautical navigation, and sports. It's equally essential for everyday safety." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La consapevolezza situazionale implica la percezione del proprio ambiente, la comprensione del suo significato e la previsione di eventi futuri. È fondamentale per navigare nei pericoli quotidiani ed è fortemente utilizzata in vari campi come le forze dell'ordine, la risposta alle emergenze, le operazioni militari, l'aviazione, la navigazione nautica e lo sport. È essenziale per la sicurezza di tutti i giorni."
+          }
+        }
+      }
     },
     "Situational Awareness Quiz" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz di Consapevolezza Situazionale"
+          }
+        }
+      }
     },
     "SOS mode" : {
       "localizations" : {
@@ -1551,7 +2280,14 @@
       }
     },
     "Steps of Situational Awareness" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passaggi di Consapevolezza Situazionale"
+          }
+        }
+      }
     },
     "Steps to Help Someone:" : {
       "localizations" : {
@@ -1595,7 +2331,14 @@
       }
     },
     "Symptoms of Being Too High:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sintomi di Quando si Fuma Troppa Marijuana:"
+          }
+        }
+      }
     },
     "System" : {
       "extractionState" : "stale",
@@ -1639,10 +2382,24 @@
       }
     },
     "The final step involves processing all the information gathered and predicting future events:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La fase finale prevede l'elaborazione di tutte le informazioni raccolte e la previsione di eventi futuri:"
+          }
+        }
+      }
     },
     "The Reality of Walking Alone" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Realtà di Camminare da Soli"
+          }
+        }
+      }
     },
     "There is no account associated with this number" : {
       "localizations" : {
@@ -1665,7 +2422,14 @@
       }
     },
     "TIENI PREMUTO" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TIENI PREMUTO"
+          }
+        }
+      }
     },
     "Time" : {
       "localizations" : {
@@ -1720,13 +2484,34 @@
       }
     },
     "Understanding Alcohol Poisoning: alcohol is a **toxic** substance, and excessive consumption can lead to **severe** health issues, including alcohol poisoning. This occurs when someone drinks a large amount of alcohol in a short period, leading to high blood alcohol concentration. Symptoms include slowed brain function, stomach irritation, dehydration, and more." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprendere l'avvelenamento da alcol: l'alcol è una sostanza **tossica** e il consumo eccessivo può portare a **gravi** problemi di salute, tra cui l'avvelenamento da alcol. Questo si verifica quando qualcuno beve una grande quantità di alcol in un breve periodo, portando ad un'alta concentrazione di alcol nel sangue. I sintomi includono rallentamento della funzione cerebrale, irritazione allo stomaco, disidratazione e altro ancora."
+          }
+        }
+      }
     },
     "Understanding Cannabis Effects: the high from marijuana is due to THC, which **affects brain receptors**. Even if it feels overwhelming, it's important to remember that it’s temporary and not life-threatening. No deaths have been reported from cannabis overdose." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprendere gli Effetti della Cannabis: lo sballo della marijuana è dovuto al THC, che **influenza i recettori cerebrali**. Anche se sembra travolgente, è importante ricordare che è temporaneo e non pericoloso per la vita. Non sono stati segnalati decessi per overdose di cannabis."
+          }
+        }
+      }
     },
     "Using Public Transport:" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilizzando i Trasporti Pubblici:"
+          }
+        }
+      }
     },
     "Verify" : {
       "localizations" : {
@@ -1739,7 +2524,14 @@
       }
     },
     "Walking alone can be risky, depending on factors like location, gender, and time of day. Here are some general tips to help keep you safe in any situation." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camminare da soli può essere rischioso, a seconda di fattori come la posizione, il sesso e l'ora del giorno. Ecco alcuni consigli generali per aiutarti a tenerti al sicuro in qualsiasi situazione."
+          }
+        }
+      }
     },
     "Walking to School Alone Tips:" : {
       "localizations" : {
@@ -1762,7 +2554,14 @@
       }
     },
     "What Is Situational Awareness?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cos'è la Consapevolezza Situazionale?"
+          }
+        }
+      }
     },
     "What Not to Do:" : {
       "localizations" : {
@@ -1785,7 +2584,14 @@
       }
     },
     "While humans naturally possess situational awareness due to innate survival instincts, it can be enhanced through vigilance, continuous practice, and improving cognitive abilities." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mentre gli esseri umani possiedono naturalmente la consapevolezza situazionale a causa dell'istinto di sopravvivenza innato, può essere migliorata attraverso la vigilanza, la pratica continua e il miglioramento delle capacità cognitive."
+          }
+        }
+      }
     },
     "White" : {
       "extractionState" : "stale",
@@ -1883,7 +2689,25 @@
       }
     },
     "Your support helps keep our community safe! 🌟" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il tuo sostegno aiuta a mantenere la nostra comunità al sicuro! 🌟"
+          }
+        }
+      }
+    },
+    "Your support helps to keep our community safe! 🌟" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il tuo sostegno aiuta a mantenere la nostra comunità al sicuro! 🌟"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
