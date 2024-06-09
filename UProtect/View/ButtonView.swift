@@ -144,8 +144,8 @@ struct TimerView: View {
         {
             "aps": {
                 "alert": {
-                    "title": "\(String(describing: name)) \(String(describing: surname)) is in danger",
-                    "subtitle": "Open the app to check on them",
+                    "title": "\(String(describing: name)) \(String(describing: surname)) is in danger!",
+                    "subtitle": "Open the app to check on them.",
                     "body": "\(message)"
                 },
         "badge": 1,
