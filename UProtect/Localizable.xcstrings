@@ -1177,7 +1177,14 @@
       }
     },
     "Do not have an account?" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non hai un account?"
+          }
+        }
+      }
     },
     "Do you want to deactivate the timer?" : {
       "localizations" : {
