@@ -1260,7 +1260,14 @@
       }
     },
     "Error during phone number validation" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errore durante la convalida del numero di telefono"
+          }
+        }
+      }
     },
     "Error: try again later" : {
       "localizations" : {
