@@ -13,6 +13,7 @@ struct LogInView: View {
     @State var isShowingRec: Bool = false
     @State var isShowingOtp: Bool = false
     @State var showAlert: Bool = false
+    @State var showAlert2: Bool = false
     
     @State private var isLoading = false
     
@@ -51,7 +52,7 @@ struct LogInView: View {
                             isShowingRec = true
                         }
                     } label: {
-                        Text("Sign In")
+                        Text("Do not have an account?")
                             .foregroundColor(Color.white)
                             .padding(.top, 10)
                     }
@@ -60,12 +61,33 @@ struct LogInView: View {
                         isLoading = true
                         vm.handleFirstLogin(number: vm.numero) { success in
                             isLoading = false
-                            if success{
-                                UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
-                                isShowingOtp = true
-                            } else {
-                                print("Errore nel login")
+//                            if success{
+//                                UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
+//                                isShowingOtp = true
+//                            } else {
+//                                print("Errore nel login")
+//                                showAlert.toggle()
+//                            }
+                            vm.handleFirstLogin(number: vm.numero) { result in
+                                isLoading = false
+                                switch result {
+                                case .success(let success):
+                                    if success {
+                                        UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
+                                        isShowingOtp = true
+                                    }
+                                case .failure(let error):
+                                    switch error {
+                                    case .numberNotFound:
+                                        print("Il numero non è presente nel database")
+                                        showAlert.toggle()
+                                    case .verificationError(let error):
+                                        print("Errore durante la verifica del numero: \(error.localizedDescription)")
+                                        showAlert2.toggle()
+                                    }
+                                }
                             }
+
                         }
                     } label: {
                         ZStack {
@@ -96,6 +118,9 @@ struct LogInView: View {
                     Button("SignIn"){
                         isShowingRec.toggle()
                     }
+                }
+                .alert("Error during phone number validation", isPresented: $showAlert2) {
+                    Button("OK") { }
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
                     if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
@@ -240,32 +265,32 @@ struct RegistrationView: View {
                         UserDefaults.standard.set(vm.cognome, forKey: "cognomeUtente")
                         UserDefaults.standard.set(vm.numero, forKey: "numeroUtente")
                         UserDefaults.standard.set(true, forKey: "registration")
-                        vm.handleRegistration(number: vm.numero) { success in
-                            isLoading = false
-                            if success{
-                                isShowingOtp = true
-                            } else {
-                                showAlert.toggle()
-                            }
-                        }
-//                        vm.handleRegistration(number: vm.numero) { result in
+//                        vm.handleRegistration(number: vm.numero) { success in
 //                            isLoading = false
-//                            switch result {
-//                            case .success(let success):
-//                                if success {
-//                                    isShowingOtp = true
-//                                }
-//                            case .failure(let error):
-//                                switch error {
-//                                case .numberAlreadyExists:
-//                                    print("Il numero è già presente nel database")
-//                                    showAlert.toggle()
-//                                case .verificationError(let error):
-//                                    print("Errore durante la verifica del numero: \(error.localizedDescription)")
-//                                    showAlert2.toggle()
-//                                }
+//                            if success{
+//                                isShowingOtp = true
+//                            } else {
+//                                showAlert.toggle()
 //                            }
 //                        }
+                        vm.handleRegistration(number: vm.numero) { result in
+                            isLoading = false
+                            switch result {
+                            case .success(let success):
+                                if success {
+                                    isShowingOtp = true
+                                }
+                            case .failure(let error):
+                                switch error {
+                                case .numberAlreadyExists:
+                                    print("Il numero è già presente nel database")
+                                    showAlert.toggle()
+                                case .verificationError(let error):
+                                    print("Errore durante la verifica del numero: \(error.localizedDescription)")
+                                    showAlert2.toggle()
+                                }
+                            }
+                        }
 
                         
                     } label: {

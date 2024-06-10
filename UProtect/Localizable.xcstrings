@@ -1176,6 +1176,9 @@
         }
       }
     },
+    "Do not have an account?" : {
+
+    },
     "Do you want to deactivate the timer?" : {
       "localizations" : {
         "it" : {
@@ -2130,9 +2133,6 @@
           }
         }
       }
-    },
-    "Send an alert" : {
-
     },
     "Send new code" : {
       "localizations" : {

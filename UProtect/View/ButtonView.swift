@@ -133,10 +133,85 @@ struct TimerView: View {
         }
     }
     
+//    func sendPushNotification(token: String) {
+//        let name = UserDefaults.standard.string(forKey: "firstName") ?? "Unknown"
+//        let surname = UserDefaults.standard.string(forKey: "lastName") ?? "Unknown"
+//        //        let message = "Hai ricevuto una nuova notifica!"
+//        let message = ""
+//        let authenticationToken = tokenAPNS
+//        
+//        let content = """
+//        {
+//            "aps": {
+//                "alert": {
+//                    "title": "\(String(describing: name)) \(String(describing: surname)) is in danger!",
+//                    "subtitle": "Open the app to check on them.",
+//                    "body": "\(message)"
+//                },
+//                "sound": "default"
+//            },
+//            "topic": "com.andrearomano.Hestia"
+//        }
+//        
+//        """
+//        
+//        guard let data = content.data(using: .utf8) else {
+//            print("Errore nella creazione dei dati del payload della notifica")
+//            return
+//        }
+//        
+//        let urlString = "https://api.development.push.apple.com/3/device/\(token)"
+//        guard let url = URL(string: urlString) else {
+//            print("URL non valido")
+//            return
+//        }
+//        
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        request.httpBody = data
+//        
+//        request.addValue("Bearer \(authenticationToken)", forHTTPHeaderField: "Authorization")
+//        request.addValue("com.andrearomano.Hestia", forHTTPHeaderField: "apns-topic")
+//        request.addValue("alert", forHTTPHeaderField: "apns-push-type")
+//        request.addValue("10", forHTTPHeaderField: "apns-priority")
+//        request.addValue("0", forHTTPHeaderField: "apns-expiration")
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        
+//        let session = URLSession(configuration: .default)
+//        
+//        print("Sending push notification for token: \(token)...")
+//        print("Request Headers:")
+//        for (key, value) in request.allHTTPHeaderFields ?? [:] {
+//            print("\(key): \(value)")
+//        }
+//        print("Request Body:")
+//        if let body = request.httpBody {
+//            print(String(data: body, encoding: .utf8) ?? "")
+//        }
+//        
+//        let task = session.dataTask(with: request) { data, response, error in
+//            if let error = error {
+//                print("Errore nell'invio della notifica push per il token \(token):", error)
+//                return
+//            }
+//            
+//            if let httpResponse = response as? HTTPURLResponse {
+//                print("Risposta dalla richiesta di invio della notifica push per il token \(token):", httpResponse.statusCode)
+//                
+//                if let responseData = data {
+//                    print("Dati ricevuti:", String(data: responseData, encoding: .utf8) ?? "Nessun dato ricevuto")
+//                } else {
+//                    print("Nessun dato ricevuto")
+//                }
+//            }
+//        }
+//        
+//        task.resume()
+//    }
+    
     func sendPushNotification(token: String) {
         let name = UserDefaults.standard.string(forKey: "firstName") ?? "Unknown"
         let surname = UserDefaults.standard.string(forKey: "lastName") ?? "Unknown"
-        //        let message = "Hai ricevuto una nuova notifica!"
         let message = ""
         let authenticationToken = tokenAPNS
         
@@ -152,7 +227,6 @@ struct TimerView: View {
             },
             "topic": "com.andrearomano.Hestia"
         }
-        
         """
         
         guard let data = content.data(using: .utf8) else {
@@ -160,7 +234,7 @@ struct TimerView: View {
             return
         }
         
-        let urlString = "https://api.development.push.apple.com/3/device/\(token)"
+        let urlString = "https://api.push.apple.com/3/device/\(token)"
         guard let url = URL(string: urlString) else {
             print("URL non valido")
             return
@@ -208,6 +282,7 @@ struct TimerView: View {
         
         task.resume()
     }
+
     
     func formatPhoneNumber(_ phoneNumber: String?) -> String {
         guard let phoneNumber = phoneNumber else { return "" }
@@ -275,13 +350,6 @@ struct TimerView: View {
             }else{
                 withAnimation {
                     Color(CustomColor.redBackground)
-                }
-                if TimerManager().start{
-                    Text(LocalizedStringKey("Send an alert"))
-                    //                        .foregroundStyle(CustomColor.orange)
-                        .fontWeight(.bold)
-                        .font(.title)
-                        .offset(x: 0, y: -150)
                 }
             }
             
