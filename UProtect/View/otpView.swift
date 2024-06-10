@@ -5,6 +5,195 @@ enum FocusPin {
     case pinOne, pinTwo, pinThree, pinFour, pinFive, pinSix
 }
 
+//struct OtpFormFieldView: View {
+//    @ObservedObject var timerManager: TimerManager
+//    @ObservedObject var audioRecorder: AudioRecorder
+//    @ObservedObject var audioPlayer: AudioPlayer
+//    @StateObject private var vm = CloudViewModel()
+//    
+//    @FocusState private var pinFocusState: FocusPin?
+//    @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
+//    
+//    @State var pinOne: String = ""
+//    @State var pinTwo: String = ""
+//    @State var pinThree: String = ""
+//    @State var pinFour: String = ""
+//    @State var pinFive: String = ""
+//    @State var pinSix: String = ""
+//    
+//    @State var verificationID: String?
+//    @State var isVerified: Bool = false
+//    @State var showAlert: Bool = false
+//    
+//    @State var pollo: Bool = false
+//    
+//    @Environment(\.presentationMode) var presentationMode
+//    
+//    var body: some View {
+//        ZStack{
+//            
+//            CustomColor.orange
+//                .ignoresSafeArea()
+//            
+//            ZStack {
+//                    Button(action: {
+//                        presentationMode.wrappedValue.dismiss()
+//                    }) {
+//                        HStack {
+//                            Image(systemName: "chevron.left")
+//                                .foregroundStyle(.blue)
+//                            Text("Back")
+//                                .foregroundStyle(.blue)
+//                            Spacer()
+//                        }.padding(.horizontal, 125)
+//                    }
+//                
+//                OtpAni(loopmode: .playOnce)
+//                    .scaleEffect(0.45)
+//                    .padding(.bottom, 550)
+//                VStack {
+//                    Text("Enter Verification Code")
+//                        .font(.title3)
+//                        .fontWeight(.semibold)
+//                        .padding(.top)
+//                    //                        .foregroundColor(CustomColor.orange)
+//                        .foregroundColor(Color.white)
+//                    
+//                    HStack(spacing: 10) {
+//                        otpTextField(text: $pinOne, focus: .pinOne, nextFocus: .pinTwo)
+//                        otpTextField(text: $pinTwo, focus: .pinTwo, nextFocus: .pinThree, previousFocus: .pinOne)
+//                        otpTextField(text: $pinThree, focus: .pinThree, nextFocus: .pinFour, previousFocus: .pinTwo)
+//                        otpTextField(text: $pinFour, focus: .pinFour, nextFocus: .pinFive, previousFocus: .pinThree)
+//                        otpTextField(text: $pinFive, focus: .pinFive, nextFocus: .pinSix, previousFocus: .pinFour)
+//                        otpTextField(text: $pinSix, focus: .pinSix, previousFocus: .pinFive)
+//                    }
+//                    .padding(.bottom)
+//                    
+//                    Button {
+//                        vm.handleRegistration(number: vm.numero) {_ in
+//                            showAlert.toggle()
+//                        }
+//                    } label: {
+//                        Text("Send new code")
+//                    }
+//                    
+//                    Button {
+//                        verifyOTP { success in
+//                            if success {
+//                                if pollo {
+//                                    print("registrazione")
+//                                    vm.addButtonPressed()
+//                                } else {
+//                                    print("login")
+//                                    vm.handleLogin(number: vm.numero) { success in
+//                                        if success {
+//                                        } else {
+//                                            print("Errore nel login (otp)")
+//                                        }
+//                                    }
+//                                }
+//                                isWelcomeScreenOver = true
+//                            } else {
+//                                print("OTP verification failed.")
+//                            }
+//                        }
+//                    } label: {
+//                        ZStack {
+//                            RoundedRectangle(cornerRadius: 10)
+//                            //                                .foregroundColor(CustomColor.orange)
+//                                .foregroundColor(Color.white)
+//                                .frame(width: 100, height: 50)
+//                            Text("Verify")
+//                                .fontWeight(.bold)
+//                            //                                .foregroundColor(Color.white)
+//                        }
+//                    }
+//                    .padding(.top)
+//                }
+//                .onAppear {
+//                    verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
+//                }
+//                .fullScreenCover(isPresented: $isVerified) {
+//                    ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+//                }
+//                .alert("OTP sent!", isPresented: $showAlert) {
+//                    Button("OK") { }
+//                }
+//            }
+//            .padding(.top, 40)
+//            .ignoresSafeArea()
+//            .preferredColorScheme(.light)
+//            .onAppear{
+//                pollo = UserDefaults.standard.bool(forKey: "registration")
+//                print(pollo)
+//            }
+//        }
+//    }
+//    
+//    private func otpTextField(text: Binding<String>, focus: FocusPin, nextFocus: FocusPin? = nil, previousFocus: FocusPin? = nil) -> some View {
+//        TextField("", text: text)
+//            .modifier(OtpModifier(pin: text))
+//            .onChange(of: text.wrappedValue) { newValue in
+//                if newValue.count == 6 {
+//                    distributeCode(newValue)
+//                } else if newValue.count == 1 {
+//                    if let nextFocus = nextFocus {
+//                        pinFocusState = nextFocus
+//                    }
+//                } else if newValue.count == 0 {
+//                    if let previousFocus = previousFocus {
+//                        pinFocusState = previousFocus
+//                    }
+//                }
+//            }
+//            .focused($pinFocusState, equals: focus)
+//    }
+//    
+//    private func distributeCode(_ code: String) {
+//        if code.count == 6 {
+//            pinOne = String(code[code.index(code.startIndex, offsetBy: 0)])
+//            pinTwo = String(code[code.index(code.startIndex, offsetBy: 1)])
+//            pinThree = String(code[code.index(code.startIndex, offsetBy: 2)])
+//            pinFour = String(code[code.index(code.startIndex, offsetBy: 3)])
+//            pinFive = String(code[code.index(code.startIndex, offsetBy: 4)])
+//            pinSix = String(code[code.index(code.startIndex, offsetBy: 5)])
+//            pinFocusState = .pinSix
+//        }
+//    }
+//    
+//    func verifyOTP(completion: @escaping (Bool) -> Void) {
+//        print("uno: \(pinOne)")
+//        print("due: \(pinTwo)")
+//        print("uno: \(pinThree)")
+//        print("uno: \(pinFour)")
+//        print("uno: \(pinFive)")
+//        print("uno: \(pinSix)")
+//        let otp = pinOne + pinTwo + pinThree + pinFour + pinFive + pinSix
+//        guard let verificationID = verificationID else {
+//            print("No verification ID found.")
+//            completion(false)
+//            return
+//        }
+//        
+//        let credential = PhoneAuthProvider.provider().credential(
+//            withVerificationID: verificationID,
+//            verificationCode: otp
+//        )
+//        
+//        Auth.auth().signIn(with: credential) { authResult, error in
+//            if let error = error {
+//                print("Error during OTP verification: \(error.localizedDescription)")
+//                completion(false)
+//                return
+//            }
+//            print("User signed in successfully.")
+//            isVerified = true
+//            completion(true)
+//        }
+//    }
+//    
+//}
+
 struct OtpFormFieldView: View {
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
@@ -26,18 +215,35 @@ struct OtpFormFieldView: View {
     @State var showAlert: Bool = false
     
     @State var pollo: Bool = false
+    @State private var keyboardHeight: CGFloat = 0
+    
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack{
-            
             CustomColor.orange
                 .ignoresSafeArea()
             
             ZStack {
-                OtpAni(loopmode: .playOnce)
-                    .scaleEffect(0.45)
-                    .padding(.bottom, 550)
                 VStack {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                                .foregroundStyle(.blue)
+                            Text("Back")
+                                .foregroundStyle(.blue)
+                            Spacer()
+                        }.padding(.horizontal, 15)
+                            .padding(.top, 30)
+                    }
+                
+                OtpAni(loopmode: .playOnce)
+                        .frame(width: 200, height: 200)
+                    .scaleEffect(0.45)
+                    .padding(.bottom, 50)
+                
                     Text("Enter Verification Code")
                         .font(.title3)
                         .fontWeight(.semibold)
@@ -95,6 +301,7 @@ struct OtpFormFieldView: View {
                         }
                     }
                     .padding(.top)
+                    Spacer()
                 }
                 .onAppear {
                     verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
@@ -105,12 +312,24 @@ struct OtpFormFieldView: View {
                 .alert("OTP sent!", isPresented: $showAlert) {
                     Button("OK") { }
                 }
-            }
+            }.padding(.bottom, keyboardHeight - 100)
+            .padding(.top, 40)
             .ignoresSafeArea()
             .preferredColorScheme(.light)
             .onAppear{
                 pollo = UserDefaults.standard.bool(forKey: "registration")
                 print(pollo)
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
+                if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                    keyboardHeight = keyboardFrame.height
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                keyboardHeight = 0
+            }
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
         }
     }

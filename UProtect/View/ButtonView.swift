@@ -148,7 +148,6 @@ struct TimerView: View {
                     "subtitle": "Open the app to check on them.",
                     "body": "\(message)"
                 },
-        "badge": 1,
                 "sound": "default"
             },
             "topic": "com.andrearomano.Hestia"
@@ -277,6 +276,13 @@ struct TimerView: View {
                 withAnimation {
                     Color(CustomColor.redBackground)
                 }
+                if TimerManager().start{
+                    Text(LocalizedStringKey("Send an alert"))
+                    //                        .foregroundStyle(CustomColor.orange)
+                        .fontWeight(.bold)
+                        .font(.title)
+                        .offset(x: 0, y: -150)
+                }
             }
             
             if timerManager.isPressed {
@@ -398,7 +404,7 @@ struct TimerView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 buttonLocked = false
                             }
-//                            sendMessage()
+                            //                            sendMessage()
                             sendPosition()
                         } else {
                             if timerManager.canCancel && !buttonLocked {
@@ -418,7 +424,7 @@ struct TimerView: View {
                 } else {
                     print("No tokens saved in UserDefaults")
                     showAlert3.toggle()
-//                    sendMessage()
+                    //                    sendMessage()
                 }
             }
             .onLongPressGesture{
@@ -445,7 +451,7 @@ struct TimerView: View {
                 } else {
                     print("No tokens saved in UserDefaults")
                     showAlert3.toggle()
-//                    sendMessage()
+                    //                    sendMessage()
                 }
             }
         }.ignoresSafeArea()

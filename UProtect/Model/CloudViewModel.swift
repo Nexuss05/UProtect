@@ -562,6 +562,43 @@ class CloudViewModel: ObservableObject{
         }
     }
     
+//    enum RegistrationError: Error {
+//        case numberAlreadyExists
+//        case verificationError(Error)
+//    }
+//    
+//    func handleRegistration(number: String, completion: @escaping (Result<Bool, RegistrationError>) -> Void) {
+//        var formattedPhoneNumber = number
+//        if !number.hasPrefix("+") {
+//            formattedPhoneNumber = formatPhoneNumber(number)
+//        }
+//        print(formattedPhoneNumber)
+//        
+//        searchNumber(number: formattedPhoneNumber) { found in
+//            if found {
+//                print("Numero già presente nel database")
+//                completion(.failure(.numberAlreadyExists))
+//                return
+//            }
+//            
+//            print("Attempting to verify phone number: \(formattedPhoneNumber)")
+//            
+//            let phoneAuthProvider = PhoneAuthProvider.provider()
+//            phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+//                if let error = error {
+//                    print (error)
+//                    print("Error during phone verification: \(error.localizedDescription)")
+//                    completion(.failure(.verificationError(error)))
+//                    return
+//                }
+//                print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
+//                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+//                completion(.success(true))
+//            }
+//            
+//        }
+//    }
+    
     func deleteUser(completion: @escaping (Bool) -> Void){
         let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
         let query = CKQuery(recordType: "Utenti", predicate: predicate)

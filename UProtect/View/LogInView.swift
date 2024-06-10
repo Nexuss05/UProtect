@@ -41,7 +41,7 @@ struct LogInView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(Color.white)
-                        TextField("Phone number", text: $vm.numero).keyboardType(.numberPad)
+                        TextField("Phone number", text: $vm.numero).keyboardType(.phonePad)
                             .padding(.leading, 20)
                     }.frame(width: 325, height: 50, alignment: .center)
                         .padding(.top, 60)
@@ -126,6 +126,7 @@ struct RegistrationView: View {
     @State var isShowingLogin: Bool = false
     @State var isShowingOtp: Bool = false
     @State var showAlert: Bool = false
+    @State var showAlert2: Bool = false
     @State var accettato: Bool = false
     
     @ObservedObject var timerManager: TimerManager
@@ -216,7 +217,7 @@ struct RegistrationView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundColor(Color.white)
-                            TextField("Phone number", text: $vm.numero).keyboardType(.numberPad)
+                            TextField("Phone number", text: $vm.numero).keyboardType(.phonePad)
                                 .padding(.leading, 20)
                                 .focused($focusedField, equals: .numero)
                         }.frame(width: 325, height: 50, alignment: .center)
@@ -247,6 +248,25 @@ struct RegistrationView: View {
                                 showAlert.toggle()
                             }
                         }
+//                        vm.handleRegistration(number: vm.numero) { result in
+//                            isLoading = false
+//                            switch result {
+//                            case .success(let success):
+//                                if success {
+//                                    isShowingOtp = true
+//                                }
+//                            case .failure(let error):
+//                                switch error {
+//                                case .numberAlreadyExists:
+//                                    print("Il numero è già presente nel database")
+//                                    showAlert.toggle()
+//                                case .verificationError(let error):
+//                                    print("Errore durante la verifica del numero: \(error.localizedDescription)")
+//                                    showAlert2.toggle()
+//                                }
+//                            }
+//                        }
+
                         
                     } label: {
                         ZStack {
@@ -272,6 +292,9 @@ struct RegistrationView: View {
                     Button("Log In"){
                         isShowingLogin.toggle()
                     }
+                }
+                .alert("Error during phone number validation", isPresented: $showAlert2) {
+                    Button("OK") { }
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
                     if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {

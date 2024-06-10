@@ -1256,6 +1256,9 @@
         }
       }
     },
+    "Error during phone number validation" : {
+
+    },
     "Error: try again later" : {
       "localizations" : {
         "it" : {
@@ -2127,6 +2130,9 @@
           }
         }
       }
+    },
+    "Send an alert" : {
+
     },
     "Send new code" : {
       "localizations" : {
