@@ -40,7 +40,6 @@ struct DirectionView: View {
                         Text(firstPartOfAddress(address: selectedLocation?.address ?? "")).lineLimit(1)
                             .font(.title3)
                             .foregroundStyle(.gray)
-                        
                     }.padding(.horizontal, 23.5)
                 }.frame(width: 350)
                     .padding(.top, 15)
@@ -52,14 +51,14 @@ struct DirectionView: View {
                             Text("\(distanceformatter(meters: route.distance))")
                                 .foregroundStyle(.black)
                                 .bold()
-                        }
+                        }.accessibilityElement(children: .combine)
                         VStack(alignment: .leading){
                             Text("Time")
                                 .foregroundStyle(.black)
                             Text("\(travelTime ?? "0 min")")
                                 .foregroundStyle(.black)
                                 .bold()
-                        }
+                        }.accessibilityElement(children: .combine)
                         Button(action: {
                             showDirections.toggle()
                         }) {

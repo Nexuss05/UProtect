@@ -84,7 +84,7 @@ struct RecordingRow: View {
                         .font(.headline)
                     Text("\(formattedDate(date: createdAt))")
                         .font(.subheadline)
-                }
+                }.accessibilityElement(children: .combine)
                 Spacer()
                 Menu {
                     Button(action: {

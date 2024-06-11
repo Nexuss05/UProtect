@@ -152,6 +152,8 @@ struct SettingsView: View {
                                 UIApplication.shared.open(url)
                             }
                         }
+                        .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("Get Help. Button")
                         HStack {
                             Image(systemName: "doc.text")
                                 .foregroundColor(.primary)
@@ -164,7 +166,8 @@ struct SettingsView: View {
                             if let url = URL(string: "https://www.iubenda.com/privacy-policy/60037945") {
                                 UIApplication.shared.open(url)
                             }
-                        }
+                        }.accessibilityElement(children: .ignore)
+                            .accessibilityLabel("Privacy Policy. Button")
 //                        ShareLink(item: URL(string: "")!, label: {
 //                            HStack{
 //                                Image(systemName: "square.and.arrow.up")

@@ -148,7 +148,8 @@ struct MapView: View {
                         .foregroundStyle(CustomColor.mapButton)
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(.gray)
-                }
+                }.accessibilityElement(children: .ignore).accessibilityLabel("Friend location")
+                .accessibilityAddTraits(.isButton)
                 .padding(.leading, 336.5)
                 .padding(.bottom, 550)
             } else {
@@ -157,7 +158,8 @@ struct MapView: View {
                         .foregroundStyle(CustomColor.redBackground)
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(.white)
-                }
+                }.accessibilityElement(children: .ignore).accessibilityLabel("Friend location")
+                .accessibilityAddTraits(.isButton)
                 .padding(.leading, 336.5)
                 .padding(.bottom, 550)
                 .onTapGesture {

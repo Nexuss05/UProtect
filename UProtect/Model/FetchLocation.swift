@@ -158,7 +158,7 @@ struct FetchLocation: View {
                                         .foregroundStyle(.gray)
                                 }
                                 .font(.footnote)
-                            }
+                            }.accessibilityElement(children: .combine)
                             HStack(spacing: 20){
                                 Button(action: {
                                     showRoute.toggle()
@@ -170,7 +170,8 @@ struct FetchLocation: View {
                                         .resizable()
                                         .frame(width: 18, height: 25)
                                         .foregroundColor(.white)
-                                }
+                                }.accessibilityElement(children: .ignore).accessibilityLabel("Walk")
+                                    .accessibilityAddTraits(.isButton)
                                 .frame(width: 100, height: 35)
                                 .background(Color.orange)
                                 .cornerRadius(6)
@@ -185,7 +186,8 @@ struct FetchLocation: View {
                                         .resizable()
                                         .frame(width: 20, height: 20)
                                         .foregroundColor(.white)
-                                }
+                                }.accessibilityElement(children: .ignore).accessibilityLabel("Call")
+                                    .accessibilityAddTraits(.isButton)
                                 .frame(width: 100, height: 35)
                                 .background(Color.orange)
                                 .cornerRadius(6)
@@ -199,7 +201,7 @@ struct FetchLocation: View {
                                         .font(.footnote)
                                         .foregroundStyle(.gray)
                                         .fontWeight(.heavy)
-                                }
+                                }.accessibilityElement(children: .combine)
                                 VStack(alignment: .leading){
                                     Text("Hours")
                                         .font(.footnote)
@@ -208,7 +210,7 @@ struct FetchLocation: View {
                                         .font(.footnote)
                                         .fontWeight(.heavy)
                                         .foregroundStyle(.green)
-                                }
+                                }.accessibilityElement(children: .combine)
                             }
                         }
                     }

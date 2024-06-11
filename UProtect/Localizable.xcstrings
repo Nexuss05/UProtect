@@ -1010,6 +1010,9 @@
         }
       }
     },
+    "Call" : {
+
+    },
     "Change Language" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1226,6 +1229,9 @@
         }
       }
     },
+    "Emergency Button" : {
+
+    },
     "Enable Location" : {
       "localizations" : {
         "it" : {
@@ -1317,6 +1323,9 @@
         }
       }
     },
+    "Friend location" : {
+
+    },
     "General Advice:" : {
       "localizations" : {
         "it" : {
@@ -1346,6 +1355,9 @@
           }
         }
       }
+    },
+    "Get Help. Button" : {
+
     },
     "Get started" : {
       "localizations" : {
@@ -1904,6 +1916,9 @@
           }
         }
       }
+    },
+    "Privacy Policy. Button" : {
+
     },
     "Projecting Future Outcomes" : {
       "localizations" : {
@@ -2546,6 +2561,9 @@
           }
         }
       }
+    },
+    "Walk" : {
+
     },
     "Walking alone can be risky, depending on factors like location, gender, and time of day. Here are some general tips to help keep you safe in any situation." : {
       "localizations" : {

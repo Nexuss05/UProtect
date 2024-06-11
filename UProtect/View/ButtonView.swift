@@ -323,7 +323,7 @@ struct TimerView: View {
                             .font(.title2)
                             .fontWeight(.bold)
                             .offset(x: 0, y: -150)
-                    }
+                    }.accessibilityElement(children: .combine)
                 } else if Locale.current.language.languageCode?.identifier == "it" {
                     VStack(alignment: .center){
                         Text(LocalizedStringKey("TIENI PREMUTO"))
@@ -334,6 +334,7 @@ struct TimerView: View {
                             .font(.title2)
                             .fontWeight(.bold)
                     }.offset(x: 0, y: -165)
+                        .accessibilityElement(children: .combine)
                 } else {
                     HStack{
                         Text(LocalizedStringKey("HOLD"))
@@ -345,7 +346,7 @@ struct TimerView: View {
                             .font(.title2)
                             .fontWeight(.bold)
                             .offset(x: 0, y: -150)
-                    }
+                    }.accessibilityElement(children: .combine)
                 }
             }else{
                 withAnimation {
@@ -399,7 +400,8 @@ struct TimerView: View {
                     .opacity(withAnimation{
                         timerManager.start ? 1 : 0
                     })
-            }
+            }.accessibilityElement(children: .ignore).accessibilityLabel("Emergency Button")
+                .accessibilityAddTraits(.isButton)
             .onOpenURL { url in
                 guard
                     let scheme = url.scheme,
