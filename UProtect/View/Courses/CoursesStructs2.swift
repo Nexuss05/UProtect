@@ -10,6 +10,7 @@ struct SafetyTipView: View {
         HStack(alignment: .top) {
             Text(icon)
                 .font(.title)
+                .accessibilityLabel("")
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.headline)
@@ -18,6 +19,7 @@ struct SafetyTipView: View {
             }
         }
         .padding(.vertical, 5)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -36,13 +38,13 @@ struct Course201: View {
                     .foregroundColor(.primary)
                 
                 Section(header: Text("Essential Safety Tips").font(.title3).fontWeight(.bold).foregroundColor(CustomColor.redBackground)) {
-                    SafetyTipView(icon: "🛤️", title: "Plan Your Route", description: "Before leaving, choose well-lit streets with lots of people and open stores. Share your travel plan with someone you trust.")
-                    SafetyTipView(icon: "💡", title: "Share Your Plan", description: "Inform a family member or friend of your route and expected arrival time. They can check on you if they don't hear from you.")
-                    SafetyTipView(icon: "📱", title: "Carry Your Phone", description: "Keep your phone with you and fully charged. Consider carrying a power bank. Avoid using your phone for messages or music while walking.")
-                    SafetyTipView(icon: "⚠️", title: "Avoid Suspicious Areas and People", description: "Stick to well-lit, busy places. Avoid shortcuts through dark alleys or parks. Stay alert for anything that feels off.")
-                    SafetyTipView(icon: "🤲", title: "Keep Your Hands Free", description: "You may need your hands for your phone or self-defense tools. Carry a small, light purse.")
-                    SafetyTipView(icon: "🚨", title: "Carry Non-Violent Deterrents", description: "A loud alarm can draw attention and deter attackers. Ensure any deterrents you carry are legal in your area.")
-                    SafetyTipView(icon: "🛡️", title: "Learn Self-Defense", description: "Self-defense classes boost confidence and situational awareness, preparing you mentally and physically for stressful situations.")
+                    SafetyTipView(icon: "🛤️", title: "Plan Your Route", description: "Before leaving, choose well-lit streets with lots of people and open stores. Share your travel plan with someone you trust.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "💡", title: "Share Your Plan", description: "Inform a family member or friend of your route and expected arrival time. They can check on you if they don't hear from you.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "📱", title: "Carry Your Phone", description: "Keep your phone with you and fully charged. Consider carrying a power bank. Avoid using your phone for messages or music while walking.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "⚠️", title: "Avoid Suspicious Areas and People", description: "Stick to well-lit, busy places. Avoid shortcuts through dark alleys or parks. Stay alert for anything that feels off.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🤲", title: "Keep Your Hands Free", description: "You may need your hands for your phone or self-defense tools. Carry a small, light purse.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🚨", title: "Carry Non-Violent Deterrents", description: "A loud alarm can draw attention and deter attackers. Ensure any deterrents you carry are legal in your area.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🛡️", title: "Learn Self-Defense", description: "Self-defense classes boost confidence and situational awareness, preparing you mentally and physically for stressful situations.").accessibilityElement(children: .combine)
 
                 }
             }
@@ -61,9 +63,9 @@ struct Course202: View {
                     .fontWeight(.bold)
                     .foregroundColor(CustomColor.redBackground)
 
-                    SafetyTipView(icon: "👀", title: "Situational Awareness", description: "Stay alert and aware of your surroundings. Notice if a person or vehicle appears repeatedly.")
-                    SafetyTipView(icon: "📱", title: "Frequent Glances", description: "Use reflective surfaces like windows or your phone screen to check for followers discreetly.")
-                    SafetyTipView(icon: "🔄", title: "Change Pace and Direction", description: "Alter your walking pattern. Speed up, slow down, or take several turns to see if the follower mirrors your movements.")
+                    SafetyTipView(icon: "👀", title: "Situational Awareness", description: "Stay alert and aware of your surroundings. Notice if a person or vehicle appears repeatedly.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "📱", title: "Frequent Glances", description: "Use reflective surfaces like windows or your phone screen to check for followers discreetly.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🔄", title: "Change Pace and Direction", description: "Alter your walking pattern. Speed up, slow down, or take several turns to see if the follower mirrors your movements.").accessibilityElement(children: .combine)
             }
             .padding()
         }
@@ -80,15 +82,15 @@ struct Course203: View {
                     .fontWeight(.bold)
                     .foregroundColor(CustomColor.redBackground)
                 
-                    SafetyTipView(icon: "🏠", title: "Do Not Head Straight Home", description: "Avoid leading a potential follower to your residence. Go to a public, well-lit, crowded place like a café, mall, or police station.")
-                    SafetyTipView(icon: "🚔", title: "Contact Authorities", description: "If you feel threatened, call the police. Inform them of your location and situation. Also, inform friends or family.")
-                    SafetyTipView(icon: "👀", title: "Observe and Note Details", description: "Remember details about the follower or their vehicle, like appearance, clothing, or license plate.")
-                    SafetyTipView(icon: "📢", title: "Make Noise and Seek Help", description: "Enter a store or crowded area and inform someone in charge. Drawing attention can deter a stalker.")
+                    SafetyTipView(icon: "🏠", title: "Do Not Head Straight Home", description: "Avoid leading a potential follower to your residence. Go to a public, well-lit, crowded place like a café, mall, or police station.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🚔", title: "Contact Authorities", description: "If you feel threatened, call the police. Inform them of your location and situation. Also, inform friends or family.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "👀", title: "Observe and Note Details", description: "Remember details about the follower or their vehicle, like appearance, clothing, or license plate.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "📢", title: "Make Noise and Seek Help", description: "Enter a store or crowded area and inform someone in charge. Drawing attention can deter a stalker.").accessibilityElement(children: .combine)
                 
                 Section(header: Text("Preventive Measures").font(.title3).foregroundStyle(CustomColor.redBackground).bold()) {
-                    SafetyTipView(icon: "🗺", title: "Share Your Itinerary", description: "Let someone you trust know your plans and expected arrival times. Use apps to share your live location with friends or family.")
-                    SafetyTipView(icon: "🔄", title: "Vary Your Routes", description: "Avoid predictable routines. Change your routes and travel times frequently.")
-                    SafetyTipView(icon: "📱", title: "Use Technology", description: "Use personal safety apps with features like panic buttons that send your location and a distress message to contacts or authorities.")
+                    SafetyTipView(icon: "🗺", title: "Share Your Itinerary", description: "Let someone you trust know your plans and expected arrival times. Use apps to share your live location with friends or family.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🔄", title: "Vary Your Routes", description: "Avoid predictable routines. Change your routes and travel times frequently.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "📱", title: "Use Technology", description: "Use personal safety apps with features like panic buttons that send your location and a distress message to contacts or authorities.").accessibilityElement(children: .combine)
                 }
             }
             .padding()
@@ -108,19 +110,19 @@ struct Course204: View {
                     .padding(.bottom)
                 
                 Section(header: Text("On Foot:").font(.title2).bold()) {
-                    SafetyTipView(icon: "🚶‍♂️", title: "Walk Confidently", description: "Walk confidently and at a steady pace.")
-                    SafetyTipView(icon: "🚷", title: "Avoid Isolated Areas", description: "Avoid isolated areas, especially at night.")
-                    SafetyTipView(icon: "📱", title: "Keep Your Phone Accessible", description: "Keep your phone easily accessible.")
+                    SafetyTipView(icon: "🚶‍♂️", title: "Walk Confidently", description: "Walk confidently and at a steady pace.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🚷", title: "Avoid Isolated Areas", description: "Avoid isolated areas, especially at night.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "📱", title: "Keep Your Phone Accessible", description: "Keep your phone easily accessible.").accessibilityElement(children: .combine)
                 }.padding(.bottom)
                 
                 Section(header: Text("In a Vehicle:").font(.title2).bold()) {
-                    SafetyTipView(icon: "🚗", title: "If Followed by Another Car", description: "If another car is following you, do not drive home. Go to a police station or a well-lit, busy area.")
-                    SafetyTipView(icon: "🔄", title: "Make Intentional Turns", description: "Make intentional turns to confirm if the same vehicle is still behind you.")
-                    SafetyTipView(icon: "🚫", title: "Avoid Stopping in Secluded Areas", description: "Avoid stopping in secluded areas.")
+                    SafetyTipView(icon: "🚗", title: "If Followed by Another Car", description: "If another car is following you, do not drive home. Go to a police station or a well-lit, busy area.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🔄", title: "Make Intentional Turns", description: "Make intentional turns to confirm if the same vehicle is still behind you.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🚫", title: "Avoid Stopping in Secluded Areas", description: "Avoid stopping in secluded areas.").accessibilityElement(children: .combine)
                 }.padding(.bottom)
                 Section(header: Text("Using Public Transport:").font(.title2).bold()) {
-                    SafetyTipView(icon: "🚍", title: "Sit Near the Front", description: "Move towards the front of the bus or train where the driver or conductor can see you.")
-                    SafetyTipView(icon: "🚉", title: "Get Off at Busy Stops", description: "If you feel unsafe, get off at a busy stop and wait for the next bus or train.")
+                    SafetyTipView(icon: "🚍", title: "Sit Near the Front", description: "Move towards the front of the bus or train where the driver or conductor can see you.").accessibilityElement(children: .combine)
+                    SafetyTipView(icon: "🚉", title: "Get Off at Busy Stops", description: "If you feel unsafe, get off at a busy stop and wait for the next bus or train.").accessibilityElement(children: .combine)
                 }
             }
             .padding()

@@ -17,6 +17,7 @@ struct SafetyTipView3: View {
         HStack(alignment: .top) {
             Text(icon)
                 .font(.title)
+                .accessibilityLabel("")
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.headline)
@@ -25,6 +26,7 @@ struct SafetyTipView3: View {
             }
         }
         .padding(.vertical, 5)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -48,28 +50,28 @@ struct Course401: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView3(icon: "👕", title: "Bright Clothes", description: "Equip your child with bright or reflective clothing to increase visibility, especially in low-light conditions. Reflective patches or accessories on backpacks can also be effective.")
-                    SafetyTipView3(icon: "👥", title: "Walk Together", description: "Initially walk the route with your child to familiarize them with it. Show them safe places to cross and potential hazards.")
-                    SafetyTipView3(icon: "🧠", title: "Alternatives", description: "Plan a backup route in case the primary path is blocked. Ensure your child knows this route and can contact you if needed.")
+                    SafetyTipView3(icon: "👕", title: "Bright Clothes", description: "Equip your child with bright or reflective clothing to increase visibility, especially in low-light conditions. Reflective patches or accessories on backpacks can also be effective.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "👥", title: "Walk Together", description: "Initially walk the route with your child to familiarize them with it. Show them safe places to cross and potential hazards.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🧠", title: "Alternatives", description: "Plan a backup route in case the primary path is blocked. Ensure your child knows this route and can contact you if needed.").accessibilityElement(children: .combine)
                     
                     Text("**Road Safety Rules**: Teach children road safety basics, such as:")
                     VStack(alignment: .leading, spacing: 5) {
-                        SafetyTipView3(icon: "👀", title: "Look Both Ways", description: "Always look both ways before crossing the street.")
-                        SafetyTipView3(icon: "🚸", title: "Use Pedestrian Crossings", description: "Use pedestrian crossings and obey traffic signals.")
-                        SafetyTipView3(icon: "🚶‍♀️", title: "Walk on Sidewalks", description: "Walk on sidewalks or, if unavailable, facing traffic on the road's edge.")
-                        SafetyTipView3(icon: "🏃‍♀️", title: "Never Play or Run", description: "Never play or run into the street.")
+                        SafetyTipView3(icon: "👀", title: "Look Both Ways", description: "Always look both ways before crossing the street.").accessibilityElement(children: .combine)
+                        SafetyTipView3(icon: "🚸", title: "Use Pedestrian Crossings", description: "Use pedestrian crossings and obey traffic signals.").accessibilityElement(children: .combine)
+                        SafetyTipView3(icon: "🚶‍♀️", title: "Walk on Sidewalks", description: "Walk on sidewalks or, if unavailable, facing traffic on the road's edge.").accessibilityElement(children: .combine)
+                        SafetyTipView3(icon: "🏃‍♀️", title: "Never Play or Run", description: "Never play or run into the street.").accessibilityElement(children: .combine)
                     }
                     
                     Text("**Stranger Danger**: Educate your child on how to handle situations with strangers:")
                     VStack(alignment: .leading, spacing: 5) {
-                        SafetyTipView3(icon: "🚘", title: "Never Accept Rides", description: "Never accept rides or gifts from strangers.")
-                        SafetyTipView3(icon: "👨‍🦳", title: "Know Safe Adults", description: "Know safe adults they can turn to if they feel uncomfortable or in danger.")
+                        SafetyTipView3(icon: "🚘", title: "Never Accept Rides", description: "Never accept rides or gifts from strangers.").accessibilityElement(children: .combine)
+                        SafetyTipView3(icon: "👨‍🦳", title: "Know Safe Adults", description: "Know safe adults they can turn to if they feel uncomfortable or in danger.").accessibilityElement(children: .combine)
                     }
                     
-                    SafetyTipView3(icon: "📱", title: "Mobile Phones", description: "Consider giving your child a phone to contact you in emergencies. Teach them how to use it responsibly and practice emergency procedures.")
-                    SafetyTipView3(icon: "🏡", title: "Safe Spots", description: "Identify safe places along the route, like trusted neighbors' homes or businesses, where your child can seek help if needed.")
-                    SafetyTipView3(icon: "🎧", title: "No Headphones", description: "Discourage the use of headphones while walking to ensure they remain alert to their surroundings.")
-                    SafetyTipView3(icon: "🗺", title: "Identifying Safe Routes", description: "Choose routes that avoid isolated or poorly lit areas, busy roads without sidewalks, and other hazards.")
+                    SafetyTipView3(icon: "📱", title: "Mobile Phones", description: "Consider giving your child a phone to contact you in emergencies. Teach them how to use it responsibly and practice emergency procedures.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🏡", title: "Safe Spots", description: "Identify safe places along the route, like trusted neighbors' homes or businesses, where your child can seek help if needed.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🎧", title: "No Headphones", description: "Discourage the use of headphones while walking to ensure they remain alert to their surroundings.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🗺", title: "Identifying Safe Routes", description: "Choose routes that avoid isolated or poorly lit areas, busy roads without sidewalks, and other hazards.").accessibilityElement(children: .combine)
                 }
             }
             .padding()
@@ -88,13 +90,13 @@ struct Course402: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView3(icon: "👀", title: "Look Before Crossing", description: "Hold an adult's hand, look left, right, and left again before crossing.")
-                    SafetyTipView3(icon: "🚫", title: "Don’t Play on the Road", description: "Teach children the importance of staying away from streets.")
-                    SafetyTipView3(icon: "🚶‍♀️", title: "Use Sidewalks", description: "Always walk on sidewalks or face traffic if no sidewalk is available.")
-                    SafetyTipView3(icon: "🚦", title: "Understand Traffic Signals", description: "Explain the meanings of red, yellow, and green lights.")
-                    SafetyTipView3(icon: "🚗", title: "Exit Cars Safely", description: "Always exit vehicles away from traffic.")
-                    SafetyTipView3(icon: "🚴‍♀️", title: "Wear Helmets", description: "Ensure helmets are worn when biking or skateboarding.")
-                    SafetyTipView3(icon: "💡", title: "Additional Tips", description: "Always wear seatbelts, be alert to horns, and let vehicles pass safely.")
+                    SafetyTipView3(icon: "👀", title: "Look Before Crossing", description: "Hold an adult's hand, look left, right, and left again before crossing.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🚫", title: "Don’t Play on the Road", description: "Teach children the importance of staying away from streets.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🚶‍♀️", title: "Use Sidewalks", description: "Always walk on sidewalks or face traffic if no sidewalk is available.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🚦", title: "Understand Traffic Signals", description: "Explain the meanings of red, yellow, and green lights.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🚗", title: "Exit Cars Safely", description: "Always exit vehicles away from traffic.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🚴‍♀️", title: "Wear Helmets", description: "Ensure helmets are worn when biking or skateboarding.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "💡", title: "Additional Tips", description: "Always wear seatbelts, be alert to horns, and let vehicles pass safely.").accessibilityElement(children: .combine)
                 }
             }
             .padding()
@@ -113,12 +115,12 @@ struct Course403: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView3(icon: "📞", title: "Emergency Contacts", description: "Children should know emergency contacts and memorize parents’ phone numbers.")
-                    SafetyTipView3(icon: "🚪", title: "Get Permission to Leave", description: "Always ask for permission before leaving the house.")
-                    SafetyTipView3(icon: "🚫", title: "Avoid Opening Doors to Strangers", description: "Teach children to verify who is at the door and not open it to unknown people.")
-                    SafetyTipView3(icon: "🔥", title: "No Playing with Fire or Water", description: "Educate about fire hazards and water safety.")
-                    SafetyTipView3(icon: "❌", title: "No Climbing on High Surfaces", description: "Warn against jumping on furniture or climbing on shelves.")
-                    SafetyTipView3(icon: "📚", title: "Safe At-Home Learning", description: "Ensure the learning environment is child-friendly.")
+                    SafetyTipView3(icon: "📞", title: "Emergency Contacts", description: "Children should know emergency contacts and memorize parents’ phone numbers.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🚪", title: "Get Permission to Leave", description: "Always ask for permission before leaving the house.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🚫", title: "Avoid Opening Doors to Strangers", description: "Teach children to verify who is at the door and not open it to unknown people.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🔥", title: "No Playing with Fire or Water", description: "Educate about fire hazards and water safety.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "❌", title: "No Climbing on High Surfaces", description: "Warn against jumping on furniture or climbing on shelves.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "📚", title: "Safe At-Home Learning", description: "Ensure the learning environment is child-friendly.").accessibilityElement(children: .combine)
                 }
             }
             .padding()
@@ -137,9 +139,9 @@ struct Course404: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView3(icon: "🚫", title: "Be Wary of Strangers", description: "Don’t accept offers or go with strangers. Report any suspicious behavior.")
-                    SafetyTipView3(icon: "👨‍👩‍👧", title: "Always Tell Parents", description: "Encourage open communication about interactions with adults.")
-                    SafetyTipView3(icon: "↔️", title: "Maintain Distance", description: "Keep a safe distance from unknown adults asking for help.")
+                    SafetyTipView3(icon: "🚫", title: "Be Wary of Strangers", description: "Don’t accept offers or go with strangers. Report any suspicious behavior.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "👨‍👩‍👧", title: "Always Tell Parents", description: "Encourage open communication about interactions with adults.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "↔️", title: "Maintain Distance", description: "Keep a safe distance from unknown adults asking for help.").accessibilityElement(children: .combine)
                 }
                 
                 Text("General Safety")
@@ -148,12 +150,12 @@ struct Course404: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView3(icon: "🆘", title: "What to Do if Lost", description: "Stay calm, stay where they are, and seek help from a trusted adult if lost.")
-                    SafetyTipView3(icon: "📞", title: "Know Contact Information", description: "Memorize parents’ full names, address, and phone numbers.")
-                    SafetyTipView3(icon: "✋", title: "Good Touch vs. Bad Touch", description: "Educate about appropriate and inappropriate touch and report any bad touch immediately.")
-                    SafetyTipView3(icon: "💻", title: "Internet Safety", description: "Don’t share personal information online and report suspicious behavior.")
-                    SafetyTipView3(icon: "🌊", title: "Safety Around Water Bodies", description: "Never swim alone and always have adult supervision.")
-                    SafetyTipView3(icon: "☀️", title: "Sun Safety", description: "Wear sunscreen or appropriate clothing on sunny days.")
+                    SafetyTipView3(icon: "🆘", title: "What to Do if Lost", description: "Stay calm, stay where they are, and seek help from a trusted adult if lost.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "📞", title: "Know Contact Information", description: "Memorize parents’ full names, address, and phone numbers.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "✋", title: "Good Touch vs. Bad Touch", description: "Educate about appropriate and inappropriate touch and report any bad touch immediately.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "💻", title: "Internet Safety", description: "Don’t share personal information online and report suspicious behavior.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "🌊", title: "Safety Around Water Bodies", description: "Never swim alone and always have adult supervision.").accessibilityElement(children: .combine)
+                    SafetyTipView3(icon: "☀️", title: "Sun Safety", description: "Wear sunscreen or appropriate clothing on sunny days.").accessibilityElement(children: .combine)
                 }
             }
             .padding()

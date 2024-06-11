@@ -30,34 +30,34 @@ struct Corso4: View {
     }
     
     var body: some View {
-        ZStack {
-            VStack(spacing: 50) {
-                LevelBar(progress: completionPercentage(activeButtons))
-                    .frame(height: 10)
-                    .padding(.horizontal)
-                ForEach(0..<5) { index in
-                    if index < activeButtons.count {
-                        if activeButtons[index] {
-                            Button(action: {
-                                currentDetailIndex = index
-                                isDetailViewPresented = true
-                            }) {
-                                LevelButtonView(isActive: activeButtons[index])
+            ZStack {
+                VStack(spacing: 50) {
+                    LevelBar(progress: completionPercentage(activeButtons))
+                        .frame(height: 10)
+                        .padding(.horizontal)
+                    ForEach(0..<5) { index in
+                        if index < activeButtons.count {
+                            if activeButtons[index] {
+                                Button(action: {
+                                    currentDetailIndex = index
+                                    isDetailViewPresented = true
+                                }) {
+                                    LevelButtonView(isActive: activeButtons[index], index: index + 1)
+                                        .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
+                                }
+                            } else {
+                                LevelButtonView(isActive: activeButtons[index], index: index + 1)
                                     .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
                             }
-                        } else {
-                            LevelButtonView(isActive: activeButtons[index])
-                                .padding(index == 1 ? .leading : index == 3 ? .trailing : [], 150)
                         }
                     }
                 }
+                .padding(.top, 20)
             }
-            .padding(.top, 20)
+            .fullScreenCover(isPresented: $isDetailViewPresented) {
+                DetailView(activeButtons: $activeButtons, currentIndex: currentDetailIndex, activeButtonsData: $activeButtonsData, detailData: detailData[currentDetailIndex])
+            }
         }
-        .fullScreenCover(isPresented: $isDetailViewPresented) {
-            DetailView(activeButtons: $activeButtons, currentIndex: currentDetailIndex, activeButtonsData: $activeButtonsData, detailData: detailData[currentDetailIndex])
-        }
-    }
     
     private func saveActiveButtons() {
         if let encoded = try? JSONEncoder().encode(activeButtons) {
@@ -74,6 +74,7 @@ struct Corso4: View {
 
 struct LevelButtonView4: View {
     var isActive: Bool
+    var index: Int
     
     var body: some View {
         if isActive {
@@ -85,7 +86,7 @@ struct LevelButtonView4: View {
                 Ellipse()
                     .frame(width: 60, height: 50)
                     .foregroundStyle(Color.white)
-            }
+            }.accessibilityLabel("Level \(index) selected")
         } else {
             ZStack {
                 Ellipse()

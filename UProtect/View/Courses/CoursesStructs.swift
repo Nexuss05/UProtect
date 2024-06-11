@@ -22,9 +22,9 @@ struct Course101: View {
                     .foregroundColor(.primary)
                 
                 Section(header: Text("Steps of Situational Awareness").font(.title3).fontWeight(.bold).foregroundColor(CustomColor.redBackground)) {
-                    SafetyTipView4(icon: "👀", title: "Perceiving Elements", description: "Notice sounds, smells, and visual cues in your environment. For example, at a train station, you might hear a loud bang, smell smoke, and see people fleeing.")
-                        SafetyTipView4(icon: "🔍", title: "Attributing Meaning", description: "Recognize that these elements, like smoke or running people, indicate potential danger. Understand their significance.")
-                        SafetyTipView4(icon: "🔮", title: "Predicting Outcomes", description: "Foresee possible threats and determine the best course of action, such as joining the crowd to escape danger.")
+                    SafetyTipView4(icon: "👀", title: "Perceiving Elements", description: "Notice sounds, smells, and visual cues in your environment. For example, at a train station, you might hear a loud bang, smell smoke, and see people fleeing.").accessibilityElement(children: .combine)
+                        SafetyTipView4(icon: "🔍", title: "Attributing Meaning", description: "Recognize that these elements, like smoke or running people, indicate potential danger. Understand their significance.").accessibilityElement(children: .combine)
+                        SafetyTipView4(icon: "🔮", title: "Predicting Outcomes", description: "Foresee possible threats and determine the best course of action, such as joining the crowd to escape danger.").accessibilityElement(children: .combine)
                 }
             }
             .padding()
@@ -46,9 +46,9 @@ struct Course102: View {
                     .foregroundColor(.primary)
                 
                 Section(header: Text("Enhancing Perception").font(.subheadline).fontWeight(.bold)) {
-                    SafetyTipView4(icon: "🩺", title: "Regular Checkups", description: "Keep your senses sharp with regular medical checkups to ensure your vision, hearing, touch, smell, and taste are functioning well.")
-                    SafetyTipView4(icon: "🍏", title: "Healthy Lifestyle", description: "Maintain a healthy diet and avoid activities that strain your body, like smoking.")
-                    SafetyTipView4(icon: "🌍", title: "Engage with Surroundings", description: "Stay present and actively engage with your environment. Read distant signs, listen to nearby conversations, and be aware of subtle scents and sounds around you.")
+                    SafetyTipView4(icon: "🩺", title: "Regular Checkups", description: "Keep your senses sharp with regular medical checkups to ensure your vision, hearing, touch, smell, and taste are functioning well.").accessibilityElement(children: .combine)
+                    SafetyTipView4(icon: "🍏", title: "Healthy Lifestyle", description: "Maintain a healthy diet and avoid activities that strain your body, like smoking.").accessibilityElement(children: .combine)
+                    SafetyTipView4(icon: "🌍", title: "Engage with Surroundings", description: "Stay present and actively engage with your environment. Read distant signs, listen to nearby conversations, and be aware of subtle scents and sounds around you.").accessibilityElement(children: .combine)
                 }
                 
                 Section(header: Text("Attributing Meaning to Perceived Elements").font(.subheadline).fontWeight(.bold)) {
@@ -82,11 +82,11 @@ struct Course103: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView4(icon: "😌", title: "Appear Confident", description: "Walk with your head high, maintain good posture, and appear purposeful. Predators often target those who seem timid or lost.")
-                    SafetyTipView4(icon: "💇🏻‍♀️", title: "Mind Your Hair", description: "Avoid hairstyles that can be easily grabbed, like ponytails. Wearing a cap can prevent such grabs.")
-                    SafetyTipView4(icon: "🧪", title: "Avoid Intoxication Alone", description: "If intoxicated, ensure a friend accompanies you home. Intoxicated individuals are more vulnerable targets.")
-                    SafetyTipView4(icon: "🅿️", title: "Park in Well-Lit Areas", description: "Avoid dark parking spots, which provide cover for predators. Always park in well-lit, busy areas.")
-                    SafetyTipView4(icon: "‼️", title: "Stay Aware of Your Surroundings", description: "Avoid talking on the phone or wearing earphones when walking alone. These distractions can reduce your awareness.")
+                    SafetyTipView4(icon: "😌", title: "Appear Confident", description: "Walk with your head high, maintain good posture, and appear purposeful. Predators often target those who seem timid or lost.").accessibilityElement(children: .combine)
+                    SafetyTipView4(icon: "💇🏻‍♀️", title: "Mind Your Hair", description: "Avoid hairstyles that can be easily grabbed, like ponytails. Wearing a cap can prevent such grabs.").accessibilityElement(children: .combine)
+                    SafetyTipView4(icon: "🧪", title: "Avoid Intoxication Alone", description: "If intoxicated, ensure a friend accompanies you home. Intoxicated individuals are more vulnerable targets.").accessibilityElement(children: .combine)
+                    SafetyTipView4(icon: "🅿️", title: "Park in Well-Lit Areas", description: "Avoid dark parking spots, which provide cover for predators. Always park in well-lit, busy areas.").accessibilityElement(children: .combine)
+                    SafetyTipView4(icon: "‼️", title: "Stay Aware of Your Surroundings", description: "Avoid talking on the phone or wearing earphones when walking alone. These distractions can reduce your awareness.").accessibilityElement(children: .combine)
                 }
                 
                 Text("Importance of Training")
@@ -112,11 +112,11 @@ struct Course104: View {
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Jeff Cooper's Color Code categorizes different levels of awareness:")
-                        SafetyTipView4(icon: "⚪️", title: "White:", description: "Relaxed and unaware; suitable for safe environments.")
-                        SafetyTipView4(icon: "🟡", title: "Yellow:", description: "Relaxed but alert; the goal for most situations.")
-                        SafetyTipView4(icon: "🟠", title: "Orange:", description: "Focused on potential danger; mentally taxing and not sustainable long-term.")
-                        SafetyTipView4(icon: "🔴", title: "Red:", description: "Action mode; dealing with an immediate threat.")
-                        SafetyTipView4(icon: "⚫️", title: "Black:", description: "Panic mode; breakdown of physical and mental abilities.")
+                        SafetyTipView4(icon: "⚪️", title: "White:", description: "Relaxed and unaware; suitable for safe environments.").accessibilityElement(children: .combine)
+                        SafetyTipView4(icon: "🟡", title: "Yellow:", description: "Relaxed but alert; the goal for most situations.").accessibilityElement(children: .combine)
+                        SafetyTipView4(icon: "🟠", title: "Orange:", description: "Focused on potential danger; mentally taxing and not sustainable long-term.").accessibilityElement(children: .combine)
+                        SafetyTipView4(icon: "🔴", title: "Red:", description: "Action mode; dealing with an immediate threat.").accessibilityElement(children: .combine)
+                        SafetyTipView4(icon: "⚫️", title: "Black:", description: "Panic mode; breakdown of physical and mental abilities.").accessibilityElement(children: .combine)
                 }
                 
                 Text("Practical Implementation Strategies")
@@ -156,6 +156,7 @@ struct SafetyTipView4: View {
         HStack(alignment: .top) {
             Text(icon)
                 .font(.title)
+                .accessibilityLabel("")
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.headline)
@@ -164,6 +165,7 @@ struct SafetyTipView4: View {
             }
         }
         .padding(.vertical, 5)
+        .accessibilityElement(children: .combine)
     }
 }
 
