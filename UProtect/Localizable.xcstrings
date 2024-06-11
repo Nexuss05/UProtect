@@ -1045,6 +1045,17 @@
         }
       }
     },
+    "Children security" : {
+      "comment" : "Subtitle for course 04",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza per i bambini"
+          }
+        }
+      }
+    },
     "Clubbing Safety Tips" : {
       "localizations" : {
         "it" : {
@@ -1113,6 +1124,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Teoria dei colori di Cooper per i livelli di consapevolezza"
+          }
+        }
+      }
+    },
+    "Course 01" : {
+      "comment" : "Title of the first course",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corso 1"
+          }
+        }
+      }
+    },
+    "Course 02" : {
+      "comment" : "Title of the second course",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corso 2"
+          }
+        }
+      }
+    },
+    "Course 03" : {
+      "comment" : "Title of the third course",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corso 3"
+          }
+        }
+      }
+    },
+    "Course 04" : {
+      "comment" : "Title of the fourth course",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corso 4"
           }
         }
       }
@@ -1528,6 +1583,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nelle emergenze, le persone si affidano al loro livello di allenamento più basso. Esso aiuta a sviluppare soluzioni rapide ed efficaci che si concentrano sulla velocità e l'efficienza piuttosto che sulla perfezione. Ad esempio, in uno scenario di sparatutto, istruire gli studenti a correre verso l'uscita più vicina potrebbe non essere perfetto, ma è probabile che salvi più vite."
+          }
+        }
+      }
+    },
+    "In the disco" : {
+      "comment" : "Subtitle for course 03",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In discoteca"
           }
         }
       }
@@ -2177,6 +2243,17 @@
         }
       }
     },
+    "Self defence" : {
+      "comment" : "Subtitle for course 01",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difesa personale"
+          }
+        }
+      }
+    },
     "Send new code" : {
       "localizations" : {
         "it" : {
@@ -2433,7 +2510,14 @@
       }
     },
     "Thanks to the map you can easily have a look at shops and stores open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grazie alla mappa potrai controllare tutti i luoghi aperti vicino a te. In caso avessi bisogno di un luogo dove andare o cercare riparo, puoi chiamare direttamente il locale o vedere il percorso da seguire direttamente sulla mappa."
+          }
+        }
+      }
     },
     "The account associated with this number already exists" : {
       "localizations" : {
@@ -2476,7 +2560,14 @@
       }
     },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerous situations or understand how to better manage them." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa sezione offre gli strumenti necessari per acquisire conoscenza, consigli e suggerimenti su come mitigare le situazioni di pericolo o capire come gestirle al meglio."
+          }
+        }
+      }
     },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them." : {
       "extractionState" : "stale",
@@ -2593,6 +2684,9 @@
     },
     "Walk" : {
 
+    },
+    "Walking alone" : {
+      "comment" : "Subtitle for course 02"
     },
     "Walking alone can be risky, depending on factors like location, gender, and time of day. Here are some general tips to help keep you safe in any situation." : {
       "localizations" : {
