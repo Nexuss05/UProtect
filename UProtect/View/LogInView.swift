@@ -53,6 +53,7 @@ struct LogInView: View {
                         }
                     } label: {
                         Text("Do not have an account?")
+                            .font(.footnote)
                             .foregroundColor(Color.white)
                             .padding(.top, 10)
                     }
@@ -98,7 +99,7 @@ struct LogInView: View {
                                 .fontWeight(.bold)
                                 .foregroundColor(CustomColor.orange)
                         }
-                    }.padding(.top, 100)
+                    }.padding(.top, 90)
                         .disabled(vm.numero.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
                 Image("a0")
@@ -181,8 +182,8 @@ struct RegistrationView: View {
                     .ignoresSafeArea()
                 Image("a1")
                     .resizable()
-                    .frame(width: 325, height: 325)
-                    .padding(.bottom, 350)
+                    .frame(width: 300, height: 300)
+                    .padding(.bottom, 325)
                 
                 HStack {
                     if !accettato{
@@ -204,7 +205,7 @@ struct RegistrationView: View {
                         Link("privacy policy", destination: url!)
                             .foregroundColor(.blue)
                     }
-                }.padding(.top, 500)
+                }.padding(.top, 470)
                 
                 VStack {
                     Text("Create an Account!")
@@ -212,7 +213,7 @@ struct RegistrationView: View {
                         .font(.largeTitle)
                         .bold()
                     Rectangle()
-                        .frame(width: 400, height: 250)
+                        .frame(width: 400, height: 225)
                         .opacity(0)
                     
                     VStack{
@@ -253,6 +254,7 @@ struct RegistrationView: View {
                             }
                         } label: {
                             Text("Already have an account?")
+                                .font(.footnote)
                                 .foregroundColor(Color.white)
                                 .padding(.top, 10)
                         }
@@ -298,7 +300,7 @@ struct RegistrationView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundColor(Color.white)
                                 .frame(width: 100, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            Text("Sign In")
+                            Text("Sign Up")
                                 .fontWeight(.bold)
                                 .foregroundColor(CustomColor.orange)
                         }

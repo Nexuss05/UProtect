@@ -2219,6 +2219,7 @@
       }
     },
     "Sign In" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -2227,6 +2228,9 @@
           }
         }
       }
+    },
+    "Sign Up" : {
+
     },
     "SignIn" : {
       "localizations" : {
