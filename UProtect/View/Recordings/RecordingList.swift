@@ -11,7 +11,11 @@ struct RecordingsList: View {
     @ObservedObject var audioRecorder: AudioRecorder
     @ObservedObject var audioPlayer = AudioPlayer()
     @State private var searchText = ""
-    let deletionTimeInterval: TimeInterval = 10080 * 60 // 1 minute
+    let deletionTimeInterval: TimeInterval = 10080 * 60
+    
+//    @State private var currentlyPlayingURL: URL?
+    @State private var currentlyPlayingURL: URL? = nil
+
     
     var filteredRecordings: [Recording] {
         if searchText.isEmpty {
@@ -34,7 +38,7 @@ struct RecordingsList: View {
                     SearchBar(text: $searchText)
                     List {
                         ForEach(filteredRecordings, id: \.createdAt) { recording in
-                            RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                            RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder, audioPlayer: audioPlayer, currentlyPlayingURL: $currentlyPlayingURL)
                         }
                         .onDelete(perform: delete)
                     }
@@ -53,10 +57,11 @@ struct RecordingsList: View {
     func delete(at offsets: IndexSet) {
         var urlsToDelete = [URL]()
         for index in offsets {
-            urlsToDelete.append(audioRecorder.recordings[index].fileURL)
+            urlsToDelete.append(filteredRecordings[index].fileURL)
         }
         audioRecorder.deleteRecording(urlsToDelete: urlsToDelete)
     }
+
 }
 
 struct RecordingRow: View {
@@ -66,6 +71,11 @@ struct RecordingRow: View {
     var audioRecorder: AudioRecorder
     
     @ObservedObject var audioPlayer: AudioPlayer
+    
+    @Binding var currentlyPlayingURL: URL?
+    var isCurrentlyPlaying: Bool {
+        currentlyPlayingURL == audioURL
+    }
     
     func share() {
         let activityViewController = UIActivityViewController(activityItems: [audioURL], applicationActivities: nil)
@@ -102,9 +112,27 @@ struct RecordingRow: View {
                     Image(systemName: "play.circle")
                         .imageScale(.large)
                         .opacity(0)
-                    if audioPlayer.isPlaying == false {
+//                    if !isCurrentlyPlaying || audioPlayer.isPlaying == false {
+//                        Button(action: {
+//                            self.audioPlayer.startPlayback(audio: self.audioURL)
+//                            currentlyPlayingURL = audioURL
+//                        }) {
+//                            Image(systemName: "play.circle")
+//                                .imageScale(.large)
+//                        }
+//                    } else {
+//                        Button(action: {
+//                            self.audioPlayer.stopPlayback()
+//                            currentlyPlayingURL = nil
+//                        }) {
+//                            Image(systemName: "stop.fill")
+//                                .imageScale(.large)
+//                        }
+//                    }
+                    if currentlyPlayingURL != audioURL || audioPlayer.isPlaying == false {
                         Button(action: {
                             self.audioPlayer.startPlayback(audio: self.audioURL)
+                            currentlyPlayingURL = audioURL
                         }) {
                             Image(systemName: "play.circle")
                                 .imageScale(.large)
@@ -112,21 +140,24 @@ struct RecordingRow: View {
                     } else {
                         Button(action: {
                             self.audioPlayer.stopPlayback()
+                            currentlyPlayingURL = nil
                         }) {
                             Image(systemName: "stop.fill")
                                 .imageScale(.large)
                         }
                     }
                 }
-                Bar(progress: audioPlayer.playbackProgress)
-                    .frame(height: 5)
-                
+//                Bar(progress: isCurrentlyPlaying ? audioPlayer.playbackProgress : 0)
+//                    .frame(height: 5)
+                Slider(value: isCurrentlyPlaying ? Binding<Double>(
+                                get: { audioPlayer.playbackProgress },
+                                set: { _ in }
+                            ) : .constant(0), in: 0...1)
             }
             .padding(.top)
         }
         .frame(height: 100)
         .onAppear {
-            // Start a timer to check if a minute has passed since the recording was created
             startDeletionTimer()
         }
     }
@@ -138,12 +169,10 @@ struct RecordingRow: View {
     }
     
     func startDeletionTimer() {
-        // Start a timer to check if a minute has passed since the recording was created
         _ = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             if Date().timeIntervalSince(createdAt) >= 10080 * 60 {
-                // Delete the recording
                 self.audioRecorder.deleteRecording(urlsToDelete: [self.audioURL])
-                timer.invalidate() // Stop the timer after deleting the recording
+                timer.invalidate()
             }
         }
     }
@@ -181,26 +210,26 @@ struct SearchBar: UIViewRepresentable {
     }
 }
 
-struct Bar: View {
-    var progress: Double
-    
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                    .opacity(0.3)
-                    .foregroundColor(.gray)
-                
-                Rectangle()
-                    .frame(width: min(CGFloat(self.progress) * geometry.size.width, geometry.size.width), height: geometry.size.height)
-                    .foregroundColor(CustomColor.orange)
-                    .animation(.linear, value: progress)
-            }
-            .cornerRadius(45.0)
-        }
-    }
-}
+//struct Bar: View {
+//    var progress: Double
+//    
+//    var body: some View {
+//        GeometryReader { geometry in
+//            ZStack(alignment: .leading) {
+//                Rectangle()
+//                    .frame(width: geometry.size.width, height: geometry.size.height)
+//                    .opacity(0.3)
+//                    .foregroundColor(.gray)
+//                
+//                Rectangle()
+//                    .frame(width: min(CGFloat(self.progress) * geometry.size.width, geometry.size.width), height: geometry.size.height)
+//                    .foregroundColor(CustomColor.orange)
+//                    .animation(.linear, value: progress)
+//            }
+//            .cornerRadius(45.0)
+//        }
+//    }
+//}
 
 struct RecordingsList_Previews: PreviewProvider {
     static var previews: some View {

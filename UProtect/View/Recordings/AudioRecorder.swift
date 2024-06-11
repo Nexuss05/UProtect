@@ -96,12 +96,30 @@ class AudioRecorder: NSObject, ObservableObject {
         objectWillChange.send(self)
     }
     
+//    func deleteRecording(urlsToDelete: [URL]) {
+//
+//        for url in urlsToDelete {
+//            print(url)
+//            if audioPlayer?.audioPlayer?.url == url && audioPlayer?.isPlaying == true {
+//                audioPlayer?.stopPlayback()
+//            }
+//            do {
+//                try FileManager.default.removeItem(at: url)
+//            } catch {
+//                print("File could not be deleted!")
+//            }
+//        }
+//
+//        fetchRecording()
+//    }
+    
     func deleteRecording(urlsToDelete: [URL]) {
-        
         for url in urlsToDelete {
-            print(url)
-            if audioPlayer?.audioPlayer?.url == url && audioPlayer?.isPlaying == true {
-                audioPlayer?.stopPlayback()
+            if let index = recordings.firstIndex(where: { $0.fileURL == url }) {
+                recordings.remove(at: index)
+            }
+            if let audioPlayer = audioPlayer, audioPlayer.audioPlayer?.url == url {
+                audioPlayer.stopPlayback()
             }
             do {
                 try FileManager.default.removeItem(at: url)
@@ -109,8 +127,7 @@ class AudioRecorder: NSObject, ObservableObject {
                 print("File could not be deleted!")
             }
         }
-        
-        fetchRecording()
+        objectWillChange.send(self)
     }
     
     func deleteAllRecordings() {

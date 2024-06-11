@@ -23,25 +23,48 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     var audioPlayer: AVAudioPlayer!
     
+//    func startPlayback(audio: URL) {
+//        let playbackSession = AVAudioSession.sharedInstance()
+//        
+//        do {
+//            try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+//        } catch {
+//            print("Playing over the device's speakers failed")
+//        }
+//        
+//        do {
+//            audioPlayer = try AVAudioPlayer(contentsOf: audio)
+//            audioPlayer.delegate = self
+//            audioPlayer.play()
+//            isPlaying = true
+//            startTimer()
+//        } catch {
+//            print("Playback failed.")
+//        }
+//    }
+    
     func startPlayback(audio: URL) {
-        let playbackSession = AVAudioSession.sharedInstance()
-        
-        do {
-            try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-        } catch {
-            print("Playing over the device's speakers failed")
+            let playbackSession = AVAudioSession.sharedInstance()
+            
+            do {
+                try playbackSession.setCategory(.playAndRecord, mode: .default, options: [])
+                try playbackSession.setActive(true)
+                try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+            } catch let error as NSError {
+                print("Failed to set up playback session: \(error), \(error.userInfo)")
+                return
+            }
+            
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: audio)
+                audioPlayer.delegate = self
+                audioPlayer.play()
+                isPlaying = true
+                startTimer()
+            } catch let error as NSError {
+                print("Playback failed: \(error), \(error.userInfo)")
+            }
         }
-        
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audio)
-            audioPlayer.delegate = self
-            audioPlayer.play()
-            isPlaying = true
-            startTimer()
-        } catch {
-            print("Playback failed.")
-        }
-    }
     
     func stopPlayback() {
         audioPlayer.stop()
@@ -70,7 +93,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
         timer = nil
     }
     
-    private func updateProgress() {
+    func updateProgress() {
         guard let player = audioPlayer else { return }
         playbackProgress = player.currentTime / player.duration
     }

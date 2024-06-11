@@ -488,6 +488,10 @@ struct TimerView: View {
                                     print("Bottone disattivato")
                                     timerManager.Activation()
                                 }
+                                buttonLocked = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    buttonLocked = false
+                                }
                             }
                         }
                     }

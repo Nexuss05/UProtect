@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct CustomPageControl: UIViewRepresentable {
     @Binding var currentPage: Int

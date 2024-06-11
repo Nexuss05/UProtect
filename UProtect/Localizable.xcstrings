@@ -1472,6 +1472,7 @@
       }
     },
     "If you are feeling unsafe and don't want to notify your contact immediately, simply hold the button to activate the timer. You have the option to modify the timer in the settings to your liking. \nIf you don't dismiss the alert when the time runs out, a notification will be sent." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1480,6 +1481,9 @@
           }
         }
       }
+    },
+    "If you are feeling unsafe and don't want to notify your contacts immediately, simply hold the button to activate the timer. You have the option to modify the timer in the settings to your liking. \nIf you don't dismiss the alert when the time runs out, a notification will be sent." : {
+
     },
     "If you feel in danger after clicking the button, it is possible to notify your emergency contacts by including their phone numbers to seek assistance. If your contacts have installed the application, they will receive a push notification along with your shared location. Otherwise, they will receive an SMS. Until the button is activated, your background will be recorded." : {
       "localizations" : {
@@ -1540,6 +1544,9 @@
           }
         }
       }
+    },
+    "Level %lld selected" : {
+
     },
     "Lightly" : {
       "localizations" : {
@@ -2401,6 +2408,7 @@
       }
     },
     "Thanks to the map you can easily have a look at shops and store open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -2409,6 +2417,9 @@
           }
         }
       }
+    },
+    "Thanks to the map you can easily have a look at shops and stores open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
+
     },
     "The account associated with this number already exists" : {
       "localizations" : {
@@ -2450,7 +2461,11 @@
         }
       }
     },
+    "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerous situations or understand how to better manage them." : {
+
+    },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerouse situations or understeand how to better manage them." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {

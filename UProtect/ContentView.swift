@@ -68,6 +68,9 @@ struct ContentView: View {
                 .accentColor(timerManager.isActivated ? CustomColor.redBackground : CustomColor.orange)
                 .onChange(of: selectedTab) { _ in
                     feedbackGenerator.impactOccurred()
+                    if selectedTab == 2 {
+                        updateContactTokens()
+                    }
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -83,6 +86,34 @@ struct ContentView: View {
                     }
                 }
                 TimeManager.shared.syncTokens()
+            }
+        }
+    }
+    
+    func formatPhoneNumber(_ phoneNumber: String?) -> String {
+        guard let phoneNumber = phoneNumber else { return "" }
+        let prefix = vm.getCountryPhonePrefix()
+        return phoneNumber.hasPrefix(prefix) ? phoneNumber : "\(prefix)\(phoneNumber)"
+    }
+    
+    func updateContactTokens() {
+        for contact in selectedContacts {
+            let phoneNumberWithoutSpaces = contact.phoneNumber.replacingOccurrences(of: " ", with: "")
+            let formattedPhoneNumber = !phoneNumberWithoutSpaces.hasPrefix("+") ? formatPhoneNumber(phoneNumberWithoutSpaces) : phoneNumberWithoutSpaces
+            
+            vm.fetchToken(number: formattedPhoneNumber) { token in
+                if let token = token {
+                    var existingTokens = UserDefaults.standard.stringArray(forKey: "tokens") ?? []
+                    if !existingTokens.contains(token) {
+                        existingTokens.append(token)
+                        UserDefaults.standard.set(existingTokens, forKey: "tokens")
+                        print("Token aggiunto per il numero: \(formattedPhoneNumber)")
+                    } else {
+                        print("Token già presente per il numero: \(formattedPhoneNumber)")
+                    }
+                } else {
+                    print("FCM Token non trovato per il numero: \(formattedPhoneNumber)")
+                }
             }
         }
     }
