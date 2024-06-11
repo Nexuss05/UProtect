@@ -57,13 +57,13 @@ struct Course401: View {
                         SafetyTipView3(icon: "👀", title: "Look Both Ways", description: "Always look both ways before crossing the street.")
                         SafetyTipView3(icon: "🚸", title: "Use Pedestrian Crossings", description: "Use pedestrian crossings and obey traffic signals.")
                         SafetyTipView3(icon: "🚶‍♀️", title: "Walk on Sidewalks", description: "Walk on sidewalks or, if unavailable, facing traffic on the road's edge.")
-                        SafetyTipView3(icon: "❌🏃‍♀️", title: "Never Play or Run", description: "Never play or run into the street.")
+                        SafetyTipView3(icon: "🏃‍♀️", title: "Never Play or Run", description: "Never play or run into the street.")
                     }
                     
                     Text("**Stranger Danger**: Educate your child on how to handle situations with strangers:")
                     VStack(alignment: .leading, spacing: 5) {
-                        SafetyTipView3(icon: "❌👨", title: "Never Accept Rides", description: "Never accept rides or gifts from strangers.")
-                        SafetyTipView3(icon: "✅👨‍🦳", title: "Know Safe Adults", description: "Know safe adults they can turn to if they feel uncomfortable or in danger.")
+                        SafetyTipView3(icon: "🚘", title: "Never Accept Rides", description: "Never accept rides or gifts from strangers.")
+                        SafetyTipView3(icon: "👨‍🦳", title: "Know Safe Adults", description: "Know safe adults they can turn to if they feel uncomfortable or in danger.")
                     }
                     
                     SafetyTipView3(icon: "📱", title: "Mobile Phones", description: "Consider giving your child a phone to contact you in emergencies. Teach them how to use it responsibly and practice emergency procedures.")

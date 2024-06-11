@@ -81,10 +81,10 @@ struct Course302: View {
                 
                 VStack(alignment: .leading, spacing: 10) {
                     SafetyTipView2(icon: "🤝", title: "Never Leave Them Alone", description: "Do not leave the person to sleep it off.")
-                    SafetyTipView2(icon: "❌☕️", title: "Avoid Coffee", description: "Alcohol dehydrates the body, and coffee can exacerbate this.")
-                    SafetyTipView2(icon: "❌🤮", title: "Do Not Induce Vomiting", description: "This can cause choking.")
-                   SafetyTipView2(icon: "❌🚿", title: "No Cold Showers", description: "Moving someone with alcohol poisoning can cause injury, and a cold shower can lower their body temperature further.")
-                SafetyTipView2(icon: "❌🍷", title: "No More Alcohol", description: "Do not let them drink more alcohol.")
+                    SafetyTipView2(icon: "☕️", title: "Avoid Coffee", description: "Alcohol dehydrates the body, and coffee can exacerbate this.")
+                    SafetyTipView2(icon: "🤮", title: "Do Not Induce Vomiting", description: "This can cause choking.")
+                   SafetyTipView2(icon: "🚿", title: "No Cold Showers", description: "Moving someone with alcohol poisoning can cause injury, and a cold shower can lower their body temperature further.")
+                SafetyTipView2(icon: "🍷", title: "No More Alcohol", description: "Do not let them drink more alcohol.")
                     Text("_**Emergency Help**_: Always call your local emergency number if you suspect someone has alcohol poisoning.")
                 }
                 .padding()
