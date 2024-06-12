@@ -38,10 +38,18 @@ class Course: Identifiable, ObservableObject {
 
 struct CoursesView: View {
     @State private var courses: [Course] = [
-        Course(title: "Course 01", subtitle: "Self defence", progress: 0/30.0),
-        Course(title: "Course 02", subtitle: "Walking alone", progress: 0/30.0),
-        Course(title: "Course 03", subtitle: "In the disco", progress: 0/30.0),
-        Course(title: "Course 04", subtitle: "Children security", progress: 0/30.0)
+        Course(title: NSLocalizedString("Course 01", comment: "Title of the first course"),
+               subtitle: NSLocalizedString("Self defence", comment: "Subtitle for course 01"),
+               progress: 0/30.0),
+        Course(title: NSLocalizedString("Course 02", comment: "Title of the second course"),
+               subtitle: NSLocalizedString("Walking alone", comment: "Subtitle for course 02"),
+               progress: 0/30.0),
+        Course(title: NSLocalizedString("Course 03", comment: "Title of the third course"),
+               subtitle: NSLocalizedString("In the disco", comment: "Subtitle for course 03"),
+               progress: 0/30.0),
+        Course(title: NSLocalizedString("Course 04", comment: "Title of the fourth course"),
+               subtitle: NSLocalizedString("Children security", comment: "Subtitle for course 04"),
+               progress: 0/30.0)
     ]
     
     var body: some View {
