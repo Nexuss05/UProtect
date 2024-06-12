@@ -770,6 +770,16 @@
         }
       }
     },
+    "1. Perceiving Elements, Predicting Outcomes, Attributing Meaning" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Percepire Elementi, Prevedere i Risultati, Attribuire il Significato"
+          }
+        }
+      }
+    },
     "1. Recognize Patterns" : {
       "localizations" : {
         "it" : {
@@ -801,12 +811,52 @@
         }
       }
     },
+    "1. Walk with your head high" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Cammina con la testa alta"
+          }
+        }
+      }
+    },
+    "1. White" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Bianco"
+          }
+        }
+      }
+    },
     "1.99€" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "1.99€"
+          }
+        }
+      }
+    },
+    "2. Attributing Meaning, Perceiving Elements, Predicting Outcomes" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Attribuire il Significato, Percepire gli Elementi, Prevedere i Risultati"
+          }
+        }
+      }
+    },
+    "2. Avoid hairstyles that can be easily grabbed" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Evita le acconciature che possono essere facilmente afferrate"
           }
         }
       }
@@ -821,12 +871,92 @@
         }
       }
     },
+    "2. Yellow" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Giallo"
+          }
+        }
+      }
+    },
+    "3. Avoid talking on the phone" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Evita di parlare al telefono"
+          }
+        }
+      }
+    },
+    "3. Orange" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Arancione"
+          }
+        }
+      }
+    },
+    "3. Perceiving Elements, Attributing Meaning, Predicting Outcomes" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Percepire gli Elementi, Attribuire il Significato, Prevedere i Risultati"
+          }
+        }
+      }
+    },
     "3. Understand Atmospherics" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Comprendere l'atmosfera"
+          }
+        }
+      }
+    },
+    "4. Engage with your surroundings" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Interagisci con l'ambiente circostante"
+          }
+        }
+      }
+    },
+    "4. Predicting Outcomes, Attributing Meaning, Perceiving Elements" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Prevedere i Risultati, Attribuire Significato, Percepire Elementi"
+          }
+        }
+      }
+    },
+    "4. Red" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Rosso"
+          }
+        }
+      }
+    },
+    "7 years old" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 anni"
           }
         }
       }
@@ -851,12 +981,123 @@
         }
       }
     },
+    "10 years old" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 anni"
+          }
+        }
+      }
+    },
+    "12 years old" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12 anni"
+          }
+        }
+      }
+    },
+    "15 years old" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15 anni"
+          }
+        }
+      }
+    },
+    "A loud alarm can draw attention and deter attackers. Ensure any deterrents you carry are legal in your area." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un forte allarme può attirare l'attenzione e scoraggiare gli aggressori. Assicurati che tutti i deterrenti che porti siano legali nella tua zona."
+          }
+        }
+      }
+    },
+    "A. Call the police immediately." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A. Chiama immediatamente la polizia."
+          }
+        }
+      }
+    },
+    "A. Confusion" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A. Confusione"
+          }
+        }
+      }
+    },
+    "A. Encourage them to use more weed" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A. Incoraggiarli a usare più erba"
+          }
+        }
+      }
+    },
+    "A. Induce vomiting" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A. Induci il vomito"
+          }
+        }
+      }
+    },
+    "A. Plan your route and share it with someone you trust." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A. Pianifica il tuo percorso e condividilo con qualcuno di cui ti fidi."
+          }
+        }
+      }
+    },
+    "A. Stay alert and aware of surroundings." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A. Rimani vigile e consapevole dei dintorni."
+          }
+        }
+      }
+    },
     "ABOUT" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "HESTIA"
+          }
+        }
+      }
+    },
+    "Accept gifts from strangers" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accetta regali da estranei"
           }
         }
       }
@@ -877,6 +1118,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ulteriori Consigli per scenari differenti"
+          }
+        }
+      }
+    },
+    "Additional Tips" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggerimenti Aggiuntivi"
           }
         }
       }
@@ -902,6 +1153,16 @@
         }
       }
     },
+    "Alcohol dehydrates the body, and coffee can exacerbate this." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'alcol disidrata il corpo e il caffè può esacerbare questa cosa."
+          }
+        }
+      }
+    },
     "Already have an account?" : {
       "localizations" : {
         "it" : {
@@ -912,12 +1173,114 @@
         }
       }
     },
+    "Alter your walking pattern. Speed up, slow down, or take several turns to see if the follower mirrors your movements." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifica il tuo schema di camminata. Accelera, rallenta o fai diversi turni per vedere se l'inseguitore rispecchia i tuoi movimenti."
+          }
+        }
+      }
+    },
+    "Alternate Drinks" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevande Alternative"
+          }
+        }
+      }
+    },
+    "Alternatives" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alternative"
+          }
+        }
+      }
+    },
+    "Always ask for permission before leaving the house." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiedi sempre il permesso prima di uscire di casa."
+          }
+        }
+      }
+    },
+    "Always exit vehicles away from traffic." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esci sempre dai veicoli lontano dal traffico."
+          }
+        }
+      }
+    },
+    "Always look both ways before crossing the street." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda sempre in entrambe le direzioni prima di attraversare la strada."
+          }
+        }
+      }
+    },
+    "Always Tell Parents" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dillo Sempre ai Genitori"
+          }
+        }
+      }
+    },
+    "Always walk on sidewalks or face traffic if no sidewalk is available." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina sempre sui marciapiedi o affronta il traffico se non è disponibile un marciapiede."
+          }
+        }
+      }
+    },
+    "Always wear seatbelts, be alert to horns, and let vehicles pass safely." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indossa sempre le cinture di sicurezza, stai attento ai clacson e lascia che i veicoli passino in sicurezza."
+          }
+        }
+      }
+    },
     "App preferences" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Preferenze in App"
+          }
+        }
+      }
+    },
+    "Appear Confident" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrati Sicuro di Te"
           }
         }
       }
@@ -962,12 +1325,224 @@
         }
       }
     },
+    "Attributing Meaning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attribuire il Significato"
+          }
+        }
+      }
+    },
     "Attributing Meaning to Perceived Elements" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Attribuzione di un significato agli elementi percepiti"
+          }
+        }
+      }
+    },
+    "Avoid Coffee" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita il caffè"
+          }
+        }
+      }
+    },
+    "Avoid dark parking spots, which provide cover for predators. Always park in well-lit, busy areas." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita i parcheggi bui, che forniscono copertura per i predatori. Parcheggia sempre in zone ben illuminate e trafficate."
+          }
+        }
+      }
+    },
+    "Avoid hairstyles that can be easily grabbed, like ponytails. Wearing a cap can prevent such grabs." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita le acconciature che possono essere facilmente afferrate, come le code. Indossare un berretto può prevenire tali prese."
+          }
+        }
+      }
+    },
+    "Avoid Intoxication Alone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita l'Intossicazione da Solo"
+          }
+        }
+      }
+    },
+    "Avoid Isolated Areas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita Aree Isolate"
+          }
+        }
+      }
+    },
+    "Avoid isolated areas, especially at night." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita aree isolate, soprattutto di notte."
+          }
+        }
+      }
+    },
+    "Avoid leading a potential follower to your residence. Go to a public, well-lit, crowded place like a café, mall, or police station." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita di portare un potenziale inseguitore alla tua residenza. Vai in un luogo pubblico, ben illuminato e affollato come un bar, un centro commerciale o una stazione di polizia."
+          }
+        }
+      }
+    },
+    "Avoid Opening Doors to Strangers" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita di Aprire le Porte agli Estranei"
+          }
+        }
+      }
+    },
+    "Avoid predictable routines. Change your routes and travel times frequently." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita le routine prevedibili. Cambia frequentemente i tuoi percorsi e i tempi di viaggio."
+          }
+        }
+      }
+    },
+    "Avoid Stopping in Secluded Areas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita di Fermarti in Aree Appartate"
+          }
+        }
+      }
+    },
+    "Avoid stopping in secluded areas." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita di fermarti in aree appartate."
+          }
+        }
+      }
+    },
+    "Avoid Suspicious Areas and People" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita Aree e Persone Sospette"
+          }
+        }
+      }
+    },
+    "Avoid talking on the phone or wearing earphones when walking alone. These distractions can reduce your awareness." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita di parlare al telefono o di indossare auricolari quando cammini da solo. Queste distrazioni possono ridurre la tua consapevolezza."
+          }
+        }
+      }
+    },
+    "B. Call emergency services immediately" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B. Chiama immediatamente i servizi di emergenza"
+          }
+        }
+      }
+    },
+    "B. Carry your phone and use it for messages or music." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B. Porta il tuo telefono e usalo per messaggi o musica."
+          }
+        }
+      }
+    },
+    "B. Dizziness" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B. Vertigini"
+          }
+        }
+      }
+    },
+    "B. Go to a public, well-lit, crowded place." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B. Vai in un luogo pubblico, ben illuminato e affollato."
+          }
+        }
+      }
+    },
+    "B. Leave them alone to sleep it off" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B. Lasciarli in pace per dormire"
+          }
+        }
+      }
+    },
+    "B. Use reflective surfaces to check for followers." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "B. Utilizzare superfici riflettenti per verificare la presenza di inseguitori."
           }
         }
       }
@@ -999,6 +1574,27 @@
         }
       }
     },
+    "Be Wary of Strangers" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diffida degli Estranei"
+          }
+        }
+      }
+    },
+    "Before leaving, choose well-lit streets with lots of people and open stores. Share your travel plan with someone you trust." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prima di uscire, scegli strade ben illuminate con molte persone e negozi aperti. Condividi il tuo piano di viaggio con qualcuno di cui ti fidi."
+          }
+        }
+      }
+    },
     "Black" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1010,8 +1606,100 @@
         }
       }
     },
+    "Bright Clothes" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vestiti Luminosi"
+          }
+        }
+      }
+    },
+    "C. Alter your walking pattern." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C. Modifica il tuo schema di camminata."
+          }
+        }
+      }
+    },
+    "C. Keep them awake and sitting up" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C. Tienili svegli e seduti"
+          }
+        }
+      }
+    },
+    "C. Leave them alone until they feel better" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C. Lasciali in pace finché non si sentono meglio"
+          }
+        }
+      }
+    },
+    "C. Make intentional turns to confirm if followed." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C. Fai turni intenzionali per confermare se si è seguiti."
+          }
+        }
+      }
+    },
+    "C. Passing out or unconsciousness" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C. Svenire o incoscienza"
+          }
+        }
+      }
+    },
+    "C. Walk through dark alleys or parks for shortcuts." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "C. Camminare attraverso vicoli bui o parchi per le scorciatoie."
+          }
+        }
+      }
+    },
     "Call" : {
 
+    },
+    "Carry Non-Violent Deterrents" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta Deterrenti Non Violenti"
+          }
+        }
+      }
+    },
+    "Carry Your Phone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta il Tuo Telefono"
+          }
+        }
+      }
     },
     "Change Language" : {
       "extractionState" : "stale",
@@ -1020,6 +1708,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cambia lingua"
+          }
+        }
+      }
+    },
+    "Change Pace and Direction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia Ritmo e Direzione"
           }
         }
       }
@@ -1052,6 +1751,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sicurezza per i bambini"
+          }
+        }
+      }
+    },
+    "Children should know emergency contacts and memorize parents’ phone numbers." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I bambini dovrebbero conoscere i contatti di emergenza e memorizzare i numeri di telefono dei genitori."
+          }
+        }
+      }
+    },
+    "Choose routes that avoid isolated or poorly lit areas, busy roads without sidewalks, and other hazards." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scegli percorsi che evitino aree isolate o scarsamente illuminate, strade trafficate senza marciapiedi e altri pericoli."
           }
         }
       }
@@ -1097,6 +1816,16 @@
         }
       }
     },
+    "Consider giving your child a phone to contact you in emergencies. Teach them how to use it responsibly and practice emergency procedures." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Considera di dare a tuo figlio un telefono per contattarti in caso di emergenza. Insegnagli come usarlo in modo responsabile e pratica le procedure di emergenza."
+          }
+        }
+      }
+    },
     "Contact" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1104,6 +1833,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contatti"
+          }
+        }
+      }
+    },
+    "Contact Authorities" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatta le Autorità"
           }
         }
       }
@@ -1124,6 +1864,126 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Teoria dei colori di Cooper per i livelli di consapevolezza"
+          }
+        }
+      }
+    },
+    "Correct! 10 years old is the recommended age for children to walk alone to school." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! 10 anni è l'età consigliata per i bambini per andare a scuola da soli."
+          }
+        }
+      }
+    },
+    "Correct! Children should not share personal information online." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! I bambini non dovrebbero condividere informazioni personali online."
+          }
+        }
+      }
+    },
+    "Correct! Children should report any suspicious behavior and never accept rides from strangers." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! I bambini dovrebbero segnalare qualsiasi comportamento sospetto e non accettare mai passaggi da estranei."
+          }
+        }
+      }
+    },
+    "Correct! Confusion is one of the signs of alcohol poisoning." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! La confusione è uno dei segni dell'avvelenamento da alcol."
+          }
+        }
+      }
+    },
+    "Correct! Engaging with your surroundings helps enhance your situational awareness perception." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! Interagire con l'ambiente circostante aiuta a migliorare la percezione della consapevolezza situazionale."
+          }
+        }
+      }
+    },
+    "Correct! Going to a public, well-lit, crowded place if you suspect you're being followed is a recommended action." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! Andare in un luogo pubblico, ben illuminato e affollato se sospetti di essere seguito è un'azione consigliata."
+          }
+        }
+      }
+    },
+    "Correct! Keeping them awake and sitting up is recommended." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! Si consiglia di tenerli svegli e seduti."
+          }
+        }
+      }
+    },
+    "Correct! Planning your route and sharing it with someone you trust enhances safety." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! Pianificare il tuo percorso e condividerlo con qualcuno di cui ti fidi migliora la sicurezza."
+          }
+        }
+      }
+    },
+    "Correct! Staying alert and aware of surroundings helps detect if you're being followed." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! Rimanere vigili e consapevoli dell'ambiente circostante aiuta a capire se sei seguito."
+          }
+        }
+      }
+    },
+    "Correct! Staying calm, hydrating, and distracting can help someone who is too high from weed." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! Rimanere calmi, idratarsi e distrarsi può aiutare qualcuno che è troppo alto dall'erba."
+          }
+        }
+      }
+    },
+    "Correct! The correct order is Perceiving Elements, Attributing Meaning, Predicting Outcomes." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! L'ordine corretto è Percepire gli Elementi, Attribuire il Significato, Prevedere i Risultati."
+          }
+        }
+      }
+    },
+    "Correct! Yellow indicates being relaxed but alert." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esatto! Il giallo indica essere rilassato ma vigile."
           }
         }
       }
@@ -1192,6 +2052,66 @@
         }
       }
     },
+    "D. Avoid sharing your travel plan with anyone." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D. Evita di condividere il tuo piano di viaggio con chiunque."
+          }
+        }
+      }
+    },
+    "D. Carry a loud alarm." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D. Portare un forte allarme."
+          }
+        }
+      }
+    },
+    "D. Continue walking and ignore the feeling." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D. Continua a camminare e ignora la sensazione."
+          }
+        }
+      }
+    },
+    "D. Excessive perspiration" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D. Sudorazione eccessiva"
+          }
+        }
+      }
+    },
+    "D. Give them more alcohol" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D. Dai loro più alcol"
+          }
+        }
+      }
+    },
+    "D. Stay calm, hydrate, and distract" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D. Mantieni la calma, idratati e distraiti"
+          }
+        }
+      }
+    },
     "Danger" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1199,6 +2119,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pericolo"
+          }
+        }
+      }
+    },
+    "Decide on a drinking limit beforehand." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decidi in anticipo un limite per bere."
           }
         }
       }
@@ -1224,6 +2154,16 @@
         }
       }
     },
+    "Discourage the use of headphones while walking to ensure they remain alert to their surroundings." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scoraggia l'uso delle cuffie mentre si cammina per assicurarti che rimangano attenti all'ambiente circostante."
+          }
+        }
+      }
+    },
     "Distance" : {
       "localizations" : {
         "it" : {
@@ -1240,6 +2180,47 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Non hai un account?"
+          }
+        }
+      }
+    },
+    "Do Not Head Straight Home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non Dirigerti Dritto A Casa"
+          }
+        }
+      }
+    },
+    "Do Not Induce Vomiting" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non indurre il vomito"
+          }
+        }
+      }
+    },
+    "Do not leave the person to sleep it off." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non lasciare che la persona si addormenti."
+          }
+        }
+      }
+    },
+    "Do not let them drink more alcohol." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non lasciare che bevano più alcol."
           }
         }
       }
@@ -1264,6 +2245,46 @@
         }
       }
     },
+    "Don’t accept offers or go with strangers. Report any suspicious behavior." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non accettare offerte o andare con estranei. Segnala qualsiasi comportamento sospetto."
+          }
+        }
+      }
+    },
+    "Don’t Play on the Road" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non Giocare per Strada"
+          }
+        }
+      }
+    },
+    "Don't share personal information online" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non condividere informazioni personali online"
+          }
+        }
+      }
+    },
+    "Don’t share personal information online and report suspicious behavior." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non condividere informazioni personali online e segnala comportamenti sospetti."
+          }
+        }
+      }
+    },
     "Don’ts:" : {
       "localizations" : {
         "it" : {
@@ -1284,8 +2305,78 @@
         }
       }
     },
+    "Drink water or soft drinks between alcoholic beverages." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevi acqua o bevande analcoliche tra una bevanda alcolica e l'altra."
+          }
+        }
+      }
+    },
+    "Eat a Meal" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mangia un Pasto"
+          }
+        }
+      }
+    },
+    "Eating before drinking slows alcohol absorption." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mangiare prima di bere rallenta l'assorbimento dell'alcol."
+          }
+        }
+      }
+    },
+    "Educate about appropriate and inappropriate touch and report any bad touch immediately." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impara sul tocco appropriato e inappropriato e segnala immediatamente qualsiasi tocco pericoloso."
+          }
+        }
+      }
+    },
+    "Educate about fire hazards and water safety." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Educati sui rischi di incendio e sulla sicurezza dell'acqua."
+          }
+        }
+      }
+    },
+    "Embrace the music, dancing, and social aspects." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dedicati alla musica, alla danza e agli aspetti sociali."
+          }
+        }
+      }
+    },
     "Emergency Button" : {
 
+    },
+    "Emergency Contacts" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatti di Emergenza"
+          }
+        }
+      }
     },
     "Enable Location" : {
       "localizations" : {
@@ -1297,12 +2388,44 @@
         }
       }
     },
+    "Encourage open communication about interactions with adults." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incoraggia una comunicazione aperta sulle interazioni con gli adulti."
+          }
+        }
+      }
+    },
+    "Engage with Surroundings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interagisci con l'Ambiente Circostante"
+          }
+        }
+      }
+    },
     "Enhancing Perception" : {
+      "comment" : "Header for enhancing perception section",
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Migliorare la percezione"
+          }
+        }
+      }
+    },
+    "Enjoy Yourself" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Divertiti"
           }
         }
       }
@@ -1317,12 +2440,53 @@
         }
       }
     },
+    "Ensure helmets are worn when biking or skateboarding." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assicuratii di indossare il casco sulla bicicletta o lo skateboard."
+          }
+        }
+      }
+    },
+    "Ensure the learning environment is child-friendly." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assicurati che l'ambiente di apprendimento sia adatto ai bambini."
+          }
+        }
+      }
+    },
+    "Enter a store or crowded area and inform someone in charge. Drawing attention can deter a stalker." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entra in un negozio o in un'area affollata e informa qualcuno responsabile. Attirare l'attenzione può scoraggiare uno stalker."
+          }
+        }
+      }
+    },
     "Enter Verification Code" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inserisci Codice di Verifica"
+          }
+        }
+      }
+    },
+    "Equip your child with bright or reflective clothing to increase visibility, especially in low-light conditions. Reflective patches or accessories on backpacks can also be effective." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equipaggia il tuo bambino con indumenti luminosi o riflettenti per aumentare la visibilità, specialmente in condizioni di scarsa illuminazione. Anche le patch riflettenti o gli accessori sugli zaini possono essere efficaci."
           }
         }
       }
@@ -1357,6 +2521,26 @@
         }
       }
     },
+    "Exit Cars Safely" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esci dalle Auto in Sicurezza"
+          }
+        }
+      }
+    },
+    "Explain the meanings of red, yellow, and green lights." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiega i significati delle luci rosse, gialle e verdi."
+          }
+        }
+      }
+    },
     "FEATURES" : {
       "localizations" : {
         "it" : {
@@ -1374,6 +2558,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Per qualsiasi attività sospetta, **segnalala** al tuo numero di emergenza locale "
+          }
+        }
+      }
+    },
+    "Foresee possible threats and determine the best course of action, such as joining the crowd to escape danger." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prevedi possibili minacce e determina la migliore linea d'azione, come unirsi alla folla per sfuggire al pericolo."
+          }
+        }
+      }
+    },
+    "Frequent Glances" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sguardi Frequenti"
           }
         }
       }
@@ -1414,6 +2620,27 @@
     "Get Help. Button" : {
 
     },
+    "Get Off at Busy Stops" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scendi alle Fermate Affollate"
+          }
+        }
+      }
+    },
+    "Get Permission to Leave" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiedi il Permesso per Uscire"
+          }
+        }
+      }
+    },
     "Get started" : {
       "localizations" : {
         "it" : {
@@ -1430,6 +2657,48 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VAI"
+          }
+        }
+      }
+    },
+    "Good Touch vs. Bad Touch" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tocco Innocuo vs. Tocco Pericoloso"
+          }
+        }
+      }
+    },
+    "Have a Plan" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avere un Piano"
+          }
+        }
+      }
+    },
+    "Healthy Lifestyle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stile di Vita Sano"
+          }
+        }
+      }
+    },
+    "Heightened awareness due to specific potential threats." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maggiore consapevolezza a causa di potenziali minacce specifiche."
           }
         }
       }
@@ -1454,6 +2723,17 @@
         }
       }
     },
+    "High alert, taking direct action to neutralize an immediate threat." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alta allerta, azione diretta per neutralizzare una minaccia immediata."
+          }
+        }
+      }
+    },
     "Highly" : {
       "localizations" : {
         "it" : {
@@ -1470,6 +2750,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "TIENI PREMUTO"
+          }
+        }
+      }
+    },
+    "Hold an adult's hand, look left, right, and left again before crossing." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tieni la mano di un adulto, guarda a sinistra, a destra e di nuovo a sinistra prima di attraversare."
           }
         }
       }
@@ -1526,6 +2816,59 @@
         }
       }
     },
+    "Identify safe places along the route, like trusted neighbors' homes or businesses, where your child can seek help if needed." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identifica luoghi sicuri lungo il percorso, come le case o le imprese dei vicini di fiducia, dove tuo figlio può cercare aiuto se necessario."
+          }
+        }
+      }
+    },
+    "Identifying Safe Routes" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Identificare Percorsi Sicuri"
+          }
+        }
+      }
+    },
+    "If another car is following you, do not drive home. Go to a police station or a well-lit, busy area." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se un'altra auto ti sta seguendo, non tornare a casa. Vai in una stazione di polizia o in una zona ben illuminata e trafficata."
+          }
+        }
+      }
+    },
+    "If Followed by Another Car" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se Seguito da un'Altra Auto"
+          }
+        }
+      }
+    },
+    "If intoxicated, ensure a friend accompanies you home. Intoxicated individuals are more vulnerable targets." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se sei intossicato, assicurati che un amico ti accompagni a casa. Gli individui intossicati sono obiettivi più vulnerabili."
+          }
+        }
+      }
+    },
     "If you are feeling unsafe and don't want to notify your contact immediately, simply hold the button to activate the timer. You have the option to modify the timer in the settings to your liking. \nIf you don't dismiss the alert when the time runs out, a notification will be sent." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1553,6 +2896,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se ti senti pericolo, è sufficiente cliccare il bottone per notificare i contatti di emergenza una volta aggiunti i loro numeri per cercare aiuto. Se i tuoi contatti non hanno scaricato l'applicazione , riceveranno una notifica con la tua posizione live. Altrimenti riceveranno un SMS. Finché il bottone è attivo, il tuo ambiente circostante verrà registrato."
+          }
+        }
+      }
+    },
+    "If you feel threatened, call the police. Inform them of your location and situation. Also, inform friends or family." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ti senti minacciato, chiama la polizia. Informali della tua posizione e della tua situazione. Inoltre, informa gli amici o la famiglia."
+          }
+        }
+      }
+    },
+    "If you feel unsafe, get off at a busy stop and wait for the next bus or train." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ti senti insicuro, scendi a una fermata trafficata e aspetta il prossimo autobus o treno."
           }
         }
       }
@@ -1598,12 +2963,349 @@
         }
       }
     },
+    "Incorrect. Children should not share personal information online." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. I bambini non dovrebbero condividere informazioni personali online."
+          }
+        }
+      }
+    },
+    "Incorrect. Children should report any suspicious behavior and never accept rides from strangers." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. I bambini dovrebbero segnalare qualsiasi comportamento sospetto e non accettare mai passaggi da estranei."
+          }
+        }
+      }
+    },
+    "Incorrect. Confusion is one of the signs of alcohol poisoning." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. La confusione è uno dei segni dell'avvelenamento da alcol."
+          }
+        }
+      }
+    },
+    "Incorrect. Engaging with your surroundings helps enhance your situational awareness perception." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. Interagire con l'ambiente circostante aiuta a migliorare la percezione della consapevolezza situazionale."
+          }
+        }
+      }
+    },
+    "Incorrect. Going to a public, well-lit, crowded place if you suspect you're being followed is a recommended action." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. Andare in un luogo pubblico, ben illuminato e affollato se sospetti di essere seguito è un'azione consigliata."
+          }
+        }
+      }
+    },
+    "Incorrect. Keeping them awake and sitting up is recommended." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. Si consiglia di tenerli svegli e seduti."
+          }
+        }
+      }
+    },
+    "Incorrect. Planning your route and sharing it with someone you trust enhances safety." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. Pianificare il tuo percorso e condividerlo con qualcuno di cui ti fidi migliora la sicurezza."
+          }
+        }
+      }
+    },
+    "Incorrect. Staying alert and aware of surroundings helps detect if you're being followed." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. Rimanere vigili e consapevoli dell'ambiente circostante aiuta a capire se sei seguito."
+          }
+        }
+      }
+    },
+    "Incorrect. Staying calm, hydrating, and distracting can help someone who is too high from weed." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. Rimanere calmi, idratarsi e distrarsi può aiutare qualcuno che è troppo fatto di erba."
+          }
+        }
+      }
+    },
+    "Incorrect. The correct order is Perceiving Elements, Attributing Meaning, Predicting Outcomes." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. L'ordine corretto è Percepire gli Elementi, Attribuire il Significato, Prevedere i Risultati."
+          }
+        }
+      }
+    },
+    "Incorrect. The recommended age for children to walk alone to school is around 10 years old." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. L'età raccomandata per i bambini per andare a scuola da soli è di circa 10 anni."
+          }
+        }
+      }
+    },
+    "Incorrect. Yellow indicates being relaxed but alert." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbagliato. Il giallo indica essere rilassato ma vigile."
+          }
+        }
+      }
+    },
+    "Inform a family member or friend of your route and expected arrival time. They can check on you if they don't hear from you." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informa un familiare o un amico del tuo percorso e dell'orario di arrivo previsto. Possono controllarti se non hanno tue notizie."
+          }
+        }
+      }
+    },
+    "Initially walk the route with your child to familiarize them with it. Show them safe places to cross and potential hazards." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inizialmente percorri il percorso con tuo figlio per familiarizzarlo con esso. Mostragli luoghi sicuri da attraversare e potenziali pericoli."
+          }
+        }
+      }
+    },
+    "Internet Safety" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza su Internet"
+          }
+        }
+      }
+    },
+    "Introduce themselves to strangers" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presentarsi agli estranei"
+          }
+        }
+      }
+    },
     "Jeff Cooper's Color Code categorizes different levels of awareness:" : {
+      "comment" : "Introduction to Cooper's Color Code",
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "La teoria dei colori di Jeff Cooper classifica diversi livelli di consapevolezza:"
+          }
+        }
+      }
+    },
+    "Keep a safe distance from unknown adults asking for help." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantieni una distanza di sicurezza da adulti sconosciuti che chiedono aiuto."
+          }
+        }
+      }
+    },
+    "Keep Your Hands Free" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lascia le Tue Mani Libere"
+          }
+        }
+      }
+    },
+    "Keep Your Phone Accessible" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantieni Il Tuo Telefono Accessibile"
+          }
+        }
+      }
+    },
+    "Keep your phone easily accessible." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantieni il tuo telefono facilmente accessibile."
+          }
+        }
+      }
+    },
+    "Keep your phone with you and fully charged. Consider carrying a power bank. Avoid using your phone for messages or music while walking." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tieni il telefono con te e completamente carico. Prendi in considerazione la possibilità di portare un power bank. Evita di usare il telefono per messaggi o musica mentre cammini."
+          }
+        }
+      }
+    },
+    "Keep your senses sharp with regular medical checkups to ensure your vision, hearing, touch, smell, and taste are functioning well." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantieni i tuoi sensi acuti con regolari controlli medici per assicurarti che la vista, l'udito, il tatto, l'odore e il gusto funzionino bene."
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "Key 1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiave 1"
+          }
+        }
+      }
+    },
+    "Key 2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiave 2"
+          }
+        }
+      }
+    },
+    "Key 3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiave 3"
+          }
+        }
+      }
+    },
+    "Key 4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiave 4"
+          }
+        }
+      }
+    },
+    "Key 5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiave 5"
+          }
+        }
+      }
+    },
+    "Key 6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiave 6"
+          }
+        }
+      }
+    },
+    "Know Contact Information" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conoscere le Informazioni di Contatto"
+          }
+        }
+      }
+    },
+    "Know Safe Adults" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conosci Adulti Affidabili"
+          }
+        }
+      }
+    },
+    "Know safe adults they can turn to if they feel uncomfortable or in danger." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conosci adulti sicuri a cui possono rivolgersi se si sentono a disagio o in pericolo."
+          }
+        }
+      }
+    },
+    "Learn Self-Defense" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impara la Difesa Personale"
           }
         }
       }
@@ -1614,6 +3316,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Età legale per camminare da soli: l'età **consigliata** per i bambini per camminare da soli varia in base al paese e alla regione, **generalmente** è intorno ai 10 anni. **Controlla le leggi locali** e le normative per linee guida specifiche."
+          }
+        }
+      }
+    },
+    "Let someone you trust know your plans and expected arrival times. Use apps to share your live location with friends or family." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai sapere a qualcuno di cui ti fidi i tuoi piani e gli orari di arrivo previsti. Usa le app per condividere la tua posizione dal vivo con amici o familiari."
           }
         }
       }
@@ -1683,6 +3396,80 @@
         }
       }
     },
+    "Look Before Crossing" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda Prima di Attraversare"
+          }
+        }
+      }
+    },
+    "Look Both Ways" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda in Entrambe le Direzioni"
+          }
+        }
+      }
+    },
+    "Maintain a healthy diet and avoid activities that strain your body, like smoking." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantieni una dieta sana ed evita le attività che mettono a dura prova il tuo corpo, come il fumo."
+          }
+        }
+      }
+    },
+    "Maintain Distance" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantieni la Distanza"
+          }
+        }
+      }
+    },
+    "Make Intentional Turns" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai Svolte Intenzionali"
+          }
+        }
+      }
+    },
+    "Make intentional turns to confirm if the same vehicle is still behind you." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai svolte intenzionali per confermare se lo stesso veicolo è ancora dietro di te."
+          }
+        }
+      }
+    },
+    "Make Noise and Seek Help" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai Rumore e Cerca Aiuto"
+          }
+        }
+      }
+    },
     "Map" : {
       "localizations" : {
         "it" : {
@@ -1693,12 +3480,43 @@
         }
       }
     },
+    "Meet strangers from the internet alone" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incontra sconosciuti su internet da soli"
+          }
+        }
+      }
+    },
+    "Memorize parents’ full names, address, and phone numbers." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memorizza i nomi, l'indirizzo e i numeri di telefono dei genitori."
+          }
+        }
+      }
+    },
     "Messaggio" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Messaggio"
+          }
+        }
+      }
+    },
+    "Mind Your Hair" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attento ai Tuoi Capelli"
           }
         }
       }
@@ -1723,6 +3541,16 @@
         }
       }
     },
+    "Mobile Phones" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefoni"
+          }
+        }
+      }
+    },
     "Mode" : {
       "localizations" : {
         "it" : {
@@ -1739,6 +3567,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Medio"
+          }
+        }
+      }
+    },
+    "Move towards the front of the bus or train where the driver or conductor can see you." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muoviti verso la parte anteriore dell'autobus o del treno dove l'autista o il conduttore può vederti."
+          }
+        }
+      }
+    },
+    "Moving someone with alcohol poisoning can cause injury, and a cold shower can lower their body temperature further." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spostare qualcuno con avvelenamento da alcol può causare lesioni e una doccia fredda può abbassare ulteriormente la sua temperatura corporea."
           }
         }
       }
@@ -1763,12 +3612,92 @@
         }
       }
     },
+    "Never Accept Rides" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non Accettare mai Passaggi"
+          }
+        }
+      }
+    },
+    "Never accept rides or gifts from strangers." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non accettare mai giostre o regali da estranei."
+          }
+        }
+      }
+    },
+    "Never Leave Them Alone" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non Lasciarli mai Soli"
+          }
+        }
+      }
+    },
+    "Never Play or Run" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non Giocare o Correre mai"
+          }
+        }
+      }
+    },
+    "Never play or run into the street." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non giocare o correre in strada."
+          }
+        }
+      }
+    },
+    "Never swim alone and always have adult supervision." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non nuotare mai da solo e abbi sempre la supervisione di un adulto."
+          }
+        }
+      }
+    },
     "NO" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "NO"
+          }
+        }
+      }
+    },
+    "No Climbing on High Surfaces" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna Arrampicata su Superfici Alte"
+          }
+        }
+      }
+    },
+    "No Cold Showers" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niente Docce Fredde"
           }
         }
       }
@@ -1784,12 +3713,53 @@
         }
       }
     },
+    "No Headphones" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niente Cuffie"
+          }
+        }
+      }
+    },
+    "No More Alcohol" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niente Più Alcol"
+          }
+        }
+      }
+    },
+    "No Playing with Fire or Water" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non Giocare con il Fuoco o l'Acqua"
+          }
+        }
+      }
+    },
     "No, help me" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "No, aiutami"
+          }
+        }
+      }
+    },
+    "Notice sounds, smells, and visual cues in your environment. For example, at a train station, you might hear a loud bang, smell smoke, and see people fleeing." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nota suoni, odori e segnali visivi nel tuo ambiente. Per esempio, in una stazione ferroviaria, potresti sentire un forte botto, sentire l'odore del fumo e vedere persone fuggire."
           }
         }
       }
@@ -1821,6 +3791,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notifica inviata!"
+          }
+        }
+      }
+    },
+    "Observe and Note Details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Osserva e Nota i Dettagli"
           }
         }
       }
@@ -1886,6 +3867,17 @@
         }
       }
     },
+    "Orange:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arancione:"
+          }
+        }
+      }
+    },
     "OTP sent!" : {
       "localizations" : {
         "it" : {
@@ -1896,12 +3888,34 @@
         }
       }
     },
+    "Park in Well-Lit Areas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parcheggia in Zone Ben Illuminate"
+          }
+        }
+      }
+    },
     "per la Supervision mode" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "per la Supervision mode"
+          }
+        }
+      }
+    },
+    "Perceiving Elements" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Percepire gli Elementi"
           }
         }
       }
@@ -1923,6 +3937,37 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Numero di telefono"
+          }
+        }
+      }
+    },
+    "Plan a backup route in case the primary path is blocked. Ensure your child knows this route and can contact you if needed." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pianifica un percorso secondario nel caso in cui il percorso primario sia bloccato. Assicurati che tuo figlio conosca questo percorso e possa contattarti se necessario."
+          }
+        }
+      }
+    },
+    "Plan Your Route" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pianifica il Tuo Percorso"
+          }
+        }
+      }
+    },
+    "Plan your way home, keep your phone charged, or bring a power bank." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pianifica la strada di casa, tieni il telefono carico o porta un power bank."
           }
         }
       }
@@ -1957,6 +4002,17 @@
         }
       }
     },
+    "Predicting Outcomes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prevedere i Risultati"
+          }
+        }
+      }
+    },
     "Prevention Tips:" : {
       "localizations" : {
         "it" : {
@@ -1973,6 +4029,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Misure Preventive"
+          }
+        }
+      }
+    },
+    "Prioritize Safety" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dai priorità alla sicurezza"
           }
         }
       }
@@ -2151,6 +4217,17 @@
         }
       }
     },
+    "Recognize that these elements, like smoke or running people, indicate potential danger. Understand their significance." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riconosci che questi elementi, come il fumo o le persone che corrono, indicano un potenziale pericolo. Comprendi il loro significato."
+          }
+        }
+      }
+    },
     "Recordings" : {
       "localizations" : {
         "it" : {
@@ -2168,6 +4245,81 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rosso"
+          }
+        }
+      }
+    },
+    "Red:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rosso:"
+          }
+        }
+      }
+    },
+    "Regular Checkups" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlli Regolari"
+          }
+        }
+      }
+    },
+    "Relaxed and unaware; suitable for safe environments." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rilassato e inconsapevole; adatto per ambienti sicuri."
+          }
+        }
+      }
+    },
+    "Relaxed but alert; the goal for most situations." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rilassato ma vigile; l'obiettivo per la maggior parte delle situazioni."
+          }
+        }
+      }
+    },
+    "Remember details about the follower or their vehicle, like appearance, clothing, or license plate." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricorda i dettagli sull'inseguitore o sul suo veicolo, come l'aspetto, l'abbigliamento o la targa."
+          }
+        }
+      }
+    },
+    "Report any suspicious behavior" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnala qualsiasi comportamento sospetto"
+          }
+        }
+      }
+    },
+    "Report any suspicious behavior and never accept rides from strangers" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segnala qualsiasi comportamento sospetto e non accettare mai passaggi da estranei"
           }
         }
       }
@@ -2193,12 +4345,52 @@
         }
       }
     },
+    "Run away from strangers" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allontanati dagli estranei"
+          }
+        }
+      }
+    },
+    "Safe At-Home Learning" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apprendimento Sicuro a Casa"
+          }
+        }
+      }
+    },
+    "Safe Spots" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luoghi Sicuri"
+          }
+        }
+      }
+    },
     "Safety and Security Quiz" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quiz sulla Sicurezza"
+          }
+        }
+      }
+    },
+    "Safety Around Water Bodies" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza In Acqua"
           }
         }
       }
@@ -2254,6 +4446,17 @@
         }
       }
     },
+    "Self-defense classes boost confidence and situational awareness, preparing you mentally and physically for stressful situations." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le lezioni di autodifesa aumentano la fiducia e la consapevolezza situazionale, preparandoti mentalmente e fisicamente per situazioni stressanti."
+          }
+        }
+      }
+    },
     "Send new code" : {
       "localizations" : {
         "it" : {
@@ -2269,7 +4472,17 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Imposta un timer personalizzato per notificare i tuoi contatti d'emergenza esattamente dopo la quantità di tempo che più si addice ai tuoi bisogno"
+            "value" : "Imposta un timer personalizzato per notificare i tuoi contatti d'emergenza esattamente dopo la quantità di tempo che più si addice ai tuoi bisogni."
+          }
+        }
+      }
+    },
+    "Set a Limit" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta un Limite"
           }
         }
       }
@@ -2320,6 +4533,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Condividi"
+          }
+        }
+      }
+    },
+    "Share personal information online" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condividere informazioni personali online"
+          }
+        }
+      }
+    },
+    "Share Your Itinerary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condividi il Tuo Itinerario"
+          }
+        }
+      }
+    },
+    "Share Your Plan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condividi il Tuo Piano"
           }
         }
       }
@@ -2376,6 +4621,28 @@
         }
       }
     },
+    "Sit Near the Front" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siediti Vicino alla Parte Anteriore"
+          }
+        }
+      }
+    },
+    "Situational Awareness" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consapevolezza Situazionale"
+          }
+        }
+      }
+    },
     "Situational awareness involves perceiving your environment, understanding its significance, and predicting future events. It's crucial for navigating daily dangers and is heavily relied upon in various fields such as law enforcement, emergency response, military operations, aviation, nautical navigation, and sports. It's equally essential for everyday safety." : {
       "localizations" : {
         "it" : {
@@ -2416,6 +4683,59 @@
         }
       }
     },
+    "Stay alert and aware of your surroundings. Notice if a person or vehicle appears repeatedly." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimani vigile e consapevole dell'ambiente circostante. Nota se una persona o un veicolo appare ripetutamente."
+          }
+        }
+      }
+    },
+    "Stay Aware of Your Surroundings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sii Consapevole dell'Ambiente Circostante"
+          }
+        }
+      }
+    },
+    "Stay calm, stay where they are, and seek help from a trusted adult if lost." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantieni la calma, rimani dove sei e cerca l'aiuto di un adulto fidato se ti sei perso."
+          }
+        }
+      }
+    },
+    "Stay present and actively engage with your environment. Read distant signs, listen to nearby conversations, and be aware of subtle scents and sounds around you." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimani presente e coinvolgi attivamente il tuo ambiente. Leggi segni lontani, ascolta le conversazioni nelle vicinanze e sii consapevole dei profumi e dei suoni sottili intorno a te."
+          }
+        }
+      }
+    },
+    "Stay with friends to reduce the risk of incidents and injuries." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resta con gli amici per ridurre il rischio di incidenti e lesioni."
+          }
+        }
+      }
+    },
     "Steps of Situational Awareness" : {
       "localizations" : {
         "it" : {
@@ -2432,6 +4752,37 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Step per aiutare qualcuno:"
+          }
+        }
+      }
+    },
+    "Stick to well-lit, busy places. Avoid shortcuts through dark alleys or parks. Stay alert for anything that feels off." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attieniti a luoghi ben illuminati e affollati. Evita le scorciatoie attraverso vicoli bui o parchi. Stai attento a tutto ciò che ti sembra strano."
+          }
+        }
+      }
+    },
+    "Stick with Friends" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resta con gli Amici"
+          }
+        }
+      }
+    },
+    "Sun Safety" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza al Sole"
           }
         }
       }
@@ -2498,6 +4849,26 @@
         }
       }
     },
+    "Teach children the importance of staying away from streets." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insegna ai bambini l'importanza di stare lontani dalle strade."
+          }
+        }
+      }
+    },
+    "Teach children to verify who is at the door and not open it to unknown people." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insegna ai bambini a verificare chi c'è alla porta e a non aprirla a persone sconosciute."
+          }
+        }
+      }
+    },
     "Thanks to the map you can easily have a look at shops and store open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2555,6 +4926,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nessun account associato a questo numero è stato trovato"
+          }
+        }
+      }
+    },
+    "This can cause choking." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo può causare soffocamento."
           }
         }
       }
@@ -2631,6 +5012,16 @@
         }
       }
     },
+    "Trust your instincts, avoid conflicts, and have a safe and reliable way to get home." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fidati del tuo istinto, evita i conflitti e abbi un modo sicuro e affidabile per tornare a casa."
+          }
+        }
+      }
+    },
     "Try again later" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2638,6 +5029,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Riprova più tardi"
+          }
+        }
+      }
+    },
+    "Understand Traffic Signals" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprendi i Segnali Stradali"
           }
         }
       }
@@ -2662,12 +5063,86 @@
         }
       }
     },
+    "Use Pedestrian Crossings" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilizza gli Attraversamenti Pedonali"
+          }
+        }
+      }
+    },
+    "Use pedestrian crossings and obey traffic signals." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilizza gli attraversamenti pedonali e obbedisci ai segnali stradali."
+          }
+        }
+      }
+    },
+    "Use personal safety apps with features like panic buttons that send your location and a distress message to contacts or authorities." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa app di sicurezza personale con funzionalità come pulsanti di panico che inviano la tua posizione e un messaggio di emergenza ai contatti o alle autorità."
+          }
+        }
+      }
+    },
+    "Use reflective surfaces like windows or your phone screen to check for followers discreetly." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa superfici riflettenti come le finestre o lo schermo del telefono per controllare discretamente gli inseguitori."
+          }
+        }
+      }
+    },
+    "Use Sidewalks" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa i Marciapiedi"
+          }
+        }
+      }
+    },
+    "Use Technology" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa la Tecnologia"
+          }
+        }
+      }
+    },
     "Using Public Transport:" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Utilizzando i Trasporti Pubblici:"
+          }
+        }
+      }
+    },
+    "Vary Your Routes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varia i Tuoi Percorsi"
           }
         }
       }
@@ -2685,8 +5160,79 @@
     "Walk" : {
 
     },
+    "Walk Confidently" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina con Sicurezza"
+          }
+        }
+      }
+    },
+    "Walk confidently and at a steady pace." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina con sicurezza e a ritmo costante."
+          }
+        }
+      }
+    },
+    "Walk on Sidewalks" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina sui Marciapiedi"
+          }
+        }
+      }
+    },
+    "Walk on sidewalks or, if unavailable, facing traffic on the road's edge." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina sui marciapiedi o, se non disponibili, di fronte al traffico ai margini della strada."
+          }
+        }
+      }
+    },
+    "Walk Together" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camminate insieme"
+          }
+        }
+      }
+    },
+    "Walk with your head high, maintain good posture, and appear purposeful. Predators often target those who seem timid or lost." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina con la testa alta, mantieni una buona postura e appari in modo mirato. I predatori spesso prendono di mira coloro che sembrano timidi o persi."
+          }
+        }
+      }
+    },
     "Walking alone" : {
-      "comment" : "Subtitle for course 02"
+      "comment" : "Subtitle for course 02",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camminare da soli"
+          }
+        }
+      }
     },
     "Walking alone can be risky, depending on factors like location, gender, and time of day. Here are some general tips to help keep you safe in any situation." : {
       "localizations" : {
@@ -2704,6 +5250,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suggerimenti sul Andare a Scuola da Soli:"
+          }
+        }
+      }
+    },
+    "Warn against jumping on furniture or climbing on shelves." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mettere in guardia dal saltare sui mobili o arrampicarsi sugli scaffali."
+          }
+        }
+      }
+    },
+    "Wear Helmets" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indossa i Caschi"
+          }
+        }
+      }
+    },
+    "Wear sunscreen or appropriate clothing on sunny days." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indossa la protezione solare o vestiti appropriati nelle giornate di sole."
           }
         }
       }
@@ -2734,6 +5310,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cosa non fare:"
+          }
+        }
+      }
+    },
+    "What to Do if Lost" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cosa Fare se ti Perdi"
           }
         }
       }
@@ -2769,6 +5355,17 @@
         }
       }
     },
+    "White:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bianco:"
+          }
+        }
+      }
+    },
     "Widgets" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -2787,6 +5384,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Giallo"
+          }
+        }
+      }
+    },
+    "Yellow:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giallo:"
           }
         }
       }
@@ -2839,6 +5447,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Non esiste un account associato a questo numero!"
+          }
+        }
+      }
+    },
+    "You may need your hands for your phone or self-defense tools. Carry a small, light purse." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potresti aver bisogno delle tue mani per il tuo telefono o per gli strumenti di autodifesa. Porta con te una piccola e leggera borsa."
           }
         }
       }

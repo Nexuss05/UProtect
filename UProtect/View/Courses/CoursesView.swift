@@ -10,6 +10,7 @@ import SwiftUI
 class Course: Identifiable, ObservableObject {
     let id: UUID
     let title: String
+    let identifier: String
     let subtitle: String
     @Published var progress: CGFloat {
         didSet {
@@ -17,9 +18,10 @@ class Course: Identifiable, ObservableObject {
         }
     }
     
-    init(id: UUID = UUID(), title: String, subtitle: String, progress: CGFloat) {
+    init(id: UUID = UUID(), identifier: String, title: String, subtitle: String, progress: CGFloat) {
         self.id = id
         self.title = title
+        self.identifier = identifier
         self.subtitle = subtitle
         self.progress = progress
         loadProgress()
@@ -38,16 +40,16 @@ class Course: Identifiable, ObservableObject {
 
 struct CoursesView: View {
     @State private var courses: [Course] = [
-        Course(title: NSLocalizedString("Course 01", comment: "Title of the first course"),
+        Course(identifier: "course_01", title: NSLocalizedString("Course 01", comment: "Title of the first course"),
                subtitle: NSLocalizedString("Self defence", comment: "Subtitle for course 01"),
                progress: 0/30.0),
-        Course(title: NSLocalizedString("Course 02", comment: "Title of the second course"),
+        Course(identifier: "course_02", title: NSLocalizedString("Course 02", comment: "Title of the second course"),
                subtitle: NSLocalizedString("Walking alone", comment: "Subtitle for course 02"),
                progress: 0/30.0),
-        Course(title: NSLocalizedString("Course 03", comment: "Title of the third course"),
+        Course(identifier: "course_03", title: NSLocalizedString("Course 03", comment: "Title of the third course"),
                subtitle: NSLocalizedString("In the disco", comment: "Subtitle for course 03"),
                progress: 0/30.0),
-        Course(title: NSLocalizedString("Course 04", comment: "Title of the fourth course"),
+        Course(identifier: "course_04", title: NSLocalizedString("Course 04", comment: "Title of the fourth course"),
                subtitle: NSLocalizedString("Children security", comment: "Subtitle for course 04"),
                progress: 0/30.0)
     ]
@@ -106,45 +108,31 @@ struct CourseRow: View {
                 
                 Spacer()
                 
-                if course.title == "Course 01" {
-                    Image("defence")
-                        .resizable()
-                        .frame(width: 120, height: 120)
-//                    Lottiesss(loopmode: .loop)
-//                        .frame(width: 50, height: 50)
-//                        .scaleEffect(0.14)
-//                        .padding(.trailing, 30)
-//                        .padding(.bottom, 3)
-                }
-                else if course.title == "Course 03" {
-                    Image("Disco")
-                        .resizable()
-                        .frame(width: 120, height: 120)
-                        .scaleEffect(1.45)
-                } else if course.title == "Course 02" {
-                    Image("Walk")
-                        .resizable()
-                        .frame(width: 160, height: 120)
-//                    Lotties(loopmode: .loop)
-//                        .frame(width: 50, height: 50)
-                        .scaleEffect(0.98)
-                        .padding(.trailing, -10)
-//                        .padding(.bottom, 7)
-                } else {
-                    Image("Children")
-                        .resizable()
-                        .frame(width: 120, height: 120)
-//                    LottieView(loopmode: .loop)
-//                        .frame(width: 50, height: 50)
-//                        .scaleEffect(0.48)
-//                        .padding(.trailing, 25)
-//                        .padding(.bottom, 50)
-                }
-            }
-//            ProgressBar(progress: course.progress)
-//                .padding(.top, 5)
-            
-        }
+                switch course.identifier {
+                                case "course_01":
+                                    Image("defence")
+                                        .resizable()
+                                        .frame(width: 120, height: 120)
+                                case "course_02":
+                                    Image("Walk")
+                                        .resizable()
+                                        .frame(width: 160, height: 120)
+                                        .scaleEffect(0.98)
+                                        .padding(.trailing, -10)
+                                case "course_03":
+                                    Image("Disco")
+                                        .resizable()
+                                        .frame(width: 120, height: 120)
+                                        .scaleEffect(1.45)
+                                case "course_04":
+                                    Image("Children")
+                                        .resizable()
+                                        .frame(width: 120, height: 120)
+                                default:
+                                    EmptyView()
+                                }
+                            }
+                        }
         .padding()
         .background(Color.white)
         .cornerRadius(10)
@@ -163,14 +151,14 @@ struct CourseDetailView: View {
     var body: some View {
         VStack {
             ScrollView {
-                if course.title == "Course 01" {
+                if course.identifier == "course_01" {
                     Corso1(course: $course)
-                } else if course.title == "Course 02"{
+                } else if course.identifier == "course_02"{
                     Corso2(course: $course)
                 }
-                else if course.title == "Course 03" {
+                else if course.identifier == "course_03" {
                     Corso3(course: $course)
-                } else {
+                } else if course.identifier == "course_04" {
                     Corso4(course: $course)
                 }
             }

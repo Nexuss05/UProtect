@@ -28,12 +28,12 @@ struct Course301: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView2(icon: "❗️", title: "Set a Limit", description: "Decide on a drinking limit beforehand.")
-                                        SafetyTipView2(icon: "🍝", title: "Eat a Meal", description: "Eating before drinking slows alcohol absorption.").accessibilityElement(children: .combine)
-                                        SafetyTipView2(icon: "🥤", title: "Alternate Drinks", description: "Drink water or soft drinks between alcoholic beverages.").accessibilityElement(children: .combine)
-                                        SafetyTipView2(icon: "💡", title: "Have a Plan", description: "Plan your way home, keep your phone charged, or bring a power bank.").accessibilityElement(children: .combine)
-                                        SafetyTipView2(icon: "👥", title: "Stick with Friends", description: "Stay with friends to reduce the risk of incidents and injuries.").accessibilityElement(children: .combine)
-                }
+                                    SafetyTipView2(icon: "❗️", title: NSLocalizedString("Set a Limit", comment: ""), description: NSLocalizedString("Decide on a drinking limit beforehand.", comment: ""))
+                                    SafetyTipView2(icon: "🍝", title: NSLocalizedString("Eat a Meal", comment: ""), description: NSLocalizedString("Eating before drinking slows alcohol absorption.", comment: "")).accessibilityElement(children: .combine)
+                                    SafetyTipView2(icon: "🥤", title: NSLocalizedString("Alternate Drinks", comment: ""), description: NSLocalizedString("Drink water or soft drinks between alcoholic beverages.", comment: "")).accessibilityElement(children: .combine)
+                                    SafetyTipView2(icon: "💡", title: NSLocalizedString("Have a Plan", comment: ""), description: NSLocalizedString("Plan your way home, keep your phone charged, or bring a power bank.", comment: "")).accessibilityElement(children: .combine)
+                                    SafetyTipView2(icon: "👥", title: NSLocalizedString("Stick with Friends", comment: ""), description: NSLocalizedString("Stay with friends to reduce the risk of incidents and injuries.", comment: "")).accessibilityElement(children: .combine)
+                                }
                 .padding()
             }
             .padding()
@@ -80,13 +80,13 @@ struct Course302: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView2(icon: "🤝", title: "Never Leave Them Alone", description: "Do not leave the person to sleep it off.").accessibilityElement(children: .combine)
-                    SafetyTipView2(icon: "☕️", title: "Avoid Coffee", description: "Alcohol dehydrates the body, and coffee can exacerbate this.").accessibilityElement(children: .combine)
-                    SafetyTipView2(icon: "🤮", title: "Do Not Induce Vomiting", description: "This can cause choking.").accessibilityElement(children: .combine)
-                   SafetyTipView2(icon: "🚿", title: "No Cold Showers", description: "Moving someone with alcohol poisoning can cause injury, and a cold shower can lower their body temperature further.").accessibilityElement(children: .combine)
-                SafetyTipView2(icon: "🍷", title: "No More Alcohol", description: "Do not let them drink more alcohol.").accessibilityElement(children: .combine)
-                    Text("_**Emergency Help**_: Always call your local emergency number if you suspect someone has alcohol poisoning.")
-                }
+                                    SafetyTipView2(icon: "🤝", title: NSLocalizedString("Never Leave Them Alone", comment: ""), description: NSLocalizedString("Do not leave the person to sleep it off.", comment: "")).accessibilityElement(children: .combine)
+                                    SafetyTipView2(icon: "☕️", title: NSLocalizedString("Avoid Coffee", comment: ""), description: NSLocalizedString("Alcohol dehydrates the body, and coffee can exacerbate this.", comment: "")).accessibilityElement(children: .combine)
+                                    SafetyTipView2(icon: "🤮", title: NSLocalizedString("Do Not Induce Vomiting", comment: ""), description: NSLocalizedString("This can cause choking.", comment: "")).accessibilityElement(children: .combine)
+                                    SafetyTipView2(icon: "🚿", title: NSLocalizedString("No Cold Showers", comment: ""), description: NSLocalizedString("Moving someone with alcohol poisoning can cause injury, and a cold shower can lower their body temperature further.", comment: "")).accessibilityElement(children: .combine)
+                                    SafetyTipView2(icon: "🍷", title: NSLocalizedString("No More Alcohol", comment: ""), description: NSLocalizedString("Do not let them drink more alcohol.", comment: ""))
+                                    Text(NSLocalizedString("_**Emergency Help**_: Always call your local emergency number if you suspect someone has alcohol poisoning.", comment: ""))
+                                }
                 .padding()
             }
             .padding()
@@ -184,9 +184,9 @@ struct Course304: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView2(icon: "😃", title: "Enjoy Yourself", description: "Embrace the music, dancing, and social aspects.").accessibilityElement(children: .combine)
-                    SafetyTipView2(icon: "✅", title: "Prioritize Safety", description: "Trust your instincts, avoid conflicts, and have a safe and reliable way to get home.").accessibilityElement(children: .combine)
-                }
+                                SafetyTipView2(icon: "😃", title: NSLocalizedString("Enjoy Yourself", comment: ""), description: NSLocalizedString("Embrace the music, dancing, and social aspects.", comment: "")).accessibilityElement(children: .combine)
+                                SafetyTipView2(icon: "✅", title: NSLocalizedString("Prioritize Safety", comment: ""), description: NSLocalizedString("Trust your instincts, avoid conflicts, and have a safe and reliable way to get home.", comment: "")).accessibilityElement(children: .combine)
+                            }
                 
                 Text("Enjoying a Safe Night Out:")
                     .font(.title3)
@@ -240,7 +240,7 @@ struct Course305: View {
     @State private var showResult2: Bool = false
     @State private var selectedAnswer3: Int? = nil
     @State private var showResult3: Bool = false
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -353,10 +353,10 @@ struct Course305: View {
     // Question 1 Options
     private func question1Options(_ index: Int) -> String {
         switch index {
-        case 1: return "A. Induce vomiting"
-        case 2: return "B. Leave them alone to sleep it off"
-        case 3: return "C. Keep them awake and sitting up"
-        case 4: return "D. Give them more alcohol"
+        case 1: return NSLocalizedString("A. Induce vomiting", comment: "")
+        case 2: return NSLocalizedString("B. Leave them alone to sleep it off", comment: "")
+        case 3: return NSLocalizedString("C. Keep them awake and sitting up", comment: "")
+        case 4: return NSLocalizedString("D. Give them more alcohol", comment: "")
         default: return ""
         }
     }
@@ -364,10 +364,10 @@ struct Course305: View {
     // Question 2 Options
     private func question2Options(_ index: Int) -> String {
         switch index {
-        case 1: return "A. Confusion"
-        case 2: return "B. Dizziness"
-        case 3: return "C. Passing out or unconsciousness"
-        case 4: return "D. Excessive perspiration"
+        case 1: return NSLocalizedString("A. Confusion", comment: "")
+        case 2: return NSLocalizedString("B. Dizziness", comment: "")
+        case 3: return NSLocalizedString("C. Passing out or unconsciousness", comment: "")
+        case 4: return NSLocalizedString("D. Excessive perspiration", comment: "")
         default: return ""
         }
     }
@@ -375,10 +375,10 @@ struct Course305: View {
     // Question 3 Options
     private func question3Options(_ index: Int) -> String {
         switch index {
-        case 1: return "A. Encourage them to use more weed"
-        case 2: return "B. Call emergency services immediately"
-        case 3: return "C. Leave them alone until they feel better"
-        case 4: return "D. Stay calm, hydrate, and distract"
+        case 1: return NSLocalizedString("A. Encourage them to use more weed", comment: "")
+        case 2: return NSLocalizedString("B. Call emergency services immediately", comment: "")
+        case 3: return NSLocalizedString("C. Leave them alone until they feel better", comment: "")
+        case 4: return NSLocalizedString("D. Stay calm, hydrate, and distract", comment: "")
         default: return ""
         }
     }
@@ -386,25 +386,25 @@ struct Course305: View {
     // Result Texts
     private func resultText1() -> String {
         if selectedAnswer1 == 3 {
-            return "Correct! Keeping them awake and sitting up is recommended."
+            return NSLocalizedString("Correct! Keeping them awake and sitting up is recommended.", comment: "")
         } else {
-            return "Incorrect. Keeping them awake and sitting up is recommended."
+            return NSLocalizedString("Incorrect. Keeping them awake and sitting up is recommended.", comment: "")
         }
     }
     
     private func resultText2() -> String {
         if selectedAnswer2 == 1 {
-            return "Correct! Confusion is one of the signs of alcohol poisoning."
+            return NSLocalizedString("Correct! Confusion is one of the signs of alcohol poisoning.", comment: "")
         } else {
-            return "Incorrect. Confusion is one of the signs of alcohol poisoning."
+            return NSLocalizedString("Incorrect. Confusion is one of the signs of alcohol poisoning.", comment: "")
         }
     }
     
     private func resultText3() -> String {
         if selectedAnswer3 == 4 {
-            return "Correct! Staying calm, hydrating, and distracting can help someone who is too high from weed."
+            return NSLocalizedString("Correct! Staying calm, hydrating, and distracting can help someone who is too high from weed.", comment: "")
         } else {
-            return "Incorrect. Staying calm, hydrating, and distracting can help someone who is too high from weed."
+            return NSLocalizedString("Incorrect. Staying calm, hydrating, and distracting can help someone who is too high from weed.", comment: "")
         }
     }
 }

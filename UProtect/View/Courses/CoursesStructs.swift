@@ -21,11 +21,14 @@ struct Course101: View {
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.primary)
                 
-                Section(header: Text("Steps of Situational Awareness").font(.title3).fontWeight(.bold).foregroundColor(CustomColor.redBackground)) {
-                    SafetyTipView4(icon: "👀", title: "Perceiving Elements", description: "Notice sounds, smells, and visual cues in your environment. For example, at a train station, you might hear a loud bang, smell smoke, and see people fleeing.").accessibilityElement(children: .combine)
-                        SafetyTipView4(icon: "🔍", title: "Attributing Meaning", description: "Recognize that these elements, like smoke or running people, indicate potential danger. Understand their significance.").accessibilityElement(children: .combine)
-                        SafetyTipView4(icon: "🔮", title: "Predicting Outcomes", description: "Foresee possible threats and determine the best course of action, such as joining the crowd to escape danger.").accessibilityElement(children: .combine)
-                }
+                Section(header: Text(NSLocalizedString("Steps of Situational Awareness", comment: "")).font(.title3).fontWeight(.bold).foregroundColor(CustomColor.redBackground)) {
+                                    SafetyTipView4(icon: "👀", titleKey: "Perceiving Elements", descriptionKey: "Notice sounds, smells, and visual cues in your environment. For example, at a train station, you might hear a loud bang, smell smoke, and see people fleeing.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "🔍", titleKey: "Attributing Meaning", descriptionKey: "Recognize that these elements, like smoke or running people, indicate potential danger. Understand their significance.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "🔮", titleKey: "Predicting Outcomes", descriptionKey: "Foresee possible threats and determine the best course of action, such as joining the crowd to escape danger.")
+                                        .accessibilityElement(children: .combine)
+                                }
             }
             .padding()
         }
@@ -45,11 +48,14 @@ struct Course102: View {
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.primary)
                 
-                Section(header: Text("Enhancing Perception").font(.subheadline).fontWeight(.bold)) {
-                    SafetyTipView4(icon: "🩺", title: "Regular Checkups", description: "Keep your senses sharp with regular medical checkups to ensure your vision, hearing, touch, smell, and taste are functioning well.").accessibilityElement(children: .combine)
-                    SafetyTipView4(icon: "🍏", title: "Healthy Lifestyle", description: "Maintain a healthy diet and avoid activities that strain your body, like smoking.").accessibilityElement(children: .combine)
-                    SafetyTipView4(icon: "🌍", title: "Engage with Surroundings", description: "Stay present and actively engage with your environment. Read distant signs, listen to nearby conversations, and be aware of subtle scents and sounds around you.").accessibilityElement(children: .combine)
-                }
+                Section(header: Text(NSLocalizedString("Enhancing Perception", comment: "Header for enhancing perception section")).font(.subheadline).fontWeight(.bold)) {
+                                    SafetyTipView4(icon: "🩺", titleKey: "Regular Checkups", descriptionKey: "Keep your senses sharp with regular medical checkups to ensure your vision, hearing, touch, smell, and taste are functioning well.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "🍏", titleKey: "Healthy Lifestyle", descriptionKey: "Maintain a healthy diet and avoid activities that strain your body, like smoking.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "🌍", titleKey: "Engage with Surroundings", descriptionKey: "Stay present and actively engage with your environment. Read distant signs, listen to nearby conversations, and be aware of subtle scents and sounds around you.")
+                                        .accessibilityElement(children: .combine)
+                                }
                 
                 Section(header: Text("Attributing Meaning to Perceived Elements").font(.subheadline).fontWeight(.bold)) {
                     Text("After perceiving elements, the next step is understanding their meaning by asking key questions:")
@@ -82,12 +88,17 @@ struct Course103: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    SafetyTipView4(icon: "😌", title: "Appear Confident", description: "Walk with your head high, maintain good posture, and appear purposeful. Predators often target those who seem timid or lost.").accessibilityElement(children: .combine)
-                    SafetyTipView4(icon: "💇🏻‍♀️", title: "Mind Your Hair", description: "Avoid hairstyles that can be easily grabbed, like ponytails. Wearing a cap can prevent such grabs.").accessibilityElement(children: .combine)
-                    SafetyTipView4(icon: "🧪", title: "Avoid Intoxication Alone", description: "If intoxicated, ensure a friend accompanies you home. Intoxicated individuals are more vulnerable targets.").accessibilityElement(children: .combine)
-                    SafetyTipView4(icon: "🅿️", title: "Park in Well-Lit Areas", description: "Avoid dark parking spots, which provide cover for predators. Always park in well-lit, busy areas.").accessibilityElement(children: .combine)
-                    SafetyTipView4(icon: "‼️", title: "Stay Aware of Your Surroundings", description: "Avoid talking on the phone or wearing earphones when walking alone. These distractions can reduce your awareness.").accessibilityElement(children: .combine)
-                }
+                                    SafetyTipView4(icon: "😌", titleKey: "Appear Confident", descriptionKey: "Walk with your head high, maintain good posture, and appear purposeful. Predators often target those who seem timid or lost.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "💇🏻‍♀️", titleKey: "Mind Your Hair", descriptionKey: "Avoid hairstyles that can be easily grabbed, like ponytails. Wearing a cap can prevent such grabs.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "🧪", titleKey: "Avoid Intoxication Alone", descriptionKey: "If intoxicated, ensure a friend accompanies you home. Intoxicated individuals are more vulnerable targets.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "🅿️", titleKey: "Park in Well-Lit Areas", descriptionKey: "Avoid dark parking spots, which provide cover for predators. Always park in well-lit, busy areas.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "‼️", titleKey: "Stay Aware of Your Surroundings", descriptionKey: "Avoid talking on the phone or wearing earphones when walking alone. These distractions can reduce your awareness.")
+                                        .accessibilityElement(children: .combine)
+                                }
                 
                 Text("Importance of Training")
                     .font(.title3)
@@ -111,13 +122,16 @@ struct Course104: View {
                     .foregroundColor(CustomColor.redBackground)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Jeff Cooper's Color Code categorizes different levels of awareness:")
-                        SafetyTipView4(icon: "⚪️", title: "White:", description: "Relaxed and unaware; suitable for safe environments.").accessibilityElement(children: .combine)
-                        SafetyTipView4(icon: "🟡", title: "Yellow:", description: "Relaxed but alert; the goal for most situations.").accessibilityElement(children: .combine)
-                        SafetyTipView4(icon: "🟠", title: "Orange:", description: "Focused on potential danger; mentally taxing and not sustainable long-term.").accessibilityElement(children: .combine)
-                        SafetyTipView4(icon: "🔴", title: "Red:", description: "Action mode; dealing with an immediate threat.").accessibilityElement(children: .combine)
-                        SafetyTipView4(icon: "⚫️", title: "Black:", description: "Panic mode; breakdown of physical and mental abilities.").accessibilityElement(children: .combine)
-                }
+                                    Text(NSLocalizedString("Jeff Cooper's Color Code categorizes different levels of awareness:", comment: "Introduction to Cooper's Color Code"))
+                                    SafetyTipView4(icon: "⚪️", titleKey: "White:", descriptionKey: "Relaxed and unaware; suitable for safe environments.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "🟡", titleKey: "Yellow:", descriptionKey: "Relaxed but alert; the goal for most situations.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "🟠", titleKey: "Orange:", descriptionKey: "Heightened awareness due to specific potential threats.")
+                                        .accessibilityElement(children: .combine)
+                                    SafetyTipView4(icon: "🔴", titleKey: "Red:", descriptionKey: "High alert, taking direct action to neutralize an immediate threat.")
+                                        .accessibilityElement(children: .combine)
+                                }
                 
                 Text("Practical Implementation Strategies")
                     .font(.title3)
@@ -149,8 +163,8 @@ struct Course104: View {
 // SafetyTipView4 with Emoji Icon
 struct SafetyTipView4: View {
     let icon: String
-    let title: String
-    let description: String
+    let titleKey: String
+    let descriptionKey: String
     
     var body: some View {
         HStack(alignment: .top) {
@@ -158,9 +172,9 @@ struct SafetyTipView4: View {
                 .font(.title)
                 .accessibilityLabel("")
             VStack(alignment: .leading) {
-                Text(title)
+                Text(NSLocalizedString(titleKey, comment: ""))
                     .font(.headline)
-                Text(description)
+                Text(NSLocalizedString(descriptionKey, comment: ""))
                     .font(.body)
             }
         }
@@ -209,7 +223,7 @@ struct Course105: View {
     @State private var showResult2: Bool = false
     @State private var selectedAnswer3: Int? = nil
     @State private var showResult3: Bool = false
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -322,10 +336,10 @@ struct Course105: View {
     // Answer Options for Question 1
     private func orderOptions(_ index: Int) -> String {
         switch index {
-        case 1: return "1. Perceiving Elements, Predicting Outcomes, Attributing Meaning"
-        case 2: return "2. Attributing Meaning, Perceiving Elements, Predicting Outcomes"
-        case 3: return "3. Perceiving Elements, Attributing Meaning, Predicting Outcomes"
-        case 4: return "4. Predicting Outcomes, Attributing Meaning, Perceiving Elements"
+        case 1: return NSLocalizedString("1. Perceiving Elements, Predicting Outcomes, Attributing Meaning", comment: "")
+        case 2: return NSLocalizedString("2. Attributing Meaning, Perceiving Elements, Predicting Outcomes", comment: "")
+        case 3: return NSLocalizedString("3. Perceiving Elements, Attributing Meaning, Predicting Outcomes", comment: "")
+        case 4: return NSLocalizedString("4. Predicting Outcomes, Attributing Meaning, Perceiving Elements", comment: "")
         default: return ""
         }
     }
@@ -333,10 +347,10 @@ struct Course105: View {
     // Answer Options for Question 2
     private func cooperCodeOptions(_ index: Int) -> String {
         switch index {
-        case 1: return "1. White"
-        case 2: return "2. Yellow"
-        case 3: return "3. Orange"
-        case 4: return "4. Red"
+        case 1: return NSLocalizedString("1. White", comment: "")
+        case 2: return NSLocalizedString("2. Yellow", comment: "")
+        case 3: return NSLocalizedString("3. Orange", comment: "")
+        case 4: return NSLocalizedString("4. Red", comment: "")
         default: return ""
         }
     }
@@ -344,10 +358,10 @@ struct Course105: View {
     // Answer Options for Question 3
     private func enhancePerceptionOptions(_ index: Int) -> String {
         switch index {
-        case 1: return "1. Walk with your head high"
-        case 2: return "2. Avoid hairstyles that can be easily grabbed"
-        case 3: return "3. Avoid talking on the phone"
-        case 4: return "4. Engage with your surroundings"
+        case 1: return NSLocalizedString("1. Walk with your head high", comment: "")
+        case 2: return NSLocalizedString("2. Avoid hairstyles that can be easily grabbed", comment: "")
+        case 3: return NSLocalizedString("3. Avoid talking on the phone", comment: "")
+        case 4: return NSLocalizedString("4. Engage with your surroundings", comment: "")
         default: return ""
         }
     }
@@ -355,25 +369,25 @@ struct Course105: View {
     // Result Texts
     private func resultText1() -> String {
         if selectedAnswer1 == 3 {
-            return "Correct! The correct order is Perceiving Elements, Attributing Meaning, Predicting Outcomes."
+            return NSLocalizedString("Correct! The correct order is Perceiving Elements, Attributing Meaning, Predicting Outcomes.", comment: "")
         } else {
-            return "Incorrect. The correct order is Perceiving Elements, Attributing Meaning, Predicting Outcomes."
+            return NSLocalizedString("Incorrect. The correct order is Perceiving Elements, Attributing Meaning, Predicting Outcomes.", comment: "")
         }
     }
     
     private func resultText2() -> String {
         if selectedAnswer2 == 2 {
-            return "Correct! Yellow indicates being relaxed but alert."
+            return NSLocalizedString("Correct! Yellow indicates being relaxed but alert.", comment: "")
         } else {
-            return "Incorrect. Yellow indicates being relaxed but alert."
+            return NSLocalizedString("Incorrect. Yellow indicates being relaxed but alert.", comment: "")
         }
     }
     
     private func resultText3() -> String {
         if selectedAnswer3 == 4 {
-            return "Correct! Engaging with your surroundings helps enhance your situational awareness perception."
+            return NSLocalizedString("Correct! Engaging with your surroundings helps enhance your situational awareness perception.", comment: "")
         } else {
-            return "Incorrect. Engaging with your surroundings helps enhance your situational awareness perception."
+            return NSLocalizedString("Incorrect. Engaging with your surroundings helps enhance your situational awareness perception.", comment: "")
         }
     }
 }
