@@ -296,8 +296,16 @@ struct TimerView: View {
         guard !selectedContacts.isEmpty else {
             return
         }
+        
+        guard let currentLocation = locationManager.userLocation else {
+            print("Impossibile ottenere la posizione dell'utente")
+            return
+        }
+        
+        let userLocationURL = "https://maps.apple.com/?ll=\(currentLocation.coordinate.latitude),\(currentLocation.coordinate.longitude)&q=\(name)%20\(surname)%E2%80%99s%20Location&t=m"
+        
         let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
-        vonage.sendSMS(to: phoneNumbers, from: "Hestia", text: "\(name) \(surname) is in danger") { result in
+        vonage.sendSMS(to: phoneNumbers, from: "Hestia", text: "\(name) \(surname) is in danger\nPosition: \(userLocationURL)") { result in
             switch result {
             case .success:
                 self.showAlert = true
@@ -497,8 +505,47 @@ struct TimerView: View {
                     }
                 } else {
                     print("No tokens saved in UserDefaults")
-                    showAlert3.toggle()
-                    //                    sendMessage()
+//                    showAlert3.toggle()
+                    if !timerManager.isActivated && !buttonLocked && !timerManager.start {
+                        if !audioRecorder.recording {
+                            audioRecorder.startRecording()
+                        }
+                        print("Bottone attivato")
+                        buttonTapped = true
+//                        showingAlert = true
+                        TapAnimation()
+                        print("Before calling sendMesssage()")
+                        sendMessage()
+                        print("After calling sendMesssage()")
+                        withAnimation {
+                            timerManager.Activation()
+                            timerManager.CircleAnimation()
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now()) {
+                            timerManager.canCancel = true
+                        }
+                        buttonLocked = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            buttonLocked = false
+                        }
+                    } else {
+                        if timerManager.canCancel && !buttonLocked {
+                            if timerManager.start {
+                                showAlert2.toggle()
+                            } else {
+                                if audioRecorder.recording {
+                                    audioRecorder.stopRecording()
+                                }
+                                showingAlert = false
+                                print("Bottone disattivato")
+                                timerManager.Activation()
+                            }
+                            buttonLocked = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                buttonLocked = false
+                            }
+                        }
+                    }
                 }
             }
             .onLongPressGesture{
@@ -524,8 +571,24 @@ struct TimerView: View {
                     }
                 } else {
                     print("No tokens saved in UserDefaults")
-                    showAlert3.toggle()
-                    //                    sendMessage()
+                    if !timerManager.isActivated && !timerManager.start && !buttonLocked{
+                        if !audioRecorder.recording{
+                            audioRecorder.startRecording()
+                        }
+                        timerManager.isPressed = true
+                        timerManager.startTimer()
+                        buttonLocked = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            buttonLocked = false
+                        }
+                        withAnimation{
+                            timerManager.showMark = false
+                            timerManager.Activation()
+                            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                timerManager.canCancel = true
+                            }
+                        }
+                    }
                 }
             }
         }.ignoresSafeArea()
@@ -560,6 +623,7 @@ struct TimerView: View {
                             timerManager.circleOpacity = true
                             timerManager.dismissTimer?.invalidate()
                             timerManager.showMark = true
+                            sendMessage()
                         }
                     )
                 )

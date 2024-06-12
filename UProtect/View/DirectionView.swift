@@ -32,6 +32,7 @@ struct DirectionView: View {
                             Spacer()
                             Button(action: {
                                 showRoute.toggle()
+                                print("clicked:\(showRoute)")
                             }) {
                                 Image(systemName: "xmark")
                                     .foregroundStyle(CustomColor.orange)
