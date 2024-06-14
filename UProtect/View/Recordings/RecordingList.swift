@@ -1,22 +1,17 @@
-//
-//  RecordingList.swift
-//  UProtect
-//
-//  Created by Simone Sarnataro on 23/05/24.
-//
+
 import SwiftUI
+import LocalAuthentication
 
 struct RecordingsList: View {
     
     @ObservedObject var audioRecorder: AudioRecorder
     @ObservedObject var audioPlayer = AudioPlayer()
     @State private var searchText = ""
+    @State private var isUnlocked = false
     let deletionTimeInterval: TimeInterval = 10080 * 60
     
-//    @State private var currentlyPlayingURL: URL?
     @State private var currentlyPlayingURL: URL? = nil
 
-    
     var filteredRecordings: [Recording] {
         if searchText.isEmpty {
             return audioRecorder.recordings.sorted(by: { $0.createdAt > $1.createdAt })
@@ -27,26 +22,57 @@ struct RecordingsList: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.clear
-                VStack(alignment: .leading) {
-                    Text("Recordings")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.leading)
-                        .padding(.bottom, -2.5)
-                    SearchBar(text: $searchText)
-                    List {
-                        ForEach(filteredRecordings, id: \.createdAt) { recording in
-                            RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder, audioPlayer: audioPlayer, currentlyPlayingURL: $currentlyPlayingURL)
+            VStack {
+                if isUnlocked {
+                    ZStack {
+                        Color.clear
+                        VStack(alignment: .leading) {
+                            Text("Recordings")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .padding(.leading)
+                                .padding(.bottom, -2.5)
+                            SearchBar(text: $searchText)
+                            List {
+                                ForEach(filteredRecordings, id: \.createdAt) { recording in
+                                    RecordingRow(audioURL: recording.fileURL, createdAt: recording.createdAt, audioRecorder: audioRecorder, audioPlayer: audioPlayer, currentlyPlayingURL: $currentlyPlayingURL)
+                                }
+                                .onDelete(perform: delete)
+                            }
+                            .background(CustomColor.orangeBackground)
+                            .scrollContentBackground(.hidden)
                         }
-                        .onDelete(perform: delete)
+                        .padding(.top, -40)
                     }
-                    .background(CustomColor.orangeBackground)
-                    .scrollContentBackground(.hidden)
-                }
-                .padding(.top, -40)
+                } else {
+                    VStack {
+                        Spacer()
+                        VStack(spacing: 20) {
+                            Image(systemName: "lock.fill")
+                                .resizable()
+                                .frame(width: 90, height: 110)
+                                .foregroundColor(.gray)
+                                .padding(.bottom, 10)
+                            Text("Locked")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .padding(.bottom, 5)
+                            Text("Please authenticate to access your recordings.")
+                                .font(.title3)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+                        }
+                        .padding()
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(20)
+                        .shadow(radius: 10)
+                        Spacer()
+                    }
+                    .padding(.bottom, 50)
+                    .padding(.horizontal, 20)                }
             }
+            .onAppear(perform: authenticate)
         }
         .ignoresSafeArea()
         .onAppear {
@@ -61,8 +87,46 @@ struct RecordingsList: View {
         }
         audioRecorder.deleteRecording(urlsToDelete: urlsToDelete)
     }
+    
+    func authenticate() {
+            let context = LAContext()
+            var error: NSError?
 
-}
+            // check whether biometric authentication is possible
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                // it's possible, so go ahead and use it
+                let reason = "This is to unlock your recordings."
+
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                    // authentication has now completed
+                    DispatchQueue.main.async {
+                        if success {
+                            isUnlocked = true
+                        } else {
+                            // fallback to device passcode
+                            authenticateWithPasscode(context: context)
+                        }
+                    }
+                }
+            } else {
+                // fallback to device passcode if no biometrics are available
+                authenticateWithPasscode(context: context)
+            }
+        }
+
+        func authenticateWithPasscode(context: LAContext) {
+            let reason = "This is to unlock your recordings."
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, authenticationError in
+                DispatchQueue.main.async {
+                    if success {
+                        isUnlocked = true
+                    } else {
+                        
+                    }
+                }
+            }
+        }
+    }
 
 struct RecordingRow: View {
     
@@ -236,3 +300,4 @@ struct RecordingsList_Previews: PreviewProvider {
         RecordingsList(audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
     }
 }
+

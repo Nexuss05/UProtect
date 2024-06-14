@@ -133,82 +133,6 @@ struct TimerView: View {
         }
     }
     
-//    func sendPushNotification(token: String) {
-//        let name = UserDefaults.standard.string(forKey: "firstName") ?? "Unknown"
-//        let surname = UserDefaults.standard.string(forKey: "lastName") ?? "Unknown"
-//        //        let message = "Hai ricevuto una nuova notifica!"
-//        let message = ""
-//        let authenticationToken = tokenAPNS
-//        
-//        let content = """
-//        {
-//            "aps": {
-//                "alert": {
-//                    "title": "\(String(describing: name)) \(String(describing: surname)) is in danger!",
-//                    "subtitle": "Open the app to check on them.",
-//                    "body": "\(message)"
-//                },
-//                "sound": "default"
-//            },
-//            "topic": "com.andrearomano.Hestia"
-//        }
-//        
-//        """
-//        
-//        guard let data = content.data(using: .utf8) else {
-//            print("Errore nella creazione dei dati del payload della notifica")
-//            return
-//        }
-//        
-//        let urlString = "https://api.development.push.apple.com/3/device/\(token)"
-//        guard let url = URL(string: urlString) else {
-//            print("URL non valido")
-//            return
-//        }
-//        
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//        request.httpBody = data
-//        
-//        request.addValue("Bearer \(authenticationToken)", forHTTPHeaderField: "Authorization")
-//        request.addValue("com.andrearomano.Hestia", forHTTPHeaderField: "apns-topic")
-//        request.addValue("alert", forHTTPHeaderField: "apns-push-type")
-//        request.addValue("10", forHTTPHeaderField: "apns-priority")
-//        request.addValue("0", forHTTPHeaderField: "apns-expiration")
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        
-//        let session = URLSession(configuration: .default)
-//        
-//        print("Sending push notification for token: \(token)...")
-//        print("Request Headers:")
-//        for (key, value) in request.allHTTPHeaderFields ?? [:] {
-//            print("\(key): \(value)")
-//        }
-//        print("Request Body:")
-//        if let body = request.httpBody {
-//            print(String(data: body, encoding: .utf8) ?? "")
-//        }
-//        
-//        let task = session.dataTask(with: request) { data, response, error in
-//            if let error = error {
-//                print("Errore nell'invio della notifica push per il token \(token):", error)
-//                return
-//            }
-//            
-//            if let httpResponse = response as? HTTPURLResponse {
-//                print("Risposta dalla richiesta di invio della notifica push per il token \(token):", httpResponse.statusCode)
-//                
-//                if let responseData = data {
-//                    print("Dati ricevuti:", String(data: responseData, encoding: .utf8) ?? "Nessun dato ricevuto")
-//                } else {
-//                    print("Nessun dato ricevuto")
-//                }
-//            }
-//        }
-//        
-//        task.resume()
-//    }
-    
     func sendPushNotification(token: String) {
         let name = UserDefaults.standard.string(forKey: "firstName") ?? "Unknown"
         let surname = UserDefaults.standard.string(forKey: "lastName") ?? "Unknown"
@@ -223,6 +147,7 @@ struct TimerView: View {
                     "subtitle": "Open the app to check on them.",
                     "body": "\(message)"
                 },
+                "badge": 1,
                 "sound": "default"
             },
             "topic": "com.andrearomano.Hestia"
@@ -582,9 +507,3 @@ struct TimerView: View {
     }
 }
 
-//struct ContentView_Previews67: PreviewProvider {
-//    static var previews: some View {
-//        let timerManager = TimerManager()
-//        return TimerView(timerManager: timerManager, audioRecorder: AudioRecorder())
-//    }
-//}

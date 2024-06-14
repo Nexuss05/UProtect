@@ -160,6 +160,118 @@ struct Course104: View {
     }
 }
 
+struct SafetyTip {
+    let id: UUID
+    let title: String
+    let description: String
+}
+
+struct DailyTipView: View {
+    @State private var currentTip: SafetyTip?
+    
+    private var tips: [SafetyTip] = [
+        SafetyTip(id: UUID(), title: "Appear Confident", description: "Walk with your head high, maintain good posture, and appear purposeful."),
+        SafetyTip(id: UUID(), title: "Mind Your Hair", description: "Avoid hairstyles that can be easily grabbed, like ponytails."),
+        SafetyTip(id: UUID(), title: "Avoid Intoxication Alone", description: "If intoxicated, ensure a friend accompanies you home."),
+        SafetyTip(id: UUID(), title: "Park in Well-Lit Areas", description: "Avoid dark parking spots, which provide cover for predators."),
+        SafetyTip(id: UUID(), title: "Stay Aware of Your Surroundings", description: "Avoid talking on the phone or wearing earphones when walking alone."),
+        SafetyTip(id: UUID(), title: "Regular Checkups", description: "Keep your senses sharp with regular medical checkups to ensure your vision, hearing, touch, smell, and taste are functioning well."),
+        SafetyTip(id: UUID(), title: "Healthy Lifestyle", description: "Maintain a healthy diet and avoid activities that strain your body, like smoking."),
+        SafetyTip(id: UUID(), title: "Engage with Surroundings", description: "Stay present and actively engage with your environment. Read distant signs, listen to nearby conversations, and be aware of subtle scents and sounds around you."),
+        SafetyTip(id: UUID(), title: "Plan Your Route", description: "Before leaving, choose well-lit streets with lots of people and open stores. Share your travel plan with someone you trust."),
+        SafetyTip(id: UUID(), title: "Share Your Plan", description: "Inform a family member or friend of your route and expected arrival time. They can check on you if they don't hear from you."),
+        SafetyTip(id: UUID(), title: "Carry Your Phone", description: "Keep your phone with you and fully charged. Consider carrying a power bank. Avoid using your phone for messages or music while walking."),
+        SafetyTip(id: UUID(), title: "Avoid Suspicious Areas and People", description: "Stick to well-lit, busy places. Avoid shortcuts through dark alleys or parks. Stay alert for anything that feels off."),
+        SafetyTip(id: UUID(), title: "Keep Your Hands Free", description: "You may need your hands for your phone or self-defense tools. Carry a small, light purse."),
+        SafetyTip(id: UUID(), title: "Carry Non-Violent Deterrents", description: "A loud alarm can draw attention and deter attackers. Ensure any deterrents you carry are legal in your area."),
+        SafetyTip(id: UUID(), title: "Learn Self-Defense", description: "Self-defense classes boost confidence and situational awareness, preparing you mentally and physically for stressful situations."),
+        SafetyTip(id: UUID(), title: "Situational Awareness", description: "Stay alert and aware of your surroundings. Notice if a person or vehicle appears repeatedly."),
+        SafetyTip(id: UUID(), title: "Frequent Glances", description: "Use reflective surfaces like windows or your phone screen to check for followers discreetly."),
+        SafetyTip(id: UUID(), title: "Change Pace and Direction", description: "Alter your walking pattern. Speed up, slow down, or take several turns to see if the follower mirrors your movements."),
+        SafetyTip(id: UUID(), title: "Do Not Head Straight Home", description: "Avoid leading a potential follower to your residence. Go to a public, well-lit, crowded place like a café, mall, or police station."),
+        SafetyTip(id: UUID(), title: "Contact Authorities", description: "If you feel threatened, call the police. Inform them of your location and situation. Also, inform friends or family."),
+        SafetyTip(id: UUID(), title: "Observe and Note Details", description: "Remember details about the follower or their vehicle, like appearance, clothing, or license plate."),
+        SafetyTip(id: UUID(), title: "Make Noise and Seek Help", description: "Enter a store or crowded area and inform someone in charge. Drawing attention can deter a stalker."),
+        SafetyTip(id: UUID(), title: "Share Your Itinerary", description: "Let someone you trust know your plans and expected arrival times. Use apps to share your live location with friends or family."),
+        SafetyTip(id: UUID(), title: "Vary Your Routes", description: "Avoid predictable routines. Change your routes and travel times frequently."),
+        SafetyTip(id: UUID(), title: "Use Technology", description: "Use personal safety apps with features like panic buttons that send your location and a distress message to contacts or authorities."),
+        SafetyTip(id: UUID(), title: "Walk Confidently", description: "Walk confidently and at a steady pace."),
+        SafetyTip(id: UUID(), title: "Avoid Isolated Areas", description: "Avoid isolated areas, especially at night."),
+        SafetyTip(id: UUID(), title: "Keep Your Phone Accessible", description: "Keep your phone easily accessible."),
+        SafetyTip(id: UUID(), title: "If Followed by Another Car", description: "If another car is following you, do not drive home. Go to a police station or a well-lit, busy area."),
+        SafetyTip(id: UUID(), title: "Make Intentional Turns", description: "Make intentional turns to confirm if the same vehicle is still behind you."),
+        SafetyTip(id: UUID(), title: "Avoid Stopping in Secluded Areas", description: "Avoid stopping in secluded areas."),
+        SafetyTip(id: UUID(), title: "Sit Near the Front", description: "Move towards the front of the bus or train where the driver or conductor can see you."),
+        SafetyTip(id: UUID(), title: "Get Off at Busy Stops", description: "If you feel unsafe, get off at a busy stop and wait for the next bus or train."),
+        SafetyTip(id: UUID(), title: "Set a Limit", description: "Decide on a drinking limit beforehand."),
+        SafetyTip(id: UUID(), title: "Eat a Meal", description: "Eating before drinking slows alcohol absorption."),
+        SafetyTip(id: UUID(), title: "Alternate Drinks", description: "Drink water or soft drinks between alcoholic beverages."),
+        SafetyTip(id: UUID(), title: "Have a Plan", description: "Plan your way home, keep your phone charged, or bring a power bank."),
+        SafetyTip(id: UUID(), title: "Stick with Friends", description: "Stay with friends to reduce the risk of incidents and injuries."),
+        SafetyTip(id: UUID(), title: "Bright Clothes", description: "Equip your child with bright or reflective clothing to increase visibility, especially in low-light conditions. Reflective patches or accessories on backpacks can also be effective."),
+        SafetyTip(id: UUID(), title: "Walk Together", description: "Initially walk the route with your child to familiarize them with it. Show them safe places to cross and potential hazards."),
+        SafetyTip(id: UUID(), title: "Alternatives", description: "Plan a backup route in case the primary path is blocked. Ensure your child knows this route and can contact you if needed."),
+        SafetyTip(id: UUID(), title: "Look Both Ways", description: "Always look both ways before crossing the street."),
+        SafetyTip(id: UUID(), title: "Use Pedestrian Crossings", description: "Use pedestrian crossings and obey traffic signals."),
+        SafetyTip(id: UUID(), title: "Walk on Sidewalks", description: "Walk on sidewalks or, if unavailable, facing traffic on the road's edge."),
+        SafetyTip(id: UUID(), title: "Never Play or Run", description: "Never play or run into the street."),
+        SafetyTip(id: UUID(), title: "Never Accept Rides", description: "Never accept rides or gifts from strangers."),
+        SafetyTip(id: UUID(), title: "Know Safe Adults", description: "Know safe adults they can turn to if they feel uncomfortable or in danger."),
+        SafetyTip(id: UUID(), title: "Mobile Phones", description: "Consider giving your child a phone to contact you in emergencies. Teach them how to use it responsibly and practice emergency procedures."),
+        SafetyTip(id: UUID(), title: "Safe Spots", description: "Identify safe places along the route, like trusted neighbors' homes or businesses, where your child can seek help if needed."),
+        SafetyTip(id: UUID(), title: "No Headphones", description: "Discourage the use of headphones while walking to ensure they remain alert to their surroundings."),
+        SafetyTip(id: UUID(), title: "Identifying Safe Routes", description: "Choose routes that avoid isolated or poorly lit areas, busy roads without sidewalks, and other hazards.")
+    ]
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            if let tip = currentTip {
+                HStack {
+                    VStack(alignment: .leading, spacing: 7) {
+                        Text("Daily Safety Tip")
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(CustomColor.redBackground)
+                            .padding(.bottom)
+                        Text(tip.title)
+                            .font(.title3)
+                            .foregroundColor(.white)
+                        Text(tip.description)
+                            .font(.body)
+                            .foregroundColor(.white)
+                    }
+                    .padding(.bottom, 40)
+
+                    Spacer()
+                }
+                .padding()
+                .background(Color.black)
+                .cornerRadius(10)
+                .shadow(radius: 2)
+                .padding(.bottom, 10)
+            } else {
+                Text("Loading Tip...")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 2)
+                    .padding(.bottom, 10)
+            }
+        }
+        .onAppear(perform: loadDailyTip)
+    }
+
+    private func loadDailyTip() {
+        let calendar = Calendar.current
+        let date = Date()
+        let dayOfYear = calendar.ordinality(of: .day, in: .year, for: date) ?? 0
+        currentTip = tips[dayOfYear % tips.count]
+    }
+}
+
+
 // SafetyTipView4 with Emoji Icon
 struct SafetyTipView4: View {
     let icon: String

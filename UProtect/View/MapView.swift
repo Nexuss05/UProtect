@@ -35,6 +35,8 @@ struct MapView: View {
     @State var nomeAmico: String = ""
     @State var cognomeAmico: String = ""
     
+    @State private var isSatelliteView = false
+    
     func fanculo(){
         DispatchQueue.main.async {
             if let lat = UserDefaults.standard.value(forKey: "latitudine") as? Double {
@@ -92,7 +94,7 @@ struct MapView: View {
                     }
                 }
 //                .mapStyle(.hybrid(elevation: .flat, pointsOfInterest: .excludingAll))
-                .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
+                .mapStyle(isSatelliteView ? .imagery(elevation: .automatic) : .standard(elevation: .flat, pointsOfInterest: .excludingAll))
                 .onAppear() {
                     print("Locations on appear: \(locations)")
                 }
@@ -142,35 +144,52 @@ struct MapView: View {
                 }
             }
             
-            if latitudine == 0 && longitudine == 0{
+            if latitudine == 0 && longitudine == 0 {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10).frame(width: 44, height: 45)
+                                    .foregroundStyle(CustomColor.mapButton)
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .foregroundColor(.gray)
+                            }
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("Friend location")
+                            .accessibilityAddTraits(.isButton)
+                            .padding(.leading, 336.5)
+                            .padding(.bottom, 550)
                 ZStack {
                     RoundedRectangle(cornerRadius: 10).frame(width: 44, height: 45)
-                        .foregroundStyle(CustomColor.mapButton)
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundColor(.gray)
-                }.accessibilityElement(children: .ignore).accessibilityLabel("Friend location")
-                .accessibilityAddTraits(.isButton)
-                .padding(.leading, 336.5)
-                .padding(.bottom, 550)
-            } else {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10).frame(width: 44, height: 45)
-                        .foregroundStyle(CustomColor.redBackground)
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundColor(.white)
-                }.accessibilityElement(children: .ignore).accessibilityLabel("Friend location")
-                .accessibilityAddTraits(.isButton)
-                .padding(.leading, 336.5)
-                .padding(.bottom, 550)
-                .onTapGesture {
-                    showUser.toggle()
+                        .foregroundStyle(Color.white)
+                    Image(systemName: "map.fill")
+                        .foregroundColor(.blue)
+                }.onTapGesture {
+                    isSatelliteView.toggle()
                 }
-            }
-        }
-        .onAppear{
-            fanculo()
-        }
-    }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Friend location")
+                .accessibilityAddTraits(.isButton)
+                .padding(.leading, 336.5)
+                .padding(.bottom, 440)
+                        } else {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10).frame(width: 44, height: 45)
+                                    .foregroundStyle(CustomColor.redBackground)
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .foregroundColor(.white)
+                            }
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("Friend location")
+                            .accessibilityAddTraits(.isButton)
+                            .padding(.leading, 336.5)
+                            .padding(.bottom, 550)
+                            .onTapGesture {
+                                showUser.toggle()
+                            }
+                        }
+                    }
+                    .onAppear {
+                        fanculo()
+                    }
+                }
     
     func CustomAnnotation(type: String) -> (image: String, color: Color) {
         switch type {

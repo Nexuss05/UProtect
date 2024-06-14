@@ -44,28 +44,44 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
 //    }
     
     func startPlayback(audio: URL) {
-            let playbackSession = AVAudioSession.sharedInstance()
+        let playbackSession = AVAudioSession.sharedInstance()
+        
+        do {
+            // Set the audio session category to play and record
+            try playbackSession.setCategory(.playAndRecord, mode: .default, options: [.allowBluetooth, .defaultToSpeaker])
             
-            do {
-                try playbackSession.setCategory(.playAndRecord, mode: .default, options: [])
-                try playbackSession.setActive(true)
-                try playbackSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
-            } catch let error as NSError {
-                print("Failed to set up playback session: \(error), \(error.userInfo)")
-                return
+            // Activate the audio session
+            try playbackSession.setActive(true)
+            
+            // Check the current route to determine if headphones or Bluetooth devices are connected
+            let currentRoute = playbackSession.currentRoute
+            let hasHeadphonesOrBluetooth = currentRoute.outputs.contains {
+                $0.portType == .headphones || $0.portType == .bluetoothA2DP || $0.portType == .bluetoothLE || $0.portType == .bluetoothHFP
             }
             
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: audio)
-                audioPlayer.delegate = self
-                audioPlayer.play()
-                isPlaying = true
-                startTimer()
-            } catch let error as NSError {
-                print("Playback failed: \(error), \(error.userInfo)")
+            // If headphones or Bluetooth devices are connected, do not force output to speaker
+            if !hasHeadphonesOrBluetooth {
+                try playbackSession.overrideOutputAudioPort(.speaker)
+            } else {
+                try playbackSession.overrideOutputAudioPort(.none)
             }
+        } catch {
+            print("Failed to set up playback session: \(error)")
+            return
         }
-    
+        
+        do {
+            // Initialize the audio player and start playback
+            audioPlayer = try AVAudioPlayer(contentsOf: audio)
+            audioPlayer.delegate = self
+            audioPlayer.play()
+            isPlaying = true
+            startTimer()
+        } catch {
+            print("Playback failed: \(error)")
+        }
+    }
+
     func stopPlayback() {
         audioPlayer.stop()
         isPlaying = false

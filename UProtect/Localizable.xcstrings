@@ -2112,6 +2112,16 @@
         }
       }
     },
+    "Daily Safety Tip" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggerimento di Sicurezza Giornaliero"
+          }
+        }
+      }
+    },
     "Danger" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -3355,6 +3365,16 @@
         }
       }
     },
+    "Loading Tip..." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggerimento in caricamento..."
+          }
+        }
+      }
+    },
     "Location Services" : {
       "localizations" : {
         "it" : {
@@ -3364,6 +3384,9 @@
           }
         }
       }
+    },
+    "Locked" : {
+
     },
     "Log In" : {
       "localizations" : {
@@ -3971,6 +3994,9 @@
           }
         }
       }
+    },
+    "Please authenticate to access your recordings." : {
+
     },
     "Plus" : {
       "localizations" : {

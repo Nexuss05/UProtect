@@ -63,6 +63,10 @@ struct CoursesView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.leading, .top])
                 
+                DailyTipView()
+                    .padding(.horizontal, 25)
+                    .padding(.vertical, 5)
+                
                 ScrollView {
                     ForEach($courses) { $course in
                         NavigationLink(destination: CourseDetailView(course: $course)) {
