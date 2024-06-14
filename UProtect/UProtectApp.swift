@@ -124,13 +124,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         return true
     }
     
-    func applicationWillEnterForeground(_ application: UIApplication) {
-      
-        UserDefaults(suiteName: "group.com.andrearomano.Hestia")?.set(1, forKey: "count")
-        UIApplication.shared.applicationIconBadgeNumber = 0
-      
-    }
-    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register for remote notifications: \(error.localizedDescription)")
     }
