@@ -90,7 +90,9 @@ struct UProtectApp: App {
             .environment(locationManager)
             .onChange(of: scene) { newScenePhase in
                 if newScenePhase == .active {
+                    print("App became active, resetting badge count.")
                     deleteOldRecordings()
+                    UIApplication.shared.applicationIconBadgeNumber = 0
                 }
             }
     }
@@ -122,6 +124,13 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         return true
     }
     
+    func applicationWillEnterForeground(_ application: UIApplication) {
+      
+        UserDefaults(suiteName: "group.com.andrearomano.Hestia")?.set(1, forKey: "count")
+        UIApplication.shared.applicationIconBadgeNumber = 0
+      
+    }
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register for remote notifications: \(error.localizedDescription)")
     }
@@ -131,11 +140,17 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if Auth.auth().canHandleNotification(userInfo) {
-            completionHandler(.noData)
-            return
+            if Auth.auth().canHandleNotification(userInfo) {
+                completionHandler(.noData)
+                return
+            }
+            
+            // Increment badge count
+            let currentBadgeCount = UIApplication.shared.applicationIconBadgeNumber
+            UIApplication.shared.applicationIconBadgeNumber = currentBadgeCount + 1
+            
+            completionHandler(.newData)
         }
-    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
@@ -176,6 +191,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
     func applicationDidBecomeActive(_ application: UIApplication) {
             // Reset badge count to zero
+        print("AppDelegate: applicationDidBecomeActive")
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
     

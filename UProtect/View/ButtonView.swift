@@ -134,6 +134,7 @@ struct TimerView: View {
     }
     
     func sendPushNotification(token: String) {
+        
         let name = UserDefaults.standard.string(forKey: "firstName") ?? "Unknown"
         let surname = UserDefaults.standard.string(forKey: "lastName") ?? "Unknown"
         let message = ""
@@ -159,7 +160,7 @@ struct TimerView: View {
             return
         }
         
-        let urlString = "https://api.push.apple.com/3/device/\(token)"
+        let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
         guard let url = URL(string: urlString) else {
             print("URL non valido")
             return
