@@ -81,9 +81,6 @@ struct SettingsView: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(.white)
                             }.accessibilityHidden(true)
-                                .onTapGesture(count: 5) {
-                                    Activated()
-                                }
                             VStack(alignment: .leading, spacing: -2.0){
                                 Text("\(nome) \(cognome)")
                                     .fontWeight(.medium)
@@ -91,6 +88,9 @@ struct SettingsView: View {
                                     .font(.subheadline)
                             }
                         }.accessibilityElement(children: .combine)
+                            .onTapGesture(count: 5) {
+                                Activated()
+                            }
                     }
                     Section(header: Text("FEATURES")){
                         NavigationLink {
@@ -153,7 +153,7 @@ struct SettingsView: View {
                             }
                         }
                         .accessibilityElement(children: .ignore)
-                            .accessibilityLabel("Get Help. Button")
+                        .accessibilityLabel("Get Help. Button")
                         HStack {
                             Image(systemName: "doc.text")
                                 .foregroundColor(.primary)
@@ -168,12 +168,12 @@ struct SettingsView: View {
                             }
                         }.accessibilityElement(children: .ignore)
                             .accessibilityLabel("Privacy Policy. Button")
-//                        ShareLink(item: URL(string: "")!, label: {
-//                            HStack{
-//                                Image(systemName: "square.and.arrow.up")
-//                                Text("Share")
-//                            }.foregroundColor(.primary)
-//                        })
+                        ShareLink(item: URL(string: "https://apps.apple.com/it/app/hestia-feel-safe/id6504139962?l=en-GB")!, label: {
+                            HStack{
+                                Image(systemName: "square.and.arrow.up")
+                                Text("Share")
+                            }.foregroundColor(.primary)
+                        })
                     }
                     
                     Section{

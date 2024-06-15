@@ -23,6 +23,13 @@ struct ContactsView: View {
     @Binding var alertMessage: String
     @State var locationManager = LocationManager()
     
+    @State var isInDanger: Bool = false
+    @State var showUser: Bool = false
+    @State var latitudine: Double = 0
+    @State var longitudine: Double = 0
+    @State var nomeAmico: String = ""
+    @State var cognomeAmico: String = ""
+    @State var numeroAmico: String = ""
     
     @State var tokens: [String] = []
     
@@ -51,28 +58,94 @@ struct ContactsView: View {
         }
     }
     
+    func fanculo(){
+        DispatchQueue.main.async {
+            if let lat = UserDefaults.standard.value(forKey: "latitudine") as? Double {
+                latitudine = lat
+                print("Updated lat: \(latitudine)")
+            } else {
+                print("Nessun valore salvato per latitudine.")
+            }
+            if let lon = UserDefaults.standard.value(forKey: "longitudine") as? Double {
+                longitudine = lon
+                print("Updated lon: \(longitudine)")
+            } else {
+                print("Nessun valore salvato per longitudine.")
+            }
+            if let na = UserDefaults.standard.string(forKey: "nomeAmico") {
+                nomeAmico = na
+            } else {
+                print("Nessun valore salvato per nomeAmico.")
+            }
+            if let ca = UserDefaults.standard.string(forKey: "cognomeAmico") {
+                cognomeAmico = ca
+            } else {
+                print("Nessun valore salvato per cognomeAmico.")
+            }
+            
+            if latitudine == 0 && longitudine == 0 {
+                showUser = false
+                print("Mostra utente \(showUser)")
+            } else {
+                showUser = true
+                print("Mostra utente \(showUser)")
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                fanculo()
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView{
             ZStack {
                 VStack {
                     List{
                         ForEach(selectedContacts, id: \.self) { contact in
-                            HStack(spacing: 25.0) {
-                                ZStack {
-                                    Circle()
-                                        .fill(contactColors[contact] ?? .black)
-                                        .frame(width: 35, height: 35)
-                                    Text("\(generateInitial(givenName: contact.givenName))")
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.white)
-                                }.accessibilityHidden(true)
-                                VStack(alignment: .leading, spacing: -2.0){
-                                    Text("\(contact.givenName) \(contact.familyName)")
-                                        .fontWeight(.medium)
-                                    Text("\(contact.phoneNumber)")
-                                        .font(.subheadline)
+                            VStack{
+                                if showUser{
+                                    if numeroAmico == contact.phoneNumber || numeroAmico == formatPhoneNumber2(contact.phoneNumber){
+                                        ContactMap(latitudine: latitudine, longitudine: longitudine, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, nome: contact.givenName, cognome: contact.familyName, numero: contact.phoneNumber)
+                                    } else {
+                                        HStack(spacing: 25.0) {
+                                            ZStack {
+                                                Circle()
+                                                    .fill(contactColors[contact] ?? .black)
+                                                    .frame(width: 35, height: 35)
+                                                Text("\(generateInitial(givenName: contact.givenName))")
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                            }.accessibilityHidden(true)
+                                            VStack(alignment: .leading, spacing: -2.0){
+                                                Text("\(contact.givenName) \(contact.familyName)")
+                                                    .fontWeight(.medium)
+                                                Text("\(contact.phoneNumber)")
+                                                    .font(.subheadline)
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    HStack(spacing: 25.0) {
+                                        ZStack {
+                                            Circle()
+                                                .fill(contactColors[contact] ?? .black)
+                                                .frame(width: 35, height: 35)
+                                            Text("\(generateInitial(givenName: contact.givenName))")
+                                                .fontWeight(.bold)
+                                                .foregroundColor(.white)
+                                        }.accessibilityHidden(true)
+                                        VStack(alignment: .leading, spacing: -2.0){
+                                            Text("\(contact.givenName) \(contact.familyName)")
+                                                .fontWeight(.medium)
+                                            Text("\(contact.phoneNumber)")
+                                                .font(.subheadline)
+                                        }
+                                    }
                                 }
-                            }.onAppear{
+                                
+                            }
+                            .onAppear{
                                 assignColors()
                                 let phoneNumberWithoutSpaces = contact.phoneNumber.replacingOccurrences(of: " ", with: "")
                                 
@@ -120,7 +193,7 @@ struct ContactsView: View {
                         }.onDelete(perform: deleteContact)
                         
                     }
-                                        .navigationTitle("Contacts")
+                    .navigationTitle("Contacts")
                     .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -145,10 +218,10 @@ struct ContactsView: View {
                             //                                }
                             //                            }
                         }
-//                        ToolbarItem(placement: .navigationBarLeading){
-//                                Text("**Contacts**")
-//                                    .font(.title2)
-//                        }
+                        //                        ToolbarItem(placement: .navigationBarLeading){
+                        //                                Text("**Contacts**")
+                        //                                    .font(.title2)
+                        //                        }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
                                 if self.selectedContacts.count < 2 {
@@ -165,16 +238,37 @@ struct ContactsView: View {
                         }
                     }
                 }
-//                VStack {
-//                    Spacer()
-//                    PremiumPopUp().padding(.bottom, 50)
-//                }
+                //                VStack {
+                //                    Spacer()
+                //                    PremiumPopUp().padding(.bottom, 50)
+                //                }
             }
         }.onAppear{
             loadContactsFromUserDefaults()
             assignColors()
+            fanculo()
+            vm.fetchFriendNumber { friendNumber in
+                if let friendNumber = friendNumber {
+                    print("Friend's number: \(friendNumber)")
+                    numeroAmico = friendNumber
+                } else {
+                    numeroAmico = ""
+                    print("Friend's number not found or error occurred.")
+                }
+            }
         }
     }
+    
+    func formatPhoneNumber2(_ phoneNumber: String?) -> String {
+        guard var phoneNumber = phoneNumber else { return "" }
+        phoneNumber = phoneNumber.replacingOccurrences(of: " ", with: "")
+        let prefix = getCountryPhonePrefix()
+        if !phoneNumber.hasPrefix(prefix) {
+            phoneNumber = "\(prefix)\(phoneNumber)"
+        }
+        return phoneNumber
+    }
+
     
     func formatPhoneNumber(_ phoneNumber: String?) -> String {
         guard let phoneNumber = phoneNumber else { return "" }
@@ -199,7 +293,9 @@ struct ContactsView: View {
             if var tokens = UserDefaults.standard.array(forKey: "tokens") as? [String] {
                 print("Current tokens before removal: \(tokens)")
                 if index < tokens.count {
+                    let tokenToRemove = tokens[index]
                     tokens.remove(at: index)
+                    timeManager.deleteTokensFromWatch(tokensToDelete: [tokenToRemove])
                     UserDefaults.standard.set(tokens, forKey: "tokens")
                     print("Token removed. Current tokens after removal: \(tokens)")
                 } else {

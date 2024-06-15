@@ -67,6 +67,9 @@
 		C2E4036E2C1045D500F5B4F7 /* Corso2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4036D2C1045D500F5B4F7 /* Corso2.swift */; };
 		E0293D2D2C11DF0800EB6485 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0293D2C2C11DF0800EB6485 /* Vuota.swift */; };
 		E0293D2F2C11DF5700EB6485 /* OnBoarding2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0293D2E2C11DF5700EB6485 /* OnBoarding2.swift */; };
+		E03931032C1C34650088A51E /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03931022C1C34650088A51E /* TipsView.swift */; };
+		E03931052C1C34DA0088A51E /* TipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03931042C1C34DA0088A51E /* TipsModel.swift */; };
+		E03931072C1C3BA40088A51E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03931062C1C3BA40088A51E /* Card.swift */; };
 		E04060212C09C47D0018252D /* NoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04060202C09C47D0018252D /* NoLocationView.swift */; };
 		E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */; };
 		E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */; };
@@ -78,6 +81,8 @@
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
+		E0B5D1B12C1D947E00A66DE8 /* ContactMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5D1B02C1D947E00A66DE8 /* ContactMap.swift */; };
+		E0B5D1B32C1DAC0B00A66DE8 /* TipsView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5D1B22C1DAC0B00A66DE8 /* TipsView2.swift */; };
 		E0B954222C00E21100EBCD81 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B954212C00E21100EBCD81 /* Onboarding.swift */; };
 		E0B954242C00E33F00EBCD81 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B954232C00E33F00EBCD81 /* PageControl.swift */; };
 		E0B954282C01EC9B00EBCD81 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = E0B954272C01EC9B00EBCD81 /* SwiftJWT */; };
@@ -203,6 +208,9 @@
 		C2E4036D2C1045D500F5B4F7 /* Corso2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corso2.swift; sourceTree = "<group>"; };
 		E0293D2C2C11DF0800EB6485 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Vuota.swift; path = ../Vuota.swift; sourceTree = "<group>"; };
 		E0293D2E2C11DF5700EB6485 /* OnBoarding2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoarding2.swift; sourceTree = "<group>"; };
+		E03931022C1C34650088A51E /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
+		E03931042C1C34DA0088A51E /* TipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModel.swift; sourceTree = "<group>"; };
+		E03931062C1C3BA40088A51E /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E04060202C09C47D0018252D /* NoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLocationView.swift; sourceTree = "<group>"; };
 		E0420F402BF4BFDB00F5B5D0 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		E0420F422BF4BFFC00F5B5D0 /* CloudViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudViewModel.swift; sourceTree = "<group>"; };
@@ -214,6 +222,8 @@
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
+		E0B5D1B02C1D947E00A66DE8 /* ContactMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactMap.swift; sourceTree = "<group>"; };
+		E0B5D1B22C1DAC0B00A66DE8 /* TipsView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView2.swift; sourceTree = "<group>"; };
 		E0B954212C00E21100EBCD81 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		E0B954232C00E33F00EBCD81 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		E0B9542D2C01F55000EBCD81 /* WatchProtect-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchProtect-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -353,6 +363,7 @@
 			children = (
 				C21DD85A2BE51306003EB614 /* ContactListView.swift */,
 				C21DD85D2BE51844003EB614 /* ContactModel.swift */,
+				E03931042C1C34DA0088A51E /* TipsModel.swift */,
 				C2893DD52BEB8B9600733211 /* Counter.swift */,
 				C233DA9F2BEE1B72000072C4 /* Location.swift */,
 				175A0A662C05BDB300101A32 /* LocationManager.swift */,
@@ -412,6 +423,8 @@
 				E09209992BEBE2B0005AD0FB /* TimeCounter.swift */,
 				E0B954232C00E33F00EBCD81 /* PageControl.swift */,
 				C2E403692C1043E500F5B4F7 /* PremiumPopUp.swift */,
+				E03931062C1C3BA40088A51E /* Card.swift */,
+				E0B5D1B02C1D947E00A66DE8 /* ContactMap.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -439,6 +452,8 @@
 				C2E4036D2C1045D500F5B4F7 /* Corso2.swift */,
 				99B5556F2C13BF220096F0B4 /* Corso3.swift */,
 				99B555712C13BF2E0096F0B4 /* Corso4.swift */,
+				E03931022C1C34650088A51E /* TipsView.swift */,
+				E0B5D1B22C1DAC0B00A66DE8 /* TipsView2.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -632,6 +647,7 @@
 				C21DD85E2BE51844003EB614 /* ContactModel.swift in Sources */,
 				C21DD85B2BE51306003EB614 /* ContactListView.swift in Sources */,
 				E0420F432BF4BFFC00F5B5D0 /* CloudViewModel.swift in Sources */,
+				E0B5D1B32C1DAC0B00A66DE8 /* TipsView2.swift in Sources */,
 				C249A9DD2C10DF35004293B7 /* Loading.swift in Sources */,
 				C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */,
 				E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */,
@@ -639,13 +655,16 @@
 				175A0A672C05BDB300101A32 /* LocationManager.swift in Sources */,
 				99B555702C13BF220096F0B4 /* Corso3.swift in Sources */,
 				C2E4036A2C1043E500F5B4F7 /* PremiumPopUp.swift in Sources */,
+				E03931052C1C34DA0088A51E /* TipsModel.swift in Sources */,
 				E0EAD0E82BFF82B7006753F5 /* RecordingList.swift in Sources */,
 				E0EAD06F2BFDFFDA006753F5 /* Controller.swift in Sources */,
 				C2E403632C10433900F5B4F7 /* SharedTimerManager.swift in Sources */,
 				175A0A652C05BD7200101A32 /* FetchLocation.swift in Sources */,
 				C23050492C05C7070056BEAA /* CoursesView.swift in Sources */,
+				E03931032C1C34650088A51E /* TipsView.swift in Sources */,
 				C230504B2C05C7070056BEAA /* LottieView4.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
+				E0B5D1B12C1D947E00A66DE8 /* ContactMap.swift in Sources */,
 				C2E4036C2C10441800F5B4F7 /* TimerManagerIOS.swift in Sources */,
 				E06A202B2C0B7980005D4D67 /* Corso1.swift in Sources */,
 				E0EAD0752BFE5530006753F5 /* UProtect.swift in Sources */,
@@ -664,6 +683,7 @@
 				E0293D2F2C11DF5700EB6485 /* OnBoarding2.swift in Sources */,
 				C2E4036E2C1045D500F5B4F7 /* Corso2.swift in Sources */,
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
+				E03931072C1C3BA40088A51E /* Card.swift in Sources */,
 				E0293D2D2C11DF0800EB6485 /* Vuota.swift in Sources */,
 				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,

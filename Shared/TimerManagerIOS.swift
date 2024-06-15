@@ -46,8 +46,22 @@ extension TimeManager: WCSessionDelegate {
             }
         } else {
             print("No tokens found")
+            let message: [String: Any] = ["action": "tokens", "tokens": []]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Failed to send empty tokens: \(error.localizedDescription)")
+            })
         }
     }
+    
+    func deleteTokensFromWatch(tokensToDelete: [String]) {
+        if WCSession.default.isReachable {
+            let message: [String: Any] = ["action": "deleteTokens", "tokensToDelete": tokensToDelete]
+            WCSession.default.sendMessage(message, replyHandler: nil, errorHandler: { error in
+                print("Failed to delete tokens on watch: \(error.localizedDescription)")
+            })
+        }
+    }
+
     
     func syncName() {
         if let firstName = UserDefaults.standard.string(forKey: "firstName") {

@@ -1,3 +1,9 @@
+//  TimerSettings.swift
+//  UProtect
+//
+//  Created by Simone Sarnataro on 23/05/24.
+//
+
 import SwiftUI
 
 struct GoalView: View {

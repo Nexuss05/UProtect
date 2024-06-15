@@ -21,6 +21,7 @@ struct UserModel: Hashable{
     let record: CKRecord
     let nomeAmico: String
     let cognomeAmico: String
+    let numeroAmico: String
 }
 
 class CloudViewModel: ObservableObject{
@@ -147,6 +148,7 @@ class CloudViewModel: ObservableObject{
         newUser["longitude"] = 0
         newUser["nomeAmico"] = ""
         newUser["cognomeAmico"] = ""
+        newUser["numeroAmico"] = ""
         saveItem(record: newUser)
     }
     
@@ -199,19 +201,21 @@ class CloudViewModel: ObservableObject{
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
-                if let longitude = record["longitude"] as? Double{
-                    self.longitudine = longitude
-                    print("Longitude found: \(self.longitudine)")
-                    UserDefaults.standard.set(self.longitudine, forKey: "longitudine")
-                } else {
-                    print("Longitude not found")
-                }
-                if let latitude = record["latitude"] as? Double{
-                    self.latitudine = latitude
-                    print("Latitude found: \(self.latitudine)")
-                    UserDefaults.standard.set(self.latitudine, forKey: "latitudine")
-                } else {
-                    print("Latitude not found")
+                DispatchQueue.main.async {
+                    if let longitude = record["longitude"] as? Double{
+                        self.longitudine = longitude
+                        print("Longitude found: \(self.longitudine)")
+                        UserDefaults.standard.set(self.longitudine, forKey: "longitudine")
+                    } else {
+                        print("Longitude not found")
+                    }
+                    if let latitude = record["latitude"] as? Double{
+                        self.latitudine = latitude
+                        print("Latitude found: \(self.latitudine)")
+                        UserDefaults.standard.set(self.latitudine, forKey: "latitudine")
+                    } else {
+                        print("Latitude not found")
+                    }
                 }
             case .failure(let error):
                 print("Error: \(error)")
@@ -232,27 +236,29 @@ class CloudViewModel: ObservableObject{
         queryOperation.resultsLimit = 1
         
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-            switch returnedResult {
-            case .success(let record):
-                if let nome = record["nomeAmico"] as? String{
-                    self.nomeAmico = nome
-                    print("nomeAmico found: \(self.nomeAmico)")
-                    UserDefaults.standard.set(self.nomeAmico, forKey: "nomeAmico")
-                } else {
-                    print("nomeAmico not found")
+                switch returnedResult {
+                case .success(let record):
+                    DispatchQueue.main.async {
+                        if let nome = record["nomeAmico"] as? String {
+                            self.nomeAmico = nome
+                            print("nomeAmico found: \(self.nomeAmico)")
+                            UserDefaults.standard.set(self.nomeAmico, forKey: "nomeAmico")
+                        } else {
+                            print("nomeAmico not found")
+                        }
+                        if let cognome = record["cognomeAmico"] as? String {
+                            self.cognomeAmico = cognome
+                            print("cognomeAmico found: \(self.cognomeAmico)")
+                            UserDefaults.standard.set(self.cognomeAmico, forKey: "cognomeAmico")
+                        } else {
+                            print("cognomeAmico not found")
+                        }
+                    }
+                case .failure(let error):
+                    print("Error: \(error)")
                 }
-                if let cognome = record["cognomeAmico"] as? String{
-                    self.cognomeAmico = cognome
-                    print("cognomeAmico found: \(self.cognomeAmico)")
-                    UserDefaults.standard.set(self.cognomeAmico, forKey: "cognomeAmico")
-                } else {
-                    print("cognomeAmico not found")
-                }
-            case .failure(let error):
-                print("Error: \(error)")
             }
-        }
-        addOperation(operation: queryOperation)
+            addOperation(operation: queryOperation)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             self.fetchFriend()
@@ -260,7 +266,11 @@ class CloudViewModel: ObservableObject{
     }
     
     func fetchUserInfo() {
-        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
+        guard let fcmToken = fcmToken else {
+                print("FCM Token is nil")
+                return
+            }
+        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let queryOperation = CKQueryOperation(query: query)
@@ -269,26 +279,28 @@ class CloudViewModel: ObservableObject{
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
-                if let name = record["name"] as? String{
-                    self.firstName = name
-                    print("firstName found: \(self.firstName)")
-                    UserDefaults.standard.set(self.firstName, forKey: "firstName")
-                } else {
-                    print("firstName not found")
-                }
-                if let surname = record["surname"] as? String{
-                    self.lastName = surname
-                    print("lastName found: \(self.lastName)")
-                    UserDefaults.standard.set(self.lastName, forKey: "lastName")
-                } else {
-                    print("lastName not found")
-                }
-                if let number = record["number"] as? String{
-                    self.number = number
-                    print("number found: \(self.number)")
-                    UserDefaults.standard.set(self.number, forKey: "userNumber")
-                } else {
-                    print("number not found")
+                DispatchQueue.main.async {
+                    if let name = record["name"] as? String{
+                        self.firstName = name
+                        print("firstName found: \(self.firstName)")
+                        UserDefaults.standard.set(self.firstName, forKey: "firstName")
+                    } else {
+                        print("firstName not found")
+                    }
+                    if let surname = record["surname"] as? String{
+                        self.lastName = surname
+                        print("lastName found: \(self.lastName)")
+                        UserDefaults.standard.set(self.lastName, forKey: "lastName")
+                    } else {
+                        print("lastName not found")
+                    }
+                    if let number = record["number"] as? String{
+                        self.number = number
+                        print("number found: \(self.number)")
+                        UserDefaults.standard.set(self.number, forKey: "userNumber")
+                    } else {
+                        print("number not found")
+                    }
                 }
             case .failure(let error):
                 print("Error: \(error)")
@@ -381,10 +393,13 @@ class CloudViewModel: ObservableObject{
                 return
             }
             
+            let numeroAmico = UserDefaults.standard.string(forKey: "userNumber") ?? ""
+            
             record.setValue(latitude, forKey: "latitude")
             record.setValue(longitude, forKey: "longitude")
             record.setValue(nomeAmico, forKey: "nomeAmico")
             record.setValue(cognomeAmico, forKey: "cognomeAmico")
+            record.setValue(numeroAmico, forKey: "numeroAmico")
             
             database.save(record) { savedRecord, saveError in
                 if let saveError = saveError {
@@ -394,6 +409,55 @@ class CloudViewModel: ObservableObject{
                 
                 print("Record updated successfully")
             }
+        }
+    }
+    
+//    func fetchFriendNumber(phoneNumber: String, completion: @escaping (Bool) -> Void) {
+//        let predicate = NSPredicate(format: "numeroAmico = %@", argumentArray: [phoneNumber])
+//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+//        let queryOperation = CKQueryOperation(query: query)
+//        
+//        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+//            switch returnedResult {
+//            case .success(let record):
+//                if let friend = record["numeroAmico"] as? String, !friend.isEmpty {
+//                    completion(true)
+//                } else {
+//                    completion(false)
+//                }
+//            case .failure(let error):
+//                print("Error: \(error)")
+//                completion(false)
+//            }
+//        }
+//        addOperation(operation: queryOperation)
+//    }
+
+    func fetchFriendNumber(completion: @escaping (String?) -> Void) {
+        let predicate = NSPredicate(format: "token = %@", "47c93e169e470176b06bff0affd417b16e5802a89794c2eb9b7248d29f339774")
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                if let numero = record["numeroAmico"] as? String{
+                    print("numeroAmico found: \(numero)")
+                    completion(numero)
+                } else {
+                    print("numeroAmico not found")
+                    completion(nil)
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+                completion(nil)
+            }
+        }
+        addOperation(operation: queryOperation)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.fetchFriend()
         }
     }
     
@@ -636,46 +700,46 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-    func deleteUser(completion: @escaping (Bool) -> Void){
-        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
-        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-        let queryOperation = CKQueryOperation(query: query)
-        queryOperation.resultsLimit = 1
-        
-        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-            switch returnedResult {
-            case .success(let record):
-                let recordID = record.recordID
-                let deleteOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
-                deleteOperation.modifyRecordsResultBlock = { result in
-                    switch result {
-                    case .success:
-                        print("Record successfully deleted")
-                        completion(true)
-                    case .failure(let error):
-                        print("Error deleting record: \(error)")
-                        completion(false)
-                    }
-                }
-                CKContainer.default().publicCloudDatabase.add(deleteOperation)
-                
-            case .failure(let error):
-                print("Error: \(error)")
-                completion(false)
-            }
-        }
-        
-        queryOperation.queryResultBlock = { result in
-            switch result {
-            case .success:
-                print("Query completed")
-            case .failure(let error):
-                print("Error completing query: \(error)")
-                completion(false)
-            }
-        }
-        addOperation(operation: queryOperation)
-    }
+//    func deleteUser(completion: @escaping (Bool) -> Void){
+//        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
+//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+//        let queryOperation = CKQueryOperation(query: query)
+//        queryOperation.resultsLimit = 1
+//        
+//        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+//            switch returnedResult {
+//            case .success(let record):
+//                let recordID = record.recordID
+//                let deleteOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
+//                deleteOperation.modifyRecordsResultBlock = { result in
+//                    switch result {
+//                    case .success:
+//                        print("Record successfully deleted")
+//                        completion(true)
+//                    case .failure(let error):
+//                        print("Error deleting record: \(error)")
+//                        completion(false)
+//                    }
+//                }
+//                CKContainer.default().publicCloudDatabase.add(deleteOperation)
+//                
+//            case .failure(let error):
+//                print("Error: \(error)")
+//                completion(false)
+//            }
+//        }
+//        
+//        queryOperation.queryResultBlock = { result in
+//            switch result {
+//            case .success:
+//                print("Query completed")
+//            case .failure(let error):
+//                print("Error completing query: \(error)")
+//                completion(false)
+//            }
+//        }
+//        addOperation(operation: queryOperation)
+//    }
     
     func deleteAccount(completion: @escaping (Bool) -> Void) {
         let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])

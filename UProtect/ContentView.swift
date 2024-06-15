@@ -1,3 +1,9 @@
+//  ContentView.swift
+//  UProtect
+//
+//  Created by Matteo Cotena on 23/05/24.
+//
+
 import SwiftUI
 import ContactsUI
 import CoreLocation
@@ -26,7 +32,7 @@ struct ContentView: View {
         GeometryReader { geometry in
             VStack {
                 TabView(selection: $selectedTab) {
-                    CoursesView()
+                    TipsView2()
                         .tabItem {
                             Label("Courses", systemImage: "books.vertical.fill")
                         }
@@ -93,6 +99,7 @@ struct CustomColor {
     static let orangeBackground = Color("OBackground")
     static let redBackground = Color("RBackground")
     static let mapButton = Color("MapButton")
+    static let gray = Color("lightGray")
 }
 
 extension UITabBar {

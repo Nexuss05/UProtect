@@ -16,6 +16,20 @@ extension TimeManager: WCSessionDelegate {
         }
     }
     
+    func deleteTokens(tokensToDelete: [String]) {
+        var tokensOnWatch = UserDefaults.standard.stringArray(forKey: "tokensOnWatch") ?? []
+        print("Current tokens on watch before removal: \(tokensOnWatch)")
+        
+        tokensToDelete.forEach { token in
+            if let index = tokensOnWatch.firstIndex(of: token) {
+                tokensOnWatch.remove(at: index)
+            }
+        }
+        
+        UserDefaults.standard.set(tokensOnWatch, forKey: "tokensOnWatch")
+        print("Deleted tokens on watch: \(tokensToDelete)")
+    }
+    
     func syncActivation() {
         if WCSession.default.isReachable {
             let message: [String: Any] = ["action": "activation", "isActivated": isActivated]
@@ -91,6 +105,12 @@ extension TimeManager: WCSessionDelegate {
                         print("Saved last name on watch: \(savedLastName)")
                     }
                 }
+            case "deleteTokens":
+                if let tokensToDelete = message["tokensToDelete"] as? [String] {
+                    print("Deleting tokens: \(tokensToDelete)")
+                    deleteTokens(tokensToDelete: tokensToDelete)
+                }
+
             default:
                 break
             }

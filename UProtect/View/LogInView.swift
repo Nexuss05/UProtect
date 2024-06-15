@@ -60,35 +60,34 @@ struct LogInView: View {
                     
                     Button{
                         isLoading = true
-                        vm.handleFirstLogin(number: vm.numero) { success in
+                        //                        vm.handleFirstLogin(number: vm.numero) { success in
+                        //                            isLoading = false
+                        //                            if success{
+                        //                                UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
+                        //                                isShowingOtp = true
+                        //                            } else {
+                        //                                print("Errore nel login")
+                        //                                showAlert.toggle()
+                        //                            }
+                        vm.handleFirstLogin(number: vm.numero) { result in
                             isLoading = false
-//                            if success{
-//                                UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
-//                                isShowingOtp = true
-//                            } else {
-//                                print("Errore nel login")
-//                                showAlert.toggle()
-//                            }
-                            vm.handleFirstLogin(number: vm.numero) { result in
-                                isLoading = false
-                                switch result {
-                                case .success(let success):
-                                    if success {
-                                        UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
-                                        isShowingOtp = true
-                                    }
-                                case .failure(let error):
-                                    switch error {
-                                    case .numberNotFound:
-                                        print("Il numero non è presente nel database")
-                                        showAlert.toggle()
-                                    case .verificationError(let error):
-                                        print("Errore durante la verifica del numero: \(error.localizedDescription)")
-                                        showAlert2.toggle()
-                                    }
+                            switch result {
+                            case .success(let success):
+                                if success {
+                                    UserDefaults.standard.set(vm.numero, forKey: "mobilePhone")
+                                    isShowingOtp = true
+                                }
+                            case .failure(let error):
+                                switch error {
+                                case .numberNotFound:
+                                    print("Il numero non è presente nel database")
+                                    showAlert.toggle()
+                                case .verificationError(let error):
+                                    print("Errore durante la verifica del numero: \(error.localizedDescription)")
+                                    showAlert2.toggle()
                                 }
                             }
-
+                            //                            }
                         }
                     } label: {
                         ZStack {
@@ -267,14 +266,14 @@ struct RegistrationView: View {
                         UserDefaults.standard.set(vm.cognome, forKey: "cognomeUtente")
                         UserDefaults.standard.set(vm.numero, forKey: "numeroUtente")
                         UserDefaults.standard.set(true, forKey: "registration")
-//                        vm.handleRegistration(number: vm.numero) { success in
-//                            isLoading = false
-//                            if success{
-//                                isShowingOtp = true
-//                            } else {
-//                                showAlert.toggle()
-//                            }
-//                        }
+                        //                        vm.handleRegistration(number: vm.numero) { success in
+                        //                            isLoading = false
+                        //                            if success{
+                        //                                isShowingOtp = true
+                        //                            } else {
+                        //                                showAlert.toggle()
+                        //                            }
+                        //                        }
                         vm.handleRegistration(number: vm.numero) { result in
                             isLoading = false
                             switch result {
@@ -293,7 +292,7 @@ struct RegistrationView: View {
                                 }
                             }
                         }
-
+                        
                         
                     } label: {
                         ZStack {

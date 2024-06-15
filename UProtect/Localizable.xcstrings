@@ -2594,9 +2594,6 @@
         }
       }
     },
-    "Friend location" : {
-
-    },
     "General Advice:" : {
       "localizations" : {
         "it" : {
@@ -2712,6 +2709,9 @@
           }
         }
       }
+    },
+    "Hello, World!" : {
+
     },
     "Helping Someone Who Drank Too Much" : {
       "localizations" : {
@@ -4441,6 +4441,9 @@
         }
       }
     },
+    "Satellite View" : {
+
+    },
     "Security for Children Walking Alone to School" : {
       "localizations" : {
         "it" : {
@@ -4844,6 +4847,9 @@
         }
       }
     },
+    "swipe left to read more" : {
+
+    },
     "Symptoms of Being Too High:" : {
       "localizations" : {
         "it" : {
@@ -5006,6 +5012,9 @@
           }
         }
       }
+    },
+    "Tips & Tricks" : {
+
     },
     "Titolo" : {
       "extractionState" : "stale",
