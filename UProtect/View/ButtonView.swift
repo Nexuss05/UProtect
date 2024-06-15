@@ -22,6 +22,9 @@ struct TimerView: View {
     @State var showAlert2 = false
     @State var showAlert = false
     
+    @State private var animateText = false
+    @State private var showGreenTick = false
+    
     
     @StateObject private var vm = CloudViewModel()
     @State var locationManager = LocationManager()
@@ -160,7 +163,7 @@ struct TimerView: View {
             return
         }
         
-        let urlString = "https://api.push.apple.com/3/device/\(token)"
+        let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
         guard let url = URL(string: urlString) else {
             print("URL non valido")
             return
@@ -279,6 +282,30 @@ struct TimerView: View {
                     Color(CustomColor.redBackground)
                 }
             }
+            
+            if timerManager.isActivated {
+                Text("Swipe up to send an alert")
+                    .foregroundStyle(.white)
+                    .fontWeight(.bold)
+                    .font(.title2)
+                    .padding(.top, 370)
+                    .offset(y: animateText ? -10 : 0)
+                    .animation(
+                        Animation
+                            .easeInOut(duration: 1)
+                            .repeatForever(autoreverses: true)
+                    )
+                    .onAppear {
+                        animateText = true
+                    }
+            }
+            
+            if showGreenTick {
+                            LottieTick(loopmode: .playOnce)
+                                .frame(width: 10, height: 10)
+                                .scaleEffect(0.1)
+                                .padding(.top, 510)
+                        }
             
             if timerManager.isPressed {
                 RingView(percentage: 1, backgroundColor: Color.white.opacity(0), startColor: .white, endColor: .white, thickness: 37)
@@ -450,7 +477,28 @@ struct TimerView: View {
                     //                    sendMessage()
                 }
             }
-        }.ignoresSafeArea()
+        }.gesture(
+            DragGesture(minimumDistance: 120, coordinateSpace: .local)
+                .onEnded { value in
+                    if value.translation.height < -120 && timerManager.isActivated && !showGreenTick {
+                        print("Swiped up!")
+                        sendPushNotificationsForSavedTokens()
+                        
+                        withAnimation {
+                            showGreenTick = true
+                        }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation {
+                                showGreenTick = false
+                            }
+                        }
+                    }
+                }
+        )
+
+
+        .ignoresSafeArea()
             .onAppear{
                 SwapText()
                 generateJWT()
@@ -507,4 +555,3 @@ struct TimerView: View {
         
     }
 }
-

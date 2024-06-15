@@ -18,6 +18,7 @@
 		99A452652C05C5E8004700FE /* Animation - 1716803277345.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452642C05C5E8004700FE /* Animation - 1716803277345.json */; };
 		99A452672C05C5EE004700FE /* Animation - 1716803884547.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452662C05C5EE004700FE /* Animation - 1716803884547.json */; };
 		99A452692C05C5F4004700FE /* Animation - 1716804413916.json in Resources */ = {isa = PBXBuildFile; fileRef = 99A452682C05C5F4004700FE /* Animation - 1716804413916.json */; };
+		99B538412C1E121F00B908BE /* Animation - 1718453926395.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B538402C1E121F00B908BE /* Animation - 1718453926395.json */; };
 		99B555682C13BEDB0096F0B4 /* CoursesStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B555672C13BEDB0096F0B4 /* CoursesStructs.swift */; };
 		99B5556A2C13BEE80096F0B4 /* CoursesStructs2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B555692C13BEE80096F0B4 /* CoursesStructs2.swift */; };
 		99B5556C2C13BEF50096F0B4 /* CoursesStructs3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B5556B2C13BEF50096F0B4 /* CoursesStructs3.swift */; };
@@ -67,7 +68,6 @@
 		C2E4036E2C1045D500F5B4F7 /* Corso2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E4036D2C1045D500F5B4F7 /* Corso2.swift */; };
 		E0293D2D2C11DF0800EB6485 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0293D2C2C11DF0800EB6485 /* Vuota.swift */; };
 		E0293D2F2C11DF5700EB6485 /* OnBoarding2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0293D2E2C11DF5700EB6485 /* OnBoarding2.swift */; };
-		E03931032C1C34650088A51E /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03931022C1C34650088A51E /* TipsView.swift */; };
 		E03931052C1C34DA0088A51E /* TipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03931042C1C34DA0088A51E /* TipsModel.swift */; };
 		E03931072C1C3BA40088A51E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03931062C1C3BA40088A51E /* Card.swift */; };
 		E04060212C09C47D0018252D /* NoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04060202C09C47D0018252D /* NoLocationView.swift */; };
@@ -159,6 +159,7 @@
 		99A452642C05C5E8004700FE /* Animation - 1716803277345.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716803277345.json"; sourceTree = "<group>"; };
 		99A452662C05C5EE004700FE /* Animation - 1716803884547.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716803884547.json"; sourceTree = "<group>"; };
 		99A452682C05C5F4004700FE /* Animation - 1716804413916.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1716804413916.json"; sourceTree = "<group>"; };
+		99B538402C1E121F00B908BE /* Animation - 1718453926395.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1718453926395.json"; sourceTree = "<group>"; };
 		99B555672C13BEDB0096F0B4 /* CoursesStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesStructs.swift; sourceTree = "<group>"; };
 		99B555692C13BEE80096F0B4 /* CoursesStructs2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesStructs2.swift; sourceTree = "<group>"; };
 		99B5556B2C13BEF50096F0B4 /* CoursesStructs3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesStructs3.swift; sourceTree = "<group>"; };
@@ -208,7 +209,6 @@
 		C2E4036D2C1045D500F5B4F7 /* Corso2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Corso2.swift; sourceTree = "<group>"; };
 		E0293D2C2C11DF0800EB6485 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Vuota.swift; path = ../Vuota.swift; sourceTree = "<group>"; };
 		E0293D2E2C11DF5700EB6485 /* OnBoarding2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoarding2.swift; sourceTree = "<group>"; };
-		E03931022C1C34650088A51E /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 		E03931042C1C34DA0088A51E /* TipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModel.swift; sourceTree = "<group>"; };
 		E03931062C1C3BA40088A51E /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		E04060202C09C47D0018252D /* NoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLocationView.swift; sourceTree = "<group>"; };
@@ -280,6 +280,7 @@
 				999499F82C03B7B50074604F /* Study.json */,
 				99B555742C13BF410096F0B4 /* Animation - 1717796203824.json */,
 				99B555732C13BF410096F0B4 /* Animation - 1717796337306.json */,
+				99B538402C1E121F00B908BE /* Animation - 1718453926395.json */,
 			);
 			path = Lotties;
 			sourceTree = "<group>";
@@ -452,7 +453,6 @@
 				C2E4036D2C1045D500F5B4F7 /* Corso2.swift */,
 				99B5556F2C13BF220096F0B4 /* Corso3.swift */,
 				99B555712C13BF2E0096F0B4 /* Corso4.swift */,
-				E03931022C1C34650088A51E /* TipsView.swift */,
 				E0B5D1B22C1DAC0B00A66DE8 /* TipsView2.swift */,
 			);
 			path = Courses;
@@ -612,6 +612,7 @@
 				99B555752C13BF410096F0B4 /* Animation - 1717796337306.json in Resources */,
 				C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */,
 				997DA7F72C14B2C20048ABB9 /* AuthKey_MD5P379685.p8 in Resources */,
+				99B538412C1E121F00B908BE /* Animation - 1718453926395.json in Resources */,
 				E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,7 +662,6 @@
 				C2E403632C10433900F5B4F7 /* SharedTimerManager.swift in Sources */,
 				175A0A652C05BD7200101A32 /* FetchLocation.swift in Sources */,
 				C23050492C05C7070056BEAA /* CoursesView.swift in Sources */,
-				E03931032C1C34650088A51E /* TipsView.swift in Sources */,
 				C230504B2C05C7070056BEAA /* LottieView4.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
 				E0B5D1B12C1D947E00A66DE8 /* ContactMap.swift in Sources */,

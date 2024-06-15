@@ -23,3 +23,19 @@ struct Lottiesss: UIViewRepresentable {
     }
 }
 
+struct LottieTick: UIViewRepresentable {
+    let loopmode: LottieLoopMode
+    
+    func makeUIView(context: Context) -> Lottie.LottieAnimationView {
+        
+        let animationView = LottieAnimationView(name: "Animation - 1718453926395")
+        animationView.play()
+        return animationView
+    }
+    
+    func updateUIView(_ uiView: Lottie.LottieAnimationView, context: Context) {
+    }
+}
+
+
+

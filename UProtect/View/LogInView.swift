@@ -115,9 +115,7 @@ struct LogInView: View {
                     OtpFormFieldView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 })
                 .alert("There is no account associated with this number", isPresented: $showAlert) {
-                    Button("SignIn"){
-                        isShowingRec.toggle()
-                    }
+                    Button("OK", role: .cancel) { }
                 }
                 .alert("Error during phone number validation", isPresented: $showAlert2) {
                     Button("OK") { }

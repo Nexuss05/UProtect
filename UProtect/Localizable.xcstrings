@@ -2710,9 +2710,6 @@
         }
       }
     },
-    "Hello, World!" : {
-
-    },
     "Helping Someone Who Drank Too Much" : {
       "localizations" : {
         "it" : {
@@ -3386,7 +3383,14 @@
       }
     },
     "Locked" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloccato"
+          }
+        }
+      }
     },
     "Log In" : {
       "localizations" : {
@@ -3996,7 +4000,14 @@
       }
     },
     "Please authenticate to access your recordings." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per favore, autenticati per accedere alle tue registrazioni."
+          }
+        }
+      }
     },
     "Plus" : {
       "localizations" : {
@@ -4620,6 +4631,7 @@
       }
     },
     "SignIn" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -4848,7 +4860,24 @@
       }
     },
     "swipe left to read more" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "scorri verso sinistra per leggerne di più"
+          }
+        }
+      }
+    },
+    "Swipe up to send an alert" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scorri verso l'alto per mandare una notifica"
+          }
+        }
+      }
     },
     "Symptoms of Being Too High:" : {
       "localizations" : {
@@ -5014,7 +5043,14 @@
       }
     },
     "Tips & Tricks" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggerimenti"
+          }
+        }
+      }
     },
     "Titolo" : {
       "extractionState" : "stale",
@@ -5026,6 +5062,9 @@
           }
         }
       }
+    },
+    "To see more cards, wait until tomorrow" : {
+
     },
     "to SOS mode" : {
       "localizations" : {
