@@ -101,7 +101,7 @@ struct TimerView: View {
         print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
         if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
             for token in savedTokens {
-                vm.sendPosition(token: token, latitude: vm.latitude, longitude: vm.longitude, nomeAmico: nome, cognomeAmico: cognome)
+                vm.sendPositionAndInsertName(token: token, latitude: vm.latitude, longitude: vm.longitude, nomeAmico: nome, cognomeAmico: cognome)
             }
         } else {
             print("Nessun token salvato in UserDefaults.")
@@ -115,7 +115,7 @@ struct TimerView: View {
                 print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
                 if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
                     for token in savedTokens {
-                        vm.sendPosition(token: token, latitude: 0, longitude: 0, nomeAmico: "", cognomeAmico: "")
+                        vm.sendPositionAndInsertName(token: token, latitude: 0, longitude: 0, nomeAmico: "", cognomeAmico: "")
                     }
                 } else {
                     print("Nessun token salvato in UserDefaults.")

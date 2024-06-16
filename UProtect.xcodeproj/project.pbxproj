@@ -78,6 +78,7 @@
 		E06A20592C0E0F3A005D4D67 /* Vuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06A20582C0E0F3A005D4D67 /* Vuota.swift */; };
 		E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */; };
 		E06C1E2B2C12E9C40077CE4C /* Animation - 1717744147505.json in Resources */ = {isa = PBXBuildFile; fileRef = E06C1E2A2C12E9C40077CE4C /* Animation - 1717744147505.json */; };
+		E0852ED62C1EF35D00D09C97 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0852ED52C1EF35D00D09C97 /* TipsView.swift */; };
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
@@ -219,6 +220,7 @@
 		E06A20582C0E0F3A005D4D67 /* Vuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vuota.swift; sourceTree = "<group>"; };
 		E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E06C1E2A2C12E9C40077CE4C /* Animation - 1717744147505.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1717744147505.json"; sourceTree = "<group>"; };
+		E0852ED52C1EF35D00D09C97 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				99B5556F2C13BF220096F0B4 /* Corso3.swift */,
 				99B555712C13BF2E0096F0B4 /* Corso4.swift */,
 				E0B5D1B22C1DAC0B00A66DE8 /* TipsView2.swift */,
+				E0852ED52C1EF35D00D09C97 /* TipsView.swift */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				175A0A632C05BD4400101A32 /* MapView.swift in Sources */,
 				C2893DD22BEB7FE400733211 /* ContactView.swift in Sources */,
 				C2893DD62BEB8B9600733211 /* Counter.swift in Sources */,
+				E0852ED62C1EF35D00D09C97 /* TipsView.swift in Sources */,
 				1763CF2C2C0EEEC200A465C4 /* DirectionView.swift in Sources */,
 				C230504C2C05C7070056BEAA /* LottieView.swift in Sources */,
 				99B555722C13BF2E0096F0B4 /* Corso4.swift in Sources */,
