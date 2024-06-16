@@ -35,6 +35,7 @@ struct TimerView: View {
     @State var buttonLocked = false
     @State var buttonTapped: Bool = false
     @State var textSwap = true
+    @State var allowTextSwap = true
     
     @Query var counter: [Counter] = []
     
@@ -54,21 +55,32 @@ struct TimerView: View {
     }
     
     func SwapText(){
-        if textSwap{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                withAnimation(.smooth(duration: 0.75)) {
-                    textSwap.toggle()
-                    SwapText()
+        if allowTextSwap{
+            if textSwap{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    withAnimation(.smooth(duration: 0.75)) {
+                        textSwap.toggle()
+                        SwapText()
+                    }
                 }
-            }
-        }else{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                withAnimation(.easeInOut(duration: 0.75)) {
-                    textSwap.toggle()
-                    SwapText()
+            }else{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    withAnimation(.easeInOut(duration: 0.75)) {
+                        textSwap.toggle()
+                        SwapText()
+                    }
                 }
             }
         }
+    }
+    
+    func startAnimation(){
+        allowTextSwap = true
+        SwapText()
+    }
+    
+    func stopAnimation(){
+        allowTextSwap = false
     }
     
     func generateJWT() {
@@ -500,7 +512,8 @@ struct TimerView: View {
 
         .ignoresSafeArea()
             .onAppear{
-                SwapText()
+//                SwapText()
+                startAnimation()
                 generateJWT()
                 if let lastCounter = counter.last {
                     print("L'ultimo valore salvato è: \(lastCounter.counter)")
@@ -551,6 +564,9 @@ struct TimerView: View {
                     print("timer disattivato")
                 }
                 Button("NO", role: .cancel) { }
+            }
+            .onDisappear{
+                stopAnimation()
             }
         
     }

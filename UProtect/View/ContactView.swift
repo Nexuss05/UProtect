@@ -25,13 +25,18 @@ struct ContactsView: View {
     
     @State var isInDanger: Bool = false
     @State var showUser: Bool = false
-    @State var latitudine: Double = 0
-    @State var longitudine: Double = 0
-    @State var nomeAmico: String = ""
-    @State var cognomeAmico: String = ""
+//    @State var latitudine: Double = 0
+//    @State var longitudine: Double = 0
+//    @State var nomeAmico: String = ""
+//    @State var cognomeAmico: String = ""
     @State var numeroAmico: String = ""
     
     @State var tokens: [String] = []
+    @State private var friendNumbers: [String] = []
+    @State private var cognomeAmico: [String] = []
+    @State private var nomeAmico: [String] = []
+    @State private var longitudine: [Double] = []
+    @State private var latitudine: [Double] = []
     
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var contactColors: [SerializableContact: Color] = [:]
@@ -58,44 +63,75 @@ struct ContactsView: View {
         }
     }
     
-    func fanculo(){
-        DispatchQueue.main.async {
-            if let lat = UserDefaults.standard.value(forKey: "latitudine") as? Double {
-                latitudine = lat
-                print("Updated lat: \(latitudine)")
+    func gottaFetchEmAll() {
+        vm.fetchAllArrays { latitudes, longitudes, nameLists, nomi, cognomi in
+            if let latitudes = latitudes, let longitudes = longitudes, let nameLists = nameLists, let nomi = nomi, let cognomi = cognomi {
+                self.latitudine = latitudes
+                self.longitudine = longitudes
+                self.nomeAmico = nomi
+                self.cognomeAmico = cognomi
+                self.friendNumbers = nameLists
+                
+                print("Friend numbers fetched: \(nameLists)")
+                print("Cognome fetched: \(cognomi)")
+                print("Nome fetched: \(nomi)")
+                print("Longitudine fetched: \(longitudes)")
+                print("Latitudine fetched: \(latitudes)")
+                
+                if latitudes.isEmpty && longitudes.isEmpty {
+                    self.showUser = false
+                } else {
+                    self.showUser = true
+                }
+                
             } else {
-                print("Nessun valore salvato per latitudine.")
-            }
-            if let lon = UserDefaults.standard.value(forKey: "longitudine") as? Double {
-                longitudine = lon
-                print("Updated lon: \(longitudine)")
-            } else {
-                print("Nessun valore salvato per longitudine.")
-            }
-            if let na = UserDefaults.standard.string(forKey: "nomeAmico") {
-                nomeAmico = na
-            } else {
-                print("Nessun valore salvato per nomeAmico.")
-            }
-            if let ca = UserDefaults.standard.string(forKey: "cognomeAmico") {
-                cognomeAmico = ca
-            } else {
-                print("Nessun valore salvato per cognomeAmico.")
-            }
-            
-            if latitudine == 0 && longitudine == 0 {
-                showUser = false
-                print("Mostra utente \(showUser)")
-            } else {
-                showUser = true
-                print("Mostra utente \(showUser)")
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                fanculo()
+                print("Failed to fetch friend numbers")
             }
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            gottaFetchEmAll()
+        }
     }
+
+    
+//    func fanculo(){
+//        DispatchQueue.main.async {
+//            if let lat = UserDefaults.standard.value(forKey: "latitudine") as? Double {
+//                latitudine = lat
+//                print("Updated lat: \(latitudine)")
+//            } else {
+//                print("Nessun valore salvato per latitudine.")
+//            }
+//            if let lon = UserDefaults.standard.value(forKey: "longitudine") as? Double {
+//                longitudine = lon
+//                print("Updated lon: \(longitudine)")
+//            } else {
+//                print("Nessun valore salvato per longitudine.")
+//            }
+//            if let na = UserDefaults.standard.string(forKey: "nomeAmico") {
+//                nomeAmico = na
+//            } else {
+//                print("Nessun valore salvato per nomeAmico.")
+//            }
+//            if let ca = UserDefaults.standard.string(forKey: "cognomeAmico") {
+//                cognomeAmico = ca
+//            } else {
+//                print("Nessun valore salvato per cognomeAmico.")
+//            }
+//            
+//            if latitudine == 0 && longitudine == 0 {
+//                showUser = false
+//                print("Mostra utente \(showUser)")
+//            } else {
+//                showUser = true
+//                print("Mostra utente \(showUser)")
+//            }
+//            
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+//                fanculo()
+//            }
+//        }
+//    }
     
     var body: some View {
         NavigationView{
@@ -105,8 +141,41 @@ struct ContactsView: View {
                         ForEach(selectedContacts, id: \.self) { contact in
                             VStack{
                                 if showUser{
-                                    if numeroAmico == contact.phoneNumber || numeroAmico == formatPhoneNumber2(contact.phoneNumber){
-                                        ContactMap(latitudine: latitudine, longitudine: longitudine, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, nome: contact.givenName, cognome: contact.familyName, numero: contact.phoneNumber)
+                                    if let index = friendNumbers.firstIndex(of: contact.phoneNumber) ?? friendNumbers.firstIndex(of: formatPhoneNumber2(contact.phoneNumber)) {
+                                        if index < latitudine.count && index < longitudine.count && index < nomeAmico.count && index < cognomeAmico.count {
+                                            
+                                            let lat = latitudine[index]
+                                            let lon = longitudine[index]
+                                            
+                                            if lat != 0 && lon != 0 {
+                                                ContactMap(
+                                                    latitudine: latitudine[index],
+                                                    longitudine: longitudine[index],
+                                                    nomeAmico: nomeAmico[index],
+                                                    cognomeAmico: cognomeAmico[index],
+                                                    nome: contact.givenName,
+                                                    cognome: contact.familyName,
+                                                    numero: contact.phoneNumber
+                                                )
+                                            } else {
+                                                HStack(spacing: 25.0) {
+                                                    ZStack {
+                                                        Circle()
+                                                            .fill(contactColors[contact] ?? .black)
+                                                            .frame(width: 35, height: 35)
+                                                        Text("\(generateInitial(givenName: contact.givenName))")
+                                                            .fontWeight(.bold)
+                                                            .foregroundColor(.white)
+                                                    }.accessibilityHidden(true)
+                                                    VStack(alignment: .leading, spacing: -2.0){
+                                                        Text("\(contact.givenName) \(contact.familyName)")
+                                                            .fontWeight(.medium)
+                                                        Text("\(contact.phoneNumber)")
+                                                            .font(.subheadline)
+                                                    }
+                                                }
+                                            }
+                                        }
                                     } else {
                                         HStack(spacing: 25.0) {
                                             ZStack {
@@ -246,16 +315,17 @@ struct ContactsView: View {
         }.onAppear{
             loadContactsFromUserDefaults()
             assignColors()
-            fanculo()
-            vm.fetchFriendNumber { friendNumber in
-                if let friendNumber = friendNumber {
-                    print("Friend's number: \(friendNumber)")
-                    numeroAmico = friendNumber
-                } else {
-                    numeroAmico = ""
-                    print("Friend's number not found or error occurred.")
-                }
-            }
+            gottaFetchEmAll()
+//            fanculo()
+//            vm.fetchFriendNumber { fetchedFriendNumbers in
+//                if let fetchedFriendNumbers = fetchedFriendNumbers {
+//                    self.friendNumbers = fetchedFriendNumbers
+//                    print("Friend numbers fetched: \(fetchedFriendNumbers)")
+//                } else {
+//                    print("Failed to fetch friend numbers")
+//                }
+//            }
+            
         }
     }
     
@@ -268,7 +338,7 @@ struct ContactsView: View {
         }
         return phoneNumber
     }
-
+    
     
     func formatPhoneNumber(_ phoneNumber: String?) -> String {
         guard let phoneNumber = phoneNumber else { return "" }

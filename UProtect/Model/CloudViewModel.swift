@@ -598,7 +598,6 @@ class CloudViewModel: ObservableObject{
         let savedIndex = UserDefaults.standard.integer(forKey: "savedIndex")
         
         if savedIndex < nameList.count && nameList[savedIndex] == numeroAmico {
-            // Il numero è già aggiornato all'indice salvato, aggiornare gli altri campi
             latitudeList[savedIndex] = latitude
             longitudeList[savedIndex] = longitude
             nomeAmicoList[savedIndex] = nomeAmico
@@ -636,7 +635,6 @@ class CloudViewModel: ObservableObject{
         database.save(record) { savedRecord, saveError in
             if let saveError = saveError {
                 if let ckError = saveError as? CKError, ckError.code == .serverRecordChanged {
-                    // Risolvere il conflitto
                     if let serverRecord = ckError.serverRecord {
                         print("Server record changed, retrying with server record...")
                         self.updateRecord(record: serverRecord, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database)
@@ -673,20 +671,61 @@ class CloudViewModel: ObservableObject{
 //        addOperation(operation: queryOperation)
 //    }
 
-    func fetchFriendNumber(completion: @escaping (String?) -> Void) {
+//    func fetchFriendNumber(completion: @escaping (String?) -> Void) {
+//        guard let fcmToken = fcmToken else {
+//                print("FCM Token is nil")
+//                return
+//            }
+//        let predicate = NSPredicate(format: "token = %@", fcmToken)
+//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+//        let queryOperation = CKQueryOperation(query: query)
+//        queryOperation.resultsLimit = 1
+//        
+//        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+//            switch returnedResult {
+//            case .success(let record):
+//                if let numero = record["numeroAmico"] as? String{
+//                    print("numeroAmico found: \(numero)")
+//                    completion(numero)
+//                } else {
+//                    print("numeroAmico not found")
+//                    completion(nil)
+//                }
+//            case .failure(let error):
+//                print("Error: \(error)")
+//                completion(nil)
+//            }
+//        }
+//        addOperation(operation: queryOperation)
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+//            self.fetchFriend()
+//        }
+//    }
+    
+    func fetchFriendNumber(completion: @escaping ([String]?) -> Void) {
+        guard let fcmToken = fcmToken else {
+            print("FCM Token is nil")
+            completion(nil)
+            return
+        }
+
         let predicate = NSPredicate(format: "token = %@", "47c93e169e470176b06bff0affd417b16e5802a89794c2eb9b7248d29f339774")
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         queryOperation.resultsLimit = 1
         
+        var friendNumbers: [String] = []
+
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
-                if let numero = record["numeroAmico"] as? String{
-                    print("numeroAmico found: \(numero)")
-                    completion(numero)
+                if let nameList = record["nameList"] as? [String] {
+                    print("nameList found: \(nameList)")
+                    friendNumbers = nameList
+                    completion(friendNumbers)
                 } else {
-                    print("numeroAmico not found")
+                    print("nameList not found or not of expected type [String]")
                     completion(nil)
                 }
             case .failure(let error):
@@ -694,12 +733,78 @@ class CloudViewModel: ObservableObject{
                 completion(nil)
             }
         }
-        addOperation(operation: queryOperation)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            self.fetchFriend()
+        queryOperation.queryCompletionBlock = { (cursor, error) in
+            if let error = error {
+                print("Query completion error: \(error)")
+                completion(nil)
+            } else {
+                completion(friendNumbers)
+            }
         }
+
+        addOperation(operation: queryOperation)
     }
+
+    func fetchAllArrays(completion: @escaping ([Double]?, [Double]?, [String]?, [String]?, [String]?) -> Void) {
+        guard let fcmToken = fcmToken else {
+            print("FCM Token is nil")
+            completion(nil, nil, nil, nil, nil)
+            return
+        }
+
+        let predicate = NSPredicate(format: "token = %@", "47c93e169e470176b06bff0affd417b16e5802a89794c2eb9b7248d29f339774")
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+
+        var latitudineArray: [Double] = []
+        var longitudineArray: [Double] = []
+        var nameListArray: [String] = []
+        var nomeAmicoArray: [String] = []
+        var cognomeAmicoArray: [String] = []
+
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                if let latitudes = record["latitudine2"] as? [Double] {
+                    latitudineArray = latitudes
+                }
+                if let longitudes = record["longitudine2"] as? [Double] {
+                    longitudineArray = longitudes
+                }
+                if let nameLists = record["nameList"] as? [String] {
+                    nameListArray = nameLists
+                }
+                if let nomi = record["nomeAmico2"] as? [String] {
+                    nomeAmicoArray = nomi
+                }
+                if let cognomi = record["cognomeAmico2"] as? [String] {
+                    cognomeAmicoArray = cognomi
+                }
+
+                completion(latitudineArray, longitudineArray, nameListArray, nomeAmicoArray, cognomeAmicoArray)
+
+            case .failure(let error):
+                print("Error: \(error)")
+                completion(nil, nil, nil, nil, nil)
+            }
+        }
+
+        queryOperation.queryCompletionBlock = { (cursor, error) in
+            if let error = error {
+                print("Query completion error: \(error)")
+                completion(nil, nil, nil, nil, nil)
+            }
+            
+            if latitudineArray.isEmpty || longitudineArray.isEmpty || nameListArray.isEmpty || nomeAmicoArray.isEmpty || cognomeAmicoArray.isEmpty {
+                completion(nil, nil, nil, nil, nil)
+            }
+        }
+
+        addOperation(operation: queryOperation)
+    }
+
     
     func addOperation(operation: CKDatabaseOperation){
         CKContainer.default().publicCloudDatabase.add(operation)
