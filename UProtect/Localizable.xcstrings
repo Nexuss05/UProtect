@@ -4860,6 +4860,7 @@
       }
     },
     "swipe left to read more" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {

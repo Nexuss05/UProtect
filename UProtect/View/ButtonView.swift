@@ -283,7 +283,7 @@ struct TimerView: View {
                 }
             }
             
-            if timerManager.isActivated {
+            if timerManager.isActivated && timerManager.start {
                 Text("Swipe up to send an alert")
                     .foregroundStyle(.white)
                     .fontWeight(.bold)
@@ -480,7 +480,7 @@ struct TimerView: View {
         }.gesture(
             DragGesture(minimumDistance: 120, coordinateSpace: .local)
                 .onEnded { value in
-                    if value.translation.height < -120 && timerManager.isActivated && !showGreenTick {
+                    if value.translation.height < -120 && timerManager.isActivated && !showGreenTick && timerManager.start{
                         print("Swiped up!")
                         sendPushNotificationsForSavedTokens()
                         
