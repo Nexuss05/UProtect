@@ -710,7 +710,7 @@ class CloudViewModel: ObservableObject{
             return
         }
 
-        let predicate = NSPredicate(format: "token = %@", "47c93e169e470176b06bff0affd417b16e5802a89794c2eb9b7248d29f339774")
+        let predicate = NSPredicate(format: "token = %@", fcmToken)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         queryOperation.resultsLimit = 1
@@ -753,7 +753,7 @@ class CloudViewModel: ObservableObject{
             return
         }
 
-        let predicate = NSPredicate(format: "token = %@", "47c93e169e470176b06bff0affd417b16e5802a89794c2eb9b7248d29f339774")
+        let predicate = NSPredicate(format: "token = %@", fcmToken)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         queryOperation.resultsLimit = 1
@@ -812,7 +812,7 @@ class CloudViewModel: ObservableObject{
             return
         }
 
-        let predicate = NSPredicate(format: "token = %@", "47c93e169e470176b06bff0affd417b16e5802a89794c2eb9b7248d29f339774")
+        let predicate = NSPredicate(format: "token = %@", fcmToken)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         queryOperation.resultsLimit = 1
