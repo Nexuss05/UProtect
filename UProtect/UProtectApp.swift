@@ -1,4 +1,4 @@
-//
+    //
 //  UProtectApp.swift
 //  UProtect
 //
@@ -56,8 +56,8 @@ struct UProtectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
-//                        ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+//            UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                        ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
             //            Newbutton(timerManager: timerManager, audioRecorder: audioRecorder)
             //                        RegistrationView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
             //            WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
@@ -121,28 +121,38 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         }
         UNUserNotificationCenter.current().delegate = self
         application.registerForRemoteNotifications()
+        
+        if let savedBadgeCount = UserDefaults.standard.object(forKey: "badgeCount") as? Int {
+                    UIApplication.shared.applicationIconBadgeNumber = savedBadgeCount
+                }
         return true
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register for remote notifications: \(error.localizedDescription)")
     }
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        // Inoltra le notifiche remote a FIRAuth
-        Auth.auth().canHandleNotification(userInfo)
-    }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+            // Forward remote notifications to FIRAuth
+            Auth.auth().canHandleNotification(userInfo)
+            incrementBadgeCount()
+        }
+
+        func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
             if Auth.auth().canHandleNotification(userInfo) {
                 completionHandler(.noData)
                 return
             }
             
-            // Increment badge count
-            let currentBadgeCount = UIApplication.shared.applicationIconBadgeNumber
-            UIApplication.shared.applicationIconBadgeNumber = currentBadgeCount + 1
-            
+            incrementBadgeCount()
             completionHandler(.newData)
+        }
+    
+    private func incrementBadgeCount() {
+            let currentBadgeCount = UIApplication.shared.applicationIconBadgeNumber
+            let newBadgeCount = currentBadgeCount + 1
+            UserDefaults.standard.set(newBadgeCount, forKey: "badgeCount")
+            UIApplication.shared.applicationIconBadgeNumber = newBadgeCount
         }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -155,6 +165,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     
     // Handle notification when the app is in the foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        incrementBadgeCount()
         completionHandler([.banner, .sound, .badge])
     }
     
@@ -184,9 +195,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
     func applicationDidBecomeActive(_ application: UIApplication) {
             // Reset badge count to zero
-        print("AppDelegate: applicationDidBecomeActive")
+            print("AppDelegate: applicationDidBecomeActive")
+            UserDefaults.standard.set(0, forKey: "badgeCount")
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
+
     
 }
 

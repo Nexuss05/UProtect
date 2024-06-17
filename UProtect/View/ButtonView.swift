@@ -149,11 +149,14 @@ struct TimerView: View {
     }
     
     func sendPushNotification(token: String) {
-        
+
         let name = UserDefaults.standard.string(forKey: "firstName") ?? "Unknown"
         let surname = UserDefaults.standard.string(forKey: "lastName") ?? "Unknown"
         let message = ""
         let authenticationToken = tokenAPNS
+        
+        let currentBadgeCount = UserDefaults.standard.integer(forKey: "badgeCount")
+        let newBadgeCount = currentBadgeCount + 1
         
         let content = """
         {
@@ -163,7 +166,7 @@ struct TimerView: View {
                     "subtitle": "Open the app to check on them.",
                     "body": "\(message)"
                 },
-                "badge": 1,
+                "badge": \(newBadgeCount),
                 "sound": "default"
             },
             "topic": "com.andrearomano.Hestia"
@@ -175,7 +178,7 @@ struct TimerView: View {
             return
         }
         
-        let urlString = "https://api.push.apple.com/3/device/\(token)"
+        let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
 //        let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
         guard let url = URL(string: urlString) else {
             print("URL non valido")
