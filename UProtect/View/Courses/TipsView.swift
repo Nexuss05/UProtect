@@ -20,29 +20,6 @@ struct TipsView: View {
     @State var first: Int = 0
     @State var last: Int = 3
     
-//    let day = Calendar.current.component(.day, from: Date())
-    
-//    func update(){
-//        if day < 15 {
-//            first += day * 3
-//            last += day * 3
-//            
-//            if last > tips.count {
-//                first = 0
-//                last = 3
-//            }
-//        } else {
-//            first += (day/2) * 3
-//            last += (day/2) * 3
-//            print(first)
-//            print(last)
-//            if last > tips.count {
-//                first = 0
-//                last = 3
-//            }
-//        }
-//    }
-    
     func update() {
         let day = Calendar.current.component(.day, from: Date())
         
@@ -118,7 +95,7 @@ struct TipsView: View {
                                             tips[tip.id].offset = 0
                                         }
                                     } else {
-                                        if tip.id != last {
+                                        if tip.id != last && tip.id != first{
                                             tips[tip.id - 1].offset = 0
                                             scrolled -= 1
                                         } else {
