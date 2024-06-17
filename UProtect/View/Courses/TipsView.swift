@@ -17,13 +17,62 @@ struct TipsView: View {
         return width
     }
     
+    @State var first: Int = 0
+    @State var last: Int = 3
+    
+//    let day = Calendar.current.component(.day, from: Date())
+    
+//    func update(){
+//        if day < 15 {
+//            first += day * 3
+//            last += day * 3
+//            
+//            if last > tips.count {
+//                first = 0
+//                last = 3
+//            }
+//        } else {
+//            first += (day/2) * 3
+//            last += (day/2) * 3
+//            print(first)
+//            print(last)
+//            if last > tips.count {
+//                first = 0
+//                last = 3
+//            }
+//        }
+//    }
+    
+    func update() {
+        let day = Calendar.current.component(.day, from: Date())
+        
+        if day <= (tips.count - 1) / 3 {
+            first = (day - 1) * 3
+            last = day * 3
+            
+            if last > tips.count {
+                first = 0
+                last = 3
+            }
+            
+        } else {
+            first += (day/2) * 3
+            last += (day/2) * 3
+            if last > tips.count {
+                first = 0
+                last = 3
+            }
+        }
+    }
+
+    
     var body: some View {
         ZStack {
             CustomColor.orange
                 .ignoresSafeArea()
             
             ZStack {
-                ForEach(tips.reversed()) { tip in
+                ForEach(tips[first..<last].reversed()) { tip in
                     VStack {
                         HStack {
                             Text("Tips & Tricks")
@@ -32,7 +81,7 @@ struct TipsView: View {
                             Spacer()
                         }
                         .padding(.horizontal, 45)
-                        if tip.id == scrolled {
+                        if tip.id == first + scrolled {
                             HStack {
                                 Text(tip.categoria)
                                     .font(.title)
@@ -46,30 +95,30 @@ struct TipsView: View {
                     VStack {
                         Card(titolo: tip.titolo,
                              testo: tip.corpo,
-                             symbol: tip.id == tips.last!.id ? "timer" : "arrow.left",
-                             info: tip.id == tips.last!.id ? "wait until tomorrow for more tips" : "swipe left to read more")
-                        .offset(x: CGFloat((tip.id - scrolled) * 10))
-                        .opacity(Double(1.0 - CGFloat(tip.id - scrolled) * 0.6))
+                             symbol: tip.id == tips.prefix(last).last!.id ? "timer" : "arrow.left",
+                             info: tip.id == tips.prefix(last).last!.id ? "wait until tomorrow for more tips" : "swipe left to read more")
+                        .offset(x: CGFloat((tip.id - (first + scrolled)) * 10))
+                        .opacity(Double(1.0 - CGFloat(tip.id - (first + scrolled)) * 0.6))
                         .gesture(DragGesture().onChanged({ value in
                             withAnimation {
-                                if tip.id == scrolled {
-                                    if value.translation.width < 0 && tip.id != tips.last!.id {
+                                if tip.id == first + scrolled {
+                                    if value.translation.width < 0 && tip.id != tips.prefix(last).last!.id {
                                         tips[tip.id].offset = value.translation.width
                                     }
                                 }
                             }
                         }).onEnded({ value in
                             withAnimation {
-                                if tip.id == scrolled {
+                                if tip.id == first + scrolled {
                                     if value.translation.width < 0 {
-                                        if value.translation.width < -100 && tip.id != tips.last!.id {
+                                        if value.translation.width < -100 && tip.id != tips.prefix(last).last!.id {
                                             tips[tip.id].offset = -(calculateWidth() + 60)
                                             scrolled += 1
                                         } else {
                                             tips[tip.id].offset = 0
                                         }
                                     } else {
-                                        if tip.id != 0 {
+                                        if tip.id != last {
                                             tips[tip.id - 1].offset = 0
                                             scrolled -= 1
                                         } else {
@@ -82,6 +131,8 @@ struct TipsView: View {
                     }.offset(x: tip.offset)
                 }
             }
+        }.onAppear{
+            update()
         }
     }
 }

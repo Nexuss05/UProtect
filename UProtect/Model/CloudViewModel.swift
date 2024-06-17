@@ -804,6 +804,152 @@ class CloudViewModel: ObservableObject{
 
         addOperation(operation: queryOperation)
     }
+    
+    func fetchFriendsList(completion: @escaping ([String]?) -> Void) {
+        guard let fcmToken = fcmToken else {
+            print("FCM Token is nil")
+            completion(nil)
+            return
+        }
+
+        let predicate = NSPredicate(format: "token = %@", "47c93e169e470176b06bff0affd417b16e5802a89794c2eb9b7248d29f339774")
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+
+        var friendsArray: [String] = []
+
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                if let friends = record["friends"] as? [String] {
+                    friendsArray = friends
+                }
+                completion(friendsArray)
+
+            case .failure(let error):
+                print("Error: \(error)")
+                completion(nil)
+            }
+        }
+
+        queryOperation.queryCompletionBlock = { (cursor, error) in
+            if let error = error {
+                print("Query completion error: \(error)")
+                completion(nil)
+            }
+            
+            if friendsArray.isEmpty {
+                completion(nil)
+            }
+        }
+
+        addOperation(operation: queryOperation)
+    }
+
+    func addOperation(operation: CKQueryOperation) {
+        let database = CKContainer.default().publicCloudDatabase
+        database.add(operation)
+    }
+
+    
+    func updateFriendList(token: String, add: Bool) {
+        let predicate = NSPredicate(format: "token = %@", token)
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let database = CKContainer.default().publicCloudDatabase
+        
+        database.perform(query, inZoneWith: nil) { results, error in
+            if let error = error {
+                print("Error querying record: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let record = results?.first else {
+                print("No record found with the given token")
+                return
+            }
+            let numeroAmico = UserDefaults.standard.string(forKey: "userNumber") ?? ""
+            self.updateFriendListRecord(record: record, friendNumber: numeroAmico, add: add, in: database)
+        }
+    }
+
+    func updateFriendListRecord(record: CKRecord, friendNumber: String, add: Bool, in database: CKDatabase) {
+        var friendsList = record["friends"] as? [String] ?? []
+        
+        if add {
+            if !friendsList.contains(friendNumber) {
+                friendsList.append(friendNumber)
+                print("Friend number added to the list")
+            } else {
+                print("Friend number already in the list")
+            }
+        } else {
+            if let index = friendsList.firstIndex(of: friendNumber) {
+                friendsList.remove(at: index)
+                print("Friend number removed from the list")
+            } else {
+                print("Friend number not found in the list")
+            }
+        }
+        
+        record["friends"] = friendsList
+        
+        database.save(record) { savedRecord, saveError in
+            if let saveError = saveError {
+                if let ckError = saveError as? CKError, ckError.code == .serverRecordChanged {
+                    if let serverRecord = ckError.serverRecord {
+                        print("Server record changed, retrying with server record...")
+                        self.updateFriendListRecord(record: serverRecord, friendNumber: friendNumber, add: add, in: database)
+                    }
+                } else {
+                    print("Error saving record: \(saveError.localizedDescription)")
+                }
+            } else {
+                print("Record updated successfully")
+            }
+        }
+    }
+    
+    func fetchNameAndSurname(number: String, completion: @escaping (String?, String?) -> Void) {
+        let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.resultsLimit = 1
+        
+        var name: String?
+        var surname: String?
+        
+        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+            switch returnedResult {
+            case .success(let record):
+                name = record["name"] as? String
+                surname = record["surname"] as? String
+                if name == nil || name!.isEmpty {
+                    print("Name not found")
+                } else {
+                    print("Name found: \(name!)")
+                }
+                if surname == nil || surname!.isEmpty {
+                    print("Surname not found")
+                } else {
+                    print("Surname found: \(surname!)")
+                }
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+        
+        queryOperation.queryResultBlock = { returnedResult in
+            print("Returned ResultBlock: \(returnedResult)")
+            DispatchQueue.main.async {
+                completion(name, surname)
+            }
+        }
+        
+        addOperation(operation: queryOperation)
+    }
+
 
     
     func addOperation(operation: CKDatabaseOperation){

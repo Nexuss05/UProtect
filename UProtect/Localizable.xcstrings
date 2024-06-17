@@ -5606,6 +5606,12 @@
         }
       }
     },
+    "Your contacts" : {
+
+    },
+    "Your friends" : {
+
+    },
     "Your support helps keep our community safe! 🌟" : {
       "extractionState" : "stale",
       "localizations" : {

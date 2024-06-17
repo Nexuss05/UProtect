@@ -25,27 +25,54 @@ struct ContactsView: View {
     
     @State var isInDanger: Bool = false
     @State var showUser: Bool = false
-//    @State var latitudine: Double = 0
-//    @State var longitudine: Double = 0
-//    @State var nomeAmico: String = ""
-//    @State var cognomeAmico: String = ""
+    //    @State var latitudine: Double = 0
+    //    @State var longitudine: Double = 0
+    //    @State var nomeAmico: String = ""
+    //    @State var cognomeAmico: String = ""
     @State var numeroAmico: String = ""
     
+    @State var searchText = ""
     @State var tokens: [String] = []
-    @State private var friendNumbers: [String] = []
-    @State private var cognomeAmico: [String] = []
-    @State private var nomeAmico: [String] = []
-    @State private var longitudine: [Double] = []
-    @State private var latitudine: [Double] = []
+    @State var friendAdded: [String] = []
+    @State var filteredContacts: [String] = []
+    @State var friendNumbers: [String] = []
+    @State var cognomeAmico: [String] = []
+    @State var nomeAmico: [String] = []
+    @State var longitudine: [Double] = []
+    @State var latitudine: [Double] = []
+    
+    @State var selectedMode = 1
+    @State var showContacts: Bool = true
+    
+    @State var names: [String: String] = [:]
+    @State var surnames: [String: String] = [:]
     
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var contactColors: [SerializableContact: Color] = [:]
     @ObservedObject var timeManager = TimeManager.shared
     
+//    func generateInitial(givenName: String) -> String {
+//        let givenInitial = givenName.first ?? Character("")
+//        return "\(givenInitial)"
+//    }
+    
     func generateInitial(givenName: String) -> String {
-        let givenInitial = givenName.first ?? Character("")
+        guard let givenInitial = givenName.first else {
+            return ""
+        }
         return "\(givenInitial)"
     }
+    
+    func filterContacts() {
+        if searchText.isEmpty {
+            filteredContacts = friendAdded
+        } else {
+            filteredContacts = friendAdded.filter { contact in
+                contact.lowercased().contains(searchText.lowercased())
+            }
+        }
+    }
+
     
     func generateRandomColor() -> Color {
         return Color(
@@ -88,91 +115,150 @@ struct ContactsView: View {
                 print("Failed to fetch friend numbers")
             }
         }
+        
+        vm.fetchFriendsList { friends in
+            if let friends = friends{
+                self.friendAdded = friends
+                
+                for friend in friendAdded {
+                    vm.fetchNameAndSurname(number: friend) { name, surname in
+                        print("print sto cazzo")
+                        self.names[friend] = name
+                        print("nome salvati: \(names)")
+                        self.surnames[friend] = surname
+                        print("congomi salvati: \(surnames)")
+                    }
+                }
+                
+                print("Friend that added you: \(friends)")
+                self.filteredContacts = friendAdded
+            }
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             gottaFetchEmAll()
         }
     }
-
     
-//    func fanculo(){
-//        DispatchQueue.main.async {
-//            if let lat = UserDefaults.standard.value(forKey: "latitudine") as? Double {
-//                latitudine = lat
-//                print("Updated lat: \(latitudine)")
-//            } else {
-//                print("Nessun valore salvato per latitudine.")
-//            }
-//            if let lon = UserDefaults.standard.value(forKey: "longitudine") as? Double {
-//                longitudine = lon
-//                print("Updated lon: \(longitudine)")
-//            } else {
-//                print("Nessun valore salvato per longitudine.")
-//            }
-//            if let na = UserDefaults.standard.string(forKey: "nomeAmico") {
-//                nomeAmico = na
-//            } else {
-//                print("Nessun valore salvato per nomeAmico.")
-//            }
-//            if let ca = UserDefaults.standard.string(forKey: "cognomeAmico") {
-//                cognomeAmico = ca
-//            } else {
-//                print("Nessun valore salvato per cognomeAmico.")
-//            }
-//            
-//            if latitudine == 0 && longitudine == 0 {
-//                showUser = false
-//                print("Mostra utente \(showUser)")
-//            } else {
-//                showUser = true
-//                print("Mostra utente \(showUser)")
-//            }
-//            
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-//                fanculo()
-//            }
-//        }
-//    }
+    
+    //    func fanculo(){
+    //        DispatchQueue.main.async {
+    //            if let lat = UserDefaults.standard.value(forKey: "latitudine") as? Double {
+    //                latitudine = lat
+    //                print("Updated lat: \(latitudine)")
+    //            } else {
+    //                print("Nessun valore salvato per latitudine.")
+    //            }
+    //            if let lon = UserDefaults.standard.value(forKey: "longitudine") as? Double {
+    //                longitudine = lon
+    //                print("Updated lon: \(longitudine)")
+    //            } else {
+    //                print("Nessun valore salvato per longitudine.")
+    //            }
+    //            if let na = UserDefaults.standard.string(forKey: "nomeAmico") {
+    //                nomeAmico = na
+    //            } else {
+    //                print("Nessun valore salvato per nomeAmico.")
+    //            }
+    //            if let ca = UserDefaults.standard.string(forKey: "cognomeAmico") {
+    //                cognomeAmico = ca
+    //            } else {
+    //                print("Nessun valore salvato per cognomeAmico.")
+    //            }
+    //
+    //            if latitudine == 0 && longitudine == 0 {
+    //                showUser = false
+    //                print("Mostra utente \(showUser)")
+    //            } else {
+    //                showUser = true
+    //                print("Mostra utente \(showUser)")
+    //            }
+    //
+    //            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+    //                fanculo()
+    //            }
+    //        }
+    //    }
     
     var body: some View {
         NavigationView{
             ZStack {
                 VStack {
+                    Picker(selection: $selectedMode, label: Text("Mode")) {
+                        Text("Your contacts").tag(1)
+                        Text("Your friends").tag(2)
+                    }.pickerStyle(SegmentedPickerStyle())
+                        .onChange(of: selectedMode) { newMode in
+                            switch newMode {
+                            case 1:
+                                showContacts = true
+                            case 2:
+                                showContacts = false
+                            default:
+                                break
+                            }
+                        }
+                    if !showContacts{
+                        SearchBar(text: $searchText)
+                            .onChange(of: searchText) { _ in
+                                                    filterContacts()
+                                                }
+                    }
                     List{
-                        ForEach(selectedContacts, id: \.self) { contact in
-                            VStack{
-                                if showUser{
-                                    if let index = friendNumbers.firstIndex(of: contact.phoneNumber) ?? friendNumbers.firstIndex(of: formatPhoneNumber2(contact.phoneNumber)) {
-                                        if index < latitudine.count && index < longitudine.count && index < nomeAmico.count && index < cognomeAmico.count {
-                                            
-                                            let lat = latitudine[index]
-                                            let lon = longitudine[index]
-                                            
-                                            if lat != 0 && lon != 0 {
-                                                ContactMap(
-                                                    latitudine: latitudine[index],
-                                                    longitudine: longitudine[index],
-                                                    nomeAmico: nomeAmico[index],
-                                                    cognomeAmico: cognomeAmico[index],
-                                                    nome: contact.givenName,
-                                                    cognome: contact.familyName,
-                                                    numero: contact.phoneNumber
-                                                )
-                                            } else {
-                                                HStack(spacing: 25.0) {
-                                                    ZStack {
-                                                        Circle()
-                                                            .fill(contactColors[contact] ?? .black)
-                                                            .frame(width: 35, height: 35)
-                                                        Text("\(generateInitial(givenName: contact.givenName))")
-                                                            .fontWeight(.bold)
-                                                            .foregroundColor(.white)
-                                                    }.accessibilityHidden(true)
-                                                    VStack(alignment: .leading, spacing: -2.0){
-                                                        Text("\(contact.givenName) \(contact.familyName)")
-                                                            .fontWeight(.medium)
-                                                        Text("\(contact.phoneNumber)")
-                                                            .font(.subheadline)
+                        if showContacts {
+                            ForEach(selectedContacts, id: \.self) { contact in
+                                VStack{
+                                    if showUser{
+                                        if let index = friendNumbers.firstIndex(of: contact.phoneNumber) ?? friendNumbers.firstIndex(of: formatPhoneNumber2(contact.phoneNumber)) {
+                                            if index < latitudine.count && index < longitudine.count && index < nomeAmico.count && index < cognomeAmico.count {
+                                                
+                                                let lat = latitudine[index]
+                                                let lon = longitudine[index]
+                                                
+                                                if lat != 0 && lon != 0 {
+                                                    ContactMap(
+                                                        latitudine: latitudine[index],
+                                                        longitudine: longitudine[index],
+                                                        nomeAmico: nomeAmico[index],
+                                                        cognomeAmico: cognomeAmico[index],
+                                                        nome: contact.givenName,
+                                                        cognome: contact.familyName,
+                                                        numero: contact.phoneNumber
+                                                    )
+                                                } else {
+                                                    HStack(spacing: 25.0) {
+                                                        ZStack {
+                                                            Circle()
+                                                                .fill(contactColors[contact] ?? .black)
+                                                                .frame(width: 35, height: 35)
+                                                            Text("\(generateInitial(givenName: contact.givenName))")
+                                                                .fontWeight(.bold)
+                                                                .foregroundColor(.white)
+                                                        }.accessibilityHidden(true)
+                                                        VStack(alignment: .leading, spacing: -2.0){
+                                                            Text("\(contact.givenName) \(contact.familyName)")
+                                                                .fontWeight(.medium)
+                                                            Text("\(contact.phoneNumber)")
+                                                                .font(.subheadline)
+                                                        }
                                                     }
+                                                }
+                                            }
+                                        } else {
+                                            HStack(spacing: 25.0) {
+                                                ZStack {
+                                                    Circle()
+                                                        .fill(contactColors[contact] ?? .black)
+                                                        .frame(width: 35, height: 35)
+                                                    Text("\(generateInitial(givenName: contact.givenName))")
+                                                        .fontWeight(.bold)
+                                                        .foregroundColor(.white)
+                                                }.accessibilityHidden(true)
+                                                VStack(alignment: .leading, spacing: -2.0){
+                                                    Text("\(contact.givenName) \(contact.familyName)")
+                                                        .fontWeight(.medium)
+                                                    Text("\(contact.phoneNumber)")
+                                                        .font(.subheadline)
                                                 }
                                             }
                                         }
@@ -194,73 +280,117 @@ struct ContactsView: View {
                                             }
                                         }
                                     }
-                                } else {
-                                    HStack(spacing: 25.0) {
-                                        ZStack {
-                                            Circle()
-                                                .fill(contactColors[contact] ?? .black)
-                                                .frame(width: 35, height: 35)
-                                            Text("\(generateInitial(givenName: contact.givenName))")
-                                                .fontWeight(.bold)
-                                                .foregroundColor(.white)
-                                        }.accessibilityHidden(true)
-                                        VStack(alignment: .leading, spacing: -2.0){
-                                            Text("\(contact.givenName) \(contact.familyName)")
-                                                .fontWeight(.medium)
-                                            Text("\(contact.phoneNumber)")
-                                                .font(.subheadline)
-                                        }
+                                }
+                                .onAppear{
+                                    assignColors()
+                                    let phoneNumberWithoutSpaces = contact.phoneNumber.replacingOccurrences(of: " ", with: "")
+                                    
+                                    var formattedPhoneNumber = phoneNumberWithoutSpaces
+                                    if !phoneNumberWithoutSpaces.hasPrefix("+") {
+                                        formattedPhoneNumber = formatPhoneNumber(phoneNumberWithoutSpaces)
                                     }
-                                }
-                                
-                            }
-                            .onAppear{
-                                assignColors()
-                                let phoneNumberWithoutSpaces = contact.phoneNumber.replacingOccurrences(of: " ", with: "")
-                                
-                                var formattedPhoneNumber = phoneNumberWithoutSpaces
-                                if !phoneNumberWithoutSpaces.hasPrefix("+") {
-                                    formattedPhoneNumber = formatPhoneNumber(phoneNumberWithoutSpaces)
-                                }
-                                //                                vm.fetchToken(number: formattedPhoneNumber) { token in
-                                //                                    if let token = token {
-                                //                                        print("FCM Token: \(token)")
-                                //                                        self.tokens.append(token)
-                                //                                        UserDefaults.standard.set(self.tokens, forKey: "tokens")
-                                //                                        var existingTokens = UserDefaults.standard.stringArray(forKey: "tokens") ?? []
-                                //                                        if !existingTokens.contains(token) {
-                                //                                            existingTokens.append(token)
-                                //                                            UserDefaults.standard.set(existingTokens, forKey: "tokens")
-                                //                                            print("Token added: \(token)")
-                                //                                        } else {
-                                //                                            print("token già presente")
-                                //                                        }
-                                //                                    } else {
-                                //                                        print("FCM Token non trovato")
-                                //                                    }
-                                //                                }
-                                vm.fetchToken(number: formattedPhoneNumber) { token in
-                                    if let token = token {
-                                        print("FCM Token fetched: \(token)")
-                                        var existingTokens = UserDefaults.standard.stringArray(forKey: "tokens") ?? []
-                                        
-                                        if !existingTokens.contains(token) {
-                                            self.tokens.append(token)
-                                            existingTokens.append(token)
-                                            UserDefaults.standard.set(existingTokens, forKey: "tokens")
-                                            print("Token added: \(token)")
+                                    //                                vm.fetchToken(number: formattedPhoneNumber) { token in
+                                    //                                    if let token = token {
+                                    //                                        print("FCM Token: \(token)")
+                                    //                                        self.tokens.append(token)
+                                    //                                        UserDefaults.standard.set(self.tokens, forKey: "tokens")
+                                    //                                        var existingTokens = UserDefaults.standard.stringArray(forKey: "tokens") ?? []
+                                    //                                        if !existingTokens.contains(token) {
+                                    //                                            existingTokens.append(token)
+                                    //                                            UserDefaults.standard.set(existingTokens, forKey: "tokens")
+                                    //                                            print("Token added: \(token)")
+                                    //                                        } else {
+                                    //                                            print("token già presente")
+                                    //                                        }
+                                    //                                    } else {
+                                    //                                        print("FCM Token non trovato")
+                                    //                                    }
+                                    //                                }
+                                    vm.fetchToken(number: formattedPhoneNumber) { token in
+                                        if let token = token {
+                                            vm.updateFriendList(token: token, add: true)
+                                            print("FCM Token fetched: \(token)")
+                                            var existingTokens = UserDefaults.standard.stringArray(forKey: "tokens") ?? []
+                                            
+                                            if !existingTokens.contains(token) {
+                                                self.tokens.append(token)
+                                                existingTokens.append(token)
+                                                UserDefaults.standard.set(existingTokens, forKey: "tokens")
+                                                print("Token added: \(token)")
+                                            } else {
+                                                print("Token already exists: \(token)")
+                                            }
                                         } else {
-                                            print("Token already exists: \(token)")
+                                            print("FCM Token not found for number: \(formattedPhoneNumber)")
                                         }
-                                    } else {
-                                        print("FCM Token not found for number: \(formattedPhoneNumber)")
+                                    }
+                                    timeManager.syncTokens()
+                                }
+                                
+                            }.onDelete(perform: deleteContact)
+                        } else {
+                            ForEach(filteredContacts) { friend in
+                                if showUser{
+                                    if let index = friendNumbers.firstIndex(of: friend) ?? friendNumbers.firstIndex(of: formatPhoneNumber2(friend)) {
+                                        if index < latitudine.count && index < longitudine.count && index < nomeAmico.count && index < cognomeAmico.count {
+                                            
+                                            let lat = latitudine[index]
+                                            let lon = longitudine[index]
+                                            
+                                            if lat != 0 && lon != 0 {
+                                                ContactMap(
+                                                    latitudine: latitudine[index],
+                                                    longitudine: longitudine[index],
+                                                    nomeAmico: nomeAmico[index],
+                                                    cognomeAmico: cognomeAmico[index],
+                                                    nome: nomeAmico[index],
+                                                    cognome: cognomeAmico[index],
+                                                    numero: friendNumbers[index]
+                                                )
+                                            } else {
+                                                if let nameF = names[friend], let surnameF = surnames[friend] {
+                                                    HStack(spacing: 25.0) {
+                                                        ZStack {
+                                                            Circle()
+                                                                .fill(.black)
+                                                                .frame(width: 35, height: 35)
+                                                            Text("\(generateInitial(givenName: nameF))")
+                                                                .fontWeight(.bold)
+                                                                .foregroundColor(.white)
+                                                        }.accessibilityHidden(true)
+                                                        VStack(alignment: .leading, spacing: -2.0){
+                                                            Text("\(nameF) \(surnameF)")
+                                                                .fontWeight(.medium)
+                                                            Text(friend)
+                                                                .font(.subheadline)
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    if let nameF = names[friend], let surnameF = surnames[friend] {
+                                        HStack(spacing: 25.0) {
+                                            ZStack {
+                                                Circle()
+                                                    .fill(.black)
+                                                    .frame(width: 35, height: 35)
+                                                Text("\(generateInitial(givenName: nameF))")
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(.white)
+                                            }.accessibilityHidden(true)
+                                            VStack(alignment: .leading, spacing: -2.0){
+                                                Text("\(nameF) \(surnameF)")
+                                                    .fontWeight(.medium)
+                                                Text(friend)
+                                                    .font(.subheadline)
+                                            }
+                                        }
                                     }
                                 }
-                                timeManager.syncTokens()
                             }
-                            
-                        }.onDelete(perform: deleteContact)
-                        
+                        }
                     }
                     .navigationTitle("Contacts")
                     .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
@@ -316,16 +446,6 @@ struct ContactsView: View {
             loadContactsFromUserDefaults()
             assignColors()
             gottaFetchEmAll()
-//            fanculo()
-//            vm.fetchFriendNumber { fetchedFriendNumbers in
-//                if let fetchedFriendNumbers = fetchedFriendNumbers {
-//                    self.friendNumbers = fetchedFriendNumbers
-//                    print("Friend numbers fetched: \(fetchedFriendNumbers)")
-//                } else {
-//                    print("Failed to fetch friend numbers")
-//                }
-//            }
-            
         }
     }
     
@@ -355,6 +475,15 @@ struct ContactsView: View {
     }
     
     func removeContact(_ contact: SerializableContact) {
+        
+        let phoneNumberWithoutSpaces = contact.phoneNumber.replacingOccurrences(of: " ", with: "")
+        
+        var formattedPhoneNumber = phoneNumberWithoutSpaces
+        if !phoneNumberWithoutSpaces.hasPrefix("+") {
+            formattedPhoneNumber = formatPhoneNumber(phoneNumberWithoutSpaces)
+        }
+        print(formattedPhoneNumber)
+        
         if let index = selectedContacts.firstIndex(of: contact) {
             selectedContacts.remove(at: index)
             saveContactsToUserDefaults()
@@ -364,6 +493,7 @@ struct ContactsView: View {
                 print("Current tokens before removal: \(tokens)")
                 if index < tokens.count {
                     let tokenToRemove = tokens[index]
+                    vm.updateFriendList(token: tokenToRemove, add: false)
                     tokens.remove(at: index)
                     timeManager.deleteTokensFromWatch(tokensToDelete: [tokenToRemove])
                     UserDefaults.standard.set(tokens, forKey: "tokens")
@@ -525,6 +655,9 @@ struct ContactsView_Previews: PreviewProvider {
     }
 }
 
+extension String: Identifiable {
+    public var id: String { self }
+}
 
 
 /*
