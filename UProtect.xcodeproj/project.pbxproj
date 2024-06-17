@@ -869,7 +869,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = 7G2UC637L6;
+				DEVELOPMENT_TEAM = AWX4HJ7JT5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UProtect/Info.plist;
@@ -890,7 +890,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrearomano.Hestia;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yurigianoli.Hestia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -913,7 +913,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
-				DEVELOPMENT_TEAM = 7G2UC637L6;
+				DEVELOPMENT_TEAM = AWX4HJ7JT5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UProtect/Info.plist;
@@ -934,7 +934,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrearomano.Hestia;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yurigianoli.Hestia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -957,19 +957,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchProtect Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 7G2UC637L6;
+				DEVELOPMENT_TEAM = AWX4HJ7JT5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.andrearomano.Hestia;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.yurigianoli.Hestia;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrearomano.Hestia.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yurigianoli.Hestia.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -991,19 +991,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchProtect Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 7G2UC637L6;
+				DEVELOPMENT_TEAM = AWX4HJ7JT5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchProtect-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Hestia;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.andrearomano.Hestia;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.yurigianoli.Hestia;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.andrearomano.Hestia.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yurigianoli.Hestia.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1021,7 +1021,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7G2UC637L6;
+				DEVELOPMENT_TEAM = AWX4HJ7JT5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
@@ -1034,7 +1034,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.andrearomano.Hestia.Hestia-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yurigianoli.Hestia.Hestia-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1055,7 +1055,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7G2UC637L6;
+				DEVELOPMENT_TEAM = AWX4HJ7JT5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "UProtect-Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "UProtect-Widget";
@@ -1068,7 +1068,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.andrearomano.Hestia.Hestia-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yurigianoli.Hestia.Hestia-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

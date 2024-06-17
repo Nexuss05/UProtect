@@ -2888,6 +2888,7 @@
       }
     },
     "If you are feeling unsafe and don't want to notify your contacts immediately, simply hold the button to activate the timer. You have the option to modify the timer in the settings to your liking. \nIf you don't dismiss the alert when the time runs out, a notification will be sent." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -2898,6 +2899,7 @@
       }
     },
     "If you feel in danger after clicking the button, it is possible to notify your emergency contacts by including their phone numbers to seek assistance. If your contacts have installed the application, they will receive a push notification along with your shared location. Otherwise, they will receive an SMS. Until the button is activated, your background will be recorded." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -2917,6 +2919,20 @@
           }
         }
       }
+    },
+    "If you feel unsafe but not so much to notify your contacts, hold the Panic Button and start the customisable timer. If you don’t dismiss the alert on timer ending or if you don’t answer, a notification will be sent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ti senti a disagio ma non così tanto da avvisare subito i tuoi contatti, tieni premuto il Panic Button per avviare un timer personalizzabile. Se non rispondi all'avviso alla fine del timer o se non rispondi proprio, la notifica viene inviata."
+          }
+        }
+      }
+    },
+    "If you feel unsafe but not so much to notify your contacts, hold the Panic Button and start the customisable timer. If you don’t dismiss the alert on timer ending or if you don’t answer, a notification will be sent." : {
+
     },
     "If you feel unsafe, get off at a busy stop and wait for the next bus or train." : {
       "extractionState" : "manual",
@@ -3821,6 +3837,20 @@
           }
         }
       }
+    },
+    "Notify your emergency contacts and record your background by clicking the panic button. If they have the app, they will receive a push notification with your shared location. Otherwise they will receive an SMS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifica i tuoi contatti d'emergenza e registra l'audio in background cliccando il Panic Button. Se hanno l'app riceveranno una notifica con la tua posizione condivisa. Altrimenti riceveranno un SMS."
+          }
+        }
+      }
+    },
+    "Notify your emergency contacts and record your background by clicking the Panic Button. If they have the app, they will receive a push notification with your shared location. Otherwise they will receive an SMS." : {
+
     },
     "Observe and Note Details" : {
       "extractionState" : "manual",
@@ -4942,7 +4972,22 @@
         }
       }
     },
+    "Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grazie alla mappa puoi facilmente vedere i negozi aperti più vicini a te. Se hai bisogno di riparo, puoi chiamare il negozio o camminarci grazie alla mappa."
+          }
+        }
+      }
+    },
+    "Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map." : {
+
+    },
     "Thanks to the map you can easily have a look at shops and stores open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -5001,6 +5046,20 @@
           }
         }
       }
+    },
+    "This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa sezione ti offre una potente risorsa di conoscenza, suggerimenti e consigli per mitigare e gestire al meglio situazioni di pericolo."
+          }
+        }
+      }
+    },
+    "This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations." : {
+
     },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerous situations or understand how to better manage them." : {
       "localizations" : {
