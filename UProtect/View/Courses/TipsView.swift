@@ -111,10 +111,10 @@ struct TipsView: View {
     var body: some View {
         ZStack {
             if timerManager.isActivated{
-                CustomColor.orange
+                CustomColor.redBackground
                     .ignoresSafeArea()
             } else {
-                CustomColor.redBackground
+                CustomColor.orange
                     .ignoresSafeArea()
             }
             

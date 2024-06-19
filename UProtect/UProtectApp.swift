@@ -52,7 +52,6 @@ struct UProtectApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
     var body: some Scene {
         WindowGroup {
             ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
@@ -70,19 +69,22 @@ struct UProtectApp: App {
                 print("App became active, resetting badge count.")
                 deleteOldRecordings()
                 vm.resetBadge()
-                UIApplication.shared.applicationIconBadgeNumber = 0
+//                UIApplication.shared.applicationIconBadgeNumber = 0
+                UNUserNotificationCenter.current().setBadgeCount(0)
             }
             if newScenePhase == .inactive {
                 vm.fetchBadge(completion: { badge in
                     DispatchQueue.main.async {
-                        UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
+                        UNUserNotificationCenter.current().setBadgeCount(badge ?? 1)
+//                        UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
                     }
                 })
             }
             if newScenePhase == .background {
                 vm.fetchBadge(completion: { badge in
                     DispatchQueue.main.async {
-                        UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
+                        UNUserNotificationCenter.current().setBadgeCount(badge ?? 1)
+//                        UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
                     }
                 })
             }
@@ -107,7 +109,8 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         
         vm.fetchBadge(completion: { badge in
             DispatchQueue.main.async {
-                UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
+                UNUserNotificationCenter.current().setBadgeCount(badge ?? 1)
+//                UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
             }
         })
 //        if let savedBadgeCount = UserDefaults.standard.object(forKey: "badgeCount") as? Int {
@@ -175,7 +178,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        vm.resetBadge()
+        UNUserNotificationCenter.current().setBadgeCount(0)
+//        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
