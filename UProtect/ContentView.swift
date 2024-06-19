@@ -34,7 +34,7 @@ struct ContentView: View {
                 TabView(selection: $selectedTab) {
                     TipsView()
                         .tabItem {
-                            Label("Courses", systemImage: "books.vertical.fill")
+                            Label("Tips", systemImage: "lightbulb.fill")
                         }
                         .tag(0)
                     

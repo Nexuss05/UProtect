@@ -427,7 +427,8 @@ struct ContactsView: View {
                                     self.isShowingContactsPicker.toggle()
                                 } else {
                                     self.showAlert = true
-                                    self.alertMessage = "Puoi selezionare solo fino a 2 contatti."
+                                    self.alertMessage = NSLocalizedString("You can select up to 2 contacts only.", comment: "")
+
                                 }
                             }) {
                                 Image(systemName: "plus")

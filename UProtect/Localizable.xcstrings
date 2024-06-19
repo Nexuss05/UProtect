@@ -414,6 +414,52 @@
         }
       }
     },
+    "(message)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(message)"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(message)"
+          }
+        }
+      }
+    },
+    "(name) (surname) è in pericolo!" : {
+
+    },
+    "(name) (surname) is in danger!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "è in pericolo!"
+          }
+        }
+      }
+    },
+    "(String(describing: name)) (String(describing: surname)) is in danger!" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(String(describing: name)) (String(describing: surname)) is in danger!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "(String(describing: name)) (String(describing: surname)) è in pericolo!"
+          }
+        }
+      }
+    },
     "**1. Avoid Overdrinking**: Know your alcohol limits to prevent risks." : {
       "localizations" : {
         "it" : {
@@ -1163,6 +1209,51 @@
         }
       }
     },
+    "ALERT_BODY_KEY" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\\(message)"
+          }
+        }
+      }
+    },
+    "ALERT_SUBTITLE_KEY" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the app to check on them."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri l'app per controllare."
+          }
+        }
+      }
+    },
+    "ALERT_TITLE_KEY" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ %@ is in danger!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ %@ è in pericolo!"
+          }
+        }
+      }
+    },
     "Already have an account?" : {
       "localizations" : {
         "it" : {
@@ -1356,6 +1447,16 @@
         }
       }
     },
+    "Avoid dark parking spots, which provide cover for predators." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita i parcheggi bui, che forniscono copertura per i predatori."
+          }
+        }
+      }
+    },
     "Avoid dark parking spots, which provide cover for predators. Always park in well-lit, busy areas." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1363,6 +1464,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Evita i parcheggi bui, che forniscono copertura per i predatori. Parcheggia sempre in zone ben illuminate e trafficate."
+          }
+        }
+      }
+    },
+    "Avoid hairstyles that can be easily grabbed, like ponytails." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita le acconciature che possono essere facilmente afferrate, come le code di cavallo."
           }
         }
       }
@@ -1472,6 +1583,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Evita Aree e Persone Sospette"
+          }
+        }
+      }
+    },
+    "Avoid talking on the phone or wearing earphones when walking alone." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita di parlare al telefono o di indossare auricolari quando cammini da solo."
           }
         }
       }
@@ -1740,6 +1861,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cambia durata timer"
+          }
+        }
+      }
+    },
+    "Children Safety" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza per i Bambini"
           }
         }
       }
@@ -2688,6 +2819,17 @@
         }
       }
     },
+    "He is in danger!" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sta per essere fottuto!"
+          }
+        }
+      }
+    },
     "Healthy Lifestyle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2865,6 +3007,16 @@
         }
       }
     },
+    "If intoxicated, ensure a friend accompanies you home." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se sei intossicato, assicurati che un amico ti accompagni a casa."
+          }
+        }
+      }
+    },
     "If intoxicated, ensure a friend accompanies you home. Intoxicated individuals are more vulnerable targets." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2932,7 +3084,14 @@
       }
     },
     "If you feel unsafe but not so much to notify your contacts, hold the Panic Button and start the customisable timer. If you don’t dismiss the alert on timer ending or if you don’t answer, a notification will be sent." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ti senti a disagio ma non così tanto da avvisare i tuoi contatti, tieni premuto il Panic Button e avvia il timer personalizzabile. Se non si risponde all'avviso alla fine del timer, verrà inviata una notifica."
+          }
+        }
+      }
     },
     "If you feel unsafe, get off at a busy stop and wait for the next bus or train." : {
       "extractionState" : "manual",
@@ -3543,6 +3702,17 @@
         }
       }
     },
+    "Message" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Messaggio"
+          }
+        }
+      }
+    },
     "Messaggio" : {
       "localizations" : {
         "it" : {
@@ -3715,6 +3885,16 @@
         }
       }
     },
+    "Night Out" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Di Notte"
+          }
+        }
+      }
+    },
     "NO" : {
       "localizations" : {
         "it" : {
@@ -3850,7 +4030,14 @@
       }
     },
     "Notify your emergency contacts and record your background by clicking the Panic Button. If they have the app, they will receive a push notification with your shared location. Otherwise they will receive an SMS." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifica i tuoi contatti di emergenza e registra il tuo background facendo clic sul Panic Button. Se hanno l'app, riceveranno una notifica con la tua posizione condivisa. Altrimenti riceveranno un SMS."
+          }
+        }
+      }
     },
     "Observe and Note Details" : {
       "extractionState" : "manual",
@@ -3909,6 +4096,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Onboarding"
+          }
+        }
+      }
+    },
+    "Open the app to check on them." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the app to check on them."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri l'app per controllare."
           }
         }
       }
@@ -4516,6 +4719,16 @@
         }
       }
     },
+    "Self Defense" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difesa Personale"
+          }
+        }
+      }
+    },
     "Self-defense classes boost confidence and situational awareness, preparing you mentally and physically for stressful situations." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4666,7 +4879,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SignIn"
+            "value" : "Accedi"
           }
         }
       }
@@ -4984,7 +5197,14 @@
       }
     },
     "Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grazie alla mappa puoi facilmente dare un'occhiata a negozi e locali aperti vicino a te. Se hai bisogno di cercare rifugio, puoi chiamare il posto o camminare lì grazie alla mappa."
+          }
+        }
+      }
     },
     "Thanks to the map you can easily have a look at shops and stores open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
       "extractionState" : "stale",
@@ -5059,7 +5279,14 @@
       }
     },
     "This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations." : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa sezione offre un potente archivio di conoscenze, con suggerimenti e trucchi per mitigare e gestire meglio le situazioni pericolose."
+          }
+        }
+      }
     },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerous situations or understand how to better manage them." : {
       "localizations" : {
@@ -5102,12 +5329,22 @@
         }
       }
     },
+    "Tips" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consigli"
+          }
+        }
+      }
+    },
     "Tips & Tricks" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suggerimenti"
+            "value" : "Consigli"
           }
         }
       }
@@ -5124,7 +5361,14 @@
       }
     },
     "To see more cards, wait until tomorrow" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per vedere altre carte, aspetta fino a domani."
+          }
+        }
+      }
     },
     "to SOS mode" : {
       "localizations" : {
@@ -5346,6 +5590,16 @@
         }
       }
     },
+    "Walk with your head high, maintain good posture, and appear purposeful." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina con la testa alta, mantieni una buona postura e appai in modo mirato."
+          }
+        }
+      }
+    },
     "Walk with your head high, maintain good posture, and appear purposeful. Predators often target those who seem timid or lost." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5364,6 +5618,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Camminare da soli"
+          }
+        }
+      }
+    },
+    "Walking Alone" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camminando da Soli"
           }
         }
       }
@@ -5574,6 +5838,17 @@
         }
       }
     },
+    "You can select up to 2 contacts only." : {
+      "comment" : "Alert message shown when a user tries to select more than 2 contacts",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi selezionare solo fino a 2 contatti."
+          }
+        }
+      }
+    },
     "You don't have an account!" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -5607,10 +5882,24 @@
       }
     },
     "Your contacts" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tuoi contatti"
+          }
+        }
+      }
     },
     "Your friends" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tuoi amici"
+          }
+        }
+      }
     },
     "Your support helps keep our community safe! 🌟" : {
       "extractionState" : "stale",

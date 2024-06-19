@@ -163,20 +163,31 @@ struct TimerView: View {
             newBadgeCount = badge ?? 1
         }
         
-        let content = """
-        {
-            "aps": {
-                "alert": {
-                    "title": "\(String(describing: name)) \(String(describing: surname)) is in danger!",
-                    "subtitle": "Open the app to check on them.",
-                    "body": "\(message)"
-                },
-                "badge": \(newBadgeCount),
-                "sound": "default"
-            },
-            "topic": "com.andrearomano.Hestia"
-        }
-        """
+        var localizedTitlone = ""
+                if Locale.current.language.languageCode?.identifier == "it"{
+                    localizedTitlone = NSLocalizedString("\(name) \(surname) è in pericolo!", comment: "")
+                    
+                } else {
+                    localizedTitlone = NSLocalizedString("\(name) \(surname) is in danger!", comment: "")
+                    
+                }
+                let localizedSubtitle = NSLocalizedString("Open the app to check on them.", comment: "")
+                let localizedMessage = NSLocalizedString("\(message)", comment: "")
+               
+                let content = """
+                {
+                    "aps": {
+                        "alert": {
+                            "title-loc-key": "\(localizedTitlone)",
+                            "subtitle-loc-key": "\(localizedSubtitle)",
+                            "message": "\(localizedMessage)"
+                        },
+                        "badge": \(newBadgeCount),
+                        "sound": "default"
+                    },
+                    "topic": "com.andrearomano.Hestia"
+                }
+                """
         
         guard let data = content.data(using: .utf8) else {
             print("Errore nella creazione dei dati del payload della notifica")
