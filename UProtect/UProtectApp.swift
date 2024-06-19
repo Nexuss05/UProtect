@@ -30,7 +30,6 @@ struct UProtectApp: App {
         TimeManager.shared.syncTokens()
         TimeManager.shared.syncName()
         TimeManager.shared.syncSurname()
-        deleteOldRecordings()
     }
     
     private func deleteOldRecordings() {
@@ -60,15 +59,16 @@ struct UProtectApp: App {
                 .onAppear {
                     vm.fetchUserPosition()
                     vm.fetchFriend()
+                    deleteOldRecordings()
                 }
                 .preferredColorScheme(theme == "" ? .none : theme == "dark" ? .dark : .light)
-        }.modelContainer(sharedModelContainer)
+        }
+        .modelContainer(sharedModelContainer)
         .environment(locationManager)
         .onChange(of: scene) { newScenePhase in
             if newScenePhase == .active {
                 print("App became active, resetting badge count.")
                 deleteOldRecordings()
-//                UIApplication.shared.applicationIconBadgeNumber = 0
                 vm.resetBadge()
             }
         }
@@ -91,7 +91,9 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         application.registerForRemoteNotifications()
         
         vm.fetchBadge(completion: { badge in
-            UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
+            DispatchQueue.main.async {
+                UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
+            }
         })
 //        if let savedBadgeCount = UserDefaults.standard.object(forKey: "badgeCount") as? Int {
 //            
