@@ -175,6 +175,30 @@ class CloudViewModel: ObservableObject{
         }
     }
     
+    func fetchFriendBadge(token: String, completion: @escaping (Int?) -> Void) {
+        let predicate = NSPredicate(format: "token = %@", token)
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let database = CKContainer.default().publicCloudDatabase
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print("Error querying: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let record = records?.first else {
+                print("No record found with the provided token")
+                completion(nil)
+                return
+            }
+            
+            if let currentBadge = record["badge"] as? Int {
+                completion(currentBadge)
+            }
+        }
+    }
+    
     func resetBadge() {
         guard let fcmToken = fcmToken else {
             print("FCM Token is nil")

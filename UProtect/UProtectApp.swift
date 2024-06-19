@@ -72,6 +72,20 @@ struct UProtectApp: App {
                 vm.resetBadge()
                 UIApplication.shared.applicationIconBadgeNumber = 0
             }
+            if newScenePhase == .inactive {
+                vm.fetchBadge(completion: { badge in
+                    DispatchQueue.main.async {
+                        UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
+                    }
+                })
+            }
+            if newScenePhase == .background {
+                vm.fetchBadge(completion: { badge in
+                    DispatchQueue.main.async {
+                        UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
+                    }
+                })
+            }
         }
     }
 }

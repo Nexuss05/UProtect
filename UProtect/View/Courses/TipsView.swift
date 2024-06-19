@@ -8,6 +8,7 @@ import SwiftUI
 
 struct TipsView: View {
     
+    @ObservedObject var timerManager: TimerManager
     @State var scrolled: Int = 0
     @State var tips: [Tip] = [
             Tip(id: 0, categoria: NSLocalizedString("Self Defense", comment: ""), titolo: NSLocalizedString("Appear Confident", comment: ""), corpo: NSLocalizedString("Walk with your head high, maintain good posture, and appear purposeful.", comment: "")),
@@ -109,8 +110,13 @@ struct TipsView: View {
     
     var body: some View {
         ZStack {
-            CustomColor.orange
-                .ignoresSafeArea()
+            if timerManager.isActivated{
+                CustomColor.orange
+                    .ignoresSafeArea()
+            } else {
+                CustomColor.redBackground
+                    .ignoresSafeArea()
+            }
             
             ZStack {
                 ForEach(tips[first..<last].reversed()) { tip in
@@ -178,6 +184,8 @@ struct TipsView: View {
     }
 }
 
-#Preview {
-    TipsView()
+struct ContentView_Previews838: PreviewProvider {
+    static var previews: some View {
+        TipsView(timerManager: TimerManager())
+    }
 }

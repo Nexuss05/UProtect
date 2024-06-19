@@ -32,7 +32,7 @@ struct ContentView: View {
         GeometryReader { geometry in
             VStack {
                 TabView(selection: $selectedTab) {
-                    TipsView()
+                    TipsView(timerManager: timerManager)
                         .tabItem {
                             Label("Tips", systemImage: "brain.head.profile.fill")
                         }

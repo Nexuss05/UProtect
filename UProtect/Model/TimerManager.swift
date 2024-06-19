@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UserNotifications
+import ActivityKit
 
 class TimerManager: ObservableObject {
     @Published var showAlert: Bool = false
@@ -28,6 +29,7 @@ class TimerManager: ObservableObject {
     
     @Published var leftTime: Date = Date()
     
+//    @Published var timerActivity: Activity<TimerActivityAttributes>?
     init() {
         //        updateCountFromLastCounter()
     }
@@ -37,6 +39,7 @@ class TimerManager: ObservableObject {
     }
     
     func startTimer() {
+//        startTimerActivity()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
             self.isPressed = false
             self.start = true
@@ -60,10 +63,12 @@ class TimerManager: ObservableObject {
                     self.circleOpacity = true
                 }
             }
+//            endTimerActivity()
             return
         }
         count -= 1
         print("\(count)")
+//        updateTimerActivity()
     }
     
     private func notify(){
@@ -87,6 +92,7 @@ class TimerManager: ObservableObject {
         timer = nil
         start = false
         updateCountFromLastCounter()
+//        endTimerActivity()
     }
     
     func restartTimer() {
@@ -112,7 +118,6 @@ class TimerManager: ObservableObject {
         self.to = CGFloat(self.count) / CGFloat(maxTime)
 //        print("progess updated")
     }
-    
     
     func CircleAnimation() {
         circleOpacity = true
