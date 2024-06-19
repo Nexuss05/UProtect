@@ -76,6 +76,7 @@ struct RecordingsList: View {
         }
         .ignoresSafeArea()
         .onAppear {
+            isUnlocked = false
             audioRecorder.audioPlayer = audioPlayer
             audioRecorder.fetchRecording()
         }
