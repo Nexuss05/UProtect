@@ -158,7 +158,7 @@ struct TimerView: View {
         let message = ""
         let authenticationToken = tokenAPNS
         
-        vm.fetchBadge { badge in
+        vm.fetchFriendBadge(token: token) { badge in
             let newBadgeCount = (badge ?? 1) + 1
             
             var localizedTitlone = ""
