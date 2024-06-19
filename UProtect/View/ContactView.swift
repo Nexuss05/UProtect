@@ -25,10 +25,6 @@ struct ContactsView: View {
     
     @State var isInDanger: Bool = false
     @State var showUser: Bool = false
-    //    @State var latitudine: Double = 0
-    //    @State var longitudine: Double = 0
-    //    @State var nomeAmico: String = ""
-    //    @State var cognomeAmico: String = ""
     @State var numeroAmico: String = ""
     
     @State var searchText = ""
@@ -50,11 +46,6 @@ struct ContactsView: View {
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     @State private var contactColors: [SerializableContact: Color] = [:]
     @ObservedObject var timeManager = TimeManager.shared
-    
-//    func generateInitial(givenName: String) -> String {
-//        let givenInitial = givenName.first ?? Character("")
-//        return "\(givenInitial)"
-//    }
     
     func generateInitial(givenName: String) -> String {
         guard let givenInitial = givenName.first else {
@@ -139,46 +130,6 @@ struct ContactsView: View {
             gottaFetchEmAll()
         }
     }
-    
-    
-    //    func fanculo(){
-    //        DispatchQueue.main.async {
-    //            if let lat = UserDefaults.standard.value(forKey: "latitudine") as? Double {
-    //                latitudine = lat
-    //                print("Updated lat: \(latitudine)")
-    //            } else {
-    //                print("Nessun valore salvato per latitudine.")
-    //            }
-    //            if let lon = UserDefaults.standard.value(forKey: "longitudine") as? Double {
-    //                longitudine = lon
-    //                print("Updated lon: \(longitudine)")
-    //            } else {
-    //                print("Nessun valore salvato per longitudine.")
-    //            }
-    //            if let na = UserDefaults.standard.string(forKey: "nomeAmico") {
-    //                nomeAmico = na
-    //            } else {
-    //                print("Nessun valore salvato per nomeAmico.")
-    //            }
-    //            if let ca = UserDefaults.standard.string(forKey: "cognomeAmico") {
-    //                cognomeAmico = ca
-    //            } else {
-    //                print("Nessun valore salvato per cognomeAmico.")
-    //            }
-    //
-    //            if latitudine == 0 && longitudine == 0 {
-    //                showUser = false
-    //                print("Mostra utente \(showUser)")
-    //            } else {
-    //                showUser = true
-    //                print("Mostra utente \(showUser)")
-    //            }
-    //
-    //            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-    //                fanculo()
-    //            }
-    //        }
-    //    }
     
     var body: some View {
         NavigationView{
@@ -289,23 +240,6 @@ struct ContactsView: View {
                                     if !phoneNumberWithoutSpaces.hasPrefix("+") {
                                         formattedPhoneNumber = formatPhoneNumber(phoneNumberWithoutSpaces)
                                     }
-                                    //                                vm.fetchToken(number: formattedPhoneNumber) { token in
-                                    //                                    if let token = token {
-                                    //                                        print("FCM Token: \(token)")
-                                    //                                        self.tokens.append(token)
-                                    //                                        UserDefaults.standard.set(self.tokens, forKey: "tokens")
-                                    //                                        var existingTokens = UserDefaults.standard.stringArray(forKey: "tokens") ?? []
-                                    //                                        if !existingTokens.contains(token) {
-                                    //                                            existingTokens.append(token)
-                                    //                                            UserDefaults.standard.set(existingTokens, forKey: "tokens")
-                                    //                                            print("Token added: \(token)")
-                                    //                                        } else {
-                                    //                                            print("token già presente")
-                                    //                                        }
-                                    //                                    } else {
-                                    //                                        print("FCM Token non trovato")
-                                    //                                    }
-                                    //                                }
                                     vm.fetchToken(number: formattedPhoneNumber) { token in
                                         if let token = token {
                                             vm.updateFriendList(token: token, add: true)
@@ -395,32 +329,6 @@ struct ContactsView: View {
                     .navigationTitle("Contacts")
                     .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
                     .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            //                            Button("Invia messaggi") {
-                            //                                guard !selectedContacts.isEmpty else {
-                            //                                    return // Non fare nulla se non ci sono contatti selezionati
-                            //                                }
-                            //                                let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
-                            //                                vonage.sendSMS(to: phoneNumbers, from: "UProtect", text: "SONO IN PERICOLO, PISCT SOTT") { result in
-                            //                                    switch result {
-                            //                                    case .success:
-                            //                                        self.showAlert = true
-                            //                                        self.alertMessage = "SMS inviato con successo!"
-                            //                                        print("SMS inviato con successo")
-                            //                                        // Puoi aggiungere qui un'azione in caso di successo
-                            //                                    case .failure(let error):
-                            //                                        self.showAlert = true
-                            //                                        self.alertMessage = "Errore durante l'invio dell'SMS: \(error.localizedDescription)"
-                            //                                        print("Errore durante l'invio dell'SMS: \(error)")
-                            //                                        // Puoi gestire qui gli errori durante l'invio dell'SMS
-                            //                                    }
-                            //                                }
-                            //                            }
-                        }
-                        //                        ToolbarItem(placement: .navigationBarLeading){
-                        //                                Text("**Contacts**")
-                        //                                    .font(.title2)
-                        //                        }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
                                 if self.selectedContacts.count < 2 {

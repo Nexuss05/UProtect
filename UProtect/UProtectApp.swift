@@ -70,6 +70,7 @@ struct UProtectApp: App {
                 print("App became active, resetting badge count.")
                 deleteOldRecordings()
                 vm.resetBadge()
+                UIApplication.shared.applicationIconBadgeNumber = 0
             }
         }
     }
@@ -160,8 +161,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        print("AppDelegate: applicationDidBecomeActive")
-        UserDefaults.standard.set(0, forKey: "badgeCount")
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
