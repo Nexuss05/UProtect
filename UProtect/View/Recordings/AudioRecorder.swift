@@ -17,6 +17,7 @@ struct Recording {
 
 class AudioRecorder: NSObject, ObservableObject {
     
+    static let shared = AudioRecorder()
     var audioPlayer: AudioPlayer?
     
     override init() {
@@ -67,7 +68,7 @@ class AudioRecorder: NSObject, ObservableObject {
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.record()
-            recording = true
+            self.recording = true
         } catch {
             print("Could not start recording")
         }
@@ -75,8 +76,8 @@ class AudioRecorder: NSObject, ObservableObject {
     
     func stopRecording() {
         audioRecorder.stop()
-        recording = false
-        fetchRecording()
+        self.recording = false
+        self.fetchRecording()
         print("Stop recording")
     }
     

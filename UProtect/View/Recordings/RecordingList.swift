@@ -77,6 +77,7 @@ struct RecordingsList: View {
         .ignoresSafeArea()
         .onAppear {
             audioRecorder.audioPlayer = audioPlayer
+            audioRecorder.fetchRecording()
         }
     }
     

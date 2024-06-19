@@ -51,7 +51,7 @@ struct ContentView: View {
                             }
                             .tag(1)
                     }
-                    TimerView(timerManager: timerManager, audioRecorder: audioRecorder, selectedContacts: self.$selectedContacts)
+                    TimerView(timerManager: timerManager, selectedContacts: self.$selectedContacts)
                         .tabItem {
                             Label("Status", systemImage: "exclamationmark.triangle.fill")
                         }

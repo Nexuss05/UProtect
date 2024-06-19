@@ -112,6 +112,101 @@ class CloudViewModel: ObservableObject{
         }
     }
     
+    func updateBadge(token: String) {
+        let predicate = NSPredicate(format: "token = %@", token)
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let database = CKContainer.default().publicCloudDatabase
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print("Error querying: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let record = records?.first else {
+                print("No record found with the provided token.")
+                return
+            }
+            
+            if let currentBadge = record["badge"] as? Int {
+                let newBadgeValue = currentBadge + 1
+                record["badge"] = newBadgeValue
+            } else {
+                record["badge"] = 1
+            }
+            
+            database.save(record) { (savedRecord, saveError) in
+                if let saveError = saveError {
+                    print("Error saving record: \(saveError.localizedDescription)")
+                } else {
+                    print("'badge' updated")
+                }
+            }
+        }
+    }
+    
+    func fetchBadge(completion: @escaping (Int?) -> Void) {
+        guard let fcmToken = fcmToken else {
+            print("FCM Token is nil")
+            completion(nil)
+            return
+        }
+        
+        let predicate = NSPredicate(format: "token = %@", fcmToken)
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let database = CKContainer.default().publicCloudDatabase
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print("Error querying: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let record = records?.first else {
+                print("No record found with the provided token")
+                completion(nil)
+                return
+            }
+            
+            if let currentBadge = record["badge"] as? Int {
+                completion(currentBadge)
+            }
+        }
+    }
+    
+    func resetBadge() {
+        guard let fcmToken = fcmToken else {
+            print("FCM Token is nil")
+            return
+        }
+        
+        let predicate = NSPredicate(format: "token = %@", fcmToken)
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let database = CKContainer.default().publicCloudDatabase
+        
+        database.perform(query, inZoneWith: nil) { (records, error) in
+            if let error = error {
+                print("Error querying: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let record = records?.first else {
+                print("No record found with the provided token")
+                return
+            }
+            record["badge"] = 0
+            
+            database.save(record) { (savedRecord, saveError) in
+                if let saveError = saveError {
+                    print("Error saving record: \(saveError.localizedDescription)")
+                } else {
+                    print("'badge' updated")
+                }
+            }
+        }
+    }
+
     func addButtonPressed() {
         let numero = UserDefaults.standard.string(forKey: "numeroUtente")!
         let nome = UserDefaults.standard.string(forKey: "nomeUtente")!
@@ -236,29 +331,29 @@ class CloudViewModel: ObservableObject{
         queryOperation.resultsLimit = 1
         
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-                switch returnedResult {
-                case .success(let record):
-                    DispatchQueue.main.async {
-                        if let nome = record["nomeAmico"] as? String {
-                            self.nomeAmico = nome
-                            print("nomeAmico found: \(self.nomeAmico)")
-                            UserDefaults.standard.set(self.nomeAmico, forKey: "nomeAmico")
-                        } else {
-                            print("nomeAmico not found")
-                        }
-                        if let cognome = record["cognomeAmico"] as? String {
-                            self.cognomeAmico = cognome
-                            print("cognomeAmico found: \(self.cognomeAmico)")
-                            UserDefaults.standard.set(self.cognomeAmico, forKey: "cognomeAmico")
-                        } else {
-                            print("cognomeAmico not found")
-                        }
+            switch returnedResult {
+            case .success(let record):
+                DispatchQueue.main.async {
+                    if let nome = record["nomeAmico"] as? String {
+                        self.nomeAmico = nome
+                        print("nomeAmico found: \(self.nomeAmico)")
+                        UserDefaults.standard.set(self.nomeAmico, forKey: "nomeAmico")
+                    } else {
+                        print("nomeAmico not found")
                     }
-                case .failure(let error):
-                    print("Error: \(error)")
+                    if let cognome = record["cognomeAmico"] as? String {
+                        self.cognomeAmico = cognome
+                        print("cognomeAmico found: \(self.cognomeAmico)")
+                        UserDefaults.standard.set(self.cognomeAmico, forKey: "cognomeAmico")
+                    } else {
+                        print("cognomeAmico not found")
+                    }
                 }
+            case .failure(let error):
+                print("Error: \(error)")
             }
-            addOperation(operation: queryOperation)
+        }
+        addOperation(operation: queryOperation)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             self.fetchFriend()
@@ -267,9 +362,9 @@ class CloudViewModel: ObservableObject{
     
     func fetchUserInfo() {
         guard let fcmToken = fcmToken else {
-                print("FCM Token is nil")
-                return
-            }
+            print("FCM Token is nil")
+            return
+        }
         let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken])
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
@@ -376,45 +471,45 @@ class CloudViewModel: ObservableObject{
         }
         addOperation(operation: queryOperation)
     }
-
-//    func insertName(token: String) {
-//        let predicate = NSPredicate(format: "token = %@", token)
-//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-//        let database = CKContainer.default().publicCloudDatabase
-//
-//        database.perform(query, inZoneWith: nil) { results, error in
-//            if let error = error {
-//                print("Error performing query: \(error)")
-//                return
-//            }
-//
-//            guard let record = results?.first else {
-//                print("No record found for token: \(token)")
-//                return
-//            }
-//
-//            let numeroAmico = UserDefaults.standard.string(forKey: "userNumber") ?? ""
-//            var nameList = record["nameList"] as? [String] ?? []
-//
-//            if let emptyIndex = nameList.firstIndex(where: { $0.isEmpty }) {
-//                nameList[emptyIndex] = numeroAmico
-//            } else {
-//                nameList.append(numeroAmico)
-//            }
-//
-//            record["nameList"] = nameList
-//
-//            database.save(record) { savedRecord, saveError in
-//                if let saveError = saveError {
-//                    print("Error saving record: \(saveError)")
-//                } else {
-//                    print("Record saved successfully.")
-//                }
-//            }
-//        }
-//    }
-
-
+    
+    //    func insertName(token: String) {
+    //        let predicate = NSPredicate(format: "token = %@", token)
+    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+    //        let database = CKContainer.default().publicCloudDatabase
+    //
+    //        database.perform(query, inZoneWith: nil) { results, error in
+    //            if let error = error {
+    //                print("Error performing query: \(error)")
+    //                return
+    //            }
+    //
+    //            guard let record = results?.first else {
+    //                print("No record found for token: \(token)")
+    //                return
+    //            }
+    //
+    //            let numeroAmico = UserDefaults.standard.string(forKey: "userNumber") ?? ""
+    //            var nameList = record["nameList"] as? [String] ?? []
+    //
+    //            if let emptyIndex = nameList.firstIndex(where: { $0.isEmpty }) {
+    //                nameList[emptyIndex] = numeroAmico
+    //            } else {
+    //                nameList.append(numeroAmico)
+    //            }
+    //
+    //            record["nameList"] = nameList
+    //
+    //            database.save(record) { savedRecord, saveError in
+    //                if let saveError = saveError {
+    //                    print("Error saving record: \(saveError)")
+    //                } else {
+    //                    print("Record saved successfully.")
+    //                }
+    //            }
+    //        }
+    //    }
+    
+    
     func insertName(token: String) {
         let predicate = NSPredicate(format: "token = %@", token)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
@@ -462,7 +557,7 @@ class CloudViewModel: ObservableObject{
             }
         }
     }
-
+    
     
     func sendPosition(token: String, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String){
         let predicate = NSPredicate(format: "token = %@", argumentArray: [token])
@@ -499,75 +594,157 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-//    func sendPositionAndInsertName(token: String, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String) {
-//        let predicate = NSPredicate(format: "token = %@", token)
-//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-//        let database = CKContainer.default().publicCloudDatabase
-//
-//        database.perform(query, inZoneWith: nil) { results, error in
-//            if let error = error {
-//                print("Error querying record: \(error.localizedDescription)")
-//                return
-//            }
-//
-//            guard let record = results?.first else {
-//                print("No record found with the given token")
-//                return
-//            }
-//
-//            let numeroAmico = UserDefaults.standard.string(forKey: "userNumber") ?? ""
-//            self.updateRecord(record: record, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database)
-//        }
-//    }
-//
-//    func updateRecord(record: CKRecord, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String, numeroAmico: String, in database: CKDatabase) {
-//        var nameList = record["nameList"] as? [String] ?? []
-//
-//        // Recupera l'indice salvato da UserDefaults
-//        let savedIndex = UserDefaults.standard.integer(forKey: "savedIndex")
-//
-//        if savedIndex < nameList.count && nameList[savedIndex] == numeroAmico {
-//            // Il numero è già aggiornato all'indice salvato, non fare nulla
-//            print("Number already updated at index \(savedIndex)")
-//        } else if savedIndex < nameList.count && nameList[savedIndex].isEmpty {
-//            nameList[savedIndex] = numeroAmico
-//        } else {
-//            if let emptyIndex = nameList.firstIndex(where: { $0.isEmpty }) {
-//                nameList[emptyIndex] = numeroAmico
-//                // Salva l'indice dell'elemento aggiornato
-//                UserDefaults.standard.set(emptyIndex, forKey: "savedIndex")
-//            } else {
-//                nameList.append(numeroAmico)
-//                // Salva l'indice dell'elemento aggiunto
-//                UserDefaults.standard.set(nameList.count - 1, forKey: "savedIndex")
-//            }
-//        }
-//
-//        record["nameList"] = nameList
-//        record["latitude"] = latitude
-//        record["longitude"] = longitude
-//        record["nomeAmico"] = nomeAmico
-//        record["cognomeAmico"] = cognomeAmico
-//        record["numeroAmico"] = numeroAmico
-//
-//        database.save(record) { savedRecord, saveError in
-//            if let saveError = saveError {
-//                if let ckError = saveError as? CKError, ckError.code == .serverRecordChanged {
-//                    // Risolvere il conflitto
-//                    if let serverRecord = ckError.serverRecord {
-//                        print("Server record changed, retrying with server record...")
-//                        self.updateRecord(record: serverRecord, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database)
-//                    }
-//                } else {
-//                    print("Error saving record: \(saveError.localizedDescription)")
-//                }
-//            } else {
-//                print("Record updated successfully")
-//            }
-//        }
-//    }
+    //    func sendPositionAndInsertName(token: String, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String) {
+    //        let predicate = NSPredicate(format: "token = %@", token)
+    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+    //        let database = CKContainer.default().publicCloudDatabase
+    //
+    //        database.perform(query, inZoneWith: nil) { results, error in
+    //            if let error = error {
+    //                print("Error querying record: \(error.localizedDescription)")
+    //                return
+    //            }
+    //
+    //            guard let record = results?.first else {
+    //                print("No record found with the given token")
+    //                return
+    //            }
+    //
+    //            let numeroAmico = UserDefaults.standard.string(forKey: "userNumber") ?? ""
+    //            self.updateRecord(record: record, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database)
+    //        }
+    //    }
+    //
+    //    func updateRecord(record: CKRecord, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String, numeroAmico: String, in database: CKDatabase) {
+    //        var nameList = record["nameList"] as? [String] ?? []
+    //
+    //        // Recupera l'indice salvato da UserDefaults
+    //        let savedIndex = UserDefaults.standard.integer(forKey: "savedIndex")
+    //
+    //        if savedIndex < nameList.count && nameList[savedIndex] == numeroAmico {
+    //            // Il numero è già aggiornato all'indice salvato, non fare nulla
+    //            print("Number already updated at index \(savedIndex)")
+    //        } else if savedIndex < nameList.count && nameList[savedIndex].isEmpty {
+    //            nameList[savedIndex] = numeroAmico
+    //        } else {
+    //            if let emptyIndex = nameList.firstIndex(where: { $0.isEmpty }) {
+    //                nameList[emptyIndex] = numeroAmico
+    //                // Salva l'indice dell'elemento aggiornato
+    //                UserDefaults.standard.set(emptyIndex, forKey: "savedIndex")
+    //            } else {
+    //                nameList.append(numeroAmico)
+    //                // Salva l'indice dell'elemento aggiunto
+    //                UserDefaults.standard.set(nameList.count - 1, forKey: "savedIndex")
+    //            }
+    //        }
+    //
+    //        record["nameList"] = nameList
+    //        record["latitude"] = latitude
+    //        record["longitude"] = longitude
+    //        record["nomeAmico"] = nomeAmico
+    //        record["cognomeAmico"] = cognomeAmico
+    //        record["numeroAmico"] = numeroAmico
+    //
+    //        database.save(record) { savedRecord, saveError in
+    //            if let saveError = saveError {
+    //                if let ckError = saveError as? CKError, ckError.code == .serverRecordChanged {
+    //                    // Risolvere il conflitto
+    //                    if let serverRecord = ckError.serverRecord {
+    //                        print("Server record changed, retrying with server record...")
+    //                        self.updateRecord(record: serverRecord, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database)
+    //                    }
+    //                } else {
+    //                    print("Error saving record: \(saveError.localizedDescription)")
+    //                }
+    //            } else {
+    //                print("Record updated successfully")
+    //            }
+    //        }
+    //    }
     
-    func sendPositionAndInsertName(token: String, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String) {
+    //    func sendPositionAndInsertName(token: String, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String) {
+    //        let predicate = NSPredicate(format: "token = %@", token)
+    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+    //        let database = CKContainer.default().publicCloudDatabase
+    //
+    //        database.perform(query, inZoneWith: nil) { results, error in
+    //            if let error = error {
+    //                print("Error querying record: \(error.localizedDescription)")
+    //                return
+    //            }
+    //
+    //            guard let record = results?.first else {
+    //                print("No record found with the given token")
+    //                return
+    //            }
+    //
+    //            let numeroAmico = UserDefaults.standard.string(forKey: "userNumber") ?? ""
+    //            self.updateRecord(record: record, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database)
+    //        }
+    //    }
+    //
+    //    func updateRecord(record: CKRecord, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String, numeroAmico: String, in database: CKDatabase) {
+    //        var nameList = record["nameList"] as? [String] ?? []
+    //        var latitudeList = record["latitudine2"] as? [Double] ?? []
+    //        var longitudeList = record["longitudine2"] as? [Double] ?? []
+    //        var nomeAmicoList = record["nomeAmico2"] as? [String] ?? []
+    //        var cognomeAmicoList = record["cognomeAmico2"] as? [String] ?? []
+    //
+    //        let savedIndex = UserDefaults.standard.integer(forKey: "savedIndex")
+    //
+    //        if savedIndex < nameList.count && nameList[savedIndex] == numeroAmico {
+    //            latitudeList[savedIndex] = latitude
+    //            longitudeList[savedIndex] = longitude
+    //            nomeAmicoList[savedIndex] = nomeAmico
+    //            cognomeAmicoList[savedIndex] = cognomeAmico
+    //        } else if savedIndex < nameList.count && nameList[savedIndex].isEmpty {
+    //            nameList[savedIndex] = numeroAmico
+    //            latitudeList[savedIndex] = latitude
+    //            longitudeList[savedIndex] = longitude
+    //            nomeAmicoList[savedIndex] = nomeAmico
+    //            cognomeAmicoList[savedIndex] = cognomeAmico
+    //        } else {
+    //            if let emptyIndex = nameList.firstIndex(where: { $0.isEmpty }) {
+    //                nameList[emptyIndex] = numeroAmico
+    //                latitudeList[emptyIndex] = latitude
+    //                longitudeList[emptyIndex] = longitude
+    //                nomeAmicoList[emptyIndex] = nomeAmico
+    //                cognomeAmicoList[emptyIndex] = cognomeAmico
+    //                UserDefaults.standard.set(emptyIndex, forKey: "savedIndex")
+    //            } else {
+    //                nameList.append(numeroAmico)
+    //                latitudeList.append(latitude)
+    //                longitudeList.append(longitude)
+    //                nomeAmicoList.append(nomeAmico)
+    //                cognomeAmicoList.append(cognomeAmico)
+    //                UserDefaults.standard.set(nameList.count - 1, forKey: "savedIndex")
+    //            }
+    //        }
+    //
+    //        record["nameList"] = nameList
+    //        record["latitudine2"] = latitudeList
+    //        record["longitudine2"] = longitudeList
+    //        record["nomeAmico2"] = nomeAmicoList
+    //        record["cognomeAmico2"] = cognomeAmicoList
+    //
+    //        database.save(record) { savedRecord, saveError in
+    //            if let saveError = saveError {
+    //                if let ckError = saveError as? CKError, ckError.code == .serverRecordChanged {
+    //                    if let serverRecord = ckError.serverRecord {
+    //                        print("Server record changed, retrying with server record...")
+    //                        self.updateRecord(record: serverRecord, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database)
+    //                    }
+    //                } else {
+    //                    print("Error saving record: \(saveError.localizedDescription)")
+    //                }
+    //            } else {
+    //                print("Record updated successfully")
+    //            }
+    //        }
+    //    }
+    
+    // Modify sendPositionAndInsertName to accept a completion handler
+    func sendPositionAndInsertName(token: String, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String, completion: @escaping () -> Void) {
         let predicate = NSPredicate(format: "token = %@", token)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         let database = CKContainer.default().publicCloudDatabase
@@ -575,20 +752,23 @@ class CloudViewModel: ObservableObject{
         database.perform(query, inZoneWith: nil) { results, error in
             if let error = error {
                 print("Error querying record: \(error.localizedDescription)")
+                completion()
                 return
             }
             
             guard let record = results?.first else {
                 print("No record found with the given token")
+                completion()
                 return
             }
             
             let numeroAmico = UserDefaults.standard.string(forKey: "userNumber") ?? ""
-            self.updateRecord(record: record, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database)
+            self.updateRecord(record: record, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database, completion: completion)
         }
     }
-
-    func updateRecord(record: CKRecord, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String, numeroAmico: String, in database: CKDatabase) {
+    
+    // Modify updateRecord to accept a completion handler
+    func updateRecord(record: CKRecord, latitude: Double, longitude: Double, nomeAmico: String, cognomeAmico: String, numeroAmico: String, in database: CKDatabase, completion: @escaping () -> Void) {
         var nameList = record["nameList"] as? [String] ?? []
         var latitudeList = record["latitudine2"] as? [Double] ?? []
         var longitudeList = record["longitudine2"] as? [Double] ?? []
@@ -637,7 +817,7 @@ class CloudViewModel: ObservableObject{
                 if let ckError = saveError as? CKError, ckError.code == .serverRecordChanged {
                     if let serverRecord = ckError.serverRecord {
                         print("Server record changed, retrying with server record...")
-                        self.updateRecord(record: serverRecord, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database)
+                        self.updateRecord(record: serverRecord, latitude: latitude, longitude: longitude, nomeAmico: nomeAmico, cognomeAmico: cognomeAmico, numeroAmico: numeroAmico, in: database, completion: completion)
                     }
                 } else {
                     print("Error saving record: \(saveError.localizedDescription)")
@@ -645,63 +825,62 @@ class CloudViewModel: ObservableObject{
             } else {
                 print("Record updated successfully")
             }
+            completion()
         }
     }
-
-
     
-//    func fetchFriendNumber(phoneNumber: String, completion: @escaping (Bool) -> Void) {
-//        let predicate = NSPredicate(format: "numeroAmico = %@", argumentArray: [phoneNumber])
-//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-//        let queryOperation = CKQueryOperation(query: query)
-//
-//        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-//            switch returnedResult {
-//            case .success(let record):
-//                if let friend = record["numeroAmico"] as? String, !friend.isEmpty {
-//                    completion(true)
-//                } else {
-//                    completion(false)
-//                }
-//            case .failure(let error):
-//                print("Error: \(error)")
-//                completion(false)
-//            }
-//        }
-//        addOperation(operation: queryOperation)
-//    }
-
-//    func fetchFriendNumber(completion: @escaping (String?) -> Void) {
-//        guard let fcmToken = fcmToken else {
-//                print("FCM Token is nil")
-//                return
-//            }
-//        let predicate = NSPredicate(format: "token = %@", fcmToken)
-//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-//        let queryOperation = CKQueryOperation(query: query)
-//        queryOperation.resultsLimit = 1
-//        
-//        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-//            switch returnedResult {
-//            case .success(let record):
-//                if let numero = record["numeroAmico"] as? String{
-//                    print("numeroAmico found: \(numero)")
-//                    completion(numero)
-//                } else {
-//                    print("numeroAmico not found")
-//                    completion(nil)
-//                }
-//            case .failure(let error):
-//                print("Error: \(error)")
-//                completion(nil)
-//            }
-//        }
-//        addOperation(operation: queryOperation)
-//        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-//            self.fetchFriend()
-//        }
-//    }
+    //    func fetchFriendNumber(phoneNumber: String, completion: @escaping (Bool) -> Void) {
+    //        let predicate = NSPredicate(format: "numeroAmico = %@", argumentArray: [phoneNumber])
+    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+    //        let queryOperation = CKQueryOperation(query: query)
+    //
+    //        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+    //            switch returnedResult {
+    //            case .success(let record):
+    //                if let friend = record["numeroAmico"] as? String, !friend.isEmpty {
+    //                    completion(true)
+    //                } else {
+    //                    completion(false)
+    //                }
+    //            case .failure(let error):
+    //                print("Error: \(error)")
+    //                completion(false)
+    //            }
+    //        }
+    //        addOperation(operation: queryOperation)
+    //    }
+    
+    //    func fetchFriendNumber(completion: @escaping (String?) -> Void) {
+    //        guard let fcmToken = fcmToken else {
+    //                print("FCM Token is nil")
+    //                return
+    //            }
+    //        let predicate = NSPredicate(format: "token = %@", fcmToken)
+    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+    //        let queryOperation = CKQueryOperation(query: query)
+    //        queryOperation.resultsLimit = 1
+    //
+    //        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+    //            switch returnedResult {
+    //            case .success(let record):
+    //                if let numero = record["numeroAmico"] as? String{
+    //                    print("numeroAmico found: \(numero)")
+    //                    completion(numero)
+    //                } else {
+    //                    print("numeroAmico not found")
+    //                    completion(nil)
+    //                }
+    //            case .failure(let error):
+    //                print("Error: \(error)")
+    //                completion(nil)
+    //            }
+    //        }
+    //        addOperation(operation: queryOperation)
+    //
+    //        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+    //            self.fetchFriend()
+    //        }
+    //    }
     
     func fetchFriendNumber(completion: @escaping ([String]?) -> Void) {
         guard let fcmToken = fcmToken else {
@@ -709,14 +888,14 @@ class CloudViewModel: ObservableObject{
             completion(nil)
             return
         }
-
+        
         let predicate = NSPredicate(format: "token = %@", fcmToken)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         queryOperation.resultsLimit = 1
         
         var friendNumbers: [String] = []
-
+        
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
@@ -725,7 +904,7 @@ class CloudViewModel: ObservableObject{
                     friendNumbers = nameList
                     completion(friendNumbers)
                 } else {
-                    print("nameList not found or not of expected type [String]")
+                    print("nameList not found")
                     completion(nil)
                 }
             case .failure(let error):
@@ -742,28 +921,28 @@ class CloudViewModel: ObservableObject{
                 completion(friendNumbers)
             }
         }
-
+        
         addOperation(operation: queryOperation)
     }
-
+    
     func fetchAllArrays(completion: @escaping ([Double]?, [Double]?, [String]?, [String]?, [String]?) -> Void) {
         guard let fcmToken = fcmToken else {
             print("FCM Token is nil")
             completion(nil, nil, nil, nil, nil)
             return
         }
-
+        
         let predicate = NSPredicate(format: "token = %@", fcmToken)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         queryOperation.resultsLimit = 1
-
+        
         var latitudineArray: [Double] = []
         var longitudineArray: [Double] = []
         var nameListArray: [String] = []
         var nomeAmicoArray: [String] = []
         var cognomeAmicoArray: [String] = []
-
+        
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
@@ -782,15 +961,15 @@ class CloudViewModel: ObservableObject{
                 if let cognomi = record["cognomeAmico2"] as? [String] {
                     cognomeAmicoArray = cognomi
                 }
-
+                
                 completion(latitudineArray, longitudineArray, nameListArray, nomeAmicoArray, cognomeAmicoArray)
-
+                
             case .failure(let error):
                 print("Error: \(error)")
                 completion(nil, nil, nil, nil, nil)
             }
         }
-
+        
         queryOperation.queryCompletionBlock = { (cursor, error) in
             if let error = error {
                 print("Query completion error: \(error)")
@@ -801,7 +980,7 @@ class CloudViewModel: ObservableObject{
                 completion(nil, nil, nil, nil, nil)
             }
         }
-
+        
         addOperation(operation: queryOperation)
     }
     
@@ -811,14 +990,14 @@ class CloudViewModel: ObservableObject{
             completion(nil)
             return
         }
-
+        
         let predicate = NSPredicate(format: "token = %@", fcmToken)
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         queryOperation.resultsLimit = 1
-
+        
         var friendsArray: [String] = []
-
+        
         queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
             switch returnedResult {
             case .success(let record):
@@ -826,13 +1005,13 @@ class CloudViewModel: ObservableObject{
                     friendsArray = friends
                 }
                 completion(friendsArray)
-
+                
             case .failure(let error):
                 print("Error: \(error)")
                 completion(nil)
             }
         }
-
+        
         queryOperation.queryCompletionBlock = { (cursor, error) in
             if let error = error {
                 print("Query completion error: \(error)")
@@ -843,15 +1022,15 @@ class CloudViewModel: ObservableObject{
                 completion(nil)
             }
         }
-
+        
         addOperation(operation: queryOperation)
     }
-
+    
     func addOperation(operation: CKQueryOperation) {
         let database = CKContainer.default().publicCloudDatabase
         database.add(operation)
     }
-
+    
     
     func updateFriendList(token: String, add: Bool) {
         let predicate = NSPredicate(format: "token = %@", token)
@@ -872,7 +1051,7 @@ class CloudViewModel: ObservableObject{
             self.updateFriendListRecord(record: record, friendNumber: numeroAmico, add: add, in: database)
         }
     }
-
+    
     func updateFriendListRecord(record: CKRecord, friendNumber: String, add: Bool, in database: CKDatabase) {
         var friendsList = record["friends"] as? [String] ?? []
         
@@ -949,8 +1128,8 @@ class CloudViewModel: ObservableObject{
         
         addOperation(operation: queryOperation)
     }
-
-
+    
+    
     
     func addOperation(operation: CKDatabaseOperation){
         CKContainer.default().publicCloudDatabase.add(operation)
@@ -1056,34 +1235,34 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-//    func handleFirstLogin(number: String, completion: @escaping (Bool) -> Void) {
-//        var formattedPhoneNumber = number
-//        if !number.hasPrefix("+") {
-//            formattedPhoneNumber = formatPhoneNumber(number)
-//        }
-//        print(formattedPhoneNumber)
-//
-//        searchNumber(number: formattedPhoneNumber) { found in
-//            if found{
-//                print("Attempting to verify phone number: \(formattedPhoneNumber)")
-//
-//                let phoneAuthProvider = PhoneAuthProvider.provider()
-//                phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
-//                    if let error = error {
-//                        print("Error during phone verification: \(error.localizedDescription)")
-//                        completion(false)
-//                        return
-//                    }
-//                    print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
-//                    UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-//                    completion(true)
-//                }
-//            } else {
-//                completion(false)
-//                return
-//            }
-//        }
-//    }
+    //    func handleFirstLogin(number: String, completion: @escaping (Bool) -> Void) {
+    //        var formattedPhoneNumber = number
+    //        if !number.hasPrefix("+") {
+    //            formattedPhoneNumber = formatPhoneNumber(number)
+    //        }
+    //        print(formattedPhoneNumber)
+    //
+    //        searchNumber(number: formattedPhoneNumber) { found in
+    //            if found{
+    //                print("Attempting to verify phone number: \(formattedPhoneNumber)")
+    //
+    //                let phoneAuthProvider = PhoneAuthProvider.provider()
+    //                phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+    //                    if let error = error {
+    //                        print("Error during phone verification: \(error.localizedDescription)")
+    //                        completion(false)
+    //                        return
+    //                    }
+    //                    print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
+    //                    UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+    //                    completion(true)
+    //                }
+    //            } else {
+    //                completion(false)
+    //                return
+    //            }
+    //        }
+    //    }
     
     enum FirstLoginError: Error {
         case numberNotFound
@@ -1119,40 +1298,40 @@ class CloudViewModel: ObservableObject{
             }
         }
     }
-
-
     
-//    func handleRegistration(number: String, completion: @escaping (Bool) -> Void) {
-//        var formattedPhoneNumber = number
-//        if !number.hasPrefix("+") {
-//            formattedPhoneNumber = formatPhoneNumber(number)
-//        }
-//        print(formattedPhoneNumber)
-//
-//        searchNumber(number: formattedPhoneNumber) { found in
-//            if found {
-//                print("Numero già presente nel database")
-//                completion(false)
-//                return
-//            }
-//
-//            print("Attempting to verify phone number: \(formattedPhoneNumber)")
-//
-//            let phoneAuthProvider = PhoneAuthProvider.provider()
-//            phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
-//                if let error = error {
-//                    print (error)
-//                    print("Error during phone verification: \(error.localizedDescription)")
-//                    completion(false)
-//                    return
-//                }
-//                print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
-//                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-//                completion(true)
-//            }
-//
-//        }
-//    }
+    
+    
+    //    func handleRegistration(number: String, completion: @escaping (Bool) -> Void) {
+    //        var formattedPhoneNumber = number
+    //        if !number.hasPrefix("+") {
+    //            formattedPhoneNumber = formatPhoneNumber(number)
+    //        }
+    //        print(formattedPhoneNumber)
+    //
+    //        searchNumber(number: formattedPhoneNumber) { found in
+    //            if found {
+    //                print("Numero già presente nel database")
+    //                completion(false)
+    //                return
+    //            }
+    //
+    //            print("Attempting to verify phone number: \(formattedPhoneNumber)")
+    //
+    //            let phoneAuthProvider = PhoneAuthProvider.provider()
+    //            phoneAuthProvider.verifyPhoneNumber(formattedPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+    //                if let error = error {
+    //                    print (error)
+    //                    print("Error during phone verification: \(error.localizedDescription)")
+    //                    completion(false)
+    //                    return
+    //                }
+    //                print("Phone verification initiated successfully. Verification ID: \(verificationID ?? "N/A")")
+    //                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+    //                completion(true)
+    //            }
+    //
+    //        }
+    //    }
     
     enum RegistrationError: Error {
         case numberAlreadyExists
@@ -1191,46 +1370,46 @@ class CloudViewModel: ObservableObject{
         }
     }
     
-//    func deleteUser(completion: @escaping (Bool) -> Void){
-//        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
-//        let query = CKQuery(recordType: "Utenti", predicate: predicate)
-//        let queryOperation = CKQueryOperation(query: query)
-//        queryOperation.resultsLimit = 1
-//
-//        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
-//            switch returnedResult {
-//            case .success(let record):
-//                let recordID = record.recordID
-//                let deleteOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
-//                deleteOperation.modifyRecordsResultBlock = { result in
-//                    switch result {
-//                    case .success:
-//                        print("Record successfully deleted")
-//                        completion(true)
-//                    case .failure(let error):
-//                        print("Error deleting record: \(error)")
-//                        completion(false)
-//                    }
-//                }
-//                CKContainer.default().publicCloudDatabase.add(deleteOperation)
-//
-//            case .failure(let error):
-//                print("Error: \(error)")
-//                completion(false)
-//            }
-//        }
-//
-//        queryOperation.queryResultBlock = { result in
-//            switch result {
-//            case .success:
-//                print("Query completed")
-//            case .failure(let error):
-//                print("Error completing query: \(error)")
-//                completion(false)
-//            }
-//        }
-//        addOperation(operation: queryOperation)
-//    }
+    //    func deleteUser(completion: @escaping (Bool) -> Void){
+    //        let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])
+    //        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+    //        let queryOperation = CKQueryOperation(query: query)
+    //        queryOperation.resultsLimit = 1
+    //
+    //        queryOperation.recordMatchedBlock = { (returnedRecordID, returnedResult) in
+    //            switch returnedResult {
+    //            case .success(let record):
+    //                let recordID = record.recordID
+    //                let deleteOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: [recordID])
+    //                deleteOperation.modifyRecordsResultBlock = { result in
+    //                    switch result {
+    //                    case .success:
+    //                        print("Record successfully deleted")
+    //                        completion(true)
+    //                    case .failure(let error):
+    //                        print("Error deleting record: \(error)")
+    //                        completion(false)
+    //                    }
+    //                }
+    //                CKContainer.default().publicCloudDatabase.add(deleteOperation)
+    //
+    //            case .failure(let error):
+    //                print("Error: \(error)")
+    //                completion(false)
+    //            }
+    //        }
+    //
+    //        queryOperation.queryResultBlock = { result in
+    //            switch result {
+    //            case .success:
+    //                print("Query completed")
+    //            case .failure(let error):
+    //                print("Error completing query: \(error)")
+    //                completion(false)
+    //            }
+    //        }
+    //        addOperation(operation: queryOperation)
+    //    }
     
     func deleteAccount(completion: @escaping (Bool) -> Void) {
         let predicate = NSPredicate(format: "token = %@", argumentArray: [fcmToken ?? ""])

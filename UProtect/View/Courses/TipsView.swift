@@ -40,8 +40,20 @@ struct TipsView: View {
                 last = 3
             }
         }
+        
+        UserDefaults.standard.set(first, forKey: "first")
+        UserDefaults.standard.set(last, forKey: "last")
     }
-
+    
+    func loadState() {
+        if let savedFirst = UserDefaults.standard.value(forKey: "first") as? Int,
+           let savedLast = UserDefaults.standard.value(forKey: "last") as? Int {
+            first = savedFirst
+            last = savedLast
+        } else {
+            update()
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -109,7 +121,7 @@ struct TipsView: View {
                 }
             }
         }.onAppear{
-            update()
+            loadState()
         }
     }
 }

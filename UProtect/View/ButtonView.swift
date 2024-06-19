@@ -25,12 +25,12 @@ struct TimerView: View {
     @State private var animateText = false
     @State private var showGreenTick = false
     
-    
-    @StateObject private var vm = CloudViewModel()
     @State var locationManager = LocationManager()
-    @Environment(\.colorScheme) var colorScheme
+    @StateObject private var vm = CloudViewModel()
+    @StateObject private var audioRecorder = AudioRecorder.shared
     @ObservedObject var timerManager: TimerManager
-    @ObservedObject var audioRecorder: AudioRecorder
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.scenePhase) private var scenePhase
     
     @State var buttonLocked = false
     @State var buttonTapped: Bool = false
@@ -113,7 +113,8 @@ struct TimerView: View {
         print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
         if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
             for token in savedTokens {
-                vm.sendPositionAndInsertName(token: token, latitude: vm.latitude, longitude: vm.longitude, nomeAmico: nome, cognomeAmico: cognome)
+                vm.sendPositionAndInsertName(token: token, latitude: vm.latitude, longitude: vm.longitude, nomeAmico: nome, cognomeAmico: cognome){
+                }
             }
         } else {
             print("Nessun token salvato in UserDefaults.")
@@ -127,7 +128,8 @@ struct TimerView: View {
                 print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
                 if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
                     for token in savedTokens {
-                        vm.sendPositionAndInsertName(token: token, latitude: 0, longitude: 0, nomeAmico: "", cognomeAmico: "")
+                        vm.sendPositionAndInsertName(token: token, latitude: 0, longitude: 0, nomeAmico: "", cognomeAmico: ""){
+                        }
                     }
                 } else {
                     print("Nessun token salvato in UserDefaults.")
@@ -142,6 +144,7 @@ struct TimerView: View {
             for token in savedTokens {
                 print("funzione token: \(token)")
                 sendPushNotification(token: token)
+                vm.updateBadge(token: token)
             }
         } else {
             print("Nessun token salvato in UserDefaults.")
@@ -155,8 +158,10 @@ struct TimerView: View {
         let message = ""
         let authenticationToken = tokenAPNS
         
-        let currentBadgeCount = UserDefaults.standard.integer(forKey: "badgeCount")
-        let newBadgeCount = currentBadgeCount + 1
+        var newBadgeCount = 1
+        vm.fetchBadge { badge in
+            newBadgeCount = badge ?? 1
+        }
         
         let content = """
         {
