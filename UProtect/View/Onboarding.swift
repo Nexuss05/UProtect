@@ -122,18 +122,20 @@ struct FirstPageView: View {
                     .padding(.bottom, 350)
             }
             VStack{
+                Rectangle()
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 270, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .opacity(0)
                 Text("SOS mode")
                     .font(.title)
                     .bold()
                     .frame(width: 340)
-                    .padding(.top, 25)
                 
                 Text("Notify your emergency contacts and record your background by clicking the Panic Button. If they have the app, they will receive a push notification with your shared location. Otherwise they will receive an SMS.")
                     .fontWeight(.light)
                     .frame(width: 310)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 270)
+            }
         }
     }
 }
@@ -191,21 +193,23 @@ struct SecondPageView: View {
                 //                Spacer()
                     .padding(.bottom, 350)
             }
-            
-            VStack(alignment: .center){
+            VStack{
+                Rectangle()
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 270, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .opacity(0)
                 Text("Supervision mode")
                     .font(.title)
                     .bold()
                     .frame(width: 340)
-                    .padding(.top, 25)
                 
                 Text("If you feel unsafe but not so much to notify your contacts, hold the Panic Button and start the customisable timer. If you don’t dismiss the alert on timer ending or if you don’t answer, a notification will be sent.")
                     .fontWeight(.light)
-                    .frame(width: 340)
+                    .frame(width: 310)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 260)
-        }.onReceive(self.time) { _ in
+            }
+        }
+        .onReceive(self.time) { _ in
             DispatchQueue.main.async {
                 if self.vm.isTimerRunning {
                     if self.count > 180 {
@@ -227,18 +231,21 @@ struct ThirdPageView: View {
     var body: some View {
         ZStack {
             Image("E2")
-            VStack {
+            VStack{
+                Rectangle()
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 270, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .opacity(0)
                 Text("Map")
                     .font(.title)
                     .bold()
                     .frame(width: 340)
-                    .padding(.top, 10)
-                Text("Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map.")
+                
+                Text("Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map.\n")
                     .fontWeight(.light)
-                    .frame(width: 340)
+                    .frame(width: 310)
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
-            }.padding(.top, 260)
+            }
         }
     }
 }
@@ -246,37 +253,22 @@ struct ThirdPageView: View {
 struct FourthPageView: View {
     
     var body: some View {
-        if Locale.current.language.languageCode?.identifier == "en" {
-            ZStack {
-                Image("E5")
-                VStack{
-                    Text("Courses")
-                        .font(.title)
-                        .bold()
-                        .frame(width: 340)
-                        .padding(.top, 25)
-                    Text("This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations.")
-                        .fontWeight(.light)
-                        .frame(width: 340)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical)
-                }.padding(.top, 240)
-            }
-        } else if Locale.current.language.languageCode?.identifier == "it" {
-            ZStack {
-                Image("E5")
-                VStack{
-                    Text("Courses")
-                        .font(.title)
-                        .bold()
-                        .frame(width: 340)
-                        .padding(.top, 25)
-                    Text("This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerous situations or understand how to better manage them.")
-                        .fontWeight(.light)
-                        .frame(width: 340)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical)
-                }.padding(.top, 250)
+        ZStack {
+            Image("pp")
+            VStack{
+                Rectangle()
+                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 270, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .opacity(0)
+                Text("Tips & Tricks")
+                    .font(.title)
+                    .bold()
+                    .frame(width: 340)
+                
+                Text("This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations.\n\n")
+                    .fontWeight(.light)
+                    .frame(width: 310)
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical)
             }
         }
     }

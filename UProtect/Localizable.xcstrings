@@ -5197,6 +5197,7 @@
       }
     },
     "Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -5205,6 +5206,9 @@
           }
         }
       }
+    },
+    "Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map.\n" : {
+
     },
     "Thanks to the map you can easily have a look at shops and stores open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
       "extractionState" : "stale",
@@ -5279,6 +5283,7 @@
       }
     },
     "This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -5288,7 +5293,11 @@
         }
       }
     },
+    "This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations.\n\n" : {
+
+    },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerous situations or understand how to better manage them." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
