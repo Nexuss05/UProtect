@@ -304,7 +304,7 @@ struct FifthPageView: View {
                     .fontWeight(.light)
                     .frame(width: 310)
                     .multilineTextAlignment(.center)
-                    .padding(.top)
+                    .padding(.vertical)
                 
                 VStack(spacing: 25){
                     HStack(spacing: 127.0){
@@ -365,8 +365,6 @@ struct FifthPageView: View {
                         })
                     }
                 }
-                .padding(.top, -50)
-                
             }
         }
     }
@@ -408,7 +406,7 @@ struct FifthPageView: View {
     
     func askLocationPermission(completion: @escaping () -> Void) {
         let locationManager = CLLocationManager()
-        locationManager. Authorization()
+        locationManager.requestWhenInUseAuthorization()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // Slight delay to allow authorization status update
             completion()
         }
@@ -431,7 +429,6 @@ struct FifthPageView: View {
         }
     }
 }
-
 //struct WelcomeView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        WelcomeView(timerManager: TimerManager(), audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
