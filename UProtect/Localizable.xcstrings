@@ -1315,6 +1315,16 @@
         }
       }
     },
+    "Always look both ways before crossing the street, so that you can avoid being injured." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda sempre in entrambe le direzioni prima di attraversare la strada, in modo da evitare di essere ferito."
+          }
+        }
+      }
+    },
     "Always look both ways before crossing the street." : {
       "localizations" : {
         "it" : {
@@ -1469,6 +1479,7 @@
       }
     },
     "Avoid hairstyles that can be easily grabbed, like ponytails." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1522,6 +1533,16 @@
         }
       }
     },
+    "Avoid isolated, poorly-lit areas and unpleasant-looking streets, especially at night." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evitare aree isolate, scarsamente illuminate e strade dall'aspetto sgradevole, soprattutto di notte."
+          }
+        }
+      }
+    },
     "Avoid leading a potential follower to your residence. Go to a public, well-lit, crowded place like a café, mall, or police station." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1529,6 +1550,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Evita di portare un potenziale inseguitore alla tua residenza. Vai in un luogo pubblico, ben illuminato e affollato come un bar, un centro commerciale o una stazione di polizia."
+          }
+        }
+      }
+    },
+    "Avoid leading a potential follower to your residence. Go to a public, well-lit, crowded place like a café, mall, or police station. Take advantage of the map system in the app." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita di portare un potenziale inseguitore alla tua residenza. Vai in un luogo pubblico, ben illuminato e affollato come un bar, un centro commerciale o una stazione di polizia. Approfitta della mappa nell'app."
           }
         }
       }
@@ -1561,6 +1592,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Evita di Fermarti in Aree Appartate"
+          }
+        }
+      }
+    },
+    "Avoid stopping in secluded areas, try to stay in crowded or surveilled areas, either by securities or with a lot of other people." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita di fermarti in aree appartate. Cerca di rimanere in aree affollate o sorvegliate, sia dalla sicurezza che con molte altre persone."
           }
         }
       }
@@ -1947,6 +1988,16 @@
         }
       }
     },
+    "Consider giving your child a phone to contact you in emergencies with our app installed. Teach them how to use it responsibly and practice emergency procedures." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Considera di dare a tuo figlio un telefono per contattarti in caso di emergenza con la nostra app installata. Insegnagli come usarlo in modo responsabile e a praticare le procedure di emergenza."
+          }
+        }
+      }
+    },
     "Consider giving your child a phone to contact you in emergencies. Teach them how to use it responsibly and practice emergency procedures." : {
       "localizations" : {
         "it" : {
@@ -2264,6 +2315,16 @@
         }
       }
     },
+    "Decide on a drinking limit beforehand with a friend of yours." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decidi in anticipo un limite per bere con un tuo amico."
+          }
+        }
+      }
+    },
     "Decide on a drinking limit beforehand." : {
       "localizations" : {
         "it" : {
@@ -2446,6 +2507,16 @@
         }
       }
     },
+    "Drink water or soft drinks between alcoholic beverages, this will help you diluting the alcohol." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevi acqua o bevande analcoliche tra le bevande alcoliche, questo ti aiuterà a diluire l'alcol."
+          }
+        }
+      }
+    },
     "Drink water or soft drinks between alcoholic beverages." : {
       "localizations" : {
         "it" : {
@@ -2462,6 +2533,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mangia un Pasto"
+          }
+        }
+      }
+    },
+    "Eating before drinking slows alcohol absorption, this will help you not feel overwhelmed by alcohol." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mangiare prima di bere rallenta l'assorbimento dell'alcol, questo ti aiuterà a non sentirti sopraffatto da esso."
           }
         }
       }
@@ -3061,6 +3142,16 @@
         }
       }
     },
+    "If you feel threatened, call the police. Inform them of your location and situation. Also, inform friends or family in case of need with our application." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se ti senti minacciato, chiama la polizia. Informali della tua posizione e della tua situazione. Inoltre, informa gli amici o la famiglia in caso di necessità con la nostra applicazione."
+          }
+        }
+      }
+    },
     "If you feel threatened, call the police. Inform them of your location and situation. Also, inform friends or family." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3471,6 +3562,16 @@
         }
       }
     },
+    "Know safe adults they can turn to if they feel uncomfortable or in danger, they can be family friends or school workers." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conosci gli adulti sicuri a cui possono rivolgersi se si sentono a disagio o in pericolo, possono essere amici di famiglia o personale scolastico."
+          }
+        }
+      }
+    },
     "Know safe adults they can turn to if they feel uncomfortable or in danger." : {
       "localizations" : {
         "it" : {
@@ -3635,6 +3736,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mantieni la Distanza"
+          }
+        }
+      }
+    },
+    "Make a Plan" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pianifica"
           }
         }
       }
@@ -3831,6 +3942,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Non Accettare mai Passaggi"
+          }
+        }
+      }
+    },
+    "Never accept rides or gifts from strangers, it could be dangerous." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non accettare mai passaggi o regali da estranei, potrebbe essere pericoloso."
           }
         }
       }
@@ -4218,6 +4339,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pianifica il Tuo Percorso"
+          }
+        }
+      }
+    },
+    "Plan your way home, keep your phone charged, or bring a power bank with you." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pianifica la strada di casa, tieni il telefono carico o porta con te un powerbank."
           }
         }
       }
@@ -5208,7 +5339,14 @@
       }
     },
     "Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map.\n" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grazie alla mappa puoi facilmente dare un'occhiata a negozi e locali aperti vicino a te. Se hai bisogno di cercare rifugio, puoi chiamare il posto o camminare lì grazie alla mappa."
+          }
+        }
+      }
     },
     "Thanks to the map you can easily have a look at shops and stores open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
       "extractionState" : "stale",
@@ -5294,7 +5432,14 @@
       }
     },
     "This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations.\n\n" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa sezione offre un potente archivio di conoscenze, con suggerimenti e trucchi per mitigare e gestire al meglio le situazioni pericolose."
+          }
+        }
+      }
     },
     "This section offers you a powerful tool to gain knowledge, tips and trick and tools to better mitigate dangerous situations or understand how to better manage them." : {
       "extractionState" : "stale",
@@ -5420,6 +5565,26 @@
         }
       }
     },
+    "Try to always have your phone in handy in case of need, always keep an eye on the battery level." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca di avere sempre il telefono a portata di mano in caso di necessità e tieni sempre d'occhio il livello della batteria."
+          }
+        }
+      }
+    },
+    "Try to never play or run directly on the streets, choose safer spaces away from roads." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca di non giocare o correre mai direttamente per le strade, scegli spazi più sicuri lontano da esse."
+          }
+        }
+      }
+    },
     "Understand Traffic Signals" : {
       "localizations" : {
         "it" : {
@@ -5456,6 +5621,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Utilizza gli Attraversamenti Pedonali"
+          }
+        }
+      }
+    },
+    "Use pedestrian crossings and obey traffic signals, this will help you decrease the possibilities of an accident." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa gli attraversamenti pedonali e obbedisci ai segnali stradali, questo ti aiuterà a ridurre le possibilità di un incidente."
           }
         }
       }
@@ -5569,12 +5744,32 @@
         }
       }
     },
+    "Walk confidently trying not to look disoriented or unfamiliar with the surroundings, walk at a steady pace but without running." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina con fiducia cercando di non sembrare disorientato o sconosciuto con l'ambiente circostante. Cammina a un ritmo costante ma senza correre."
+          }
+        }
+      }
+    },
     "Walk on Sidewalks" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cammina sui Marciapiedi"
+          }
+        }
+      }
+    },
+    "Walk on sidewalks or, if unavailable, facing traffic on the road's edge, so that you can always see the incoming cars." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cammina sui marciapiedi o, se non disponibili, di fronte al traffico sul bordo della strada, in modo da poter sempre vedere le auto in arrivo."
           }
         }
       }
