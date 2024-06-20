@@ -10,17 +10,25 @@ import CoreLocation
 import MapKit
 
 @Observable
-class LocationManager: NSObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, CLLocationManagerDelegate{
     @ObservationIgnored let manager = CLLocationManager()
     var userLocation: CLLocation?
     var isAuthorized = false
+    var isAccepted = false
+    var tapped = false
     
     var userAddress: String?
+    
+    static let shared = LocationManager()
     
     override init(){
         super.init()
         manager.delegate = self
         startLocationServices()
+    }
+    
+    func request(){
+        manager.requestWhenInUseAuthorization()
     }
     
     func startLocationServices(){
@@ -40,16 +48,24 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
+        case .authorizedWhenInUse:
             isAuthorized = true
+            isAccepted = true
             manager.requestLocation()
+            print("l: always")
         case .notDetermined:
             isAuthorized = false
 //            manager.requestWhenInUseAuthorization()
+            print("l: bho")
         case .denied:
             isAuthorized = false
-            print("access denied")
+            isAccepted = false
+            tapped = true
+            print("l: access denied")
+        case .restricted:
+            print("l: retricted")
         default:
+            break
             isAuthorized = true
             startLocationServices()
         }
@@ -80,3 +96,4 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
     
 }
+

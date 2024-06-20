@@ -54,6 +54,7 @@ struct UProtectApp: App {
     }()
     var body: some Scene {
         WindowGroup {
+//            WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
             UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
 //            ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 .onAppear {

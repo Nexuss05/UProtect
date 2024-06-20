@@ -52,20 +52,32 @@ struct WelcomeView: View {
                     .overlay(
                         ZStack {
                             if !checkWelcomeScreen{
-                                Button(action: {
-                                    showLogin = true
-                                    viewModel.isTimerRunning = false
-                                }) {
+                                if UserDefaults.standard.integer(forKey: "NotificationAuth") == 1 && UserDefaults.standard.integer(forKey: "LocationAuth") == 1 {
+                                    Button(action: {
+                                        showLogin = true
+                                        viewModel.isTimerRunning = false
+                                    }) {
+                                        Text("Get started")
+                                            .font(.title2)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.white)
+                                    }
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .foregroundColor(CustomColor.orange)
+                                            .frame(width: 200, height: 60)
+                                    )
+                                } else {
                                     Text("Get started")
                                         .font(.title2)
                                         .fontWeight(.bold)
                                         .foregroundColor(.white)
+                                        .background(
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .foregroundColor(.gray)
+                                                .frame(width: 200, height: 60)
+                                            )
                                 }
-                                .background(
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .foregroundColor(CustomColor.orange)
-                                        .frame(width: 200, height: 60)
-                                )
                             }
                         }.padding(.top, 600)
                     )
@@ -288,6 +300,8 @@ struct FifthPageView: View {
     @State var isAccepted2 = false
     @State var tapped2 = false
     
+    @State var locationManager = LocationManager.shared
+    
     var body: some View {
         ZStack {
             Image("p3")
@@ -314,6 +328,7 @@ struct FifthPageView: View {
                             askForPermission() {
                                 checkPermission()
                             }
+                            UserDefaults.standard.set(1, forKey: "NotificationAuth")
                         }, label: {
                             if !isAuthorized {
                                 if !tapped {
@@ -340,21 +355,20 @@ struct FifthPageView: View {
                         Text("Allow Location")
                             .bold()
                         Button(action: {
-                            askLocationPermission() {
-                                checkLocationPermission()
-                            }
+                            locationManager.request()
+                            UserDefaults.standard.set(1, forKey: "LocationAuth")
                         }, label: {
-                            if !isAuthorized2 {
-                                if !tapped2 {
+                            if !locationManager.isAuthorized {
+                                if !locationManager.tapped {
                                     Image(systemName: "circle")
                                         .tint(.orange)
                                 }
-                                if !isAccepted2 && tapped2 {
+                                if !locationManager.isAuthorized && locationManager.tapped {
                                     Image(systemName: "xmark.circle.fill")
                                         .tint(.red)
                                 }
                             } else {
-                                if !isAccepted2 {
+                                if !locationManager.isAccepted{
                                     Image(systemName: "xmark.circle.fill")
                                         .tint(.red)
                                 } else {
@@ -403,37 +417,7 @@ struct FifthPageView: View {
             }
         }
     }
-    
-    func askLocationPermission(completion: @escaping () -> Void) {
-        let locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // Slight delay to allow authorization status update
-            completion()
-        }
-    }
-    
-    func checkLocationPermission() {
-        let locationManager = CLLocationManager()
-        switch locationManager.authorizationStatus {
-        case .denied, .restricted:
-            isAuthorized2 = true
-            isAccepted2 = false
-            tapped2 = true
-            print("Location permission denied")
-        case .authorizedAlways, .authorizedWhenInUse:
-            isAuthorized2 = true
-            isAccepted2 = true
-            print("Location permission granted")
-        @unknown default:
-            print("Unknown location permission status")
-        }
-    }
 }
-//struct WelcomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WelcomeView(timerManager: TimerManager(), audioRecorder: AudioRecorder(), audioPlayer: AudioPlayer())
-//    }
-//}
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
