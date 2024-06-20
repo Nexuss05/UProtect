@@ -6086,6 +6086,7 @@
       }
     },
     "Your contacts" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -6096,6 +6097,7 @@
       }
     },
     "Your friends" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {

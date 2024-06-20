@@ -63,7 +63,7 @@ struct ContactsView: View {
             }
         }
     }
-
+    
     
     func generateRandomColor() -> Color {
         return Color(
@@ -131,19 +131,26 @@ struct ContactsView: View {
         }
     }
     
+    @State var activeTab: SegmentedTab = .contact
+    
     var body: some View {
         NavigationView{
             ZStack {
                 VStack {
-                    Picker(selection: $selectedMode, label: Text("Mode")) {
-                        Text("Your contacts").tag(1)
-                        Text("Your friends").tag(2)
-                    }.pickerStyle(SegmentedPickerStyle())
-                        .onChange(of: selectedMode) { newMode in
+                    CSegmentedControl(
+                        tabs: SegmentedTab.allCases,
+                        activeTab: $activeTab,
+                        height: 35) { size in
+                            Rectangle()
+                                .fill(CustomColor.orange)
+                        }.padding(.top, 15)
+                        .padding(.bottom, -15.8)
+                        .pickerStyle(SegmentedPickerStyle())
+                        .onChange(of: activeTab) { newMode in
                             switch newMode {
-                            case 1:
+                            case .contact:
                                 showContacts = true
-                            case 2:
+                            case .friend:
                                 showContacts = false
                             default:
                                 break
@@ -152,84 +159,27 @@ struct ContactsView: View {
                     if !showContacts{
                         SearchBar(text: $searchText)
                             .onChange(of: searchText) { _ in
-                                                    filterContacts()
-                                                }
+                                filterContacts()
+                            }
+                            .padding(.bottom, -10)
                     }
                     List{
                         if showContacts {
                             ForEach(selectedContacts, id: \.self) { contact in
-                                VStack{
-                                    if showUser{
-                                        if let index = friendNumbers.firstIndex(of: contact.phoneNumber) ?? friendNumbers.firstIndex(of: formatPhoneNumber2(contact.phoneNumber)) {
-                                            if index < latitudine.count && index < longitudine.count && index < nomeAmico.count && index < cognomeAmico.count {
-                                                
-                                                let lat = latitudine[index]
-                                                let lon = longitudine[index]
-                                                
-                                                if lat != 0 && lon != 0 {
-                                                    ContactMap(
-                                                        latitudine: latitudine[index],
-                                                        longitudine: longitudine[index],
-                                                        nomeAmico: nomeAmico[index],
-                                                        cognomeAmico: cognomeAmico[index],
-                                                        nome: contact.givenName,
-                                                        cognome: contact.familyName,
-                                                        numero: contact.phoneNumber
-                                                    )
-                                                } else {
-                                                    HStack(spacing: 25.0) {
-                                                        ZStack {
-                                                            Circle()
-                                                                .fill(contactColors[contact] ?? .black)
-                                                                .frame(width: 35, height: 35)
-                                                            Text("\(generateInitial(givenName: contact.givenName))")
-                                                                .fontWeight(.bold)
-                                                                .foregroundColor(.white)
-                                                        }.accessibilityHidden(true)
-                                                        VStack(alignment: .leading, spacing: -2.0){
-                                                            Text("\(contact.givenName) \(contact.familyName)")
-                                                                .fontWeight(.medium)
-                                                            Text("\(contact.phoneNumber)")
-                                                                .font(.subheadline)
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        } else {
-                                            HStack(spacing: 25.0) {
-                                                ZStack {
-                                                    Circle()
-                                                        .fill(contactColors[contact] ?? .black)
-                                                        .frame(width: 35, height: 35)
-                                                    Text("\(generateInitial(givenName: contact.givenName))")
-                                                        .fontWeight(.bold)
-                                                        .foregroundColor(.white)
-                                                }.accessibilityHidden(true)
-                                                VStack(alignment: .leading, spacing: -2.0){
-                                                    Text("\(contact.givenName) \(contact.familyName)")
-                                                        .fontWeight(.medium)
-                                                    Text("\(contact.phoneNumber)")
-                                                        .font(.subheadline)
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        HStack(spacing: 25.0) {
-                                            ZStack {
-                                                Circle()
-                                                    .fill(contactColors[contact] ?? .black)
-                                                    .frame(width: 35, height: 35)
-                                                Text("\(generateInitial(givenName: contact.givenName))")
-                                                    .fontWeight(.bold)
-                                                    .foregroundColor(.white)
-                                            }.accessibilityHidden(true)
-                                            VStack(alignment: .leading, spacing: -2.0){
-                                                Text("\(contact.givenName) \(contact.familyName)")
-                                                    .fontWeight(.medium)
-                                                Text("\(contact.phoneNumber)")
-                                                    .font(.subheadline)
-                                            }
-                                        }
+                                HStack(spacing: 25.0) {
+                                    ZStack {
+                                        Circle()
+                                            .fill(contactColors[contact] ?? .black)
+                                            .frame(width: 35, height: 35)
+                                        Text("\(generateInitial(givenName: contact.givenName))")
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.white)
+                                    }.accessibilityHidden(true)
+                                    VStack(alignment: .leading, spacing: -2.0){
+                                        Text("\(contact.givenName) \(contact.familyName)")
+                                            .fontWeight(.medium)
+                                        Text("\(contact.phoneNumber)")
+                                            .font(.subheadline)
                                     }
                                 }
                                 .onAppear{
@@ -327,6 +277,7 @@ struct ContactsView: View {
                         }
                     }
                     .navigationTitle("Contacts")
+                    .navigationBarTitleDisplayMode(.inline)
                     .background(CustomColor.orangeBackground).scrollContentBackground(.hidden)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
@@ -336,7 +287,7 @@ struct ContactsView: View {
                                 } else {
                                     self.showAlert = true
                                     self.alertMessage = NSLocalizedString("You can select up to 2 contacts only.", comment: "")
-
+                                    
                                 }
                             }) {
                                 Image(systemName: "plus")
@@ -568,6 +519,10 @@ extension String: Identifiable {
     public var id: String { self }
 }
 
+enum SegmentedTab: String, CaseIterable{
+    case contact = "Your contacts"
+    case friend = "Your friends"
+}
 
 /*
  ESTERNO AL BODY

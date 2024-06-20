@@ -79,6 +79,7 @@
 		E06A205B2C0E2D01005D4D67 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */; };
 		E06C1E2B2C12E9C40077CE4C /* Animation - 1717744147505.json in Resources */ = {isa = PBXBuildFile; fileRef = E06C1E2A2C12E9C40077CE4C /* Animation - 1717744147505.json */; };
 		E0852ED62C1EF35D00D09C97 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0852ED52C1EF35D00D09C97 /* TipsView.swift */; };
+		E08DEF0F2C2429ED00C639F7 /* CSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08DEF0E2C2429ED00C639F7 /* CSegmentedControl.swift */; };
 		E092099A2BEBE2B0005AD0FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09209992BEBE2B0005AD0FB /* TimeCounter.swift */; };
 		E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099B2BEBE312005AD0FB /* SettingsView.swift */; };
 		E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092099F2BEBE394005AD0FB /* TimerSettings.swift */; };
@@ -221,6 +222,7 @@
 		E06A205A2C0E2D01005D4D67 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E06C1E2A2C12E9C40077CE4C /* Animation - 1717744147505.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1717744147505.json"; sourceTree = "<group>"; };
 		E0852ED52C1EF35D00D09C97 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
+		E08DEF0E2C2429ED00C639F7 /* CSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSegmentedControl.swift; sourceTree = "<group>"; };
 		E09209992BEBE2B0005AD0FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		E092099B2BEBE312005AD0FB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E092099F2BEBE394005AD0FB /* TimerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSettings.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				C2E403692C1043E500F5B4F7 /* PremiumPopUp.swift */,
 				E03931062C1C3BA40088A51E /* Card.swift */,
 				E0B5D1B02C1D947E00A66DE8 /* ContactMap.swift */,
+				E08DEF0E2C2429ED00C639F7 /* CSegmentedControl.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
 				C230504A2C05C7070056BEAA /* LottieView3.swift in Sources */,
+				E08DEF0F2C2429ED00C639F7 /* CSegmentedControl.swift in Sources */,
 				C23050482C05C7070056BEAA /* LottieView2.swift in Sources */,
 				E0B954222C00E21100EBCD81 /* Onboarding.swift in Sources */,
 				E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */,
