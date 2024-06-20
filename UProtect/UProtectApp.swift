@@ -98,13 +98,13 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     var vm = CloudViewModel()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if granted {
-                print("Notification permission granted")
-            } else {
-                print("Notification permission denied: \(error?.localizedDescription ?? "")")
-            }
-        }
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+//            if granted {
+//                print("Notification permission granted")
+//            } else {
+//                print("Notification permission denied: \(error?.localizedDescription ?? "")")
+//            }
+//        }
         UNUserNotificationCenter.current().delegate = self
         application.registerForRemoteNotifications()
         

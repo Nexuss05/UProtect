@@ -1254,6 +1254,12 @@
         }
       }
     },
+    "Allow Location" : {
+
+    },
+    "Allow Notification" : {
+
+    },
     "Already have an account?" : {
       "localizations" : {
         "it" : {
@@ -2610,6 +2616,9 @@
         }
       }
     },
+    "Enable Services" : {
+
+    },
     "Encourage open communication about interactions with adults." : {
       "localizations" : {
         "it" : {
@@ -3224,6 +3233,9 @@
           }
         }
       }
+    },
+    "In order to give you the best experience possible, we will need the authorization for different services\n\n\n" : {
+
     },
     "In the disco" : {
       "comment" : "Subtitle for course 03",

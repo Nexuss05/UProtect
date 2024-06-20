@@ -1,4 +1,6 @@
 import SwiftUI
+import UserNotifications
+import CoreLocation
 
 class AnimationViewModel: ObservableObject {
     @Published var showCircle: Bool = false
@@ -44,6 +46,9 @@ struct WelcomeView: View {
                 
                 FourthPageView()
                     .tag(3)
+                
+                FifthPageView()
+                    .tag(4)
                     .overlay(
                         ZStack {
                             if !checkWelcomeScreen{
@@ -62,7 +67,7 @@ struct WelcomeView: View {
                                         .frame(width: 200, height: 60)
                                 )
                             }
-                        }.padding(.top, 550)
+                        }.padding(.top, 600)
                     )
             }
             .ignoresSafeArea()
@@ -72,7 +77,7 @@ struct WelcomeView: View {
             
             VStack {
                 Spacer()
-                CustomPageControl(currentPage: $pageIndex, numberOfPages: 4)
+                CustomPageControl(currentPage: $pageIndex, numberOfPages: 5)
                     .frame(width: UIScreen.main.bounds.width, height: 50)
                 //                    .padding(.bottom, 95)
             }
@@ -270,6 +275,159 @@ struct FourthPageView: View {
                     .multilineTextAlignment(.center)
                     .padding(.vertical)
             }
+        }
+    }
+}
+
+struct FifthPageView: View {
+    @State var isAuthorized = false
+    @State var isAccepted = false
+    @State var tapped = false
+    
+    @State var isAuthorized2 = false
+    @State var isAccepted2 = false
+    @State var tapped2 = false
+    
+    var body: some View {
+        ZStack {
+            Image("p3")
+            VStack{
+                Rectangle()
+                    .frame(width: 100, height: 270, alignment: .center)
+                    .opacity(0)
+                Text("Enable Services")
+                    .font(.title)
+                    .bold()
+                    .frame(width: 340)
+                
+                Text("In order to give you the best experience possible, we will need the authorization for different services\n\n\n")
+                    .fontWeight(.light)
+                    .frame(width: 310)
+                    .multilineTextAlignment(.center)
+                    .padding(.top)
+                
+                VStack(spacing: 25){
+                    HStack(spacing: 127.0){
+                        Text("Allow Notification")
+                            .bold()
+                        Button(action: {
+                            askForPermission() {
+                                checkPermission()
+                            }
+                        }, label: {
+                            if !isAuthorized {
+                                if !tapped {
+                                    Image(systemName: "circle")
+                                        .tint(.orange)
+                                }
+                                if !isAccepted && tapped {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .tint(.red)
+                                }
+                            } else {
+                                if !isAccepted {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .tint(.red)
+                                } else {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .tint(.orange)
+                                }
+                            }
+                        })
+                    }
+                    
+                    HStack(spacing: 150.0){
+                        Text("Allow Location")
+                            .bold()
+                        Button(action: {
+                            askLocationPermission() {
+                                checkLocationPermission()
+                            }
+                        }, label: {
+                            if !isAuthorized2 {
+                                if !tapped2 {
+                                    Image(systemName: "circle")
+                                        .tint(.orange)
+                                }
+                                if !isAccepted2 && tapped2 {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .tint(.red)
+                                }
+                            } else {
+                                if !isAccepted2 {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .tint(.red)
+                                } else {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .tint(.orange)
+                                }
+                            }
+                        })
+                    }
+                }
+                .padding(.top, -50)
+                
+            }
+        }
+    }
+    
+    func askForPermission(completion: @escaping () -> Void) {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                isAuthorized = true
+                print("Notification permission granted")
+                completion()
+            } else {
+                isAuthorized = false
+                print("Notification permission denied: \(error?.localizedDescription ?? "")")
+                completion()
+            }
+        }
+    }
+    
+    func checkPermission() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.getNotificationSettings { settings in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                isAccepted = false
+                print("1")
+            case .denied:
+                isAccepted = false
+                tapped = true
+                print("2")
+            case .authorized:
+                isAccepted = true
+                print("3")
+            default:
+                print("Unknown notification authorization status")
+            }
+        }
+    }
+    
+    func askLocationPermission(completion: @escaping () -> Void) {
+        let locationManager = CLLocationManager()
+        locationManager. Authorization()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // Slight delay to allow authorization status update
+            completion()
+        }
+    }
+    
+    func checkLocationPermission() {
+        let locationManager = CLLocationManager()
+        switch locationManager.authorizationStatus {
+        case .denied, .restricted:
+            isAuthorized2 = true
+            isAccepted2 = false
+            tapped2 = true
+            print("Location permission denied")
+        case .authorizedAlways, .authorizedWhenInUse:
+            isAuthorized2 = true
+            isAccepted2 = true
+            print("Location permission granted")
+        @unknown default:
+            print("Unknown location permission status")
         }
     }
 }

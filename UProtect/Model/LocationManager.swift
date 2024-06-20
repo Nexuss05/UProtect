@@ -29,7 +29,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
         else {
             isAuthorized = false
-            manager.requestWhenInUseAuthorization()
+//            manager.requestWhenInUseAuthorization()
         }
     }
     
@@ -45,7 +45,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             manager.requestLocation()
         case .notDetermined:
             isAuthorized = false
-            manager.requestWhenInUseAuthorization()
+//            manager.requestWhenInUseAuthorization()
         case .denied:
             isAuthorized = false
             print("access denied")
