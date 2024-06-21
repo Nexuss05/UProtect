@@ -1605,6 +1605,9 @@
         }
       }
     },
+    "Avoid Secluded Areas" : {
+
+    },
     "Avoid Stopping in Secluded Areas" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1647,6 +1650,9 @@
           }
         }
       }
+    },
+    "Avoid Suspicious Things" : {
+
     },
     "Avoid talking on the phone or wearing earphones when walking alone." : {
       "localizations" : {
@@ -2027,6 +2033,9 @@
           }
         }
       }
+    },
+    "Consigli" : {
+
     },
     "Contact" : {
       "extractionState" : "stale",
@@ -2920,6 +2929,9 @@
         }
       }
     },
+    "Grazie alla mappa puoi facilmente dare un'occhiata a negozi e locali aperti vicino a te. Se hai bisogno di cercare rifugio, puoi chiamare il posto o camminare lì grazie alla mappa.\n" : {
+
+    },
     "Have a Plan" : {
       "localizations" : {
         "it" : {
@@ -3085,6 +3097,9 @@
           }
         }
       }
+    },
+    "Identify Safe Routes" : {
+
     },
     "Identifying Safe Routes" : {
       "localizations" : {
@@ -3254,9 +3269,6 @@
           }
         }
       }
-    },
-    "In order to give you the best experience possible, we will need the authorization for different services\n\n\n" : {
-
     },
     "In the disco" : {
       "comment" : "Subtitle for course 03",
@@ -3835,6 +3847,9 @@
           }
         }
       }
+    },
+    "Mappa" : {
+
     },
     "Meet strangers from the internet alone" : {
       "localizations" : {
@@ -4507,6 +4522,9 @@
         }
       }
     },
+    "Privacy Policy. Bottone" : {
+
+    },
     "Privacy Policy. Button" : {
 
     },
@@ -4530,6 +4548,9 @@
           }
         }
       }
+    },
+    "Questa sezione offre un potente archivio di conoscenze, con suggerimenti e trucchi per mitigare e gestire meglio le situazioni pericolose.\n\n" : {
+
     },
     "Question 1: What is the correct order of the steps of situational awareness?" : {
       "localizations" : {
@@ -5152,6 +5173,9 @@
         }
       }
     },
+    "Stay Aware" : {
+
+    },
     "Stay Aware of Your Surroundings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5657,6 +5681,9 @@
           }
         }
       }
+    },
+    "Use Crosswalks" : {
+
     },
     "Use Pedestrian Crossings" : {
       "localizations" : {
