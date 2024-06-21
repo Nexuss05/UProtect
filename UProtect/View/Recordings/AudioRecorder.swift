@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 import AVFoundation
+import CoreLocation
 
 struct Recording {
     let fileURL: URL
@@ -38,39 +39,58 @@ class AudioRecorder: NSObject, ObservableObject {
         }
     }
     
-    func startRecording() {
-        if let location = locationManager.userLocation {
-            locationManager.getAddressFromLocation(location: location)
-            print(locationManager.userAddress)
+    func convertLatLongToAddress(latitude:Double,longitude:Double, completion: @escaping (String) -> Void){
+        
+        let geoCoder = CLGeocoder()
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             
-        }
+            var placeMark: CLPlacemark!
+            placeMark = placemarks?[0]
+            
+            if let street = placeMark.thoroughfare {
+                print("mammt")
+                print(street)
+                completion(street)
+            }
+        })
         
-        let recordingSession = AVAudioSession.sharedInstance()
-        
-        do {
-            try recordingSession.setCategory(.playAndRecord, mode: .default)
-            try recordingSession.setActive(true)
-        } catch {
-            print("Failed to set up recording session")
-        }
-        
-        let timestamp = Date().toString(dateFormat: "yyyyMMdd_HHmmss")
-        let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let audioFilename = documentPath.appendingPathComponent("\(locationManager.userAddress ?? "Unknown Location")_\(timestamp)")
-        
-        let settings = [
-            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000,
-            AVNumberOfChannelsKey: 1,
-            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-        ]
-        
-        do {
-            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
-            audioRecorder.record()
-            self.recording = true
-        } catch {
-            print("Could not start recording")
+    }
+    
+    func startRecording(lat: Double, long: Double) {
+        var position = ""
+        convertLatLongToAddress(latitude: lat, longitude: long){ street in
+            print("street before: \(position)")
+            position = street
+            print("street sfter: \(position)")
+            
+            let recordingSession = AVAudioSession.sharedInstance()
+            
+            do {
+                try recordingSession.setCategory(.playAndRecord, mode: .default)
+                try recordingSession.setActive(true)
+            } catch {
+                print("Failed to set up recording session")
+            }
+            
+            let timestamp = Date().toString(dateFormat: "yyyyMMdd_HHmmss")
+            let documentPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let audioFilename = documentPath.appendingPathComponent("\(position)_\(timestamp)")
+            
+            let settings = [
+                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVSampleRateKey: 12000,
+                AVNumberOfChannelsKey: 1,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ]
+            
+            do {
+                self.audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+                self.audioRecorder.record()
+                self.recording = true
+            } catch {
+                print("Could not start recording")
+            }
         }
     }
     

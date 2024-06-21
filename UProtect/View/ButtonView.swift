@@ -39,6 +39,9 @@ struct TimerView: View {
     
     @Query var counter: [Counter] = []
     
+    @State var latitude: Double = 0
+    @State var longitude: Double = 0
+    
     @State private var tokenAPNS: String = "Generando token..."
     let nome = UserDefaults.standard.string(forKey: "firstName") ?? "Name"
     let cognome = UserDefaults.standard.string(forKey: "lastName") ?? "Surname"
@@ -110,6 +113,9 @@ struct TimerView: View {
         }
         vm.latitude = locationManager.userLocation?.coordinate.latitude ?? 0
         vm.longitude = locationManager.userLocation?.coordinate.longitude ?? 0
+        if !audioRecorder.recording {
+            audioRecorder.startRecording(lat: vm.latitude, long: vm.longitude)
+        }
         print("latidutine: \(vm.latitude), longitudine: \(vm.longitude)")
         if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
             for token in savedTokens {
@@ -437,9 +443,11 @@ struct TimerView: View {
                 if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens"), !savedTokens.isEmpty {
                     withAnimation {
                         if !timerManager.isActivated && !buttonLocked && !timerManager.start {
-                            if !audioRecorder.recording {
-                                audioRecorder.startRecording()
-                            }
+//                            if !audioRecorder.recording {
+//                                latitude = locationManager.userLocation?.coordinate.latitude ?? 0
+//                                longitude = locationManager.userLocation?.coordinate.longitude ?? 0
+//                                audioRecorder.startRecording(lat: latitude, long: longitude)
+//                            }
                             print("Bottone attivato")
                             buttonTapped = true
                             showingAlert = true
@@ -484,9 +492,11 @@ struct TimerView: View {
             .onLongPressGesture{
                 if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens"), !savedTokens.isEmpty {
                     if !timerManager.isActivated && !timerManager.start && !buttonLocked{
-                        if !audioRecorder.recording{
-                            audioRecorder.startRecording()
-                        }
+//                        if !audioRecorder.recording {
+//                            latitude = locationManager.userLocation?.coordinate.latitude ?? 0
+//                            longitude = locationManager.userLocation?.coordinate.longitude ?? 0
+//                            audioRecorder.startRecording(lat: latitude, long: longitude)
+//                        }
                         sendPosition()
                         timerManager.isPressed = true
                         timerManager.startTimer()
