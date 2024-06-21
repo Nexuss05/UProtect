@@ -252,17 +252,33 @@ struct ThirdPageView: View {
                 Rectangle()
                     .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 270, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .opacity(0)
-                Text("Map")
-                    .font(.title)
-                    .bold()
-                    .frame(width: 340)
+                if Locale.current.language.languageCode?.identifier == "it" {
+                    Text("Mappa")
+                        .font(.title)
+                        .bold()
+                        .frame(width: 340)
                 
-                Text("Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map.\n")
-                    .fontWeight(.light)
-                    .frame(width: 310)
-                    .multilineTextAlignment(.center)
-                    .padding(.vertical)
+                    Text("Grazie alla mappa puoi facilmente dare un'occhiata a negozi e locali aperti vicino a te. Se hai bisogno di cercare rifugio, puoi chiamare il posto o camminare lì grazie alla mappa.\n")
+                        .fontWeight(.light)
+                        .frame(width: 310)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical)
+                } else {
+                    Text("Map")
+                        .font(.title)
+                        .bold()
+                        .frame(width: 340)
+                
+                    Text("Thanks to the map you can easily have a look at shops and stores open nearby you. If you need to seek shelter, you can call the place or walk there thanks to the map.\n")
+                        .fontWeight(.light)
+                        .frame(width: 310)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical)
+                }
             }
+        }.onAppear{
+            let languageCode = Locale.current.language.languageCode?.identifier
+                    print("Current language code: \(languageCode ?? "unknown")")
         }
     }
 }
@@ -276,16 +292,29 @@ struct FourthPageView: View {
                 Rectangle()
                     .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 270, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .opacity(0)
-                Text("Tips & Tricks")
-                    .font(.title)
-                    .bold()
-                    .frame(width: 340)
-                
-                Text("This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations.\n\n")
-                    .fontWeight(.light)
-                    .frame(width: 310)
-                    .multilineTextAlignment(.center)
-                    .padding(.vertical)
+                if Locale.current.language.languageCode!.identifier == "it" {
+                    Text("Consigli")
+                        .font(.title)
+                        .bold()
+                        .frame(width: 340)
+                    
+                    Text("Questa sezione offre un potente archivio di conoscenze, con suggerimenti e trucchi per mitigare e gestire meglio le situazioni pericolose.\n\n")
+                        .fontWeight(.light)
+                        .frame(width: 310)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical)
+                } else {
+                    Text("Tips & Tricks")
+                        .font(.title)
+                        .bold()
+                        .frame(width: 340)
+                    
+                    Text("This section offers you a powerful knowledge repository, with tips and tricks to better mitigate and manage dangerous situations.\n\n")
+                        .fontWeight(.light)
+                        .frame(width: 310)
+                        .multilineTextAlignment(.center)
+                        .padding(.vertical)
+                }
             }
         }
     }
@@ -323,9 +352,10 @@ struct FifthPageView: View {
 //                    .padding(.vertical)
                 
                 VStack(spacing: 25){
-                    HStack(spacing: 127.0){
+                    HStack(){
                         Text("Allow Notification")
                             .fontWeight(.medium)
+                        Spacer()
                         Button(action: {
                             askForPermission() {
                                 checkPermission()
@@ -355,11 +385,12 @@ struct FifthPageView: View {
                                 }
                             }
                         })
-                    }
+                    }.frame(width: 290)
                     
-                    HStack(spacing: 150.0){
+                    HStack(){
                         Text("Allow Location")
                             .fontWeight(.medium)
+                        Spacer()
                         Button(action: {
                             locationManager.request()
                             UserDefaults.standard.set(1, forKey: "LocationAuth")
@@ -386,7 +417,7 @@ struct FifthPageView: View {
                                 }
                             }
                         })
-                    }
+                    }.frame(width: 290)
                 }
             }
         }

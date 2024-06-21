@@ -198,7 +198,7 @@ struct TimerView: View {
                 return
             }
             
-            let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
+            let urlString = "https://api.push.apple.com/3/device/\(token)"
             //        let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
             guard let url = URL(string: urlString) else {
                 print("URL non valido")

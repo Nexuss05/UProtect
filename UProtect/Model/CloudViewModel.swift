@@ -278,6 +278,38 @@ class CloudViewModel: ObservableObject{
         }
     }
     
+    func checkUser(completion: @escaping (Bool) -> Void){
+        guard let numero = UserDefaults.standard.string(forKey: "userNumber") else {
+            print("numero non salvato")
+            completion(false)
+            return
+        }
+        let predicate = NSPredicate(format: "number = %@", numero)
+        let query = CKQuery(recordType: "Utenti", predicate: predicate)
+        let queryOperation = CKQueryOperation(query: query)
+        guard let fcmToken = fcmToken else {
+            print("FCM Token is nil")
+            completion(false)
+            return
+        }
+        queryOperation.recordMatchedBlock = { recordID, recordResult in
+                switch recordResult {
+                case .success(let record):
+                    if let token = record["token"] as? String {
+                        if token == fcmToken {
+                            completion(true)
+                        } else {
+                            completion(false)
+                        }
+                    }
+                case .failure(let error):
+                    print("Failed to fetch record: \(error.localizedDescription)")
+                    completion(false)
+                }
+            }
+        addOperation(operation: queryOperation)
+    }
+    
     func fetchNumber(number: String, completion: @escaping (Bool) -> Void) {
         let predicate = NSPredicate(format: "number = %@", argumentArray: [number])
         let query = CKQuery(recordType: "Utenti", predicate: predicate)
