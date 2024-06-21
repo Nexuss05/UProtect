@@ -77,7 +77,7 @@ struct UProtectApp: App {
             if newScenePhase == .inactive {
                 vm.fetchBadge(completion: { badge in
                     DispatchQueue.main.async {
-                        UNUserNotificationCenter.current().setBadgeCount(badge ?? 1)
+                        UNUserNotificationCenter.current().setBadgeCount(badge ?? 0)
 //                        UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
                     }
                 })
@@ -85,7 +85,7 @@ struct UProtectApp: App {
             if newScenePhase == .background {
                 vm.fetchBadge(completion: { badge in
                     DispatchQueue.main.async {
-                        UNUserNotificationCenter.current().setBadgeCount(badge ?? 1)
+                        UNUserNotificationCenter.current().setBadgeCount(badge ?? 0)
 //                        UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
                     }
                 })
@@ -111,7 +111,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         
         vm.fetchBadge(completion: { badge in
             DispatchQueue.main.async {
-                UNUserNotificationCenter.current().setBadgeCount(badge ?? 1)
+                UNUserNotificationCenter.current().setBadgeCount(badge ?? 0)
 //                UIApplication.shared.applicationIconBadgeNumber = badge ?? 1
             }
         })
