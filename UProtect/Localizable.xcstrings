@@ -1255,10 +1255,24 @@
       }
     },
     "Allow Location" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti la posizione"
+          }
+        }
+      }
     },
     "Allow Notification" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consenti le notifiche"
+          }
+        }
+      }
     },
     "Already have an account?" : {
       "localizations" : {
@@ -2617,7 +2631,14 @@
       }
     },
     "Enable Services" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abilita i permessi"
+          }
+        }
+      }
     },
     "Encourage open communication about interactions with adults." : {
       "localizations" : {
@@ -3769,6 +3790,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fai Svolte Intenzionali"
+          }
+        }
+      }
+    },
+    "Make intentional turns to confirm if a vehicle is still behind you." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai svolte intenzionali per confermare se un veicolo è ancora dietro di te."
           }
         }
       }
