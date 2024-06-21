@@ -325,7 +325,7 @@ struct TimerView: View {
                     .foregroundStyle(.white)
                     .fontWeight(.bold)
                     .font(.title2)
-                    .padding(.top, 370)
+                    .padding(.top, 430)
                     .offset(y: animateText ? -10 : 0)
                     .animation(
                         Animation
@@ -337,12 +337,12 @@ struct TimerView: View {
                     }
             }
             
-            if showGreenTick {
-                            LottieTick(loopmode: .playOnce)
-                                .frame(width: 10, height: 10)
-                                .scaleEffect(0.1)
-                                .padding(.top, 510)
-                        }
+//            if showGreenTick {
+//                            LottieTick(loopmode: .playOnce)
+//                                .frame(width: 10, height: 10)
+//                                .scaleEffect(0.1)
+//                                .padding(.top, 510)
+//                        }
             
             if timerManager.isPressed {
                 RingView(percentage: 1, backgroundColor: Color.white.opacity(0), startColor: .white, endColor: .white, thickness: 37)
@@ -578,6 +578,9 @@ struct TimerView: View {
             }.alert("Notification sent!", isPresented: $showingAlert) {
                 Button("OK") { }
             }
+            .alert("Notification sent!", isPresented: $showGreenTick) {
+                Button("OK") { }
+            }
             .alert("Notification not sent!", isPresented: $showAlert3) {
                 Button("OK") { }
             }
@@ -598,5 +601,11 @@ struct TimerView: View {
                 stopAnimation()
             }
         
+    }
+}
+
+struct TimerView_Previews: PreviewProvider {
+    static var previews: some View {
+        TimerView(timerManager: TimerManager(), selectedContacts: .constant([]))
     }
 }
