@@ -52,22 +52,23 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
             isAuthorized = true
             isAccepted = true
             manager.requestLocation()
-            print("l: always")
+            startLocationServices()
+//            print("l: always")
         case .notDetermined:
             isAuthorized = false
 //            manager.requestWhenInUseAuthorization()
-            print("l: bho")
+//            print("l: bho")
         case .denied:
             isAuthorized = false
             isAccepted = false
             tapped = true
-            print("l: access denied")
+//            print("l: access denied")
         case .restricted:
             print("l: retricted")
         default:
-            break
-            isAuthorized = true
+//            isAuthorized = true
             startLocationServices()
+            break
         }
     }
     

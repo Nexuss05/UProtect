@@ -161,6 +161,7 @@ struct RegistrationView: View {
     
     @AppStorage("isWelcomeScreenOver") var isWelcomeScreenOver = false
     @State var url = URL(string: "https://www.iubenda.com/privacy-policy/60037945")
+    @State var url2 = URL(string: "https://www.iubenda.com/privacy-policy/28899563")
     
     @FocusState private var focusedField: Field?
     
@@ -199,8 +200,15 @@ struct RegistrationView: View {
                     HStack(spacing: 5) {
                         Text("I agree to the")
                             .foregroundStyle(.white)
-                        Link("privacy policy", destination: url!)
-                            .foregroundColor(.blue)
+                        if Locale.current.language.languageCode?.identifier == "it"{
+                            Link("privacy policy", destination: url2!)
+                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                        } else {
+                            Link("privacy policy", destination: url!)
+                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                        }
                     }
                 }.padding(.top, 470)
                 

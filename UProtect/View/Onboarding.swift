@@ -64,7 +64,7 @@ struct WelcomeView: View {
                                     }
                                     .background(
                                         RoundedRectangle(cornerRadius: 15)
-                                            .foregroundColor(CustomColor.orange)
+                                            .foregroundColor(CustomColor.ocra)
                                             .frame(width: 200, height: 60)
                                     )
                                 } else {
@@ -79,7 +79,7 @@ struct WelcomeView: View {
                                             )
                                 }
                             }
-                        }.padding(.top, 600)
+                        }.padding(.top, 550)
                     )
             }
             .ignoresSafeArea()
@@ -271,7 +271,7 @@ struct FourthPageView: View {
     
     var body: some View {
         ZStack {
-            Image("pp")
+            Image("p5")
             VStack{
                 Rectangle()
                     .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 270, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -307,23 +307,25 @@ struct FifthPageView: View {
             Image("p3")
             VStack{
                 Rectangle()
-                    .frame(width: 100, height: 270, alignment: .center)
+                    .frame(width: 100, height: 210, alignment: .center)
                     .opacity(0)
                 Text("Enable Services")
                     .font(.title)
                     .bold()
                     .frame(width: 340)
+                    .padding(.bottom, 35)
+                    .padding(.top, 10)
                 
-                Text("In order to give you the best experience possible, we will need the authorization for different services\n\n\n")
-                    .fontWeight(.light)
-                    .frame(width: 310)
-                    .multilineTextAlignment(.center)
-                    .padding(.vertical)
+//                Text("In order to give you the best experience possible, we will need the authorization for different services\n\n\n")
+//                    .fontWeight(.light)
+//                    .frame(width: 310)
+//                    .multilineTextAlignment(.center)
+//                    .padding(.vertical)
                 
                 VStack(spacing: 25){
                     HStack(spacing: 127.0){
                         Text("Allow Notification")
-                            .bold()
+                            .fontWeight(.medium)
                         Button(action: {
                             askForPermission() {
                                 checkPermission()
@@ -333,19 +335,23 @@ struct FifthPageView: View {
                             if !isAuthorized {
                                 if !tapped {
                                     Image(systemName: "circle")
-                                        .tint(.orange)
+                                        .tint(CustomColor.ocra)
+                                        .font(.system(size: 25))
                                 }
                                 if !isAccepted && tapped {
                                     Image(systemName: "xmark.circle.fill")
-                                        .tint(.red)
+                                        .tint(CustomColor.redBackground)
+                                        .font(.system(size: 25))
                                 }
                             } else {
                                 if !isAccepted {
                                     Image(systemName: "xmark.circle.fill")
-                                        .tint(.red)
+                                        .tint(CustomColor.redBackground)
+                                        .font(.system(size: 25))
                                 } else {
                                     Image(systemName: "checkmark.circle.fill")
-                                        .tint(.orange)
+                                        .tint(CustomColor.ocra)
+                                        .font(.system(size: 25))
                                 }
                             }
                         })
@@ -353,7 +359,7 @@ struct FifthPageView: View {
                     
                     HStack(spacing: 150.0){
                         Text("Allow Location")
-                            .bold()
+                            .fontWeight(.medium)
                         Button(action: {
                             locationManager.request()
                             UserDefaults.standard.set(1, forKey: "LocationAuth")
@@ -361,19 +367,22 @@ struct FifthPageView: View {
                             if !locationManager.isAuthorized {
                                 if !locationManager.tapped {
                                     Image(systemName: "circle")
-                                        .tint(.orange)
-                                }
+                                        .tint(CustomColor.ocra)
+                                    .font(.system(size: 25))                                }
                                 if !locationManager.isAuthorized && locationManager.tapped {
                                     Image(systemName: "xmark.circle.fill")
-                                        .tint(.red)
+                                        .tint(CustomColor.redBackground)
+                                        .font(.system(size: 25))
                                 }
                             } else {
                                 if !locationManager.isAccepted{
                                     Image(systemName: "xmark.circle.fill")
-                                        .tint(.red)
+                                        .tint(CustomColor.redBackground)
+                                        .font(.system(size: 25))
                                 } else {
                                     Image(systemName: "checkmark.circle.fill")
-                                        .tint(.orange)
+                                        .tint(CustomColor.ocra)
+                                        .font(.system(size: 25))
                                 }
                             }
                         })

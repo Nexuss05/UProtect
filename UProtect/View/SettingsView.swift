@@ -14,6 +14,7 @@ struct SettingsView: View {
     @State private var circleColor: Color = UserDefaultsManager.loadCircleColor() ?? Color.red
     @State var url = URL(string: "https://www.iubenda.com/privacy-policy/60037945")
     @State var url2 = URL(string: "https://discord.gg/sMGDwdBp")
+    @State var url3 = URL(string: "https://www.iubenda.com/privacy-policy/28899563")
     @Query var userData: [Contacts]
     
     @ObservedObject var timerManager: TimerManager
@@ -154,20 +155,37 @@ struct SettingsView: View {
                         }
                         .accessibilityElement(children: .ignore)
                         .accessibilityLabel("Get Help. Button")
-                        HStack {
-                            Image(systemName: "doc.text")
-                                .foregroundColor(.primary)
-                            Link("Privacy Policy", destination: url!)
-                                .foregroundColor(.primary)
-                            Spacer()
-                            Image(systemName: "arrow.up.forward")
-                                .foregroundStyle(CustomColor.orange)
-                        }.onTapGesture {
-                            if let url = URL(string: "https://www.iubenda.com/privacy-policy/60037945") {
-                                UIApplication.shared.open(url)
-                            }
-                        }.accessibilityElement(children: .ignore)
-                            .accessibilityLabel("Privacy Policy. Button")
+                        if Locale.current.language.languageCode?.identifier == "it"{
+                            HStack {
+                                Image(systemName: "doc.text")
+                                    .foregroundColor(.primary)
+                                Link("Privacy Policy", destination: url3!)
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Image(systemName: "arrow.up.forward")
+                                    .foregroundStyle(CustomColor.orange)
+                            }.onTapGesture {
+                                if let url = URL(string: "https://www.iubenda.com/privacy-policy/28899563") {
+                                    UIApplication.shared.open(url)
+                                }
+                            }.accessibilityElement(children: .ignore)
+                                .accessibilityLabel("Privacy Policy. Bottone")
+                        } else {
+                            HStack {
+                                Image(systemName: "doc.text")
+                                    .foregroundColor(.primary)
+                                Link("Privacy Policy", destination: url!)
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Image(systemName: "arrow.up.forward")
+                                    .foregroundStyle(CustomColor.orange)
+                            }.onTapGesture {
+                                if let url = URL(string: "https://www.iubenda.com/privacy-policy/60037945") {
+                                    UIApplication.shared.open(url)
+                                }
+                            }.accessibilityElement(children: .ignore)
+                                .accessibilityLabel("Privacy Policy. Button")
+                        }
                         ShareLink(item: URL(string: "https://apps.apple.com/it/app/hestia-feel-safe/id6504139962?l=en-GB")!, label: {
                             HStack{
                                 Image(systemName: "square.and.arrow.up")

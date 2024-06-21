@@ -100,6 +100,7 @@ struct CustomColor {
     static let redBackground = Color("RBackground")
     static let mapButton = Color("MapButton")
     static let gray = Color("lightGray")
+    static let ocra = Color("CustomOcra")
 }
 
 extension UITabBar {
