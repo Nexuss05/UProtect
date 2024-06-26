@@ -1335,7 +1335,18 @@
         }
       }
     },
+    "Always know the local emergency numbers and keep them handy in case of an emergency." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conosci sempre i numeri di emergenza locali e tienili a portata di mano in caso di emergenza."
+          }
+        }
+      }
+    },
     "Always look both ways before crossing the street, so that you can avoid being injured." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1478,6 +1489,7 @@
       }
     },
     "Avoid dark parking spots, which provide cover for predators." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1494,6 +1506,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Evita i parcheggi bui, che forniscono copertura per i predatori. Parcheggia sempre in zone ben illuminate e trafficate."
+          }
+        }
+      }
+    },
+    "Avoid Distractions" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita le Distrazioni"
           }
         }
       }
@@ -1554,6 +1576,7 @@
       }
     },
     "Avoid isolated, poorly-lit areas and unpleasant-looking streets, especially at night." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1575,6 +1598,7 @@
       }
     },
     "Avoid leading a potential follower to your residence. Go to a public, well-lit, crowded place like a café, mall, or police station. Take advantage of the map system in the app." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1605,9 +1629,6 @@
         }
       }
     },
-    "Avoid Secluded Areas" : {
-
-    },
     "Avoid Stopping in Secluded Areas" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1620,6 +1641,7 @@
       }
     },
     "Avoid stopping in secluded areas, try to stay in crowded or surveilled areas, either by securities or with a lot of other people." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1652,7 +1674,14 @@
       }
     },
     "Avoid Suspicious Things" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita Cose Sospette"
+          }
+        }
+      }
     },
     "Avoid talking on the phone or wearing earphones when walking alone." : {
       "localizations" : {
@@ -1804,6 +1833,16 @@
         }
       }
     },
+    "Buddy System" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buddy System"
+          }
+        }
+      }
+    },
     "C. Alter your walking pattern." : {
       "localizations" : {
         "it" : {
@@ -1866,6 +1905,16 @@
     },
     "Call" : {
 
+    },
+    "Carry a personal alarm that you can use to attract attention if you feel threatened." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta un allarme personale che puoi usare per attirare l'attenzione se ti senti minacciato."
+          }
+        }
+      }
     },
     "Carry Non-Violent Deterrents" : {
       "extractionState" : "manual",
@@ -2030,6 +2079,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Considera di dare a tuo figlio un telefono per contattarti in caso di emergenza. Insegnagli come usarlo in modo responsabile e pratica le procedure di emergenza."
+          }
+        }
+      }
+    },
+    "Consider taking a self-defense class to learn techniques that can help you protect yourself in dangerous situations." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prendi in considerazione la possibilità di seguire un corso di autodifesa per imparare tecniche che possono aiutarti a proteggerti in situazioni pericolose."
           }
         }
       }
@@ -2259,6 +2318,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crea un Account!"
+          }
+        }
+      }
+    },
+    "Create an emergency plan with your child, including who to contact and where to go in case of an emergency." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea un piano di emergenza con tuo figlio, incluso chi contattare e dove andare in caso di emergenza."
           }
         }
       }
@@ -2536,6 +2605,16 @@
         }
       }
     },
+    "Drink Responsibly" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bevi Responsabilmente"
+          }
+        }
+      }
+    },
     "Drink water or soft drinks between alcoholic beverages, this will help you diluting the alcohol." : {
       "localizations" : {
         "it" : {
@@ -2606,6 +2685,16 @@
         }
       }
     },
+    "Educate your child on road safety rules, including how to cross streets safely and understanding traffic signals." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Educa il tuo bambino sulle regole di sicurezza stradale, incluso come attraversare le strade in modo sicuro e capire i segnali stradali."
+          }
+        }
+      }
+    },
     "Embrace the music, dancing, and social aspects." : {
       "localizations" : {
         "it" : {
@@ -2625,6 +2714,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contatti di Emergenza"
+          }
+        }
+      }
+    },
+    "Emergency Plan" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piano d'Emergenza"
           }
         }
       }
@@ -2798,6 +2897,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Spiega i significati delle luci rosse, gialle e verdi."
+          }
+        }
+      }
+    },
+    "Familiarize yourself with the area you are walking in, including knowing where safe places are in case you need help." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Familiarizza con l'area in cui stai camminando, anche sapendo dove sono i luoghi sicuri nel caso in cui tu abbia bisogno di aiuto."
           }
         }
       }
@@ -3098,9 +3207,6 @@
         }
       }
     },
-    "Identify Safe Routes" : {
-
-    },
     "Identifying Safe Routes" : {
       "localizations" : {
         "it" : {
@@ -3150,6 +3256,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Se sei intossicato, assicurati che un amico ti accompagni a casa. Gli individui intossicati sono obiettivi più vulnerabili."
+          }
+        }
+      }
+    },
+    "If something feels off or unsafe, trust your instincts and remove yourself from the situation as quickly as possible." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se qualcosa sembra fuori posto o non sicuro, fidati del tuo istinto e allontanati dalla situazione il più rapidamente possibile."
           }
         }
       }
@@ -3463,6 +3579,16 @@
         }
       }
     },
+    "Keep Valuables Safe" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tieni al Sicuro gli Oggetti di Valore"
+          }
+        }
+      }
+    },
     "Keep Your Hands Free" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3514,6 +3640,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mantieni i tuoi sensi acuti con regolari controlli medici per assicurarti che la vista, l'udito, il tatto, l'odore e il gusto funzionino bene."
+          }
+        }
+      }
+    },
+    "Keep your valuables secure and avoid displaying expensive items when out at night." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tieni al sicuro i tuoi oggetti di valore ed evita di esporre oggetti costosi quando sei fuori di notte."
           }
         }
       }
@@ -3597,6 +3733,16 @@
         }
       }
     },
+    "Know Emergency Numbers" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conosci i Numeri d'Emergenza"
+          }
+        }
+      }
+    },
     "Know Safe Adults" : {
       "localizations" : {
         "it" : {
@@ -3623,6 +3769,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conosci adulti sicuri a cui possono rivolgersi se si sentono a disagio o in pericolo."
+          }
+        }
+      }
+    },
+    "Know Your Surroundings" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conosci i Tuoi Dintorni"
           }
         }
       }
@@ -3807,6 +3963,7 @@
       }
     },
     "Make intentional turns to confirm if a vehicle is still behind you." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -3834,6 +3991,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fai Rumore e Cerca Aiuto"
+          }
+        }
+      }
+    },
+    "Make sure your child wears reflective gear to increase their visibility during night time or in low-light conditions." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assicurati che il tuo bambino indossi un'attrezzatura riflettente per aumentare la sua visibilità durante la notte o in condizioni di scarsa illuminazione."
           }
         }
       }
@@ -4005,6 +4172,7 @@
       }
     },
     "Never accept rides or gifts from strangers, it could be dangerous." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -4327,6 +4495,16 @@
         }
       }
     },
+    "Pace yourself and know your limits when drinking to avoid putting yourself in vulnerable situations." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conosci i tuoi limiti quando bevi per evitare di metterti in situazioni vulnerabili."
+          }
+        }
+      }
+    },
     "Park in Well-Lit Areas" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4355,6 +4533,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Percepire gli Elementi"
+          }
+        }
+      }
+    },
+    "Personal Alarm" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allarme Personale"
           }
         }
       }
@@ -4457,6 +4645,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Praticare e Sviluppare la Consapevolezza Situazionale"
+          }
+        }
+      }
+    },
+    "Pre-book a taxi or use a trusted rideshare service to ensure you have a safe way to get home after a night out." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prenota un taxi o usa un servizio di fiducia per assicurarti di avere un modo sicuro per tornare a casa dopo una serata fuori."
           }
         }
       }
@@ -4725,6 +4923,16 @@
         }
       }
     },
+    "Reflective Gear" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attrezzatura Riflettente"
+          }
+        }
+      }
+    },
     "Regular Checkups" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4732,6 +4940,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Controlli Regolari"
+          }
+        }
+      }
+    },
+    "Regularly update someone you trust about your whereabouts and travel plans, especially when traveling alone." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiorna regolarmente qualcuno di cui ti fidi sulla tua posizione e sui tuoi piani di viaggio, specialmente quando viaggi da solo."
           }
         }
       }
@@ -4840,6 +5058,16 @@
         }
       }
     },
+    "Safe Transport" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trasporto Sicuro"
+          }
+        }
+      }
+    },
     "Safety and Security Quiz" : {
       "localizations" : {
         "it" : {
@@ -4931,6 +5159,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le lezioni di autodifesa aumentano la fiducia e la consapevolezza situazionale, preparandoti mentalmente e fisicamente per situazioni stressanti."
+          }
+        }
+      }
+    },
+    "Self-Defense Training" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formazione sull'Autodifesa"
           }
         }
       }
@@ -5174,7 +5412,14 @@
       }
     },
     "Stay Aware" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tieniti Consapevole"
+          }
+        }
+      }
     },
     "Stay Aware of Your Surroundings" : {
       "extractionState" : "manual",
@@ -5193,6 +5438,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mantieni la calma, rimani dove sei e cerca l'aiuto di un adulto fidato se ti sei perso."
+          }
+        }
+      }
+    },
+    "Stay focused and avoid distractions such as using your phone or listening to music when walking alone." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rimani concentrato ed evita distrazioni come usare il telefono o ascoltare musica quando cammini da solo."
+          }
+        }
+      }
+    },
+    "Stay in Touch" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resta in Contatto"
           }
         }
       }
@@ -5259,6 +5524,16 @@
         }
       }
     },
+    "Stranger Danger" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lo Sconosciuto è un Pericolo"
+          }
+        }
+      }
+    },
     "Sun Safety" : {
       "localizations" : {
         "it" : {
@@ -5301,12 +5576,11 @@
       }
     },
     "swipe left to read more" : {
-      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "scorri verso sinistra per leggerne di più"
+            "value" : "scorri verso sinistra"
           }
         }
       }
@@ -5368,6 +5642,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Insegna ai bambini a verificare chi c'è alla porta e a non aprirla a persone sconosciute."
+          }
+        }
+      }
+    },
+    "Teach Road Safety" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insegna la Sicurezza Stradale"
+          }
+        }
+      }
+    },
+    "Teach your child about stranger danger and what to do if approached by someone they do not know." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insegna a tuo figlio che gli sconosciuti rappresentano un pericolo e cosa fare se avvicinato da qualcuno che non conosce."
           }
         }
       }
@@ -5611,6 +5905,16 @@
         }
       }
     },
+    "Trust Your Instincts" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fidati Del Tuo Istinto"
+          }
+        }
+      }
+    },
     "Trust your instincts, avoid conflicts, and have a safe and reliable way to get home." : {
       "localizations" : {
         "it" : {
@@ -5643,6 +5947,7 @@
       }
     },
     "Try to never play or run directly on the streets, choose safer spaces away from roads." : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -5683,7 +5988,14 @@
       }
     },
     "Use Crosswalks" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa le Strisce Pedonali"
+          }
+        }
+      }
     },
     "Use Pedestrian Crossings" : {
       "localizations" : {
@@ -5758,12 +6070,32 @@
         }
       }
     },
+    "Use the buddy system when going out to ensure you always have someone looking out for you." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa il \"sistema buddy\" quando esci per assicurarti di avere sempre qualcuno che si prende cura di te."
+          }
+        }
+      }
+    },
     "Using Public Transport:" : {
       "localizations" : {
         "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Utilizzando i Trasporti Pubblici:"
+          }
+        }
+      }
+    },
+    "Utilize safety apps and features on your phone, such as location sharing and emergency alerts." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilizza app e funzionalità di sicurezza sul tuo telefono, come la condivisione della posizione e gli avvisi di emergenza."
           }
         }
       }
@@ -5785,6 +6117,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verifica"
+          }
+        }
+      }
+    },
+    "wait until tomorrow for more tips" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "aspetta fino a domani per altri consigli"
           }
         }
       }
@@ -6141,6 +6483,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Potresti aver bisogno delle tue mani per il tuo telefono o per gli strumenti di autodifesa. Porta con te una piccola e leggera borsa."
+          }
+        }
+      }
+    },
+    "You sent too many critical alerts! Please, try again in an hour" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai inviato troppi avvisi critici! Per favore, riprova tra un'ora"
           }
         }
       }

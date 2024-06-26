@@ -55,16 +55,38 @@ struct ContactsView: View {
     }
     
     func filterContacts() {
-        if searchText.isEmpty {
-            filteredContacts = friendAdded
-        } else {
-            filteredContacts = friendAdded.filter { contact in
-                contact.lowercased().contains(searchText.lowercased())
+            if searchText.isEmpty {
+                filteredContacts = friendAdded
+            } else {
+                filteredContacts = friendAdded.filter { contact in
+                    contact.lowercased().contains(searchText.lowercased())
+                }
+                filteredContacts += selectedContacts.filter { contact in
+                    contact.givenName.lowercased().contains(searchText.lowercased()) ||
+                    contact.familyName.lowercased().contains(searchText.lowercased()) ||
+                    contact.phoneNumber.lowercased().contains(searchText.lowercased())
+                }.map { contact in
+                    contact.phoneNumber
+                }
+                
+                // Filter by name and surname
+                for (friendNumber, name) in names {
+                    if name.lowercased().contains(searchText.lowercased()) {
+                        if !filteredContacts.contains(friendNumber) {
+                            filteredContacts.append(friendNumber)
+                        }
+                    }
+                }
+                for (friendNumber, surname) in surnames {
+                    if surname.lowercased().contains(searchText.lowercased()) {
+                        if !filteredContacts.contains(friendNumber) {
+                            filteredContacts.append(friendNumber)
+                        }
+                    }
+                }
             }
         }
-    }
-    
-    
+
     func generateRandomColor() -> Color {
         return Color(
             red: Double.random(in: 0...1),
@@ -144,7 +166,7 @@ struct ContactsView: View {
                             Rectangle()
                                 .fill(CustomColor.orange)
                         }.padding(.top, 15)
-                        .padding(.bottom, -15.8)
+                        .padding(.bottom, -17.2)
                         .pickerStyle(SegmentedPickerStyle())
                         .onChange(of: activeTab) { newMode in
                             switch newMode {

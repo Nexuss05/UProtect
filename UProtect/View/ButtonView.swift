@@ -21,6 +21,7 @@ struct TimerView: View {
     @State var showAlert3 = false
     @State var showAlert2 = false
     @State var showAlert = false
+    @State var showCritical = false
     
     @State private var animateText = false
     @State private var showGreenTick = false
@@ -41,6 +42,10 @@ struct TimerView: View {
     
     @State var latitude: Double = 0
     @State var longitude: Double = 0
+    
+    @State private var alertCount = 0
+    @State private var lastAlertTime: Date? = nil
+    let alertLimit = 5 // Limit to 5 alerts per hour
     
     @State private var tokenAPNS: String = "Generando token..."
     let nome = UserDefaults.standard.string(forKey: "firstName") ?? "Name"
@@ -145,15 +150,54 @@ struct TimerView: View {
         }
     }
     
+    func canSendAlert() -> Bool {
+        let now = Date()
+        if let lastTime = lastAlertTime {
+            let interval = now.timeIntervalSince(lastTime)
+            if interval < 3600 {
+                return alertCount < alertLimit
+            } else {
+                // Reset alert count after an hour
+                alertCount = 0
+                lastAlertTime = now
+                saveAlertData() // Save reset values
+                return true
+            }
+        } else {
+            // First alert
+            lastAlertTime = now
+            saveAlertData() // Save initial values
+            return true
+        }
+    }
+        
+        func saveAlertData() {
+            UserDefaults.standard.set(alertCount, forKey: "alertCount")
+            UserDefaults.standard.set(lastAlertTime, forKey: "lastAlertTime")
+        }
+
+        func loadAlertData() {
+            alertCount = UserDefaults.standard.integer(forKey: "alertCount")
+            lastAlertTime = UserDefaults.standard.object(forKey: "lastAlertTime") as? Date
+        }
+    
     func sendPushNotificationsForSavedTokens() {
+        guard canSendAlert() else {
+            showCritical.toggle()
+            return
+        }
+
         if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens") {
             for token in savedTokens {
-                print("funzione token: \(token)")
                 sendPushNotification(token: token)
                 vm.updateBadge(token: token)
             }
+            // Update alert count and time only after sending notifications
+            alertCount += 1
+            lastAlertTime = Date()
+            saveAlertData() // Save updated values
         } else {
-            print("Nessun token salvato in UserDefaults.")
+            print("No tokens saved in UserDefaults.")
         }
     }
     
@@ -187,7 +231,11 @@ struct TimerView: View {
                             "message": "\(localizedMessage)"
                         },
                         "badge": \(newBadgeCount),
-                        "sound": "default"
+                        "sound": {
+                                 "critical": 1,
+                                 "name": "default",
+                                 "volume": 1.0
+                                }
                     },
                     "topic": "com.andrearomano.Hestia"
                 }
@@ -198,8 +246,8 @@ struct TimerView: View {
                 return
             }
             
-            let urlString = "https://api.push.apple.com/3/device/\(token)"
-            //        let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
+//            let urlString = "https://api.push.apple.com/3/device/\(token)"
+                    let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
             guard let url = URL(string: urlString) else {
                 print("URL non valido")
                 return
@@ -406,6 +454,16 @@ struct TimerView: View {
                 switch host {
                 case "sos":
                     withAnimation{
+                        if !canSendAlert() {
+                            buttonLocked = true
+                        }
+                        if buttonLocked && !canSendAlert() {
+                            showCritical.toggle()
+                            print("criticami le mele")
+                        }
+                        if buttonLocked && timerManager.isActivated {
+                            timerManager.isActivated = false
+                        }
                         if !timerManager.isActivated && !buttonLocked{
                             print("Bottone attivato")
                             buttonTapped = true
@@ -442,6 +500,16 @@ struct TimerView: View {
             .onTapGesture {
                 if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens"), !savedTokens.isEmpty {
                     withAnimation {
+                        if !canSendAlert() {
+                            buttonLocked = true
+                        }
+                        if buttonLocked && !canSendAlert() {
+                            showCritical.toggle()
+                            print("criticami le mele")
+                        }
+                        if buttonLocked && timerManager.isActivated {
+                            timerManager.isActivated = false
+                        }
                         if !timerManager.isActivated && !buttonLocked && !timerManager.start {
 //                            if !audioRecorder.recording {
 //                                latitude = locationManager.userLocation?.coordinate.latitude ?? 0
@@ -450,6 +518,7 @@ struct TimerView: View {
 //                            }
                             print("Bottone attivato")
                             buttonTapped = true
+                            saveAlertData()
                             showingAlert = true
                             TapAnimation()
                             print("Before calling sendPushNotification()")
@@ -491,6 +560,16 @@ struct TimerView: View {
             }
             .onLongPressGesture{
                 if let savedTokens = UserDefaults.standard.stringArray(forKey: "tokens"), !savedTokens.isEmpty {
+                    if !canSendAlert() {
+                        buttonLocked = true
+                    }
+                    if buttonLocked && !canSendAlert() {
+                        showCritical.toggle()
+                        print("criticami le mele")
+                    }
+                    if buttonLocked && timerManager.isActivated {
+                        timerManager.isActivated = false
+                    }
                     if !timerManager.isActivated && !timerManager.start && !buttonLocked{
 //                        if !audioRecorder.recording {
 //                            latitude = locationManager.userLocation?.coordinate.latitude ?? 0
@@ -543,6 +622,7 @@ struct TimerView: View {
             .onAppear{
 //                SwapText()
                 startAnimation()
+                loadAlertData()
                 generateJWT()
                 if let lastCounter = counter.last {
                     print("L'ultimo valore salvato è: \(lastCounter.counter)")
@@ -552,6 +632,7 @@ struct TimerView: View {
                 }
                 timerManager.updateProgress()
                 timerManager.updateCountFromLastCounter()
+                
             }.alert(isPresented: $timerManager.showAlert) {
                 Alert(
                     title: Text("Are you safe?"),
@@ -579,6 +660,9 @@ struct TimerView: View {
                 Button("OK") { }
             }
             .alert("Notification sent!", isPresented: $showGreenTick) {
+                Button("OK") { }
+            }
+            .alert("You sent too many critical alerts! Please, try again in an hour", isPresented: $showCritical) {
                 Button("OK") { }
             }
             .alert("Notification not sent!", isPresented: $showAlert3) {

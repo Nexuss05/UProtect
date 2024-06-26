@@ -425,7 +425,7 @@ struct FifthPageView: View {
     
     func askForPermission(completion: @escaping () -> Void) {
         let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge, .criticalAlert]) { granted, error in
             if granted {
                 isAuthorized = true
                 print("Notification permission granted")
