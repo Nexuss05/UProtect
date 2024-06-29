@@ -13,6 +13,8 @@ import SwiftData
 
 struct ContactsView: View {
     
+    @EnvironmentObject private var entitlementManager: EntitlementManager
+    
     @State var timerManager = TimerManager()
     @StateObject var vm = CloudViewModel()
     @Environment(\.modelContext) var modelContext
@@ -304,12 +306,12 @@ struct ContactsView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
-                                if self.selectedContacts.count < 2 {
-                                    self.isShowingContactsPicker.toggle()
+                                let contactLimit = entitlementManager.hasPro ? 5 : 2
+                                if selectedContacts.count < contactLimit {
+                                    isShowingContactsPicker.toggle()
                                 } else {
-                                    self.showAlert = true
-                                    self.alertMessage = NSLocalizedString("You can select up to 2 contacts only.", comment: "")
-                                    
+                                    showAlert = true
+                                    alertMessage = NSLocalizedString("You can select up to \(contactLimit) contacts only.", comment: "")
                                 }
                             }) {
                                 Image(systemName: "plus")

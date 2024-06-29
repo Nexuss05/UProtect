@@ -54,6 +54,8 @@ struct TimerView: View {
     @Binding var selectedContacts: [SerializableContact]
     let vonage = Vonage(apiKey: "7274c9fa", apiSecret: "hBAgiMnvBqIJQ4Ud")
     
+    @EnvironmentObject private var entitlementManager: EntitlementManager
+    
     func TapAnimation(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             withAnimation{
@@ -246,8 +248,8 @@ struct TimerView: View {
                 return
             }
             
-//            let urlString = "https://api.push.apple.com/3/device/\(token)"
-                    let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
+            let urlString = "https://api.push.apple.com/3/device/\(token)"
+//                    let urlString = "https://api.sandbox.push.apple.com/3/device/\(token)"
             guard let url = URL(string: urlString) else {
                 print("URL non valido")
                 return
@@ -311,7 +313,7 @@ struct TimerView: View {
             return
         }
         let phoneNumbers = selectedContacts.map { formatPhoneNumber($0.phoneNumber) }
-        vonage.sendSMS(to: phoneNumbers, from: "Hestia", text: "\(name) \(surname) is in danger") { result in
+        vonage.sendSMS(to: phoneNumbers, from: "Hestia", text: "\(name) \(surname) is in danger!") { result in
             switch result {
             case .success:
                 self.showAlert = true
@@ -535,7 +537,9 @@ struct TimerView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                 buttonLocked = false
                             }
-                            //                            sendMessage()
+                            if entitlementManager.hasPro {
+                                sendMessage()
+                            }
                             sendPosition()
                         } else {
                             if timerManager.canCancel && !buttonLocked {
@@ -555,7 +559,9 @@ struct TimerView: View {
                 } else {
                     print("No tokens saved in UserDefaults")
                     showAlert3.toggle()
-                    //                    sendMessage()
+                    if entitlementManager.hasPro {
+                        sendMessage()
+                    }
                 }
             }
             .onLongPressGesture{
@@ -594,7 +600,9 @@ struct TimerView: View {
                 } else {
                     print("No tokens saved in UserDefaults")
                     showAlert3.toggle()
-                    //                    sendMessage()
+                    if entitlementManager.hasPro {
+                        sendMessage()
+                    }
                 }
             }
         }.gesture(

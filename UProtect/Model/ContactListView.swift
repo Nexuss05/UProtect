@@ -26,6 +26,7 @@ struct SerializableContact: Codable, Hashable {
         self.familyName = contact.familyName
         self.phoneNumber = contact.phoneNumbers.first?.value.stringValue ?? ""
     }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(givenName)
         hasher.combine(familyName)
@@ -33,7 +34,6 @@ struct SerializableContact: Codable, Hashable {
     }
 }
 
-//struct ContactsPicker: UIViewControllerRepresentable {
 struct ContactsPicker: View {
     @Binding var isPresented: Bool
     @Binding var selectedContacts: [SerializableContact]
@@ -41,52 +41,40 @@ struct ContactsPicker: View {
     @State private var contacts: [CNContact] = []
     @State private var filteredContacts: [CNContact] = []
     @State private var contactSelectionState: [CNContact: Bool] = [:]
-    
-    
-    //    func makeUIViewController(context: Context) -> CNContactPickerViewController {
-    //        let picker = CNContactPickerViewController()
-    //        picker.delegate = context.coordinator
-    //        picker.displayedPropertyKeys = [CNContactPhoneNumbersKey]
-    //        picker.predicateForEnablingContact = NSPredicate(format: "phoneNumbers.@count > 0")
-    //        picker.predicateForSelectionOfContact = NSPredicate(format: "phoneNumbers.@count == 1")
-    //        picker.predicateForSelectionOfProperty = NSPredicate(format: "key == 'phoneNumbers'")
-    //
-    //        return picker
-    //    }
-    //
-    //    func updateUIViewController(_ uiViewController: CNContactPickerViewController, context: Context) {
-    //        // Nothing to update here
-    //    }
-    //
-    //    func makeCoordinator() -> Coordinator {
-    //        return Coordinator(parent: self)
-    //    }
+    @State private var tempSelectedContacts: [SerializableContact] = []
     @State private var showAlert = false
+    @EnvironmentObject private var entitlementManager: EntitlementManager
+    
+    private var maxContactLimit: Int {
+        return entitlementManager.hasPro ? 5 : 2
+    }
+    
+    private var remainingContactLimit: Int {
+        return maxContactLimit - selectedContacts.count
+    }
     
     var body: some View {
         NavigationView {
             VStack {
                 SearchBar(text: $searchText)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .onChange(of: searchText) { newValue in
-                                        filterContacts()
-                                    }
+                    .padding()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .onChange(of: searchText) { newValue in
+                        filterContacts()
+                    }
                 
                 List(filteredContacts, id: \.identifier) { contact in
                     Button(action: {
-                        if selectedContacts.count < 2 {
-                            let currentSelection = contactSelectionState[contact] ?? false
-                            contactSelectionState[contact] = !currentSelection
-                            let serializableContact = SerializableContact(contact: contact)
-                            if !selectedContacts.contains(serializableContact) {
-                                selectedContacts.append(serializableContact)
-                                saveContactsToUserDefaults()
-                            }
+                        let serializableContact = SerializableContact(contact: contact)
+                        
+                        if let index = tempSelectedContacts.firstIndex(of: serializableContact) {
+                            tempSelectedContacts.remove(at: index)
+                            contactSelectionState[contact] = false
+                        } else if tempSelectedContacts.count < remainingContactLimit {
+                            tempSelectedContacts.append(serializableContact)
+                            contactSelectionState[contact] = true
                         } else {
-                            // Mostra un avviso o disabilita l'azione
-                            // Potresti voler passare una variabile di stato per mostrare un avviso
-                            // o disabilitare l'azione qui
+                            showAlert = true
                         }
                     }) {
                         HStack {
@@ -107,6 +95,8 @@ struct ContactsPicker: View {
             }
             .navigationBarTitle("Select Contacts", displayMode: .inline)
             .navigationBarItems(trailing: Button("Done") {
+                self.selectedContacts.append(contentsOf: tempSelectedContacts)
+                saveContactsToUserDefaults()
                 self.isPresented = false
             })
             .onAppear {
@@ -115,7 +105,7 @@ struct ContactsPicker: View {
             .alert(isPresented: $showAlert) {
                 Alert(
                     title: Text("You've reached the limit"),
-                    message: Text("You can select no more then 2 contacts"),
+                    message: Text("You can select no more than \(remainingContactLimit) more contacts"),
                     dismissButton: .default(Text("OK"))
                 )
             }
@@ -156,6 +146,7 @@ struct ContactsPicker: View {
         }
     }
 }
+
 
 //
 //class Coordinator: NSObject, CNContactPickerDelegate {

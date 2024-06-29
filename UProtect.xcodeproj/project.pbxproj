@@ -28,6 +28,10 @@
 		99B555752C13BF410096F0B4 /* Animation - 1717796337306.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B555732C13BF410096F0B4 /* Animation - 1717796337306.json */; };
 		99B555762C13BF410096F0B4 /* Animation - 1717796203824.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B555742C13BF410096F0B4 /* Animation - 1717796203824.json */; };
 		99DC37EE2C03B5B700A2804E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 99DC37ED2C03B5B700A2804E /* Lottie */; };
+		99E6452C2C30514D00AB92C6 /* Hestia: Feel Safe.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 99E6452B2C30514D00AB92C6 /* Hestia: Feel Safe.storekit */; };
+		99E6452F2C3052E200AB92C6 /* SubscriptionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E6452E2C3052E200AB92C6 /* SubscriptionsManager.swift */; };
+		99E645312C30530000AB92C6 /* EntitlementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E645302C30530000AB92C6 /* EntitlementManager.swift */; };
+		99E645332C30533D00AB92C6 /* Paywall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E645322C30533D00AB92C6 /* Paywall.swift */; };
 		C21DD83E2BE4D471003EB614 /* UProtectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD83D2BE4D471003EB614 /* UProtectApp.swift */; };
 		C21DD8402BE4D471003EB614 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DD83F2BE4D471003EB614 /* ContentView.swift */; };
 		C21DD8422BE4D472003EB614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C21DD8412BE4D472003EB614 /* Assets.xcassets */; };
@@ -170,6 +174,10 @@
 		99B555712C13BF2E0096F0B4 /* Corso4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corso4.swift; sourceTree = "<group>"; };
 		99B555732C13BF410096F0B4 /* Animation - 1717796337306.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1717796337306.json"; sourceTree = "<group>"; };
 		99B555742C13BF410096F0B4 /* Animation - 1717796203824.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Animation - 1717796203824.json"; sourceTree = "<group>"; };
+		99E6452B2C30514D00AB92C6 /* Hestia: Feel Safe.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Hestia: Feel Safe.storekit"; sourceTree = "<group>"; };
+		99E6452E2C3052E200AB92C6 /* SubscriptionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsManager.swift; sourceTree = "<group>"; };
+		99E645302C30530000AB92C6 /* EntitlementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitlementManager.swift; sourceTree = "<group>"; };
+		99E645322C30533D00AB92C6 /* Paywall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paywall.swift; sourceTree = "<group>"; };
 		C20EBDC72C0F14A9002EA465 /* UProtect.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = UProtect.entitlements; sourceTree = "<group>"; };
 		C21DD83A2BE4D471003EB614 /* UProtect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UProtect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C21DD83D2BE4D471003EB614 /* UProtectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UProtectApp.swift; sourceTree = "<group>"; };
@@ -289,6 +297,17 @@
 			path = Lotties;
 			sourceTree = "<group>";
 		};
+		99E6452D2C3052D500AB92C6 /* Subscriptions */ = {
+			isa = PBXGroup;
+			children = (
+				99E6452B2C30514D00AB92C6 /* Hestia: Feel Safe.storekit */,
+				99E6452E2C3052E200AB92C6 /* SubscriptionsManager.swift */,
+				99E645322C30533D00AB92C6 /* Paywall.swift */,
+				99E645302C30530000AB92C6 /* EntitlementManager.swift */,
+			);
+			path = Subscriptions;
+			sourceTree = "<group>";
+		};
 		C21DD8312BE4D471003EB614 = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +340,7 @@
 				997DA7F82C14B3220048ABB9 /* GoogleService-Info.plist */,
 				C20EBDC72C0F14A9002EA465 /* UProtect.entitlements */,
 				C21DD83D2BE4D471003EB614 /* UProtectApp.swift */,
+				99E6452D2C3052D500AB92C6 /* Subscriptions */,
 				E0EAD0742BFE5530006753F5 /* UProtect.swift */,
 				C2893DD72BEB8C0B00733211 /* Components */,
 				C21DD85C2BE5183A003EB614 /* Model */,
@@ -605,6 +625,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E6452C2C30514D00AB92C6 /* Hestia: Feel Safe.storekit in Resources */,
 				99A452672C05C5EE004700FE /* Animation - 1716803884547.json in Resources */,
 				C21DD8452BE4D472003EB614 /* Preview Assets.xcassets in Resources */,
 				99A452652C05C5E8004700FE /* Animation - 1716803277345.json in Resources */,
@@ -670,6 +691,7 @@
 				C23050492C05C7070056BEAA /* CoursesView.swift in Sources */,
 				C230504B2C05C7070056BEAA /* LottieView4.swift in Sources */,
 				E0456A472BF8F342002B514F /* otpView.swift in Sources */,
+				99E645332C30533D00AB92C6 /* Paywall.swift in Sources */,
 				E0B5D1B12C1D947E00A66DE8 /* ContactMap.swift in Sources */,
 				C2E4036C2C10441800F5B4F7 /* TimerManagerIOS.swift in Sources */,
 				E06A202B2C0B7980005D4D67 /* Corso1.swift in Sources */,
@@ -692,6 +714,7 @@
 				E092099C2BEBE312005AD0FB /* SettingsView.swift in Sources */,
 				E03931072C1C3BA40088A51E /* Card.swift in Sources */,
 				E0293D2D2C11DF0800EB6485 /* Vuota.swift in Sources */,
+				99E6452F2C3052E200AB92C6 /* SubscriptionsManager.swift in Sources */,
 				E0EAD0E42BFF80A2006753F5 /* AudioRecorder.swift in Sources */,
 				C21DD84C2BE4DAC2003EB614 /* Vonage.swift in Sources */,
 				E0D1D9CB2BFCBFE200506367 /* ButtonView.swift in Sources */,
@@ -702,6 +725,7 @@
 				E0420F412BF4BFDB00F5B5D0 /* LogInView.swift in Sources */,
 				E09209A02BEBE394005AD0FB /* TimerSettings.swift in Sources */,
 				E0F1A67C2C079A7200B0D16A /* TimerManager.swift in Sources */,
+				99E645312C30530000AB92C6 /* EntitlementManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,7 +896,7 @@
 				CODE_SIGN_ENTITLEMENTS = UProtect/UProtect.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7G2UC637L6;
@@ -920,7 +944,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"UProtect/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7G2UC637L6;

@@ -36,7 +36,7 @@ struct OnBoarding2: View {
                     .tag(3)
                     .overlay{
                         ZStack(alignment: .center){
-                            Text("- Made by Eleonora Iannelli, Andrea Romano, Alessia Previdente, Yuri Mario Gianoli, Simone Sarnataro, Matteo Cotena")
+                            Text("- Made by Andrea Romano, Eleonora Iannelli, Alessia Previdente, Yuri Mario Gianoli, Simone Sarnataro, Matteo Cotena")
                                 .font(.caption2)
                                 .foregroundStyle(.gray)
                                 .multilineTextAlignment(.center)

@@ -22,9 +22,19 @@ struct UProtectApp: App {
     @StateObject var audioPlayer = AudioPlayer()
     @State private var locationManager = LocationManager()
     
+    @StateObject
+    private var entitlementManager: EntitlementManager
+    
+    @StateObject
+    private var subscriptionsManager: SubscriptionsManager
+    
     @Environment (\.scenePhase) var scene
     
     init() {
+        let entitlementManager = EntitlementManager()
+        let subscriptionsManager = SubscriptionsManager(entitlementManager: entitlementManager)
+        self._entitlementManager = StateObject(wrappedValue: entitlementManager)
+        self._subscriptionsManager = StateObject(wrappedValue: subscriptionsManager)
         UITabBar.setCustomAppearance()
         TimeManager.shared.setupWCSession()
         TimeManager.shared.syncTokens()
@@ -52,10 +62,17 @@ struct UProtectApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
     var body: some Scene {
         WindowGroup {
 //            WelcomeView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
             UProtect(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
+                .environmentObject(entitlementManager)
+                .environmentObject(subscriptionsManager)
+                .task {
+                    await subscriptionsManager.updatePurchasedProducts()
+                }
+            
 //            ContentView(timerManager: timerManager, audioRecorder: audioRecorder, audioPlayer: audioPlayer)
                 .onAppear {
                     vm.fetchUserPosition()

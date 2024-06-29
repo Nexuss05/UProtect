@@ -304,7 +304,18 @@
         }
       }
     },
+    "- Made by Andrea Romano, Eleonora Iannelli, Alessia Previdente, Yuri Mario Gianoli, Simone Sarnataro, Matteo Cotena" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- Creato by Andrea Romano, Eleonora Iannelli, Alessia Previdente, Yuri Mario Gianoli, Simone Sarnataro, Matteo Cotena"
+          }
+        }
+      }
+    },
     "- Made by Eleonora Iannelli, Andrea Romano, Alessia Previdente, Yuri Mario Gianoli, Simone Sarnataro, Matteo Cotena" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -1254,6 +1265,17 @@
         }
       }
     },
+    "All future features!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutte le future funzionalità!"
+          }
+        }
+      }
+    },
     "Allow Location" : {
       "localizations" : {
         "it" : {
@@ -1905,6 +1927,16 @@
     },
     "Call" : {
 
+    },
+    "Cancel Subscription" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancella Abbonamento"
+          }
+        }
+      }
     },
     "Carry a personal alarm that you can use to attract attention if you feel threatened." : {
       "localizations" : {
@@ -2974,6 +3006,37 @@
         }
       }
     },
+    "Get access to all of our features" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottieni pieno accesso all'app"
+          }
+        }
+      }
+    },
+    "Get full access for just (product.displayPrice)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottieni pieno accesso a soli (product.displayPrice)"
+          }
+        }
+      }
+    },
+    "Get full access for just %@" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottieni pieno accesso a soli %@"
+          }
+        }
+      }
+    },
     "Get Help" : {
       "localizations" : {
         "it" : {
@@ -3004,6 +3067,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chiedi il Permesso per Uscire"
+          }
+        }
+      }
+    },
+    "GET PRO!" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PASSA A PRO!"
           }
         }
       }
@@ -3528,6 +3601,9 @@
         }
       }
     },
+    "Informativa sulla Privacy" : {
+
+    },
     "Initially walk the route with your child to familiarize them with it. Show them safe places to cross and potential hazards." : {
       "localizations" : {
         "it" : {
@@ -3723,6 +3799,12 @@
         }
       }
     },
+    "Key 7" : {
+      "extractionState" : "manual"
+    },
+    "Key 8" : {
+      "extractionState" : "manual"
+    },
     "Know Contact Information" : {
       "localizations" : {
         "it" : {
@@ -3884,7 +3966,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Log Out"
+            "value" : "Esci"
           }
         }
       }
@@ -4001,6 +4083,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Assicurati che il tuo bambino indossi un'attrezzatura riflettente per aumentare la sua visibilità durante la notte o in condizioni di scarsa illuminazione."
+          }
+        }
+      }
+    },
+    "Manage your subscription" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestici l'abbonamento"
           }
         }
       }
@@ -4495,6 +4587,9 @@
         }
       }
     },
+    "Ottieni pieno accesso a soli %@" : {
+
+    },
     "Pace yourself and know your limits when drinking to avoid putting yourself in vulnerable situations." : {
       "localizations" : {
         "it" : {
@@ -4629,6 +4724,9 @@
         }
       }
     },
+    "Politica sulla Privacy" : {
+
+    },
     "Practical Implementation Strategies" : {
       "localizations" : {
         "it" : {
@@ -4726,6 +4824,17 @@
     "Privacy Policy. Button" : {
 
     },
+    "PRO" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PRO"
+          }
+        }
+      }
+    },
     "Projecting Future Outcomes" : {
       "localizations" : {
         "it" : {
@@ -4743,6 +4852,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Puoi selezionare solo fino a 2 contatti."
+          }
+        }
+      }
+    },
+    "Purchase" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acquista"
           }
         }
       }
@@ -5014,6 +5133,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ristorante"
+          }
+        }
+      }
+    },
+    "Restore Purchases" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina gli Acquisti"
           }
         }
       }
@@ -5380,6 +5509,17 @@
         }
       }
     },
+    "SMS Service" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servizio SMS"
+          }
+        }
+      }
+    },
     "SOS mode" : {
       "localizations" : {
         "it" : {
@@ -5665,6 +5805,12 @@
           }
         }
       }
+    },
+    "Termini e Condizioni" : {
+
+    },
+    "Terms and Conditions" : {
+
     },
     "Thanks to the map you can easily have a look at shops and store open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
       "extractionState" : "stale",
@@ -5983,6 +6129,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comprendere gli Effetti della Cannabis: lo sballo della marijuana è dovuto al THC, che **influenza i recettori cerebrali**. Anche se sembra travolgente, è importante ricordare che è temporaneo e non pericoloso per la vita. Non sono stati segnalati decessi per overdose di cannabis."
+          }
+        }
+      }
+    },
+    "Unlock Pro Access" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passa a Pro"
+          }
+        }
+      }
+    },
+    "Up to 5 emergency contacts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fino a 5 contatti d'emergenza"
           }
         }
       }
@@ -6444,7 +6611,18 @@
         }
       }
     },
+    "You can select no more than %lld more contacts" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non puoi selezionare altri contatti"
+          }
+        }
+      }
+    },
     "You can select no more then 2 contacts" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -6454,8 +6632,19 @@
         }
       }
     },
+    "You can select up to (contactLimit) contacts only." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi selezionare massimo (contactLimit) contatti."
+          }
+        }
+      }
+    },
     "You can select up to 2 contacts only." : {
       "comment" : "Alert message shown when a user tries to select more than 2 contacts",
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -6507,12 +6696,22 @@
         }
       }
     },
+    "You've Unlocked Pro Access" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai Sbloccato l'Accesso Pro"
+          }
+        }
+      }
+    },
     "Your contacts" : {
       "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "I tuoi contatti"
           }
         }

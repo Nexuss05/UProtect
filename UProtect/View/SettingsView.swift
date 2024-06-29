@@ -17,10 +17,14 @@ struct SettingsView: View {
     @State var url3 = URL(string: "https://www.iubenda.com/privacy-policy/28899563")
     @Query var userData: [Contacts]
     
+    @EnvironmentObject private var entitlementManager: EntitlementManager
+    
     @ObservedObject var timerManager: TimerManager
     @ObservedObject var audioRecorder: AudioRecorder
     @ObservedObject var audioPlayer: AudioPlayer
     @StateObject private var vm = CloudViewModel()
+    
+    @State var isPaywallPresented = false
     
     let numero = UserDefaults.standard.string(forKey: "userNumber") ?? "non disponibile"
     let nome = UserDefaults.standard.string(forKey: "firstName") ?? "Name"
@@ -88,10 +92,24 @@ struct SettingsView: View {
                                 Text("\(numero)")
                                     .font(.subheadline)
                             }
+                            Spacer()
+                            if entitlementManager.hasPro {
+                                Image(systemName: "crown.fill")
+                                    .foregroundStyle(.yellow)
+                            }
                         }.accessibilityElement(children: .combine)
                             .onTapGesture(count: 5) {
                                 Activated()
                             }
+                        Button {
+                            isPaywallPresented = true
+                        }label: {
+                            if entitlementManager.hasPro {
+                                Text("Manage your subscription")
+                            } else {
+                                Text("GET PRO!")
+                            }
+                        }
                     }
                     Section(header: Text("FEATURES")){
                         NavigationLink {
@@ -159,7 +177,7 @@ struct SettingsView: View {
                             HStack {
                                 Image(systemName: "doc.text")
                                     .foregroundColor(.primary)
-                                Link("Privacy Policy", destination: url3!)
+                                Link("Informativa sulla Privacy", destination: url3!)
                                     .foregroundColor(.primary)
                                 Spacer()
                                 Image(systemName: "arrow.up.forward")
@@ -249,6 +267,9 @@ struct SettingsView: View {
         .onAppear{
             vm.fetchUserInfo()
         }
+        .sheet(isPresented: $isPaywallPresented, onDismiss: nil) {
+                    Paywall()
+                }
     }
     
     func Activated() {
