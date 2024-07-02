@@ -1149,6 +1149,16 @@
         }
       }
     },
+    "About Hestia: Feel Safe Pro" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A proposito di Hestia: Sentiti Al Sicuro Pro"
+          }
+        }
+      }
+    },
     "Accept gifts from strangers" : {
       "localizations" : {
         "it" : {
@@ -1845,6 +1855,16 @@
         }
       }
     },
+    "Both plans include:" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrambi i piani includono:"
+          }
+        }
+      }
+    },
     "Bright Clothes" : {
       "localizations" : {
         "it" : {
@@ -1861,6 +1881,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buddy System"
+          }
+        }
+      }
+    },
+    "By subscribing to Hestia: Feel Safe Pro you accept the Terms and Conditions. \n\nPayment will be charged to iTunes Account at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period, and identify the cost of the renewal. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iscrivendoti a Hestia: Sentiti Al Sicuro Pro accetti i Termini e le Condizioni. Il pagamento verrà addebitato sull'account iTunes alla conferma dell'acquisto. L'abbonamento si rinnova automaticamente a meno che il rinnovo automatico non sia disattivato prima della fine del periodo corrente. L'account verrà addebitato per il rinnovo entro 24 ore prima della fine del periodo corrente e identificherà il costo del rinnovo. Gli abbonamenti possono essere gestiti dall'utente e il rinnovo automatico può essere disattivato andando alle impostazioni dell'account dell'utente dopo l'acquisto."
           }
         }
       }
@@ -3028,6 +3058,7 @@
       }
     },
     "Get full access for just %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "it" : {
           "stringUnit" : {
@@ -3036,6 +3067,12 @@
           }
         }
       }
+    },
+    "Get full access for just %@ per month" : {
+
+    },
+    "Get full access for just %@ per year" : {
+
     },
     "Get Help" : {
       "localizations" : {
@@ -3634,6 +3671,9 @@
         }
       }
     },
+    "Iscrivendoti a Hestia: Sentiti Al Sicuro Pro accetti i Termini e le Condizioni. \n\nIl pagamento verrà addebitato sull'account iTunes alla conferma dell'acquisto. L'abbonamento si rinnova automaticamente a meno che il rinnovo automatico non sia disattivato prima della fine del periodo corrente. L'account verrà addebitato per il rinnovo entro 24 ore prima della fine del periodo corrente e identificherà il costo del rinnovo. Gli abbonamenti possono essere gestiti dall'utente e il rinnovo automatico può essere disattivato andando alle impostazioni dell'account dell'utente dopo l'acquisto." : {
+
+    },
     "Jeff Cooper's Color Code categorizes different levels of awareness:" : {
       "comment" : "Introduction to Cooper's Color Code",
       "localizations" : {
@@ -3872,6 +3912,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impara la Difesa Personale"
+          }
+        }
+      }
+    },
+    "LEGAL" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LEGALE"
           }
         }
       }
@@ -4587,7 +4637,10 @@
         }
       }
     },
-    "Ottieni pieno accesso a soli %@" : {
+    "Ottieni pieno accesso a soli %@ al mese" : {
+
+    },
+    "Ottieni pieno accesso a soli %@ all'anno" : {
 
     },
     "Pace yourself and know your limits when drinking to avoid putting yourself in vulnerable situations." : {
@@ -4831,6 +4884,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "PRO"
+          }
+        }
+      }
+    },
+    "Pro users also allow us to keep Hestia: Feel Safe free for everyone." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gli utenti Pro ci permettono anche di mantenere Hestia: Sentiti Al Sicuro gratuita per tutti."
           }
         }
       }
@@ -5520,6 +5583,16 @@
         }
       }
     },
+    "SMS Service along with notifications" : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servizio SMS assieme alle notifiche"
+          }
+        }
+      }
+    },
     "SOS mode" : {
       "localizations" : {
         "it" : {
@@ -5810,7 +5883,14 @@
 
     },
     "Terms and Conditions" : {
-
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termini e Condizioni"
+          }
+        }
+      }
     },
     "Thanks to the map you can easily have a look at shops and store open nearby you. In case you need a place to go or seek shelter, you can either call the place or have the route highlighted in the map itself." : {
       "extractionState" : "stale",
@@ -6521,6 +6601,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mentre gli esseri umani possiedono naturalmente la consapevolezza situazionale a causa dell'istinto di sopravvivenza innato, può essere migliorata attraverso la vigilanza, la pratica continua e il miglioramento delle capacità cognitive."
+          }
+        }
+      }
+    },
+    "While the free version of Hestia: Feel Safe already empowers the users, the Pro version gives even more possibilities! Pro is a paid option because the premium features require additional expenses from us." : {
+      "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mentre la versione gratuita di Hestia: Sentiti Al Sicuro dà già potere agli utenti, la versione Pro offre ancora più possibilità! La versione Pro è un'opzione a pagamento perché le caratteristiche premium richiedono spese aggiuntive da parte nostra."
           }
         }
       }
